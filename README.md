@@ -16,6 +16,10 @@
 [![Coq Proofs](https://img.shields.io/badge/Coq%20proofs-207%20files-brightgreen?style=flat-square)](#formal-foundations)
 [![Fixpoint](https://img.shields.io/badge/fixpoint-Gen1%3D%3DGen2%3D%3DGen3%3D%3DGen4-00e5ff?style=flat-square)](#self-hosting-and-the-fixpoint)
 
+[![npm](https://img.shields.io/npm/v/%40brik64%2Fcore?style=flat-square&label=%40brik64%2Fcore&color=cb3837)](https://www.npmjs.com/package/@brik64/core)
+[![Crates](https://img.shields.io/crates/v/brik64-core?style=flat-square&label=brik64-core)](https://crates.io/crates/brik64-core)
+[![PyPI](https://img.shields.io/pypi/v/brik64?style=flat-square&label=pypi/brik64&color=3B4D98)](https://pypi.org/project/brik64/)
+
 **[brik64.dev](https://brik64.dev) · [docs.brik64.dev](https://docs.brik64.dev) · [Examples](https://github.com/brik64/brik64-community-examples) · [Releases](https://github.com/brik64/brik64-dist-releases)**
 
 </div>
@@ -236,25 +240,60 @@ The output is standard code in the target language — no foreign runtime, no bi
 
 ### Use BRIK-64 libraries in your existing code
 
-If you already have a Rust, Python, or JavaScript codebase, import the BRIK-64 monomer libraries to apply Digital Circuitality principles directly:
+The 64 Core monomers are published as native libraries. No new language required to start using Digital Circuitality.
 
+#### Rust
+
+```toml
+[dependencies]
+brik64-core = "2.0.0"
+```
 ```rust
-// Rust — brik64-core crate
-use brik64::{mc, eva};
-let result = eva::seq(mc::add8(a, b), mc::mod8(x, n));
-```
+use brik64_core::{mc, eva};
 
-```python
-# Python — brik64 package  
-from brik64 import mc, eva
-result = eva.seq(mc.add8(a, b), mc.mod8(x, n))
-```
+let result = mc::arithmetic::add8(200, 100);   // saturating → 255
+let (q, r) = mc::arithmetic::div8(17, 5);      // (3, 2) — no panic on div/0
 
-```javascript
-// JavaScript — @brik64/core package
+// EVA algebra: compose operations into verified pipelines
+let pipeline = eva::seq(
+    |x| mc::arithmetic::add8(x, 10),
+    |x| mc::arithmetic::mul8(x, 2),
+);
+```
+> [crates.io/crates/brik64-core](https://crates.io/crates/brik64-core) | [crates.io/crates/brik64-bir](https://crates.io/crates/brik64-bir) (embeddable BIR runtime)
+
+#### TypeScript / JavaScript
+
+```bash
+npm install @brik64/core
+```
+```typescript
 import { mc, eva } from '@brik64/core';
-const result = eva.seq(mc.add8(a, b), mc.mod8(x, n));
+
+const result = mc.arithmetic.add8(200, 100);   // 255
+const [q, r] = mc.arithmetic.div8(17, 5);      // [3, 2]
+
+const hash = await mc.crypto.hashSha256(new TextEncoder().encode('hello'));
 ```
+> [npmjs.com/package/@brik64/core](https://www.npmjs.com/package/@brik64/core) | Full TypeScript | Works in Node.js & browsers
+
+#### Python
+
+```bash
+pip install brik64
+```
+```python
+from brik64 import mc, eva
+
+result = mc.arithmetic.add8(200, 100)          # 255
+q, r   = mc.arithmetic.div8(17, 5)            # (3, 2)
+
+pipeline = eva.pipeline(
+    lambda x: mc.arithmetic.add8(x, 10),
+    lambda x: mc.arithmetic.mul8(x, 2),
+)
+```
+> [pypi.org/project/brik64/](https://pypi.org/project/brik64/) | Python 3.10+ | No dependencies
 
 Any function built exclusively from Core monomers (MC_00–MC_63) via EVA operators retains its `Φ_c = 1` guarantee — regardless of which language it runs in.
 
@@ -417,6 +456,56 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 - Native ARM64 (Apple Silicon, ARM servers)
 - RISC-V (open hardware targets)
 - BPU bytecode (direct hardware execution)
+
+---
+
+## Roadmap
+
+| Phase | Version | Status | Deliverable |
+|-------|---------|--------|-------------|
+| Self-Hosting Fixpoint | v2.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
+| Extended Monomers | v2.1.0–v2.4.0 | 🚧 In Development | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
+| Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
+| Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
+| Multi-Platform | v4.0.0 | 🗓 Planned | ARM64 (Apple Silicon), RISC-V, BPU bytecode |
+| BPU Silicon | Research | 🔬 Research | RTL specification, FPGA prototype, ASIC tape-out — software policy circuits become silicon enforcement |
+
+### Certification Registry & Circuit Marketplace
+
+Once the registry is live, certified programs (Ω=1) become importable circuit packages:
+
+```bash
+# Publish a circuit (Pro tier)
+brikc publish src/hash_pipeline.pcd --name brik64/hash-pipeline --version 1.0.0
+
+# Import in PCD
+import { hash_pipeline } from "brik64/hash-pipeline@1.0.0";
+```
+
+Every registered circuit receives a cryptographically signed certificate anchored in an Ethereum L2 Merkle log every hour. Any certificate is verifiable against the on-chain root without trusting `brik64.dev`.
+
+```json
+{
+  "hash":    "sha256:7229cfcde9613de42eda4dd207da3bac80d2bf2b...",
+  "omega":   1,
+  "phi_c":   1.0,
+  "chain":   "arbitrum-one",
+  "block":   234891203,
+  "anchor":  "0x4a2b...f901"
+}
+```
+
+### BPU Silicon — Software Becomes Hardware
+
+The BPU (BRIK Processing Unit) is the hardware implementation of Digital Circuitality: a coprocessor that makes Φ_c enforcement a **physical property**, not a software check.
+
+```
+Software policy circuits (today)  →  FPGA prototype  →  ASIC tape-out  →  Mandatory standard
+```
+
+A BPU-equipped system is **physically incapable** of running uncertified code. This is not a software policy. It is a hardware gate. The regulatory trajectory mirrors ABS and seatbelts: voluntary → recommended → mandatory.
+
+> Full details in [docs.brik64.dev/roadmap](https://docs.brik64.dev/roadmap)
 
 ---
 
