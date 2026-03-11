@@ -166,6 +166,10 @@ Every BRIK-64 program is evaluated by the TCE, which measures:
 
 `Φ_c = 1` is the binary certification result: the circuit is closed. A program with `Φ_c = 0` does not compile.
 
+The TCE connects computation to physics through the **Landauer Limit** (Paper II): every irreversible bit operation dissipates a minimum of `k_B · T · ln(2) ≈ 2.87 × 10⁻²¹ J` at room temperature. The **ΔN metric** (Noise Budget) measures how much information your program destroys versus preserves — it is the measurable distance between your program and the thermodynamic boundary. A certified program with `ΔN = 0` operates at that boundary: the **Landauer Gap** is zero.
+
+This has a direct consequence: a BRIK-64 Certified program is subject to exactly one failure mode — the hardware running it fails first. Modern silicon operates at error rates of approximately 10⁻¹⁹ per operation. Logic errors, type errors, integer overflow, and undefined behavior are not rare events in a certified program. They are structurally impossible.
+
 ### PCD — Printed Circuit Description
 
 Programs are written in PCD, a language that expresses monomer compositions as circuit schematics:
@@ -200,6 +204,59 @@ PC message_hash {
 ```
 
 Every string operation is length-bounded. Every hash input is validated. The circuit is closed: `Φ_c = 1`.
+
+---
+
+## Working with BRIK-64 Today
+
+Digital Circuitality is available now — no new hardware required.
+
+### Write PCD and compile to any target
+
+PCD is a full Turing-complete language. Write your logic as a circuit schematic and compile to your deployment target:
+
+```bash
+brikc compile src/main.pcd              # Native x86-64 ELF — standalone, no libc
+brikc compile src/main.pcd --target rs  # Emit idiomatic Rust source
+brikc compile src/main.pcd --target js  # Emit JavaScript (ES2022)
+brikc compile src/main.pcd --target py  # Emit Python 3.10+
+brikc compile src/main.pcd --target wasm32  # Emit WebAssembly
+```
+
+The output is standard code in the target language — no foreign runtime, no binary blobs, no BRIK-64 dependency at runtime. A certified PCD program compiles to certified Rust, certified JavaScript, certified Python: the guarantees travel with the generated code.
+
+| Target | Flag | Output |
+|--------|------|--------|
+| Native x86-64 | (default) | Standalone ELF — no libc, no runtime |
+| Rust | `--target rs` | Idiomatic `.rs` source |
+| JavaScript | `--target js` | ES2022 module |
+| Python | `--target py` | Python 3.10+ module |
+| WebAssembly | `--target wasm32` | `.wasm` binary |
+| BIR bytecode | `--target bir` | Portable BRIK-64 IR |
+
+### Use BRIK-64 libraries in your existing code
+
+If you already have a Rust, Python, or JavaScript codebase, import the BRIK-64 monomer libraries to apply Digital Circuitality principles directly:
+
+```rust
+// Rust — brik64-core crate
+use brik64::{mc, eva};
+let result = eva::seq(mc::add8(a, b), mc::mod8(x, n));
+```
+
+```python
+# Python — brik64 package  
+from brik64 import mc, eva
+result = eva.seq(mc.add8(a, b), mc.mod8(x, n))
+```
+
+```javascript
+// JavaScript — @brik64/core package
+import { mc, eva } from '@brik64/core';
+const result = eva.seq(mc.add8(a, b), mc.mod8(x, n));
+```
+
+Any function built exclusively from Core monomers (MC_00–MC_63) via EVA operators retains its `Φ_c = 1` guarantee — regardless of which language it runs in.
 
 ---
 
@@ -306,40 +363,60 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 | PCD CLI dispatch: standalone ELF, no Rust runtime | ✅ |
 | 207 Coq proofs, 0 Admitted | ✅ |
 
-### Expansion: v3.0.0 and Beyond
+### Expansion: v2.5.0 and Beyond
 
-**Extended Monomer Set** — The 64 current monomers cover general-purpose computation. Planned families extend into specialized domains:
+**BRIK-64 Open: Extended Monomers (MC_64–MC_127)**
 
-| Family | Domain | Examples |
-|--------|--------|---------|
-| ML_00–ML_07 | Machine learning primitives | `MATMUL`, `SOFTMAX`, `EMBEDDING` |
-| NET_00–NET_07 | Networking operations | `TCP_SEND`, `DNS_RESOLVE`, `TLS_HANDSHAKE` |
-| DB_00–DB_07 | Database operations | `QUERY`, `TRANSACTION`, `INDEX` |
-| UI_00–UI_07 | User interface events | `RENDER`, `INPUT`, `LAYOUT` |
+64 additional monomers that connect certified Core logic to the real world. They operate under declared contracts, not formal Coq proofs. A program using only Core monomers is **BRIK-64 Certified** (Ω = 1). A program mixing Core + Extended is **BRIK-64 Open** — certified where it is Core, contracted at the external boundary.
 
-Each extended monomer family will have the same formal verification requirements as the core 64 — Coq proofs, domain specifications, range proofs.
+| Family | Range | Domain |
+|--------|-------|--------|
+| Float64 | MC_64–71 | IEEE 754 floating point — `FADD`, `FMUL`, `FSQRT`, `FCONV` |
+| Math | MC_72–79 | Transcendentals — `SIN`, `COS`, `LOG`, `EXP`, `POW` |
+| Network | MC_80–87 | TCP, UDP, DNS, HTTP, TLS |
+| Graphics | MC_88–95 | Framebuffer, pixel, line, blit, text |
+| Audio | MC_96–103 | Play, mix, stream, seek |
+| Filesystem+ | MC_104–111 | Directory ops, watch, temp, chmod |
+| Concurrency | MC_112–119 | Spawn, join, channels, mutex, atomic |
+| Interop/FFI | MC_120–127 | FFI, WASM exec, Python eval, JSON |
 
-**Certification System** — A public certificate registry for BRIK-64 programs:
-- Programs submit to the registry and receive a signed certificate
-- Certificates are queryable via `badge.brik64.dev`
-- Certificate types: `Φ_c = 1 (Certified)`, `Open` (partial closure), `Experimental`
-- Integration with package managers: certified monomers and polymers in a public registry
-
-**Badge System** — Visual certification for repositories and packages:
+```bash
+brikc compile src/main.pcd          # Core only — rejects MC_64+
+brikc compile --open src/main.pcd   # Core + Extended allowed
 ```
-[![BRIK-64 Certified](https://badge.brik64.dev/badge/<hash>)](https://badge.brik64.dev/verify/<hash>)
+
+**Certification Registry** — A public, append-only registry at `brik64.dev/registry`:
+- Programs submit and receive a cryptographically signed certificate
+- Certificate anchored in an Ethereum L2 Merkle log every hour
+- Any certificate is verifiable against the on-chain root without trusting `brik64.dev`
+- Badge types: **CERTIFIED** (Ω = 1, green), **OPEN XX%** (partial, blue)
+
+**Live Badge System**:
+```markdown
+[![BRIK-64 Certified](https://brik64.dev/badge/sha256:7229cf)](https://brik64.dev/cert/sha256:7229cf)
 ```
+
+The badge makes a real-time request on every page load. If the hash is not in the registry, the badge shows **UNVERIFIED** — automatically, without human intervention. A static PNG badge can be forged. A live badge cannot.
+
+What this enables: a BRIK-64 Certified program can claim something no existing certification standard can —
+
+| Standard | Claim | Mechanism |
+|----------|-------|-----------|
+| ISO 26262 (automotive) | "We followed the process" | Audit trail |
+| DO-178C (avionics) | "We ran the tests" | Test logs |
+| Common Criteria EAL7 | "Design was reviewed" | Expert evaluation |
+| **BRIK-64 Certified** | **"Incorrect programs cannot compile"** | **Structural impossibility** |
 
 **BPU Silicon** — Reference implementation of the BPU coprocessor:
 - RTL specification in synthesizable Verilog
 - FPGA prototype (Xilinx/Intel)
-- ASIC tape-out roadmap
+- ASIC tape-out and ARM-style licensing model
+- Only Core monomers (MC_00–MC_63) run in silicon; Extended run in software
 
 **Multi-target Compilation**:
 - Native ARM64 (Apple Silicon, ARM servers)
-- WebAssembly (browser execution)
+- RISC-V (open hardware targets)
 - BPU bytecode (direct hardware execution)
-- RISC-V (open-source hardware targets)
 
 ---
 
@@ -418,3 +495,4 @@ The compiler source, Coq proofs, and BPU architecture are under a separate comme
 [![Docs](https://img.shields.io/badge/docs.brik64.dev-00aa44?style=flat-square)](https://docs.brik64.dev)
 
 </div>
+
