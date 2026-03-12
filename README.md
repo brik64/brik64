@@ -10,7 +10,8 @@
 
 ### Digital Circuitality — Software That Works Like Hardware
 
-[![Version](https://img.shields.io/badge/version-v2.0.0-00e5ff?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
+[![Version](https://img.shields.io/badge/version-BETA%202.0.0-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
+[![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--beta-200)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 [![Phi_c](https://img.shields.io/badge/%CE%A6_c-1%20%E2%80%94%20verified-00e5ff?style=flat-square)](#thermodynamic-coherence-engine)
 [![Coq Proofs](https://img.shields.io/badge/Coq%20proofs-207%20files-brightgreen?style=flat-square)](#formal-foundations)
@@ -23,6 +24,10 @@
 **[brik64.dev](https://brik64.dev) · [docs.brik64.dev](https://docs.brik64.dev) · [Examples](https://github.com/brik64/brik64-community-examples) · [Releases](https://github.com/brik64/brik64-dist-releases)**
 
 </div>
+
+---
+
+> ⚠️ **BETA 2.0.0** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
 
 ---
 
@@ -399,7 +404,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 
 ## What We Have & What's Coming
 
-### Current: v2.0.0
+### Current: BETA 2.0.0
 
 | Component | Status |
 |-----------|--------|
@@ -411,6 +416,8 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 | WASM backend, LSP, fmt, REPL | ✅ |
 | PCD CLI dispatch: standalone ELF, no Rust runtime | ✅ |
 | 207 Coq proofs, 0 Admitted | ✅ |
+| Multi-target codegen (ARM64, RISC-V) | 🚧 WIP |
+| Certification registry | 🚧 WIP |
 
 ### Expansion: v2.5.0 and Beyond
 
@@ -473,7 +480,7 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 
 | Phase | Version | Status | Deliverable |
 |-------|---------|--------|-------------|
-| Self-Hosting Fixpoint | v2.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
+| Self-Hosting Fixpoint | BETA 2.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
 | Extended Monomers | v2.1.0–v2.4.0 | 🚧 In Development | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
 | Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
 | Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
@@ -646,29 +653,47 @@ Choose your path: **write PCD** (full certification + auto-generated tests) or *
 
 Write PCD programs and compile to any target. This is the path to formal certification, auto-generated test suites, and Φ_c = 1 guarantees.
 
-**macOS / Linux (recommended):**
+## Installation — BETA 2.0.0
+
+> ⚠️ **Pre-release**: Core BIR interpreter and self-hosting fixpoint are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) is work-in-progress.
+
+**macOS (Apple Silicon — M1/M2/M3/M4):**
 ```bash
-curl -fsSL https://brik64.dev/install | sh
+curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-macos-arm64 -o brikc
+chmod +x brikc && xattr -d com.apple.quarantine brikc
+./brikc --version
 ```
 
-**Manual download:**
+**macOS (Intel):**
 ```bash
-# Linux x86-64
-curl -Lo brikc https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-linux-x86_64
-chmod +x brikc && sudo mv brikc /usr/local/bin/
+curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-macos-intel -o brikc
+chmod +x brikc && xattr -d com.apple.quarantine brikc
+./brikc --version
+```
 
-# macOS (Apple Silicon)
-curl -Lo brikc https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-macos-arm64
-chmod +x brikc && sudo mv brikc /usr/local/bin/
+**Linux (x86-64):**
+```bash
+curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-linux-x86_64 -o brikc
+chmod +x brikc
+./brikc --version
+```
 
-# macOS (Intel)
-curl -Lo brikc https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-macos-x86_64
-chmod +x brikc && sudo mv brikc /usr/local/bin/
+**Linux (ARM64):**
+```bash
+curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-linux-arm64 -o brikc
+chmod +x brikc
+./brikc --version
+```
+
+**Windows (PowerShell):**
+```powershell
+Invoke-WebRequest https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-windows-x64.exe -OutFile brikc.exe
+.\brikc.exe --version
 ```
 
 **Verify:**
 ```bash
-brikc --version         # brikc v2.0.0 (fixpoint: 7229cfcd...)
+brikc --version         # brikc BETA 2.0.0 (fixpoint: 7229cfcd...)
 brikc check --self      # ✓ Self-compilation fixpoint verified
 brikc catalog           # list all 64 monomers
 ```
@@ -801,4 +826,3 @@ For licensing inquiries, enterprise support, or partnerships: [info@brik64.com](
 [![Docs](https://img.shields.io/badge/docs.brik64.dev-00aa44?style=flat-square)](https://docs.brik64.dev)
 
 </div>
-
