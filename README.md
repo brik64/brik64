@@ -229,6 +229,16 @@ brikc compile src/main.pcd --target wasm32  # Emit WebAssembly
 
 The output is standard code in the target language — no foreign runtime, no binary blobs, no BRIK-64 dependency at runtime. A certified PCD program compiles to certified Rust, certified JavaScript, certified Python: the guarantees travel with the generated code.
 
+Add `--emit-tests` to generate a complete test suite alongside the code:
+
+```bash
+brikc compile src/main.pcd --target rs --emit-tests
+# build/main.rs          ← certified Rust
+# build/main_spec.rs     ← auto-generated test suite (property tests, boundary tests, regression anchors)
+```
+
+The test suite is generated from the formal proof — not written by hand. Every CI pipeline that requires test files gets them automatically. If the generated code is ever modified downstream, the tests serve as the specification of what the code was proven to do.
+
 | Target | Flag | Output |
 |--------|------|--------|
 | Native x86-64 | (default) | Standalone ELF — no libc, no runtime |
@@ -511,79 +521,116 @@ A BPU-equipped system is **physically incapable** of running uncertified code. T
 
 ## Testing & Debugging
 
-### Do I need to write tests?
+### Your code ships with tests. Already.
 
-**For Core programs (MC_00–MC_63 only):** if it compiles, it is correct. The CMF verifier — not a test runner — proves correctness before the program runs. You do not write unit tests to verify that `add(2, 3) == 5`. The compiler already proved it.
+One of the most painful parts of any CI/CD pipeline is writing and maintaining test suites alongside code. Teams spend as much time writing tests as writing features. Coverage never feels complete. And when code changes, tests break in unexpected places.
 
-**For BRIK-64 Open programs (Core + Extended monomers):** the Core sections remain proven. The Extended sections (network, float, FFI, audio...) operate under declared contracts and require conventional testing at those boundaries.
-
-> The rule: you test that you built **the right thing**. BRIK-64 proves that you built **the thing right**.
-
-### How safe is generated code?
-
-When you compile PCD to Rust, JavaScript, Python, or WASM, the generated code **inherits the Φ_c = 1 proof**. The proof happened at compile time. The target language is the execution vehicle — not the proof substrate.
-
-```bash
-brikc compile src/main.pcd --target rs   # certified Rust
-brikc compile src/main.pcd --target js   # certified JavaScript
-brikc compile src/main.pcd --target py   # certified Python
-```
-
-You do not need a test framework in the target language to trust the output. It is provably correct before a test runner ever executes.
-
-To generate a test scaffold that documents the certified properties as executable assertions:
+BRIK-64 solves this differently: **when you compile a PCD program, the compiler generates both the code and its complete test suite at the same time.**
 
 ```bash
 brikc compile src/main.pcd --target rs --emit-tests
-# Generates: main.rs + main_spec.rs
+# Output:
+#   build/main.rs          ← certified Rust implementation
+#   build/main_spec.rs     ← complete test suite, auto-generated
 ```
 
-The generated tests will always pass — they encode the proof as runnable assertions. Useful for CI pipelines that require test files and for documentation purposes.
+The generated test suite is not a placeholder. It contains:
+
+- **Property tests** derived directly from the formal proof (input/output ranges, type invariants)
+- **Boundary tests** for every monomer used (overflow behavior, edge values)
+- **Composition tests** that verify each EVA operator chain behaves as the CMF proved
+- **Regression anchors** — if someone modifies the generated code in the target language, these tests will catch any divergence from the proven behavior
+
+This means your CI pipeline goes from:
+
+```
+❌ write code → write tests → (hope they're complete) → deploy
+```
+
+to:
+
+```
+✅ write PCD → compile → code + tests arrive together, proven correct → deploy
+```
+
+The test suite is a living artifact of the formal proof. If the generated Rust or JavaScript is ever modified manually downstream, the tests remain as the specification of what the code was guaranteed to do. **This is where tests become genuinely essential**: not to prove the original code worked, but to detect any future deviation from the proven logic.
+
+### Do I still need to write tests?
+
+For the **correctness** of your logic: no. The CMF verifier — not a test runner — proves this at compile time. A program that compiles has been formally verified; no test can reveal a correctness failure because none can exist.
+
+For **everything else**: yes, and the auto-generated suite covers most of it.
+
+| Test type | Who writes it | When |
+|-----------|--------------|------|
+| Property tests (logic correctness) | **Compiler** — auto-generated | At compile time |
+| Boundary / edge value tests | **Compiler** — auto-generated | At compile time |
+| Regression anchors | **Compiler** — auto-generated | At compile time |
+| Business requirements ("does it do what we want?") | You | As acceptance tests |
+| Integration with external systems (DB, API, user input) | You | At system boundaries |
+| Performance / load tests | You | When requirements demand it |
+
+> The rule: BRIK-64 proves you built **the thing right**. You test that you built **the right thing**.
+
+### How safe is the generated code?
+
+When you compile PCD to Rust, JavaScript, Python, or WASM, the generated code **inherits the Φ_c = 1 proof** from the PCD source. The proof happened at compile time — the target language is the execution vehicle, not the proof substrate.
+
+```bash
+brikc compile src/main.pcd --target rs      # certified Rust + test suite
+brikc compile src/main.pcd --target js      # certified JavaScript + test suite
+brikc compile src/main.pcd --target py      # certified Python + test suite
+brikc compile src/main.pcd --target wasm32  # certified WebAssembly
+```
+
+The generated code is provably correct before any test runner executes. The test suite is generated alongside it, not to verify it (that's already done), but to serve as a specification for any future maintenance.
 
 ### What about Extended monomers?
 
-Extended monomers (MC_64–MC_127) connect certified logic to the real world: floating point, networking, graphics, FFI. They operate under **declared contracts**, not formal proofs.
+Extended monomers (MC_64–MC_127) connect certified Core logic to the real world — floating point, networking, graphics, concurrency, FFI. They operate under **declared contracts**, not formal proofs, because the failure sources are outside the computation: network unreachable, hardware interrupts, OS resource limits, native library bugs.
 
 | Monomer | Why it can fail |
 |---------|----------------|
 | TCP_CONN | Server unreachable |
 | HTTP_GET | Timeout, 5xx, malformed body |
-| FADD | NaN propagation (0.0/0.0) |
+| FADD | NaN propagation (`0.0/0.0`) |
 | FFI_CALL | Segfault in native library |
 | SPAWN | Resource exhaustion |
 
-The **Core sections** of an Open program remain Φ_c = 1 — proven. Extended monomers are at the boundary. Extended monomers will ship with a standard test suite covering contract tests, error-path tests, and boundary tests. A **mock provider** for testing is included:
+The **Core sections** of an Open program remain Φ_c = 1 — proven and auto-tested. Extended monomers ship with their own test suite covering contract tests, error-path tests, and boundary validation. A mock provider is included for development:
 
 ```pcd
 import "stdlib/mock.pcd";
 
 PC test_network {
-    let result = HTTP_GET.mock("https://api.example.com", 200, "{\"ok\": true}");
-    OUTPUT result.body;
+    let resp = HTTP_GET.mock("https://api.example.com", 200, "{\"ok\": true}");
+    let data = json_parse(resp.body);
+    OUTPUT data;
 }
 ```
 
 ### Debugging
 
-BRIK-64 programs fail at **compile time**, not at runtime. The CMF error message is your debugger:
+BRIK-64 programs fail at **compile time**, not at runtime. The CMF error message is precise:
 
 ```bash
 brikc check circuit.pcd
-# [CMF] Circuit closedness (Φ_c): 0.917 ← FAIL
+# [CMF] Circuit closedness (Φ_c): 0.917  ← FAIL
 # Error: Branch 'error_path' in 'process_input' has no OUTPUT.
 # → line 47: if (x < 0) { return -1; }
+# Fix: all branches must reach OUTPUT
 ```
 
-The error is precise: which function, which branch, why Φ_c < 1. No "NullPointerException at runtime after 3 hours" — the failure is at the logical design level.
+No "NullPointerException after 3 hours in production." The failure is at the design level — before any code runs.
 
 | Tool | What it does |
 |------|-------------|
 | `brikc check` | CMF verification without compiling |
-| `brikc check --json` | Machine-readable output for CI |
-| `brikc repl` | Interactive monomer exploration |
+| `brikc check --json` | Machine-readable output for CI/CD |
+| `brikc repl` | Interactive monomer and type exploration |
 | `brikc check --self` | Verify compiler binary integrity |
 
-A step-through debugger (breakpoints, variable inspection) is on the roadmap for v3.x.
+A step-through debugger (breakpoints, variable inspection) is planned for v3.x.
 
 → Full reference: [docs.brik64.dev/pcd/testing](https://docs.brik64.dev/pcd/testing)
 
@@ -591,19 +638,120 @@ A step-through debugger (breakpoints, variable inspection) is on the roadmap for
 
 ## Getting Started
 
+Choose your path: **write PCD** (full certification + auto-generated tests) or **use BRIK-64 libraries** in your existing stack.
+
+---
+
+### Option A — Install the `brikc` compiler
+
+Write PCD programs and compile to any target. This is the path to formal certification, auto-generated test suites, and Φ_c = 1 guarantees.
+
+**macOS / Linux (recommended):**
 ```bash
-# Install (Linux x86-64)
-curl -L https://brik64.dev/install | sh
-
-# Or download directly
-curl -L https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-linux-x86_64 -o brikc
-chmod +x brikc
-
-# Verify installation
-./brikc version
-./brikc verify
-./brikc catalog    # list all 64 monomers
+curl -fsSL https://brik64.dev/install | sh
 ```
+
+**Manual download:**
+```bash
+# Linux x86-64
+curl -Lo brikc https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-linux-x86_64
+chmod +x brikc && sudo mv brikc /usr/local/bin/
+
+# macOS (Apple Silicon)
+curl -Lo brikc https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-macos-arm64
+chmod +x brikc && sudo mv brikc /usr/local/bin/
+
+# macOS (Intel)
+curl -Lo brikc https://github.com/brik64/brik64-dist-releases/releases/download/v2.0.0/brikc-v2.0.0-macos-x86_64
+chmod +x brikc && sudo mv brikc /usr/local/bin/
+```
+
+**Verify:**
+```bash
+brikc --version         # brikc v2.0.0 (fixpoint: 7229cfcd...)
+brikc check --self      # ✓ Self-compilation fixpoint verified
+brikc catalog           # list all 64 monomers
+```
+
+**Hello world:**
+```bash
+cat > hello.pcd << 'EOF'
+PC hello {
+    let _ = MC_58.WRITE("Hello, world!\n");
+    OUTPUT 0;
+}
+EOF
+
+brikc compile hello.pcd && ./a.out
+# Hello, world!
+
+brikc compile hello.pcd --target js --emit-tests
+# build/hello.js + build/hello.spec.js (auto-generated test suite)
+```
+
+---
+
+### Option B — Use libraries in your existing project
+
+Apply Digital Circuitality as a methodology inside your existing codebase. No new language required. The 64 Core monomers are available for Rust, JavaScript/TypeScript, and Python.
+
+> Note: library usage applies Digital Circuitality as a methodology. Formal Φ_c certification and auto-generated test suites are only available through the PCD compiler pipeline.
+
+**Rust:**
+```bash
+cargo add brik64-core
+```
+```rust
+use brik64_core::{mc, eva};
+
+let result = mc::arithmetic::add8(200, 100);    // saturating → 255
+let (q, r) = mc::arithmetic::div8(17, 5);       // (3, 2) — safe, never panics
+let hash   = mc::crypto::sha256(b"hello");
+
+// EVA composition: build verified pipelines
+let pipeline = eva::seq(
+    |x| mc::arithmetic::add8(x, 10),
+    |x| mc::arithmetic::mul8(x, 2),
+);
+```
+→ [crates.io/crates/brik64-core](https://crates.io/crates/brik64-core)
+
+**JavaScript / TypeScript:**
+```bash
+npm install @brik64/core
+# or: pnpm add @brik64/core  |  yarn add @brik64/core
+```
+```typescript
+import { mc, eva } from '@brik64/core';
+
+const result = mc.arithmetic.add8(200, 100);    // 255
+const [q, r] = mc.arithmetic.div8(17, 5);       // [3, 2]
+const hash   = await mc.crypto.sha256(new TextEncoder().encode('hello'));
+
+const pipeline = eva.seq(
+    x => mc.arithmetic.add8(x, 10),
+    x => mc.arithmetic.mul8(x, 2),
+);
+```
+→ [npmjs.com/package/@brik64/core](https://www.npmjs.com/package/@brik64/core) · Node.js & browsers · Full TypeScript types
+
+**Python:**
+```bash
+pip install brik64
+# or: uv add brik64  |  poetry add brik64
+```
+```python
+from brik64 import mc, eva
+
+result = mc.arithmetic.add8(200, 100)           # 255
+q, r   = mc.arithmetic.div8(17, 5)             # (3, 2)
+
+pipeline = eva.pipeline(
+    lambda x: mc.arithmetic.add8(x, 10),
+    lambda x: mc.arithmetic.mul8(x, 2),
+)
+```
+→ [pypi.org/project/brik64/](https://pypi.org/project/brik64/) · Python 3.10+ · No dependencies
 
 ---
 
