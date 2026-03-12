@@ -1,13 +1,23 @@
 # Contributing to BRIK-64
 
-BRIK-64 is a formally verified, immutable architecture. The core specification, compiler, and Coq proofs are maintained by BRIK-64 Inc. and are not open for external contributions at this time.
+BRIK-64 is a **closed, formally verified artifact**. The core language, monomers, and
+EVA Algebra are immutable once certified — they cannot be patched or extended through
+community contributions.
 
-However, the following repositories welcome community participation:
+## What You Can Contribute
 
-- **[brik64-community-examples](https://github.com/brik64/brik64-community-examples)** — Submit PCD example programs
-- **[brik64-community-awesome](https://github.com/brik64/brik64-community-awesome)** — Add resources, tools, and projects
-- **[brik64-tools-skills](https://github.com/brik64/brik64-tools-skills)** — Contribute Claude Code skills
+- Bug reports (via GitHub Issues)
+- Documentation corrections
+- Community examples at [brik64-community-examples](https://github.com/brik64/brik64-community-examples)
+- Third-party integrations and tooling built on top of BRIK-64
 
-For bug reports or questions, open an issue in this repository.
+## Reporting Issues
 
-For licensing or commercial inquiries, contact [admin@brik64.dev](mailto:admin@brik64.dev).
+Open a GitHub Issue with:
+- BRIK-64 version (`brikc version`)
+- Operating system and architecture
+- Minimal reproduction case
+
+## Contact
+
+For licensing, partnerships, or academic collaboration: **info@brik64.com**
