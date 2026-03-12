@@ -509,6 +509,86 @@ A BPU-equipped system is **physically incapable** of running uncertified code. T
 
 ---
 
+## Testing & Debugging
+
+### Do I need to write tests?
+
+**For Core programs (MC_00–MC_63 only):** if it compiles, it is correct. The CMF verifier — not a test runner — proves correctness before the program runs. You do not write unit tests to verify that `add(2, 3) == 5`. The compiler already proved it.
+
+**For BRIK-64 Open programs (Core + Extended monomers):** the Core sections remain proven. The Extended sections (network, float, FFI, audio...) operate under declared contracts and require conventional testing at those boundaries.
+
+> The rule: you test that you built **the right thing**. BRIK-64 proves that you built **the thing right**.
+
+### How safe is generated code?
+
+When you compile PCD to Rust, JavaScript, Python, or WASM, the generated code **inherits the Φ_c = 1 proof**. The proof happened at compile time. The target language is the execution vehicle — not the proof substrate.
+
+```bash
+brikc compile src/main.pcd --target rs   # certified Rust
+brikc compile src/main.pcd --target js   # certified JavaScript
+brikc compile src/main.pcd --target py   # certified Python
+```
+
+You do not need a test framework in the target language to trust the output. It is provably correct before a test runner ever executes.
+
+To generate a test scaffold that documents the certified properties as executable assertions:
+
+```bash
+brikc compile src/main.pcd --target rs --emit-tests
+# Generates: main.rs + main_spec.rs
+```
+
+The generated tests will always pass — they encode the proof as runnable assertions. Useful for CI pipelines that require test files and for documentation purposes.
+
+### What about Extended monomers?
+
+Extended monomers (MC_64–MC_127) connect certified logic to the real world: floating point, networking, graphics, FFI. They operate under **declared contracts**, not formal proofs.
+
+| Monomer | Why it can fail |
+|---------|----------------|
+| TCP_CONN | Server unreachable |
+| HTTP_GET | Timeout, 5xx, malformed body |
+| FADD | NaN propagation (0.0/0.0) |
+| FFI_CALL | Segfault in native library |
+| SPAWN | Resource exhaustion |
+
+The **Core sections** of an Open program remain Φ_c = 1 — proven. Extended monomers are at the boundary. Extended monomers will ship with a standard test suite covering contract tests, error-path tests, and boundary tests. A **mock provider** for testing is included:
+
+```pcd
+import "stdlib/mock.pcd";
+
+PC test_network {
+    let result = HTTP_GET.mock("https://api.example.com", 200, "{\"ok\": true}");
+    OUTPUT result.body;
+}
+```
+
+### Debugging
+
+BRIK-64 programs fail at **compile time**, not at runtime. The CMF error message is your debugger:
+
+```bash
+brikc check circuit.pcd
+# [CMF] Circuit closedness (Φ_c): 0.917 ← FAIL
+# Error: Branch 'error_path' in 'process_input' has no OUTPUT.
+# → line 47: if (x < 0) { return -1; }
+```
+
+The error is precise: which function, which branch, why Φ_c < 1. No "NullPointerException at runtime after 3 hours" — the failure is at the logical design level.
+
+| Tool | What it does |
+|------|-------------|
+| `brikc check` | CMF verification without compiling |
+| `brikc check --json` | Machine-readable output for CI |
+| `brikc repl` | Interactive monomer exploration |
+| `brikc check --self` | Verify compiler binary integrity |
+
+A step-through debugger (breakpoints, variable inspection) is on the roadmap for v3.x.
+
+→ Full reference: [docs.brik64.dev/pcd/testing](https://docs.brik64.dev/pcd/testing)
+
+---
+
 ## Getting Started
 
 ```bash
@@ -539,26 +619,15 @@ chmod +x brikc
 
 ---
 
-## Intellectual Property
+## License
 
-BRIK-64 is protected by multiple layers of intellectual property:
+BRIK-64 public components are licensed under the [Apache License 2.0](LICENSE).
 
-**Patents (pending)** — The following innovations are covered by provisional patent applications:
-1. Self-compilation fixpoint method — the process of verifying a compiler's correctness by demonstrating hash-identical output across multiple independent compilation stages
-2. TCE certification method — the thermodynamic framework for certifying program closure (Φ_c)
-3. BPU hardware architecture — the physical coprocessor implementing EVA algebra and TCE certification in silicon
-4. AI action verification method — the process of routing AI-generated actions through PCD policy circuits for certification before execution
-5. Policy circuit certification system — the framework for expressing behavioral policies as formally verified PCD programs
+Apache 2.0 includes an explicit patent grant (Section 3) — users of the open-source components receive a perpetual, royalty-free patent license. The grant cannot be revoked unless you initiate patent litigation against BRIK-64 Inc.
 
-**Trademarks** — The following marks are registered or pending registration:
-- **Digital Circuitality™** — the formal property and engineering discipline
-- **BRIK-64™** — the computation architecture
-- **PCD™** (Printed Circuit Description) — the programming language
-- **BPU™** (BRIK Processing Unit) — the hardware coprocessor
+*Digital Circuitality™, BRIK-64™, PCD™, and BPU™ are trademarks of BRIK-64 Inc.*
 
-**License** — This repository and the public components of BRIK-64 are licensed under the [Apache License 2.0](LICENSE). The Apache license was chosen for its explicit patent grant (Section 3), which protects users of the open-source components from patent claims by contributors.
-
-The compiler source, Coq proofs, and BPU architecture are under a separate commercial license. Contact [info@brik64.com](mailto:info@brik64.com) for licensing inquiries.
+For licensing inquiries, enterprise support, or partnerships: [info@brik64.com](mailto:info@brik64.com)
 
 ---
 
