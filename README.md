@@ -10,7 +10,7 @@
 
 ### Digital Circuitality — Software That Works Like Hardware
 
-[![Version](https://img.shields.io/badge/version-BETA%202.0.0-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
+[![Version](https://img.shields.io/badge/version-BETA%203.0.0-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
 [![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--beta-200)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 [![Phi_c](https://img.shields.io/badge/%CE%A6_c-1%20%E2%80%94%20verified-00e5ff?style=flat-square)](#thermodynamic-coherence-engine)
@@ -27,7 +27,7 @@
 
 ---
 
-> ⚠️ **BETA 2.0.0** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
+> ⚠️ **BETA 3.0.0** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
 
 ---
 
@@ -261,7 +261,7 @@ The 64 Core monomers are published as native libraries. No new language required
 
 ```toml
 [dependencies]
-brik64-core = "2.0.0"
+brik64-core = "3.0.0-beta.1"
 ```
 ```rust
 use brik64_core::{mc, eva};
@@ -404,7 +404,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 
 ## What We Have & What's Coming
 
-### Current: BETA 2.0.0
+### Current: BETA 3.0.0
 
 | Component | Status |
 |-----------|--------|
@@ -480,7 +480,7 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 
 | Phase | Version | Status | Deliverable |
 |-------|---------|--------|-------------|
-| Self-Hosting Fixpoint | BETA 2.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
+| Self-Hosting Fixpoint | BETA 3.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
 | Extended Monomers | v2.1.0–v2.4.0 | 🚧 In Development | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
 | Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
 | Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
@@ -653,7 +653,7 @@ Choose your path: **write PCD** (full certification + auto-generated tests) or *
 
 Write PCD programs and compile to any target. This is the path to formal certification, auto-generated test suites, and Φ_c = 1 guarantees.
 
-## Installation — BETA 2.0.0
+## Installation — BETA 3.0.0
 
 > ⚠️ **Pre-release**: Core BIR interpreter and self-hosting fixpoint are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) is work-in-progress.
 
@@ -693,7 +693,7 @@ Invoke-WebRequest https://github.com/brik64/brik64-dist-releases/releases/latest
 
 **Verify:**
 ```bash
-brikc --version         # brikc BETA 2.0.0 (fixpoint: 7229cfcd...)
+brikc --version         # brikc BETA 3.0.0 (fixpoint: 7229cfcd...)
 brikc check --self      # ✓ Self-compilation fixpoint verified
 brikc catalog           # list all 64 monomers
 ```
