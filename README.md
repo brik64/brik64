@@ -276,7 +276,7 @@ The 64 Core monomers are published as native libraries. No new language required
 
 ```toml
 [dependencies]
-brik64-core = "4.0.0-beta.1"
+brik64-core = "4.0.0-beta.2"
 ```
 ```rust
 use brik64_core::{mc, eva};
@@ -477,7 +477,7 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 | Phase | Version | Status | Deliverable |
 |-------|---------|--------|-------------|
 | Self-Hosting Fixpoint | BETA 4.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
-| Extended Monomers | 4.0.0-beta.1 | ✅ Complete | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
+| Extended Monomers | 4.0.0-beta.2 | ✅ Complete | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
 | Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
 | Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
 | Multi-Platform | v4.0.0 | 🗓 Planned | ARM64 (Apple Silicon), RISC-V, BPU bytecode |
