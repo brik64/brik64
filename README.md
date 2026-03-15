@@ -10,7 +10,7 @@
 
 ### Digital Circuitality — Software That Works Like Hardware
 
-[![Version](https://img.shields.io/badge/version-BETA%203.0.0-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
+[![Version](https://img.shields.io/badge/version-3.0.0--beta.1-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
 [![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--beta-200)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 [![Phi_c](https://img.shields.io/badge/%CE%A6_c-1%20%E2%80%94%20verified-00e5ff?style=flat-square)](#thermodynamic-coherence-engine)
@@ -43,7 +43,7 @@ The analogy with electrical engineering is precise, not metaphorical:
 
 | Hardware | Software (BRIK-64) |
 |----------|-------------------|
-| Logic gate | Monomer (MC_00–MC_63) |
+| Logic gate | Monomer (MC_00–MC_127) |
 | Circuit | Polymer (composition of monomers) |
 | PCB schematic | PCD (Printed Circuit Description) |
 | Signal integrity | Thermodynamic Coherence (Φ_c) |
@@ -119,9 +119,9 @@ BRIK-64's approach: **make the formal specification inseparable from the program
 
 ## BRIK-64 Architecture
 
-### The 64 Monomers
+### The 128 Monomers
 
-BRIK-64 provides exactly 64 atomic operations — *monomers* — organized in 8 families of 8. Every BRIK-64 program is a composition of these 64 operations. The space is finite, enumerated, and completely specified.
+BRIK-64 provides 128 atomic operations — *monomers* — organized in 16 families of 8: 64 Core monomers with full Coq proofs, and 64 Extended monomers with declared contracts. Every BRIK-64 program is a composition of these operations. The space is finite, enumerated, and completely specified.
 
 Each monomer has:
 - A **Coq proof** establishing its formal specification
@@ -140,6 +140,21 @@ Each monomer has:
 | String | MC_40–MC_47 | Text processing (`CONCAT`, `SUBSTR`, `LEN`, ...) |
 | Crypto | MC_48–MC_55 | Cryptographic operations (`HASH`, `SIGN`, `VERIFY`, ...) |
 | System | MC_56–MC_63 | OS interface (`TIME`, `ENV`, `PID`, ...) |
+
+**Extended Monomers (MC_64–MC_127)** — connect certified Core logic to the real world under declared contracts:
+
+| Family | Range | Domain |
+|--------|-------|--------|
+| Float64 | MC_64–MC_71 | IEEE 754 floating point — `FADD`, `FMUL`, `FSQRT`, `FCONV` |
+| Math | MC_72–MC_79 | Transcendentals — `SIN`, `COS`, `LOG`, `EXP`, `POW` |
+| Network | MC_80–MC_87 | TCP, UDP, DNS, HTTP, TLS |
+| Graphics | MC_88–MC_95 | Framebuffer, pixel, line, blit, text |
+| Audio | MC_96–MC_103 | Play, mix, stream, seek |
+| Filesystem+ | MC_104–MC_111 | Directory ops, watch, temp, chmod |
+| Concurrency | MC_112–MC_119 | Spawn, join, channels, mutex, atomic |
+| Interop/FFI | MC_120–MC_127 | FFI, WASM exec, Python eval, JSON |
+
+A program using only Core monomers is **BRIK-64 Certified** (Ω = 1). A program mixing Core + Extended is **BRIK-64 Open** — certified where it is Core, contracted at the external boundary.
 
 ### EVA Algebra
 
@@ -351,7 +366,7 @@ The problem with AI code generation is not that models generate syntactically in
 
 BRIK-64 addresses this structurally:
 
-**Finite operation space**: 64 operations with known, bounded, formally verified behavior. An AI generating BRIK-64 code cannot accidentally use an operation with undefined behavior — none exist.
+**Finite operation space**: 128 operations (64 core + 64 extended) with known, bounded behavior. Core monomers are formally verified; extended monomers operate under declared contracts. An AI generating BRIK-64 code cannot accidentally use an operation with undefined behavior — none exist.
 
 **Automatic certification**: The TCE certifies or rejects every program. The AI does not write tests; the compiler verifies correctness as part of compilation.
 
@@ -368,7 +383,7 @@ BRIK-64 addresses this structurally:
 The BPU (BRIK Processing Unit) is the hardware implementation of Digital Circuitality: a coprocessor that makes Φ_c enforcement a physical property, not a software check.
 
 **Architecture**:
-- **64 Monomer Units**: one dedicated silicon circuit per monomer
+- **64 Core Monomer Units**: one dedicated silicon circuit per Core monomer (Extended monomers run in software)
 - **EVA Router**: hardware implementation of ⊗, ∥, ⊕ composition
 - **TCE Unit**: real-time hardware certification — produces Φ_c ∈ {0, 1} before execution
 
@@ -408,7 +423,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 
 | Component | Status |
 |-----------|--------|
-| PCD compiler (`brikc`) self-hosting, 64 monomers | ✅ |
+| PCD compiler (`brikc`) self-hosting, 128 monomers (64 core + 64 extended) | ✅ |
 | EVA algebra: ⊗ ∥ ⊕ with proven algebraic laws | ✅ |
 | TCE certification engine | ✅ |
 | Self-compilation fixpoint (Gen1==Gen2==Gen3==Gen4) | ✅ |
@@ -416,30 +431,11 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 | WASM backend, LSP, fmt, REPL | ✅ |
 | PCD CLI dispatch: standalone ELF, no Rust runtime | ✅ |
 | 207 Coq proofs, 0 Admitted | ✅ |
+| Extended monomers MC_64–MC_127 (8 families: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, Interop/FFI) | ✅ |
 | Multi-target codegen (ARM64, RISC-V) | 🚧 WIP |
 | Certification registry | 🚧 WIP |
 
-### Expansion: v2.5.0 and Beyond
-
-**BRIK-64 Open: Extended Monomers (MC_64–MC_127)**
-
-64 additional monomers that connect certified Core logic to the real world. They operate under declared contracts, not formal Coq proofs. A program using only Core monomers is **BRIK-64 Certified** (Ω = 1). A program mixing Core + Extended is **BRIK-64 Open** — certified where it is Core, contracted at the external boundary.
-
-| Family | Range | Domain |
-|--------|-------|--------|
-| Float64 | MC_64–71 | IEEE 754 floating point — `FADD`, `FMUL`, `FSQRT`, `FCONV` |
-| Math | MC_72–79 | Transcendentals — `SIN`, `COS`, `LOG`, `EXP`, `POW` |
-| Network | MC_80–87 | TCP, UDP, DNS, HTTP, TLS |
-| Graphics | MC_88–95 | Framebuffer, pixel, line, blit, text |
-| Audio | MC_96–103 | Play, mix, stream, seek |
-| Filesystem+ | MC_104–111 | Directory ops, watch, temp, chmod |
-| Concurrency | MC_112–119 | Spawn, join, channels, mutex, atomic |
-| Interop/FFI | MC_120–127 | FFI, WASM exec, Python eval, JSON |
-
-```bash
-brikc compile src/main.pcd          # Core only — rejects MC_64+
-brikc compile --open src/main.pcd   # Core + Extended allowed
-```
+### What's Coming
 
 **Certification Registry** — A public, append-only registry at `brik64.dev/registry`:
 - Programs submit and receive a cryptographically signed certificate
@@ -481,7 +477,7 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 | Phase | Version | Status | Deliverable |
 |-------|---------|--------|-------------|
 | Self-Hosting Fixpoint | BETA 3.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
-| Extended Monomers | v2.1.0–v2.4.0 | 🚧 In Development | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
+| Extended Monomers | 3.0.0-beta.1 | ✅ Complete | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
 | Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
 | Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
 | Multi-Platform | v4.0.0 | 🗓 Planned | ARM64 (Apple Silicon), RISC-V, BPU bytecode |
@@ -695,7 +691,7 @@ Invoke-WebRequest https://github.com/brik64/brik64-dist-releases/releases/latest
 ```bash
 brikc --version         # brikc BETA 3.0.0 (fixpoint: 7229cfcd...)
 brikc check --self      # ✓ Self-compilation fixpoint verified
-brikc catalog           # list all 64 monomers
+brikc catalog           # list all 128 monomers
 ```
 
 **Hello world:**
