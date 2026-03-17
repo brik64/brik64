@@ -10,8 +10,8 @@
 
 ### Digital Circuitality — Software That Works Like Hardware
 
-[![Version](https://img.shields.io/badge/version-3.0.0--beta.1-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
-[![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--beta-200)
+[![Version](https://img.shields.io/badge/version-4.1.0--beta.1-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
+[![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--beta-410)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 [![Phi_c](https://img.shields.io/badge/%CE%A6_c-1%20%E2%80%94%20verified-00e5ff?style=flat-square)](#thermodynamic-coherence-engine)
 [![Coq Proofs](https://img.shields.io/badge/Coq%20proofs-207%20files-brightgreen?style=flat-square)](#formal-foundations)
@@ -27,7 +27,7 @@
 
 ---
 
-> ⚠️ **BETA 4.0.0** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
+> ⚠️ **BETA 4.1.0-beta.1** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. All 128 monomers hardened with 0 panic guarantee. 14,500+ tests across 16 suites. All arithmetic is wrapping (not saturating). Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
 
 ---
 
@@ -276,12 +276,12 @@ The 64 Core monomers are published as native libraries. No new language required
 
 ```toml
 [dependencies]
-brik64-core = "4.0.0-beta.2"
+brik64-core = "4.1.0-beta.1"
 ```
 ```rust
 use brik64_core::{mc, eva};
 
-let result = mc::arithmetic::add8(200, 100);   // saturating → 255
+let result = mc::arithmetic::add8(200, 100);   // wrapping → 44
 let (q, r) = mc::arithmetic::div8(17, 5);      // (3, 2) — no panic on div/0
 
 // EVA algebra: compose operations into verified pipelines
@@ -300,7 +300,7 @@ npm install @brik64/core
 ```typescript
 import { mc, eva } from '@brik64/core';
 
-const result = mc.arithmetic.add8(200, 100);   // 255
+const result = mc.arithmetic.add8(200, 100);   // 44 (wrapping)
 const [q, r] = mc.arithmetic.div8(17, 5);      // [3, 2]
 
 const hash = await mc.crypto.hashSha256(new TextEncoder().encode('hello'));
@@ -315,7 +315,7 @@ pip install brik64
 ```python
 from brik64 import mc, eva
 
-result = mc.arithmetic.add8(200, 100)          # 255
+result = mc.arithmetic.add8(200, 100)          # 44 (wrapping)
 q, r   = mc.arithmetic.div8(17, 5)            # (3, 2)
 
 pipeline = eva.pipeline(
@@ -341,7 +341,7 @@ Gen3  =  Gen2(brikc.pcd)
 Gen4  =  Gen3(brikc.pcd)
 
 Gen1 == Gen2 == Gen3 == Gen4
-Fixpoint hash: 7229cfcde9613de42eda4dd207da3bac80d2bf2b5f778f3270c2321e8e489e95
+Fixpoint hash: beb2c1c6634b3c8f3c93251507f18e420768beca6f645e714698dae07a71a8a9
 ```
 
 This is the solution to Ken Thompson's "trusting trust" problem. Any modification to the compiler source changes the fixpoint hash. The hash is the cryptographic identity of the compiler — reproducible by anyone, verifiable against the published value.
@@ -419,7 +419,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 
 ## What We Have & What's Coming
 
-### Current: BETA 4.0.0
+### Current: v4.1.0-beta.1
 
 | Component | Status |
 |-----------|--------|
@@ -432,6 +432,10 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 | PCD CLI dispatch: standalone ELF, no Rust runtime | ✅ |
 | 207 Coq proofs, 0 Admitted | ✅ |
 | Extended monomers MC_64–MC_127 (8 families: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, Interop/FFI) | ✅ |
+| Security audit: 128 monomers hardened, 0 panic guarantee | ✅ |
+| 14,500+ tests across 16 suites | ✅ |
+| All arithmetic: wrapping semantics (not saturating) | ✅ |
+| Published: npm (`@brik64/core`), PyPI (`brik64`), crates.io (`brik64-core`) — all at v4.1.0-beta.1 | ✅ |
 | Multi-target codegen (ARM64, RISC-V) | 🚧 WIP |
 | Certification registry | 🚧 WIP |
 
@@ -445,7 +449,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 
 **Live Badge System**:
 ```markdown
-[![BRIK-64 Certified](https://brik64.dev/badge/sha256:7229cf)](https://brik64.dev/cert/sha256:7229cf)
+[![BRIK-64 Certified](https://brik64.dev/badge/sha256:beb2c1)](https://brik64.dev/cert/sha256:beb2c1)
 ```
 
 The badge makes a real-time request on every page load. If the hash is not in the registry, the badge shows **UNVERIFIED** — automatically, without human intervention. A static PNG badge can be forged. A live badge cannot.
@@ -476,7 +480,7 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 
 | Phase | Version | Status | Deliverable |
 |-------|---------|--------|-------------|
-| Self-Hosting Fixpoint | BETA 4.0.0 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
+| Self-Hosting Fixpoint | BETA 4.1.0-beta.1 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
 | Extended Monomers | 4.0.0-beta.2 | ✅ Complete | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
 | Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
 | Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
@@ -499,7 +503,7 @@ Every registered circuit receives a cryptographically signed certificate anchore
 
 ```json
 {
-  "hash":    "sha256:7229cfcde9613de42eda4dd207da3bac80d2bf2b...",
+  "hash":    "sha256:beb2c1cde9613de42eda4dd207da3bac80d2bf2b...",
   "omega":   1,
   "phi_c":   1.0,
   "chain":   "arbitrum-one",
@@ -649,9 +653,9 @@ Choose your path: **write PCD** (full certification + auto-generated tests) or *
 
 Write PCD programs and compile to any target. This is the path to formal certification, auto-generated test suites, and Φ_c = 1 guarantees.
 
-## Installation — BETA 4.0.0
+## Installation — v4.1.0-beta.1
 
-> ⚠️ **Pre-release**: Core BIR interpreter and self-hosting fixpoint are production-ready. Multi-target codegen (ARM64, RISC-V, WASM) is work-in-progress.
+> ⚠️ **Pre-release**: Core BIR interpreter, self-hosting fixpoint, and all 128 monomers are production-ready with 0 panic guarantee. Multi-target codegen (ARM64, RISC-V, WASM) is work-in-progress.
 
 **macOS (Apple Silicon — M1/M2/M3/M4):**
 ```bash
@@ -689,7 +693,7 @@ Invoke-WebRequest https://github.com/brik64/brik64-dist-releases/releases/latest
 
 **Verify:**
 ```bash
-brikc --version         # brikc BETA 4.0.0 (fixpoint: 7229cfcd...)
+brikc --version         # brikc v4.1.0-beta.1 (fixpoint: beb2c1c6...)
 brikc check --self      # ✓ Self-compilation fixpoint verified
 brikc catalog           # list all 128 monomers
 ```
@@ -725,7 +729,7 @@ cargo add brik64-core
 ```rust
 use brik64_core::{mc, eva};
 
-let result = mc::arithmetic::add8(200, 100);    // saturating → 255
+let result = mc::arithmetic::add8(200, 100);    // wrapping → 44
 let (q, r) = mc::arithmetic::div8(17, 5);       // (3, 2) — safe, never panics
 let hash   = mc::crypto::sha256(b"hello");
 
@@ -745,7 +749,7 @@ npm install @brik64/core
 ```typescript
 import { mc, eva } from '@brik64/core';
 
-const result = mc.arithmetic.add8(200, 100);    // 255
+const result = mc.arithmetic.add8(200, 100);    // 44 (wrapping)
 const [q, r] = mc.arithmetic.div8(17, 5);       // [3, 2]
 const hash   = await mc.crypto.sha256(new TextEncoder().encode('hello'));
 
@@ -764,7 +768,7 @@ pip install brik64
 ```python
 from brik64 import mc, eva
 
-result = mc.arithmetic.add8(200, 100)           # 255
+result = mc.arithmetic.add8(200, 100)           # 44 (wrapping)
 q, r   = mc.arithmetic.div8(17, 5)             # (3, 2)
 
 pipeline = eva.pipeline(
