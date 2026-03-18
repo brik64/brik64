@@ -231,6 +231,39 @@ Every string operation is length-bounded. Every hash input is validated. The cir
 
 ---
 
+## Closure Domains — How Circuits Close
+
+For a circuit to be certified (Φ_c = 1), every monomer must declare its **domain** — the exact set of valid inputs and guaranteed outputs. No infinity. No undefined behavior. No surprises.
+
+### Domain Types
+
+| Type | Notation | Example | Cardinality |
+|------|----------|---------|-------------|
+| Range | `[min, max]` | u8 = `[0, 255]` | max - min + 1 = 256 |
+| Set | `{v₁, v₂, ...}` | bool = `{true, false}` | 2 |
+| Bounded | `{x ∈ D \| P(x)}` | even ∩ `[0, 100]` | ≤ \|D\| |
+| Product | `D₁ × D₂` | ADD8 input = `[0,255] × [0,255]` | 65,536 |
+
+### Why Domains Matter
+
+```
+ln(x)  where x ∈ (-∞, +∞)  → UNDEFINED (can produce -∞, NaN)  → Φ_c ≠ 1
+ln(x)  where x ∈ [0.001, 1000000]  → BOUNDED output  → Φ_c = 1 ✓
+```
+
+The domain IS the circuit boundary. Without it, the circuit is open. The compiler enforces this: if any domain is unbounded, the program does not compile.
+
+### In Practice
+
+Every core monomer (MC_00 to MC_63) has pre-defined domains:
+- `ADD8`: input `[0,255] × [0,255]`, output `[0,255]` (wrapping)
+- `HASH`: input `String(any)`, output `String(hex, len=64)`
+- `IF`: input `{true, false} × Any × Any`, output `Any`
+
+When composing monomers through EVA algebra, the compiler automatically verifies that output domains match input domains of the next stage. If they don't match, the circuit doesn't close.
+
+---
+
 ## Working with BRIK-64 Today
 
 Digital Circuitality is available now — no new hardware required.
