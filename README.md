@@ -244,6 +244,22 @@ For a circuit to be certified (Φ_c = 1), every monomer must declare its **domai
 | Bounded | `{x ∈ D \| P(x)}` | even ∩ `[0, 100]` | ≤ \|D\| |
 | Product | `D₁ × D₂` | ADD8 input = `[0,255] × [0,255]` | 65,536 |
 
+### Domains Are Numeric Ranges, Not Units
+
+`[0, 900]` means "numbers between 0 and 900" — not km/h, not meters, not degrees. Units are the designer's responsibility. The compiler only verifies numeric ranges.
+
+### Precision Is an Engineering Decision
+
+| Monomer Type | Range | Rounding | Certification |
+|-------------|-------|----------|---------------|
+| U8 (MC_00-07) | [0, 255] | None — wrapping mod 256 | Φ_c = 1 |
+| I64 | Full 64-bit | Truncation (7/2 = 3) | Φ_c = 1 |
+| F64 (MC_64-71) | IEEE 754 | Floating-point rounding | Φ_c = CONTRACT |
+
+**Need exact decimals?** Use the fixed-point pattern: multiply by 1000, compute in integers, divide at the end. `3.14` becomes `3140`. Zero rounding. Φ_c = 1.
+
+**Need real decimals?** Use F64 extended monomers. Accept CONTRACT certification. IEEE 754 rounding applies (0.1 + 0.2 ≈ 0.30000000000000004).
+
 ### Why Domains Matter
 
 ```
@@ -264,19 +280,19 @@ When composing monomers through EVA algebra, the compiler automatically verifies
 
 ### You Are the Circuit Designer
 
-Like an electrical engineer who specifies voltage ranges for each component, you define the valid data ranges for your program:
+You define the valid numeric ranges for your program:
 
 ```
-// Airplane flight computer domains:
-velocity:    [0, 900]    km/h  — commercial aircraft range
-altitude:    [0, 15000]  m     — atmospheric flight ceiling
-temperature: [-40, 1200] °C    — engine operating range
+// Flight computer domains (numeric ranges — units are documentation):
+velocity:    [0, 900]      // not km/h — just numbers 0 to 900
+altitude:    [0, 15000]    // not meters — just numbers 0 to 15000
+temperature: [-40, 1200]   // not °C — just numbers -40 to 1200
 ```
 
 If a calculation produces `velocity = 100,000`, the circuit **doesn't close** because the result violates the declared domain. The compiler rejects it.
 
 **This is the fundamental difference:**
-- **Normal software:** calculates 100,000 km/s, stores it, nobody notices until something breaks
+- **Normal software:** calculates 100,000, stores it, nobody notices until something breaks
 - **Digital Circuitality:** the program doesn't compile — the circuit is open
 
 ### How Domains Are Designed Today
