@@ -262,6 +262,46 @@ Every core monomer (MC_00 to MC_63) has pre-defined domains:
 
 When composing monomers through EVA algebra, the compiler automatically verifies that output domains match input domains of the next stage. If they don't match, the circuit doesn't close.
 
+### You Are the Circuit Designer
+
+Like an electrical engineer who specifies voltage ranges for each component, you define the valid data ranges for your program:
+
+```
+// Airplane flight computer domains:
+velocity:    [0, 900]    km/h  — commercial aircraft range
+altitude:    [0, 15000]  m     — atmospheric flight ceiling
+temperature: [-40, 1200] °C    — engine operating range
+```
+
+If a calculation produces `velocity = 100,000`, the circuit **doesn't close** because the result violates the declared domain. The compiler rejects it.
+
+**This is the fundamental difference:**
+- **Normal software:** calculates 100,000 km/s, stores it, nobody notices until something breaks
+- **Digital Circuitality:** the program doesn't compile — the circuit is open
+
+### How Domains Are Designed Today
+
+1. **Built-in domains** — Core monomers have pre-defined domains (ADD8 accepts [0,255]²)
+2. **Guard conditions** — `if (speed > 900) { return error; }` creates a domain boundary
+3. **Monomer selection** — choosing bounded operations (u8 arithmetic) vs unbounded
+4. **Policy circuits** — PCD programs that validate inputs before processing
+5. **TCE verification** — the compiler checks all paths produce values within domains
+
+### Domain Declaration (Planned Syntax)
+
+```pcd
+PC flight_computer {
+    domain speed: Range [0, 900];
+    domain altitude: Range [0, 15000];
+
+    fn calculate_eta(distance, speed) {
+        // TCE verifies: speed ∈ [0, 900]
+        // result automatically bounded
+        return distance / speed;
+    }
+}
+```
+
 ---
 
 ## Working with BRIK-64 Today
