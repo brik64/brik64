@@ -190,7 +190,7 @@ Every BRIK-64 program is evaluated by the TCE, which measures:
 
 `Φ_c = 1` is the binary certification result: the circuit is closed. A program with `Φ_c = 0` does not compile.
 
-The TCE connects computation to physics through the **Landauer Limit** (Paper II): every irreversible bit operation dissipates a minimum of `k_B · T · ln(2) ≈ 2.87 × 10⁻²¹ J` at room temperature. The **ΔN metric** (Noise Budget) measures how much information your program destroys versus preserves — it is the measurable distance between your program and the thermodynamic boundary. A certified program with `ΔN = 0` operates at that boundary: the **Landauer Gap** is zero.
+The TCE connects computation to physics through **Brillouin's negentropy principle** (Paper II): acquiring or erasing information has an irreducible thermodynamic cost, as formalized by the Kish-Ferry distinction between information entropy and thermal entropy. The **ΔN metric** (Noise Budget) measures how much information your program destroys versus preserves — it is the measurable distance between your program and the thermodynamic boundary. A certified program with `ΔN = 0` operates at that boundary: the **thermodynamic gap** is zero.
 
 This has a direct consequence: a BRIK-64 Certified program is subject to exactly one failure mode — the hardware running it fails first. Modern silicon operates at error rates of approximately 10⁻¹⁹ per operation. Logic errors, type errors, integer overflow, and undefined behavior are not rare events in a certified program. They are structurally impossible.
 
