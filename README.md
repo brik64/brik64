@@ -27,7 +27,7 @@
 
 ---
 
-> ⚠️ **BETA 4.1.0-beta.1** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. All 128 monomers hardened with 0 panic guarantee. 14,500+ tests across 16 suites. All arithmetic is wrapping (not saturating). Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
+> ⚠️ **BETA 4.1.0-beta.1** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. All 128 monomers hardened with 0 panic guarantee. 15,424 tests across 20 suites. All arithmetic is wrapping (not saturating). Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
 
 ---
 
@@ -318,20 +318,62 @@ If a calculation produces `velocity = 100,000`, the circuit **doesn't close** be
 4. **Policy circuits** — PCD programs that validate inputs before processing
 5. **TCE verification** — the compiler checks all paths produce values within domains
 
-### Domain Declaration (Planned Syntax)
+### Domain Declaration (v5.0 — Implemented)
 
 ```pcd
 PC flight_computer {
     domain speed: Range [0, 900];
     domain altitude: Range [0, 15000];
+    domain fuel: Range [0, 50000];
+    domain temp: Range [0, 1200];
 
-    fn calculate_eta(distance, speed) {
-        // TCE verifies: speed ∈ [0, 900]
-        // result automatically bounded
-        return distance / speed;
+    fn calculate_eta(distance: Range [0, 100000], velocity: Range [1, 900]) {
+        return (distance * 3600) / velocity;
     }
+
+    let eta = calculate_eta(2000, 450);
+    OUTPUT eta;
+    return eta;
 }
 ```
+
+The compiler performs **domain analysis** at compile time:
+
+```
+$ brikc check flight_computer.pcd
+
+✓ Parsed 12 statements
+✓ Planning OK
+
+◆ Domain Analysis:
+  · speed: Range [0, 900]  cardinality: 901
+  · altitude: Range [0, 15000]  cardinality: 15001
+  · fuel: Range [0, 50000]  cardinality: 50001
+  · temp: Range [0, 1200]  cardinality: 1201
+  ✓ 4 domains declared — runtime enforcement enabled
+
+✓ flight_computer.pcd — no errors detected
+```
+
+If a computation exceeds its domain, the compiler warns at compile time:
+
+```
+⚠ Domain Warnings:
+  ⚠ Variable 'speed' may exceed declared domain: inferred [0, 400]
+    vs declared [0, 100]. Suggested: clamp(0, 100) or validate(0, 100)
+```
+
+### Function Parameter Domains (v5.0)
+
+Domain annotations on function parameters enable per-function boundary verification:
+
+```pcd
+fn safe_add(a: Range [0, 100], b: Range [0, 100]) {
+    return a + b;  // Compiler infers result domain: [0, 200]
+}
+```
+
+The compiler registers the domain for each parameter and propagates it through arithmetic operations via interval analysis. If the inferred output exceeds a declared domain, a compile-time warning is generated with adapter suggestions.
 
 ---
 
@@ -537,7 +579,10 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 | 207 Coq proofs, 0 Admitted | ✅ |
 | Extended monomers MC_64–MC_127 (8 families: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, Interop/FFI) | ✅ |
 | Security audit: 128 monomers hardened, 0 panic guarantee | ✅ |
-| 14,500+ tests across 16 suites | ✅ |
+| **v5.0 Domain Declarations**: `domain speed: Range [0, 900];` with compile-time warnings | ✅ |
+| **v5.0 Function Parameter Domains**: `fn f(x: Range [0, 100])` with interval inference | ✅ |
+| 15,424 tests across 20 suites (including 11 abyssal test suites) | ✅ |
+| 11 blog articles on [digitalcircuitality.com](https://digitalcircuitality.com) | ✅ |
 | All arithmetic: wrapping semantics (not saturating) | ✅ |
 | Published: npm (`@brik64/core`), PyPI (`brik64`), crates.io (`brik64-core`) — all at v4.1.0-beta.1 | ✅ |
 | Multi-target codegen (ARM64, RISC-V) | 🚧 WIP |
