@@ -10,9 +10,9 @@
 
 ### Digital Circuitality — Software That Works Like Hardware
 
-[![Version](https://img.shields.io/badge/version-4.1.0--beta.1-orange?style=flat-square)](https://github.com/brik64/brik64-dist-releases/releases)
-[![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--beta-410)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/badge/version-5.0.0--beta.1-orange?style=flat-square)](https://github.com/brik64/brik64/releases)
+[![Status](https://img.shields.io/badge/status-pre--release-orange?style=flat-square)](#installation--v500-beta1)
+[![License](https://img.shields.io/badge/license-Proprietary-red?style=flat-square)](LICENSE)
 [![Phi_c](https://img.shields.io/badge/%CE%A6_c-1%20%E2%80%94%20verified-00e5ff?style=flat-square)](#thermodynamic-coherence-engine)
 [![Coq Proofs](https://img.shields.io/badge/Coq%20proofs-207%20files-brightgreen?style=flat-square)](#formal-foundations)
 [![Fixpoint](https://img.shields.io/badge/fixpoint-Gen1%3D%3DGen2%3D%3DGen3%3D%3DGen4-00e5ff?style=flat-square)](#self-hosting-and-the-fixpoint)
@@ -21,13 +21,13 @@
 [![Crates](https://img.shields.io/crates/v/brik64-core?style=flat-square&label=brik64-core)](https://crates.io/crates/brik64-core)
 [![PyPI](https://img.shields.io/pypi/v/brik64?style=flat-square&label=pypi/brik64&color=3B4D98)](https://pypi.org/project/brik64/)
 
-**[brik64.dev](https://brik64.dev) · [docs.brik64.dev](https://docs.brik64.dev) · [Examples](https://github.com/brik64/brik64-community-examples) · [Releases](https://github.com/brik64/brik64-dist-releases)**
+**[brik64.dev](https://brik64.dev) · [docs.brik64.dev](https://docs.brik64.dev) · [Examples](https://github.com/brik64/brik64-community-examples) · [Releases](https://github.com/brik64/brik64/releases)**
 
 </div>
 
 ---
 
-> ⚠️ **BETA 4.1.0-beta.1** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. All 128 monomers hardened with 0 panic guarantee. 15,424 tests across 20 suites. All arithmetic is wrapping (not saturating). Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
+> ⚠️ **BETA 5.0.0-beta.1** — Pre-release. The core BIR interpreter, self-hosting fixpoint, and formal proofs are production-ready. All 128 monomers hardened with 0 panic guarantee. 15,424 tests across 20 suites. All arithmetic is wrapping (not saturating). Multi-target codegen (ARM64, RISC-V, WASM) and the certification registry are work-in-progress. Not recommended for production use of codegen targets.
 
 ---
 
@@ -422,7 +422,7 @@ The 64 Core monomers are published as native libraries. No new language required
 
 ```toml
 [dependencies]
-brik64-core = "4.1.0-beta.1"
+brik64-core = "5.0.0-beta.1"
 ```
 ```rust
 use brik64_core::{mc, eva};
@@ -565,7 +565,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 
 ## What We Have & What's Coming
 
-### Current: v4.1.0-beta.1
+### Current: v5.0.0-beta.1
 
 | Component | Status |
 |-----------|--------|
@@ -584,7 +584,7 @@ The regulatory analogy: seatbelts were voluntary, then recommended, then mandato
 | 15,424 tests across 20 suites (including 11 abyssal test suites) | ✅ |
 | 11 blog articles on [digitalcircuitality.com](https://digitalcircuitality.com) | ✅ |
 | All arithmetic: wrapping semantics (not saturating) | ✅ |
-| Published: npm (`@brik64/core`), PyPI (`brik64`), crates.io (`brik64-core`) — all at v4.1.0-beta.1 | ✅ |
+| Published: npm (`@brik64/core`), PyPI (`brik64`), crates.io (`brik64-core`) — all at v5.0.0-beta.1 | ✅ |
 | Multi-target codegen (ARM64, RISC-V) | 🚧 WIP |
 | Certification registry | 🚧 WIP |
 
@@ -629,11 +629,11 @@ What this enables: a BRIK-64 Certified program can claim something no existing c
 
 | Phase | Version | Status | Deliverable |
 |-------|---------|--------|-------------|
-| Self-Hosting Fixpoint | BETA 4.1.0-beta.1 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
-| Extended Monomers | 4.0.0-beta.2 | ✅ Complete | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
-| Certification Registry | v3.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
-| Circuit Marketplace | v3.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
-| Multi-Platform | v4.0.0 | 🗓 Planned | ARM64 (Apple Silicon), RISC-V, BPU bytecode |
+| Self-Hosting Fixpoint | BETA 5.0.0-beta.1 | ✅ Complete | `brikc` compiles itself; Gen1==Gen2==Gen3==Gen4 |
+| Extended Monomers | 5.0.0-beta.1 | ✅ Complete | MC_64–MC_127: Float64, Math, Network, Graphics, Audio, Filesystem+, Concurrency, FFI |
+| Certification Registry | v6.0.0 | 🗓 Planned | Public append-only registry at `brik64.dev/registry`; circuit packages (Ω=1) anchored to Arbitrum L2 |
+| Circuit Marketplace | v6.0.0 | 🗓 Planned | Pro users publish certified PCD circuits importable like npm/cargo/PyPI packages |
+| Multi-Platform | v7.0.0 | 🗓 Planned | ARM64 (Apple Silicon), RISC-V, BPU bytecode |
 | BPU Silicon | Research | 🔬 Research | RTL specification, FPGA prototype, ASIC tape-out — software policy circuits become silicon enforcement |
 
 ### Certification Registry & Circuit Marketplace
@@ -802,47 +802,47 @@ Choose your path: **write PCD** (full certification + auto-generated tests) or *
 
 Write PCD programs and compile to any target. This is the path to formal certification, auto-generated test suites, and Φ_c = 1 guarantees.
 
-## Installation — v4.1.0-beta.1
+## Installation — v5.0.0-beta.1
 
 > ⚠️ **Pre-release**: Core BIR interpreter, self-hosting fixpoint, and all 128 monomers are production-ready with 0 panic guarantee. Multi-target codegen (ARM64, RISC-V, WASM) is work-in-progress.
 
 **macOS (Apple Silicon — M1/M2/M3/M4):**
 ```bash
-curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-macos-arm64 -o brikc
+curl -fsSL https://github.com/brik64/brik64/releases/latest/download/brikc-beta-macos-arm64 -o brikc
 chmod +x brikc && xattr -d com.apple.quarantine brikc
 ./brikc --version
 ```
 
 **macOS (Intel):**
 ```bash
-curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-macos-intel -o brikc
+curl -fsSL https://github.com/brik64/brik64/releases/latest/download/brikc-beta-macos-intel -o brikc
 chmod +x brikc && xattr -d com.apple.quarantine brikc
 ./brikc --version
 ```
 
 **Linux (x86-64):**
 ```bash
-curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-linux-x86_64 -o brikc
+curl -fsSL https://github.com/brik64/brik64/releases/latest/download/brikc-beta-linux-x86_64 -o brikc
 chmod +x brikc
 ./brikc --version
 ```
 
 **Linux (ARM64):**
 ```bash
-curl -fsSL https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-linux-arm64 -o brikc
+curl -fsSL https://github.com/brik64/brik64/releases/latest/download/brikc-beta-linux-arm64 -o brikc
 chmod +x brikc
 ./brikc --version
 ```
 
 **Windows (PowerShell):**
 ```powershell
-Invoke-WebRequest https://github.com/brik64/brik64-dist-releases/releases/latest/download/brikc-beta-windows-x64.exe -OutFile brikc.exe
+Invoke-WebRequest https://github.com/brik64/brik64/releases/latest/download/brikc-beta-windows-x64.exe -OutFile brikc.exe
 .\brikc.exe --version
 ```
 
 **Verify:**
 ```bash
-brikc --version         # brikc v4.1.0-beta.1 (fixpoint: beb2c1c6...)
+brikc --version         # brikc v5.0.0-beta.1 (fixpoint: beb2c1c6...)
 brikc check --self      # ✓ Self-compilation fixpoint verified
 brikc catalog           # list all 128 monomers
 ```
@@ -933,8 +933,7 @@ pipeline = eva.pipeline(
 
 | Repository | Description |
 |------------|-------------|
-| [brik64/brik64](https://github.com/brik64/brik64) | Project overview — this repository |
-| [brik64/brik64-dist-releases](https://github.com/brik64/brik64-dist-releases) | Compiler binaries and release artifacts |
+| [brik64/brik64](https://github.com/brik64/brik64) | Project overview, compiler binaries, and releases |
 | [brik64/brik64-community-examples](https://github.com/brik64/brik64-community-examples) | Example PCD programs and tutorials |
 | [brik64/brik64-tools-skills](https://github.com/brik64/brik64-tools-skills) | Claude Code skills for BRIK-64 development |
 | [brik64/brik64-community-awesome](https://github.com/brik64/brik64-community-awesome) | Curated resources, tools, and projects |
@@ -943,9 +942,7 @@ pipeline = eva.pipeline(
 
 ## License
 
-BRIK-64 public components are licensed under the [Apache License 2.0](LICENSE).
-
-Apache 2.0 includes an explicit patent grant (Section 3) — users of the open-source components receive a perpetual, royalty-free patent license. The grant cannot be revoked unless you initiate patent litigation against BRIK-64 Inc.
+**Proprietary — All rights reserved.** BRIK-64, PCD, and all associated software are proprietary. No part of this software may be reproduced, distributed, or used without explicit written permission from BRIK-64 Inc.
 
 *Digital Circuitality™, BRIK-64™, PCD™, and BPU™ are trademarks of BRIK-64 Inc.*
 
@@ -958,7 +955,7 @@ For licensing inquiries, enterprise support, or partnerships: [info@brik64.com](
 - **Website**: [brik64.dev](https://brik64.dev)
 - **Documentation**: [docs.brik64.dev](https://docs.brik64.dev)
 - **Digital Circuitality**: [digitalcircuitality.com](https://digitalcircuitality.com)
-- **Releases**: [github.com/brik64/brik64-dist-releases](https://github.com/brik64/brik64-dist-releases)
+- **Releases**: [github.com/brik64/brik64/releases](https://github.com/brik64/brik64/releases)
 - **Examples**: [github.com/brik64/brik64-community-examples](https://github.com/brik64/brik64-community-examples)
 - **GitHub**: [github.com/brik64](https://github.com/brik64)
 
