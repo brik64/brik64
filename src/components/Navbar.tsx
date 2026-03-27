@@ -1,0 +1,351 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe } from "lucide-react";
+
+/* ── Product Mega Menu data ── */
+
+const productEndpoints = [
+  { icon: Terminal, label: "CLI", desc: "Single binary compiler — brikc", href: "/cli" },
+  { icon: Globe, label: "Platform", desc: "Circuit laboratory — brik64.com", href: "/platform" },
+  { icon: Layers, label: "Registry", desc: "Public verified component registry", href: "/registry" },
+  { icon: ArrowUpDown, label: "Lifter", desc: "Reverse-compile any language to PCD", href: "/lifter" },
+  { icon: GitBranch, label: "Transpiler", desc: "Certified paths between languages", href: "/transpiler" },
+  { icon: Box, label: "SDKs", desc: "Rust, JavaScript, Python libraries", href: "/sdks" },
+];
+
+const productMore = [
+  { icon: Cpu, label: "BPU", desc: "Hardware coprocessor — roadmap to silicon", href: "/bpu" },
+  { icon: FileCode, label: "PCD Format", desc: "The blueprint standard for software", href: "/pcd" },
+];
+
+/* ── Industries Mega Menu data ── */
+
+const industryItems = [
+  { label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/industries/ai" },
+  { label: "Science & Research", desc: "Verified algorithms, domain constraints, measurement control", href: "/industries/science" },
+  { label: "Engineering", desc: "Standards compliance, certified components, formal verification", href: "/industries/engineering" },
+  { label: "Aerospace & Defense", desc: "DO-178C compliance, mission-critical certification", href: "/industries/aerospace" },
+  { label: "Banking & Finance", desc: "SOC2/PCI-DSS evidence, trading system verification", href: "/industries/finance" },
+  { label: "Healthcare", desc: "HIPAA compliance, medical device software certification", href: "/industries/healthcare" },
+  { label: "Automotive", desc: "ISO 26262 certification, autonomous vehicle safety", href: "/industries/automotive" },
+  { label: "Government", desc: "FedRAMP readiness, classified system verification", href: "/industries/government" },
+];
+
+/* ── Mega Dropdown Shell ── */
+
+function MegaDropdown({
+  open,
+  onClose,
+  children,
+}: {
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) onClose();
+    }
+    if (open) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div ref={ref} className="absolute left-0 right-0 top-full z-50 border-b border-border bg-background shadow-xl">
+      <div className="mx-auto max-w-7xl px-6 py-6">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* ── Product Dropdown Content ── */
+
+function ProductDropdown() {
+  return (
+    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
+      {/* Left — Core Products */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Core
+        </p>
+        <div className="space-y-0.5">
+          {productEndpoints.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Center — More + Research */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Research & Hardware
+        </p>
+        <div className="space-y-0.5">
+          {productMore.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 rounded-lg border border-border/60 bg-muted/20 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+            Foundations
+          </p>
+          <p className="mt-2 text-sm font-medium text-foreground">
+            Digital Circuitality
+          </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            The information-theoretic basis. Brillouin correction. Kish-Ferry distinction.
+          </p>
+          <a
+            href="/foundations"
+            className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
+          >
+            Read the theory <ArrowRight className="h-3 w-3" />
+          </a>
+        </div>
+      </div>
+
+      {/* Right — Featured */}
+      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-amber-600">
+          Coming 2026
+        </p>
+        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
+          The public registry for{" "}
+          <span className="text-teal">verified software</span>
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          Publish certified PCD circuits. Discover reusable components. Every one with a mathematical proof.
+        </p>
+        <a
+          href="/platform"
+          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
+        >
+          Learn about the platform <ArrowRight className="h-3 w-3" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ── Industries Dropdown Content ── */
+
+function IndustriesDropdown() {
+  return (
+    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
+      {/* Left column — first 4 */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Technology
+        </p>
+        <div className="space-y-0.5">
+          {industryItems.slice(0, 4).map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="flex flex-col gap-0.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+            >
+              <span className="text-sm font-medium text-foreground">{item.label}</span>
+              <span className="text-xs text-muted-foreground">{item.desc}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Center column — last 4 */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Regulated
+        </p>
+        <div className="space-y-0.5">
+          {industryItems.slice(4).map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="flex flex-col gap-0.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+            >
+              <span className="text-sm font-medium text-foreground">{item.label}</span>
+              <span className="text-xs text-muted-foreground">{item.desc}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Right — Enterprise CTA */}
+      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Enterprise
+        </p>
+        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
+          Built for{" "}
+          <span className="text-teal">regulated industries</span>
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          When &quot;tests pass&quot; isn&apos;t enough. CI/CD integration, compliance reports, certification badges, SSO, audit trail.
+        </p>
+        <a
+          href="/enterprise"
+          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
+        >
+          Enterprise solutions <ArrowRight className="h-3 w-3" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ── Nav trigger button ── */
+
+function NavTrigger({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`inline-flex cursor-pointer items-center gap-1 text-sm transition-colors ${
+        active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+      }`}
+    >
+      {label}
+      <ChevronDown
+        className={`h-3.5 w-3.5 transition-transform duration-150 ${active ? "rotate-180" : ""}`}
+      />
+    </button>
+  );
+}
+
+/* ── Navbar ── */
+
+export function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  const toggle = (name: string) =>
+    setOpenMenu((prev) => (prev === name ? null : name));
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+        {/* Logo */}
+        <a href="/" className="flex items-center gap-0.5">
+          <span className="text-sm font-bold tracking-tight text-foreground">BRIK</span>
+          <span className="text-sm font-bold tracking-tight text-[#00b8d4]">64</span>
+        </a>
+
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-6 lg:flex">
+          <NavTrigger label="Product" active={openMenu === "product"} onClick={() => toggle("product")} />
+          <NavTrigger label="Industries" active={openMenu === "industries"} onClick={() => toggle("industries")} />
+          <a href="/foundations" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Foundations
+          </a>
+          <a href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Blog
+          </a>
+          <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Docs
+          </a>
+        </nav>
+
+        {/* Right CTAs */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href="https://github.com/brik64"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
+          >
+            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+            GitHub
+          </a>
+          <a href="/login" className="rounded-full border border-teal px-5 py-1.5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
+            Login
+          </a>
+          <a href="/signup" className="rounded-full bg-teal px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+            Sign Up
+          </a>
+        </div>
+
+        {/* Mobile toggle */}
+        <button className="p-2 text-foreground lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {/* Desktop mega dropdowns */}
+      <MegaDropdown open={openMenu === "product"} onClose={() => setOpenMenu(null)}>
+        <ProductDropdown />
+      </MegaDropdown>
+      <MegaDropdown open={openMenu === "industries"} onClose={() => setOpenMenu(null)}>
+        <IndustriesDropdown />
+      </MegaDropdown>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="max-h-[80vh] overflow-y-auto border-b border-border bg-background lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Product</p>
+            {productEndpoints.concat(productMore).map((item) => (
+              <a key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+                {item.label}
+              </a>
+            ))}
+            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Industries</p>
+            {industryItems.map((item) => (
+              <a key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+                {item.label}
+              </a>
+            ))}
+            <hr className="my-2 border-border" />
+            <a href="/foundations" className="px-3 py-2 text-sm text-muted-foreground">Foundations</a>
+            <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
+            <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="px-3 py-2 text-sm text-muted-foreground">Docs</a>
+            <hr className="my-2 border-border" />
+            <a href="/login" className="px-3 py-2 text-sm text-foreground">Login</a>
+            <a href="/signup" className="mt-1 rounded-full bg-teal px-5 py-1.5 text-center text-sm font-medium text-white">Sign Up</a>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
