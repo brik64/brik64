@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowRight, BookOpen, MessageCircle } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
+/* eslint-disable @next/next/no-img-element */
 const resources = [
   {
     title: "Docs",
@@ -12,13 +13,13 @@ const resources = [
   {
     title: "GitHub",
     href: "https://github.com/brik64",
-    icon: <ArrowRight className="h-5 w-5 text-teal" />,
+    icon: <img src="/brands/github.svg" alt="GitHub" className="h-5 w-5" style={{ filter: "brightness(0) saturate(100%) invert(58%) sepia(78%) saturate(1640%) hue-rotate(152deg) brightness(101%) contrast(101%)" }} />,
     description: "github.com/brik64",
   },
   {
     title: "Discord",
     href: "https://discord.gg/brik64",
-    icon: <MessageCircle className="h-5 w-5 text-teal" />,
+    icon: <img src="/brands/discord.svg" alt="Discord" className="h-5 w-5" style={{ filter: "brightness(0) saturate(100%) invert(58%) sepia(78%) saturate(1640%) hue-rotate(152deg) brightness(101%) contrast(101%)" }} />,
     description: "discord.gg/brik64",
   },
 ];
