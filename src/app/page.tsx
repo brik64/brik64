@@ -121,31 +121,29 @@ function CircuitGridBg() {
           <circle key={`via-${i}`} cx={x} cy={y} r="2" fill="#00b8d4" opacity="0.12" />
         ))}
 
-        {/* Glow filter for energy dots */}
+        {/* Glow filter — white halo around blue dot */}
         <defs>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-          <filter id="glow-soft" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          <filter id="energy-glow" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 1 0 0 1  0 0 1 0 1  0 0 0 0.6 0" result="white-blur" />
+            <feMerge>
+              <feMergeNode in="white-blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
 
-        {/* ENERGY DOTS — luminous points traveling along circuits */}
+        {/* ENERGY DOTS — blue core with white blur halo */}
         {circuitPaths.map((d, i) => {
-          // Pseudo-random durations and delays for organic feel
           const dur = 3.2 + ((i * 7 + 3) % 11) * 0.6;
           const delay = ((i * 13 + 5) % 17) * 0.9;
           return (
             <g key={`energy-${i}`}>
-              {/* Outer glow */}
+              {/* Blue dot with white glow halo */}
               <circle
-                r="6"
+                r="2.5"
                 fill="#00e5ff"
-                opacity="0.3"
-                filter="url(#glow-soft)"
+                filter="url(#energy-glow)"
                 className="energy-dot"
                 style={{
                   offsetPath: `path("${d}")`,
@@ -153,28 +151,16 @@ function CircuitGridBg() {
                   ["--delay" as string]: `${delay}s`,
                 }}
               />
-              {/* Core bright dot */}
-              <circle
-                r="2"
-                fill="#ffffff"
-                filter="url(#glow)"
-                className="energy-dot"
-                style={{
-                  offsetPath: `path("${d}")`,
-                  ["--dur" as string]: `${dur}s`,
-                  ["--delay" as string]: `${delay}s`,
-                }}
-              />
-              {/* Trail — slightly behind */}
+              {/* Trailing smaller dot */}
               <circle
                 r="1"
-                fill="#00e5ff"
-                opacity="0.5"
+                fill="#00b8d4"
+                opacity="0.4"
                 className="energy-dot"
                 style={{
                   offsetPath: `path("${d}")`,
                   ["--dur" as string]: `${dur}s`,
-                  ["--delay" as string]: `${delay + 0.2}s`,
+                  ["--delay" as string]: `${delay + 0.25}s`,
                 }}
               />
             </g>
