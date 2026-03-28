@@ -18,8 +18,9 @@ export function generateStaticParams() {
   return newsArticles.map((article) => ({ slug: article.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const article = getNewsArticle(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article = getNewsArticle(slug);
   if (!article) return {};
   return {
     title: `${article.title} — BRIK-64 News`,
@@ -27,15 +28,16 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function NewsArticlePage({
+export default async function NewsArticlePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const article = getNewsArticle(params.slug);
+  const { slug } = await params;
+  const article = getNewsArticle(slug);
   if (!article) notFound();
 
-  const Content = newsContent[params.slug];
+  const Content = newsContent[slug];
 
   return (
     <>
