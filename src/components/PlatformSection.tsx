@@ -111,7 +111,7 @@ export function PlatformSection() {
         </p>
 
         {/* Platform mockup */}
-        <div className="mt-12 overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+        <div className="mt-12 overflow-hidden border border-white/10 bg-[#0a0e14] shadow-2xl">
           {/* Top bar */}
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
             <div className="flex items-center gap-0.5 text-xs tracking-widest">
@@ -147,7 +147,7 @@ export function PlatformSection() {
             <div className="flex flex-1 flex-col">
               {/* Search */}
               <div className="border-b border-white/10 px-5 py-3">
-                <div className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-white/[0.03] px-3.5 py-2.5">
+                <div className="flex items-center gap-2.5 border border-white/10 bg-white/[0.03] px-3.5 py-2.5">
                   <Search className="h-3.5 w-3.5 text-white/25" />
                   <span className="text-xs text-white/25">
                     Search circuits...
@@ -219,7 +219,7 @@ export function PlatformSection() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-xl border border-border bg-background p-6 transition-colors hover:border-teal/30"
+              className="border border-border bg-background p-6 transition-colors hover:border-teal/30"
             >
               <div className="mb-3 flex items-center gap-2.5">
                 {f.icon}

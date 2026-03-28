@@ -55,7 +55,7 @@ export function IntegrationsSection() {
           {flowSteps.map((step, i) => (
             <div key={step.label} className="flex items-center gap-2 md:gap-3">
               <div
-                className={`rounded-lg border px-4 py-2.5 text-xs font-medium ${
+                className={`border px-4 py-2.5 text-xs font-medium ${
                   step.accent
                     ? "border-teal/30 bg-teal/10 text-teal"
                     : "border-border bg-background text-foreground"
@@ -80,7 +80,7 @@ export function IntegrationsSection() {
             {workflowSteps.map((step) => (
               <div
                 key={step.number}
-                className="group flex gap-5 rounded-lg border border-border bg-background p-5 transition-colors hover:border-teal/30"
+                className="group flex gap-5 border border-border bg-background p-5 transition-colors hover:border-teal/30"
               >
                 <span className="text-2xl font-light tabular-nums text-muted-foreground/40 transition-colors group-hover:text-teal/60">
                   {step.number}

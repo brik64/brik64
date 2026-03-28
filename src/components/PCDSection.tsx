@@ -110,7 +110,7 @@ export function PCDSection() {
         {/* Two-column: diagram + code */}
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Left: Visual analogy */}
-          <div className="flex flex-col items-center justify-center rounded-lg border border-border bg-muted/20 p-8">
+          <div className="flex flex-col items-center justify-center border border-border bg-muted/20 p-8">
             <div className="rounded-md border border-teal/40 bg-teal/[0.06] px-6 py-3 text-sm font-medium text-teal">
               <FileCode className="mr-2 inline-block h-4 w-4" />
               PCD Blueprint
@@ -136,7 +136,7 @@ export function PCDSection() {
           </div>
 
           {/* Right: Tabbed code */}
-          <div className="flex flex-col overflow-hidden rounded-lg border border-border">
+          <div className="flex flex-col overflow-hidden border border-border">
             <div className="flex border-b border-border bg-muted/30">
               {tabKeys.map((key) => (
                 <button
@@ -169,7 +169,7 @@ export function PCDSection() {
           {keyPoints.map((kp) => (
             <div
               key={kp.title}
-              className="group rounded-lg border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
+              className="group border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
             >
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
                 {kp.icon}

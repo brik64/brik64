@@ -57,11 +57,11 @@ export function EnterpriseSection() {
           pass&rdquo; isn&apos;t enough.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 border border-border [&>*]:border-border [&>*]:border-b [&>*:nth-child(odd)]:border-r sm:[&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-r-0 md:[&>*:nth-child(3n+1)]:border-r md:[&>*:nth-child(3n+2)]:border-r [&>*:last-child]:border-b-0 sm:[&>*:nth-last-child(-n+2)]:border-b-0 md:[&>*:nth-last-child(-n+3)]:border-b-0">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-xl border border-border bg-background p-6 transition-colors hover:border-teal/30"
+              className="bg-background p-6 transition-colors hover:bg-teal/[0.03]"
             >
               {feature.icon}
               <p className="mt-3 text-sm font-semibold">{feature.title}</p>

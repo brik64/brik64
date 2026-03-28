@@ -41,7 +41,7 @@ export function LanguagesSection() {
           {/* PCD center */}
           <div className="flex shrink-0 flex-col items-center gap-2">
             <ArrowRight className="hidden h-4 w-4 text-muted-foreground md:block" />
-            <div className="rounded-lg border border-teal/30 bg-teal/10 px-5 py-3 text-center">
+            <div className="border border-teal/30 bg-teal/10 px-5 py-3 text-center">
               <p className="text-xs font-bold tracking-wider text-teal">PCD</p>
               <p className="text-[10px] text-teal/70">Blueprint</p>
             </div>

@@ -49,7 +49,7 @@ export function CTASection() {
           <p className="mb-3 text-sm text-muted-foreground">
             Get notified when the platform launches
           </p>
-          <div className="flex h-11 items-center rounded-lg border border-teal/20 bg-background pr-1.5 pl-4">
+          <div className="flex h-11 items-center border border-teal/20 bg-background pr-1.5 pl-4">
             <input
               type="email"
               placeholder="Enter your email"
@@ -69,9 +69,9 @@ export function CTASection() {
               href={resource.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-xl border border-border bg-background p-5 text-center transition-colors hover:border-teal/30"
+              className="group border border-border bg-background p-5 text-center transition-colors hover:border-teal/30"
             >
-              <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10">
+              <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">
                 {resource.icon}
               </div>
               <p className="text-sm font-semibold">{resource.title}</p>

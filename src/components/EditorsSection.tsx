@@ -70,11 +70,11 @@ export function EditorsSection() {
         </p>
 
         {/* Editor grid */}
-        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 border border-border [&>*]:border-border [&>*]:border-b [&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-r-0 md:[&>*:nth-child(3n+1)]:border-r md:[&>*:nth-child(3n+2)]:border-r [&>*:nth-last-child(-n+2)]:border-b-0 md:[&>*:nth-last-child(-n+3)]:border-b-0">
           {editors.map((editor) => (
             <div
               key={editor.name}
-              className="rounded-xl border border-border bg-background p-5 transition-colors hover:border-teal/30"
+              className="bg-background p-5 transition-colors hover:bg-teal/[0.03]"
             >
               <div className="flex items-center gap-3">
                 {editor.icon}

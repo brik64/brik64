@@ -91,7 +91,7 @@ export function WorkflowSection() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="grid gap-6 rounded-xl border border-border bg-background p-6 md:grid-cols-2 md:p-8"
+              className="grid gap-6 border border-border bg-background p-6 md:grid-cols-2 md:p-8"
             >
               {/* Left — info */}
               <div>
@@ -140,7 +140,7 @@ export function WorkflowSection() {
               </div>
 
               {/* Right — terminal */}
-              <div className="overflow-hidden rounded-lg border border-white/10 bg-[#0a0e14]">
+              <div className="overflow-hidden border border-white/10 bg-[#0a0e14]">
                 <div className="border-b border-white/10 px-4 py-2">
                   <span className="text-[10px] font-medium tracking-wider text-white/30">
                     TERMINAL

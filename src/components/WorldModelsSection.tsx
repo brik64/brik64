@@ -292,7 +292,7 @@ export function WorldModelsSection() {
           </div>
 
           {/* Right — 4 Cards */}
-          <div className="border-border/70 mt-16 overflow-hidden rounded-2xl border">
+          <div className="border-border/70 mt-16 overflow-hidden border">
             <div className="grid grid-cols-2">
               {cards.map((card, index) => {
                 const Icon = card.icon;
@@ -335,7 +335,7 @@ export function WorldModelsSection() {
           </p>
 
           {/* Core — Certified */}
-          <div className="mt-8 overflow-hidden rounded-xl border border-teal/20">
+          <div className="mt-8 overflow-hidden border border-teal/20">
             <div className="flex items-center gap-3 border-b border-teal/10 bg-teal/[0.03] px-4 py-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-teal/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-teal">
                 Core · Certified
@@ -348,7 +348,7 @@ export function WorldModelsSection() {
           </div>
 
           {/* Extended — Contract */}
-          <div className="mt-3 overflow-hidden rounded-xl border border-border/50">
+          <div className="mt-3 overflow-hidden border border-border/50">
             <div className="flex items-center gap-3 border-b border-border/30 bg-muted/20 px-4 py-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
                 Extended · Contract

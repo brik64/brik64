@@ -86,7 +86,7 @@ export function AINativeSection() {
             {endpoints.map((ep) => (
               <div
                 key={ep.label}
-                className="group flex items-center gap-4 rounded-lg border border-border bg-muted/20 px-5 py-4 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
+                className="group flex items-center gap-4 border border-border bg-muted/20 px-5 py-4 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
               >
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-teal/10 text-[10px] font-bold text-teal">
                   {ep.label.slice(0, 2).toUpperCase()}

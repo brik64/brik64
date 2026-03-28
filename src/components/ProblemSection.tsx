@@ -45,11 +45,15 @@ export function ProblemSection() {
           fingers, and ship.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-          {cards.map((card) => (
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 border border-border">
+          {cards.map((card, index) => (
             <div
               key={card.title}
-              className="group rounded-lg border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
+              className={`group bg-muted/20 p-6 transition-colors hover:bg-teal/[0.03] ${
+                (index === 0 || index === 1) ? "border-b border-border sm:border-b" : ""
+              } ${
+                (index === 0 || index === 2) ? "sm:border-r sm:border-border" : ""
+              }`}
             >
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
                 {card.icon}
