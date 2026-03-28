@@ -59,9 +59,9 @@ export default function FAQPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             FAQ
           </span>
@@ -74,7 +74,7 @@ export default function FAQPage() {
         </section>
 
         {/* Accordion */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <div className="mx-auto max-w-3xl space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-border">
@@ -100,7 +100,7 @@ export default function FAQPage() {
         </section>
 
         {/* CTA */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Still have questions?
           </h2>

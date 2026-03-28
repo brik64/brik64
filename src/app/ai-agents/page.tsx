@@ -114,9 +114,9 @@ export default function AIAgentsPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             AI-NATIVE
           </span>
@@ -131,7 +131,7 @@ export default function AIAgentsPage() {
         </section>
 
         {/* How It Works */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             How it works
           </h2>
@@ -166,7 +166,7 @@ export default function AIAgentsPage() {
         </section>
 
         {/* Agent Setup */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Agent setup
           </h2>
@@ -210,7 +210,7 @@ export default function AIAgentsPage() {
         </section>
 
         {/* Machine-Readable Reference */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <div className="mx-auto max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-teal">
               AI Agent Zone
@@ -350,7 +350,7 @@ export default function AIAgentsPage() {
         </section>
 
         {/* Platform Assessment Brief */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <div className="mx-auto max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-teal">
               For AI Coding Agents
@@ -542,7 +542,7 @@ export default function AIAgentsPage() {
         </section>
 
         {/* Community */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Community
           </h2>
@@ -570,7 +570,7 @@ export default function AIAgentsPage() {
         </section>
 
         {/* Bottom CTA */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Your AI agent is ready to write{" "}
             <span className="text-teal">verified code</span>.

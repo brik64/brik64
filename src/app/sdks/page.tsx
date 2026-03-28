@@ -208,9 +208,9 @@ export default function SDKsPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             SDKs
           </span>
@@ -224,7 +224,7 @@ export default function SDKsPage() {
         </section>
 
         {/* SDK Selector */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           {/* Language tabs */}
           <div className="flex gap-3">
             {sdks.map((s, i) => (
@@ -303,7 +303,7 @@ export default function SDKsPage() {
         </section>
 
         {/* EVA Algebra */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             EVA COMPOSITION
           </p>
@@ -346,7 +346,7 @@ export default function SDKsPage() {
         </section>
 
         {/* CTA */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Drop in. Verify.
           </h2>

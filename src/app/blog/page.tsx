@@ -39,9 +39,9 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="bg-background flex-1">
         {/* Hero */}
-        <section className="border-b border-[#EEEEEE] bg-white px-6 py-20">
+        <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20">
           <div className="mx-auto max-w-5xl text-center">
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00b8d4]">
               BLOG
@@ -57,7 +57,7 @@ export default function BlogPage() {
         </section>
 
         {/* Filters */}
-        <section className="border-b border-[#EEEEEE] bg-[#FAFAFA] px-6 py-6">
+        <section className="bg-background border-b border-[#EEEEEE] bg-[#FAFAFA] px-6 py-6">
           <div className="mx-auto max-w-6xl">
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#322F2D]/40">
@@ -123,7 +123,7 @@ export default function BlogPage() {
         </section>
 
         {/* Grid */}
-        <section className="bg-white px-6 py-16">
+        <section className="bg-background bg-white px-6 py-16">
           <div className="mx-auto max-w-6xl">
             <p className="mb-8 text-sm text-[#322F2D]/40">
               {filtered.length} article{filtered.length !== 1 ? "s" : ""}

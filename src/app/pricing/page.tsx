@@ -178,9 +178,9 @@ export default function PricingPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Pricing
           </span>
@@ -194,7 +194,7 @@ export default function PricingPage() {
         </section>
 
         {/* Tier cards */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {tiers.map((tier) => (
               <div
@@ -241,7 +241,7 @@ export default function PricingPage() {
         </section>
 
         {/* Comparison table */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             FEATURE COMPARISON
           </p>
@@ -282,7 +282,7 @@ export default function PricingPage() {
         </section>
 
         {/* FAQ */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">FAQ</p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Common questions</h2>
           <div className="mx-auto mt-10 max-w-3xl space-y-2">
@@ -310,7 +310,7 @@ export default function PricingPage() {
         </section>
 
         {/* CTA */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to certify your code?
           </h2>

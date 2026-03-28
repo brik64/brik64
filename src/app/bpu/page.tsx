@@ -134,9 +134,9 @@ export default function BPUPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
           <div className="flex items-center gap-3 mb-5">
             <span className="text-muted-foreground inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
               BPU &mdash; BRIK Processing Unit
@@ -159,7 +159,7 @@ export default function BPUPage() {
         </section>
 
         {/* Architecture */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] ARCHITECTURE
           </p>
@@ -194,7 +194,7 @@ export default function BPUPage() {
         </section>
 
         {/* BLOCK Signal */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE NON-MASKABLE BLOCK
           </p>
@@ -233,7 +233,7 @@ export default function BPUPage() {
         </section>
 
         {/* AI Safety */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] POLICY CIRCUITS
           </p>
@@ -263,7 +263,7 @@ export default function BPUPage() {
         </section>
 
         {/* Roadmap */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] ROADMAP
           </p>
@@ -315,7 +315,7 @@ export default function BPUPage() {
         </section>
 
         {/* Tech Specs */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] SPECIFICATIONS
           </p>
@@ -330,7 +330,7 @@ export default function BPUPage() {
         </section>
 
         {/* CTA */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Use Phase 1 today.
           </h2>

@@ -11,8 +11,8 @@ export default function LoginPage() {
   return (
     <>
       <Navbar />
-      <main>
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-20 md:px-12 lg:px-18">
+      <main className="bg-background">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-20 md:px-12 lg:px-18">
           <div className="mx-auto flex max-w-md flex-col items-center text-center">
             {/* Badge */}
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/[0.06] px-3.5 py-1 text-xs font-medium text-teal">

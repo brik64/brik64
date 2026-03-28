@@ -18,9 +18,9 @@ export default function FoundationsPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Foundations
           </span>
@@ -34,7 +34,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Digital Circuitality definition */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FORMAL DEFINITION
           </p>
@@ -79,7 +79,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Thermodynamic Analogy */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THERMODYNAMIC ANALOGY
           </p>
@@ -118,7 +118,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* EVA Algebra */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] EVA ALGEBRA
           </p>
@@ -150,7 +150,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* CMF */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] COHERENCE METRICS FRAMEWORK
           </p>
@@ -197,7 +197,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Kish-Ferry */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] KISH-FERRY DISTINCTION
           </p>
@@ -238,7 +238,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Brillouin Connection */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] BRILLOUIN CONNECTION
           </p>
@@ -272,7 +272,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Zero-Energy Erasure */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] ZERO-ENERGY ERASURE
           </p>
@@ -304,7 +304,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Universal Transpilation */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [08] UNIVERSAL TRANSPILATION
           </p>
@@ -341,7 +341,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* References */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [09] REFERENCES
           </p>
@@ -399,7 +399,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Acknowledgment */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             ACKNOWLEDGMENT
           </p>
@@ -417,7 +417,7 @@ export default function FoundationsPage() {
         </section>
 
         {/* Synthesis */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The logical chain
           </h2>

@@ -17,8 +17,8 @@ export default function PlaygroundPage() {
   return (
     <>
       <Navbar />
-      <main>
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-32 pb-32 md:px-12 lg:px-18 text-center">
+      <main className="bg-background">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-32 pb-32 md:px-12 lg:px-18 text-center">
           {/* Badge */}
           <span className="inline-block rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-amber-500">
             Coming Soon

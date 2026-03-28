@@ -49,7 +49,7 @@ export default function BlogPostPage({
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="bg-background flex-1">
         <article className="mx-auto max-w-3xl px-6 py-16">
           {/* Back link */}
           <a

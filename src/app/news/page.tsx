@@ -15,9 +15,9 @@ export default function NewsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="bg-background flex-1">
         {/* Hero */}
-        <section className="border-b border-[#EEEEEE] bg-white px-6 py-20">
+        <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20">
           <div className="mx-auto max-w-5xl text-center">
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00b8d4]">
               NEWS
@@ -33,7 +33,7 @@ export default function NewsPage() {
         </section>
 
         {/* Articles */}
-        <section className="bg-white px-6 py-16">
+        <section className="bg-background bg-white px-6 py-16">
           <div className="mx-auto max-w-3xl space-y-6">
             {newsArticles.map((article) => (
               <a

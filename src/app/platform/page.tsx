@@ -89,9 +89,9 @@ export default function PlatformPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Platform
           </span>
@@ -105,7 +105,7 @@ export default function PlatformPage() {
         </section>
 
         {/* 4 Pillars */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FOUR PILLARS
           </p>
@@ -126,7 +126,7 @@ export default function PlatformPage() {
         </section>
 
         {/* Pipeline */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] PIPELINE
           </p>
@@ -158,7 +158,7 @@ export default function PlatformPage() {
         </section>
 
         {/* Dashboard Mockup */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] DASHBOARD
           </p>
@@ -217,7 +217,7 @@ export default function PlatformPage() {
         </section>
 
         {/* Capabilities */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] CAPABILITIES
           </p>
@@ -238,7 +238,7 @@ export default function PlatformPage() {
         </section>
 
         {/* Registry Launching */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
             REGISTRY LAUNCHING 2026
           </div>

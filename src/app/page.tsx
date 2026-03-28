@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <CircuitGrid />
       <Navbar />
-      <main className="relative z-10">
+      <main className="bg-background relative z-10">
         <HeroSection />
         <TrustedBySection />
         <div className="border-border mx-auto max-w-7xl border-x">

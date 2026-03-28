@@ -66,9 +66,9 @@ export default function AISafetyUseCasePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* ── Hero ── */}
-        <section className="border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
           <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
             <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
               Use Case
@@ -100,7 +100,7 @@ export default function AISafetyUseCasePage() {
 
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Problem ── */}
-          <section className="border-b border-border px-6 py-20 lg:px-16">
+          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
@@ -125,7 +125,7 @@ export default function AISafetyUseCasePage() {
           </section>
 
           {/* ── The Solution ── */}
-          <section className="border-b border-border px-6 py-20 lg:px-16">
+          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
@@ -171,7 +171,7 @@ $ brikc certify ai_output.pcd --emit badge
           </section>
 
           {/* ── Real Example ── */}
-          <section className="border-b border-border px-6 py-20 lg:px-16">
+          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
@@ -214,7 +214,7 @@ PC ai_action_validator {
           </section>
 
           {/* ── Results ── */}
-          <section className="border-b border-border px-6 py-20 lg:px-16">
+          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
@@ -236,7 +236,7 @@ PC ai_action_validator {
           </section>
 
           {/* ── CTA ── */}
-          <section className="px-6 py-24 text-center lg:px-16">
+          <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified AI software
             </h2>

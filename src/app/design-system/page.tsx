@@ -6,7 +6,7 @@ export default function DesignSystemPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         <DesignKitSection />
       </main>
       <Footer />

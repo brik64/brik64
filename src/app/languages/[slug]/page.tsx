@@ -83,9 +83,9 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-background">
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
           <div className="flex items-center gap-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={lang.logo} alt={lang.name} className="h-12 w-12" />
@@ -102,7 +102,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
         </section>
 
         {/* Capabilities */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] CAPABILITIES
           </p>
@@ -147,7 +147,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
 
         {/* SDK Install */}
         {lang.installCommand && (
-          <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               [02] SDK
             </p>
@@ -172,7 +172,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
 
         {/* SDK Programming — write BRIK-64 patterns in your language */}
         {lang.installCommand && sdkExamples[lang.slug] && (
-          <section className="border-border mx-auto max-w-7xl border-x border-t bg-background px-6 py-16 md:px-12 lg:px-18">
+          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t bg-background px-6 py-16 md:px-12 lg:px-18">
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               PROGRAM WITH BRIK-64 PATTERNS
             </p>
@@ -238,7 +238,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
 
         {/* Lift Example */}
         {lang.canLiftFrom && lang.liftExample && (
-          <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               LIFT
             </p>
@@ -271,7 +271,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
 
         {/* Compile Example */}
         {lang.canCompileTo && lang.compileExample && (
-          <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               COMPILE
             </p>
@@ -303,7 +303,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
         )}
 
         {/* CTA */}
-        <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             See the full transpilation matrix
           </h2>
