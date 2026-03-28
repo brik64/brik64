@@ -199,7 +199,7 @@ export default function PricingPage() {
             {tiers.map((tier) => (
               <div
                 key={tier.name}
-                className={`relative flex flex-col rounded-xl border p-8 ${
+                className={`relative flex flex-col border p-8 ${
                   tier.highlight
                     ? "border-teal/40 bg-teal/[0.04] shadow-lg shadow-teal/5"
                     : "border-border bg-muted/10"
@@ -227,7 +227,7 @@ export default function PricingPage() {
                 </ul>
                 <a
                   href={tier.ctaHref}
-                  className={`mt-8 inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-colors ${
+                  className={`mt-8 inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium transition-colors ${
                     tier.highlight
                       ? "bg-teal text-white hover:bg-teal-hover"
                       : "border border-border bg-muted/20 text-foreground hover:bg-muted/40"
@@ -242,7 +242,7 @@ export default function PricingPage() {
 
         {/* Comparison table */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             FEATURE COMPARISON
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -283,11 +283,11 @@ export default function PricingPage() {
 
         {/* FAQ */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">FAQ</p>
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">FAQ</p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Common questions</h2>
           <div className="mx-auto mt-10 max-w-3xl space-y-2">
             {faqs.map((faq, i) => (
-              <div key={i} className="rounded-lg border border-border">
+              <div key={i} className="border border-border">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="flex w-full cursor-pointer items-center justify-between px-5 py-4 text-left text-sm font-medium transition-colors hover:bg-muted/20"
@@ -311,7 +311,7 @@ export default function PricingPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to certify your code?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -320,7 +320,7 @@ export default function PricingPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/login"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               Get Started Free
             </a>

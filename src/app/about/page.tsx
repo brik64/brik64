@@ -55,13 +55,13 @@ export default function AboutPage() {
             key={s.tag}
             className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18"
           >
-            <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               [{s.tag}] {s.title.toUpperCase()}
             </p>
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
               {s.title}
             </h2>
-            <p className="text-muted-foreground mt-4 max-w-3xl text-sm leading-relaxed md:text-base">
+            <p className="text-center mx-auto text-muted-foreground mt-4 max-w-3xl text-sm leading-relaxed md:text-base">
               {s.content}
             </p>
           </section>
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Explore BRIK-64
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -78,7 +78,7 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/foundations"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               Foundations <ArrowRight className="h-4 w-4" />
             </a>

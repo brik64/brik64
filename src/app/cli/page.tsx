@@ -250,7 +250,7 @@ function InstallBlock() {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border">
+    <div className="overflow-hidden border border-border">
       <div className="flex border-b border-border bg-muted/30">
         {installMethods.map((m, i) => (
           <button
@@ -304,7 +304,7 @@ export default function CLIPage() {
           {/* Stats */}
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((s) => (
-              <div key={s.label} className="rounded-lg border border-border bg-muted/20 p-4 text-center">
+              <div key={s.label} className="border border-border bg-muted/20 p-4 text-center">
                 <div className="text-2xl font-bold text-teal">{s.value}</div>
                 <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
               </div>
@@ -314,10 +314,10 @@ export default function CLIPage() {
 
         {/* Install */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] INSTALL
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Up and running in 30 seconds
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -334,10 +334,10 @@ export default function CLIPage() {
 
         {/* Commands Reference */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] COMMANDS
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Everything from the terminal
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -412,14 +412,14 @@ export default function CLIPage() {
 
         {/* System Requirements */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] SYSTEM
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Requirements
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <Server className="mb-3 h-5 w-5 text-teal" />
               <h3 className="text-sm font-medium">Operating Systems</h3>
               <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
@@ -428,7 +428,7 @@ export default function CLIPage() {
                 <li>Windows 10+ (WSL2)</li>
               </ul>
             </div>
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <Zap className="mb-3 h-5 w-5 text-teal" />
               <h3 className="text-sm font-medium">Self-Verifying Binary</h3>
               <p className="mt-3 text-xs text-muted-foreground">
@@ -436,7 +436,7 @@ export default function CLIPage() {
                 x86-64 ELF &mdash; no Rust runtime, no libc dependency.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <Shield className="mb-3 h-5 w-5 text-teal" />
               <h3 className="text-sm font-medium">Verification</h3>
               <p className="mt-3 text-xs text-muted-foreground">
@@ -449,7 +449,7 @@ export default function CLIPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to start?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -461,7 +461,7 @@ export default function CLIPage() {
               href="https://docs.brik64.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <BookOpen className="h-4 w-4" /> Read the docs
             </a>

@@ -39,7 +39,7 @@ export default function NewsPage() {
               <a
                 key={article.slug}
                 href={`/news/${article.slug}`}
-                className="group block rounded-xl border border-[#EEEEEE] p-6 transition-all hover:border-[#00b8d4]/30 hover:shadow-md"
+                className="group block border border-[#EEEEEE] p-6 transition-all hover:border-[#00b8d4]/30 hover:shadow-md"
               >
                 <div className="mb-3 flex items-center gap-3">
                   <span

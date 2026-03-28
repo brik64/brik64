@@ -106,14 +106,14 @@ export default function PlatformPage() {
 
         {/* 4 Pillars */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FOUR PILLARS
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p) => (
               <div
                 key={p.title}
-                className="group rounded-lg border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
+                className="group border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
               >
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
                   {p.icon}
@@ -127,10 +127,10 @@ export default function PlatformPage() {
 
         {/* Pipeline */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] PIPELINE
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             From source to certified artifact
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -138,7 +138,7 @@ export default function PlatformPage() {
           </p>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {pipelineSteps.map((step, i) => (
-              <div key={step.label} className="relative rounded-lg border border-border bg-muted/20 p-5 text-center">
+              <div key={step.label} className="relative border border-border bg-muted/20 p-5 text-center">
                 <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-teal/30 bg-teal/10 text-lg font-bold text-teal">
                   {step.icon}
                 </div>
@@ -159,10 +159,10 @@ export default function PlatformPage() {
 
         {/* Dashboard Mockup */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] DASHBOARD
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Your circuits at a glance
           </h2>
 
@@ -174,7 +174,7 @@ export default function PlatformPage() {
               { v: "9", l: "Contract (extended)" },
               { v: "6", l: "Language targets" },
             ].map((s) => (
-              <div key={s.l} className="rounded-lg border border-border bg-muted/20 p-4 text-center">
+              <div key={s.l} className="border border-border bg-muted/20 p-4 text-center">
                 <div className="text-2xl font-bold text-teal">{s.v}</div>
                 <div className="mt-1 text-xs text-muted-foreground">{s.l}</div>
               </div>
@@ -182,7 +182,7 @@ export default function PlatformPage() {
           </div>
 
           {/* Circuit table */}
-          <div className="mt-8 overflow-hidden rounded-xl border border-border">
+          <div className="mt-8 overflow-hidden border border-border">
             <div className="border-b border-border bg-muted/30 px-4 py-2">
               <p className="text-xs font-medium text-muted-foreground">Recent circuits</p>
             </div>
@@ -218,15 +218,15 @@ export default function PlatformPage() {
 
         {/* Capabilities */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] CAPABILITIES
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             What you can do
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {capabilities.map((c) => (
-              <div key={c.title} className="rounded-lg border border-border bg-muted/20 p-5 transition-colors hover:border-teal/30">
+              <div key={c.title} className="border border-border bg-muted/20 p-5 transition-colors hover:border-teal/30">
                 <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-teal">
                   {c.icon}
                 </div>
@@ -242,7 +242,7 @@ export default function PlatformPage() {
           <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
             REGISTRY LAUNCHING 2026
           </div>
-          <h2 className="mt-6 text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mt-6 text-2xl font-bold tracking-tight md:text-3xl">
             Your code. Verified. Connected.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -251,7 +251,7 @@ export default function PlatformPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               Join the Waitlist
             </a>

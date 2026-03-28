@@ -23,7 +23,7 @@ export default function LegalPage() {
 
         {/* Terms of Service */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] TERMS OF SERVICE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Terms of Service</h2>
@@ -78,7 +78,7 @@ export default function LegalPage() {
 
         {/* Privacy Policy */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] PRIVACY POLICY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Privacy Policy</h2>
@@ -132,7 +132,7 @@ export default function LegalPage() {
 
         {/* Intellectual Property */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] INTELLECTUAL PROPERTY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Intellectual Property</h2>
@@ -159,7 +159,7 @@ export default function LegalPage() {
 
         {/* Contact */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <div className="mx-auto max-w-3xl rounded-lg border border-border bg-muted/10 p-6">
+          <div className="mx-auto max-w-3xl border border-border bg-muted/10 p-6">
             <p className="text-sm text-muted-foreground">
               For legal inquiries, contact{" "}
               <a href="mailto:legal@brik64.com" className="text-teal hover:underline">

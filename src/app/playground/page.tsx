@@ -57,7 +57,7 @@ export default function PlaygroundPage() {
           <div className="mt-10">
             <a
               href="/cli"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               In the meantime, install the CLI <ArrowRight className="h-4 w-4" />
             </a>

@@ -82,7 +82,7 @@ export default function ContactPage() {
 
         {/* Contact cards */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] EMAIL
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -90,7 +90,7 @@ export default function ContactPage() {
               <a
                 key={c.title}
                 href={c.href}
-                className="group rounded-lg border border-border bg-muted/10 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.04]"
+                className="group border border-border bg-muted/10 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.04]"
               >
                 <c.icon className="mb-4 h-6 w-6 text-teal" />
                 <h3 className="text-sm font-bold">{c.title}</h3>
@@ -103,7 +103,7 @@ export default function ContactPage() {
 
         {/* Social / Community */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] COMMUNITY
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -113,7 +113,7 @@ export default function ContactPage() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-lg border border-border bg-muted/10 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.04]"
+                className="group border border-border bg-muted/10 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.04]"
               >
                 <s.icon className="mb-4 h-6 w-6 text-teal" />
                 <h3 className="text-sm font-bold">{s.title}</h3>
@@ -126,7 +126,7 @@ export default function ContactPage() {
 
         {/* Contact form */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] SEND A MESSAGE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Contact form</h2>
@@ -135,25 +135,25 @@ export default function ContactPage() {
               <input
                 type="text"
                 placeholder="Name"
-                className="rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                className="border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
               />
               <input
                 type="email"
                 placeholder="Email"
-                className="rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                className="border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
               />
             </div>
             <input
               type="text"
               placeholder="Company (optional)"
-              className="w-full rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+              className="w-full rounded-md border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
             />
             <textarea
               placeholder="Your message"
               rows={5}
-              className="w-full rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none resize-none"
+              className="w-full rounded-md border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none resize-none"
             />
-            <button className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+            <button className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
               <Mail className="h-4 w-4" /> Send Message
             </button>
           </div>

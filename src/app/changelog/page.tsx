@@ -92,7 +92,7 @@ export default function ChangelogPage() {
             {versions.map((v) => (
               <div
                 key={v.version}
-                className="rounded-xl border border-border bg-muted/10 p-6"
+                className="border border-border bg-muted/10 p-6"
               >
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="rounded-md bg-teal/10 px-3 py-1 text-sm font-bold text-teal font-mono">

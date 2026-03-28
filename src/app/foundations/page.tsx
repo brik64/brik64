@@ -35,7 +35,7 @@ export default function FoundationsPage() {
 
         {/* Digital Circuitality definition */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FORMAL DEFINITION
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -54,7 +54,7 @@ export default function FoundationsPage() {
             <p>
               A system <em>S</em> exhibits Digital Circuitality if and only if:
             </p>
-            <div className="rounded-lg border border-teal/30 bg-teal/[0.04] p-6 text-center">
+            <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6 text-center">
               <p className="font-mono text-lg font-bold text-teal">
                 <PhiC />(S) = 1 &hArr; S_I = 0
               </p>
@@ -80,7 +80,7 @@ export default function FoundationsPage() {
 
         {/* Thermodynamic Analogy */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THERMODYNAMIC ANALOGY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -119,24 +119,24 @@ export default function FoundationsPage() {
 
         {/* EVA Algebra */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] EVA ALGEBRA
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Composition operators
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-muted/10 p-6 text-center">
+            <div className="border border-border bg-muted/10 p-6 text-center">
               <div className="text-3xl font-bold text-teal">&otimes;</div>
               <h3 className="mt-3 text-sm font-bold">Sequential</h3>
               <p className="mt-2 text-xs text-muted-foreground">Do A, then B. Output of A feeds input of B.</p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-6 text-center">
+            <div className="border border-border bg-muted/10 p-6 text-center">
               <div className="text-3xl font-bold text-teal">&parallel;</div>
               <h3 className="mt-3 text-sm font-bold">Parallel</h3>
               <p className="mt-2 text-xs text-muted-foreground">Do A and B independently. No data dependency.</p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-6 text-center">
+            <div className="border border-border bg-muted/10 p-6 text-center">
               <div className="text-3xl font-bold text-teal">&oplus;</div>
               <h3 className="mt-3 text-sm font-bold">Conditional</h3>
               <p className="mt-2 text-xs text-muted-foreground">If X then A, else B. Both branches verified.</p>
@@ -151,14 +151,14 @@ export default function FoundationsPage() {
 
         {/* CMF */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] COHERENCE METRICS FRAMEWORK
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             CMF: Three metrics, one condition
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <div className="text-2xl font-bold text-teal"><PhiC /></div>
               <h3 className="mt-2 text-sm font-bold">Circuit Closure</h3>
               <p className="mt-2 text-xs text-muted-foreground">
@@ -166,7 +166,7 @@ export default function FoundationsPage() {
                 No dangling operations. The computational analog of a closed electrical loop.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <div className="text-2xl font-bold text-teal">&delta;</div>
               <h3 className="mt-2 text-sm font-bold">Signature Distance</h3>
               <p className="mt-2 text-xs text-muted-foreground">
@@ -174,7 +174,7 @@ export default function FoundationsPage() {
                 The analog of signal integrity &mdash; no distortion, no noise.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <div className="text-2xl font-bold text-teal">V(C)</div>
               <h3 className="mt-2 text-sm font-bold">Verification Completeness</h3>
               <p className="mt-2 text-xs text-muted-foreground">
@@ -183,7 +183,7 @@ export default function FoundationsPage() {
               </p>
             </div>
           </div>
-          <div className="mx-auto mt-8 rounded-lg border border-teal/30 bg-teal/[0.04] p-6 text-center max-w-3xl">
+          <div className="mx-auto mt-8 rounded-md border border-teal/30 bg-teal/[0.04] p-6 text-center max-w-3xl">
             <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">
               Certification Condition
             </p>
@@ -198,7 +198,7 @@ export default function FoundationsPage() {
 
         {/* Kish-Ferry */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] KISH-FERRY DISTINCTION
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -211,7 +211,7 @@ export default function FoundationsPage() {
               words, <em>&ldquo;apples and oranges.&rdquo;</em>
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border border-border bg-muted/10 p-5">
+              <div className="border border-border bg-muted/10 p-5">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Thermal Entropy S_th</h3>
                 <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
                   <li>&bull; Objective property of the physical system</li>
@@ -219,7 +219,7 @@ export default function FoundationsPage() {
                   <li>&bull; Units: J/K</li>
                 </ul>
               </div>
-              <div className="rounded-lg border border-border bg-muted/10 p-5">
+              <div className="border border-border bg-muted/10 p-5">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Informational Entropy S_I</h3>
                 <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
                   <li>&bull; Subjective &mdash; depends on observer knowledge</li>
@@ -239,7 +239,7 @@ export default function FoundationsPage() {
 
         {/* Brillouin Connection */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] BRILLOUIN CONNECTION
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -273,7 +273,7 @@ export default function FoundationsPage() {
 
         {/* Zero-Energy Erasure */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] ZERO-ENERGY ERASURE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -286,7 +286,7 @@ export default function FoundationsPage() {
               passive thermalization in double-well potential memories. This refutes the Landauer
               bound (kT ln 2 per bit) as a general principle.
             </p>
-            <div className="rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+            <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6">
               <p className="text-sm italic text-foreground">
                 &ldquo;In a deterministic computer with error-free memory, the information entropy of
                 the memory is <strong>always zero</strong>.&rdquo;
@@ -305,7 +305,7 @@ export default function FoundationsPage() {
 
         {/* Universal Transpilation */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [08] UNIVERSAL TRANSPILATION
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -323,7 +323,7 @@ export default function FoundationsPage() {
               produce the same PCD circuit, they are functionally equivalent.</strong> PCD captures
               the informational content of computation independent of syntactic vehicle.
             </p>
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-3">The arithmetic</p>
               <ul className="space-y-1.5 text-xs">
                 <li>&bull; 10 input languages &rarr; PCD &rarr; 14 output targets</li>
@@ -342,7 +342,7 @@ export default function FoundationsPage() {
 
         {/* References */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [09] REFERENCES
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -386,7 +386,7 @@ export default function FoundationsPage() {
                 relevance: "Critical: informational entropy \u2260 thermal entropy; category error in Landauer.",
               },
             ].map((ref, i) => (
-              <div key={i} className="rounded-lg border border-border bg-muted/10 p-5">
+              <div key={i} className="border border-border bg-muted/10 p-5">
                 <p className="text-sm font-medium text-foreground">
                   {ref.authors} ({ref.year})
                 </p>
@@ -400,10 +400,10 @@ export default function FoundationsPage() {
 
         {/* Acknowledgment */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             ACKNOWLEDGMENT
           </p>
-          <div className="mx-auto max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+          <div className="mx-auto max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <GraduationCap className="mb-3 h-6 w-6 text-teal" />
             <p className="text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Prof. Laszlo B. Kish</strong> (Texas A&amp;M University)
@@ -433,7 +433,7 @@ export default function FoundationsPage() {
               href="https://digitalcircuitality.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <BookOpen className="h-4 w-4" /> Read the full theory
             </a>

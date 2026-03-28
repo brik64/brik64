@@ -67,7 +67,7 @@ export default function FinanceIndustryPage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
                 Verify your financial systems <ArrowRight className="h-4 w-4" />
               </a>
@@ -75,7 +75,7 @@ export default function FinanceIndustryPage() {
                 href="https://docs.brik64.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
               >
                 Read the docs <ExternalLink className="h-4 w-4" />
               </a>
@@ -86,10 +86,10 @@ export default function FinanceIndustryPage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Challenge ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               One bug can move billions
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -109,7 +109,7 @@ export default function FinanceIndustryPage() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-xl border border-border bg-white p-6"
+                  className="border border-border bg-white p-6"
                 >
                   <h3 className="text-lg font-semibold text-foreground">
                     {item.title}
@@ -124,16 +124,16 @@ export default function FinanceIndustryPage() {
 
           {/* ── How BRIK-64 Helps ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Provable correctness for financial logic
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
                 <div key={uc.title} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#00b8d4]/10">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
                     <uc.icon className="h-6 w-6 text-[#00b8d4]" />
                   </div>
                   <div>
@@ -151,18 +151,18 @@ export default function FinanceIndustryPage() {
 
           {/* ── Policy Circuit Example ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Transaction validator with balance constraints
             </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               This circuit validates financial transactions at the domain level. Amount must
               be positive, rate must be bounded, balance must be sufficient. No transaction
               can violate these constraints.
             </p>
-            <div className="mt-8 overflow-hidden rounded-xl border border-border bg-[#0a0a0a]">
+            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
               <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
                 <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                 <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -212,7 +212,7 @@ circuit transaction_validator {
 }`}</code>
               </pre>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Amount positive, rate bounded, balance sufficient, KYC enforced.{" "}
               <PhiC /> = 1 — every transaction carries mathematical proof of validity.
             </p>
@@ -220,10 +220,10 @@ circuit transaction_validator {
 
           {/* ── Standards ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Compliance evidence, automatically
             </h2>
             <ul className="mt-8 space-y-3">
@@ -238,17 +238,17 @@ circuit transaction_validator {
 
           {/* ── CTA ── */}
           <section className="px-6 py-24 text-center lg:px-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified financial systems
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Verify your financial systems. Every transaction proven. Every risk calculation
               certified. Every audit trail automatic.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
                 Verify your financial systems <ArrowRight className="h-4 w-4" />
               </a>
@@ -256,7 +256,7 @@ circuit transaction_validator {
                 href="https://docs.brik64.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
               >
                 Read the docs <ExternalLink className="h-4 w-4" />
               </a>

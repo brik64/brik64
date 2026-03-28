@@ -73,12 +73,12 @@ export default function InvestorsPage() {
 
         {/* The Problem / Market opportunity */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] THE OPPORTUNITY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Why now</h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <Bug className="mb-4 h-6 w-6 text-teal" />
               <h3 className="text-sm font-bold">$600B+ software quality market</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -87,7 +87,7 @@ export default function InvestorsPage() {
                 BRIK-64 eliminates them by construction.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <Bot className="mb-4 h-6 w-6 text-teal" />
               <h3 className="text-sm font-bold">AI makes it urgent</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -96,7 +96,7 @@ export default function InvestorsPage() {
                 AI-generated line.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-6">
+            <div className="border border-border bg-muted/10 p-6">
               <Scale className="mb-4 h-6 w-6 text-teal" />
               <h3 className="text-sm font-bold">Regulatory tailwind</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -109,11 +109,11 @@ export default function InvestorsPage() {
 
         {/* What BRIK-64 is */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE PRODUCT
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
-          <div className="mx-auto mt-8 max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+          <div className="mx-auto mt-8 max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-sm leading-relaxed text-foreground">
               A self-verifying compiler and platform that lifts code from 10 languages into
               mathematically certified blueprints (PCD), then exports to 14 targets with formal
@@ -126,13 +126,13 @@ export default function InvestorsPage() {
 
         {/* Traction */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] TRACTION
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What we&rsquo;ve built</h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {traction.map((t) => (
-              <div key={t.label} className="rounded-lg border border-border bg-muted/20 p-4 text-center">
+              <div key={t.label} className="border border-border bg-muted/20 p-4 text-center">
                 <div className="text-2xl font-bold text-teal">{t.value}</div>
                 <div className="mt-1 text-[10px] text-muted-foreground">{t.label}</div>
               </div>
@@ -142,7 +142,7 @@ export default function InvestorsPage() {
 
         {/* Business model */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] BUSINESS MODEL
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -150,7 +150,7 @@ export default function InvestorsPage() {
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {businessModel.map((b) => (
-              <div key={b.title} className="rounded-lg border border-border bg-muted/10 p-5">
+              <div key={b.title} className="border border-border bg-muted/10 p-5">
                 <h3 className="text-sm font-bold">{b.title}</h3>
                 <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{b.desc}</p>
               </div>
@@ -160,7 +160,7 @@ export default function InvestorsPage() {
 
         {/* Competitive moat */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COMPETITIVE MOAT
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -187,7 +187,7 @@ export default function InvestorsPage() {
 
         {/* Roadmap */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] VISION
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Roadmap</h2>
@@ -195,7 +195,7 @@ export default function InvestorsPage() {
             {roadmap.map((r) => (
               <div
                 key={r.phase}
-                className={`flex items-center gap-4 rounded-lg border p-4 ${
+                className={`flex items-center gap-4 border p-4 ${
                   r.status === "current"
                     ? "border-teal/40 bg-teal/[0.04]"
                     : "border-border bg-muted/10"
@@ -217,12 +217,12 @@ export default function InvestorsPage() {
 
         {/* IP */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] INTELLECTUAL PROPERTY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">IP portfolio</h2>
           <div className="mx-auto mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-3xl">
-            <div className="rounded-lg border border-border bg-muted/10 p-5">
+            <div className="border border-border bg-muted/10 p-5">
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">5 Patents Planned</h3>
               <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
                 <li>&bull; Self-compilation fixpoint verification</li>
@@ -232,7 +232,7 @@ export default function InvestorsPage() {
                 <li>&bull; Policy circuit certification</li>
               </ul>
             </div>
-            <div className="rounded-lg border border-border bg-muted/10 p-5">
+            <div className="border border-border bg-muted/10 p-5">
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Trademarks</h3>
               <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
                 <li>&bull; Digital Circuitality&trade;</li>
@@ -246,7 +246,7 @@ export default function InvestorsPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The future of software is verified.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -256,7 +256,7 @@ export default function InvestorsPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="mailto:investors@brik64.com"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Mail className="h-4 w-4" /> investors@brik64.com
             </a>

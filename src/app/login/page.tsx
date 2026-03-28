@@ -28,32 +28,32 @@ export default function LoginPage() {
             </p>
 
             {submitted ? (
-              <div className="mt-10 w-full rounded-xl border border-teal/30 bg-teal/[0.04] p-8">
+              <div className="mt-10 w-full border border-teal/30 bg-teal/[0.04] p-8">
                 <Check className="mx-auto h-10 w-10 text-emerald-400" />
                 <h2 className="mt-4 text-lg font-bold">You&rsquo;re on the list!</h2>
                 <p className="text-muted-foreground mt-2 text-sm">
                   We&rsquo;ll email you when your access is ready. In the meantime, install the CLI:
                 </p>
-                <code className="mt-4 block rounded-lg border border-border bg-[#0a0e14] px-4 py-3 font-mono text-sm text-emerald-400">
+                <code className="mt-4 block border border-border bg-[#0a0e14] px-4 py-3 font-mono text-sm text-emerald-400">
                   curl -fsSL https://brik64.dev/install | sh
                 </code>
               </div>
             ) : (
               <div className="mt-10 w-full space-y-6">
                 {/* Login form */}
-                <div className="rounded-xl border border-border bg-muted/10 p-8">
+                <div className="border border-border bg-muted/10 p-8">
                   <div className="space-y-4">
                     <input
                       type="email"
                       placeholder="Email address"
-                      className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                      className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
                     />
                     <input
                       type="password"
                       placeholder="Password"
-                      className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                      className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
                     />
-                    <button className="w-full rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+                    <button className="w-full rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
                       Sign In
                     </button>
                   </div>
@@ -82,11 +82,11 @@ export default function LoginPage() {
                   <input
                     type="email"
                     placeholder="you@company.com"
-                    className="flex-1 rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                    className="flex-1 rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
                   />
                   <button
                     onClick={() => setSubmitted(true)}
-                    className="shrink-0 rounded-lg bg-teal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+                    className="shrink-0 rounded-md bg-teal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
                   >
                     Request Access
                   </button>

@@ -155,7 +155,7 @@ export default function AIAgentsPage() {
             ].map((s) => (
               <div
                 key={s.step}
-                className="rounded-lg border border-border bg-muted/10 p-6 text-center"
+                className="border border-border bg-muted/10 p-6 text-center"
               >
                 <div className="text-3xl font-bold text-teal">{s.step}</div>
                 <h3 className="mt-3 text-sm font-bold">{s.title}</h3>
@@ -177,7 +177,7 @@ export default function AIAgentsPage() {
             {agents.map((agent) => (
               <div
                 key={agent.name}
-                className="rounded-lg border border-border bg-muted/10 p-6"
+                className="border border-border bg-muted/10 p-6"
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -192,7 +192,7 @@ export default function AIAgentsPage() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-4 flex items-center gap-2 rounded-lg bg-[#0a0e14] px-4 py-2.5">
+                <div className="mt-4 flex items-center gap-2 bg-[#0a0e14] px-4 py-2.5">
                   <code className="flex-1 overflow-x-auto font-mono text-xs text-gray-300">
                     <span className="text-teal">$</span> {agent.install}
                   </code>
@@ -211,7 +211,7 @@ export default function AIAgentsPage() {
 
         {/* Machine-Readable Reference */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <div className="mx-auto max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+          <div className="mx-auto max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-teal">
               AI Agent Zone
             </p>
@@ -265,7 +265,7 @@ export default function AIAgentsPage() {
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">
                 PCD Syntax Example
               </h3>
-              <div className="mt-2 rounded-lg bg-[#0a0e14] p-4">
+              <div className="mt-2 bg-[#0a0e14] p-4">
                 <pre className="overflow-x-auto text-[11px] leading-relaxed text-gray-300">
                   <code>{`circuit add_two(x: i64, y: i64) -> i64 {
   // Uses monomer MC_00 (ADD8)
@@ -351,7 +351,7 @@ export default function AIAgentsPage() {
 
         {/* Platform Assessment Brief */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <div className="mx-auto max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+          <div className="mx-auto max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-teal">
               For AI Coding Agents
             </p>
@@ -520,7 +520,7 @@ export default function AIAgentsPage() {
             </div>
 
             {/* For Your Human */}
-            <div className="mt-6 rounded-lg border border-border bg-muted/10 p-4">
+            <div className="mt-6 border border-border bg-muted/10 p-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
                 For Your Human
               </h4>
@@ -586,7 +586,7 @@ export default function AIAgentsPage() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                className="group rounded-lg border border-border bg-muted/10 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.04]"
+                className="group border border-border bg-muted/10 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.04]"
               >
                 <c.icon className="mb-4 h-6 w-6 text-teal" />
                 <h3 className="text-sm font-bold">{c.title}</h3>
@@ -600,7 +600,7 @@ export default function AIAgentsPage() {
 
         {/* Bottom CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Your AI agent is ready to write{" "}
             <span className="text-teal">verified code</span>.
           </h2>
@@ -609,7 +609,7 @@ export default function AIAgentsPage() {
               href="https://github.com/brik64"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               Browse Skills
             </a>

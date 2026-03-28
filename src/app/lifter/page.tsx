@@ -144,17 +144,17 @@ export default function LifterPage() {
 
         {/* Source languages */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] SOURCE LANGUAGES
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             10 languages. One blueprint.
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {sourceLanguages.map((lang) => (
               <div
                 key={lang.name}
-                className={`group flex items-center gap-3 rounded-lg border p-4 transition-colors ${
+                className={`group flex items-center gap-3 border p-4 transition-colors ${
                   lang.status === "Planned"
                     ? "border-border/50 bg-muted/10 opacity-60"
                     : "border-border bg-muted/20 hover:border-teal/30"
@@ -177,15 +177,15 @@ export default function LifterPage() {
 
         {/* How it works */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] HOW IT WORKS
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Source Code &rarr; AST &rarr; Pattern Recognition &rarr; PCD
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
-              <div key={s.label} className="relative rounded-lg border border-border bg-muted/20 p-5">
+              <div key={s.label} className="relative border border-border bg-muted/20 p-5">
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-teal">
                   {s.icon}
                 </div>
@@ -201,11 +201,11 @@ export default function LifterPage() {
 
         {/* Two-Tier Certification */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] TWO-TIER CERTIFICATION
           </p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/[0.03] p-6">
+            <div className="border border-emerald-500/20 bg-emerald-500/[0.03] p-6">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 text-emerald-400" />
                 <h3 className="text-sm font-bold text-emerald-400">Core Certified (<PhiC /> = 1)</h3>
@@ -218,7 +218,7 @@ export default function LifterPage() {
                 <li>Business logic &amp; algorithms</li>
               </ul>
             </div>
-            <div className="rounded-lg border border-blue-500/20 bg-blue-500/[0.03] p-6">
+            <div className="border border-blue-500/20 bg-blue-500/[0.03] p-6">
               <div className="flex items-center gap-2">
                 <Shield className="h-5 w-5 text-blue-400" />
                 <h3 className="text-sm font-bold text-blue-400">Contract Certified (extended)</h3>
@@ -239,13 +239,18 @@ export default function LifterPage() {
 
         {/* Terminal demos */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] DEMO
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             See it in action
           </h2>
           <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+            </div>
             <div className="flex border-b border-white/10">
               {demos.map((d, i) => (
                 <button
@@ -271,10 +276,10 @@ export default function LifterPage() {
 
         {/* COBOL Migration */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COBOL MIGRATION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             220 billion lines of COBOL. One migration path.
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -283,7 +288,7 @@ export default function LifterPage() {
             every computation.
           </p>
 
-          <div className="mt-8 rounded-lg border border-border bg-muted/20 p-6">
+          <div className="mt-8 border border-border bg-muted/20 p-6">
             <div className="flex items-center gap-3 text-sm font-mono text-muted-foreground">
               <span className="rounded bg-teal/10 px-2 py-0.5 text-teal">COBOL</span>
               <ArrowRight className="h-4 w-4" />
@@ -316,7 +321,7 @@ export default function LifterPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Your code already exists. Now verify it.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -326,7 +331,7 @@ export default function LifterPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/cli"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Terminal className="h-4 w-4" /> Install brikc
             </a>

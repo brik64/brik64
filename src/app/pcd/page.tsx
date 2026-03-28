@@ -148,12 +148,12 @@ export default function PCDPage() {
 
         {/* Key properties */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] NOT A LANGUAGE &mdash; A FORMAT
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {keyProps.map((kp) => (
-              <div key={kp.title} className="group rounded-lg border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]">
+              <div key={kp.title} className="group border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
                   {kp.icon}
                 </div>
@@ -166,10 +166,10 @@ export default function PCDPage() {
 
         {/* Syntax overview */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] SYNTAX
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Circuit schematics, not source code
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -180,22 +180,22 @@ export default function PCDPage() {
           <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* Syntax snippets */}
             <div className="space-y-4">
-              <div className="overflow-hidden rounded-lg border border-border">
+              <div className="overflow-hidden border border-border">
                 <div className="border-b border-border bg-muted/30 px-4 py-2">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-teal/70">Program Structure</p>
                 </div>
-                <div className="bg-[#0d1117] p-4">
+                <div className="bg-[#0a0e14] p-4">
                   <pre className="text-xs leading-relaxed text-gray-300"><code>{`PC circuit_name {
     // functions and logic here
     OUTPUT result;
 }`}</code></pre>
                 </div>
               </div>
-              <div className="overflow-hidden rounded-lg border border-border">
+              <div className="overflow-hidden border border-border">
                 <div className="border-b border-border bg-muted/30 px-4 py-2">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-teal/70">Variables & Functions</p>
                 </div>
-                <div className="bg-[#0d1117] p-4">
+                <div className="bg-[#0a0e14] p-4">
                   <pre className="text-xs leading-relaxed text-gray-300"><code>{`let x = 42;           // immutable
 let name = "hello";    // string
 let flag = true;       // boolean
@@ -210,11 +210,11 @@ fn factorial(n) {
 }`}</code></pre>
                 </div>
               </div>
-              <div className="overflow-hidden rounded-lg border border-border">
+              <div className="overflow-hidden border border-border">
                 <div className="border-b border-border bg-muted/30 px-4 py-2">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-teal/70">Loops & Closures</p>
                 </div>
-                <div className="bg-[#0d1117] p-4">
+                <div className="bg-[#0a0e14] p-4">
                   <pre className="text-xs leading-relaxed text-gray-300"><code>{`// Loop with carried variable
 let count = 0;
 loop(10) as i {
@@ -230,6 +230,11 @@ let result = double(5);   // 10`}</code></pre>
 
             {/* Code examples with tabs */}
             <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              </div>
               <div className="flex flex-wrap border-b border-white/10">
                 {codeExamples.map((ex, i) => (
                   <button
@@ -256,10 +261,10 @@ let result = double(5);   // 10`}</code></pre>
 
         {/* 128 Monomers */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] 128 MONOMERS
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The complete operation catalog
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -274,7 +279,7 @@ let result = double(5);   // 10`}</code></pre>
               <PhiC /> = 1
             </span>
           </h3>
-          <div className="mt-4 overflow-hidden rounded-xl border border-border">
+          <div className="mt-4 overflow-hidden border border-border">
             {coreFamilies.map((f) => (
               <div key={f.family} className="grid grid-cols-[100px_120px_1fr_60px] items-center gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
                 <span className="text-xs font-medium">{f.family}</span>
@@ -292,7 +297,7 @@ let result = double(5);   // 10`}</code></pre>
               CONTRACT
             </span>
           </h3>
-          <div className="mt-4 overflow-hidden rounded-xl border border-border">
+          <div className="mt-4 overflow-hidden border border-border">
             {extendedFamilies.map((f) => (
               <div key={f.family} className="grid grid-cols-[100px_120px_1fr] items-center gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
                 <span className="text-xs font-medium">{f.family}</span>
@@ -310,15 +315,15 @@ let result = double(5);   // 10`}</code></pre>
 
         {/* EVA Composition */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] EVA ALGEBRA
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Three operators. Correctness preserved.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
             {evaOps.map((op) => (
-              <div key={op.name} className="rounded-lg border border-border bg-muted/20 p-6">
+              <div key={op.name} className="border border-border bg-muted/20 p-6">
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-xl font-bold text-teal">
                   {op.symbol}
                 </div>
@@ -338,7 +343,7 @@ let result = double(5);   // 10`}</code></pre>
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             One blueprint. Any material.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -350,7 +355,7 @@ let result = double(5);   // 10`}</code></pre>
               href="https://docs.brik64.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <BookOpen className="h-4 w-4" /> Full PCD Reference
             </a>

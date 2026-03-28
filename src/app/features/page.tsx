@@ -172,7 +172,7 @@ export default function FeaturesPage() {
           {/* Stats */}
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
             {stats.map((s) => (
-              <div key={s.label} className="rounded-lg border border-border bg-muted/20 p-4 text-center">
+              <div key={s.label} className="border border-border bg-muted/20 p-4 text-center">
                 <div className="text-xl font-bold text-teal">{s.value}</div>
                 <div className="mt-1 text-[10px] text-muted-foreground">{s.label}</div>
               </div>
@@ -192,14 +192,14 @@ export default function FeaturesPage() {
             </p>
             <div className="text-center">
               <section.icon className="mx-auto mb-3 h-6 w-6 text-teal" />
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
+              <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
               <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-relaxed">
                 {section.description}
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {section.features.map((f) => (
-                <div key={f} className="flex items-start gap-2 rounded-lg border border-border bg-muted/10 p-4">
+                <div key={f} className="flex items-start gap-2 border border-border bg-muted/10 p-4">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
                   <span className="text-sm">{f}</span>
                 </div>
@@ -210,7 +210,7 @@ export default function FeaturesPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to build verified software?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -219,7 +219,7 @@ export default function FeaturesPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/cli"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Terminal className="h-4 w-4" /> Install the CLI
             </a>

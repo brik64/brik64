@@ -87,11 +87,11 @@ export default function RegistryPage() {
 
         {/* Search demo */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] SEARCH
           </p>
           <div className="mx-auto max-w-2xl">
-            <div className="flex items-center gap-3 rounded-xl border border-border bg-muted/20 px-4 py-3">
+            <div className="flex items-center gap-3 border border-border bg-muted/20 px-4 py-3">
               <Search className="h-5 w-5 text-muted-foreground" />
               <input
                 type="text"
@@ -109,10 +109,10 @@ export default function RegistryPage() {
 
         {/* Featured circuits */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] FEATURED CIRCUITS
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Pre-certified. Ready to use.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -123,7 +123,7 @@ export default function RegistryPage() {
               .map((c) => (
                 <div
                   key={c.name}
-                  className="group rounded-lg border border-border bg-muted/20 p-5 transition-colors hover:border-teal/30"
+                  className="group border border-border bg-muted/20 p-5 transition-colors hover:border-teal/30"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2">
@@ -154,15 +154,15 @@ export default function RegistryPage() {
 
         {/* Publishing workflow */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] PUBLISHING
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             From code to registry in minutes
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {publishSteps.map((s) => (
-              <div key={s.step} className="rounded-lg border border-border bg-muted/20 p-5">
+              <div key={s.step} className="border border-border bg-muted/20 p-5">
                 <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full border border-teal/30 bg-teal/10 text-sm font-bold text-teal">
                   {s.step}
                 </div>
@@ -206,10 +206,10 @@ export default function RegistryPage() {
 
         {/* Badge system */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] BADGE SYSTEM
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Live proof. Not a static label.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -219,7 +219,7 @@ export default function RegistryPage() {
 
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
             {badges.map((b) => (
-              <div key={b.name} className="rounded-lg border border-border bg-muted/20 p-5">
+              <div key={b.name} className="border border-border bg-muted/20 p-5">
                 <span className={`inline-block rounded-full border px-3 py-1 text-xs font-bold ${b.color}`}>
                   {b.name}
                 </span>
@@ -229,7 +229,7 @@ export default function RegistryPage() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-lg border border-border bg-muted/20 p-5">
+          <div className="mt-8 border border-border bg-muted/20 p-5">
             <p className="text-sm font-medium">What no other certification standard can claim</p>
             <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="text-xs text-muted-foreground">
@@ -247,7 +247,7 @@ export default function RegistryPage() {
           <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
             REGISTRY LAUNCHING 2026
           </div>
-          <h2 className="mt-6 text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mt-6 text-2xl font-bold tracking-tight md:text-3xl">
             Publish your first circuit
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -257,7 +257,7 @@ export default function RegistryPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/cli"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Terminal className="h-4 w-4" /> Install the CLI
             </a>

@@ -122,7 +122,7 @@ export default function EnterprisePage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               Request a Demo
             </a>
@@ -137,7 +137,7 @@ export default function EnterprisePage() {
 
         {/* Feature cards */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] CAPABILITIES
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -145,7 +145,7 @@ export default function EnterprisePage() {
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <div key={f.title} className="rounded-lg border border-border bg-muted/10 p-6">
+              <div key={f.title} className="border border-border bg-muted/10 p-6">
                 <f.icon className="mb-4 h-6 w-6 text-teal" />
                 <h3 className="text-sm font-bold">{f.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
@@ -156,7 +156,7 @@ export default function EnterprisePage() {
 
         {/* Use cases */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] USE CASES
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -164,7 +164,7 @@ export default function EnterprisePage() {
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {useCases.map((uc) => (
-              <div key={uc.title} className="rounded-lg border border-border bg-muted/10 p-6">
+              <div key={uc.title} className="border border-border bg-muted/10 p-6">
                 <uc.icon className="mb-4 h-6 w-6 text-teal" />
                 <h3 className="text-sm font-bold">{uc.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{uc.description}</p>
@@ -175,7 +175,7 @@ export default function EnterprisePage() {
 
         {/* Compliance standards */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] COMPLIANCE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -185,7 +185,7 @@ export default function EnterprisePage() {
             {standards.map((s) => (
               <span
                 key={s}
-                className="rounded-lg border border-border bg-muted/20 px-4 py-2.5 text-sm font-medium"
+                className="border border-border bg-muted/20 px-4 py-2.5 text-sm font-medium"
               >
                 {s}
               </span>
@@ -202,7 +202,7 @@ export default function EnterprisePage() {
           id="contact"
           className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18"
         >
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] GET IN TOUCH
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -217,25 +217,25 @@ export default function EnterprisePage() {
               <input
                 type="text"
                 placeholder="Your name"
-                className="rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                className="border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
               />
               <input
                 type="email"
                 placeholder="Work email"
-                className="rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                className="border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
               />
             </div>
             <input
               type="text"
               placeholder="Company"
-              className="w-full rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+              className="w-full rounded-md border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
             />
             <textarea
               placeholder="Tell us about your use case"
               rows={4}
-              className="w-full rounded-lg border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none resize-none"
+              className="w-full rounded-md border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none resize-none"
             />
-            <button className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+            <button className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
               <Mail className="h-4 w-4" /> Request Demo
             </button>
           </div>

@@ -84,13 +84,13 @@ export default function CICDIntegrationUseCasePage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
                 Start building <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/enterprise"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
               >
                 Enterprise page <ArrowRight className="h-4 w-4" />
               </a>
@@ -101,15 +101,15 @@ export default function CICDIntegrationUseCasePage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Problem ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Your CI pipeline has a trust gap
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {painPoints.map((item) => (
-                <div key={item.title} className="rounded-xl border border-border bg-white p-6">
+                <div key={item.title} className="border border-border bg-white p-6">
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
@@ -119,16 +119,16 @@ export default function CICDIntegrationUseCasePage() {
 
           {/* ── The Solution ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical certification in your pipeline
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
                 <div key={s.step} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#00b8d4]/10">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
                     <span className="text-sm font-bold text-[#00b8d4]">{s.step}</span>
                   </div>
                   <div>
@@ -140,7 +140,7 @@ export default function CICDIntegrationUseCasePage() {
             </div>
 
             {/* Terminal example */}
-            <div className="mt-10 overflow-hidden rounded-xl border border-border bg-[#0a0a0a]">
+            <div className="mt-10 overflow-hidden border border-border bg-[#0a0e14]">
               <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
                 <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                 <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -173,17 +173,17 @@ $ git push origin feature/new-payment-flow
 
           {/* ── Real Example ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               GitHub Actions workflow — one step
             </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               Add BRIK-64 certification to your existing GitHub Actions workflow. One step.
               Runs alongside your tests. Blocks merge if certification fails.
             </p>
-            <div className="mt-8 overflow-hidden rounded-xl border border-border bg-[#0a0a0a]">
+            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
               <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
                 <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                 <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -215,7 +215,7 @@ jobs:
           # Fails the check if Φ_c ≠ 1`}</code>
               </pre>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               One GitHub Action step. Your entire CI pipeline now produces mathematical proofs, not just test results.{" "}
               <PhiC /> = 1 or the merge is blocked.
             </p>
@@ -223,15 +223,15 @@ jobs:
 
           {/* ── Results ── */}
           <section className="border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What you get
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
-                <div key={item.title} className="rounded-xl border border-border bg-white p-6">
+                <div key={item.title} className="border border-border bg-white p-6">
                   <CheckCircle2 className="mb-3 h-6 w-6 text-[#00b8d4]" />
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
@@ -242,16 +242,16 @@ jobs:
 
           {/* ── CTA ── */}
           <section className="px-6 py-24 text-center lg:px-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Certify every merge
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               One command to connect. Every PR certified. Every merge proven safe. Every audit satisfied.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
                 Start building <ArrowRight className="h-4 w-4" />
               </a>
@@ -259,7 +259,7 @@ jobs:
                 href="https://docs.brik64.dev/ci-cd"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
               >
                 CI/CD Docs <ExternalLink className="h-4 w-4" />
               </a>

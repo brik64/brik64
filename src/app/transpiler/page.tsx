@@ -70,10 +70,10 @@ export default function TranspilerPage() {
 
         {/* Visual Matrix */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] LANGUAGE MATRIX
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Every input &rarr; any output
           </h2>
 
@@ -129,10 +129,10 @@ export default function TranspilerPage() {
 
         {/* How it works */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] HOW IT WORKS
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Source &rarr; PCD &rarr; Target
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
@@ -144,7 +144,7 @@ export default function TranspilerPage() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
             {pipelineSteps.map((step, i) => (
               <div key={step.label} className="flex items-center gap-2 sm:flex-1">
-                <div className="rounded-lg border border-border bg-muted/20 p-4 sm:w-full">
+                <div className="border border-border bg-muted/20 p-4 sm:w-full">
                   <p className="text-xs font-bold tracking-wider text-teal">{step.label}</p>
                   <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{step.desc}</p>
                 </div>
@@ -158,28 +158,28 @@ export default function TranspilerPage() {
 
         {/* Translation Validation */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] TRANSLATION VALIDATION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Not just conversion. Certification.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <h3 className="text-sm font-medium">Traditional transpilers</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 One-to-one: TypeScript &rarr; JavaScript. CoffeeScript &rarr; JS. Sass &rarr; CSS.
                 Each is purpose-built for a single language pair. No proof that the output is correct.
               </p>
             </div>
-            <div className="rounded-lg border border-teal/30 bg-teal/[0.03] p-6">
+            <div className="rounded-md border border-teal/30 bg-teal/[0.03] p-6">
               <h3 className="text-sm font-medium text-teal">BRIK-64 transpiler</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 N-to-N through one verified intermediate representation. Every output carries a
                 cryptographic certificate proving equivalence to the source.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <h3 className="text-sm font-medium">The guarantee</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 <PhiC /> = 1 on both sides. The source and target are mathematically equivalent &mdash;
@@ -191,7 +191,7 @@ export default function TranspilerPage() {
 
         {/* Demo */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] DEMO
           </p>
           <div className="max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
@@ -231,13 +231,13 @@ export default function TranspilerPage() {
 
         {/* vs LLVM */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COMPARISON
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             BRIK-64 vs LLVM
           </h2>
-          <div className="mt-8 overflow-hidden rounded-xl border border-border">
+          <div className="mt-8 overflow-hidden border border-border">
             <div className="grid grid-cols-3 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
               <div>Feature</div>
               <div>LLVM</div>
@@ -255,7 +255,7 @@ export default function TranspilerPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Convert any codebase. Certified.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -265,7 +265,7 @@ export default function TranspilerPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/cli"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Terminal className="h-4 w-4" /> Try brikc transpile
             </a>

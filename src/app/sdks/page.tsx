@@ -245,7 +245,7 @@ export default function SDKsPage() {
 
           {/* Install + link */}
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-            <div className="flex items-center gap-3 rounded-lg border border-border bg-[#0a0e14] px-4 py-2.5">
+            <div className="flex items-center gap-3 border border-border bg-[#0a0e14] px-4 py-2.5">
               <code className="font-mono text-sm text-emerald-400">
                 <span className="text-teal">$</span> {sdk.install}
               </code>
@@ -272,6 +272,11 @@ export default function SDKsPage() {
 
           {/* Code tabs */}
           <div className="mt-8 overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+            </div>
             <div className="flex border-b border-white/10">
               {(["code", "eva", "families"] as const).map((tab) => (
                 <button
@@ -299,14 +304,14 @@ export default function SDKsPage() {
 
         {/* EVA Algebra */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             EVA COMPOSITION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Three operators. Infinite composition.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
                 &otimes;
               </div>
@@ -315,7 +320,7 @@ export default function SDKsPage() {
                 Output of f feeds into g. Pipeline. <code>eva.seq(f, g)</code>
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
                 &parallel;
               </div>
@@ -324,7 +329,7 @@ export default function SDKsPage() {
                 Both f and g execute on the same input. <code>eva.par(f, g)</code>
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
                 &oplus;
               </div>
@@ -342,7 +347,7 @@ export default function SDKsPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Drop in. Verify.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -353,7 +358,7 @@ export default function SDKsPage() {
               href="https://docs.brik64.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Package className="h-4 w-4" /> SDK Documentation
             </a>

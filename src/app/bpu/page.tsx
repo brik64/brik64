@@ -160,7 +160,7 @@ export default function BPUPage() {
 
         {/* Architecture */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] ARCHITECTURE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -168,7 +168,7 @@ export default function BPUPage() {
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
             {architecture.map((a) => (
-              <div key={a.title} className="rounded-lg border border-border bg-muted/20 p-6">
+              <div key={a.title} className="border border-border bg-muted/20 p-6">
                 <Cpu className="mb-3 h-5 w-5 text-teal" />
                 <p className="text-sm font-bold">{a.title}</p>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{a.desc}</p>
@@ -177,7 +177,7 @@ export default function BPUPage() {
           </div>
 
           {/* Monomer families table */}
-          <div className="mt-8 overflow-hidden rounded-xl border border-border">
+          <div className="mt-8 overflow-hidden border border-border">
             <div className="grid grid-cols-3 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
               <div>Family</div>
               <div>Range</div>
@@ -195,14 +195,14 @@ export default function BPUPage() {
 
         {/* BLOCK Signal */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE NON-MASKABLE BLOCK
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             No software can override hardware.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="rounded-lg border border-red-500/20 bg-red-500/[0.03] p-6">
+            <div className="border border-red-500/20 bg-red-500/[0.03] p-6">
               <AlertTriangle className="mb-3 h-5 w-5 text-red-400" />
               <h3 className="text-sm font-bold text-red-400">Software Guardrails</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
@@ -211,7 +211,7 @@ export default function BPUPage() {
                 If it runs as software on the same CPU, it can be disabled.
               </p>
             </div>
-            <div className="rounded-lg border border-teal/30 bg-teal/[0.03] p-6">
+            <div className="rounded-md border border-teal/30 bg-teal/[0.03] p-6">
               <Shield className="mb-3 h-5 w-5 text-teal" />
               <h3 className="text-sm font-bold text-teal">Hardware Enforcement</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
@@ -220,7 +220,7 @@ export default function BPUPage() {
                 no signal, no exception. The AI process never learns the block happened.
               </p>
             </div>
-            <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="border border-border bg-muted/20 p-6">
               <Lock className="mb-3 h-5 w-5 text-muted-foreground" />
               <h3 className="text-sm font-bold">Threat Model</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
@@ -234,7 +234,7 @@ export default function BPUPage() {
 
         {/* AI Safety */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] POLICY CIRCUITS
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -247,7 +247,7 @@ export default function BPUPage() {
 
           <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
             {policyExamples.map((ex) => (
-              <div key={ex.title} className="flex flex-col overflow-hidden rounded-xl border border-border">
+              <div key={ex.title} className="flex flex-col overflow-hidden border border-border">
                 <div className="border-b border-border bg-muted/30 px-4 py-3">
                   <p className="text-sm font-medium">{ex.title}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{ex.desc}</p>
@@ -264,7 +264,7 @@ export default function BPUPage() {
 
         {/* Roadmap */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] ROADMAP
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
@@ -272,7 +272,7 @@ export default function BPUPage() {
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {roadmap.map((r) => (
-              <div key={r.phase} className="rounded-lg border border-border bg-muted/20 p-6">
+              <div key={r.phase} className="border border-border bg-muted/20 p-6">
                 <div className="flex items-center gap-3">
                   <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
                     r.status === "NOW"
@@ -285,7 +285,7 @@ export default function BPUPage() {
                 </div>
                 <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{r.desc}</p>
                 {r.cmd && (
-                  <div className="mt-3 rounded-lg bg-[#0a0e14] px-4 py-2.5">
+                  <div className="mt-3 bg-[#0a0e14] px-4 py-2.5">
                     <code className="font-mono text-xs text-emerald-400">
                       <span className="text-teal">$</span> {r.cmd}
                     </code>
@@ -296,7 +296,7 @@ export default function BPUPage() {
           </div>
 
           {/* Regulatory trajectory */}
-          <div className="mt-8 rounded-lg border border-border bg-muted/20 p-6">
+          <div className="mt-8 border border-border bg-muted/20 p-6">
             <p className="text-sm font-medium">Regulatory trajectory</p>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
@@ -316,10 +316,10 @@ export default function BPUPage() {
 
         {/* Tech Specs */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] SPECIFICATIONS
           </p>
-          <div className="overflow-hidden rounded-xl border border-border">
+          <div className="overflow-hidden border border-border">
             {specs.map((s) => (
               <div key={s.param} className="flex items-center justify-between border-b border-border px-4 py-3 last:border-b-0">
                 <span className="text-xs text-muted-foreground">{s.param}</span>
@@ -331,7 +331,7 @@ export default function BPUPage() {
 
         {/* CTA */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Use Phase 1 today.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -343,7 +343,7 @@ export default function BPUPage() {
               href="https://docs.brik64.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <BookOpen className="h-4 w-4" /> Policy Circuit Docs
             </a>
