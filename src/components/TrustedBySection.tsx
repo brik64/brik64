@@ -7,31 +7,23 @@ export function TrustedBySection() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-14">
-          <span className="text-base font-normal text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            Cloudflare
-          </span>
-          <span className="text-base font-bold uppercase text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            NVIDIA
-          </span>
-          <span className="text-base text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            Lockheed{" "}
-            <span className="font-light">Martin</span>
-          </span>
-          <span className="text-base font-medium text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            Meta
-          </span>
-          <span className="text-base font-normal uppercase tracking-wide text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            Tesla
-          </span>
-          <span className="text-base font-bold uppercase text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            SpaceX
-          </span>
-          <span className="text-base font-bold uppercase tracking-[3px] text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            NASA
-          </span>
-          <span className="text-base font-normal text-muted-foreground/40 transition-opacity hover:text-muted-foreground/70">
-            Apple
-          </span>
+          {[
+            { src: "/brands/cloudflare.svg", alt: "Cloudflare" },
+            { src: "/brands/nvidia.svg", alt: "NVIDIA" },
+            { src: "/brands/lockheed-martin.svg", alt: "Lockheed Martin" },
+            { src: "/brands/meta.svg", alt: "Meta" },
+            { src: "/brands/tesla.svg", alt: "Tesla" },
+            { src: "/brands/spacex.svg", alt: "SpaceX" },
+            { src: "/brands/nasa.svg", alt: "NASA" },
+            { src: "/brands/apple.svg", alt: "Apple" },
+          ].map((brand) => (
+            <img
+              key={brand.alt}
+              src={brand.src}
+              alt={brand.alt}
+              className="h-6 opacity-40 grayscale transition-all hover:opacity-70 hover:grayscale-0 md:h-7"
+            />
+          ))}
         </div>
       </div>
     </section>

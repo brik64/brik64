@@ -1,48 +1,46 @@
 import { PhiC } from "@/components/PhiC";
-import { Monitor, Sparkles, Wind, Zap, Code2, Bot } from "lucide-react";
-import type { ReactNode } from "react";
 
 const editors: {
   name: string;
   subtitle: string;
   status: string;
-  icon: ReactNode;
+  logo: string;
 }[] = [
   {
     name: "VSCode",
     subtitle: "Extension + LSP",
     status: "AVAILABLE",
-    icon: <Monitor className="h-5 w-5 text-teal" />,
+    logo: "/brands/vscode.svg",
   },
   {
     name: "Cursor",
     subtitle: "AI + PCD native",
     status: "AVAILABLE",
-    icon: <Sparkles className="h-5 w-5 text-teal" />,
+    logo: "/brands/cursor.svg",
   },
   {
     name: "Windsurf",
     subtitle: "AI-powered coding",
     status: "AVAILABLE",
-    icon: <Wind className="h-5 w-5 text-teal" />,
+    logo: "/brands/windsurf.svg",
   },
   {
     name: "Zed",
     subtitle: "High-performance editor",
     status: "AVAILABLE",
-    icon: <Zap className="h-5 w-5 text-teal" />,
+    logo: "/brands/zed.svg",
   },
   {
     name: "IntelliJ",
     subtitle: "JetBrains IDEs",
     status: "AVAILABLE",
-    icon: <Code2 className="h-5 w-5 text-teal" />,
+    logo: "/brands/intellij.svg",
   },
   {
     name: "Trae",
     subtitle: "Next-gen AI IDE",
     status: "AVAILABLE",
-    icon: <Bot className="h-5 w-5 text-teal" />,
+    logo: "/brands/trae.svg",
   },
 ];
 
@@ -77,7 +75,7 @@ export function EditorsSection() {
               className="bg-background p-5 transition-colors hover:bg-teal/[0.03]"
             >
               <div className="flex items-center gap-3">
-                {editor.icon}
+                <img src={editor.logo} alt={editor.name} className="h-8 w-8" />
                 <div>
                   <p className="text-sm font-semibold">{editor.name}</p>
                   <p className="text-[10px] text-muted-foreground">
