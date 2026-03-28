@@ -1,8 +1,75 @@
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PhiC } from "@/components/PhiC";
 import { languages, getLanguageBySlug } from "@/lib/language-data";
-import { ArrowRight, Check, X, Terminal, Package, ArrowUpDown } from "lucide-react";
+import { ArrowRight, Check, X, Terminal, Package, ArrowUpDown, Puzzle, Globe, Sparkles } from "lucide-react";
+
+const sdkExamples: Record<string, { code: string; description: string }> = {
+  javascript: {
+    description: "Use verified monomers directly in your JavaScript/TypeScript code. Every function built from Core monomers via EVA operators automatically carries Φ_c = 1 — regardless of the host language.",
+    code: `import { mc, eva } from '@brik64/core';
+
+// Use verified monomers instead of raw operators
+const safeAdd = mc.add8(200, 100);  // 44 (wrapping, proven in Coq)
+const hash = mc.hashHex(Buffer.from('payload')); // SHA-256
+
+// EVA sequential composition — correctness preserved
+const pipeline = eva.seq(
+  (x) => mc.add8(x, 10),
+  (x) => mc.mod8(x, 7)
+);
+
+// Pull a certified circuit from the public registry
+// and use it directly in your code
+import { registry } from '@brik64/core';
+const jwtValidator = await registry.pull('CRYPTO-005');
+const isValid = jwtValidator.run(token); // Φ_c = 1`,
+  },
+  python: {
+    description: "Drop verified monomers into your Python codebase. Every operation carries its mathematical proof. Pull certified circuits from the registry and use them as regular Python functions.",
+    code: `from brik64.mc import arithmetic, crypto, string
+from brik64.eva import seq, par, pipeline
+from brik64.registry import pull
+
+# Verified monomers — not just functions, proofs
+result = arithmetic.add8(200, 100)  # 44 (wrapping, Coq-proven)
+digest = crypto.hash_hex(b"payload")  # SHA-256
+
+# EVA composition — correctness propagates
+process = seq(
+    lambda x: arithmetic.add8(x, 10),
+    lambda x: arithmetic.mod8(x, 7)
+)
+
+# Pull from the public registry — drop into existing code
+auth_flow = pull("AUTH-FLOW-001")  # OAuth2 handler, Φ_c = 1
+result = auth_flow.execute(request)  # certified, no PCD needed`,
+  },
+  rust: {
+    description: "Use Coq-proven monomers in your Rust code. The brik64-core crate provides all 128 operations with zero-cost abstractions. Compatible with the public registry.",
+    code: `use brik64_core::{mc, eva};
+use brik64_core::registry::Registry;
+
+fn main() {
+    // Verified monomers — formally proven in Coq
+    let sum = mc::add8(200, 100);  // 44 (wrapping)
+    let hash = mc::hash_hex(b"payload");  // SHA-256
+
+    // EVA sequential composition
+    let pipeline = eva::seq(
+        |x: (u8, u8)| mc::add8(x.0, x.1),
+        |s| mc::mod8(s, 7)
+    );
+    println!("{}", pipeline((250, 10))); // Φ_c = 1
+
+    // Pull certified circuits from registry
+    let registry = Registry::public();
+    let sort = registry.pull("SORT-ALG-042").unwrap(); // Quicksort
+    let sorted = sort.run(&mut data); // certified, Φ_c = 1
+}`,
+  },
+};
 
 export function generateStaticParams() {
   return languages.map((l) => ({ slug: l.slug }));
@@ -99,6 +166,72 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
                   <span className="text-teal">$</span> {lang.installCommand}
                 </code>
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* SDK Programming — write BRIK-64 patterns in your language */}
+        {lang.installCommand && sdkExamples[lang.slug] && (
+          <section className="border-border mx-auto max-w-7xl border-x border-t bg-background px-6 py-16 md:px-12 lg:px-18">
+            <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+              PROGRAM WITH BRIK-64 PATTERNS
+            </p>
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+              Write verified {lang.name} — no PCD required
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
+              {sdkExamples[lang.slug].description}
+            </p>
+
+            <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1fr]">
+              {/* Left — benefits */}
+              <div className="space-y-6">
+                <div className="flex items-start gap-3">
+                  <Sparkles className="mt-1 h-5 w-5 shrink-0 text-teal" />
+                  <div>
+                    <p className="text-sm font-medium">Keep your existing workflow</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Write {lang.name} as you always do. Use <code className="text-foreground">mc.*</code> monomers instead of raw operators. Your code stays in {lang.name} — no context switching to PCD.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Puzzle className="mt-1 h-5 w-5 shrink-0 text-teal" />
+                  <div>
+                    <p className="text-sm font-medium">Pull from the registry</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Certified circuits from the public registry can be pulled and used directly as {lang.name} functions. OAuth handlers, sorting algorithms, validators — all pre-verified.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Globe className="mt-1 h-5 w-5 shrink-0 text-teal" />
+                  <div>
+                    <p className="text-sm font-medium">Lift to PCD is trivial</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Code written with BRIK-64 patterns maps 1:1 to PCD monomers. When you&apos;re ready to certify, <code className="text-foreground">brikc lift</code> produces a clean blueprint instantly — because your code already follows the circuit pattern.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Package className="mt-1 h-5 w-5 shrink-0 text-teal" />
+                  <div>
+                    <p className="text-sm font-medium">Insert into existing software</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Functions built from BRIK-64 monomers are standard {lang.name} functions. They drop into any existing codebase. No special runtime, no PCD required at deployment.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right — code example */}
+              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
+                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                  <span className="ml-2 font-mono text-xs text-white/30">app{lang.extension}</span>
+                </div>
+                <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed text-zinc-300 whitespace-pre-wrap">{sdkExamples[lang.slug].code}</pre>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-lg border border-teal/20 bg-teal/[0.03] p-5">
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">The key insight:</strong> You don&apos;t need to learn PCD or change your language. Use the SDK in your {lang.name} code, pull certified circuits from the registry, and your programs are automatically compatible with the BRIK-64 ecosystem. When you need formal certification, <code className="text-foreground">brikc lift</code> extracts the PCD blueprint from your already-structured code — trivially, because the patterns already match.
+              </p>
             </div>
           </section>
         )}
