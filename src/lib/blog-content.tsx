@@ -2,9 +2,16 @@ import { PhiC } from "@/components/PhiC";
 
 function CodeBlock({ children }: { children: string }) {
   return (
-    <pre className="my-4 overflow-x-auto rounded-lg bg-[#0a0e14] p-4 text-sm leading-relaxed text-green-400 font-mono">
-      <code>{children}</code>
-    </pre>
+    <div className="my-4 overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
+      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+      </div>
+      <pre className="overflow-x-auto p-4 text-sm leading-relaxed text-emerald-400 font-mono">
+        <code>{children}</code>
+      </pre>
+    </div>
   );
 }
 
