@@ -37,10 +37,10 @@ const editors: {
     logo: "/brands/intellij.svg",
   },
   {
-    name: "Trae",
-    subtitle: "Next-gen AI IDE",
+    name: "Antigravity",
+    subtitle: "Google AI IDE",
     status: "AVAILABLE",
-    logo: "/brands/trae.svg",
+    logo: "/brands/antigravity.svg",
   },
 ];
 
