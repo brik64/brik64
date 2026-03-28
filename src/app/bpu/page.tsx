@@ -163,7 +163,7 @@ export default function BPUPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] ARCHITECTURE
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Three subsystems. Fixed pipeline.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -198,7 +198,7 @@ export default function BPUPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE NON-MASKABLE BLOCK
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             No software can override hardware.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -237,7 +237,7 @@ export default function BPUPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] POLICY CIRCUITS
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             AI safety by physics, not psychology.
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -267,10 +267,10 @@ export default function BPUPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] ROADMAP
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             From software to silicon
           </h2>
-          <div className="mt-8 space-y-4">
+          <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {roadmap.map((r) => (
               <div key={r.phase} className="rounded-lg border border-border bg-muted/20 p-6">
                 <div className="flex items-center gap-3">

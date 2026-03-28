@@ -58,14 +58,14 @@ export default function InvestorsPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Investors
           </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             The infrastructure layer for <span className="text-teal">verified software.</span>
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             BRIK-64 is building the platform where every line of code is mathematically proven
             correct. We&rsquo;re creating a new category: formal verification as a service.
           </p>
@@ -76,7 +76,7 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] THE OPPORTUNITY
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Why now</h2>
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Why now</h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div className="rounded-lg border border-border bg-muted/10 p-6">
               <Bug className="mb-4 h-6 w-6 text-teal" />
@@ -112,7 +112,7 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE PRODUCT
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
           <div className="mt-8 max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-sm leading-relaxed text-foreground">
               A self-verifying compiler and platform that lifts code from 10 languages into
@@ -129,7 +129,7 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] TRACTION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">What we&rsquo;ve built</h2>
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What we&rsquo;ve built</h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {traction.map((t) => (
               <div key={t.label} className="rounded-lg border border-border bg-muted/20 p-4 text-center">
@@ -145,7 +145,7 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] BUSINESS MODEL
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Open source CLI &rarr; Platform &rarr; Enterprise
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -163,7 +163,7 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COMPETITIVE MOAT
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Why this is hard to replicate
           </h2>
           <div className="mt-8 max-w-3xl space-y-4">
@@ -190,8 +190,8 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] VISION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Roadmap</h2>
-          <div className="mt-10 max-w-2xl space-y-4">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Roadmap</h2>
+          <div className="mx-auto mt-10 max-w-2xl space-y-4">
             {roadmap.map((r) => (
               <div
                 key={r.phase}
@@ -220,8 +220,8 @@ export default function InvestorsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] INTELLECTUAL PROPERTY
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">IP portfolio</h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">IP portfolio</h2>
+          <div className="mx-auto mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-3xl">
             <div className="rounded-lg border border-border bg-muted/10 p-5">
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">5 Patents Planned</h3>
               <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">

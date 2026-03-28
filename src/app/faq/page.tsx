@@ -61,21 +61,21 @@ export default function FAQPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             FAQ
           </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Frequently asked <span className="text-teal">questions.</span>
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             Everything you need to know about BRIK-64, PCD, and Digital Circuitality.
           </p>
         </section>
 
         {/* Accordion */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <div className="max-w-3xl space-y-2">
+          <div className="mx-auto max-w-3xl space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="rounded-lg border border-border">
                 <button

@@ -67,14 +67,14 @@ export default function ContactPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Contact
           </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Get in <span className="text-teal">touch.</span>
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             Whether you&rsquo;re exploring BRIK-64 for your team, reporting an issue, or just curious
             about Digital Circuitality &mdash; we&rsquo;d love to hear from you.
           </p>
@@ -129,7 +129,7 @@ export default function ContactPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] SEND A MESSAGE
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Contact form</h2>
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Contact form</h2>
           <div className="mt-10 max-w-lg space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <input

@@ -108,14 +108,14 @@ export default function EnterprisePage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Enterprise
           </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Built for <span className="text-teal">regulated industries.</span>
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             Fintech. Healthcare. Automotive. Government. When &ldquo;tests pass&rdquo; isn&rsquo;t
             enough, <PhiC /> = 1 provides mathematical proof that your code is correct.
           </p>
@@ -140,7 +140,7 @@ export default function EnterprisePage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] CAPABILITIES
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Enterprise-grade verification
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -159,7 +159,7 @@ export default function EnterprisePage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] USE CASES
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Trusted across industries
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -178,7 +178,7 @@ export default function EnterprisePage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] COMPLIANCE
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Standards we help you meet
           </h2>
           <div className="mt-10 flex flex-wrap gap-3">
@@ -205,7 +205,7 @@ export default function EnterprisePage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] GET IN TOUCH
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Request a demo
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">

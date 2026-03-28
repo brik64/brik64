@@ -157,14 +157,14 @@ export default function FeaturesPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Features
           </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Software that works like <span className="text-teal">hardware.</span>
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             A language, a compiler, a lifter, a certification engine, and a platform &mdash;
             everything you need to write code that is mathematically proven correct.
           </p>
@@ -187,10 +187,10 @@ export default function FeaturesPage() {
             id={section.id}
             className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18"
           >
-            <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            <p className="mb-3 text-center text-xs font-medium tracking-[2px] text-muted-foreground">
               {section.label}
             </p>
-            <div className="flex items-start gap-3">
+            <div className="flex items-start justify-center gap-3">
               <section.icon className="mt-1 h-6 w-6 shrink-0 text-teal" />
               <div>
                 <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>

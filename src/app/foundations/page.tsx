@@ -20,14 +20,14 @@ export default function FoundationsPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
+        <section className="border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
           <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
             Foundations
           </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             The science behind <span className="text-teal">Digital Circuitality.</span>
           </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             A deterministic, verified computational system has informational entropy zero.
             This is a statement about information, not about heat.
           </p>
@@ -38,7 +38,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FORMAL DEFINITION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Digital Circuitality
           </h2>
           <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -83,7 +83,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THERMODYNAMIC ANALOGY
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The analogy and its limits
           </h2>
           <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -122,7 +122,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] EVA ALGEBRA
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Composition operators
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -154,7 +154,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] COHERENCE METRICS FRAMEWORK
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             CMF: Three metrics, one condition
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -201,7 +201,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] KISH-FERRY DISTINCTION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Informational entropy &ne; thermal entropy
           </h2>
           <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -242,7 +242,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] BRILLOUIN CONNECTION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             From Landauer to Brillouin as inspiration
           </h2>
           <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -276,7 +276,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] ZERO-ENERGY ERASURE
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Information erasure at zero energy cost
           </h2>
           <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -308,7 +308,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [08] UNIVERSAL TRANSPILATION
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Transpilation through informational closure
           </h2>
           <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -345,7 +345,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [09] REFERENCES
           </p>
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Academic foundations
           </h2>
           <div className="mt-8 max-w-3xl space-y-4">
@@ -418,7 +418,7 @@ export default function FoundationsPage() {
 
         {/* Synthesis */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The logical chain
           </h2>
           <div className="mx-auto mt-8 max-w-2xl space-y-3 text-sm text-muted-foreground text-left">
