@@ -300,7 +300,20 @@ export function CircuitGrid() {
       return positionOnPath(parsedPaths[dot.pathIndex].points, dot.distance);
     });
 
-    // ── Monomer nodes ──
+    // ── Energy dots (drawn FIRST, below monomers) ──
+    for (let i = 0; i < dotsRef.current.length; i++) {
+      const dot = dotsRef.current[i];
+      if (!dot.active) continue;
+      const pos = dotPositions[i];
+
+      // Simple solid teal dot — no blur/glow
+      ctx.fillStyle = "#00e5ff";
+      ctx.beginPath();
+      ctx.arc(pos[0], pos[1], 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // ── Monomer nodes (drawn AFTER dots, on top) ──
     for (const node of monomerNodes) {
       // Check if any dot is close enough to activate
       let activated = false;
@@ -337,30 +350,6 @@ export function CircuitGrid() {
       ctx.fillStyle = activated ? "#e0f7fa" : "#d4d4d8";
       ctx.font = "5.5px monospace";
       ctx.fillText(node.name, node.x, node.y + 6);
-    }
-
-    // ── Energy dots ──
-    for (let i = 0; i < dotsRef.current.length; i++) {
-      const dot = dotsRef.current[i];
-      if (!dot.active) continue;
-      const pos = dotPositions[i];
-
-      // Radial gradient glow
-      const grad = ctx.createRadialGradient(pos[0], pos[1], 0, pos[0], pos[1], 10);
-      grad.addColorStop(0, "rgba(255,255,255,0.9)");
-      grad.addColorStop(0.25, "rgba(0,229,255,0.7)");
-      grad.addColorStop(0.6, "rgba(0,184,212,0.2)");
-      grad.addColorStop(1, "rgba(0,184,212,0)");
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(pos[0], pos[1], 10, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Bright core
-      ctx.fillStyle = "#00e5ff";
-      ctx.beginPath();
-      ctx.arc(pos[0], pos[1], 2.5, 0, Math.PI * 2);
-      ctx.fill();
     }
   }, []);
 
