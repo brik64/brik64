@@ -121,7 +121,7 @@ function CircuitGridBg() {
           <circle key={`via-${i}`} cx={x} cy={y} r="2" fill="#00b8d4" opacity="0.12" />
         ))}
 
-        {/* Monomer nodes — opaque periodic-table chips, animate to teal on energy */}
+        {/* Monomer nodes — white by default, invert to teal when energy passes */}
         {[
           { x: 120, y: 60, label: "M00", name: "ADD" },
           { x: 360, y: 300, label: "M03", name: "DIV" },
@@ -142,86 +142,30 @@ function CircuitGridBg() {
           { x: 1080, y: 600, label: "M17", name: "STORE" },
           { x: 420, y: 480, label: "M07", name: "NEG" },
         ].map((node, i) => {
-          // Pseudo-random pulse timing so each node lights up independently
-          const pulseDur = 4 + ((i * 7 + 2) % 9) * 0.8;
-          const pulseDelay = ((i * 11 + 3) % 13) * 1.2;
+          // Each node has a cycle: white(long) → snap to teal(short) → back to white
+          // Timing staggered so they don't all fire at once
+          const cycleDur = 5 + ((i * 7 + 2) % 9) * 1;
+          const cycleDelay = ((i * 11 + 3) % 13) * 1.1;
+          // keyTimes: 0=white, 0.4=still white, 0.42=snap teal, 0.58=still teal, 0.6=snap white, 1=white
+          // This gives a quick ~18% window where it's inverted (teal)
           return (
             <g key={`mono-${i}`}>
-              {/* Solid white background — opaque, hides grid behind */}
-              <rect
-                x={node.x - 21}
-                y={node.y - 15}
-                width="42"
-                height="30"
-                fill="white"
-                rx="2"
-              />
-              {/* Border — animates between gray and teal */}
-              <rect
-                x={node.x - 20}
-                y={node.y - 14}
-                width="40"
-                height="28"
-                fill="white"
-                stroke="#d4d4d8"
-                strokeWidth="0.7"
-                rx="2"
-              >
-                <animate
-                  attributeName="stroke"
-                  values="#d4d4d8;#00b8d4;#00e5ff;#00b8d4;#d4d4d8"
-                  keyTimes="0;0.3;0.5;0.7;1"
-                  dur={`${pulseDur}s`}
-                  begin={`${pulseDelay}s`}
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="stroke-width"
-                  values="0.7;1.2;1.2;0.7"
-                  keyTimes="0;0.3;0.7;1"
-                  dur={`${pulseDur}s`}
-                  begin={`${pulseDelay}s`}
-                  repeatCount="indefinite"
-                />
+              {/* Opaque background — hides grid */}
+              <rect x={node.x - 21} y={node.y - 15} width="42" height="30" fill="white" rx="2" />
+              {/* Fill — white → teal → white */}
+              <rect x={node.x - 20} y={node.y - 14} width="40" height="28" rx="2" strokeWidth="0.8">
+                <animate attributeName="fill" values="white;white;#00b8d4;#00b8d4;white;white" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
+                <animate attributeName="stroke" values="#e4e4e7;#e4e4e7;#00e5ff;#00e5ff;#e4e4e7;#e4e4e7" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
               </rect>
-              {/* Label — animates color */}
-              <text
-                x={node.x}
-                y={node.y - 3}
-                textAnchor="middle"
-                fontSize="7"
-                fontFamily="monospace"
-                fill="#a1a1aa"
-                fontWeight="bold"
-              >
+              {/* Label — gray → white → gray */}
+              <text x={node.x} y={node.y - 3} textAnchor="middle" fontSize="7" fontFamily="monospace" fontWeight="bold">
                 {node.label}
-                <animate
-                  attributeName="fill"
-                  values="#a1a1aa;#00b8d4;#00b8d4;#a1a1aa"
-                  keyTimes="0;0.3;0.7;1"
-                  dur={`${pulseDur}s`}
-                  begin={`${pulseDelay}s`}
-                  repeatCount="indefinite"
-                />
+                <animate attributeName="fill" values="#a1a1aa;#a1a1aa;#ffffff;#ffffff;#a1a1aa;#a1a1aa" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
               </text>
-              {/* Name */}
-              <text
-                x={node.x}
-                y={node.y + 7}
-                textAnchor="middle"
-                fontSize="5.5"
-                fontFamily="monospace"
-                fill="#d4d4d8"
-              >
+              {/* Name — light gray → white → light gray */}
+              <text x={node.x} y={node.y + 7} textAnchor="middle" fontSize="5.5" fontFamily="monospace">
                 {node.name}
-                <animate
-                  attributeName="fill"
-                  values="#d4d4d8;#00b8d4;#00b8d4;#d4d4d8"
-                  keyTimes="0;0.3;0.7;1"
-                  dur={`${pulseDur}s`}
-                  begin={`${pulseDelay}s`}
-                  repeatCount="indefinite"
-                />
+                <animate attributeName="fill" values="#d4d4d8;#d4d4d8;#e0f7fa;#e0f7fa;#d4d4d8;#d4d4d8" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
               </text>
             </g>
           );
