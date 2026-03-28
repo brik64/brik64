@@ -84,6 +84,7 @@ const resourcesUseCases = [
 ];
 
 const resourcesDocs: { label: string; href: string; external?: boolean }[] = [
+  { label: "Foundations", href: "/foundations" },
   { label: "Getting started", href: "https://docs.brik64.dev", external: true },
   { label: "API Reference", href: "https://docs.brik64.dev/api", external: true },
   { label: "PCD Language Spec", href: "https://docs.brik64.dev/pcd", external: true },
@@ -490,8 +491,8 @@ export function Navbar() {
           <NavTrigger label="Product" active={openMenu === "product"} onClick={() => toggle("product")} />
           <NavTrigger label="Industries" active={openMenu === "industries"} onClick={() => toggle("industries")} />
           <NavTrigger label="Languages" active={openMenu === "languages"} onClick={() => toggle("languages")} />
-          <a href="/foundations" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Foundations
+          <a href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Pricing
           </a>
           <a href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Blog
@@ -572,7 +573,7 @@ export function Navbar() {
               </a>
             ))}
             <hr className="my-2 border-border" />
-            <a href="/foundations" className="px-3 py-2 text-sm text-muted-foreground">Foundations</a>
+            <a href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</a>
             <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
             <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</p>
             <a href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</a>
