@@ -167,7 +167,7 @@ export function CustomerStoriesSection() {
           </div>
 
           {/* Right: Terminal */}
-          <div className="overflow-x-auto bg-zinc-950 p-6 font-mono text-sm md:p-8">
+          <div className="overflow-x-auto rounded-xl bg-zinc-950 p-6 font-mono text-sm md:p-8">
             <div className="mb-4 flex items-center gap-2">
               <span className="select-none text-emerald-400">$</span>
               <span className="text-zinc-100">{current.command}</span>

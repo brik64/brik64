@@ -38,7 +38,7 @@ export function TerminalBlock({ title, lines }: TerminalBlockProps) {
   }
 
   return (
-    <div className="overflow-hidden border border-border bg-[#0a0e14]">
+    <div className="overflow-hidden rounded-xl border border-border bg-[#0a0e14]">
       {/* Title bar */}
       {title && (
         <div className="flex items-center justify-between border-b border-white/10 px-4 py-2">

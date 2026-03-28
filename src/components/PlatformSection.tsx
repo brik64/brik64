@@ -111,7 +111,7 @@ export function PlatformSection() {
         </p>
 
         {/* Platform mockup */}
-        <div className="mt-12 overflow-hidden border border-white/10 bg-[#0a0e14] shadow-2xl">
+        <div className="mt-12 overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
           {/* Top bar */}
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
             <div className="flex items-center gap-0.5 text-xs tracking-widest">

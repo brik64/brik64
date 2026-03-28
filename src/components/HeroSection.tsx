@@ -150,7 +150,7 @@ export function HeroSection() {
         </div>
 
         {/* Right: Interactive terminal */}
-        <div className="relative overflow-hidden border border-white/10 bg-[#0a0e14] shadow-2xl">
+        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
           <div className="relative z-10 flex border-b border-white/10">
             {tabs.map((tab, i) => (
               <button
