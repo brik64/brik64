@@ -27,7 +27,7 @@ const circuitPaths = [
   "M 600,720 L 600,660 L 780,660 L 780,540",
   "M 960,60 L 840,60 L 840,180 L 720,180",
   "M 840,720 L 840,540 L 960,540 L 960,360 L 1080,360",
-  // Right zone — NEW
+  // Right zone
   "M 1440,120 L 1320,120 L 1320,240 L 1200,240 L 1200,360",
   "M 1920,180 L 1680,180 L 1680,300 L 1560,300",
   "M 1200,0 L 1200,120 L 1380,120 L 1380,300 L 1500,300",
@@ -38,6 +38,19 @@ const circuitPaths = [
   "M 1560,720 L 1560,540 L 1440,540 L 1440,420",
   "M 1920,600 L 1740,600 L 1740,480 L 1620,480 L 1620,360",
   "M 1080,600 L 1200,600 L 1200,480 L 1320,480",
+  // Deep vertical — below fold
+  "M 0,900 L 180,900 L 180,1080 L 360,1080",
+  "M 480,780 L 480,960 L 600,960 L 600,1140",
+  "M 960,840 L 960,1020 L 840,1020 L 840,1200",
+  "M 1440,900 L 1320,900 L 1320,1080 L 1200,1080",
+  "M 1800,840 L 1800,1020 L 1680,1020 L 1680,1200 L 1560,1200",
+  "M 120,1200 L 120,1380 L 300,1380 L 300,1560",
+  "M 720,1260 L 720,1440 L 540,1440 L 540,1620",
+  "M 1080,1140 L 1080,1320 L 1200,1320 L 1200,1500",
+  "M 1560,1320 L 1440,1320 L 1440,1500 L 1320,1500",
+  "M 360,1680 L 360,1860 L 540,1860 L 540,2040",
+  "M 960,1740 L 840,1740 L 840,1920 L 720,1920",
+  "M 1680,1620 L 1680,1800 L 1800,1800 L 1800,1980",
 ];
 
 const pads = [
@@ -84,7 +97,8 @@ function CircuitGridBg() {
       <svg
         className="h-full w-full"
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
+        viewBox="0 0 1920 5000"
+        preserveAspectRatio="xMidYMin slice"
       >
         <defs>
           <pattern id="grid-sm" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -141,6 +155,19 @@ function CircuitGridBg() {
           { x: 660, y: 660, label: "M63", name: "ASSERT" },
           { x: 1080, y: 600, label: "M17", name: "STORE" },
           { x: 420, y: 480, label: "M07", name: "NEG" },
+          // Deep nodes
+          { x: 360, y: 1080, label: "M09", name: "OR" },
+          { x: 600, y: 960, label: "M12", name: "SHL" },
+          { x: 960, y: 1020, label: "M22", name: "DUP" },
+          { x: 1320, y: 1080, label: "M26", name: "CALL" },
+          { x: 1680, y: 1020, label: "M43", name: "LEN" },
+          { x: 300, y: 1380, label: "M52", name: "VRFY" },
+          { x: 720, y: 1440, label: "M35", name: "INPUT" },
+          { x: 1200, y: 1320, label: "M55", name: "RNG" },
+          { x: 540, y: 1860, label: "M60", name: "EXIT" },
+          { x: 1440, y: 1500, label: "M10", name: "XOR" },
+          { x: 960, y: 1740, label: "M29", name: "HALT" },
+          { x: 1800, y: 1800, label: "M46", name: "TRIM" },
         ].map((node, i) => {
           // Each node has a cycle: white(long) → snap to teal(short) → back to white
           // Timing staggered so they don't all fire at once
