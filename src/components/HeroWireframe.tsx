@@ -14,18 +14,18 @@ const VERTEX_SHADER = `
   void main() {
     vec3 pos = position;
 
-    // Layered sine wave displacement
-    float wave1 = sin(uTime * 0.4 + pos.x * 0.8 + pos.y * 0.3) * 0.35;
-    float wave2 = sin(uTime * 0.6 + pos.x * 0.5 - pos.y * 0.7) * 0.25;
-    float wave3 = sin(uTime * 0.3 + pos.x * 1.2 + pos.y * 0.9) * 0.15;
-    float wave4 = cos(uTime * 0.5 + pos.y * 0.6) * 0.2;
+    // Layered sine wave displacement — gentle
+    float wave1 = sin(uTime * 0.3 + pos.x * 0.8 + pos.y * 0.3) * 0.2;
+    float wave2 = sin(uTime * 0.5 + pos.x * 0.5 - pos.y * 0.7) * 0.15;
+    float wave3 = sin(uTime * 0.25 + pos.x * 1.2 + pos.y * 0.9) * 0.08;
+    float wave4 = cos(uTime * 0.4 + pos.y * 0.6) * 0.1;
 
     float elevation = wave1 + wave2 + wave3 + wave4;
 
     // Mouse interaction — localized ripple
     float distToMouse = length(pos.xy - uMouse);
     float mouseEffect = smoothstep(uMouseRadius, 0.0, distToMouse);
-    float ripple = sin(distToMouse * 8.0 - uTime * 3.0) * mouseEffect * 0.6;
+    float ripple = sin(distToMouse * 6.0 - uTime * 2.0) * mouseEffect * 0.3;
     elevation += ripple;
 
     pos.z += elevation;
@@ -42,16 +42,16 @@ const FRAGMENT_SHADER = `
   varying float vDistToMouse;
 
   void main() {
-    // Base color: teal wireframe
-    float intensity = 0.15 + vElevation * 0.12;
+    // Base color: very subtle teal wireframe
+    float intensity = 0.06 + vElevation * 0.04;
 
-    // Brighten near mouse
-    intensity += vDistToMouse * 0.4;
+    // Brighten near mouse (still subtle)
+    intensity += vDistToMouse * 0.15;
 
-    // Teal color with white highlights
+    // Teal color with slight white shift near cursor
     vec3 teal = vec3(0.0, 0.722, 0.831); // #00b8d4
     vec3 white = vec3(1.0, 1.0, 1.0);
-    vec3 color = mix(teal, white, vDistToMouse * 0.6 + vElevation * 0.15);
+    vec3 color = mix(teal, white, vDistToMouse * 0.3);
 
     gl_FragColor = vec4(color, intensity);
   }
