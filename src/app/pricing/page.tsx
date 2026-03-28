@@ -29,6 +29,7 @@ const tiers = [
       "CLI + all SDKs",
       "128 monomers (64 certified + 64 extended)",
       "14 export targets",
+      "Platform access",
       "Public registry access",
       "5 lifts per day",
       "Community support (Discord)",
@@ -37,10 +38,10 @@ const tiers = [
   },
   {
     name: "Pro",
-    price: "$49",
-    period: "/month",
+    price: "Free",
+    period: "during closed beta",
     description: "For teams that ship verified code to production.",
-    cta: "Start Pro",
+    cta: "Start Pro — Free",
     ctaHref: "/login",
     highlight: true,
     features: [

@@ -121,7 +121,7 @@ function CircuitGridBg() {
           <circle key={`via-${i}`} cx={x} cy={y} r="2" fill="#00b8d4" opacity="0.12" />
         ))}
 
-        {/* Monomer nodes — periodic table style chips on the circuit */}
+        {/* Monomer nodes — opaque periodic-table chips, animate to teal on energy */}
         {[
           { x: 120, y: 60, label: "M00", name: "ADD" },
           { x: 360, y: 300, label: "M03", name: "DIV" },
@@ -141,42 +141,91 @@ function CircuitGridBg() {
           { x: 660, y: 660, label: "M63", name: "ASSERT" },
           { x: 1080, y: 600, label: "M17", name: "STORE" },
           { x: 420, y: 480, label: "M07", name: "NEG" },
-        ].map((node, i) => (
-          <g key={`mono-${i}`} opacity="0.12">
-            <rect
-              x={node.x - 20}
-              y={node.y - 14}
-              width="40"
-              height="28"
-              fill="none"
-              stroke="#00b8d4"
-              strokeWidth="0.6"
-              rx="2"
-            />
-            <text
-              x={node.x}
-              y={node.y - 3}
-              textAnchor="middle"
-              fontSize="7"
-              fontFamily="monospace"
-              fill="#00b8d4"
-              fontWeight="bold"
-            >
-              {node.label}
-            </text>
-            <text
-              x={node.x}
-              y={node.y + 7}
-              textAnchor="middle"
-              fontSize="5.5"
-              fontFamily="monospace"
-              fill="#00b8d4"
-              opacity="0.7"
-            >
-              {node.name}
-            </text>
-          </g>
-        ))}
+        ].map((node, i) => {
+          // Pseudo-random pulse timing so each node lights up independently
+          const pulseDur = 4 + ((i * 7 + 2) % 9) * 0.8;
+          const pulseDelay = ((i * 11 + 3) % 13) * 1.2;
+          return (
+            <g key={`mono-${i}`}>
+              {/* Solid white background — opaque, hides grid behind */}
+              <rect
+                x={node.x - 21}
+                y={node.y - 15}
+                width="42"
+                height="30"
+                fill="white"
+                rx="2"
+              />
+              {/* Border — animates between gray and teal */}
+              <rect
+                x={node.x - 20}
+                y={node.y - 14}
+                width="40"
+                height="28"
+                fill="white"
+                stroke="#d4d4d8"
+                strokeWidth="0.7"
+                rx="2"
+              >
+                <animate
+                  attributeName="stroke"
+                  values="#d4d4d8;#00b8d4;#00e5ff;#00b8d4;#d4d4d8"
+                  keyTimes="0;0.3;0.5;0.7;1"
+                  dur={`${pulseDur}s`}
+                  begin={`${pulseDelay}s`}
+                  repeatCount="indefinite"
+                />
+                <animate
+                  attributeName="stroke-width"
+                  values="0.7;1.2;1.2;0.7"
+                  keyTimes="0;0.3;0.7;1"
+                  dur={`${pulseDur}s`}
+                  begin={`${pulseDelay}s`}
+                  repeatCount="indefinite"
+                />
+              </rect>
+              {/* Label — animates color */}
+              <text
+                x={node.x}
+                y={node.y - 3}
+                textAnchor="middle"
+                fontSize="7"
+                fontFamily="monospace"
+                fill="#a1a1aa"
+                fontWeight="bold"
+              >
+                {node.label}
+                <animate
+                  attributeName="fill"
+                  values="#a1a1aa;#00b8d4;#00b8d4;#a1a1aa"
+                  keyTimes="0;0.3;0.7;1"
+                  dur={`${pulseDur}s`}
+                  begin={`${pulseDelay}s`}
+                  repeatCount="indefinite"
+                />
+              </text>
+              {/* Name */}
+              <text
+                x={node.x}
+                y={node.y + 7}
+                textAnchor="middle"
+                fontSize="5.5"
+                fontFamily="monospace"
+                fill="#d4d4d8"
+              >
+                {node.name}
+                <animate
+                  attributeName="fill"
+                  values="#d4d4d8;#00b8d4;#00b8d4;#d4d4d8"
+                  keyTimes="0;0.3;0.7;1"
+                  dur={`${pulseDur}s`}
+                  begin={`${pulseDelay}s`}
+                  repeatCount="indefinite"
+                />
+              </text>
+            </g>
+          );
+        })}
 
         {/* Glow filter — white halo around blue dot */}
         <defs>
