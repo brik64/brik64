@@ -27,7 +27,7 @@ export default function LegalPage() {
             [01] TERMS OF SERVICE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Terms of Service</h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               By accessing or using the BRIK-64 platform, CLI tools, APIs, SDKs, or any associated
               services (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms
@@ -82,7 +82,7 @@ export default function LegalPage() {
             [02] PRIVACY POLICY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Privacy Policy</h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <h3 className="text-sm font-bold text-foreground">Data We Collect</h3>
             <p>We collect minimal data necessary to provide the Service:</p>
             <ul className="list-disc list-inside space-y-1 ml-2">
@@ -136,7 +136,7 @@ export default function LegalPage() {
             [03] INTELLECTUAL PROPERTY
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Intellectual Property</h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Digital Circuitality&trade;, BRIK-64&trade;, PCD&trade;, and BPU&trade; are trademarks
               of BRIK-64 Inc. The compiler, runtime, Coq proofs, and TCE certification engine are
@@ -159,7 +159,7 @@ export default function LegalPage() {
 
         {/* Contact */}
         <section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <div className="max-w-3xl rounded-lg border border-border bg-muted/10 p-6">
+          <div className="mx-auto max-w-3xl rounded-lg border border-border bg-muted/10 p-6">
             <p className="text-sm text-muted-foreground">
               For legal inquiries, contact{" "}
               <a href="mailto:legal@brik64.com" className="text-teal hover:underline">

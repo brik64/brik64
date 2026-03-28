@@ -212,7 +212,7 @@ export default function RegistryPage() {
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             Live proof. Not a static label.
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             The badge in your README is a live endpoint &mdash; it queries the registry with the program&apos;s hash on every page load.
             If the deployed binary differs by a single byte, the badge immediately shows INVALID.
           </p>

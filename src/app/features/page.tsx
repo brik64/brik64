@@ -190,14 +190,12 @@ export default function FeaturesPage() {
             <p className="mb-3 text-center text-xs font-medium tracking-[2px] text-muted-foreground">
               {section.label}
             </p>
-            <div className="flex items-start justify-center gap-3">
-              <section.icon className="mt-1 h-6 w-6 shrink-0 text-teal" />
-              <div>
-                <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
-                <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
-                  {section.description}
-                </p>
-              </div>
+            <div className="text-center">
+              <section.icon className="mx-auto mb-3 h-6 w-6 text-teal" />
+              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
+              <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-relaxed">
+                {section.description}
+              </p>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {section.features.map((f) => (

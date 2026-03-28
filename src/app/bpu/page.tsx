@@ -240,7 +240,7 @@ export default function BPUPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             AI safety by physics, not psychology.
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
             A Policy Circuit takes an action descriptor, evaluates it against certified constraints, and returns
             exactly ALLOW or BLOCK. <PhiC /> = 1 means every possible input maps deterministically to one of two terminal states.
           </p>

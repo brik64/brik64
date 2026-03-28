@@ -46,7 +46,7 @@ export function IntegrationsSection() {
           <br />
           GitHub is where your code lives.
         </h3>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
           <span className="text-teal font-medium">BRIK-64</span> connects both.
         </p>
 

@@ -233,7 +233,7 @@ export function PlatformSection() {
         </div>
 
         {/* Badge + CTA */}
-        <div className="mt-8 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-medium text-amber-400">
             REGISTRY LAUNCHING 2026
           </span>

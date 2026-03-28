@@ -113,7 +113,7 @@ export default function InvestorsPage() {
             [02] THE PRODUCT
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
-          <div className="mt-8 max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+          <div className="mx-auto mt-8 max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-sm leading-relaxed text-foreground">
               A self-verifying compiler and platform that lifts code from 10 languages into
               mathematically certified blueprints (PCD), then exports to 14 targets with formal
@@ -166,7 +166,7 @@ export default function InvestorsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Why this is hard to replicate
           </h2>
-          <div className="mt-8 max-w-3xl space-y-4">
+          <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {[
               { title: "207 Coq proofs", desc: "Each monomer is mathematically proven correct. Building this proof library from scratch takes years." },
               { title: "Self-compilation fixpoint", desc: "The compiler compiles itself to an identical hash. This is a property, not a feature \u2014 it\u2019s extremely difficult to achieve." },

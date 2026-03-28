@@ -130,7 +130,7 @@ export default function ContactPage() {
             [03] SEND A MESSAGE
           </p>
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Contact form</h2>
-          <div className="mt-10 max-w-lg space-y-4">
+          <div className="mx-auto mt-10 max-w-lg space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <input
                 type="text"

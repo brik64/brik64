@@ -135,7 +135,7 @@ export default function TranspilerPage() {
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             Source &rarr; PCD &rarr; Target
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
             PCD captures the mathematical essence of computation &mdash; not syntax, not idioms, not runtime quirks.
             The equivalence proof travels with the output.
           </p>

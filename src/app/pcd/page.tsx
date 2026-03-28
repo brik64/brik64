@@ -172,7 +172,7 @@ export default function PCDPage() {
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             Circuit schematics, not source code
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             Every PCD program is a named circuit block. The OUTPUT directive marks the final value emitted.
             Variables are immutable (SSA form). Functions, closures, loops, and conditionals are all supported.
           </p>
@@ -262,7 +262,7 @@ let result = double(5);   // 10`}</code></pre>
           <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             The complete operation catalog
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             64 formally verified atomic operations (Core, Coq-proven) + 64 bounds-checked extended operations (CONTRACT).
             Every monomer has a declared domain, range, postconditions, and termination guarantee.
           </p>

@@ -119,7 +119,7 @@ export default function EnterprisePage() {
             Fintech. Healthcare. Automotive. Government. When &ldquo;tests pass&rdquo; isn&rsquo;t
             enough, <PhiC /> = 1 provides mathematical proof that your code is correct.
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-lg bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
@@ -181,7 +181,7 @@ export default function EnterprisePage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Standards we help you meet
           </h2>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
             {standards.map((s) => (
               <span
                 key={s}
@@ -191,7 +191,7 @@ export default function EnterprisePage() {
               </span>
             ))}
           </div>
-          <p className="text-muted-foreground mt-6 max-w-2xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed">
             Certification hashes, audit trails, and compliance reports are generated automatically
             from your PCD blueprints. No manual documentation \u2014 the math is the evidence.
           </p>
@@ -208,11 +208,11 @@ export default function EnterprisePage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Request a demo
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
             Tell us about your team and we&rsquo;ll schedule a personalized walkthrough of
             BRIK-64 Enterprise.
           </p>
-          <div className="mt-10 max-w-lg space-y-4">
+          <div className="mx-auto mt-10 max-w-lg space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <input
                 type="text"
@@ -239,7 +239,7 @@ export default function EnterprisePage() {
               <Mail className="h-4 w-4" /> Request Demo
             </button>
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">
+          <p className="mx-auto mt-6 max-w-lg text-xs text-muted-foreground">
             Or email us directly at{" "}
             <a href="mailto:enterprise@brik64.com" className="text-teal hover:underline">
               enterprise@brik64.com

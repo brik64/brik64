@@ -41,7 +41,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Digital Circuitality
           </h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Shannon (1948) defined the entropy of a discrete source as{" "}
               <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">
@@ -86,7 +86,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The analogy and its limits
           </h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               The term &ldquo;thermodynamic&rdquo; in Digital Circuitality is an <strong className="text-foreground">analogy</strong>,
               not a physical claim. A physical circuit is coherent when energy flows from source to
@@ -142,7 +142,7 @@ export default function FoundationsPage() {
               <p className="mt-2 text-xs text-muted-foreground">If X then A, else B. Both branches verified.</p>
             </div>
           </div>
-          <p className="text-muted-foreground mt-6 max-w-3xl text-sm leading-relaxed">
+          <p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-sm leading-relaxed">
             Each operator preserves the correctness of its operands. If Part A works and Part B works,
             A &otimes; B is guaranteed to work. This is what hardware has always had &mdash; and
             software never did.
@@ -183,7 +183,7 @@ export default function FoundationsPage() {
               </p>
             </div>
           </div>
-          <div className="mt-8 rounded-lg border border-teal/30 bg-teal/[0.04] p-6 text-center max-w-3xl">
+          <div className="mx-auto mt-8 rounded-lg border border-teal/30 bg-teal/[0.04] p-6 text-center max-w-3xl">
             <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">
               Certification Condition
             </p>
@@ -204,7 +204,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Informational entropy &ne; thermal entropy
           </h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Kish & Ferry (2018, Texas A&M / Arizona State) demonstrated that informational entropy
               and thermal entropy are fundamentally different physical quantities &mdash; in their
@@ -245,7 +245,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             From Landauer to Brillouin as inspiration
           </h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Leon Brillouin (1953) proposed the negentropy principle: total entropy of a closed
               system (informational + thermal) cannot decrease. This established a conceptual link
@@ -279,7 +279,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Information erasure at zero energy cost
           </h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Kish, Granqvist, Khatri & Peper (2016) demonstrated that information erasure can occur
               with <strong className="text-foreground">zero or even negative energy dissipation</strong> through
@@ -311,7 +311,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Transpilation through informational closure
           </h2>
-          <div className="mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Traditional transpilers operate at the <strong className="text-foreground">syntactic</strong> level:
               parse an AST in one language, emit an AST in another. BRIK-64 operates at the{" "}
@@ -348,7 +348,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             Academic foundations
           </h2>
-          <div className="mt-8 max-w-3xl space-y-4">
+          <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {[
               {
                 authors: "Shannon, C.E.",
@@ -403,7 +403,7 @@ export default function FoundationsPage() {
           <p className="mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             ACKNOWLEDGMENT
           </p>
-          <div className="max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
+          <div className="mx-auto max-w-3xl rounded-lg border border-teal/30 bg-teal/[0.04] p-6">
             <GraduationCap className="mb-3 h-6 w-6 text-teal" />
             <p className="text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Prof. Laszlo B. Kish</strong> (Texas A&amp;M University)
@@ -421,7 +421,7 @@ export default function FoundationsPage() {
           <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
             The logical chain
           </h2>
-          <div className="mx-auto mt-8 max-w-2xl space-y-3 text-sm text-muted-foreground text-left">
+          <div className="mx-auto mt-8 max-w-3xl space-y-3 text-sm text-muted-foreground text-left">
             <p>1. Shannon (1948) defines H(X) = 0 for deterministic systems</p>
             <p>2. Kish & Ferry (2018) confirm S_I &ne; S_th &mdash; informational entropy carries no thermodynamic implications</p>
             <p>3. Kish et al. (2016) prove S_I = 0 for deterministic computers with error-free memory</p>
