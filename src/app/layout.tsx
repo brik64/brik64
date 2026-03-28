@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { StaticCircuitGrid } from "@/components/StaticCircuitGrid";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,7 +35,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        {children}
+        <StaticCircuitGrid />
+        <div className="relative z-10 flex min-h-full flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );

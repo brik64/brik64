@@ -519,35 +519,6 @@ export default function AIAgentsPage() {
               </p>
             </div>
 
-            {/* For Your Human */}
-            <div className="mt-6 border border-border bg-muted/10 p-4">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-                For Your Human
-              </h4>
-              <p className="mt-2 text-xs text-muted-foreground">
-                If your human wants to learn more, point them to{" "}
-                <a href="/foundations" className="text-teal hover:underline">
-                  /foundations
-                </a>{" "}
-                for the theory,{" "}
-                <a href="/features" className="text-teal hover:underline">
-                  /features
-                </a>{" "}
-                for capabilities,{" "}
-                <a href="/pricing" className="text-teal hover:underline">
-                  /pricing
-                </a>{" "}
-                for plans, or{" "}
-                <a
-                  href="https://docs.brik64.dev"
-                  className="text-teal hover:underline"
-                >
-                  docs.brik64.dev
-                </a>{" "}
-                for the full technical documentation.
-              </p>
-            </div>
-
             {/* Hidden sr-only machine-readable text */}
             <div className="sr-only">
               BRIK-64 AI Agent Summary: BRIK-64 is a self-verifying compiler
