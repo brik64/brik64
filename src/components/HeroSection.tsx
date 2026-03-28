@@ -1,8 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { PhiC } from "@/components/PhiC";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
 
 const tabs = [
   {
@@ -119,8 +125,10 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="border-border mx-auto w-full max-w-7xl border-x bg-background">
-      <div className="grid gap-8 px-6 pt-16 pb-12 md:grid-cols-2 md:gap-12 md:px-12 lg:px-18 lg:pt-20">
+    <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x bg-background">
+      {/* Three.js wireframe background */}
+      <HeroWireframe />
+      <div className="relative z-10 grid gap-8 px-6 pt-16 pb-12 md:grid-cols-2 md:gap-12 md:px-12 lg:px-18 lg:pt-20">
         {/* Left: Copy */}
         <div className="flex flex-col justify-center">
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide backdrop-blur-sm">
