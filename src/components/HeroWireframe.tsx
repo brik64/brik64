@@ -39,11 +39,11 @@ const FRAGMENT_SHADER = `
   varying float vDistToMouse;
 
   void main() {
-    // Very subtle teal grid
-    float intensity = 0.07 + vElevation * 0.03;
+    // Teal grid — visible but not overwhelming
+    float intensity = 0.14 + vElevation * 0.06;
 
     // Brighten where mouse pushes
-    intensity += vDistToMouse * 0.2;
+    intensity += vDistToMouse * 0.3;
 
     vec3 teal = vec3(0.0, 0.722, 0.831);
     vec3 white = vec3(1.0, 1.0, 1.0);

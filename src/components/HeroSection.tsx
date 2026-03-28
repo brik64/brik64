@@ -131,7 +131,7 @@ export function HeroSection() {
       <div className="relative z-10 grid gap-8 px-6 pt-16 pb-12 md:grid-cols-2 md:gap-12 md:px-12 lg:px-18 lg:pt-20">
         {/* Left: Copy */}
         <div className="flex flex-col justify-center">
-          <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide backdrop-blur-sm">
+          <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide shadow-sm">
             A new way to build software
           </span>
 
@@ -146,7 +146,7 @@ export function HeroSection() {
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <div className="flex h-11 max-w-sm items-center border border-teal/20 bg-background/80 pr-1.5 pl-4 backdrop-blur-sm">
+            <div className="flex h-11 max-w-sm items-center border border-teal/30 bg-background pr-1.5 pl-4 shadow-sm">
               <input
                 type="email"
                 placeholder="Enter your email"
