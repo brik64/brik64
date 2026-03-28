@@ -6,7 +6,6 @@ import * as THREE from "three";
 const VERTEX_SHADER = `
   uniform float uTime;
   uniform vec2 uMouse;
-  uniform float uMouseRadius;
 
   varying float vElevation;
   varying float vDistToMouse;
@@ -14,19 +13,17 @@ const VERTEX_SHADER = `
   void main() {
     vec3 pos = position;
 
-    // Layered sine wave displacement — gentle
-    float wave1 = sin(uTime * 0.3 + pos.x * 0.8 + pos.y * 0.3) * 0.2;
-    float wave2 = sin(uTime * 0.5 + pos.x * 0.5 - pos.y * 0.7) * 0.15;
-    float wave3 = sin(uTime * 0.25 + pos.x * 1.2 + pos.y * 0.9) * 0.08;
-    float wave4 = cos(uTime * 0.4 + pos.y * 0.6) * 0.1;
+    // Gentle layered sine waves — slow, calm
+    float wave1 = sin(uTime * 0.2 + pos.x * 0.6 + pos.y * 0.3) * 0.18;
+    float wave2 = sin(uTime * 0.35 + pos.x * 0.4 - pos.y * 0.5) * 0.12;
+    float wave3 = cos(uTime * 0.25 + pos.y * 0.5) * 0.08;
 
-    float elevation = wave1 + wave2 + wave3 + wave4;
+    float elevation = wave1 + wave2 + wave3;
 
-    // Mouse interaction — localized ripple
-    float distToMouse = length(pos.xy - uMouse);
-    float mouseEffect = smoothstep(uMouseRadius, 0.0, distToMouse);
-    float ripple = sin(distToMouse * 6.0 - uTime * 2.0) * mouseEffect * 0.3;
-    elevation += ripple;
+    // Mouse push — subtle displacement near cursor
+    float dist = length(pos.xy - uMouse);
+    float mouseEffect = smoothstep(3.0, 0.0, dist);
+    elevation += mouseEffect * 0.4;
 
     pos.z += elevation;
 
@@ -42,16 +39,15 @@ const FRAGMENT_SHADER = `
   varying float vDistToMouse;
 
   void main() {
-    // Base color: very subtle teal wireframe
-    float intensity = 0.06 + vElevation * 0.04;
+    // Very subtle teal grid
+    float intensity = 0.07 + vElevation * 0.03;
 
-    // Brighten near mouse (still subtle)
-    intensity += vDistToMouse * 0.15;
+    // Brighten where mouse pushes
+    intensity += vDistToMouse * 0.2;
 
-    // Teal color with slight white shift near cursor
-    vec3 teal = vec3(0.0, 0.722, 0.831); // #00b8d4
+    vec3 teal = vec3(0.0, 0.722, 0.831);
     vec3 white = vec3(1.0, 1.0, 1.0);
-    vec3 color = mix(teal, white, vDistToMouse * 0.3);
+    vec3 color = mix(teal, white, vDistToMouse * 0.4);
 
     gl_FragColor = vec4(color, intensity);
   }
@@ -59,14 +55,12 @@ const FRAGMENT_SHADER = `
 
 export function HeroWireframe() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
-  const cleanupRef = useRef<(() => void) | null>(null);
+  const mouseRef = useRef({ x: 999, y: 999, tx: 999, ty: 999 });
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Scene setup
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(
@@ -75,45 +69,83 @@ export function HeroWireframe() {
       0.1,
       100
     );
-    // Low angle, looking down at the plane
     camera.position.set(0, -3.5, 4.5);
     camera.lookAt(0, 1.5, 0);
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-    });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    // Plane geometry — high subdivision wireframe
-    const geometry = new THREE.PlaneGeometry(14, 10, 96, 96);
+    // Square grid — use EdgesGeometry from a PlaneGeometry to get QUAD wireframe
+    const segW = 80;
+    const segH = 60;
+    const planeW = 14;
+    const planeH = 10;
+
+    // Create a grid of line segments manually (squares, not triangles)
+    const positions: number[] = [];
+    const stepX = planeW / segW;
+    const stepY = planeH / segH;
+    const halfW = planeW / 2;
+    const halfH = planeH / 2;
+
+    // Horizontal lines
+    for (let j = 0; j <= segH; j++) {
+      const y = -halfH + j * stepY;
+      for (let i = 0; i < segW; i++) {
+        const x1 = -halfW + i * stepX;
+        const x2 = x1 + stepX;
+        positions.push(x1, y, 0, x2, y, 0);
+      }
+    }
+
+    // Vertical lines
+    for (let i = 0; i <= segW; i++) {
+      const x = -halfW + i * stepX;
+      for (let j = 0; j < segH; j++) {
+        const y1 = -halfH + j * stepY;
+        const y2 = y1 + stepY;
+        positions.push(x, y1, 0, x, y2, 0);
+      }
+    }
+
+    const lineGeometry = new THREE.BufferGeometry();
+    lineGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3)
+    );
 
     const uniforms = {
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(999, 999) },
-      uMouseRadius: { value: 2.5 },
     };
 
-    const material = new THREE.ShaderMaterial({
+    const lineMaterial = new THREE.ShaderMaterial({
       vertexShader: VERTEX_SHADER,
       fragmentShader: FRAGMENT_SHADER,
       uniforms,
-      wireframe: true,
       transparent: true,
       depthWrite: false,
-      side: THREE.DoubleSide,
     });
 
-    const mesh = new THREE.Mesh(geometry, material);
-    // Tilt for perspective
-    mesh.rotation.x = -Math.PI * 0.38;
-    mesh.position.y = 0.5;
-    scene.add(mesh);
+    const linesMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
+    linesMesh.rotation.x = -Math.PI * 0.38;
+    linesMesh.position.y = 0.5;
+    scene.add(linesMesh);
 
-    // Raycaster for mouse interaction
+    // Invisible plane for raycasting mouse position
+    const hitGeometry = new THREE.PlaneGeometry(planeW, planeH);
+    const hitMaterial = new THREE.MeshBasicMaterial({
+      visible: false,
+      side: THREE.DoubleSide,
+    });
+    const hitPlane = new THREE.Mesh(hitGeometry, hitMaterial);
+    hitPlane.rotation.x = -Math.PI * 0.38;
+    hitPlane.position.y = 0.5;
+    scene.add(hitPlane);
+
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
 
@@ -123,42 +155,40 @@ export function HeroWireframe() {
       pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
       raycaster.setFromCamera(pointer, camera);
-      const intersects = raycaster.intersectObject(mesh);
-      if (intersects.length > 0) {
-        const p = intersects[0].point;
-        mouseRef.current.targetX = p.x;
-        mouseRef.current.targetY = p.y;
+      const hits = raycaster.intersectObject(hitPlane);
+      if (hits.length > 0) {
+        // Transform hit point to local space of the linesMesh
+        const local = linesMesh.worldToLocal(hits[0].point.clone());
+        mouseRef.current.tx = local.x;
+        mouseRef.current.ty = local.y;
       }
     };
 
     const handleMouseLeave = () => {
-      mouseRef.current.targetX = 999;
-      mouseRef.current.targetY = 999;
+      mouseRef.current.tx = 999;
+      mouseRef.current.ty = 999;
     };
 
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseleave", handleMouseLeave);
 
-    // Animation loop
-    let animationId: number;
+    let animId: number;
     const clock = new THREE.Clock();
 
     const animate = () => {
-      animationId = requestAnimationFrame(animate);
-      const elapsed = clock.getElapsedTime();
+      animId = requestAnimationFrame(animate);
 
-      // Smooth mouse follow
-      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.08;
-      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.08;
+      // Smooth lerp mouse
+      mouseRef.current.x += (mouseRef.current.tx - mouseRef.current.x) * 0.06;
+      mouseRef.current.y += (mouseRef.current.ty - mouseRef.current.y) * 0.06;
 
-      uniforms.uTime.value = elapsed;
+      uniforms.uTime.value = clock.getElapsedTime();
       uniforms.uMouse.value.set(mouseRef.current.x, mouseRef.current.y);
 
       renderer.render(scene, camera);
     };
     animate();
 
-    // Resize handler
     const handleResize = () => {
       const w = container.clientWidth;
       const h = container.clientHeight;
@@ -168,21 +198,19 @@ export function HeroWireframe() {
     };
     window.addEventListener("resize", handleResize);
 
-    cleanupRef.current = () => {
-      cancelAnimationFrame(animationId);
+    return () => {
+      cancelAnimationFrame(animId);
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
-      geometry.dispose();
-      material.dispose();
+      lineGeometry.dispose();
+      lineMaterial.dispose();
+      hitGeometry.dispose();
+      hitMaterial.dispose();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
-    };
-
-    return () => {
-      cleanupRef.current?.();
     };
   }, []);
 
@@ -190,7 +218,6 @@ export function HeroWireframe() {
     <div
       ref={containerRef}
       className="pointer-events-auto absolute inset-0 z-0"
-      style={{ minHeight: "100%" }}
     />
   );
 }
