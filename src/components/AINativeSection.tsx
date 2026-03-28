@@ -39,7 +39,7 @@ export function AINativeSection() {
       <div className="mx-auto max-w-7xl">
         {/* Section counter */}
         <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [08] · AI-NATIVE
+          [10] · AI-NATIVE
         </p>
 
         {/* Headline with gradient accent */}

@@ -275,7 +275,7 @@ export function WorldModelsSection() {
     <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [04] · THE FOUNDATION
+          [05] · THE FOUNDATION
         </p>
 
         <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-12">

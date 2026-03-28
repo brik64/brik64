@@ -99,7 +99,7 @@ export function PlatformSection() {
     <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [03] · THE PLATFORM
+          [04] · THE PLATFORM
         </p>
 
         <h3 className="text-2xl font-normal tracking-tight md:text-3xl">
