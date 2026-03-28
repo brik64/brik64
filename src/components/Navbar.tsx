@@ -76,11 +76,11 @@ const resourcesProducts = [
 ];
 
 const resourcesUseCases = [
-  { label: "AI Safety", href: "/industries/ai" },
-  { label: "COBOL Migration", href: "/lifter" },
-  { label: "Universal Transpilation", href: "/transpiler" },
-  { label: "Formal Verification", href: "/foundations" },
-  { label: "CI/CD Integration", href: "/enterprise" },
+  { label: "AI Safety", href: "/use-cases/ai-safety" },
+  { label: "COBOL Migration", href: "/use-cases/cobol-migration" },
+  { label: "Universal Transpilation", href: "/use-cases/universal-transpilation" },
+  { label: "Formal Verification", href: "/use-cases/formal-verification" },
+  { label: "CI/CD Integration", href: "/use-cases/ci-cd-integration" },
 ];
 
 const resourcesDocs: { label: string; href: string; external?: boolean }[] = [
