@@ -15,18 +15,29 @@ import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 
 const circuitPaths = [
+  // Left zone
   "M 0,180 L 120,180 L 120,60 L 300,60",
+  "M 0,540 L 180,540 L 180,420 L 360,420",
+  "M 0,360 L 60,360 L 60,240 L 180,240 L 180,120",
+  "M 240,720 L 240,600 L 420,600 L 420,480",
+  "M 300,0 L 300,120 L 180,120 L 180,300",
+  // Center zone
   "M 480,0 L 480,120 L 360,120 L 360,300 L 480,300",
   "M 720,180 L 600,180 L 600,420 L 720,420",
-  "M 960,60 L 840,60 L 840,180 L 720,180",
-  "M 0,540 L 180,540 L 180,420 L 360,420",
-  "M 1200,300 L 1080,300 L 1080,420 L 960,420 L 960,540",
-  "M 240,720 L 240,600 L 420,600 L 420,480",
   "M 600,720 L 600,660 L 780,660 L 780,540",
-  "M 0,360 L 60,360 L 60,240 L 180,240 L 180,120",
-  "M 1440,480 L 1200,480 L 1200,600 L 1080,600",
+  "M 960,60 L 840,60 L 840,180 L 720,180",
   "M 840,720 L 840,540 L 960,540 L 960,360 L 1080,360",
-  "M 300,0 L 300,120 L 180,120 L 180,300",
+  // Right zone — NEW
+  "M 1440,120 L 1320,120 L 1320,240 L 1200,240 L 1200,360",
+  "M 1920,180 L 1680,180 L 1680,300 L 1560,300",
+  "M 1200,0 L 1200,120 L 1380,120 L 1380,300 L 1500,300",
+  "M 1920,480 L 1800,480 L 1800,360 L 1680,360 L 1680,240",
+  "M 1440,720 L 1440,600 L 1560,600 L 1560,480 L 1680,480",
+  "M 1200,540 L 1320,540 L 1320,420 L 1500,420",
+  "M 1800,0 L 1800,180 L 1680,180 L 1680,60 L 1560,60",
+  "M 1560,720 L 1560,540 L 1440,540 L 1440,420",
+  "M 1920,600 L 1740,600 L 1740,480 L 1620,480 L 1620,360",
+  "M 1080,600 L 1200,600 L 1200,480 L 1320,480",
 ];
 
 const pads = [
@@ -36,13 +47,22 @@ const pads = [
   [600,660],[780,660],[60,360],[60,240],[180,240],[180,120],
   [1200,480],[1200,600],[840,540],[960,540],[960,360],[1080,360],
   [300,120],[180,300],
+  // Right pads
+  [1320,120],[1320,240],[1200,240],[1200,360],[1680,180],[1680,300],
+  [1560,300],[1380,120],[1380,300],[1500,300],[1800,480],[1800,360],
+  [1680,360],[1680,240],[1440,600],[1560,600],[1560,480],[1680,480],
+  [1320,540],[1320,420],[1500,420],[1800,180],[1680,60],[1560,60],
+  [1740,600],[1740,480],[1620,480],[1620,360],[1200,600],[1320,480],
 ];
 
 const vias = [
   [60,120],[180,240],[300,360],[420,120],[540,300],
   [660,480],[780,120],[900,360],[1020,240],[1140,480],
   [120,480],[360,600],[540,540],[720,300],[960,180],
-  [1320,360],[1080,120],[480,600],[840,420],[660,240],
+  [1080,120],[480,600],[840,420],[660,240],
+  // Right vias
+  [1260,180],[1380,360],[1500,480],[1620,120],[1740,300],
+  [1380,540],[1560,240],[1680,540],[1800,120],[1440,360],
 ];
 
 function CircuitGridBg() {
@@ -51,13 +71,14 @@ function CircuitGridBg() {
       <style>{`
         @keyframes energy-flow {
           0% { offset-distance: 0%; opacity: 0; }
-          5% { opacity: 1; }
-          95% { opacity: 1; }
+          8% { opacity: 1; }
+          92% { opacity: 1; }
           100% { offset-distance: 100%; opacity: 0; }
         }
         .energy-dot {
           offset-rotate: 0deg;
-          animation: energy-flow var(--dur) linear var(--delay) infinite;
+          animation: energy-flow var(--dur) ease-in-out var(--delay) infinite;
+          filter: blur(0.5px);
         }
       `}</style>
       <svg
@@ -100,45 +121,65 @@ function CircuitGridBg() {
           <circle key={`via-${i}`} cx={x} cy={y} r="2" fill="#00b8d4" opacity="0.12" />
         ))}
 
-        {/* ENERGY DOTS — animated circles traveling along circuit paths */}
-        {circuitPaths.map((d, i) => (
-          <circle
-            key={`energy-${i}`}
-            r="3"
-            fill="#00e5ff"
-            className="energy-dot"
-            style={{
-              offsetPath: `path("${d}")`,
-              ["--dur" as string]: `${4 + (i % 4) * 1.5}s`,
-              ["--delay" as string]: `${i * 0.8}s`,
-            }}
-          >
-            <animate
-              attributeName="opacity"
-              values="0;1;1;0"
-              keyTimes="0;0.05;0.95;1"
-              dur={`${4 + (i % 4) * 1.5}s`}
-              begin={`${i * 0.8}s`}
-              repeatCount="indefinite"
-            />
-          </circle>
-        ))}
+        {/* Glow filter for energy dots */}
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="glow-soft" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
 
-        {/* Glowing trail effect — secondary dots with offset */}
-        {circuitPaths.map((d, i) => (
-          <circle
-            key={`trail-${i}`}
-            r="1.5"
-            fill="#00e5ff"
-            opacity="0.4"
-            className="energy-dot"
-            style={{
-              offsetPath: `path("${d}")`,
-              ["--dur" as string]: `${4 + (i % 4) * 1.5}s`,
-              ["--delay" as string]: `${i * 0.8 + 0.15}s`,
-            }}
-          />
-        ))}
+        {/* ENERGY DOTS — luminous points traveling along circuits */}
+        {circuitPaths.map((d, i) => {
+          // Pseudo-random durations and delays for organic feel
+          const dur = 3.2 + ((i * 7 + 3) % 11) * 0.6;
+          const delay = ((i * 13 + 5) % 17) * 0.9;
+          return (
+            <g key={`energy-${i}`}>
+              {/* Outer glow */}
+              <circle
+                r="6"
+                fill="#00e5ff"
+                opacity="0.3"
+                filter="url(#glow-soft)"
+                className="energy-dot"
+                style={{
+                  offsetPath: `path("${d}")`,
+                  ["--dur" as string]: `${dur}s`,
+                  ["--delay" as string]: `${delay}s`,
+                }}
+              />
+              {/* Core bright dot */}
+              <circle
+                r="2"
+                fill="#ffffff"
+                filter="url(#glow)"
+                className="energy-dot"
+                style={{
+                  offsetPath: `path("${d}")`,
+                  ["--dur" as string]: `${dur}s`,
+                  ["--delay" as string]: `${delay}s`,
+                }}
+              />
+              {/* Trail — slightly behind */}
+              <circle
+                r="1"
+                fill="#00e5ff"
+                opacity="0.5"
+                className="energy-dot"
+                style={{
+                  offsetPath: `path("${d}")`,
+                  ["--dur" as string]: `${dur}s`,
+                  ["--delay" as string]: `${delay + 0.2}s`,
+                }}
+              />
+            </g>
+          );
+        })}
       </svg>
     </div>
   );
