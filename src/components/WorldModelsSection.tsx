@@ -272,7 +272,7 @@ function FamilyAccordion({ families, tier }: { families: MonomerFamily[]; tier: 
 
 export function WorldModelsSection() {
   return (
-    <section className="border-border border-t px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
           [04] · THE FOUNDATION
@@ -349,7 +349,7 @@ export function WorldModelsSection() {
 
           {/* Extended — Contract */}
           <div className="mt-3 overflow-hidden border border-border/50">
-            <div className="flex items-center gap-3 border-b border-border/30 bg-muted/20 px-4 py-3">
+            <div className="flex items-center gap-3 border-b border-border/30 bg-muted px-4 py-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
                 Extended · Contract
               </span>

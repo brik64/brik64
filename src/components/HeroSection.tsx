@@ -101,7 +101,7 @@ export function HeroSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="border-border mx-auto w-full max-w-7xl border-x">
+    <section className="border-border mx-auto w-full max-w-7xl border-x bg-background">
       <div className="grid gap-8 px-6 pt-16 pb-12 md:grid-cols-2 md:gap-12 md:px-12 lg:px-18 lg:pt-20">
         {/* Left: Copy */}
         <div className="flex flex-col justify-center">
