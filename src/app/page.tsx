@@ -121,6 +121,63 @@ function CircuitGridBg() {
           <circle key={`via-${i}`} cx={x} cy={y} r="2" fill="#00b8d4" opacity="0.12" />
         ))}
 
+        {/* Monomer nodes — periodic table style chips on the circuit */}
+        {[
+          { x: 120, y: 60, label: "M00", name: "ADD" },
+          { x: 360, y: 300, label: "M03", name: "DIV" },
+          { x: 720, y: 420, label: "M08", name: "AND" },
+          { x: 960, y: 180, label: "M16", name: "LOAD" },
+          { x: 480, y: 300, label: "M24", name: "IF" },
+          { x: 180, y: 420, label: "M32", name: "READ" },
+          { x: 600, y: 180, label: "M40", name: "STR" },
+          { x: 840, y: 60, label: "M48", name: "HASH" },
+          { x: 240, y: 600, label: "M56", name: "TIME" },
+          { x: 1320, y: 240, label: "M02", name: "MUL" },
+          { x: 1560, y: 300, label: "M11", name: "NOT" },
+          { x: 1680, y: 480, label: "M25", name: "LOOP" },
+          { x: 1440, y: 600, label: "M33", name: "WRITE" },
+          { x: 1800, y: 180, label: "M49", name: "ENC" },
+          { x: 1200, y: 360, label: "M51", name: "SIGN" },
+          { x: 660, y: 660, label: "M63", name: "ASSERT" },
+          { x: 1080, y: 600, label: "M17", name: "STORE" },
+          { x: 420, y: 480, label: "M07", name: "NEG" },
+        ].map((node, i) => (
+          <g key={`mono-${i}`} opacity="0.12">
+            <rect
+              x={node.x - 20}
+              y={node.y - 14}
+              width="40"
+              height="28"
+              fill="none"
+              stroke="#00b8d4"
+              strokeWidth="0.6"
+              rx="2"
+            />
+            <text
+              x={node.x}
+              y={node.y - 3}
+              textAnchor="middle"
+              fontSize="7"
+              fontFamily="monospace"
+              fill="#00b8d4"
+              fontWeight="bold"
+            >
+              {node.label}
+            </text>
+            <text
+              x={node.x}
+              y={node.y + 7}
+              textAnchor="middle"
+              fontSize="5.5"
+              fontFamily="monospace"
+              fill="#00b8d4"
+              opacity="0.7"
+            >
+              {node.name}
+            </text>
+          </g>
+        ))}
+
         {/* Glow filter — white halo around blue dot */}
         <defs>
           <filter id="energy-glow" x="-200%" y="-200%" width="500%" height="500%">
