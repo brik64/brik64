@@ -151,7 +151,7 @@ export function HeroSection() {
 
         {/* Right: Interactive terminal */}
         <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
-          <div className="relative z-10 flex border-b border-white/10">
+          <div className="relative z-10 flex items-center gap-2 border-b border-white/10 px-4 py-2"><span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" /><span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" /><span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" /><span className="mx-1" />
             {tabs.map((tab, i) => (
               <button
                 key={tab.label}

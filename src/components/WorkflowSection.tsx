@@ -140,7 +140,7 @@ export function WorkflowSection() {
               </div>
 
               {/* Right — terminal */}
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
+              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]"><div className="flex items-center gap-2 border-b border-white/10 px-4 py-2"><span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" /><span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" /><span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" /></div>
                 <div className="border-b border-white/10 px-4 py-2">
                   <span className="text-[10px] font-medium tracking-wider text-white/30">
                     TERMINAL

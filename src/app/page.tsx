@@ -135,69 +135,6 @@ function CircuitGridBg() {
           <circle key={`via-${i}`} cx={x} cy={y} r="2" fill="#00b8d4" opacity="0.12" />
         ))}
 
-        {/* Monomer nodes — white by default, invert to teal when energy passes */}
-        {[
-          { x: 120, y: 60, label: "M00", name: "ADD" },
-          { x: 360, y: 300, label: "M03", name: "DIV" },
-          { x: 720, y: 420, label: "M08", name: "AND" },
-          { x: 960, y: 180, label: "M16", name: "LOAD" },
-          { x: 480, y: 300, label: "M24", name: "IF" },
-          { x: 180, y: 420, label: "M32", name: "READ" },
-          { x: 600, y: 180, label: "M40", name: "STR" },
-          { x: 840, y: 60, label: "M48", name: "HASH" },
-          { x: 240, y: 600, label: "M56", name: "TIME" },
-          { x: 1320, y: 240, label: "M02", name: "MUL" },
-          { x: 1560, y: 300, label: "M11", name: "NOT" },
-          { x: 1680, y: 480, label: "M25", name: "LOOP" },
-          { x: 1440, y: 600, label: "M33", name: "WRITE" },
-          { x: 1800, y: 180, label: "M49", name: "ENC" },
-          { x: 1200, y: 360, label: "M51", name: "SIGN" },
-          { x: 660, y: 660, label: "M63", name: "ASSERT" },
-          { x: 1080, y: 600, label: "M17", name: "STORE" },
-          { x: 420, y: 480, label: "M07", name: "NEG" },
-          // Deep nodes
-          { x: 360, y: 1080, label: "M09", name: "OR" },
-          { x: 600, y: 960, label: "M12", name: "SHL" },
-          { x: 960, y: 1020, label: "M22", name: "DUP" },
-          { x: 1320, y: 1080, label: "M26", name: "CALL" },
-          { x: 1680, y: 1020, label: "M43", name: "LEN" },
-          { x: 300, y: 1380, label: "M52", name: "VRFY" },
-          { x: 720, y: 1440, label: "M35", name: "INPUT" },
-          { x: 1200, y: 1320, label: "M55", name: "RNG" },
-          { x: 540, y: 1860, label: "M60", name: "EXIT" },
-          { x: 1440, y: 1500, label: "M10", name: "XOR" },
-          { x: 960, y: 1740, label: "M29", name: "HALT" },
-          { x: 1800, y: 1800, label: "M46", name: "TRIM" },
-        ].map((node, i) => {
-          // Each node has a cycle: white(long) → snap to teal(short) → back to white
-          // Timing staggered so they don't all fire at once
-          const cycleDur = 5 + ((i * 7 + 2) % 9) * 1;
-          const cycleDelay = ((i * 11 + 3) % 13) * 1.1;
-          // keyTimes: 0=white, 0.4=still white, 0.42=snap teal, 0.58=still teal, 0.6=snap white, 1=white
-          // This gives a quick ~18% window where it's inverted (teal)
-          return (
-            <g key={`mono-${i}`}>
-              {/* Opaque background — hides grid */}
-              <rect x={node.x - 21} y={node.y - 15} width="42" height="30" fill="white" rx="2" />
-              {/* Fill — white → teal → white */}
-              <rect x={node.x - 20} y={node.y - 14} width="40" height="28" rx="2" strokeWidth="0.8">
-                <animate attributeName="fill" values="white;white;#00b8d4;#00b8d4;white;white" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
-                <animate attributeName="stroke" values="#e4e4e7;#e4e4e7;#00e5ff;#00e5ff;#e4e4e7;#e4e4e7" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
-              </rect>
-              {/* Label — gray → white → gray */}
-              <text x={node.x} y={node.y - 3} textAnchor="middle" fontSize="7" fontFamily="monospace" fontWeight="bold">
-                {node.label}
-                <animate attributeName="fill" values="#a1a1aa;#a1a1aa;#ffffff;#ffffff;#a1a1aa;#a1a1aa" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
-              </text>
-              {/* Name — light gray → white → light gray */}
-              <text x={node.x} y={node.y + 7} textAnchor="middle" fontSize="5.5" fontFamily="monospace">
-                {node.name}
-                <animate attributeName="fill" values="#d4d4d8;#d4d4d8;#e0f7fa;#e0f7fa;#d4d4d8;#d4d4d8" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
-              </text>
-            </g>
-          );
-        })}
-
         {/* Glow filter — white halo around blue dot */}
         <defs>
           <filter id="energy-glow" x="-200%" y="-200%" width="500%" height="500%">
@@ -240,6 +177,60 @@ function CircuitGridBg() {
                   ["--delay" as string]: `${delay + 0.25}s`,
                 }}
               />
+            </g>
+          );
+        })}
+
+        {/* Monomer nodes — ON TOP of everything, invert when energy passes */}
+        {[
+          { x: 120, y: 60, label: "M00", name: "ADD" },
+          { x: 360, y: 300, label: "M03", name: "DIV" },
+          { x: 720, y: 420, label: "M08", name: "AND" },
+          { x: 960, y: 180, label: "M16", name: "LOAD" },
+          { x: 480, y: 300, label: "M24", name: "IF" },
+          { x: 180, y: 420, label: "M32", name: "READ" },
+          { x: 600, y: 180, label: "M40", name: "STR" },
+          { x: 840, y: 60, label: "M48", name: "HASH" },
+          { x: 240, y: 600, label: "M56", name: "TIME" },
+          { x: 1320, y: 240, label: "M02", name: "MUL" },
+          { x: 1560, y: 300, label: "M11", name: "NOT" },
+          { x: 1680, y: 480, label: "M25", name: "LOOP" },
+          { x: 1440, y: 600, label: "M33", name: "WRITE" },
+          { x: 1800, y: 180, label: "M49", name: "ENC" },
+          { x: 1200, y: 360, label: "M51", name: "SIGN" },
+          { x: 660, y: 660, label: "M63", name: "ASSERT" },
+          { x: 1080, y: 600, label: "M17", name: "STORE" },
+          { x: 420, y: 480, label: "M07", name: "NEG" },
+          { x: 360, y: 1080, label: "M09", name: "OR" },
+          { x: 600, y: 960, label: "M12", name: "SHL" },
+          { x: 960, y: 1020, label: "M22", name: "DUP" },
+          { x: 1320, y: 1080, label: "M26", name: "CALL" },
+          { x: 1680, y: 1020, label: "M43", name: "LEN" },
+          { x: 300, y: 1380, label: "M52", name: "VRFY" },
+          { x: 720, y: 1440, label: "M35", name: "INPUT" },
+          { x: 1200, y: 1320, label: "M55", name: "RNG" },
+          { x: 540, y: 1860, label: "M60", name: "EXIT" },
+          { x: 1440, y: 1500, label: "M10", name: "XOR" },
+          { x: 960, y: 1740, label: "M29", name: "HALT" },
+          { x: 1800, y: 1800, label: "M46", name: "TRIM" },
+        ].map((node, i) => {
+          const cycleDur = 5 + ((i * 7 + 2) % 9) * 1;
+          const cycleDelay = ((i * 11 + 3) % 13) * 1.1;
+          return (
+            <g key={`mono-${i}`}>
+              <rect x={node.x - 21} y={node.y - 15} width="42" height="30" fill="white" rx="2" />
+              <rect x={node.x - 20} y={node.y - 14} width="40" height="28" rx="2" strokeWidth="0.8">
+                <animate attributeName="fill" values="white;white;#00b8d4;#00b8d4;white;white" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
+                <animate attributeName="stroke" values="#e4e4e7;#e4e4e7;#00e5ff;#00e5ff;#e4e4e7;#e4e4e7" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
+              </rect>
+              <text x={node.x} y={node.y - 3} textAnchor="middle" fontSize="7" fontFamily="monospace" fontWeight="bold">
+                {node.label}
+                <animate attributeName="fill" values="#a1a1aa;#a1a1aa;#ffffff;#ffffff;#a1a1aa;#a1a1aa" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
+              </text>
+              <text x={node.x} y={node.y + 7} textAnchor="middle" fontSize="5.5" fontFamily="monospace">
+                {node.name}
+                <animate attributeName="fill" values="#d4d4d8;#d4d4d8;#e0f7fa;#e0f7fa;#d4d4d8;#d4d4d8" keyTimes="0;0.40;0.42;0.58;0.60;1" dur={`${cycleDur}s`} begin={`${cycleDelay}s`} repeatCount="indefinite" />
+              </text>
             </g>
           );
         })}
