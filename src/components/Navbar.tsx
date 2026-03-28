@@ -64,6 +64,43 @@ const compileToLanguages = [
   { label: "BIR", href: "/languages/bir" },
 ];
 
+/* ── Resources Mega Menu data ── */
+
+const resourcesProducts = [
+  { label: "Playground", href: "/playground" },
+  { label: "CLI", href: "/cli" },
+  { label: "Platform", href: "/platform" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Changelog", href: "/changelog" },
+  { label: "PCD Format", href: "/pcd" },
+];
+
+const resourcesUseCases = [
+  { label: "AI Safety", href: "/industries/ai" },
+  { label: "COBOL Migration", href: "/lifter" },
+  { label: "Universal Transpilation", href: "/transpiler" },
+  { label: "Formal Verification", href: "/foundations" },
+  { label: "CI/CD Integration", href: "/enterprise" },
+];
+
+const resourcesDocs: { label: string; href: string; external?: boolean }[] = [
+  { label: "Getting started", href: "https://docs.brik64.dev", external: true },
+  { label: "API Reference", href: "https://docs.brik64.dev/api", external: true },
+  { label: "PCD Language Spec", href: "https://docs.brik64.dev/pcd", external: true },
+  { label: "SDKs", href: "/sdks" },
+  { label: "Examples", href: "https://docs.brik64.dev/pcd/examples", external: true },
+];
+
+const resourcesCompany: { label: string; href: string }[] = [
+  { label: "Blog", href: "/blog" },
+  { label: "News", href: "/news" },
+  { label: "About", href: "/about" },
+  { label: "Investors", href: "/investors" },
+  { label: "AI Agents", href: "/ai-agents" },
+  { label: "Contact", href: "/contact" },
+  { label: "Legal", href: "/legal" },
+];
+
 /* ── Mega Dropdown Shell ── */
 
 function MegaDropdown({
@@ -322,6 +359,88 @@ function LanguagesDropdown() {
   );
 }
 
+/* ── Resources Dropdown Content ── */
+
+function ResourcesDropdown() {
+  return (
+    <div className="grid grid-cols-4 gap-0">
+      {/* Column 1: Products */}
+      <div className="border-r border-border/40 pr-6">
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Products
+        </p>
+        <div className="space-y-0.5">
+          {resourcesProducts.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Column 2: Use Cases */}
+      <div className="border-r border-border/40 px-6">
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Use Cases
+        </p>
+        <div className="space-y-0.5">
+          {resourcesUseCases.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Column 3: Documentation */}
+      <div className="border-r border-border/40 px-6">
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Documentation
+        </p>
+        <div className="space-y-0.5">
+          {resourcesDocs.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
+            >
+              {item.label}
+              {item.external && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Column 4: Company */}
+      <div className="pl-6">
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Company
+        </p>
+        <div className="space-y-0.5">
+          {resourcesCompany.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── Nav trigger button ── */
 
 function NavTrigger({
@@ -377,9 +496,7 @@ export function Navbar() {
           <a href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Blog
           </a>
-          <a href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Pricing
-          </a>
+          <NavTrigger label="Resources" active={openMenu === "resources"} onClick={() => toggle("resources")} />
           <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
             Docs <ExternalLink className="h-3 w-3" />
           </a>
@@ -422,6 +539,9 @@ export function Navbar() {
       <MegaDropdown open={openMenu === "languages"} onClose={() => setOpenMenu(null)}>
         <LanguagesDropdown />
       </MegaDropdown>
+      <MegaDropdown open={openMenu === "resources"} onClose={() => setOpenMenu(null)}>
+        <ResourcesDropdown />
+      </MegaDropdown>
 
       {/* Mobile menu */}
       {mobileOpen && (
@@ -454,7 +574,14 @@ export function Navbar() {
             <hr className="my-2 border-border" />
             <a href="/foundations" className="px-3 py-2 text-sm text-muted-foreground">Foundations</a>
             <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
-            <a href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</a>
+            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</p>
+            <a href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</a>
+            <a href="/pricing" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Pricing</a>
+            <a href="/changelog" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Changelog</a>
+            <a href="/news" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">News</a>
+            <a href="/about" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">About</a>
+            <a href="/investors" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Investors</a>
+            <a href="/contact" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Contact</a>
             <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
               Docs <ExternalLink className="h-3 w-3" />
             </a>

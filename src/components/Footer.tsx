@@ -104,6 +104,19 @@ export function Footer() {
             <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Terms</a>
           </div>
         </div>
+
+        {/* Status badge */}
+        <div className="mt-0 border-t border-[#EEEEEE] pt-4">
+          <a
+            href="https://status.brik64.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md px-2 py-1 transition-colors hover:bg-[#f0fdf4]"
+          >
+            <span className="text-emerald-500">&#9679;</span>
+            <span className="text-sm font-medium text-emerald-600">All systems normal</span>
+          </a>
+        </div>
       </div>
     </footer>
   );
