@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { PhiC } from "@/components/PhiC";
 
@@ -99,6 +99,24 @@ function TerminalLine({ line }: { line: (typeof tabs)[number]["lines"][number] }
 
 export function HeroSection() {
   const [activeTab, setActiveTab] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const totalTabs = tabs.length;
+
+  useEffect(() => {
+    if (paused) return;
+    const interval = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % totalTabs);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [paused, totalTabs]);
+
+  const handleTabClick = useCallback((i: number) => {
+    setActiveTab(i);
+    setPaused(true);
+    // Resume auto-cycle after 10s of no interaction
+    setTimeout(() => setPaused(false), 10000);
+  }, []);
 
   return (
     <section className="border-border mx-auto w-full max-w-7xl border-x bg-background">
@@ -155,7 +173,7 @@ export function HeroSection() {
             {tabs.map((tab, i) => (
               <button
                 key={tab.label}
-                onClick={() => setActiveTab(i)}
+                onClick={() => handleTabClick(i)}
                 className={`cursor-pointer px-4 py-2.5 text-xs font-medium tracking-wide transition-colors ${
                   activeTab === i
                     ? "border-b-2 border-teal text-teal"
