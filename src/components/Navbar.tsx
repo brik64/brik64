@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe, ExternalLink } from "lucide-react";
 
 /* ── Product Mega Menu data ── */
 
@@ -30,6 +30,38 @@ const industryItems = [
   { label: "Healthcare", desc: "HIPAA compliance, medical device software certification", href: "/industries/healthcare" },
   { label: "Automotive", desc: "ISO 26262 certification, autonomous vehicle safety", href: "/industries/automotive" },
   { label: "Government", desc: "FedRAMP readiness, classified system verification", href: "/industries/government" },
+];
+
+/* ── Languages Mega Menu data ── */
+
+const liftFromLanguages = [
+  { label: "JavaScript", href: "/languages/javascript" },
+  { label: "TypeScript", href: "/languages/typescript" },
+  { label: "Python", href: "/languages/python" },
+  { label: "Rust", href: "/languages/rust" },
+  { label: "C", href: "/languages/c" },
+  { label: "C++", href: "/languages/cpp" },
+  { label: "Go", href: "/languages/go" },
+  { label: "COBOL", href: "/languages/cobol" },
+  { label: "PHP", href: "/languages/php" },
+  { label: "Java", href: "/languages/java" },
+];
+
+const compileToLanguages = [
+  { label: "Rust", href: "/languages/rust" },
+  { label: "JavaScript", href: "/languages/javascript" },
+  { label: "TypeScript", href: "/languages/typescript" },
+  { label: "Python", href: "/languages/python" },
+  { label: "C", href: "/languages/c" },
+  { label: "C++", href: "/languages/cpp" },
+  { label: "Go", href: "/languages/go" },
+  { label: "COBOL", href: "/languages/cobol" },
+  { label: "PHP", href: "/languages/php" },
+  { label: "Java", href: "/languages/java" },
+  { label: "Swift", href: "/languages/swift" },
+  { label: "WASM", href: "/languages/wasm" },
+  { label: "Native", href: "/languages/native" },
+  { label: "BIR", href: "/languages/bir" },
 ];
 
 /* ── Mega Dropdown Shell ── */
@@ -226,6 +258,70 @@ function IndustriesDropdown() {
   );
 }
 
+/* ── Languages Dropdown Content ── */
+
+function LanguagesDropdown() {
+  return (
+    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
+      {/* Left — Lift From */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Lift From
+        </p>
+        <div className="space-y-0.5">
+          {liftFromLanguages.map((item) => (
+            <a
+              key={item.href + "-lift"}
+              href={item.href}
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/50"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Center — Compile To */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Compile To
+        </p>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
+          {compileToLanguages.map((item) => (
+            <a
+              key={item.href + "-compile"}
+              href={item.href}
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/50"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Right — Featured */}
+      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-teal">
+          Universal IR
+        </p>
+        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
+          Every language.{" "}
+          <span className="text-teal">One blueprint.</span>
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          PCD is the universal intermediate representation. Lift from any source, compile to any target — with certified correctness at every step.
+        </p>
+        <a
+          href="/transpiler"
+          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
+        >
+          Explore the transpiler <ArrowRight className="h-3 w-3" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 /* ── Nav trigger button ── */
 
 function NavTrigger({
@@ -274,14 +370,18 @@ export function Navbar() {
         <nav className="hidden items-center gap-6 lg:flex">
           <NavTrigger label="Product" active={openMenu === "product"} onClick={() => toggle("product")} />
           <NavTrigger label="Industries" active={openMenu === "industries"} onClick={() => toggle("industries")} />
+          <NavTrigger label="Languages" active={openMenu === "languages"} onClick={() => toggle("languages")} />
           <a href="/foundations" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Foundations
           </a>
           <a href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Blog
           </a>
-          <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Docs
+          <a href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Pricing
+          </a>
+          <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Docs <ExternalLink className="h-3 w-3" />
           </a>
         </nav>
 
@@ -291,17 +391,17 @@ export function Navbar() {
             href="https://github.com/brik64"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
           >
             <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
             </svg>
             GitHub
           </a>
-          <a href="/login" className="rounded-full border border-teal px-5 py-1.5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
+          <a href="/login" className="rounded-md border border-teal px-5 py-1.5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
             Login
           </a>
-          <a href="/signup" className="rounded-full bg-teal px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+          <a href="/signup" className="rounded-md bg-teal px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
             Sign Up
           </a>
         </div>
@@ -318,6 +418,9 @@ export function Navbar() {
       </MegaDropdown>
       <MegaDropdown open={openMenu === "industries"} onClose={() => setOpenMenu(null)}>
         <IndustriesDropdown />
+      </MegaDropdown>
+      <MegaDropdown open={openMenu === "languages"} onClose={() => setOpenMenu(null)}>
+        <LanguagesDropdown />
       </MegaDropdown>
 
       {/* Mobile menu */}
@@ -336,13 +439,28 @@ export function Navbar() {
                 {item.label}
               </a>
             ))}
+            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Languages — Lift From</p>
+            {liftFromLanguages.map((item) => (
+              <a key={item.href + "-m-lift"} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+                {item.label}
+              </a>
+            ))}
+            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Languages — Compile To</p>
+            {compileToLanguages.map((item) => (
+              <a key={item.href + "-m-compile"} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+                {item.label}
+              </a>
+            ))}
             <hr className="my-2 border-border" />
             <a href="/foundations" className="px-3 py-2 text-sm text-muted-foreground">Foundations</a>
             <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
-            <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="px-3 py-2 text-sm text-muted-foreground">Docs</a>
+            <a href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</a>
+            <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
+              Docs <ExternalLink className="h-3 w-3" />
+            </a>
             <hr className="my-2 border-border" />
             <a href="/login" className="px-3 py-2 text-sm text-foreground">Login</a>
-            <a href="/signup" className="mt-1 rounded-full bg-teal px-5 py-1.5 text-center text-sm font-medium text-white">Sign Up</a>
+            <a href="/signup" className="mt-1 rounded-md bg-teal px-5 py-1.5 text-center text-sm font-medium text-white">Sign Up</a>
           </nav>
         </div>
       )}

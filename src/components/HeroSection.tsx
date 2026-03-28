@@ -61,31 +61,57 @@ const tabs = [
 ];
 
 const gridLabels = [
-  { x: 8, y: 15, text: "MC_00" },
-  { x: 32, y: 8, text: "ADD8" },
-  { x: 68, y: 12, text: "STORE" },
-  { x: 88, y: 20, text: "IF" },
-  { x: 15, y: 45, text: "HASH" },
+  { x: 8, y: 15, text: "ADD8" },
+  { x: 32, y: 8, text: "STORE" },
+  { x: 68, y: 12, text: "IF" },
+  { x: 88, y: 20, text: "HASH" },
+  { x: 15, y: 45, text: "WRITE" },
   { x: 52, y: 38, text: "Φ_c" },
-  { x: 78, y: 48, text: "WRITE" },
-  { x: 25, y: 75, text: "LOOP" },
+  { x: 78, y: 48, text: "LOOP" },
+  { x: 25, y: 75, text: "LEN" },
   { x: 60, y: 72, text: "MC_63" },
-  { x: 85, y: 80, text: "EVA" },
+  { x: 85, y: 80, text: "EVAL" },
 ];
 
-const accentCrosses = [
-  { x: 20, y: 10 },
-  { x: 50, y: 18 },
-  { x: 80, y: 8 },
-  { x: 10, y: 35 },
-  { x: 42, y: 50 },
-  { x: 72, y: 35 },
-  { x: 30, y: 65 },
-  { x: 65, y: 60 },
-  { x: 90, y: 55 },
-  { x: 18, y: 85 },
-  { x: 48, y: 82 },
-  { x: 78, y: 90 },
+// Circuit traces — each is a polyline path that follows the grid with 90-degree turns
+const circuitTraces = [
+  "M 0,10 L 20,10 L 20,30 L 50,30",
+  "M 100,20 L 80,20 L 80,10 L 50,10 L 50,18",
+  "M 10,0 L 10,20 L 30,20 L 30,50 L 40,50",
+  "M 70,0 L 70,15 L 90,15 L 90,40",
+  "M 0,60 L 15,60 L 15,45 L 40,45 L 40,60 L 60,60",
+  "M 100,55 L 78,55 L 78,70 L 60,70",
+  "M 30,100 L 30,80 L 50,80 L 50,65 L 65,65",
+  "M 90,100 L 90,85 L 70,85 L 70,75 L 85,75",
+  "M 0,85 L 20,85 L 20,70 L 10,70 L 10,55",
+  "M 60,100 L 60,90 L 40,90 L 40,78",
+];
+
+// Solder pads — small filled squares at intersections
+const solderPads = [
+  { x: 20, y: 10 }, { x: 20, y: 30 }, { x: 50, y: 30 },
+  { x: 80, y: 20 }, { x: 50, y: 10 }, { x: 10, y: 20 },
+  { x: 30, y: 50 }, { x: 70, y: 15 }, { x: 90, y: 40 },
+  { x: 15, y: 60 }, { x: 40, y: 45 }, { x: 78, y: 55 },
+  { x: 30, y: 80 }, { x: 60, y: 70 }, { x: 90, y: 85 },
+];
+
+// IC component outlines
+const icComponents = [
+  { x: 48, y: 28, label: "MC00" },
+  { x: 28, y: 48, label: "EVA" },
+  { x: 68, y: 62, label: "TCE" },
+  { x: 12, y: 18, label: "" },
+  { x: 82, y: 38, label: "" },
+  { x: 38, y: 88, label: "" },
+];
+
+// Via dots — small bright circles at trace junctions
+const viaDots = [
+  { x: 50, y: 18 }, { x: 30, y: 20 }, { x: 40, y: 60 },
+  { x: 60, y: 60 }, { x: 78, y: 70 }, { x: 50, y: 80 },
+  { x: 90, y: 15 }, { x: 15, y: 45 }, { x: 70, y: 85 },
+  { x: 40, y: 78 }, { x: 10, y: 55 }, { x: 85, y: 75 },
 ];
 
 function GridBackground() {
@@ -97,13 +123,17 @@ function GridBackground() {
             0% { opacity: 0; }
             100% { opacity: 1; }
           }
-          @keyframes cross-pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-          }
           @keyframes label-drift {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.55; }
+            0%, 100% { opacity: 0.22; }
+            50% { opacity: 0.4; }
+          }
+          @keyframes trace-flow {
+            0% { stroke-dashoffset: 24; }
+            100% { stroke-dashoffset: 0; }
+          }
+          @keyframes via-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
           }
         `}
       </style>
@@ -113,73 +143,149 @@ function GridBackground() {
         className="h-full w-full"
         style={{ animation: "grid-fade-in 1.5s ease-out both" }}
       >
-        {Array.from({ length: 11 }).map((_, i) => (
-          <line
-            key={`v-${i}`}
-            x1={i * 10}
-            y1={0}
-            x2={i * 10}
-            y2={100}
-            stroke="currentColor"
-            className="text-border"
-            strokeWidth={0.15}
-          />
-        ))}
-        {Array.from({ length: 11 }).map((_, i) => (
-          <line
-            key={`h-${i}`}
-            x1={0}
-            y1={i * 10}
-            x2={100}
-            y2={i * 10}
-            stroke="currentColor"
-            className="text-border"
-            strokeWidth={0.15}
-          />
-        ))}
-        {accentCrosses.map((cross, i) => (
-          <g
-            key={`cross-${i}`}
-            style={{
-              animation: `cross-pulse ${3 + (i % 4) * 0.8}s ease-in-out ${i * 0.3}s infinite`,
-            }}
-          >
+        <defs>
+          {/* Radial gradient overlay — fades grid at edges */}
+          <radialGradient id="pcb-vignette" cx="50%" cy="50%" r="55%">
+            <stop offset="0%" stopColor="white" stopOpacity={1} />
+            <stop offset="70%" stopColor="white" stopOpacity={0.6} />
+            <stop offset="100%" stopColor="white" stopOpacity={0} />
+          </radialGradient>
+          <mask id="pcb-mask">
+            <rect x="0" y="0" width="100" height="100" fill="url(#pcb-vignette)" />
+          </mask>
+        </defs>
+
+        <g mask="url(#pcb-mask)">
+          {/* Base grid — vertical lines */}
+          {Array.from({ length: 11 }).map((_, i) => (
             <line
-              x1={cross.x - 1.2}
-              y1={cross.y}
-              x2={cross.x + 1.2}
-              y2={cross.y}
+              key={`v-${i}`}
+              x1={i * 10}
+              y1={0}
+              x2={i * 10}
+              y2={100}
+              stroke="currentColor"
+              className="text-border"
+              strokeWidth={0.2}
+            />
+          ))}
+          {/* Base grid — horizontal lines */}
+          {Array.from({ length: 11 }).map((_, i) => (
+            <line
+              key={`h-${i}`}
+              x1={0}
+              y1={i * 10}
+              x2={100}
+              y2={i * 10}
+              stroke="currentColor"
+              className="text-border"
+              strokeWidth={0.2}
+            />
+          ))}
+
+          {/* Circuit traces */}
+          {circuitTraces.map((d, i) => (
+            <path
+              key={`trace-${i}`}
+              d={d}
+              fill="none"
               stroke="currentColor"
               className="text-teal"
-              strokeWidth={0.35}
+              strokeWidth={0.4}
+              strokeLinecap="square"
+              opacity={0.55}
+              strokeDasharray="4 2"
+              style={{
+                animation: `trace-flow ${6 + (i % 4) * 2}s linear ${i * 0.5}s infinite`,
+              }}
             />
-            <line
-              x1={cross.x}
-              y1={cross.y - 1.2}
-              x2={cross.x}
-              y2={cross.y + 1.2}
-              stroke="currentColor"
+          ))}
+
+          {/* Solder pads — small filled squares */}
+          {solderPads.map((pad, i) => (
+            <rect
+              key={`pad-${i}`}
+              x={pad.x - 0.75}
+              y={pad.y - 0.75}
+              width={1.5}
+              height={1.5}
+              fill="currentColor"
               className="text-teal"
-              strokeWidth={0.35}
+              opacity={0.3}
             />
-          </g>
-        ))}
-        {gridLabels.map((label, i) => (
-          <text
-            key={`label-${i}`}
-            x={label.x}
-            y={label.y}
-            fontSize={2.2}
-            fontFamily="monospace"
-            fill="currentColor"
-            className="text-muted-foreground"
-            style={{
-              animation: `label-drift ${4 + (i % 3)}s ease-in-out ${0.5 + i * 0.4}s infinite`,
-            }}
-          >
-            {label.text}
-          </text>
-        ))}
+          ))}
+
+          {/* IC component outlines */}
+          {icComponents.map((ic, i) => (
+            <g key={`ic-${i}`} opacity={0.4}>
+              <rect
+                x={ic.x}
+                y={ic.y}
+                width={4}
+                height={2}
+                rx={0.3}
+                ry={0.3}
+                fill="none"
+                stroke="currentColor"
+                className="text-teal"
+                strokeWidth={0.15}
+              />
+              {ic.label && (
+                <text
+                  x={ic.x + 2}
+                  y={ic.y + 1.35}
+                  fontSize={0.9}
+                  fontFamily="monospace"
+                  fill="currentColor"
+                  className="text-teal"
+                  textAnchor="middle"
+                  opacity={0.7}
+                >
+                  {ic.label}
+                </text>
+              )}
+              {/* Tiny pin lines on the sides */}
+              <line x1={ic.x + 1} y1={ic.y} x2={ic.x + 1} y2={ic.y - 0.5} stroke="currentColor" className="text-teal" strokeWidth={0.1} />
+              <line x1={ic.x + 3} y1={ic.y} x2={ic.x + 3} y2={ic.y - 0.5} stroke="currentColor" className="text-teal" strokeWidth={0.1} />
+              <line x1={ic.x + 1} y1={ic.y + 2} x2={ic.x + 1} y2={ic.y + 2.5} stroke="currentColor" className="text-teal" strokeWidth={0.1} />
+              <line x1={ic.x + 3} y1={ic.y + 2} x2={ic.x + 3} y2={ic.y + 2.5} stroke="currentColor" className="text-teal" strokeWidth={0.1} />
+            </g>
+          ))}
+
+          {/* Via dots — small bright circles at junctions */}
+          {viaDots.map((dot, i) => (
+            <circle
+              key={`via-${i}`}
+              cx={dot.x}
+              cy={dot.y}
+              r={0.8}
+              fill="currentColor"
+              className="text-teal"
+              opacity={0.5}
+              style={{
+                animation: `via-pulse ${3 + (i % 3) * 1.2}s ease-in-out ${i * 0.4}s infinite`,
+              }}
+            />
+          ))}
+
+          {/* Floating monomer labels */}
+          {gridLabels.map((label, i) => (
+            <text
+              key={`label-${i}`}
+              x={label.x}
+              y={label.y}
+              fontSize={2.2}
+              fontFamily="monospace"
+              fill="currentColor"
+              className="text-muted-foreground"
+              style={{
+                animation: `label-drift ${4 + (i % 3)}s ease-in-out ${0.5 + i * 0.4}s infinite`,
+              }}
+            >
+              {label.text}
+            </text>
+          ))}
+        </g>
       </svg>
     </div>
   );
