@@ -12,6 +12,7 @@ import {
   Zap,
   Building2,
   Sparkles,
+  Users,
 } from "lucide-react";
 
 /* ── Tiers ── */
@@ -58,6 +59,26 @@ const tiers = [
     icon: Zap,
   },
   {
+    name: "Team",
+    price: "Free",
+    period: "during closed beta",
+    description: "For engineering teams that need shared dashboards and governance.",
+    cta: "Start Team — Free",
+    ctaHref: "/login",
+    highlight: false,
+    features: [
+      "Everything in Pro",
+      "Up to 50 team members",
+      "Shared certification dashboard",
+      "Team-wide audit trail",
+      "Role-based access control",
+      "GitHub org integration",
+      "Slack / webhook notifications",
+      "Priority support",
+    ],
+    icon: Users,
+  },
+  {
     name: "Enterprise",
     price: "Custom",
     period: "pricing",
@@ -66,12 +87,11 @@ const tiers = [
     ctaHref: "/enterprise",
     highlight: false,
     features: [
-      "Everything in Pro",
+      "Everything in Team",
       "SSO / SAML / OIDC",
       "SCIM provisioning",
-      "Processing logic and change control evidence mapped to SOC2 (PI1.x, CC8.1), PCI-DSS (Req 6, 10), and HIPAA processing rules",
+      "Compliance evidence reports (SOC2, PCI-DSS, HIPAA)",
       "Custom registry & white-label badges",
-      "Audit trail & logs",
       "CI/CD gate plugins",
       "Custom SLA (99.9% uptime)",
       "Dedicated support engineer",
@@ -87,44 +107,53 @@ const comparisonSections = [
   {
     title: "Core",
     rows: [
-      { feature: "CLI access", free: true, pro: true, enterprise: true },
-      { feature: "Full monomer catalog", free: true, pro: true, enterprise: true },
-      { feature: "All export targets", free: true, pro: true, enterprise: true },
-      { feature: "Coq proof suite", free: true, pro: true, enterprise: true },
-      { feature: "Self-compilation fixpoint", free: true, pro: true, enterprise: true },
+      { feature: "CLI access", free: true, pro: true, team: true, enterprise: true },
+      { feature: "Full monomer catalog", free: true, pro: true, team: true, enterprise: true },
+      { feature: "All export targets", free: true, pro: true, team: true, enterprise: true },
+      { feature: "Coq proof suite", free: true, pro: true, team: true, enterprise: true },
+      { feature: "Self-compilation fixpoint", free: true, pro: true, team: true, enterprise: true },
     ],
   },
   {
     title: "Platform",
     rows: [
-      { feature: "Lifts per day", free: "5", pro: "Unlimited", enterprise: "Unlimited" },
-      { feature: "Public registry", free: true, pro: true, enterprise: true },
-      { feature: "Private registry", free: false, pro: true, enterprise: true },
-      { feature: "GitHub integration", free: false, pro: true, enterprise: true },
-      { feature: "Certification dashboard", free: false, pro: true, enterprise: true },
-      { feature: "PR certification badges", free: false, pro: true, enterprise: true },
-      { feature: "Team members", free: "1", pro: "10", enterprise: "Unlimited" },
+      { feature: "Lifts per day", free: "5", pro: "Unlimited", team: "Unlimited", enterprise: "Unlimited" },
+      { feature: "Public registry", free: true, pro: true, team: true, enterprise: true },
+      { feature: "Private registry", free: false, pro: true, team: true, enterprise: true },
+      { feature: "GitHub integration", free: false, pro: true, team: true, enterprise: true },
+      { feature: "Certification dashboard", free: false, pro: true, team: true, enterprise: true },
+      { feature: "PR certification badges", free: false, pro: true, team: true, enterprise: true },
+      { feature: "Team members", free: "1", pro: "10", team: "50", enterprise: "Unlimited" },
+    ],
+  },
+  {
+    title: "Team & Governance",
+    rows: [
+      { feature: "Shared dashboard", free: false, pro: false, team: true, enterprise: true },
+      { feature: "Team audit trail", free: false, pro: false, team: true, enterprise: true },
+      { feature: "Role-based access", free: false, pro: false, team: true, enterprise: true },
+      { feature: "GitHub org integration", free: false, pro: false, team: true, enterprise: true },
+      { feature: "Slack / webhook notifications", free: false, pro: false, team: true, enterprise: true },
     ],
   },
   {
     title: "Enterprise",
     rows: [
-      { feature: "SSO / SAML / OIDC", free: false, pro: false, enterprise: true },
-      { feature: "SCIM provisioning", free: false, pro: false, enterprise: true },
-      { feature: "Audit trail", free: false, pro: false, enterprise: true },
-      { feature: "Processing logic evidence reports", free: false, pro: false, enterprise: true },
-      { feature: "On-premise option", free: false, pro: false, enterprise: true },
-      { feature: "Custom SLA", free: false, pro: false, enterprise: "99.9%" },
-      { feature: "Dedicated support", free: false, pro: false, enterprise: true },
+      { feature: "SSO / SAML / OIDC", free: false, pro: false, team: false, enterprise: true },
+      { feature: "SCIM provisioning", free: false, pro: false, team: false, enterprise: true },
+      { feature: "Compliance evidence reports", free: false, pro: false, team: false, enterprise: true },
+      { feature: "On-premise option", free: false, pro: false, team: false, enterprise: true },
+      { feature: "Custom SLA", free: false, pro: false, team: false, enterprise: "99.9%" },
+      { feature: "Dedicated support", free: false, pro: false, team: false, enterprise: true },
     ],
   },
   {
     title: "Support",
     rows: [
-      { feature: "Community (Discord)", free: true, pro: true, enterprise: true },
-      { feature: "Email support", free: false, pro: true, enterprise: true },
-      { feature: "Priority support", free: false, pro: false, enterprise: true },
-      { feature: "Dedicated engineer", free: false, pro: false, enterprise: true },
+      { feature: "Community (Discord)", free: true, pro: true, team: true, enterprise: true },
+      { feature: "Email support", free: false, pro: true, team: true, enterprise: true },
+      { feature: "Priority support", free: false, pro: false, team: true, enterprise: true },
+      { feature: "Dedicated engineer", free: false, pro: false, team: false, enterprise: true },
     ],
   },
 ];
@@ -197,7 +226,7 @@ export default function PricingPage() {
 
         {/* Tier cards */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {tiers.map((tier) => (
               <div
                 key={tier.name}
@@ -257,6 +286,7 @@ export default function PricingPage() {
                   <th className="pb-4 text-sm font-medium text-muted-foreground">Feature</th>
                   <th className="pb-4 text-center text-sm font-medium text-muted-foreground">Free</th>
                   <th className="pb-4 text-center text-sm font-medium text-teal">Pro</th>
+                  <th className="pb-4 text-center text-sm font-medium text-muted-foreground">Team</th>
                   <th className="pb-4 text-center text-sm font-medium text-muted-foreground">Enterprise</th>
                 </tr>
               </thead>
@@ -264,7 +294,7 @@ export default function PricingPage() {
                 {comparisonSections.map((section) => (
                   <>
                     <tr key={section.title}>
-                      <td colSpan={4} className="pt-6 pb-2 text-xs font-medium uppercase tracking-widest text-teal">
+                      <td colSpan={5} className="pt-6 pb-2 text-xs font-medium uppercase tracking-widest text-teal">
                         {section.title}
                       </td>
                     </tr>
@@ -273,6 +303,7 @@ export default function PricingPage() {
                         <td className="py-3 text-sm">{row.feature}</td>
                         <td className="py-3 text-center"><CellValue value={row.free} /></td>
                         <td className="py-3 text-center"><CellValue value={row.pro} /></td>
+                        <td className="py-3 text-center"><CellValue value={row.team} /></td>
                         <td className="py-3 text-center"><CellValue value={row.enterprise} /></td>
                       </tr>
                     ))}
