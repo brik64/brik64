@@ -119,7 +119,7 @@ export default function SafetyCriticalPage() {
               </div>
             </div>
             <p className="mt-3 text-xs text-muted-foreground/60">
-              Don&apos;t sell a language. Sell the elimination of certification cost.
+              Same verification quality. Fraction of the cost and time.
             </p>
           </div>
         </section>

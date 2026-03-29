@@ -69,8 +69,8 @@ export function ComplianceSection() {
             <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc certify</span>
           </div>
           <div className="flex flex-col gap-1 p-5 font-mono text-xs">
-            <p className="text-white/70"><span className="text-teal">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
-            <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence generated &mdash; 5 controls mapped</p>
+            <p className="text-white/70"><span className="text-blue-400">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
+            <p className="mt-1 text-blue-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence generated &mdash; 5 controls mapped</p>
             <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Scope limitation included</p>
             <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
           </div>

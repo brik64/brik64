@@ -146,25 +146,15 @@ export default function CompliancePage() {
               <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc certify</span>
             </div>
             <div className="flex flex-col gap-1 p-5 font-mono text-xs">
-              <p className="text-white/70"><span className="text-teal">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
-              <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; Parsing trading_algo.pcd... 4 domains, 3 assertions</p>
-              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Φc = 1.000 — circuit closed</p>
-              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence: 5 controls mapped</p>
-              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Scope limitation included</p>
+              <p className="text-white/70"><span className="text-blue-400">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
+              <p className="mt-1 text-blue-400">&nbsp;&nbsp;&#10003; Parsing trading_algo.pcd... 4 domains, 3 assertions</p>
+              <p className="text-blue-400">&nbsp;&nbsp;&#10003; Φc = 1.000 — circuit closed</p>
+              <p className="text-blue-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence: 5 controls mapped</p>
+              <p className="text-blue-400">&nbsp;&nbsp;&#10003; Scope limitation included</p>
               <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
             </div>
           </div>
 
-          {/* Scope disclaimer */}
-          <div className="mt-6 flex max-w-2xl items-start gap-3 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4">
-            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
-            <p className="text-xs leading-relaxed text-amber-200/80">
-              BRIK-64 generates verification evidence for the processing logic and change
-              control aspects of these standards. Infrastructure, organizational, and
-              procedural controls require separate evidence. Each report includes an explicit
-              scope limitation.
-            </p>
-          </div>
         </section>
 
         {/* Standards grid */}
@@ -229,42 +219,6 @@ export default function CompliancePage() {
           </div>
         </section>
 
-        {/* Sample report */}
-        <section className="border-border mx-auto max-w-7xl border-t px-4 py-16 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-medium tracking-tight">Sample evidence output</h2>
-          <p className="mt-2 text-sm text-muted-foreground">What your auditor sees:</p>
-
-          <div className="mt-6 max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
-            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-              <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">evidence_mifid2.json</span>
-            </div>
-            <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed text-muted-foreground">{`{
-  "standard": "MiFID II",
-  "articles_covered": ["Art. 17(1)", "Art. 17(2)", "RTS 6"],
-  "circuit": "trading_algo@1.2.0",
-  "certification": {
-    "phi_c": 1.0,
-    "hash": "sha256:a8f3e7...",
-    "timestamp": "2026-03-29T10:00:00Z",
-    "domains_verified": 4,
-    "paths_verified": 12,
-    "unhandled_paths": 0
-  },
-  "controls": [
-    {
-      "article": "Art. 17(1)",
-      "control": "Pre-trade risk controls",
-      "evidence": "Input 'order_value' bounded to [0.01, 10000000.0]",
-      "strength": "strong"
-    }
-  ],
-  "scope_limitation": "Covers processing logic only. Infrastructure, organizational, and reporting obligations require separate evidence."
-}`}</pre>
-          </div>
-        </section>
       </main>
       <div className="relative z-10">
         <Footer />
