@@ -3366,4 +3366,301 @@ print(result.certified)  # True`}</CodeBlock>
       </P>
     </>
   ),
+
+  "why-new-language": () => (
+    <>
+      <H2>700 Languages, Zero Guarantees</H2>
+      <P>
+        We have Python, JavaScript, Rust, Go, C, Java, Kotlin, Swift, and hundreds more. They all have one thing in common: <strong>none of them guarantee that your program is correct</strong>.
+      </P>
+      <P>
+        Rust prevents memory errors. TypeScript prevents type errors. But neither prevents logic errors. Neither guarantees that every input produces a valid output. Neither proves that your algorithm terminates correctly for every possible state.
+      </P>
+      <P>
+        Testing helps. Code review helps. But Dijkstra said it in 1976: &ldquo;Testing shows the presence of bugs, never their absence.&rdquo; 50 years later, nothing has changed.
+      </P>
+      <H2>What Would a Correct-by-Construction Language Look Like?</H2>
+      <P>
+        Imagine a language where every function declares its input domain (e.g., <code>range[0, 900]</code>), every branch is exhaustively covered, and the compiler mathematically proves that every execution path produces a valid result. If it can&apos;t prove it, <strong>it doesn&apos;t compile</strong>.
+      </P>
+      <P>
+        That&apos;s BRIK-64. Not a better Python. Not a safer Rust. A fundamentally different approach: 128 verified operations (monomers), composed through algebraic laws (EVA), certified by a coherence engine (CMF). <PhiC /> = 1 means every path is closed. The bugs don&apos;t compile.
+      </P>
+      <H2>The Argument for a New Language</H2>
+      <P>
+        <strong>1. AI generates code now.</strong> LLMs produce millions of lines of code daily. None of it is verified. We need a language where the output of any LLM is automatically certified.
+      </P>
+      <P>
+        <strong>2. Compliance costs are crushing.</strong> MiFID II, SOC2, DO-178C &mdash; manual certification costs $1M+ per project. A language that generates compliance evidence automatically saves 90% of that cost.
+      </P>
+      <P>
+        <strong>3. Smart contracts can&apos;t be patched.</strong> Blockchain deployments are immutable. A language where bugs don&apos;t compile is worth billions in prevented losses.
+      </P>
+      <P>
+        <strong>4. The cost of bugs is catastrophic.</strong> In medical devices, aerospace, autonomous vehicles &mdash; a bug can kill. Testing isn&apos;t enough. We need mathematical proof.
+      </P>
+      <H2>The Pitch</H2>
+      <P>
+        BRIK-64 is not competing with Python or Rust. It&apos;s offering something they can&apos;t: <strong>the mathematical guarantee that your program is correct</strong>. Write in .b64, compile to 14 targets (Rust, JS, Python, C, Go, WASM, native...), and get a certificate that proves it.
+      </P>
+      <P>
+        The world doesn&apos;t need another language. It needs a language where incorrect programs cannot compile.
+      </P>
+    </>
+  ),
+
+  "formal-verification-without-phd": () => (
+    <>
+      <H2>The Elitism Problem</H2>
+      <P>
+        Formal verification has always been the domain of specialists. Coq, Isabelle, TLA+, Lean &mdash; these tools require years of training. The result: only aerospace, nuclear, and a handful of crypto projects use formal methods. Everyone else ships code and hopes for the best.
+      </P>
+      <P>
+        This is absurd. The knowledge to prevent bugs mathematically has existed for decades. But the tools are so hard to use that 99.9% of software is written without them.
+      </P>
+      <H2>What If Verification Was Just... Compilation?</H2>
+      <P>
+        BRIK-64 bakes verification into the compiler. You don&apos;t write proofs. You don&apos;t learn Coq. You write code with domain constraints:
+      </P>
+      <CodeBlock>{`type Speed = range[0, 900];        // km/h
+type Altitude = range[0, 15_000];  // meters
+
+fn check_flight(speed: Speed, alt: Altitude) -> Status {
+    match (speed, alt) {
+        (0..200, 0..1000) => Status.Taxiing,
+        (200..900, 1000..15000) => Status.Cruising,
+        _ => Status.Emergency,
+    }
+}`}</CodeBlock>
+      <P>
+        The compiler verifies exhaustiveness. Every combination of speed and altitude has a defined response. No undefined behavior. <PhiC /> = 1.
+      </P>
+      <H2>What Gets Verified?</H2>
+      <P>
+        <strong>Domain bounds:</strong> Every input has a declared range. Values outside the range are rejected at compile time &mdash; not runtime.
+      </P>
+      <P>
+        <strong>Exhaustive coverage:</strong> Every match statement must cover every possible input. The compiler checks this statically.
+      </P>
+      <P>
+        <strong>Circuit closure:</strong> Every execution path from input to output must produce a valid, bounded result. No dangling paths, no undefined states.
+      </P>
+      <P>
+        <strong>Type flow:</strong> The output type of one operation must match the input type of the next. The compiler traces types through every composition.
+      </P>
+      <H2>The 207 Coq Proofs You Don&apos;t Have to Write</H2>
+      <P>
+        Behind the scenes, every monomer in BRIK-64 has been formally verified in Coq. 207 proof files, 0 admits, machine-checked. These proofs guarantee that the building blocks themselves are correct. Your job is just to compose them correctly &mdash; and the compiler checks that for you.
+      </P>
+      <P>
+        Formal verification for everyone. No PhD required.
+      </P>
+    </>
+  ),
+
+  "blockchain-meets-circuitality": () => (
+    <>
+      <H2>The $3.8 Billion Problem</H2>
+      <P>
+        In 2022 alone, DeFi hacks drained $3.8 billion. The DAO hack ($60M), Wormhole ($320M), Ronin Bridge ($625M) &mdash; all caused by bugs in smart contract code. Code that was audited. Code that had tests. Code that still had bugs.
+      </P>
+      <P>
+        Smart contracts have a unique property: <strong>they can&apos;t be patched after deployment</strong>. A bug in a web app is a bad day. A bug in a smart contract is permanent.
+      </P>
+      <H2>What If the Bugs Couldn&apos;t Compile?</H2>
+      <P>
+        BRIK-64 is the only language where every function is mathematically verified before it can execute. Domain constraints prevent out-of-range values. Exhaustive pattern matching prevents unhandled states. Circuit closure (<PhiC /> = 1) guarantees every path produces a valid output.
+      </P>
+      <CodeBlock>{`type Amount = range[0, 1_000_000_000];
+type Deadline = range[1, 2_000_000_000];
+
+fn escrow_release(balance: Amount, deadline: Deadline, now: u64) {
+    match now > deadline {
+        true => Ok(balance),
+        false => Err(Error.NotYet),
+    }
+    // Exhaustive. No undefined behavior. Compiles to WASM < 100KB.
+}`}</CodeBlock>
+      <H2>Use Cases</H2>
+      <P>
+        <strong>Verified escrow:</strong> Deposit, release, refund, timeout &mdash; all states covered. No undefined behavior.
+      </P>
+      <P>
+        <strong>Voting systems:</strong> Double voting is structurally impossible. The circuit prevents it.
+      </P>
+      <P>
+        <strong>Parametric insurance:</strong> Automatic payout when oracle conditions are met. No negative payouts, no overflow.
+      </P>
+      <P>
+        <strong>Carbon credits:</strong> A retired credit cannot be re-activated. The circuit prevents double counting.
+      </P>
+      <H2>Gas Estimation from PCD</H2>
+      <P>
+        Count monomers = count operations = estimate gas. BRIK-64 provides gas estimation within 20% of actual execution cost, directly from the PCD blueprint &mdash; before deployment.
+      </P>
+      <P>
+        Compile to WASM (&lt; 100KB), deploy with a certificate that proves correctness. The auditor becomes optional when the math is the proof.
+      </P>
+    </>
+  ),
+
+  "safety-critical-software": () => (
+    <>
+      <H2>The Cost of Certification</H2>
+      <P>
+        Manual DO-178C certification for aerospace software costs $1M+ per project and takes 6-12 months. IEC 62304 for medical devices is similarly expensive. ISO 26262 for automotive adds another layer of complexity. These certifications are necessary &mdash; when a bug can kill, you need proof that it won&apos;t happen.
+      </P>
+      <P>
+        But the cost is prohibitive for most companies. A startup building a medical device or a drone controller can&apos;t afford $1M for certification. The result: most safety-critical software relies on testing instead of proof, and people die because of it.
+      </P>
+      <H2>Verification Evidence at Compile Time</H2>
+      <P>
+        BRIK-64 generates formal verification evidence automatically. Every function that compiles with <PhiC /> = 1 produces a certificate that documents:
+      </P>
+      <P>
+        <strong>Input domain bounds:</strong> Every parameter has a declared range. Values outside the range are rejected.
+      </P>
+      <P>
+        <strong>Exhaustive coverage:</strong> Every execution path has a defined output. No undefined behavior.
+      </P>
+      <P>
+        <strong>Deterministic execution:</strong> Same input always produces same output. No randomness, no side effects.
+      </P>
+      <CodeBlock>{`type Dose = range[0.0, 25.0];       // insulin units
+type Glucose = range[20, 600];      // mg/dL
+
+fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
+    // Overdose is structurally impossible.
+    // The domain rejects any dose > 25.0 at compile time.
+    // Phi_c = 1: every input produces a valid, bounded output.
+}`}</CodeBlock>
+      <H2>Industries</H2>
+      <P>
+        <strong>Aerospace (DO-178C):</strong> Flight controllers, navigation systems, engine control. Evidence that every combination of velocity, altitude, and fuel produces a defined response.
+      </P>
+      <P>
+        <strong>Medical devices (IEC 62304):</strong> Insulin pumps, infusion controllers, diagnostic algorithms. Evidence that overdose is structurally impossible.
+      </P>
+      <P>
+        <strong>Automotive (ISO 26262):</strong> Autonomous braking, collision avoidance. Evidence that every distance has a defined braking response.
+      </P>
+      <P>
+        <strong>Robotics (ISO 10218):</strong> Collaborative robots. Evidence that the robot cannot exceed safe speed when a human is nearby.
+      </P>
+      <H2>The ROI</H2>
+      <P>
+        Manual certification: $1M+ / 6-12 months. BRIK-64 formal verification: automatic, at compile time. Same verification quality. Fraction of the cost and time.
+      </P>
+    </>
+  ),
+
+  "benchmarks-110k-tests": () => (
+    <>
+      <H2>No Marketing Fluff</H2>
+      <P>
+        This post is pure data. Every number is reproducible. Every test is in the repository.
+      </P>
+      <H2>Test Suite: 110,227 Tests</H2>
+      <P>
+        <strong>Level 1 &mdash; Unit tests:</strong> Individual monomer verification. Each of the 128 monomers (64 core + 64 extended) tested with boundary values, zero, max, overflow.
+      </P>
+      <P>
+        <strong>Level 2 &mdash; Integration tests:</strong> EVA composition chains. Sequential, parallel, conditional operators. Type flow verification.
+      </P>
+      <P>
+        <strong>Level 3 &mdash; Exhaustive monomer tests:</strong> 25,000+ tests. Every monomer tested with every valid input in its domain. Not sampling &mdash; exhaustion.
+      </P>
+      <P>
+        <strong>Level 4 &mdash; Cross-backend tests:</strong> 50,000+ tests. Same PCD compiled to Rust, JS, Python, C, Go, WASM, BIR. Outputs compared. 100% consistency.
+      </P>
+      <P>
+        <strong>Level 5 &mdash; Self-compilation tests:</strong> The compiler compiles itself. Gen0 output must equal Gen1 output. True fixpoint.
+      </P>
+      <P>
+        <strong>Level 6 &mdash; Lifter tests:</strong> 515 tests across 10 input languages (JS, TS, Python, Rust, C, C++, Go, COBOL, PHP, Java).
+      </P>
+      <P>
+        <strong>Level 7 &mdash; Adversarial tests:</strong> Fuzzer-generated edge cases, malformed inputs, deliberately pathological programs.
+      </P>
+      <H2>Compilation Targets: 14</H2>
+      <P>
+        Rust, JavaScript, TypeScript, Python, C, C++, Go, COBOL, PHP, Java, Swift, WASM, native x86-64, BIR bytecode.
+      </P>
+      <P>
+        Every target produces identical outputs for identical inputs. 100% cross-target consistency verified.
+      </P>
+      <H2>Formal Proofs: 207 Coq Files, 0 Admits</H2>
+      <P>
+        Every core monomer has a machine-checked Coq proof. 207 files. Zero admits (unproven assumptions). The proofs verify: signature correctness, domain preservation, composition laws, termination guarantees.
+      </P>
+      <H2>Input Languages: 10</H2>
+      <P>
+        The Lifter reverse-compiles from JavaScript, TypeScript (including TSX/JSX), Python, Rust, C, C++, Go, COBOL, PHP, and Java into PCD. 515 test cases across all languages.
+      </P>
+      <H2>Self-Compilation</H2>
+      <P>
+        The compiler (brikc) is written in PCD and compiles itself. The output is a native x86-64 ELF binary. Gen0 (Rust bootstrap) compiles brikc.pcd to Gen1 (native). Gen1 compiles brikc.pcd to Gen2. Gen1 === Gen2 = true fixpoint.
+      </P>
+    </>
+  ),
+
+  "b64-vs-pcd": () => (
+    <>
+      <H2>Two Layers, One System</H2>
+      <P>
+        BRIK-64 has two distinct layers that serve different purposes. Understanding the difference is key to understanding the system.
+      </P>
+      <H2>PCD: The Blueprint</H2>
+      <P>
+        PCD (Printed Circuit Description) is the <strong>intermediate representation</strong>. Think of it like LLVM IR, but verified. PCD is what the compiler operates on internally. It describes programs as circuits: inputs, monomers (operations), connections, outputs.
+      </P>
+      <CodeBlock>{`// PCD — low-level, explicit, compiler-facing
+pc speed_check(v: i64) -> i64 {
+    domain speed: Range [0, 900];
+    let bounded = MC_00.ADD8(v, 0);
+    assert bounded in speed;
+    return bounded;
+}`}</CodeBlock>
+      <P>
+        PCD is deliberately minimal: 128 monomers, explicit wiring, no syntactic sugar. It&apos;s designed for machines to generate, verify, and transform &mdash; not for humans to write daily.
+      </P>
+      <H2>.b64: The Language</H2>
+      <P>
+        .b64 is the <strong>developer-facing language</strong>. It has familiar syntax: functions, types, match expressions, range types, modules. It looks like Rust or Swift but with one critical difference: every program must satisfy <PhiC /> = 1.
+      </P>
+      <CodeBlock>{`// .b64 — high-level, ergonomic, developer-facing
+type Speed = range[0, 900];
+
+fn speed_check(v: Speed) -> Speed {
+    v  // domain is enforced by the type
+}`}</CodeBlock>
+      <P>
+        When you write .b64, the compiler translates it to PCD internally, verifies the circuit, and then compiles to your chosen target (Rust, JS, Python, WASM, etc.).
+      </P>
+      <H2>The Relationship</H2>
+      <P>
+        <strong>.b64 &rarr; PCD &rarr; Target</strong>. Developers write .b64. The compiler generates PCD. The planner optimizes PCD. The backends emit target code. The CMF verifies the PCD at every stage.
+      </P>
+      <P>
+        <strong>The Lifter works in reverse:</strong> it takes existing code (JS, Python, Rust, etc.) and reverse-compiles it to PCD. From PCD, you can emit to any of the 14 targets.
+      </P>
+      <H2>When to Use Which</H2>
+      <P>
+        <strong>Write .b64</strong> when you&apos;re building new verified software. It&apos;s the primary developer experience.
+      </P>
+      <P>
+        <strong>Write PCD</strong> when you need low-level control, when you&apos;re building compiler tools, or when you&apos;re working with the Lifter output.
+      </P>
+      <P>
+        <strong>Use the Lifter</strong> when you have existing code in another language and want to verify and certify it.
+      </P>
+      <H2>Why Both?</H2>
+      <P>
+        The same reason LLVM has both Clang (the language frontend) and LLVM IR (the intermediate representation). The language provides ergonomics. The IR provides verifiability. Separating them means you can have multiple frontends (the Lifter supports 10 languages) all targeting the same verified IR.
+      </P>
+      <P>
+        PCD is the contract. .b64 is the experience.
+      </P>
+    </>
+  ),
 };

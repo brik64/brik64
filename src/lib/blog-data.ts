@@ -233,6 +233,60 @@ export const blogPosts: BlogPost[] = [
     tag: "PLATFORM",
     category: "Product",
   },
+  {
+    slug: "why-new-language",
+    title: "Why the World Needs a New Programming Language",
+    excerpt:
+      "We have 700+ programming languages. None of them guarantee that your program is correct. BRIK-64 does. Here's why that matters.",
+    date: "MAR 30, 2026",
+    tag: "VISION",
+    category: "Foundations",
+  },
+  {
+    slug: "formal-verification-without-phd",
+    title: "Formal Verification Without the PhD",
+    excerpt:
+      "Formal verification has always been reserved for aerospace and nuclear. BRIK-64 makes it as simple as running a compiler. No Coq. No TLA+. Just brikc build.",
+    date: "MAR 30, 2026",
+    tag: "VISION",
+    category: "Foundations",
+  },
+  {
+    slug: "blockchain-meets-circuitality",
+    title: "Verified Smart Contracts: Blockchain Meets Digital Circuitality",
+    excerpt:
+      "Smart contracts can't be patched after deployment. A single bug has caused billions in losses. What if the bugs couldn't compile?",
+    date: "MAR 30, 2026",
+    tag: "PRODUCT",
+    category: "Product",
+  },
+  {
+    slug: "safety-critical-software",
+    title: "When a Bug Can Kill: Safety-Critical Software and BRIK-64",
+    excerpt:
+      "DO-178C certification costs $1M+. IEC 62304 takes months. BRIK-64 generates the same verification evidence automatically, at compile time.",
+    date: "MAR 30, 2026",
+    tag: "PRODUCT",
+    category: "Product",
+  },
+  {
+    slug: "benchmarks-110k-tests",
+    title: "110K Tests, 14 Targets, 207 Coq Proofs: The Numbers Behind BRIK-64",
+    excerpt:
+      "Hard numbers. No marketing fluff. Every monomer exhaustively tested, every backend verified, every proof machine-checked.",
+    date: "MAR 30, 2026",
+    tag: "ENGINEERING",
+    category: "Engineering",
+  },
+  {
+    slug: "b64-vs-pcd",
+    title: "PCD vs .b64: The Blueprint and the Language",
+    excerpt:
+      "PCD is the intermediate representation — the blueprint. .b64 is the language developers write. Understanding the difference is key to understanding BRIK-64.",
+    date: "MAR 30, 2026",
+    tag: "DEEP DIVE",
+    category: "Foundations",
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

@@ -23,6 +23,7 @@ export function Footer() {
               Product
             </h4>
             <ul className="space-y-2">
+              <li><a href="/language" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Language (.b64)</a></li>
               <li><a href="/cli" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">CLI</a></li>
               <li><a href="/platform" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Platform</a></li>
               <li><a href="/registry" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Registry</a></li>

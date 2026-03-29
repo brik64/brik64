@@ -60,9 +60,9 @@ export function VerticalsSection() {
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          BRIK-64 is for industries where &ldquo;it works on my machine&rdquo; isn&apos;t good enough.
-          Range types, exhaustive pattern matching, and formal verification
-          eliminate entire classes of bugs at compile time.
+          Write .b64 with range types, exhaustive pattern matching, and formal verification.
+          The compiler eliminates entire classes of bugs at compile time.
+          Then emit to any of 14 targets &mdash; Rust, WASM, C, Python, and more.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

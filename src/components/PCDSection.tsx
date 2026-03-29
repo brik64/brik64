@@ -29,6 +29,16 @@ const pcdCode = `PC hello {
 }`;
 
 const outputs: Record<string, { lang: string; code: string }> = {
+  ".b64": {
+    lang: "b64",
+    code: `type Message = string;
+
+fn hello() -> i32 {
+    let msg: Message = "Hello, verified world!";
+    print(msg);
+    0   // Φ_c = 1 — circuit closed
+}`,
+  },
   PCD: {
     lang: "pcd",
     code: pcdCode,
@@ -66,8 +76,8 @@ const tabKeys = Object.keys(outputs);
 const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
-    title: "A structural logic language",
-    desc: "PCD describes what your program computes, not how. Like a circuit schematic — structural, verifiable, language-agnostic.",
+    title: "Two layers: .b64 + PCD",
+    desc: "Write .b64 (developer-facing language with range types). The compiler generates PCD (verified intermediate representation). Like Rust + LLVM IR.",
   },
   {
     icon: <Shield className="h-5 w-5 text-teal" />,
@@ -92,7 +102,7 @@ const keyPoints = [
 ];
 
 export function PCDSection() {
-  const [activeTab, setActiveTab] = useState("Rust");
+  const [activeTab, setActiveTab] = useState(".b64");
 
   return (
     <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
@@ -106,10 +116,9 @@ export function PCDSection() {
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          PCD is the standard format for verified software. It describes{" "}
-          <span className="font-medium text-foreground">WHAT</span> your program
-          computes — not HOW. Language-agnostic. Mathematically verifiable.
-          Compiles to any target.
+          Developers write <span className="font-medium text-foreground">.b64</span> &mdash; a language with range types, exhaustive pattern matching, and familiar syntax.
+          The compiler translates it to <span className="font-medium text-foreground">PCD</span> (the verified intermediate representation),
+          checks <PhiC /> = 1, and emits to any of 14 targets.
         </p>
 
         {/* Two-column: diagram + code */}
