@@ -15,31 +15,31 @@ const editors: {
   {
     name: "Cursor",
     subtitle: "AI + PCD native",
-    status: "AVAILABLE",
+    status: "ALPHA",
     logo: "/brands/cursor.svg",
   },
   {
     name: "Windsurf",
     subtitle: "AI-powered coding",
-    status: "AVAILABLE",
+    status: "PLANNED",
     logo: "/brands/windsurf.svg",
   },
   {
     name: "Zed",
     subtitle: "High-performance editor",
-    status: "AVAILABLE",
+    status: "PLANNED",
     logo: "/brands/zed.svg",
   },
   {
     name: "IntelliJ",
     subtitle: "JetBrains IDEs",
-    status: "AVAILABLE",
+    status: "PLANNED",
     logo: "/brands/intellij.svg",
   },
   {
     name: "Antigravity",
     subtitle: "Google AI IDE",
-    status: "AVAILABLE",
+    status: "PLANNED",
     logo: "/brands/antigravity.svg",
   },
 ];
@@ -83,7 +83,13 @@ export function EditorsSection() {
                   </p>
                 </div>
               </div>
-              <span className="mt-3 inline-block rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-400">
+              <span className={`mt-3 inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
+                editor.status === "AVAILABLE"
+                  ? "bg-emerald-500/10 text-emerald-400"
+                  : editor.status === "ALPHA"
+                    ? "bg-amber-500/10 text-amber-400"
+                    : "bg-zinc-500/10 text-zinc-400"
+              }`}>
                 {editor.status}
               </span>
             </div>

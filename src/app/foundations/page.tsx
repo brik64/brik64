@@ -417,6 +417,42 @@ export default function FoundationsPage() {
           </div>
         </section>
 
+        {/* Publications */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            PUBLICATIONS
+          </p>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+            Academic publications
+          </h2>
+          <div className="mx-auto mt-8 max-w-3xl space-y-4">
+            <div className="border border-border bg-muted/10 p-5">
+              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">arXiv preprint</p>
+              <p className="text-sm font-medium text-foreground">
+                Digital Circuitality: A Formal Framework for Verified Software Composition
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Submitted to arXiv (ID 7419107) &mdash; cs.PL + cs.AI + cs.AR
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                128 monomers, 110,000+ tests, 14 compilation targets, Coq-verified
+              </p>
+            </div>
+            <div className="border border-border bg-muted/10 p-5">
+              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">Zenodo Archive</p>
+              <p className="text-sm font-medium text-foreground">
+                BRIK-64 Papers I-IV v3 + Coq Proofs
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                DOI: 10.5281/zenodo.19313743 &mdash; Permanent academic archive
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                207 Coq proof files, 0 admits, complete formal verification
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Synthesis */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
