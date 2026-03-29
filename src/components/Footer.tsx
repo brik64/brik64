@@ -44,6 +44,9 @@ export function Footer() {
               <li><a href="/news" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">News</a></li>
               <li><a href="/faq" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">FAQ</a></li>
               <li><a href="/features" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Features</a></li>
+              <li><a href="/compliance" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Compliance Evidence</a></li>
+              <li><a href="/blockchain" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blockchain</a></li>
+              <li><a href="/safety-critical" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Safety-Critical</a></li>
             </ul>
           </div>
 

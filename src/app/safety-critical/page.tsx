@@ -143,9 +143,16 @@ export default function SafetyCriticalPage() {
                     {ex.standard}
                   </span>
                 </div>
-                <pre className="mt-3 overflow-x-auto rounded border border-border bg-black/40 p-3 text-[11px] leading-relaxed text-teal/80">
-                  {ex.code}
-                </pre>
+                <div className="mt-3 overflow-hidden rounded-lg border border-white/10 bg-[#0a0e14]">
+                  <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-1.5">
+                    <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                    <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                    <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <pre className="overflow-x-auto p-3 text-[11px] leading-relaxed text-teal/80">
+                    {ex.code}
+                  </pre>
+                </div>
               </div>
             ))}
           </div>

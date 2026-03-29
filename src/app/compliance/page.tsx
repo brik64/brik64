@@ -137,14 +137,22 @@ export default function CompliancePage() {
             about what formal verification can and cannot prove.
           </p>
 
-          {/* CLI demo */}
-          <div className="mt-8 max-w-2xl rounded-lg border border-border bg-black/40 p-5 font-mono text-sm">
-            <p className="text-muted-foreground">$ brikc certify --evidence mifid2 trading_algo.pcd</p>
-            <p className="mt-2 text-teal">&nbsp;&nbsp;&#10003; Parsing trading_algo.pcd... 4 domains, 3 assertions</p>
-            <p className="text-teal">&nbsp;&nbsp;&#10003; Φc = 1.000 — circuit closed</p>
-            <p className="text-teal">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence: 5 controls mapped</p>
-            <p className="text-teal">&nbsp;&nbsp;&#10003; Scope limitation included</p>
-            <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
+          {/* CLI demo — terminal with traffic lights */}
+          <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc certify</span>
+            </div>
+            <div className="flex flex-col gap-1 p-5 font-mono text-xs">
+              <p className="text-white/70"><span className="text-teal">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
+              <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; Parsing trading_algo.pcd... 4 domains, 3 assertions</p>
+              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Φc = 1.000 — circuit closed</p>
+              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence: 5 controls mapped</p>
+              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Scope limitation included</p>
+              <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
+            </div>
           </div>
 
           {/* Scope disclaimer */}
@@ -226,8 +234,14 @@ export default function CompliancePage() {
           <h2 className="text-xl font-medium tracking-tight">Sample evidence output</h2>
           <p className="mt-2 text-sm text-muted-foreground">What your auditor sees:</p>
 
-          <div className="mt-6 max-w-3xl overflow-x-auto rounded-lg border border-border bg-black/40 p-5 font-mono text-xs leading-relaxed">
-            <pre className="text-muted-foreground">{`{
+          <div className="mt-6 max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">evidence_mifid2.json</span>
+            </div>
+            <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed text-muted-foreground">{`{
   "standard": "MiFID II",
   "articles_covered": ["Art. 17(1)", "Art. 17(2)", "RTS 6"],
   "circuit": "trading_algo@1.2.0",

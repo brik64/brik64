@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CircuitGrid } from "@/components/CircuitGrid";
-import { Link2, ShieldCheck, Fuel, Vote, Package, Leaf } from "lucide-react";
+import { Link2, ShieldCheck, Fuel, Vote, Package, Leaf, KeyRound } from "lucide-react";
 import type { ReactNode } from "react";
 
 const useCases: { icon: ReactNode; name: string; desc: string; code: string }[] = [
@@ -74,6 +74,18 @@ pc retire_credit(status: CreditStatus) {
     }
 }`,
   },
+  {
+    icon: <KeyRound className="h-5 w-5 text-teal" />,
+    name: "Identity Verification",
+    desc: "Zero-knowledge age check. Reveals only true/false, never the actual data. The circuit guarantees privacy.",
+    code: `type Age = range[0, 150];
+
+pc verify_over_18(age: Age) -> bool {
+    // Reveals only true/false, never the age
+    // Φc = 1: no path where age is -5 or 999
+    age >= 18
+}`,
+  },
 ];
 
 export default function BlockchainPage() {
@@ -135,9 +147,16 @@ export default function BlockchainPage() {
                   <h3 className="text-sm font-medium text-foreground">{uc.name}</h3>
                 </div>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{uc.desc}</p>
-                <pre className="mt-3 overflow-x-auto rounded border border-border bg-black/40 p-3 text-[11px] leading-relaxed text-teal/80">
-                  {uc.code}
-                </pre>
+                <div className="mt-3 overflow-hidden rounded-lg border border-white/10 bg-[#0a0e14]">
+                  <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-1.5">
+                    <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                    <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                    <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                  </div>
+                  <pre className="overflow-x-auto p-3 text-[11px] leading-relaxed text-teal/80">
+                    {uc.code}
+                  </pre>
+                </div>
               </div>
             ))}
           </div>
@@ -149,11 +168,19 @@ export default function BlockchainPage() {
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
             Count monomers = count operations = estimate gas. Within 20% of actual execution cost.
           </p>
-          <div className="mt-4 max-w-md rounded-lg border border-border bg-black/40 p-4 font-mono text-xs">
-            <p className="text-muted-foreground">$ brikc build escrow.b64 --target wasm --estimate-gas</p>
-            <p className="mt-1 text-teal">&nbsp;&nbsp;&#10003; Compiled: 42KB WASM</p>
-            <p className="text-teal">&nbsp;&nbsp;&#10003; Estimated gas: 127,400 units</p>
-            <p className="text-teal">&nbsp;&nbsp;&#10003; Φc = 1 — certificate stored on-chain</p>
+          <div className="mt-4 max-w-md overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc build</span>
+            </div>
+            <div className="flex flex-col gap-1 p-5 font-mono text-xs">
+              <p className="text-white/70"><span className="text-teal">$</span> brikc build escrow.b64 --target wasm --estimate-gas</p>
+              <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; Compiled: 42KB WASM</p>
+              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Estimated gas: 127,400 units</p>
+              <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Φc = 1 — certificate stored on-chain</p>
+            </div>
           </div>
         </section>
       </main>
