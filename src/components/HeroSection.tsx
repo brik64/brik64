@@ -132,17 +132,17 @@ export function HeroSection() {
         {/* Left: Copy */}
         <div className="flex flex-col justify-center">
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide shadow-sm">
-            A new way to build software
+            64 Coq-proven operations &middot; 14 compilation targets &middot; 110,000+ tests
           </span>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            The platform for{" "}
-            <span className="text-teal">verified software</span>.
+            The only language where{" "}
+            <span className="text-teal">bugs don&apos;t compile</span>.
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-lg text-base leading-relaxed md:text-lg">
-            Compile, certify, publish. The standard format for software that
-            is structurally verified.
+            Write .b64. Verify automatically. Ship certified code to
+            Rust, JavaScript, Python, WASM, and 10 more targets.
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">

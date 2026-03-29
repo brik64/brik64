@@ -16,8 +16,8 @@ const features: { icon: ReactNode; title: string; description: string }[] = [
   },
   {
     icon: <FileCheck className="h-5 w-5 text-teal" />,
-    title: "Compliance Reports",
-    description: "Processing logic evidence mapped to SOC2 (PI1.x), PCI-DSS (Req 6, 10), and HIPAA processing rules",
+    title: "Compliance Evidence",
+    description: "Auditor-ready reports for MiFID II (40%), SOC2 (30%), SOX (25%), PCI-DSS (15%), DORA (15%), Basel III (10%)",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,

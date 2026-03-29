@@ -3,7 +3,13 @@ import { PhiC } from "@/components/PhiC";
 const compilationTargets = [
   "Rust",
   "JavaScript",
+  "TypeScript",
   "Python",
+  "C",
+  "C++",
+  "Go",
+  "Swift",
+  "WASM",
   "native x86-64",
   "BIR bytecode",
 ];
@@ -44,18 +50,27 @@ export function AINativeSection() {
 
         {/* Headline with gradient accent */}
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
-          A language designed{" "}
+          AI generates code.{" "}
           <span className="bg-gradient-to-r from-teal to-emerald-400 bg-clip-text text-transparent">
-            for AI.
+            BRIK-64 proves it&apos;s correct.
           </span>
         </h3>
 
         {/* Body */}
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          PCD has a finite, learnable set of operations. An AI model can learn the entire
-          language in minutes and generate certified code with structural verification. When an AI generates PCD, the compiler automatically
-          certifies it. The math is the trust.
+          The first language where AI generates certified code. An LLM writes .b64,
+          the compiler verifies &Phi;<sub>c</sub> = 1, and if verification fails, the AI gets the error
+          and retries &mdash; automatically. No other language has this.
         </p>
+
+        {/* brikc ai demo */}
+        <div className="mt-6 rounded-lg border border-teal/20 bg-black/40 p-4 font-mono text-xs">
+          <p className="text-muted-foreground">$ brikc ai &quot;Generate a drone speed controller with wind limits&quot;</p>
+          <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;LLM generating .b64...</p>
+          <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;c = 0.847 &mdash; missing case: wind &gt; 120 km/h</p>
+          <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;LLM fixing...</p>
+          <p className="mt-1 text-teal">&nbsp;&nbsp;&#10003; &Phi;c = 1.000 &mdash; all 12 paths verified. Certified.</p>
+        </div>
 
         {/* Compilation targets */}
         <div className="mt-10">

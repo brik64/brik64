@@ -11,6 +11,8 @@ import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { EditorsSection } from "@/components/EditorsSection";
 import { EnterpriseSection } from "@/components/EnterpriseSection";
 import { AINativeSection } from "@/components/AINativeSection";
+import { ComplianceSection } from "@/components/ComplianceSection";
+import { VerticalsSection } from "@/components/VerticalsSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { CircuitGrid } from "@/components/CircuitGrid";
@@ -32,8 +34,10 @@ export default function Home() {
           <WorkflowSection />
           <IntegrationsSection />
           <EditorsSection />
-          <EnterpriseSection />
           <AINativeSection />
+          <ComplianceSection />
+          <VerticalsSection />
+          <EnterpriseSection />
         </div>
         <CTASection />
       </main>
