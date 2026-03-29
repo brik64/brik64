@@ -1,4 +1,4 @@
-import { Plane, Heart, Link2, Building2, Cpu } from "lucide-react";
+import { Plane, Heart, Link2, Building2, Cpu, Landmark } from "lucide-react";
 import type { ReactNode } from "react";
 
 const verticals: { icon: ReactNode; name: string; tagline: string; example: string; badge: string }[] = [
@@ -29,6 +29,13 @@ const verticals: { icon: ReactNode; name: string; tagline: string; example: stri
     tagline: "DO-178C formal methods evidence from your code",
     example: "type Altitude = range[0, 15_000];",
     badge: "DO-178C",
+  },
+  {
+    icon: <Landmark className="h-5 w-5" />,
+    name: "Fintech / Banking",
+    tagline: "SOX Sec 404 internal controls. The math is the evidence.",
+    example: "type InterestRate = range[0.0, 0.30];",
+    badge: "SOX 25%",
   },
   {
     icon: <Cpu className="h-5 w-5" />,
@@ -72,8 +79,15 @@ export function VerticalsSection() {
                 </span>
               </div>
               <p className="mt-2 text-xs text-muted-foreground">{v.tagline}</p>
-              <div className="mt-3 rounded border border-border bg-black/30 px-3 py-1.5 font-mono text-[11px] text-teal/80">
-                {v.example}
+              <div className="mt-3 overflow-hidden rounded-lg border border-white/10 bg-[#0a0e14]">
+                <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-1.5">
+                  <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                  <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                </div>
+                <div className="px-3 py-2 font-mono text-[11px] text-teal/80">
+                  {v.example}
+                </div>
               </div>
             </div>
           ))}

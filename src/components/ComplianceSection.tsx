@@ -60,12 +60,20 @@ export function ComplianceSection() {
           ))}
         </div>
 
-        {/* CLI example */}
-        <div className="mt-8 rounded-lg border border-border bg-black/40 p-4 font-mono text-xs">
-          <p className="text-muted-foreground">$ brikc certify --evidence mifid2 trading_algo.pcd</p>
-          <p className="mt-1 text-teal">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence generated &mdash; 5 controls mapped</p>
-          <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;&#10003; Scope limitation included</p>
-          <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;&#10003; Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
+        {/* CLI example — terminal with traffic lights */}
+        <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+          <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+            <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc certify</span>
+          </div>
+          <div className="flex flex-col gap-1 p-5 font-mono text-xs">
+            <p className="text-white/70"><span className="text-teal">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
+            <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence generated &mdash; 5 controls mapped</p>
+            <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Scope limitation included</p>
+            <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
+          </div>
         </div>
 
         <p className="mt-6 text-xs text-muted-foreground/60">

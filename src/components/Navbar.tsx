@@ -22,13 +22,13 @@ const productMore = [
 /* ── Industries Mega Menu data ── */
 
 const industryItems = [
-  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/industries/ai" },
-  { icon: FlaskConical, label: "Science & Research", desc: "Verified algorithms, domain constraints, measurement control", href: "/industries/science" },
-  { icon: Cog, label: "Engineering", desc: "Standards compliance, certified components, formal verification", href: "/industries/engineering" },
-  { icon: Plane, label: "Aerospace & Defense", desc: "DO-178C artifacts, mission-critical certification", href: "/industries/aerospace" },
-  { icon: Landmark, label: "Banking & Finance", desc: "SOC2/PCI-DSS evidence, trading system verification", href: "/industries/finance" },
-  { icon: HeartPulse, label: "Healthcare", desc: "HIPAA evidence, medical device software certification", href: "/industries/healthcare" },
-  { icon: Car, label: "Automotive", desc: "ISO 26262 evidence, autonomous vehicle safety", href: "/industries/automotive" },
+  { icon: Plane, label: "Aerospace & Defense", desc: "DO-178C evidence, mission-critical certification", href: "/safety-critical" },
+  { icon: HeartPulse, label: "Healthcare", desc: "IEC 62304 evidence, medical device software", href: "/safety-critical" },
+  { icon: Landmark, label: "Banking & Finance", desc: "MiFID II, SOC2, SOX compliance evidence", href: "/compliance" },
+  { icon: Car, label: "Automotive", desc: "ISO 26262 ASIL D, autonomous vehicle safety", href: "/safety-critical" },
+  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/ai-agents" },
+  { icon: Cog, label: "Blockchain", desc: "Verified smart contracts, WASM, on-chain certificates", href: "/blockchain" },
+  { icon: FlaskConical, label: "Science & Research", desc: "Verified algorithms, domain constraints", href: "/industries/science" },
   { icon: Building2, label: "Government", desc: "FedRAMP evidence, classified system verification", href: "/industries/government" },
 ];
 

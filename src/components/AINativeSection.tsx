@@ -63,19 +63,29 @@ export function AINativeSection() {
           and retries &mdash; automatically. No other language has this.
         </p>
 
-        {/* brikc ai demo */}
-        <div className="mt-6 rounded-lg border border-teal/20 bg-black/40 p-4 font-mono text-xs">
-          <p className="text-muted-foreground">$ brikc ai &quot;Generate a drone speed controller with wind limits&quot;</p>
-          <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;LLM generating .b64...</p>
-          <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;c = 0.847 &mdash; missing case: wind &gt; 120 km/h</p>
-          <p className="mt-1 text-muted-foreground">&nbsp;&nbsp;LLM fixing...</p>
-          <p className="mt-1 text-teal">&nbsp;&nbsp;&#10003; &Phi;c = 1.000 &mdash; all 12 paths verified. Certified.</p>
+        {/* brikc ai demo — terminal window with traffic lights */}
+        <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+          {/* Title bar with 3 dots */}
+          <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+            <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc ai</span>
+          </div>
+          {/* Terminal content */}
+          <div className="flex flex-col gap-1 p-5 font-mono text-xs">
+            <p className="text-white/70"><span className="text-teal">$</span> brikc ai &quot;Generate a drone speed controller with wind limits&quot;</p>
+            <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM generating .b64...</p>
+            <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.847 &mdash; missing case: wind &gt; 120 km/h</p>
+            <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM fixing...</p>
+            <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; <span className="font-bold">&Phi;<sub>c</sub></span> = 1.000 &mdash; all 12 paths verified. Certified.</p>
+          </div>
         </div>
 
         {/* Compilation targets */}
         <div className="mt-10">
           <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-            Compiles to 5 targets
+            Compiles to 14 targets
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {compilationTargets.map((target) => (
