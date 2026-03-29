@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -37,12 +38,12 @@ const useCases = [
 ];
 
 const standards = [
-  "FedRAMP — Federal Risk and Authorization Management Program",
-  "NIST 800-53 — Security and Privacy Controls for Information Systems",
-  "Common Criteria — IT Security Evaluation (EAL 1-7)",
-  "CMMC — Cybersecurity Maturity Model Certification (Level 1-3)",
-  "FIPS 140-3 — Cryptographic Module Validation",
-  "FISMA — Federal Information Security Modernization Act",
+  "FedRAMP — processing logic evidence for authorization packages",
+  "NIST 800-53 — change control and processing integrity evidence (partial)",
+  "Common Criteria — processing logic evidence for EAL evaluations",
+  "CMMC — processing integrity evidence for assessments (Level 1-3)",
+  "FIPS 140-3 — verified calculation logic only (not cryptographic module validation)",
+  "FISMA — processing logic and change control evidence (not full compliance)",
 ];
 
 export default function GovernmentIndustryPage() {
@@ -90,7 +91,7 @@ export default function GovernmentIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Trust no code — verify everything
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -128,7 +129,7 @@ export default function GovernmentIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Verifiable software for national security
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -155,7 +156,7 @@ export default function GovernmentIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Access control with clearance-level constraints
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -163,18 +164,8 @@ export default function GovernmentIndustryPage() {
               is mathematically verified against clearance levels, need-to-know, and
               compartmentalization rules.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  access_control.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Access Control Circuit — Classification Enforced
-// Φ_c = 1 — no unauthorized access is mathematically possible
+            <CopyableCode title="access_control.pcd">{`// Access Control Circuit — Classification Enforced
+// Φ_c = 1 — the circuit is mathematically complete: every input path produces a verified output or an explicit rejection
 
 circuit access_control {
   // Classification levels (ordinal)
@@ -218,9 +209,7 @@ circuit access_control {
     timestamp:    now(),
     audit_hash:   certification_hash()
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Bell-LaPadula enforced. Compartmentalization verified. Nationality checked.{" "}
               <PhiC /> = 1 — unauthorized access is not a runtime error, it is a compile-time impossibility.
@@ -232,10 +221,10 @@ circuit access_control {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Federal compliance, mathematically proven
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Processing logic evidence for federal standards
             </h2>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -243,11 +232,15 @@ circuit access_control {
                 </li>
               ))}
             </ul>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
+              BRIK-64 generates verification evidence for processing logic and change control.
+              Infrastructure, organizational, and procedural controls require separate evidence.
+            </p>
           </section>
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified government systems
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

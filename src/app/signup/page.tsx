@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Check } from "lucide-react";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
@@ -21,10 +21,10 @@ export default function LoginPage() {
             </span>
 
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Sign in to <span className="text-teal">BRIK-64</span>
+              Create your <span className="text-teal">BRIK-64</span> account
             </h1>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              Access the platform, registry, and certification dashboard.
+              Join the closed beta. Get access to the platform, registry, and certification dashboard.
             </p>
 
             {submitted ? (
@@ -48,7 +48,7 @@ export default function LoginPage() {
                   <svg className="h-5 w-5" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
                   </svg>
-                  Continue with GitHub
+                  Sign up with GitHub
                   <span className="ml-auto rounded bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">SOON</span>
                 </button>
 
@@ -62,19 +62,24 @@ export default function LoginPage() {
                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
                   </svg>
-                  Continue with Google
+                  Sign up with Google
                   <span className="ml-auto rounded bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">SOON</span>
                 </button>
 
                 {/* Divider */}
                 <div className="flex items-center gap-3 py-2">
                   <div className="h-px flex-1 bg-border" />
-                  <span className="text-xs text-muted-foreground">or sign in with email</span>
+                  <span className="text-xs text-muted-foreground">or sign up with email</span>
                   <div className="h-px flex-1 bg-border" />
                 </div>
 
-                {/* Email/Password form */}
+                {/* Email form */}
                 <div className="space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Full name"
+                    className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+                  />
                   <input
                     type="email"
                     placeholder="Email address"
@@ -85,44 +90,49 @@ export default function LoginPage() {
                     placeholder="Password"
                     className="w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
                   />
-                  <button className="w-full rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
-                    Sign In
-                  </button>
-                </div>
-
-                <div className="flex items-center justify-between text-xs pt-1">
-                  <a href="#" className="text-muted-foreground hover:text-teal transition-colors">
-                    Forgot password?
-                  </a>
-                  <a href="/signup" className="text-teal hover:underline">
-                    Don&rsquo;t have an account? Sign up
-                  </a>
-                </div>
-
-                {/* Divider */}
-                <div className="flex items-center gap-3 py-2">
-                  <div className="h-px flex-1 bg-border" />
-                  <span className="text-xs text-muted-foreground">or request beta access</span>
-                  <div className="h-px flex-1 bg-border" />
-                </div>
-
-                {/* Beta request */}
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="you@company.com"
-                    className="flex-1 rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
-                  />
                   <button
                     onClick={() => setSubmitted(true)}
-                    className="shrink-0 rounded-md bg-teal px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+                    className="w-full rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
                   >
-                    Request Access
+                    Create Account
                   </button>
                 </div>
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  We&rsquo;ll email you when your access is ready. No spam.
+
+                <p className="text-xs text-muted-foreground pt-1">
+                  Already have an account?{" "}
+                  <a href="/login" className="text-teal hover:underline">Sign in</a>
                 </p>
+
+                <p className="text-[10px] text-muted-foreground leading-relaxed">
+                  By creating an account, you agree to our{" "}
+                  <a href="/legal" className="text-teal hover:underline">Terms of Service</a>
+                  {" "}and{" "}
+                  <a href="/legal" className="text-teal hover:underline">Privacy Policy</a>.
+                </p>
+              </div>
+            )}
+
+            {/* What's included */}
+            {!submitted && (
+              <div className="mt-12 w-full">
+                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-4">
+                  What&rsquo;s included in beta
+                </p>
+                <div className="grid grid-cols-2 gap-2 text-left">
+                  {[
+                    "GitHub integration",
+                    "PCD Registry access",
+                    "Certification dashboard",
+                    "Unlimited lifts",
+                    "All export targets",
+                    "Priority support",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Check className="h-3 w-3 shrink-0 text-emerald-400" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>

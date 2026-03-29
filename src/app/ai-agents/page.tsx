@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -116,23 +117,25 @@ export default function AIAgentsPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            AI-NATIVE
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Teach your AI agent PCD{" "}
-            <span className="text-teal">in 30 seconds</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            BRIK-64 was designed for AI. Install a skill, and your agent writes
-            verified circuits &mdash; not just code.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              AI-NATIVE
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Teach your AI agent PCD{" "}
+              <span className="text-[#00b8d4]">in 30 seconds</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              BRIK-64 was designed for AI. Install a skill, and your agent writes
+              verified circuits &mdash; not just code.
+            </p>
+          </div>
         </section>
 
         {/* How It Works */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             How it works
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -145,7 +148,7 @@ export default function AIAgentsPage() {
               {
                 step: "02",
                 title: "Your agent learns PCD",
-                desc: "128 monomers, EVA algebra, certification rules \u2014 instantly",
+                desc: "PCD knowledge, composition rules, certification \u2014 instantly",
               },
               {
                 step: "03",
@@ -167,7 +170,7 @@ export default function AIAgentsPage() {
 
         {/* Agent Setup */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Agent setup
           </h2>
           <p className="text-center text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-relaxed">
@@ -235,27 +238,24 @@ export default function AIAgentsPage() {
                   of computation.
                 </li>
                 <li>
-                  &bull; <strong className="text-foreground">128 monomers</strong>{" "}
-                  &mdash; 64 certified + 64 extended, organized in 16 families
-                  of 8.
+                  &bull; <strong className="text-foreground">Monomers</strong>{" "}
+                  &mdash; Formally verified atomic operations that compose into circuits.
                 </li>
                 <li>
                   &bull;{" "}
                   <strong className="text-foreground">
                     EVA algebra
                   </strong>{" "}
-                  &mdash; 3 composition operators: sequential (&otimes;),
-                  parallel (&parallel;), conditional (&oplus;).
+                  &mdash; 3 composition operators: sequential,
+                  parallel, conditional.
                 </li>
                 <li>
                   &bull; <strong className="text-foreground"><PhiC /></strong>{" "}
-                  &mdash; Coherence coefficient. <PhiC /> = 1 certifies zero
-                  informational entropy.
+                  &mdash; Coherence coefficient. <PhiC /> = 1 certifies structural completeness — every input maps deterministically to a verified output.
                 </li>
                 <li>
                   &bull; <strong className="text-foreground">TCE</strong> &mdash;
-                  Thermodynamic Coherence Engine. Computes <PhiC />, &delta;,
-                  and V(C).
+                  Thermodynamic Coherence Engine. Computes <PhiC /> and related metrics.
                 </li>
               </ul>
             </div>
@@ -265,16 +265,13 @@ export default function AIAgentsPage() {
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">
                 PCD Syntax Example
               </h3>
-              <div className="mt-2 bg-[#0a0e14] p-4">
-                <pre className="overflow-x-auto text-[11px] leading-relaxed text-gray-300">
-                  <code>{`circuit add_two(x: i64, y: i64) -> i64 {
-  // Uses monomer MC_00 (ADD8)
+              <div className="mt-2">
+<CopyableCode>{`circuit add_two(x: i64, y: i64) -> i64 {
   result = ADD(x, y);
   return result;
 }
-// Certification: \u03A6_c = 1.000 | \u03B4 = 0.000 | V(C) = 1.000`}</code>
-                </pre>
-              </div>
+// Certified: \u03A6_c = 1`}</CopyableCode>
+</div>
             </div>
 
             {/* Skills Repository */}
@@ -288,7 +285,7 @@ export default function AIAgentsPage() {
                   <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">
                     brik64-pcd-system
                   </code>{" "}
-                  &mdash; Full PCD language skill (128 monomers, EVA, TCE)
+                  &mdash; Full PCD language skill (monomers, composition, certification)
                 </li>
                 <li>
                   &bull;{" "}
@@ -300,9 +297,9 @@ export default function AIAgentsPage() {
                 <li>
                   &bull;{" "}
                   <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">
-                    brik64-policy-circuits
+                    brik64-safety
                   </code>{" "}
-                  &mdash; Write AI safety policy circuits
+                  &mdash; Write AI safety guardrails
                 </li>
               </ul>
             </div>
@@ -336,14 +333,13 @@ export default function AIAgentsPage() {
                 Available Backends
               </h3>
               <p className="mt-2 text-xs text-muted-foreground">
-                <strong className="text-foreground">Lift from (10):</strong>{" "}
+                <strong className="text-foreground">Lift from:</strong>{" "}
                 JavaScript, TypeScript, Python, Rust, C, C++, Go, COBOL, PHP,
                 Java
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                <strong className="text-foreground">Export to (14):</strong>{" "}
-                All of the above + Swift, WebAssembly, BIR bytecode, native
-                x86-64
+                <strong className="text-foreground">Export to:</strong>{" "}
+                All of the above + Swift, WebAssembly, and more
               </p>
             </div>
           </div>
@@ -373,19 +369,18 @@ export default function AIAgentsPage() {
                   hardware circuits
                 </li>
                 <li>
-                  &bull; 128 formally verified atomic operations (monomers)
-                  composed through EVA algebra
+                  &bull; Formally verified atomic operations (monomers)
+                  composed through algebraic rules
                 </li>
                 <li>
-                  &bull; Lifts existing code from 10 languages into certified PCD
+                  &bull; Lifts existing code from multiple languages into certified PCD
                   blueprints
                 </li>
                 <li>
-                  &bull; Exports to 14 targets with formal proof of correctness
+                  &bull; Exports to multiple targets with formal proof of correctness
                 </li>
                 <li>
-                  &bull; <PhiC /> = 1 certification means zero informational
-                  entropy &mdash; mathematical proof, not testing
+                  &bull; <PhiC /> = 1 certification means structural completeness &mdash; mathematical verification, not testing
                 </li>
               </ul>
             </div>
@@ -397,11 +392,11 @@ export default function AIAgentsPage() {
               </h4>
               <ol className="mt-2 list-decimal list-inside space-y-1.5 text-xs text-muted-foreground">
                 <li>
-                  Eliminates a class of bugs by construction, not by testing
+                  Prevents a class of structural bugs by construction — unhandled inputs, undefined paths, and unclosed circuits cannot compile
                 </li>
                 <li>
-                  140 certified transpilation paths (10 sources &times; 14
-                  targets) through one verified IR
+                  Certified transpilation paths between all supported languages
+                  through one verified IR
                 </li>
                 <li>
                   AI-generated code gets formal verification that human review
@@ -524,18 +519,10 @@ export default function AIAgentsPage() {
               BRIK-64 AI Agent Summary: BRIK-64 is a self-verifying compiler
               platform implementing Digital Circuitality. PCD (Printed Circuit
               Description) is the language-agnostic intermediate representation.
-              128 monomers (64 certified + 64 extended) in 16 families.
-              EVA algebra: sequential (tensor), parallel, conditional. TCE
-              (Thermodynamic Coherence Engine) computes Phi_c, delta, V(C).
-              Phi_c = 1 certifies zero informational entropy (Shannon).
-              Lift from: JavaScript, TypeScript, Python, Rust, C, C++, Go,
-              COBOL, PHP, Java. Export to: all above + Swift, WebAssembly, BIR,
-              x86-64. 140 certified transpilation paths. 207 Coq proofs.
-              Self-compilation fixpoint. Free CLI forever. Pro $49/mo. Enterprise
-              custom. Skills: brik64-pcd-system, brik64-lifter,
-              brik64-policy-circuits. MCP server: brik64.discover, brik64.execute.
-              Academic backing: Prof. Kish (Texas A&amp;M), Shannon, Brillouin,
-              Kish-Ferry distinction. Website: brik64.com. Docs: docs.brik64.dev.
+              Phi_c = 1 certifies structural completeness — every input maps deterministically to a verified output.
+              Free CLI forever. Pro $49/mo. Enterprise custom.
+              Skills: brik64-pcd-system, brik64-lifter.
+              Website: brik64.com. Docs: docs.brik64.dev.
               GitHub: github.com/brik64. Discord: discord.gg/brik64.
             </div>
           </div>
@@ -543,7 +530,7 @@ export default function AIAgentsPage() {
 
         {/* Community */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Community
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -571,7 +558,7 @@ export default function AIAgentsPage() {
 
         {/* Bottom CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Your AI agent is ready to write{" "}
             <span className="text-teal">verified code</span>.
           </h2>

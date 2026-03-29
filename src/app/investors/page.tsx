@@ -20,9 +20,9 @@ import {
 /* ── Traction metrics ── */
 
 const traction = [
-  { value: "128", label: "Monomers (64 certified + 64 extended)" },
-  { value: "10", label: "Lift-from languages" },
-  { value: "14", label: "Export targets" },
+  { value: "Full", label: "Monomer catalog (certified + extended)" },
+  { value: "10+", label: "Lift-from languages" },
+  { value: "14+", label: "Export targets" },
   { value: "15,424", label: "Tests (0 failures)" },
   { value: "14", label: "Rust crates" },
   { value: "207", label: "Coq proofs" },
@@ -32,7 +32,7 @@ const traction = [
 
 const businessModel = [
   { title: "Free CLI", desc: "Open source compiler and SDKs. Build the developer community." },
-  { title: "Pro ($49/mo)", desc: "Platform access, private registry, GitHub integration, team features." },
+  { title: "Pro (paid tier — pricing finalized at launch)", desc: "Platform access, private registry, GitHub integration, team features." },
   { title: "Enterprise", desc: "SSO, compliance reports, audit trails, CI/CD gates, on-premise, custom SLA." },
   { title: "Registry", desc: "Public free, private paid. npm for verified logic." },
   { title: "Verified Badge", desc: "API-connected certification badge. Subscription-locked. White-label for enterprise." },
@@ -58,17 +58,19 @@ export default function InvestorsPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Investors
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            The infrastructure layer for <span className="text-teal">verified software.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            BRIK-64 is building the platform where every line of code is mathematically proven
-            correct. We&rsquo;re creating a new category: formal verification as a service.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Investors
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              The infrastructure layer for <span className="text-[#00b8d4]">verified software.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              BRIK-64 is building the platform where every line of code is mathematically proven
+              correct. We&rsquo;re creating a new category: formal verification as a service.
+            </p>
+          </div>
         </section>
 
         {/* The Problem / Market opportunity */}
@@ -76,7 +78,7 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] THE OPPORTUNITY
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Why now</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Why now</h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div className="border border-border bg-muted/10 p-6">
               <Bug className="mb-4 h-6 w-6 text-teal" />
@@ -112,7 +114,7 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE PRODUCT
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
           <div className="mx-auto mt-8 max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-sm leading-relaxed text-foreground">
               A self-verifying compiler and platform that lifts code from 10 languages into
@@ -129,7 +131,7 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] TRACTION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">What we&rsquo;ve built</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">What we&rsquo;ve built</h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {traction.map((t) => (
               <div key={t.label} className="border border-border bg-muted/20 p-4 text-center">
@@ -145,7 +147,7 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] BUSINESS MODEL
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Open source CLI &rarr; Platform &rarr; Enterprise
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -163,15 +165,15 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COMPETITIVE MOAT
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Why this is hard to replicate
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {[
               { title: "207 Coq proofs", desc: "Each monomer is mathematically proven correct. Building this proof library from scratch takes years." },
               { title: "Self-compilation fixpoint", desc: "The compiler compiles itself to an identical hash. This is a property, not a feature \u2014 it\u2019s extremely difficult to achieve." },
-              { title: "First-mover in AI verification", desc: "PCD is the first language designed for AI agents. As AI code generation accelerates, the need for formal verification becomes existential." },
-              { title: "Academic backing", desc: "Prof. Kish (Texas A&M) reviewed the theoretical foundations. The framework stands on Shannon, Brillouin, and Kish-Ferry." },
+              { title: "Early mover in formal AI code verification with circuit-based approach", desc: "PCD is the first language designed for AI agents. As AI code generation accelerates, the need for formal verification becomes existential." },
+              { title: "Academic backing", desc: "Theoretical foundations reviewed by Prof. Laszlo B. Kish (Texas A&M) — whose work on the entropy distinction informs the framework. The framework stands on Shannon, Brillouin, and Kish-Ferry." },
               { title: "Network effects", desc: "Every certified circuit in the registry reduces the need to write new code. The more circuits exist, the more valuable the platform." },
             ].map((m) => (
               <div key={m.title} className="flex items-start gap-3">
@@ -190,7 +192,7 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] VISION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Roadmap</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Roadmap</h2>
           <div className="mx-auto mt-10 max-w-2xl space-y-4">
             {roadmap.map((r) => (
               <div
@@ -220,7 +222,7 @@ export default function InvestorsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] INTELLECTUAL PROPERTY
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">IP portfolio</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">IP portfolio</h2>
           <div className="mx-auto mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-3xl">
             <div className="border border-border bg-muted/10 p-5">
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">5 Patents Planned</h3>
@@ -246,7 +248,7 @@ export default function InvestorsPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             The future of software is verified.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

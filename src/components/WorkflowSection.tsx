@@ -113,7 +113,7 @@ export function WorkflowSection() {
                   {step.number === "02" ? (
                     <>
                       Every extracted circuit is verified by the TCE. If{" "}
-                      <PhiC /> = 1, it&apos;s mathematically guaranteed.
+                      <PhiC /> = 1, it&apos;s mathematically verified.
                     </>
                   ) : (
                     step.description

@@ -24,12 +24,12 @@ import {
 /* ── Featured circuits ── */
 
 const featured = [
-  { name: "@brik64/validate-email", version: "1.2.0", badge: "CERTIFIED", downloads: "4.2k", monomers: 6, tier: "CORE" },
-  { name: "@brik64/hash-password", version: "2.0.1", badge: "CERTIFIED", downloads: "3.8k", monomers: 4, tier: "CORE" },
-  { name: "@acme/calc-interest", version: "1.0.0", badge: "CERTIFIED", downloads: "1.1k", monomers: 5, tier: "CORE" },
-  { name: "@acme/fetch-api", version: "3.1.0", badge: "OPEN 82%", downloads: "2.5k", monomers: 12, tier: "CONTRACT" },
-  { name: "@brik64/fibonacci", version: "1.0.0", badge: "CERTIFIED", downloads: "890", monomers: 3, tier: "CORE" },
-  { name: "@brik64/csv-parser", version: "1.3.2", badge: "OPEN 71%", downloads: "1.9k", monomers: 9, tier: "CONTRACT" },
+  { name: "@brik64/validate-email", version: "1.2.0", badge: "CERTIFIED", downloads: "4.2k", monomers: 6, domains: 12, tier: "CORE" },
+  { name: "@brik64/hash-password", version: "2.0.1", badge: "CERTIFIED", downloads: "3.8k", monomers: 4, domains: 8, tier: "CORE" },
+  { name: "@acme/calc-interest", version: "1.0.0", badge: "CERTIFIED", downloads: "1.1k", monomers: 5, domains: 10, tier: "CORE" },
+  { name: "@acme/fetch-api", version: "3.1.0", badge: "OPEN 82%", downloads: "2.5k", monomers: 12, domains: 24, tier: "CONTRACT" },
+  { name: "@brik64/fibonacci", version: "1.0.0", badge: "CERTIFIED", downloads: "890", monomers: 3, domains: 6, tier: "CORE" },
+  { name: "@brik64/csv-parser", version: "1.3.2", badge: "OPEN 71%", downloads: "1.9k", monomers: 9, domains: 18, tier: "CONTRACT" },
 ];
 
 /* ── Badge system ── */
@@ -38,8 +38,8 @@ const badges = [
   {
     name: "CERTIFIED",
     color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-    condition: "Hash in registry, \u03a9 = 1",
-    meaning: "Structurally impossible to have logic errors. All monomers are Coq-proven Core (MC_00\u2013MC_63).",
+    condition: "Hash in registry, all monomers verified",
+    meaning: "Every input path verified — produces a correct output or an explicit rejection per the circuit's specification.",
   },
   {
     name: "OPEN 78%",
@@ -72,17 +72,19 @@ export default function RegistryPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Registry
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            The npm for <span className="text-teal">verified software.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Every package carries a mathematical proof of correctness. Search, install, and compose certified circuits &mdash;
-            never rewrite what&apos;s already proven.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Registry
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              The npm for <span className="text-[#00b8d4]">verified software.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Every package carries a mathematical proof of correctness. Search, install, and compose certified circuits &mdash;
+              never rewrite what&apos;s already proven.
+            </p>
+          </div>
         </section>
 
         {/* Search demo */}
@@ -112,7 +114,7 @@ export default function RegistryPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] FEATURED CIRCUITS
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Pre-certified. Ready to use.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -142,7 +144,7 @@ export default function RegistryPage() {
                   </div>
                   <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground">
                     <span>v{c.version}</span>
-                    <span>{c.monomers} monomers</span>
+                    <span>{c.monomers} monomers · {c.domains} domains</span>
                     <span className="flex items-center gap-1">
                       <Download className="h-3 w-3" /> {c.downloads}
                     </span>
@@ -157,7 +159,7 @@ export default function RegistryPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] PUBLISHING
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             From code to registry in minutes
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -209,7 +211,7 @@ export default function RegistryPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] BADGE SYSTEM
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Live proof. Not a static label.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -236,7 +238,7 @@ export default function RegistryPage() {
                 <span className="font-medium text-foreground">ISO 26262, DO-178C, CC EAL7:</span> The process was followed / the tests were run.
               </div>
               <div className="text-xs text-muted-foreground">
-                <span className="font-medium text-teal">BRIK-64 Certified:</span> Incorrect programs cannot compile.
+                <span className="font-medium text-teal">BRIK-64 Certified:</span> Structurally incomplete programs cannot compile — every certified circuit handles all inputs within its domain.
               </div>
             </div>
           </div>
@@ -247,7 +249,7 @@ export default function RegistryPage() {
           <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
             REGISTRY LAUNCHING 2026
           </div>
-          <h2 className="text-center mt-6 text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center mt-6 text-2xl font-bold tracking-tight md:text-3xl">
             Publish your first circuit
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

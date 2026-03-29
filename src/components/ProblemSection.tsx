@@ -5,12 +5,12 @@ const cards: { icon: ReactNode; title: string; desc: string }[] = [
   {
     icon: <ShieldCheck className="h-5 w-5 text-teal" />,
     title: "Verified Parts",
-    desc: "Like tested beams in a bridge. Each part is mathematically proven correct before it's ever used.",
+    desc: "Like tested beams in a bridge. Each part is mathematically verified before it's ever used.",
   },
   {
     icon: <Puzzle className="h-5 w-5 text-teal" />,
     title: "Composition Laws",
-    desc: "Parts connect through algebra, not duct tape. If Part A works and Part B works, A+B is guaranteed to work.",
+    desc: "Parts connect through algebra, not duct tape. If Part A is verified and Part B is verified, A composed with B preserves verification.",
   },
   {
     icon: <ScanLine className="h-5 w-5 text-teal" />,

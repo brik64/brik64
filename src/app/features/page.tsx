@@ -44,14 +44,27 @@ const sections = [
     icon: Shield,
     title: "Proof, not promises",
     description:
-      "The Thermodynamic Coherence Engine (TCE) computes three metrics that must simultaneously reach their target values. If any fails, compilation is rejected.",
+      "A comprehensive verification pipeline ensures every compiled function meets formal correctness criteria. If verification fails, compilation is rejected.",
     features: [
       "\u03A6_c = 1 \u2014 circuit closure (every branch has complete input \u2192 output path)",
-      "\u03B4 = 0 \u2014 signature distance (observed matches expected exactly)",
-      "V(C) = 1 \u2014 verification completeness (all paths verified)",
-      "207 Coq proofs for the 64 core monomers",
+      "Full formal verification across all metrics",
+      "Coq proof suite for core monomers",
       "Immutable certification hash per function",
       "Embeddable certification badges (green/amber/red)",
+    ],
+  },
+  {
+    id: "domain-constraints",
+    label: "[02.5] DOMAIN CONSTRAINTS",
+    icon: Shield,
+    title: "Types tell you what. Domains tell you where.",
+    description:
+      "Every variable in PCD declares its valid range. The compiler enforces boundaries at compilation — not at runtime. This is what makes circuit closure achievable. Without domains, circuits cannot close.",
+    features: [
+      "Division by zero — impossible. Lower bounds exclude zero when needed.",
+      "Overflow — impossible. Bounded inputs produce bounded outputs.",
+      "NaN and Infinity — impossible. Float64 ranges exclude degenerate values.",
+      "Physical violations — impossible. Domains encode real-world constraints.",
     ],
   },
   {
@@ -74,9 +87,9 @@ const sections = [
     id: "transpilation",
     label: "[04] TRANSPILATION",
     icon: Repeat,
-    title: "140 certified migration paths",
+    title: "Up to 140 migration paths",
     description:
-      "Not a 1-to-1 syntax converter. An N-to-N certified migration engine. 10 input languages \u00D7 14 output targets = 140 paths, all through one verified intermediate representation.",
+      "Up to 140 migration paths (10 source \u00D7 14 target). Path maturity varies \u2014 see docs for per-path status. All through one verified intermediate representation.",
     features: [
       "Semantic transpilation: extracts what it computes, not how it\u2019s expressed",
       "PCD intermediate representation captures informational content",
@@ -108,7 +121,7 @@ const sections = [
     icon: Bot,
     title: "Designed for AI agents",
     description:
-      "PCD has exactly 128 operations. An AI model can learn the entire language in minutes and generate certified code with mathematical guarantees.",
+      "PCD is a compact language designed for AI agents. A model can learn it in minutes and generate certified code with structural verification.",
     features: [
       "Skills for Claude Code, Codex, Gemini CLI, Grok, OpenCode",
       "MCP server: 2 tools (discover + execute) for direct agent integration",
@@ -127,7 +140,7 @@ const sections = [
       "Fintech. Healthcare. Automotive. Government. When \u201Ctests pass\u201D isn\u2019t enough.",
     features: [
       "SSO / SAML / OIDC with SCIM provisioning",
-      "Compliance reports: SOC2, HIPAA, PCI-DSS, ISO 27001",
+      "Processing logic and change control evidence mapped to SOC2 (PI1.x, CC8.1), PCI-DSS (Req 6, 10), HIPAA processing rules, and ISO 27001 change control",
       "Audit trail: tamper-proof timestamps, exportable",
       "CI/CD gate plugins: GitHub Actions, GitLab CI, Jenkins",
       "On-premise / self-hosted deployment option",
@@ -157,20 +170,24 @@ export default function FeaturesPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Features
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Software that works like <span className="text-teal">hardware.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            A language, a compiler, a lifter, a certification engine, and a platform &mdash;
-            everything you need to write code that is mathematically proven correct.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Features
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Software that works like <span className="text-[#00b8d4]">hardware.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              A language, a compiler, a lifter, a certification engine, and a platform &mdash;
+              everything you need to write code that is structurally verified.
+            </p>
+          </div>
+        </section>
 
-          {/* Stats */}
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+        {/* Stats */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-12 md:px-12 lg:px-18">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {stats.map((s) => (
               <div key={s.label} className="border border-border bg-muted/20 p-4 text-center">
                 <div className="text-xl font-bold text-teal">{s.value}</div>
@@ -192,7 +209,7 @@ export default function FeaturesPage() {
             </p>
             <div className="text-center">
               <section.icon className="mx-auto mb-3 h-6 w-6 text-teal" />
-              <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
+              <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
               <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-relaxed">
                 {section.description}
               </p>
@@ -210,7 +227,7 @@ export default function FeaturesPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to build verified software?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

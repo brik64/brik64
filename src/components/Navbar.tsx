@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe, ExternalLink } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe, ExternalLink, Brain, FlaskConical, Cog, Plane, Landmark, HeartPulse, Car, Building2, Shield, BookOpen, Zap, Ruler, CircuitBoard, CheckCircle2, Rocket, Code2, FileText, Sparkles } from "lucide-react";
 
 /* ── Product Mega Menu data ── */
 
@@ -22,14 +22,14 @@ const productMore = [
 /* ── Industries Mega Menu data ── */
 
 const industryItems = [
-  { label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/industries/ai" },
-  { label: "Science & Research", desc: "Verified algorithms, domain constraints, measurement control", href: "/industries/science" },
-  { label: "Engineering", desc: "Standards compliance, certified components, formal verification", href: "/industries/engineering" },
-  { label: "Aerospace & Defense", desc: "DO-178C compliance, mission-critical certification", href: "/industries/aerospace" },
-  { label: "Banking & Finance", desc: "SOC2/PCI-DSS evidence, trading system verification", href: "/industries/finance" },
-  { label: "Healthcare", desc: "HIPAA compliance, medical device software certification", href: "/industries/healthcare" },
-  { label: "Automotive", desc: "ISO 26262 certification, autonomous vehicle safety", href: "/industries/automotive" },
-  { label: "Government", desc: "FedRAMP readiness, classified system verification", href: "/industries/government" },
+  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/industries/ai" },
+  { icon: FlaskConical, label: "Science & Research", desc: "Verified algorithms, domain constraints, measurement control", href: "/industries/science" },
+  { icon: Cog, label: "Engineering", desc: "Standards compliance, certified components, formal verification", href: "/industries/engineering" },
+  { icon: Plane, label: "Aerospace & Defense", desc: "DO-178C artifacts, mission-critical certification", href: "/industries/aerospace" },
+  { icon: Landmark, label: "Banking & Finance", desc: "SOC2/PCI-DSS evidence, trading system verification", href: "/industries/finance" },
+  { icon: HeartPulse, label: "Healthcare", desc: "HIPAA evidence, medical device software certification", href: "/industries/healthcare" },
+  { icon: Car, label: "Automotive", desc: "ISO 26262 evidence, autonomous vehicle safety", href: "/industries/automotive" },
+  { icon: Building2, label: "Government", desc: "FedRAMP evidence, classified system verification", href: "/industries/government" },
 ];
 
 /* ── Languages Mega Menu data ── */
@@ -241,16 +241,22 @@ function IndustriesDropdown() {
           Technology
         </p>
         <div className="space-y-0.5">
-          {industryItems.slice(0, 4).map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="flex flex-col gap-0.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-            >
-              <span className="text-sm font-medium text-foreground">{item.label}</span>
-              <span className="text-xs text-muted-foreground">{item.desc}</span>
-            </a>
-          ))}
+          {industryItems.slice(0, 4).map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
@@ -260,16 +266,22 @@ function IndustriesDropdown() {
           Regulated
         </p>
         <div className="space-y-0.5">
-          {industryItems.slice(4).map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="flex flex-col gap-0.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-            >
-              <span className="text-sm font-medium text-foreground">{item.label}</span>
-              <span className="text-xs text-muted-foreground">{item.desc}</span>
-            </a>
-          ))}
+          {industryItems.slice(4).map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
@@ -304,16 +316,17 @@ function LanguagesDropdown() {
       {/* Left — Lift From */}
       <div>
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Lift From
+          Lift From (10 languages)
         </p>
         <div className="space-y-0.5">
           {liftFromLanguages.map((item) => (
             <a
               key={item.href + "-lift"}
               href={item.href}
-              className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/50"
+              className="flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-muted/50"
             >
-              {item.label}
+              <span className="text-sm font-medium text-foreground">{item.label}</span>
+              <span className="text-xs text-muted-foreground">Lift to PCD blueprint</span>
             </a>
           ))}
         </div>
@@ -322,18 +335,22 @@ function LanguagesDropdown() {
       {/* Center — Compile To */}
       <div>
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Compile To
+          Compile To (14 targets)
         </p>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5">
-          {compileToLanguages.map((item) => (
+        <div className="space-y-0.5">
+          {compileToLanguages.slice(0, 7).map((item) => (
             <a
               key={item.href + "-compile"}
               href={item.href}
-              className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted/50"
+              className="flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-muted/50"
             >
-              {item.label}
+              <span className="text-sm font-medium text-foreground">{item.label}</span>
+              <span className="text-xs text-muted-foreground">Emit verified code</span>
             </a>
           ))}
+          <p className="px-3 pt-1 text-xs text-muted-foreground">
+            + {compileToLanguages.length - 7} more targets
+          </p>
         </div>
       </div>
 
@@ -347,7 +364,7 @@ function LanguagesDropdown() {
           <span className="text-teal">One blueprint.</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          PCD is the universal intermediate representation. Lift from any source, compile to any target — with certified correctness at every step.
+          PCD is the universal intermediate representation. Lift from any source, compile to any target — with verified structure at every step.
         </p>
         <a
           href="/transpiler"
@@ -362,81 +379,180 @@ function LanguagesDropdown() {
 
 /* ── Resources Dropdown Content ── */
 
-function ResourcesDropdown() {
+function FeaturesDropdown() {
   return (
-    <div className="grid grid-cols-4 gap-0">
-      {/* Column 1: Products */}
-      <div className="border-r border-border/40 pr-6">
+    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
+      {/* Left — Core Capabilities */}
+      <div>
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Products
+          Core Capabilities
         </p>
         <div className="space-y-0.5">
-          {resourcesProducts.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
-            >
-              {item.label}
-            </a>
-          ))}
+          {[
+            { icon: CheckCircle2, label: "Formal Verification", desc: "Mathematical proofs in Coq — not just tests", href: "/features" },
+            { icon: Ruler, label: "Domain Constraints", desc: "Compiler-enforced numeric ranges on every input", href: "/features" },
+            { icon: CircuitBoard, label: "Circuit Closure", desc: "Every input produces a verified output or explicit rejection", href: "/features" },
+            { icon: Zap, label: "EVA Composition", desc: "Composing verified parts produces a verified whole", href: "/features" },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
-      {/* Column 2: Use Cases */}
-      <div className="border-r border-border/40 px-6">
+      {/* Center — Developer Tools */}
+      <div>
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Developer Tools
+        </p>
+        <div className="space-y-0.5">
+          {[
+            { icon: Rocket, label: "Self-Compilation Fixpoint", desc: "Compiler compiles itself to a bit-identical binary", href: "/cli" },
+            { icon: Code2, label: "Multi-Target Compilation", desc: "One PCD blueprint, multiple language outputs", href: "/transpiler" },
+            { icon: ArrowUpDown, label: "Reverse Compilation", desc: "Lift existing code to verified PCD blueprints", href: "/lifter" },
+            { icon: Sparkles, label: "AI-Native Design", desc: "A language designed for AI agent workflows", href: "/ai-agents" },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Right — Featured card */}
+      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-teal">
+          Deep Dive
+        </p>
+        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
+          The complete{" "}
+          <span className="text-teal">feature overview</span>
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          Verification, domains, composition, lifting, transpilation, certification — everything BRIK-64 does, in one page.
+        </p>
+        <a
+          href="/features"
+          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
+        >
+          All features <ArrowRight className="h-3 w-3" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function ResourcesDropdown() {
+  return (
+    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
+      {/* Left — Use Cases */}
+      <div>
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
           Use Cases
         </p>
         <div className="space-y-0.5">
-          {resourcesUseCases.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
-            >
-              {item.label}
-            </a>
-          ))}
+          {[
+            { icon: Shield, label: "AI Safety", desc: "Policy circuits as guardrails for AI agents", href: "/use-cases/ai-safety" },
+            { icon: FileCode, label: "COBOL Migration", desc: "Lift legacy code to verified blueprints", href: "/use-cases/cobol-migration" },
+            { icon: GitBranch, label: "Universal Transpilation", desc: "Certified paths between languages", href: "/use-cases/universal-transpilation" },
+            { icon: CheckCircle2, label: "Formal Verification", desc: "Mathematical proofs, not just tests", href: "/use-cases/formal-verification" },
+            { icon: Zap, label: "CI/CD Integration", desc: "Verify on every push", href: "/use-cases/ci-cd-integration" },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
-      {/* Column 3: Documentation */}
-      <div className="border-r border-border/40 px-6">
+      {/* Center — Documentation */}
+      <div>
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
           Documentation
         </p>
         <div className="space-y-0.5">
-          {resourcesDocs.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
-            >
-              {item.label}
-              {item.external && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
-            </a>
-          ))}
+          {[
+            { icon: BookOpen, label: "Foundations", desc: "Information-theoretic basis of Digital Circuitality", href: "/foundations" },
+            { icon: Rocket, label: "Getting Started", desc: "Install brikc and write your first circuit", href: "https://docs.brik64.dev", external: true },
+            { icon: FileText, label: "API Reference", desc: "REST endpoints for the platform", href: "https://docs.brik64.dev/api", external: true },
+            { icon: Code2, label: "PCD Language Spec", desc: "Complete syntax and domain reference", href: "https://docs.brik64.dev/pcd", external: true },
+            { icon: Box, label: "SDK Guides", desc: "Rust, JavaScript, Python integration", href: "/sdks" },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                {...("external" in item && item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+                <div>
+                  <div className="flex items-center gap-1">
+                    <p className="text-sm font-medium text-foreground">{item.label}</p>
+                    {"external" in item && item.external && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+                  </div>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
-      {/* Column 4: Company */}
-      <div className="pl-6">
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Company
+      {/* Right — Featured card */}
+      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+          Latest
         </p>
-        <div className="space-y-0.5">
-          {resourcesCompany.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-muted/50"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
+          Stories from the{" "}
+          <span className="text-teal">frontier</span>
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          Thoughts on verification, composition, coherence, and the future
+          of software that works like hardware.
+        </p>
+        <a
+          href="/blog"
+          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
+        >
+          Read the blog <ArrowRight className="h-3 w-3" />
+        </a>
       </div>
     </div>
   );
@@ -490,7 +606,7 @@ export function Navbar() {
         <nav className="hidden items-center gap-6 lg:flex">
           <NavTrigger label="Product" active={openMenu === "product"} onClick={() => toggle("product")} />
           <NavTrigger label="Industries" active={openMenu === "industries"} onClick={() => toggle("industries")} />
-          <NavTrigger label="Languages" active={openMenu === "languages"} onClick={() => toggle("languages")} />
+          <NavTrigger label="Features" active={openMenu === "features"} onClick={() => toggle("features")} />
           <a href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Pricing
           </a>
@@ -537,8 +653,8 @@ export function Navbar() {
       <MegaDropdown open={openMenu === "industries"} onClose={() => setOpenMenu(null)}>
         <IndustriesDropdown />
       </MegaDropdown>
-      <MegaDropdown open={openMenu === "languages"} onClose={() => setOpenMenu(null)}>
-        <LanguagesDropdown />
+      <MegaDropdown open={openMenu === "features"} onClose={() => setOpenMenu(null)}>
+        <FeaturesDropdown />
       </MegaDropdown>
       <MegaDropdown open={openMenu === "resources"} onClose={() => setOpenMenu(null)}>
         <ResourcesDropdown />
@@ -557,18 +673,6 @@ export function Navbar() {
             <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Industries</p>
             {industryItems.map((item) => (
               <a key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
-                {item.label}
-              </a>
-            ))}
-            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Languages — Lift From</p>
-            {liftFromLanguages.map((item) => (
-              <a key={item.href + "-m-lift"} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
-                {item.label}
-              </a>
-            ))}
-            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Languages — Compile To</p>
-            {compileToLanguages.map((item) => (
-              <a key={item.href + "-m-compile"} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
                 {item.label}
               </a>
             ))}

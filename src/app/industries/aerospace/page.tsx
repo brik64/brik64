@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { CopyableCode } from "@/components/CopyableCode";
 import { Plane, Radar, Navigation, Cpu, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 
 export const metadata = {
@@ -32,12 +33,12 @@ const useCases = [
     icon: Cpu,
     title: "Avionics Software",
     description:
-      "DO-178C requires evidence of correctness at every Design Assurance Level. BRIK-64 generates that evidence automatically from the formal proof.",
+      "DO-178C requires evidence of correctness at every Design Assurance Level. BRIK-64 generates DO-178C verification artifacts from the formal proof.",
   },
 ];
 
 const standards = [
-  "DO-178C — Software Considerations in Airborne Systems (Level A through E)",
+  "Generates DO-178C verification artifacts (Level A through E)",
   "AS9100 — Quality Management Systems for Aviation, Space, and Defense",
   "ITAR — International Traffic in Arms Regulations compliance",
   "DO-254 — Design Assurance Guidance for Airborne Electronic Hardware",
@@ -61,7 +62,7 @@ export default function AerospaceIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               DO-178C compliance is expensive, manual, and slow. Software certification
-              takes years. BRIK-64 automates the evidence — so your team focuses on the
+              takes years. BRIK-64 accelerates evidence generation — so your team focuses on the
               mission, not the paperwork.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -89,7 +90,7 @@ export default function AerospaceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Certification costs more than development
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -127,7 +128,7 @@ export default function AerospaceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Automated certification evidence
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -154,7 +155,7 @@ export default function AerospaceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Flight computer with envelope constraints
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -162,17 +163,7 @@ export default function AerospaceIndustryPage() {
               every parameter is bounded. The flight computer cannot command states outside
               the certified envelope.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  flight_computer.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Flight Computer — Envelope-Constrained
+            <CopyableCode title="flight_computer.pcd">{`// Flight Computer — Envelope-Constrained
 // Φ_c = 1 — DO-178C Level A certification evidence
 
 circuit flight_envelope {
@@ -211,9 +202,7 @@ circuit flight_envelope {
     g:     g_load,
     valid: true
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Speed between stall and Vne. Altitude within service ceiling. Fuel above bingo.{" "}
               <PhiC /> = 1 — the flight computer is mathematically constrained to the certified envelope.
@@ -225,10 +214,10 @@ circuit flight_envelope {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Certification evidence by construction
             </h2>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -240,11 +229,11 @@ circuit flight_envelope {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Explore aerospace certification with BRIK-64
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Reduce certification timelines from years to months. Every requirement traced.
+              Reduce evidence generation timelines, accelerating the certification process. Every requirement traced.
               Every test generated. Every proof automated.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">

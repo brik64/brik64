@@ -142,7 +142,7 @@ export function HeroSection() {
 
           <p className="text-muted-foreground mt-4 max-w-lg text-base leading-relaxed md:text-lg">
             Compile, certify, publish. The standard format for software that
-            provably works.
+            is structurally verified.
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">

@@ -9,16 +9,18 @@ export default function LegalPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Legal
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Terms & <span className="text-teal">Policies.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Last updated: March 2026
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Legal
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Terms & <span className="text-[#00b8d4]">Policies.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Last updated: March 2026
+            </p>
+          </div>
         </section>
 
         {/* Terms of Service */}
@@ -26,7 +28,7 @@ export default function LegalPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] TERMS OF SERVICE
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Terms of Service</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Terms of Service</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               By accessing or using the BRIK-64 platform, CLI tools, APIs, SDKs, or any associated
@@ -81,7 +83,7 @@ export default function LegalPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] PRIVACY POLICY
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Privacy Policy</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Privacy Policy</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <h3 className="text-sm font-bold text-foreground">Data We Collect</h3>
             <p>We collect minimal data necessary to provide the Service:</p>
@@ -135,7 +137,7 @@ export default function LegalPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] INTELLECTUAL PROPERTY
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Intellectual Property</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Intellectual Property</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Digital Circuitality&trade;, BRIK-64&trade;, PCD&trade;, and BPU&trade; are trademarks

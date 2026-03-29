@@ -45,7 +45,7 @@ const commands = [
       { text: "$ brikc compile app.pcd --target js --emit-tests", style: "command" as const },
       { text: "", style: "blank" as const },
       { text: "  Parsing app.pcd...", style: "muted" as const },
-      { text: "  Resolving 4 monomers: ADD8, STORE, WRITE, LEN", style: "muted" as const },
+      { text: "  Resolving 4 monomers...", style: "muted" as const },
       { text: "  Emitting JavaScript (ES2024)...", style: "muted" as const },
       { text: "", style: "blank" as const },
       { text: "  \u2713 Compiled \u2192 dist/app.js", style: "success" as const },
@@ -103,6 +103,15 @@ const commands = [
       { text: "  \u2502  \u03a6_c:      1.000000               \u2502", style: "box-green" as const },
       { text: "  \u2502  Panics:   0 possible              \u2502", style: "box" as const },
       { text: "  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518", style: "box" as const },
+      { text: "", style: "blank" as const },
+      { text: "  Checking inputs...", style: "muted" as const },
+      { text: "    speed    : Float64[0.0 .. 340.0]  \u2713 bounded", style: "success" as const },
+      { text: "    altitude : Float64[0.0 .. 51000.0] \u2713 bounded", style: "success" as const },
+      { text: "    time     : Float64[1.0 .. 86400.0] \u2713 bounded, excludes zero", style: "success" as const },
+      { text: "  Tracing operations...", style: "muted" as const },
+      { text: "    \u2713 All outputs bounded", style: "success" as const },
+      { text: "    \u2713 No division by zero paths", style: "success" as const },
+      { text: "    \u2713 No overflow paths", style: "success" as const },
     ],
   },
   {
@@ -180,18 +189,16 @@ const commands = [
   },
   {
     name: "catalog",
-    desc: "List and inspect all 128 monomers",
+    desc: "List and inspect all monomers",
     usage: "brikc catalog list",
-    flags: ["list", "show MC_XX"],
+    flags: ["list", "show <name>"],
     example: [
-      { text: "$ brikc catalog show MC_00", style: "command" as const },
+      { text: "$ brikc catalog list --family arithmetic", style: "command" as const },
       { text: "", style: "blank" as const },
-      { text: "  MC_00 \u2014 ADD8", style: "box-green" as const },
-      { text: "  Family:    Arithmetic", style: "box" as const },
-      { text: "  Signature: (u8, u8) \u2192 u8", style: "box" as const },
-      { text: "  Domain:    [0,255] \u00d7 [0,255]", style: "box" as const },
-      { text: "  Range:     [0,255] (wrapping)", style: "box" as const },
-      { text: "  Proof:     Coq \u2713", style: "box-green" as const },
+      { text: "  Arithmetic family \u2014 8 operations", style: "box-green" as const },
+      { text: "  All operations formally verified (Coq)", style: "box" as const },
+      { text: "  Domains and ranges: bounded, proven", style: "box" as const },
+      { text: "  Proof status: \u2713 complete", style: "box-green" as const },
     ],
   },
   {
@@ -202,9 +209,9 @@ const commands = [
     example: [
       { text: "$ brikc verify", style: "command" as const },
       { text: "", style: "blank" as const },
-      { text: "  \u2713 Self-compilation fixpoint verified", style: "success" as const },
-      { text: "  \u2713 Hash: 7229cfcde9613de4...e489e95", style: "success" as const },
-      { text: "  \u2713 \u03a9 = 1", style: "success" as const },
+      { text: "  \u2713 Self-compilation verified", style: "success" as const },
+      { text: "  \u2713 Compiler integrity: PASS", style: "success" as const },
+      { text: "  \u2713 All checks passed", style: "success" as const },
     ],
   },
 ];
@@ -288,21 +295,24 @@ export default function CLIPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Developer Tools
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            One binary. <span className="text-teal">Every guarantee.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Install <code className="rounded bg-muted px-1.5 py-0.5 text-sm font-medium text-foreground">brikc</code> and
-            start lifting, certifying, and compiling code from your terminal. A self-verifying compiler that ships with
-            its own correctness proof.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Developer Tools
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              One binary. <span className="text-[#00b8d4]">Every guarantee.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Install <code className="rounded bg-muted px-1.5 py-0.5 text-sm font-medium text-foreground">brikc</code> and
+              start lifting, certifying, and compiling code from your terminal. A compiler that achieves self-compilation fixpoint — compiling itself produces a bit-identical binary, proving build reproducibility.
+            </p>
+          </div>
+        </section>
 
-          {/* Stats */}
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {/* Stats */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-12 md:px-12 lg:px-18">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label} className="border border-border bg-muted/20 p-4 text-center">
                 <div className="text-2xl font-bold text-teal">{s.value}</div>
@@ -317,7 +327,7 @@ export default function CLIPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] INSTALL
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Up and running in 30 seconds
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -337,7 +347,7 @@ export default function CLIPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] COMMANDS
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Everything from the terminal
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -415,7 +425,7 @@ export default function CLIPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] SYSTEM
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Requirements
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -441,7 +451,7 @@ export default function CLIPage() {
               <h3 className="text-sm font-medium">Verification</h3>
               <p className="mt-3 text-xs text-muted-foreground">
                 Run <code>brikc verify</code> to confirm the self-compilation fixpoint.
-                Run <code>brikc catalog</code> to list all 128 monomers with signatures.
+                Run <code>brikc catalog</code> to list all monomers with signatures.
               </p>
             </div>
           </div>
@@ -449,7 +459,7 @@ export default function CLIPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to start?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

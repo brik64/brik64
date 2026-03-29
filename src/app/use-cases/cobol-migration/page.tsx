@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -104,7 +105,7 @@ export default function COBOLMigrationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               COBOL isn&apos;t going away — but its maintainers are
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -122,7 +123,7 @@ export default function COBOLMigrationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Lift the essence. Compile to the future.
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -140,15 +141,7 @@ export default function COBOLMigrationUseCasePage() {
             </div>
 
             {/* Terminal example */}
-            <div className="mt-10 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">terminal</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`$ brikc lift payroll.cob --to pcd
+            <CopyableCode title="terminal">{`$ brikc lift payroll.cob --to pcd
 ✓ Parsed 847 lines of COBOL-85
 ✓ Extracted 12 paragraphs → 12 PCD circuits
 ✓ WORKING-STORAGE mapped to domain constraints
@@ -161,9 +154,7 @@ $ brikc compile payroll.pcd --target java
   ├── PayrollCalculator.java
   ├── TaxComputation.java
   ├── DeductionProcessor.java
-  └── ... (9 more files)`}</code>
-              </pre>
-            </div>
+  └── ... (9 more files)`}</CopyableCode>
           </section>
 
           {/* ── Real Example ── */}
@@ -171,7 +162,7 @@ $ brikc compile payroll.pcd --target java
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               COBOL paragraph → PCD circuit → Java class
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -180,35 +171,17 @@ $ brikc compile payroll.pcd --target java
             </p>
 
             {/* COBOL */}
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">payroll.cob (original)</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`       COMPUTE-NET-PAY.
+            <CopyableCode title="payroll.cob (original)">{`       COMPUTE-NET-PAY.
            COMPUTE WS-GROSS = WS-HOURS * WS-RATE
            IF WS-GROSS > 5000
                COMPUTE WS-TAX = WS-GROSS * 0.30
            ELSE
                COMPUTE WS-TAX = WS-GROSS * 0.20
            END-IF
-           COMPUTE WS-NET = WS-GROSS - WS-TAX.`}</code>
-              </pre>
-            </div>
+           COMPUTE WS-NET = WS-GROSS - WS-TAX.`}</CopyableCode>
 
             {/* PCD */}
-            <div className="mt-4 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">payroll.pcd (lifted)</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`PC compute_net_pay {
+            <CopyableCode title="payroll.pcd (lifted)">{`PC compute_net_pay {
     domain hours: Range [0.0, 744.0];
     domain rate:  Range [0.0, 10000.0];
 
@@ -217,9 +190,7 @@ $ brikc compile payroll.pcd --target java
         let tax = if (gross > 5000.0) { gross * 0.30 } else { gross * 0.20 };
         return gross - tax;  // Φ_c = 1
     }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
 
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Three representations. One computation. <PhiC /> = 1 — proven equivalent by circuit closure.
@@ -231,7 +202,7 @@ $ brikc compile payroll.pcd --target java
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What you get
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -247,7 +218,7 @@ $ brikc compile payroll.pcd --target java
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Migrate your COBOL — with proof
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

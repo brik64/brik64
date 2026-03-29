@@ -67,17 +67,19 @@ export default function ContactPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Contact
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Get in <span className="text-teal">touch.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Whether you&rsquo;re exploring BRIK-64 for your team, reporting an issue, or just curious
-            about Digital Circuitality &mdash; we&rsquo;d love to hear from you.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Contact
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Get in <span className="text-[#00b8d4]">touch.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Whether you&rsquo;re exploring BRIK-64 for your team, reporting an issue, or just curious
+              about Digital Circuitality &mdash; we&rsquo;d love to hear from you.
+            </p>
+          </div>
         </section>
 
         {/* Contact cards */}
@@ -129,7 +131,7 @@ export default function ContactPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] SEND A MESSAGE
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Contact form</h2>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Contact form</h2>
           <div className="mx-auto mt-10 max-w-lg space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <input

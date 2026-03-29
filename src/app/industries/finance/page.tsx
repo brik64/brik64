@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -6,7 +7,7 @@ import { TrendingUp, ShieldCheck, CreditCard, Search, ArrowRight, CheckCircle2, 
 export const metadata = {
   title: "Banking & Finance — BRIK-64 Industries",
   description:
-    "Every transaction. Mathematically guaranteed. Trading system verification, risk calculation certification, and compliance automation with BRIK-64.",
+    "Every transaction. Mathematically verified. Trading system verification, risk calculation certification, and compliance automation with BRIK-64.",
 };
 
 const useCases = [
@@ -37,12 +38,12 @@ const useCases = [
 ];
 
 const standards = [
-  "SOC2 Type II — Security, Availability, Processing Integrity",
-  "PCI-DSS — Payment Card Industry Data Security Standard",
-  "MiFID II — Markets in Financial Instruments Directive",
-  "Basel III — International Banking Supervision Standards",
-  "SOX — Sarbanes-Oxley Act Compliance",
-  "DORA — Digital Operational Resilience Act (EU)",
+  { standard: "MiFID II Art. 17", coverage: "Strong", detail: "Algo trading controls, risk bounds, kill switches" },
+  { standard: "SOX Sec 404", coverage: "Strong", detail: "Internal controls on financial calculations" },
+  { standard: "SOC2 Processing Integrity (PI1.x, CC8.1)", coverage: "~30%", detail: "Processing logic + change control evidence" },
+  { standard: "PCI-DSS Req 6, 10", coverage: "Partial", detail: "Secure coding evidence + audit trail" },
+  { standard: "Basel III", coverage: "Partial", detail: "Verified calculations only — not capital/liquidity governance" },
+  { standard: "DORA Art. 6, 9", coverage: "Partial", detail: "Prevention only — not detection/response" },
 ];
 
 export default function FinanceIndustryPage() {
@@ -58,7 +59,7 @@ export default function FinanceIndustryPage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Every transaction.{" "}
-              <span className="text-[#00b8d4]">Mathematically guaranteed.</span>
+              <span className="text-[#00b8d4]">Mathematically verified.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Financial software bugs cost billions. Compliance audits are manual and fragile.
@@ -89,7 +90,7 @@ export default function FinanceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               One bug can move billions
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -127,7 +128,7 @@ export default function FinanceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Provable correctness for financial logic
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -154,7 +155,7 @@ export default function FinanceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Transaction validator with balance constraints
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -162,17 +163,7 @@ export default function FinanceIndustryPage() {
               be positive, rate must be bounded, balance must be sufficient. No transaction
               can violate these constraints.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  transaction_validator.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Transaction Validator — Domain-Constrained Finance
+            <CopyableCode title="transaction_validator.pcd">{`// Transaction Validator — Domain-Constrained Finance
 // Φ_c = 1 — every transaction mathematically verified
 
 circuit transaction_validator {
@@ -209,9 +200,7 @@ circuit transaction_validator {
     type:       tx_type,
     certified:  certification_hash()
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Amount positive, rate bounded, balance sufficient, KYC enforced.{" "}
               <PhiC /> = 1 — every transaction carries mathematical proof of validity.
@@ -223,22 +212,46 @@ circuit transaction_validator {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Compliance evidence, automatically
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Processing logic evidence, mapped to standards
             </h2>
-            <ul className="mt-8 space-y-3">
-              {standards.map((s) => (
-                <li key={s} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
-                  <span className="text-sm text-foreground">{s}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="mx-auto mt-8 max-w-3xl overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="pb-3 font-medium text-muted-foreground">Standard</th>
+                    <th className="pb-3 font-medium text-muted-foreground">Coverage</th>
+                    <th className="pb-3 font-medium text-muted-foreground">What BRIK-64 generates</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {standards.map((s) => (
+                    <tr key={s.standard} className="border-b border-border/40">
+                      <td className="py-3 font-medium text-foreground">{s.standard}</td>
+                      <td className="py-3">
+                        <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                          s.coverage === "Strong"
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "bg-amber-100 text-amber-700"
+                        }`}>
+                          {s.coverage}
+                        </span>
+                      </td>
+                      <td className="py-3 text-muted-foreground">{s.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
+              BRIK-64 generates verification evidence for processing logic and change control.
+              Infrastructure, organizational, and procedural controls require separate evidence.
+            </p>
           </section>
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified financial systems
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

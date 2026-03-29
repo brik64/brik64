@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -20,7 +21,7 @@ const useCases = [
     icon: Heart,
     title: "Patient Data Flow Verification",
     description:
-      "Every data path from sensor to display formally verified. No patient datum can be lost, corrupted, or misrouted. HIPAA compliance by construction.",
+      "Every data path from sensor to display formally verified. No patient datum can be lost, corrupted, or misrouted. HIPAA processing logic evidence by construction — encryption, access controls, and BAAs require separate evidence.",
   },
   {
     icon: Stethoscope,
@@ -32,17 +33,17 @@ const useCases = [
     icon: MonitorSmartphone,
     title: "Medical Device Software",
     description:
-      "IEC 62304 requires risk-based software classification. BRIK-64 provides Class C evidence automatically — formal proofs for the highest safety class.",
+      "IEC 62304 requires risk-based software classification. BRIK-64 accelerates Class C evidence collection — circuit proofs support the highest safety classification workflows.",
   },
 ];
 
 const standards = [
-  "IEC 62304 — Medical Device Software Lifecycle Processes",
-  "HIPAA — Health Insurance Portability and Accountability Act",
-  "FDA 21 CFR Part 11 — Electronic Records and Signatures",
-  "MDR — EU Medical Device Regulation (2017/745)",
-  "IEC 62443 — Industrial Cybersecurity for Medical Devices",
-  "ISO 14971 — Application of Risk Management to Medical Devices",
+  "IEC 62304 — processing logic evidence for software lifecycle (not full lifecycle management)",
+  "HIPAA — processing logic and data flow evidence (not encryption, access controls, or BAAs)",
+  "FDA 21 CFR Part 11 — audit trail evidence for electronic records (partial)",
+  "MDR — processing integrity evidence for EU Medical Device Regulation",
+  "IEC 62443 — verified calculation logic only (not network/infrastructure security)",
+  "ISO 14971 — processing logic evidence for risk management (not full risk assessment)",
 ];
 
 export default function HealthcareIndustryPage() {
@@ -62,7 +63,7 @@ export default function HealthcareIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Medical device software has lives at stake. IEC 62304 compliance is complex and
-              expensive. BRIK-64 provides mathematical guarantees that every calculation,
+              expensive. BRIK-64 provides mathematical verification that every calculation,
               every data path, and every decision is correct.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -90,7 +91,7 @@ export default function HealthcareIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Software bugs in healthcare cost lives
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -128,7 +129,7 @@ export default function HealthcareIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical proof for patient safety
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -155,25 +156,15 @@ export default function HealthcareIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Dosage calculator with therapeutic constraints
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               This circuit calculates drug dosages with weight, age, and concentration
               constraints. No dosage can exceed the therapeutic maximum — the compiler
-              guarantees patient safety.
+              enforces patient safety constraints.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  dosage_calculator.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Drug Dosage Calculator — Therapeutic Window Enforced
+            <CopyableCode title="dosage_calculator.pcd">{`// Drug Dosage Calculator — Therapeutic Window Enforced
 // Φ_c = 1 — patient safety guaranteed by construction
 
 circuit dosage_calculator {
@@ -216,9 +207,7 @@ circuit dosage_calculator {
     frequency:    dose_frequency(creatinine),
     certified:    certification_hash()
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Weight, age, renal function — all domain-bounded. Dose clamped to therapeutic window.{" "}
               <PhiC /> = 1 — no prescription can exceed safe limits.
@@ -230,10 +219,10 @@ circuit dosage_calculator {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Regulatory compliance by construction
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Processing logic evidence for regulatory standards
             </h2>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -241,11 +230,15 @@ circuit dosage_calculator {
                 </li>
               ))}
             </ul>
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
+              BRIK-64 generates verification evidence for processing logic and change control.
+              Infrastructure, organizational, and procedural controls require separate evidence.
+            </p>
           </section>
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified healthcare software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

@@ -51,8 +51,9 @@ export default async function BlogPostPage({
   return (
     <>
       <Navbar />
-      <main className="bg-background flex-1">
-        <article className="mx-auto max-w-3xl px-6 py-16">
+      <main className="flex-1">
+        <article className="mx-auto max-w-7xl border-x border-border bg-background px-6 py-16 md:px-16 lg:px-24">
+          <div className="mx-auto max-w-3xl">
           {/* Back link */}
           <a
             href="/blog"
@@ -85,6 +86,7 @@ export default async function BlogPostPage({
             {Content ? <Content /> : (
               <p className="text-[#322F2D]/60">Content coming soon.</p>
             )}
+          </div>
           </div>
         </article>
       </main>

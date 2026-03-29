@@ -20,17 +20,19 @@ export default function FoundationsPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Foundations
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            The science behind <span className="text-teal">Digital Circuitality.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            A deterministic, verified computational system has informational entropy zero.
-            This is a statement about information, not about heat.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Foundations
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              The science behind <span className="text-[#00b8d4]">Digital Circuitality.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              A deterministic, verified computational system has informational entropy zero.
+              This is a statement about information, not about heat.
+            </p>
+          </div>
         </section>
 
         {/* Digital Circuitality definition */}
@@ -38,7 +40,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FORMAL DEFINITION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Digital Circuitality
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -50,16 +52,18 @@ export default function FoundationsPage() {
               . When a system is completely deterministic &mdash; every input produces exactly one
               output through every path &mdash; the probability distribution collapses to a Dirac
               delta on the correct result: <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">H(X) = 0</code>.
+              This applies to the circuit&rsquo;s formal specification. Runtime execution introduces
+              implementation-level variance that the specification abstracts away.
             </p>
             <p>
               A system <em>S</em> exhibits Digital Circuitality if and only if:
             </p>
             <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6 text-center">
-              <p className="font-mono text-lg font-bold text-teal">
-                <PhiC />(S) = 1 &hArr; S_I = 0
+              <p className="text-lg font-bold text-teal">
+                Full coherence means zero informational uncertainty
               </p>
               <p className="mt-2 text-xs text-muted-foreground">
-                where S_I is the Shannon informational entropy and <PhiC /> is the coherence coefficient
+                When <PhiC /> certifies a system, every state is known and every path is verified
               </p>
             </div>
             <p>
@@ -68,12 +72,12 @@ export default function FoundationsPage() {
               informational uncertainty because there is no unknown state.
             </p>
             <p>
-              Conventional software operates with S_I &gt; 0. Unverified execution paths,
-              unexplored states, unbounded inputs. Testing reduces S_I but never eliminates it &mdash;
+              Conventional software operates with informational uncertainty &gt; 0. Unverified execution paths,
+              unexplored states, unbounded inputs. Testing reduces informational uncertainty but never eliminates it &mdash;
               Dijkstra (1976): <em>&ldquo;Testing shows the presence of bugs, never their absence.&rdquo;</em>
             </p>
             <p className="font-medium text-foreground">
-              Digital Circuitality eliminates S_I by construction, not by sampling.
+              Digital Circuitality eliminates informational uncertainty by construction, not by sampling.
             </p>
           </div>
         </section>
@@ -83,7 +87,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THERMODYNAMIC ANALOGY
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             The analogy and its limits
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -101,11 +105,11 @@ export default function FoundationsPage() {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Energy flow without leaks</td><td>Transfer efficiency (ETC)</td></tr>
+                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Energy flow without leaks</td><td>Transfer efficiency</td></tr>
                   <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Closed signal paths</td><td>Circuit closure (<PhiC />)</td></tr>
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Signal integrity</td><td>Signature distance (&delta;)</td></tr>
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Full connectivity</td><td>Verification completeness V(C)</td></tr>
-                  <tr><td className="py-2.5 pr-4">Circuit complexity</td><td>Cyclomatic complexity, structural entropy</td></tr>
+                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Signal integrity</td><td>Signature verification</td></tr>
+                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Full connectivity</td><td>Verification completeness</td></tr>
+                  <tr><td className="py-2.5 pr-4">Circuit complexity</td><td>Structural complexity metrics</td></tr>
                 </tbody>
               </table>
             </div>
@@ -122,29 +126,29 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] EVA ALGEBRA
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Composition operators
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div className="border border-border bg-muted/10 p-6 text-center">
-              <div className="text-3xl font-bold text-teal">&otimes;</div>
+              <div className="text-3xl font-bold text-teal">SEQ</div>
               <h3 className="mt-3 text-sm font-bold">Sequential</h3>
               <p className="mt-2 text-xs text-muted-foreground">Do A, then B. Output of A feeds input of B.</p>
             </div>
             <div className="border border-border bg-muted/10 p-6 text-center">
-              <div className="text-3xl font-bold text-teal">&parallel;</div>
+              <div className="text-3xl font-bold text-teal">PAR</div>
               <h3 className="mt-3 text-sm font-bold">Parallel</h3>
               <p className="mt-2 text-xs text-muted-foreground">Do A and B independently. No data dependency.</p>
             </div>
             <div className="border border-border bg-muted/10 p-6 text-center">
-              <div className="text-3xl font-bold text-teal">&oplus;</div>
+              <div className="text-3xl font-bold text-teal">COND</div>
               <h3 className="mt-3 text-sm font-bold">Conditional</h3>
               <p className="mt-2 text-xs text-muted-foreground">If X then A, else B. Both branches verified.</p>
             </div>
           </div>
           <p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-sm leading-relaxed">
             Each operator preserves the correctness of its operands. If Part A works and Part B works,
-            A &otimes; B is guaranteed to work. This is what hardware has always had &mdash; and
+            their composition is guaranteed to work. This is what hardware has always had &mdash; and
             software never did.
           </p>
         </section>
@@ -154,7 +158,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] COHERENCE METRICS FRAMEWORK
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             CMF: Three metrics, one condition
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -162,23 +166,23 @@ export default function FoundationsPage() {
               <div className="text-2xl font-bold text-teal"><PhiC /></div>
               <h3 className="mt-2 text-sm font-bold">Circuit Closure</h3>
               <p className="mt-2 text-xs text-muted-foreground">
-                <PhiC /> = 1 certifies that every branch has a complete input &rarr; output path.
+                Certifies that every branch has a complete input-to-output path.
                 No dangling operations. The computational analog of a closed electrical loop.
               </p>
             </div>
             <div className="border border-border bg-muted/10 p-6">
-              <div className="text-2xl font-bold text-teal">&delta;</div>
-              <h3 className="mt-2 text-sm font-bold">Signature Distance</h3>
+              <div className="text-2xl font-bold text-teal">Integrity</div>
+              <h3 className="mt-2 text-sm font-bold">Signal Integrity</h3>
               <p className="mt-2 text-xs text-muted-foreground">
-                &delta; = 0 means the observed signature matches the expected signature exactly.
+                Verifies that observed behavior matches the expected specification exactly.
                 The analog of signal integrity &mdash; no distortion, no noise.
               </p>
             </div>
             <div className="border border-border bg-muted/10 p-6">
-              <div className="text-2xl font-bold text-teal">V(C)</div>
+              <div className="text-2xl font-bold text-teal">Coverage</div>
               <h3 className="mt-2 text-sm font-bold">Verification Completeness</h3>
               <p className="mt-2 text-xs text-muted-foreground">
-                V(C) = 1 means all paths have been verified. No execution path has unknown behavior.
+                All paths have been verified. No execution path has unknown behavior.
                 The analog of full connectivity in a circuit.
               </p>
             </div>
@@ -187,52 +191,82 @@ export default function FoundationsPage() {
             <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">
               Certification Condition
             </p>
-            <p className="font-mono text-sm font-bold text-foreground">
-              &Omega; = 1 &hArr; <PhiC /> = 1.000 &and; &Delta;N = 0.000 &and; C_m = 1.000
+            <p className="text-sm font-bold text-foreground">
+              Certification is binary. All three conditions &mdash; closure, integrity, and coverage &mdash; must hold simultaneously. There is no partial certification.
             </p>
             <p className="mt-2 text-xs text-muted-foreground">
-              &Omega; is binary. There is no &Omega; = 0.9. All three conditions must hold or the program does not compile.
+              If any condition fails, the program does not compile.
             </p>
+          </div>
+        </section>
+
+        {/* Closure Through Domains */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [04.5] CLOSURE THROUGH DOMAINS
+          </p>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+            Closure through domains
+          </h2>
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              Circuit closure (<PhiC /> = 1) requires that every execution path produces a valid,
+              bounded result. Domain constraints are the mechanism that makes this possible.
+            </p>
+            <div className="space-y-3">
+              <p>
+                <strong className="text-foreground">1. Input domains bound what enters the circuit.</strong>{" "}
+                Every input declares a numeric range. Values outside the range are rejected at compilation.
+              </p>
+              <p>
+                <strong className="text-foreground">2. Arithmetic on bounded inputs produces bounded outputs.</strong>{" "}
+                This is provable: if <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">a &isin; [0, 10]</code> and{" "}
+                <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">b &isin; [1, 5]</code>, then{" "}
+                <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">a + b &isin; [1, 15]</code> and{" "}
+                <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">a / b &isin; [0, 10]</code>.
+              </p>
+              <p>
+                <strong className="text-foreground">3. The compiler traces bounds through every operation to verify closure.</strong>{" "}
+                Each intermediate result inherits a computed domain. If any operation could produce an unbounded
+                or undefined result, the compiler rejects the program.
+              </p>
+              <p>
+                <strong className="text-foreground">4. If any path can produce an unbounded result, compilation fails.</strong>{" "}
+                There is no runtime fallback. The circuit either closes at compile time or it does not exist.
+              </p>
+            </div>
+            <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6">
+              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">
+                Hardware Analogy
+              </p>
+              <p className="text-sm text-muted-foreground">
+                This is analogous to how hardware engineers specify voltage ranges for every pin.
+                A logic gate rated for 0&ndash;5V does not accept 12V &mdash; the domain IS the specification.
+                In BRIK-64, the same principle applies to every variable in every circuit.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Kish-Ferry */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [05] KISH-FERRY DISTINCTION
+            [05] INFORMATION THEORY BASIS
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Informational entropy &ne; thermal entropy
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Kish & Ferry (2018, Texas A&M / Arizona State) demonstrated that informational entropy
-              and thermal entropy are fundamentally different physical quantities &mdash; in their
-              words, <em>&ldquo;apples and oranges.&rdquo;</em>
+              Recent research in information physics has demonstrated that informational entropy
+              and thermal entropy are fundamentally different quantities. Treating them as
+              interchangeable is a category error.
             </p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="border border-border bg-muted/10 p-5">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Thermal Entropy S_th</h3>
-                <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
-                  <li>&bull; Objective property of the physical system</li>
-                  <li>&bull; Macroscopic state variable (Boltzmann distribution)</li>
-                  <li>&bull; Units: J/K</li>
-                </ul>
-              </div>
-              <div className="border border-border bg-muted/10 p-5">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Informational Entropy S_I</h3>
-                <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
-                  <li>&bull; Subjective &mdash; depends on observer knowledge</li>
-                  <li>&bull; Units: bits (or nats)</li>
-                  <li>&bull; Can be separated in space and time from S_th</li>
-                </ul>
-              </div>
-            </div>
             <p>
-              Treating them as interchangeable &mdash; as the standard Landauer interpretation
-              requires &mdash; is a <strong className="text-foreground">category error</strong>.
-              For Digital Circuitality, the consequence is direct: the CMF measures informational
-              entropy, not thermal entropy. No thermodynamic claims needed for the framework to be rigorous.
+              For Digital Circuitality, the consequence is direct: the coherence framework measures{" "}
+              <strong className="text-foreground">informational entropy</strong>, not thermal entropy.
+              No thermodynamic claims are needed for the framework to be rigorous. The verification
+              operates on purely informational foundations.
             </p>
           </div>
         </section>
@@ -242,63 +276,39 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] BRILLOUIN CONNECTION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             From Landauer to Brillouin as inspiration
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Leon Brillouin (1953) proposed the negentropy principle: total entropy of a closed
-              system (informational + thermal) cannot decrease. This established a conceptual link
-              between information acquisition and thermodynamic cost.
+              Digital Circuitality draws conceptual inspiration from Brillouin&rsquo;s work on the
+              relationship between information and entropy, while operating on purely informational
+              foundations grounded in Shannon&rsquo;s framework.
             </p>
             <p>
-              Kish & Ferry showed this principle is <strong className="text-foreground">not a general law</strong> &mdash;
-              it can be violated when measurement and physical systems are at different temperatures
-              or weakly coupled.
-            </p>
-            <p>Digital Circuitality adopts an epistemologically precise position:</p>
-            <ol className="list-decimal list-inside space-y-2 text-sm">
-              <li><strong className="text-foreground">Acknowledges</strong> Brillouin as conceptual inspiration</li>
-              <li><strong className="text-foreground">Does not depend</strong> on the validity of the negentropy principle as physical law</li>
-              <li><strong className="text-foreground">Operates</strong> on purely informational foundations valid regardless of whether Brillouin was right about the information-thermodynamics connection</li>
-            </ol>
-            <p>
-              The critical correction in BRIK-64&rsquo;s foundational papers: migrate from a Landauer-based
-              framing (which assumes entropy interchangeability) to a Brillouin-as-inspiration framing,
-              operating on pure Shannon. This correction was suggested by Prof. Kish himself during
-              his review of the theoretical framework.
+              The system does not depend on any physical thermodynamic claims. It acknowledges
+              the historical inspiration while maintaining rigorous separation between informational
+              and physical domains.
             </p>
           </div>
         </section>
 
-        {/* Zero-Energy Erasure */}
+        {/* Deterministic Systems */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [07] ZERO-ENERGY ERASURE
+            [07] DETERMINISTIC VERIFICATION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Information erasure at zero energy cost
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+            Zero informational uncertainty by construction
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Kish, Granqvist, Khatri & Peper (2016) demonstrated that information erasure can occur
-              with <strong className="text-foreground">zero or even negative energy dissipation</strong> through
-              passive thermalization in double-well potential memories. This refutes the Landauer
-              bound (kT ln 2 per bit) as a general principle.
+              A formally verified, deterministic system has zero informational uncertainty.
+              Every state is known, every path verified, every domain bounded, the circuit is closed.
             </p>
-            <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6">
-              <p className="text-sm italic text-foreground">
-                &ldquo;In a deterministic computer with error-free memory, the information entropy of
-                the memory is <strong>always zero</strong>.&rdquo;
-              </p>
-              <p className="mt-2 text-xs text-muted-foreground">
-                &mdash; Kish et al. (2016), Section 4
-              </p>
-            </div>
             <p>
-              This is <strong className="text-foreground">exactly</strong> what <PhiC /> = 1 means
-              in Digital Circuitality. A formally verified, deterministic system has zero informational
-              uncertainty. Every state is known, every path verified, every domain bounded, the circuit is closed.
+              This is what <PhiC /> = 1 means in Digital Circuitality: the system&rsquo;s informational
+              entropy is zero &mdash; not by testing, but by mathematical construction.
             </p>
           </div>
         </section>
@@ -308,7 +318,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [08] UNIVERSAL TRANSPILATION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Transpilation through informational closure
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -345,7 +355,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [09] REFERENCES
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Academic foundations
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
@@ -372,18 +382,11 @@ export default function FoundationsPage() {
                 relevance: "Motivation: \u201CTesting shows the presence of bugs, never their absence.\u201D",
               },
               {
-                authors: "Kish, L.B., Granqvist, C.G., Khatri, S.P., Peper, F.",
-                year: "2016",
-                title: "Zero and negative energy dissipation at information-theoretic erasure.",
-                journal: "J. Comput. Electron. 15, 335\u2013339",
-                relevance: "Key: refutes Landauer as general principle; S_I = 0 for deterministic computers.",
-              },
-              {
-                authors: "Kish, L.B., Ferry, D.K.",
-                year: "2018",
-                title: "Information entropy and thermal entropy: apples and oranges.",
-                journal: "J. Comput. Electron. 17, 43\u201350",
-                relevance: "Critical: informational entropy \u2260 thermal entropy; category error in Landauer.",
+                authors: "Kish, L.B. et al.",
+                year: "2016\u20132018",
+                title: "Research on the distinction between informational and thermal entropy.",
+                journal: "Journal of Computational Electronics",
+                relevance: "Foundational: informational entropy and thermal entropy are distinct quantities.",
               },
             ].map((ref, i) => (
               <div key={i} className="border border-border bg-muted/10 p-5">
@@ -407,25 +410,23 @@ export default function FoundationsPage() {
             <GraduationCap className="mb-3 h-6 w-6 text-teal" />
             <p className="text-sm leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Prof. Laszlo B. Kish</strong> (Texas A&amp;M University)
-              reviewed the foundational theoretical framework of Digital Circuitality and suggested the
-              informational direction that separates it from physical thermodynamic claims. His work on
-              the distinction between informational and thermal entropy directly shaped the theoretical
-              foundations of the system, including the critical correction from a Landauer-based framing
-              to a Brillouin-as-inspiration framing operating on pure Shannon.
+              reviewed the foundational theoretical framework of Digital Circuitality. His research on
+              the distinction between informational and thermal entropy informed the theoretical
+              foundations of the system.
             </p>
           </div>
         </section>
 
         {/* Synthesis */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             The logical chain
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-3 text-sm text-muted-foreground text-left">
-            <p>1. Shannon (1948) defines H(X) = 0 for deterministic systems</p>
-            <p>2. Kish & Ferry (2018) confirm S_I &ne; S_th &mdash; informational entropy carries no thermodynamic implications</p>
-            <p>3. Kish et al. (2016) prove S_I = 0 for deterministic computers with error-free memory</p>
-            <p>4. BRIK-64 builds a compiler that certifies <PhiC /> = 1 &hArr; S_I = 0 by construction</p>
+            <p>1. Shannon (1948) establishes that deterministic systems have zero informational entropy</p>
+            <p>2. Modern research confirms informational entropy is distinct from thermal entropy</p>
+            <p>3. A deterministic, verified computer has zero informational uncertainty</p>
+            <p>4. BRIK-64 builds a compiler that certifies this property by mathematical construction</p>
             <p>5. The BPU materializes this certification in silicon, where verification is physical and non-maskable</p>
           </div>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

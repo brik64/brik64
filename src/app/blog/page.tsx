@@ -39,7 +39,8 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-background flex-1">
+      <main className="flex-1">
+        <div className="mx-auto max-w-7xl border-x border-border">
         {/* Hero */}
         <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20">
           <div className="mx-auto max-w-5xl text-center">
@@ -156,6 +157,7 @@ export default function BlogPage() {
             </div>
           </div>
         </section>
+        </div>
       </main>
       <Footer />
     </>

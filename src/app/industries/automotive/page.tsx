@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -6,7 +7,7 @@ import { Car, Eye, Route, Cpu, ArrowRight, CheckCircle2, ExternalLink } from "lu
 export const metadata = {
   title: "Automotive — BRIK-64 Industries",
   description:
-    "ISO 26262. Automatically. ADAS verification, sensor fusion, path planning certification, and ECU software verification with BRIK-64.",
+    "ISO 26262 verification evidence. ADAS verification, sensor fusion, path planning certification, and ECU software verification with BRIK-64.",
 };
 
 const useCases = [
@@ -32,12 +33,12 @@ const useCases = [
     icon: Cpu,
     title: "ECU Software",
     description:
-      "Engine control, transmission logic, braking systems — every ECU function formally verified. AUTOSAR-compatible. ASIL D evidence generated automatically.",
+      "Engine control, transmission logic, braking systems — every ECU function formally verified. AUTOSAR-compatible. Generates ASIL-aligned verification evidence for software components.",
   },
 ];
 
 const standards = [
-  "ISO 26262 — Functional Safety (ASIL A through D)",
+  "Supports ISO 26262 verification evidence (ASIL A–D)",
   "AUTOSAR — Automotive Open System Architecture",
   "ISO 21448 (SOTIF) — Safety of the Intended Functionality",
   "ISO/SAE 21434 — Automotive Cybersecurity Engineering",
@@ -58,11 +59,11 @@ export default function AutomotiveIndustryPage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               ISO 26262.{" "}
-              <span className="text-[#00b8d4]">Automatically.</span>
+              <span className="text-[#00b8d4]">Accelerated.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Autonomous vehicles need guarantees, not guesses. ASIL certification is a
-              bottleneck. BRIK-64 generates the evidence automatically — so your engineers
+              Autonomous vehicles need verification, not guesses. ASIL certification is a
+              bottleneck. BRIK-64 accelerates evidence generation — so your engineers
               build the future instead of filling out spreadsheets.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -90,7 +91,7 @@ export default function AutomotiveIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               100 million lines of code per vehicle
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -128,7 +129,7 @@ export default function AutomotiveIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Safety certification at software speed
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -155,7 +156,7 @@ export default function AutomotiveIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Vehicle safety circuit with dynamic constraints
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -163,18 +164,8 @@ export default function AutomotiveIndustryPage() {
               force are all domain-constrained. Emergency braking activates automatically
               when physics demands it.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  vehicle_safety.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Vehicle Safety Circuit — ASIL D Compliant
-// Φ_c = 1 — no unsafe vehicle state is reachable
+            <CopyableCode title="vehicle_safety.pcd">{`// Vehicle Safety Circuit — ASIL D Compliant
+// Φ_c = 1 — the circuit is mathematically complete: every input path produces a verified output or an explicit rejection
 
 circuit vehicle_safety {
   // Vehicle dynamics
@@ -215,9 +206,7 @@ circuit vehicle_safety {
     brake_health:  1.0 - (brake_temp / 800.0),
     safe:          true
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Speed governed, stopping distance calculated, AEB triggered by physics.{" "}
               <PhiC /> = 1 — the vehicle cannot reach an unsafe state.
@@ -229,10 +218,10 @@ circuit vehicle_safety {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Automotive safety certification, automated
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Automotive safety certification, accelerated
             </h2>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -244,7 +233,7 @@ circuit vehicle_safety {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Certify your automotive software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

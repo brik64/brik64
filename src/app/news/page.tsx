@@ -15,7 +15,7 @@ export default function NewsPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-background flex-1">
+      <main className="flex-1">
         {/* Hero */}
         <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20">
           <div className="mx-auto max-w-5xl text-center">

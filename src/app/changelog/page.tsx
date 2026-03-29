@@ -6,7 +6,7 @@ const versions = [
     version: "v5.0.0-beta.2",
     date: "March 2026",
     changes: [
-      "Extended monomers MC_64\u2013127 (full 128 monomer catalog)",
+      "Extended monomers (full monomer catalog)",
       "0 panic guarantee across all certified paths",
       "Bounds-checked I/O for all monomer families",
     ],
@@ -74,16 +74,18 @@ export default function ChangelogPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Version History
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Changelog
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-base leading-relaxed md:text-lg">
-            Every release, every improvement. Follow the evolution of BRIK-64.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Version History
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Changelog
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Every release, every improvement. Follow the evolution of BRIK-64.
+            </p>
+          </div>
         </section>
 
         {/* Versions */}

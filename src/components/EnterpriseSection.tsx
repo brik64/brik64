@@ -17,7 +17,7 @@ const features: { icon: ReactNode; title: string; description: string }[] = [
   {
     icon: <FileCheck className="h-5 w-5 text-teal" />,
     title: "Compliance Reports",
-    description: "Auto-generated SOC2, HIPAA, PCI-DSS evidence",
+    description: "Processing logic evidence mapped to SOC2 (PI1.x), PCI-DSS (Req 6, 10), and HIPAA processing rules",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,

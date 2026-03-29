@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -104,7 +105,7 @@ export default function UniversalTranspilationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Transpilation is broken by design
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -122,7 +123,7 @@ export default function UniversalTranspilationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               One hub. 140 certified paths.
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -140,15 +141,7 @@ export default function UniversalTranspilationUseCasePage() {
             </div>
 
             {/* Terminal example */}
-            <div className="mt-10 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">terminal</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`$ brikc transpile ./src/ --from python --to rust --output ./dist/
+            <CopyableCode title="terminal">{`$ brikc transpile ./src/ --from python --to rust --output ./dist/
 ✓ Lifting 34 Python files to PCD...
 ✓ Extracted 127 circuits (Φ_c = 1 for all)
 ✓ Compiling 127 circuits to Rust...
@@ -162,9 +155,7 @@ export default function UniversalTranspilationUseCasePage() {
 $ brikc verify ./dist/ --against ./src/
 ✓ All 127 circuits verified
 ✓ Source ≡ Target (algebraic proof)
-✓ Certificate: transpile_cert_0xb7e2...f193.json`}</code>
-              </pre>
-            </div>
+✓ Certificate: transpile_cert_0xb7e2...f193.json`}</CopyableCode>
           </section>
 
           {/* ── Real Example ── */}
@@ -172,7 +163,7 @@ $ brikc verify ./dist/ --against ./src/
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Python → PCD → Rust — semantic transpilation
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -181,31 +172,13 @@ $ brikc verify ./dist/ --against ./src/
             </p>
 
             {/* Python source */}
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">data_processor.py (source)</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`def normalize(values: list[float], min_val: float, max_val: float) -> list[float]:
+            <CopyableCode title="data_processor.py (source)">{`def normalize(values: list[float], min_val: float, max_val: float) -> list[float]:
     if max_val <= min_val:
         raise ValueError("Invalid range")
-    return [(v - min_val) / (max_val - min_val) for v in values]`}</code>
-              </pre>
-            </div>
+    return [(v - min_val) / (max_val - min_val) for v in values]`}</CopyableCode>
 
             {/* PCD */}
-            <div className="mt-4 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">data_processor.pcd (lifted)</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`PC normalize {
+            <CopyableCode title="data_processor.pcd (lifted)">{`PC normalize {
     domain values: List[Float64];
     domain min_val: Float64;
     domain max_val: Float64;
@@ -214,27 +187,15 @@ $ brikc verify ./dist/ --against ./src/
     fn normalize(values: List[Float64], min_val: Float64, max_val: Float64) {
         return values.map(|v| (v - min_val) / (max_val - min_val));  // Φ_c = 1
     }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
 
             {/* Rust target */}
-            <div className="mt-4 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">data_processor.rs (compiled)</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`pub fn normalize(values: &[f64], min_val: f64, max_val: f64) -> Result<Vec<f64>, &'static str> {
+            <CopyableCode title="data_processor.rs (compiled)">{`pub fn normalize(values: &[f64], min_val: f64, max_val: f64) -> Result<Vec<f64>, &'static str> {
     if max_val <= min_val {
         return Err("Invalid range");
     }
     Ok(values.iter().map(|v| (v - min_val) / (max_val - min_val)).collect())
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
 
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Python → PCD → Rust. Three representations, one computation. <PhiC /> = 1.
@@ -246,7 +207,7 @@ $ brikc verify ./dist/ --against ./src/
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What you get
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -262,7 +223,7 @@ $ brikc verify ./dist/ --against ./src/
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Transpile anything — with proof
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

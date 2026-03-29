@@ -44,7 +44,7 @@ export function AINativeSection() {
 
         {/* Headline with gradient accent */}
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
-          The first language designed{" "}
+          A language designed{" "}
           <span className="bg-gradient-to-r from-teal to-emerald-400 bg-clip-text text-transparent">
             for AI.
           </span>
@@ -52,9 +52,8 @@ export function AINativeSection() {
 
         {/* Body */}
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          PCD has exactly 128 operations. An AI model can learn the entire
-          language in minutes and generate certified code with mathematical
-          guarantees. When an AI generates PCD, the compiler automatically
+          PCD has a finite, learnable set of operations. An AI model can learn the entire
+          language in minutes and generate certified code with structural verification. When an AI generates PCD, the compiler automatically
           certifies it. The math is the trust.
         </p>
 

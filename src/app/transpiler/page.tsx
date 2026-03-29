@@ -37,8 +37,8 @@ const pipelineSteps = [
 const comparison = [
   { feature: "Intermediate representation", llvm: "LLVM IR (low-level SSA)", brik: "PCD (semantic circuit description)" },
   { feature: "Verification", llvm: "None (trust the optimizer)", brik: "\u03a6_c = 1 certification per circuit" },
-  { feature: "Input languages", llvm: "3 major (C, C++, Rust)", brik: "10 (JS, TS, Python, Rust, C, C++, Go, COBOL, PHP, Java)" },
-  { feature: "Output targets", llvm: "Machine code only", brik: "14 high-level languages + native + WASM" },
+  { feature: "Input languages", llvm: "3 major (C, C++, Rust)", brik: "Multiple (JS, TS, Python, Rust, C, C++, Go, COBOL, and more)" },
+  { feature: "Output targets", llvm: "Machine code only", brik: "Multiple high-level languages + native + WASM" },
   { feature: "Approach", llvm: "N \u00d7 M (frontend \u00d7 backend)", brik: "N + M (frontend + backend via PCD)" },
   { feature: "Proof of correctness", llvm: "No", brik: "Yes \u2014 cryptographic certificate" },
 ];
@@ -52,20 +52,22 @@ export default function TranspilerPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Universal Transpiler
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            140 certified paths <span className="text-teal">between languages.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            The first N-to-N transpiler. Any of 10 input languages &rarr; PCD &rarr; any of 14 output targets,
-            with mathematical certification (<PhiC /> = 1) that the output is equivalent to the input.
-          </p>
-          <p className="text-muted-foreground mt-3 text-sm">
-            10 frontends + 14 backends = <span className="font-bold text-teal">140 transpilation paths</span> with N+M effort instead of N&times;M.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Universal Transpiler
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Certified paths <span className="text-[#00b8d4]">between languages.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              An N-to-N transpiler with formal intermediate representation. Any supported input language &rarr; PCD &rarr; any output target,
+              with mathematical certification that the output preserves the circuit structure of the input — both close identically over their domains.
+            </p>
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
+              N frontends + M backends = <span className="font-bold text-[#00b8d4]">N&times;M transpilation paths</span> with N+M effort instead of N&times;M.
+            </p>
+          </div>
         </section>
 
         {/* Visual Matrix */}
@@ -73,7 +75,7 @@ export default function TranspilerPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] LANGUAGE MATRIX
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Every input &rarr; any output
           </h2>
 
@@ -123,7 +125,7 @@ export default function TranspilerPage() {
             </div>
           </div>
           <p className="mt-4 text-center text-xs text-muted-foreground">
-            10 &times; 14 = 140 verified transpilation paths. Hover to highlight.
+            Every input-output combination is a verified transpilation path. Hover to highlight.
           </p>
         </section>
 
@@ -132,12 +134,15 @@ export default function TranspilerPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] HOW IT WORKS
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Source &rarr; PCD &rarr; Target
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
             PCD captures the mathematical essence of computation &mdash; not syntax, not idioms, not runtime quirks.
             The equivalence proof travels with the output.
+          </p>
+          <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
+            <span className="font-medium text-foreground">Domain preservation:</span> input constraints carry through from source to PCD to target &mdash; bounds verified at every stage.
           </p>
 
           {/* Pipeline visualization */}
@@ -161,7 +166,7 @@ export default function TranspilerPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] TRANSLATION VALIDATION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Not just conversion. Certification.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -234,9 +239,12 @@ export default function TranspilerPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COMPARISON
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             BRIK-64 vs LLVM
           </h2>
+          <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-xs leading-relaxed italic">
+            PCD and LLVM IR serve different purposes. LLVM optimizes machine code generation; PCD preserves semantic structure for cross-language transpilation.
+          </p>
           <div className="mt-8 overflow-hidden border border-border">
             <div className="grid grid-cols-3 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
               <div>Feature</div>
@@ -255,7 +263,7 @@ export default function TranspilerPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Convert any codebase. Certified.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

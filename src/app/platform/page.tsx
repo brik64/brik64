@@ -44,7 +44,7 @@ const pillars: { icon: ReactNode; title: string; description: string }[] = [
     icon: <GitBranch className="h-5 w-5 text-teal" />,
     title: "Visual Composition",
     description:
-      "Drag, connect, compose. Every connection verified automatically through EVA algebra.",
+      "Drag, connect, compose. Every connection verified through EVA composition rules — the algebra ensures that composing closed circuits produces a closed circuit.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
@@ -57,13 +57,13 @@ const pillars: { icon: ReactNode; title: string; description: string }[] = [
 /* ── Capabilities ── */
 
 const capabilities: { icon: ReactNode; title: string; desc: string }[] = [
-  { icon: <Upload className="h-4 w-4" />, title: "Lift existing code", desc: "Connect GitHub, lift any repo to PCD blueprints. Supports 10 languages." },
-  { icon: <FileCode className="h-4 w-4" />, title: "Generate PCD from scratch", desc: "Write verified blueprints in the editor. 128 operations at your fingertips." },
+  { icon: <Upload className="h-4 w-4" />, title: "Lift existing code", desc: "Connect GitHub, lift any repo to PCD blueprints. Supports multiple languages." },
+  { icon: <FileCode className="h-4 w-4" />, title: "Generate PCD from scratch", desc: "Write verified blueprints in the editor. All operations at your fingertips." },
   { icon: <Search className="h-4 w-4" />, title: "Browse Public Registry", desc: "Search thousands of certified circuits. Reuse verified components." },
   { icon: <Key className="h-4 w-4" />, title: "Create API Keys", desc: "Programmatic access to all platform features. Build on top of BRIK-64." },
-  { icon: <Combine className="h-4 w-4" />, title: "Combine PCD blueprints", desc: "EVA algebra composition: sequential (\u2297), parallel (\u2225), conditional (\u2295)." },
-  { icon: <Code className="h-4 w-4" />, title: "Export to any language", desc: "14 targets: JS, TS, Python, Rust, C, C++, Go, COBOL, PHP, Java, Swift, WASM, Native." },
-  { icon: <Shield className="h-4 w-4" />, title: "Certify your code", desc: "Get \u03a6_c = 1 mathematical proof + immutable hash. Zero ambiguity." },
+  { icon: <Combine className="h-4 w-4" />, title: "Combine PCD blueprints", desc: "EVA algebra composition: sequential, parallel, and conditional operators." },
+  { icon: <Code className="h-4 w-4" />, title: "Export to any language", desc: "Multiple targets: JS, TS, Python, Rust, C, C++, Go, COBOL, and more." },
+  { icon: <Shield className="h-4 w-4" />, title: "Certify your code", desc: "Get mathematical proof of correctness + immutable hash. Zero ambiguity." },
   { icon: <Download className="h-4 w-4" />, title: "Download certified code", desc: "With auto-generated tests and certification badge. Ship with confidence." },
 ];
 
@@ -72,7 +72,7 @@ const capabilities: { icon: ReactNode; title: string; desc: string }[] = [
 const pipelineSteps = [
   { label: "PUSH", desc: "Push code to GitHub", icon: "{ }" },
   { label: "LIFT", desc: "Extract & lift to PCD", icon: "\u2191" },
-  { label: "CERTIFY", desc: "\u03a6_c = 1 verification", icon: "\u2713" },
+  { label: "CERTIFY", desc: "Formal verification", icon: "\u2713" },
   { label: "PUBLISH", desc: "Ship to registry", icon: "\u25c6" },
 ];
 
@@ -91,17 +91,19 @@ export default function PlatformPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Platform
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Your circuit <span className="text-teal">laboratory.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Everything you need to build, verify, and ship certified code. A personal library, a public registry,
-            visual composition, and certification badges &mdash; all connected through PCD blueprints.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Platform
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Your circuit <span className="text-[#00b8d4]">laboratory.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Everything you need to build, verify, and ship certified code. A personal library, a public registry,
+              visual composition, and certification badges &mdash; all connected through PCD blueprints.
+            </p>
+          </div>
         </section>
 
         {/* 4 Pillars */}
@@ -130,7 +132,7 @@ export default function PlatformPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] PIPELINE
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             From source to certified artifact
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -152,7 +154,7 @@ export default function PlatformPage() {
           </div>
           <div className="mt-6 flex justify-center">
             <div className="rounded-full border border-border bg-muted/30 px-4 py-1.5 font-mono text-[11px] tracking-wider text-muted-foreground">
-              CODE &rarr; LIFT &rarr; PCD &rarr; TCE &rarr; REGISTRY &rarr; BUILD
+              CODE &rarr; LIFT &rarr; PCD &rarr; CERTIFY &rarr; REGISTRY &rarr; BUILD
             </div>
           </div>
         </section>
@@ -162,7 +164,7 @@ export default function PlatformPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] DASHBOARD
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Your circuits at a glance
           </h2>
 
@@ -221,7 +223,7 @@ export default function PlatformPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] CAPABILITIES
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             What you can do
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -242,7 +244,7 @@ export default function PlatformPage() {
           <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
             REGISTRY LAUNCHING 2026
           </div>
-          <h2 className="text-center mt-6 text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto mt-6 text-2xl font-bold tracking-tight md:text-3xl">
             Your code. Verified. Connected.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

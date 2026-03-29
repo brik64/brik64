@@ -24,54 +24,42 @@ const sdks = [
     install: "cargo add brik64-core",
     link: "https://crates.io/crates/brik64-core",
     linkLabel: "crates.io/crates/brik64-core",
-    features: ["no_std support for embedded", "Crypto feature flag", "Full 128 monomer API", "Zero-cost EVA composition"],
-    code: `use brik64_core::{mc, eva};
+    features: ["no_std support for embedded", "Crypto feature flag", "Full verified operations API", "Zero-cost composition in Rust (compile-time). Minimal runtime overhead in JavaScript and Python"],
+    code: `use brik64_core::prelude::*;
 
-fn main() {
-    // Arithmetic — wrapping, never panics
-    let sum  = mc::arithmetic::add8(200, 100);    // 255
-    let diff = mc::arithmetic::sub8(10, 20);      // 0
-    let (q, r) = mc::arithmetic::div8(17, 5);     // (3, 2)
-
-    // Crypto
-    let hash = mc::crypto::sha256(b"hello");
-
-    // EVA sequential composition (⊗)
-    let pipeline = eva::seq(
-        |x| mc::arithmetic::add8(x, 10),
-        |x| mc::arithmetic::mul8(x, 2),
+fn validated_transfer(amount: f64, balance: f64) -> Result<f64, BrikError> {
+    let check = compose::sequential(
+        ops::clamp(0.01, 1_000_000.0),
+        ops::assert_lte(balance),
     );
-    assert_eq!(pipeline(5), 30); // Φ_c = 1
+    check.apply(amount)
 }`,
-    evaExample: `// Sequential (⊗)
-let pipeline = eva::seq(
-    |x| mc::arithmetic::add8(x, 10),
-    |x| mc::arithmetic::mul8(x, 2),
-);
-assert_eq!(pipeline(5), 30);
+    domainExample: `use brik64_core::domain::Domain;
+use brik64_core::prelude::*;
 
-// Parallel (∥)
-let both = eva::par(
-    |x| mc::arithmetic::add8(x, 1),
-    |x| mc::arithmetic::mul8(x, 2),
-);
-assert_eq!(both(5), (6, 10));
+let speed = Domain::float64(0.0..=340.0);
+let time = Domain::float64(1.0..=86400.0); // excludes zero
 
-// Conditional (⊕)
-let branch = eva::cond(
-    |x| x > 10,
-    |x| mc::arithmetic::add8(x, 1),
-    |x| mc::arithmetic::sub8(x, 1),
+let distance = compose::sequential(
+    ops::multiply(speed, time),
+    ops::clamp(0.0, 29_304_000.0),
 );
-assert_eq!(branch(15), 16);`,
-    families: `mc::arithmetic   // MC_00–MC_07
-mc::logic        // MC_08–MC_15
-mc::memory       // MC_16–MC_23
-mc::control      // MC_24–MC_31
-mc::io           // MC_32–MC_39
-mc::string       // MC_40–MC_47
-mc::crypto       // MC_48–MC_55
-mc::system       // MC_56–MC_63`,
+// Domain closure verified at compile time`,
+    evaExample: `// Three composition primitives are available:
+//
+// Sequential — output of f feeds into g (pipeline)
+// Parallel   — both f and g execute on the same input
+// Conditional — branch based on a predicate
+//
+// Any function built from verified operations via
+// these composition primitives retains formal
+// correctness guarantees automatically.`,
+    families: `// 8 operation families available:
+// Arithmetic, Logic, Memory, Control,
+// I/O, String, Crypto, System
+//
+// Each family provides a set of verified
+// operations with formal correctness proofs.`,
   },
   {
     name: "JavaScript",
@@ -81,53 +69,40 @@ mc::system       // MC_56–MC_63`,
     link: "https://www.npmjs.com/package/@brik64/core",
     linkLabel: "npmjs.com/package/@brik64/core",
     features: ["Node.js 18+ & browsers", "Full TypeScript types", "Tree-shakeable ESM + CJS", "Async crypto operations"],
-    code: `import { mc, eva } from '@brik64/core';
+    code: `import { core, compose } from '@brik64/core';
 
-// Arithmetic — wrapping, never throws
-const sum = mc.arithmetic.add8(200, 100);     // 255
-const diff = mc.arithmetic.sub8(10, 20);      // 0
-const [q, r] = mc.arithmetic.div8(17, 5);     // [3, 2]
+// The SDKs provide access to verified operations
+// and composition primitives across all 8 families.
+//
+// Operations are saturating by default and
+// formally verified — no throws, no undefined behavior.
+//
+// Full TypeScript types included.
+// Tree-shakeable ESM + CJS builds.`,
+    domainExample: `import { domain, compose, ops } from '@brik64/core';
 
-// Crypto
-const hash = await mc.crypto.sha256(
-  new TextEncoder().encode('hello')
-);
+const speed = domain.float64(0, 340);
+const time = domain.float64(1, 86400); // never zero
 
-// EVA sequential composition (⊗)
-const pipeline = eva.seq(
-  (x: number) => mc.arithmetic.add8(x, 10),
-  (x: number) => mc.arithmetic.mul8(x, 2),
-);
-pipeline(5);  // 30 — Φ_c = 1`,
-    evaExample: `// Sequential (⊗)
-const pipeline = eva.seq(
-  (x: number) => mc.arithmetic.add8(x, 10),
-  (x: number) => mc.arithmetic.mul8(x, 2),
-);
-pipeline(5);  // 30
-
-// Parallel (∥)
-const both = eva.par(
-  (x: number) => mc.arithmetic.add8(x, 1),
-  (x: number) => mc.arithmetic.mul8(x, 2),
-);
-both(5);  // [6, 10]
-
-// Conditional (⊕)
-const branch = eva.cond(
-  (x: number) => x > 10,
-  (x: number) => mc.arithmetic.add8(x, 1),
-  (x: number) => mc.arithmetic.sub8(x, 1),
-);
-branch(15);  // 16`,
-    families: `mc.arithmetic   // MC_00–MC_07
-mc.logic        // MC_08–MC_15
-mc.memory       // MC_16–MC_23
-mc.control      // MC_24–MC_31
-mc.io           // MC_32–MC_39
-mc.string       // MC_40–MC_47
-mc.crypto       // MC_48–MC_55
-mc.system       // MC_56–MC_63`,
+const distance = compose.seq(
+  ops.multiply(speed, time),
+  ops.clamp(0, 29_304_000)
+);`,
+    evaExample: `// Three composition primitives are available:
+//
+// Sequential — output of f feeds into g (pipeline)
+// Parallel   — both f and g execute on the same input
+// Conditional — branch based on a predicate
+//
+// Any function built from verified operations via
+// these composition primitives retains formal
+// correctness guarantees automatically.`,
+    families: `// 8 operation families available:
+// Arithmetic, Logic, Memory, Control,
+// I/O, String, Crypto, System
+//
+// Each family provides a set of verified
+// operations with formal correctness proofs.`,
   },
   {
     name: "Python",
@@ -137,51 +112,40 @@ mc.system       // MC_56–MC_63`,
     link: "https://pypi.org/project/brik64/",
     linkLabel: "pypi.org/project/brik64",
     features: ["Python 3.10+", "Zero dependencies", "Full type stubs", "Lambda-friendly API"],
-    code: `from brik64 import mc, eva
+    code: `from brik64 import core, compose
 
-# Arithmetic — saturating, never raises
-total = mc.arithmetic.add8(200, 100)     # 255
-diff  = mc.arithmetic.sub8(10, 20)       # 0
-q, r  = mc.arithmetic.div8(17, 5)        # (3, 2)
+# The SDKs provide access to verified operations
+# and composition primitives across all 8 families.
+#
+# Operations are saturating by default and
+# formally verified — no exceptions, no undefined behavior.
+#
+# Full type stubs included.
+# Zero dependencies.`,
+    domainExample: `from brik64 import domain, compose, ops
 
-# Crypto
-digest = mc.crypto.sha256(b"hello")
+speed = domain.float64(0, 340)
+time = domain.float64(1, 86400)  # never zero
 
-# EVA sequential composition (⊗)
-pipeline = eva.pipeline(
-    lambda x: mc.arithmetic.add8(x, 10),
-    lambda x: mc.arithmetic.mul8(x, 2),
-)
-pipeline(5)  # 30 — Φ_c = 1`,
-    evaExample: `# Sequential (⊗)
-pipeline = eva.pipeline(
-    lambda x: mc.arithmetic.add8(x, 10),
-    lambda x: mc.arithmetic.mul8(x, 2),
-)
-pipeline(5)  # 30
-
-# Parallel (∥)
-both = eva.parallel(
-    lambda x: mc.arithmetic.add8(x, 1),
-    lambda x: mc.arithmetic.mul8(x, 2),
-)
-both(5)  # (6, 10)
-
-# Conditional (⊕)
-branch = eva.cond(
-    lambda x: x > 10,
-    lambda x: mc.arithmetic.add8(x, 1),
-    lambda x: mc.arithmetic.sub8(x, 1),
-)
-branch(15)  # 16`,
-    families: `mc.arithmetic   # MC_00–MC_07
-mc.logic        # MC_08–MC_15
-mc.memory       # MC_16–MC_23
-mc.control      # MC_24–MC_31
-mc.io           # MC_32–MC_39
-mc.string       # MC_40–MC_47
-mc.crypto       # MC_48–MC_55
-mc.system       # MC_56–MC_63`,
+distance = compose.seq(
+    ops.multiply(speed, time),
+    ops.clamp(0, 29_304_000)
+)`,
+    evaExample: `# Three composition primitives are available:
+#
+# Sequential — output of f feeds into g (pipeline)
+# Parallel   — both f and g execute on the same input
+# Conditional — branch based on a predicate
+#
+# Any function built from verified operations via
+# these composition primitives retains formal
+# correctness guarantees automatically.`,
+    families: `# 8 operation families available:
+# Arithmetic, Logic, Memory, Control,
+# I/O, String, Crypto, System
+#
+# Each family provides a set of verified
+# operations with formal correctness proofs.`,
   },
 ];
 
@@ -201,7 +165,7 @@ function CopyButton({ text }: { text: string }) {
 
 export default function SDKsPage() {
   const [activeSDK, setActiveSDK] = useState(0);
-  const [activeTab, setActiveTab] = useState<"code" | "eva" | "families">("code");
+  const [activeTab, setActiveTab] = useState<"code" | "domains" | "eva" | "families">("code");
 
   const sdk = sdks[activeSDK];
 
@@ -210,17 +174,19 @@ export default function SDKsPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            SDKs
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Verified operations <span className="text-teal">in your language.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Use the 128 monomers (64 Core + 64 Extended) inside your existing project. No new language, no compiler install required.
-            Any function built from Core monomers via EVA operators automatically carries <PhiC /> = 1.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              SDKs
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Verified operations <span className="text-[#00b8d4]">in your language.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Use verified operations inside your existing project. No new language, no compiler install required.
+              Any function built from verified operations via composition primitives automatically carries <PhiC /> = 1.
+            </p>
+          </div>
         </section>
 
         {/* SDK Selector */}
@@ -278,7 +244,7 @@ export default function SDKsPage() {
               <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
             </div>
             <div className="flex border-b border-white/10">
-              {(["code", "eva", "families"] as const).map((tab) => (
+              {(["code", "domains", "eva", "families"] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -288,14 +254,14 @@ export default function SDKsPage() {
                       : "text-white/40 hover:text-white/60"
                   }`}
                 >
-                  {tab === "code" ? "Quick Start" : tab === "eva" ? "EVA Algebra" : "All Families"}
+                  {tab === "code" ? "Quick Start" : tab === "domains" ? "Domain Constraints" : tab === "eva" ? "Composition" : "All Families"}
                 </button>
               ))}
             </div>
             <div className="p-5">
               <pre className="overflow-x-auto text-xs leading-relaxed text-gray-300">
                 <code>
-                  {activeTab === "code" ? sdk.code : activeTab === "eva" ? sdk.evaExample : sdk.families}
+                  {activeTab === "code" ? sdk.code : activeTab === "domains" ? sdk.domainExample : activeTab === "eva" ? sdk.evaExample : sdk.families}
                 </code>
               </pre>
             </div>
@@ -305,37 +271,37 @@ export default function SDKsPage() {
         {/* EVA Algebra */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            EVA COMPOSITION
+            COMPOSITION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Three operators. Infinite composition.
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Three primitives. Infinite composition.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="border border-border bg-muted/20 p-6">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
-                &otimes;
+                S
               </div>
               <p className="text-sm font-medium">Sequential</p>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Output of f feeds into g. Pipeline. <code>eva.seq(f, g)</code>
+                Output of f feeds into g. Pipeline. <code>compose.sequential(f, g)</code>
               </p>
             </div>
             <div className="border border-border bg-muted/20 p-6">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
-                &parallel;
+                P
               </div>
               <p className="text-sm font-medium">Parallel</p>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Both f and g execute on the same input. <code>eva.par(f, g)</code>
+                Both f and g execute on the same input. <code>compose.parallel(f, g)</code>
               </p>
             </div>
             <div className="border border-border bg-muted/20 p-6">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
-                &oplus;
+                C
               </div>
               <p className="text-sm font-medium">Conditional</p>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Branch: if predicate then f else g. <code>eva.cond(p, f, g)</code>
+                Branch: if predicate then f else g. <code>compose.conditional(p, f, g)</code>
               </p>
             </div>
           </div>
@@ -347,7 +313,7 @@ export default function SDKsPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Drop in. Verify.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

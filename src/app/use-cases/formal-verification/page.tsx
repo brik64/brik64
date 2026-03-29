@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -104,7 +105,7 @@ export default function FormalVerificationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Formal verification is inaccessible
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -122,7 +123,7 @@ export default function FormalVerificationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Verification inside the compiler
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -140,15 +141,7 @@ export default function FormalVerificationUseCasePage() {
             </div>
 
             {/* Terminal example */}
-            <div className="mt-10 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">terminal</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`$ brikc check calculator.pcd
+            <CopyableCode title="terminal">{`$ brikc check calculator.pcd
 ╔══════════════════════════════════════════════════╗
 ║  BRIK-64 Certification Report                    ║
 ╠══════════════════════════════════════════════════╣
@@ -163,9 +156,7 @@ export default function FormalVerificationUseCasePage() {
 ║  Φ_c = 1  ✓  CERTIFIED                          ║
 ║                                                  ║
 ║  Certificate: calc_cert_0xd4a1...e8b7.json       ║
-╚══════════════════════════════════════════════════╝`}</code>
-              </pre>
-            </div>
+╚══════════════════════════════════════════════════╝`}</CopyableCode>
           </section>
 
           {/* ── Real Example ── */}
@@ -173,22 +164,14 @@ export default function FormalVerificationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               A certified calculator — every operation proven
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               This PCD program defines a calculator with bounded domains. Every division checks for zero.
               Every overflow is impossible. The compiler proves it.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">calculator.pcd</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Certified Calculator — Φ_c = 1
+            <CopyableCode title="calculator.pcd">{`// Certified Calculator — Φ_c = 1
 // Every operation proven correct by circuit closure
 
 PC safe_calculator {
@@ -206,9 +189,7 @@ PC safe_calculator {
     fn sqrt(a: Range[0.0, 1e15]) -> Range[0.0, 1e15] {
         return a ^ 0.5;  // negative input impossible: domain-bounded
     }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               No runtime checks needed. No error handling for impossible cases. The domain constraints
               make undefined behavior mathematically impossible. <PhiC /> = 1.
@@ -220,7 +201,7 @@ PC safe_calculator {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What you get
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -236,7 +217,7 @@ PC safe_calculator {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Write code. Get proofs.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

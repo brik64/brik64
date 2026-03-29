@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { CopyableCode } from "@/components/CopyableCode";
 import { Shield, Bot, Lock, Zap, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 
 export const metadata = {
@@ -14,7 +15,7 @@ const useCases = [
     icon: Shield,
     title: "Policy Circuits as Guardrails",
     description:
-      "Define hard mathematical boundaries for what AI agents can do. Not alignment — constraint. Every action passes through a verified circuit before execution.",
+      "Define hard mathematical boundaries for what AI agents can output. Not alignment — constraint. Every output passes through a verified circuit that validates domain constraints before execution.",
   },
   {
     icon: Bot,
@@ -39,8 +40,8 @@ const useCases = [
 const standards = [
   "No formal AI code safety standards exist yet",
   "BRIK-64 Policy Circuits fill the vacuum",
-  "NIST AI RMF compatible architecture",
-  "EU AI Act compliance-ready guardrails",
+  "Generates evidence aligned with NIST AI RMF",
+  "Supports EU AI Act compliance workflows",
   "SOC2 audit trail for AI-generated code",
 ];
 
@@ -61,7 +62,7 @@ export default function AIIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Alignment is a hope. Verification is a proof. BRIK-64 gives AI-generated code
-              mathematical guarantees — not probabilistic ones.
+              mathematical verification — not probabilistic guesses.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -88,7 +89,7 @@ export default function AIIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               AI-generated code has no guarantees
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -126,7 +127,7 @@ export default function AIIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical guardrails for AI agents
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -153,7 +154,7 @@ export default function AIIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               AI action validator — constrain output domains
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -161,17 +162,8 @@ export default function AIIndustryPage() {
               falls outside the verified domain, the circuit rejects it — before execution,
               not after damage.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  ai_action_validator.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Policy Circuit: AI Action Validator
+            <div className="mt-8">
+              <CopyableCode title="ai_action_validator.pcd">{`// Policy Circuit: AI Action Validator
 // Φ_c = 1 — closed circuit, no undefined behavior
 
 circuit ai_action_validator {
@@ -200,8 +192,7 @@ circuit ai_action_validator {
     conf:   confidence,
     stamp:  certification_hash()
   }
-}`}</code>
-              </pre>
+}`}</CopyableCode>
             </div>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Every input is domain-bounded. Every output carries a certification hash.{" "}
@@ -214,15 +205,15 @@ circuit ai_action_validator {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               No formal standard exists — BRIK-64 <em>is</em> the standard
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               The AI safety industry talks about alignment. BRIK-64 delivers verification.
-              Policy circuits are the first enforceable, mathematical framework for
+              Policy circuits are an enforceable, circuit-based framework for
               constraining AI-generated code.
             </p>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -234,7 +225,7 @@ circuit ai_action_validator {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified AI software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

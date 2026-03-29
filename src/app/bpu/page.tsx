@@ -19,30 +19,30 @@ import {
 
 const architecture = [
   {
-    title: "64 Monomer Gates",
-    desc: "One dedicated silicon unit per canonical monomer (MC_00 through MC_63). Each unit is a hardwired combinational circuit with no firmware.",
+    title: "Monomer Gates",
+    desc: "Dedicated silicon units for each canonical operation. Each unit is a hardwired combinational circuit with no firmware.",
   },
   {
-    title: "EVA Router",
-    desc: "Routes monomer calls according to EVA algebra composition laws: sequential (\u2297), parallel (\u2225), and conditional (\u2295).",
+    title: "Composition Router",
+    desc: "Routes monomer calls according to composition laws: sequential, parallel, and conditional evaluation paths.",
   },
   {
-    title: "TCE Unit",
-    desc: "Coherence Metric Framework unit. Certifies that \u03a6_c = 1 for every policy circuit before it is loaded into the BPU.",
+    title: "Verification Unit",
+    desc: "Coherence verification unit. Certifies that every policy circuit meets formal correctness criteria before it is loaded into the BPU.",
   },
 ];
 
-/* ── Monomer families ── */
+/* ── Monomer families (high-level) ── */
 
 const monomerFamilies = [
-  { family: "Arithmetic", range: "MC_00\u2013MC_07", ops: "ADD8, SUB8, MUL8, DIV8, MOD8, ABS8, NEG8, POW8" },
-  { family: "Logic", range: "MC_08\u2013MC_15", ops: "AND, OR, XOR, NOT, SHL, SHR, ROTL, ROTR" },
-  { family: "Memory", range: "MC_16\u2013MC_23", ops: "LOAD, STORE, ALLOC, FREE, COPY, MOVE, SWAP, ZERO" },
-  { family: "Control", range: "MC_24\u2013MC_31", ops: "IF, LOOP, CALL, RET, JUMP, HALT, NOOP, YIELD" },
-  { family: "I/O", range: "MC_32\u2013MC_39", ops: "READ, WRITE, OPEN, CLOSE, SEEK, FLUSH, STAT, SYNC" },
-  { family: "String", range: "MC_40\u2013MC_47", ops: "CONCAT, SPLIT, SUBSTR, LEN, UPPER, LOWER, TRIM, MATCH" },
-  { family: "Crypto", range: "MC_48\u2013MC_55", ops: "HASH, VERIFY, SIGN, ENCRYPT, DECRYPT, RAND, DERIVE, SEAL" },
-  { family: "System", range: "MC_56\u2013MC_63", ops: "TIME, PID, WRITE_FD, DEC2, SEND, RECV, LOG, ASSERT" },
+  { family: "Arithmetic", desc: "Core mathematical operations with saturating semantics" },
+  { family: "Logic", desc: "Bitwise and boolean operations" },
+  { family: "Memory", desc: "Safe memory access primitives" },
+  { family: "Control", desc: "Flow control and branching" },
+  { family: "I/O", desc: "Input/output channel operations" },
+  { family: "String", desc: "Text processing primitives" },
+  { family: "Crypto", desc: "Cryptographic building blocks" },
+  { family: "System", desc: "Low-level system interaction" },
 ];
 
 /* ── Policy examples ── */
@@ -50,48 +50,15 @@ const monomerFamilies = [
 const policyExamples = [
   {
     title: "Warehouse Robot",
-    desc: "A robot must never leave its zone, exceed safe speeds near humans, or access restricted areas.",
-    code: `policy warehouse_movement(zone_id: i64, speed: i64, area_type: i64) -> decision {
-  if (zone_id < 1) { return BLOCK; }
-  if (zone_id > 50) { return BLOCK; }
-  // Speed limit near humans
-  if (area_type == 2) {
-    if (speed > 3) { return BLOCK; }
-  }
-  // Restricted areas
-  if (area_type == 9) { return BLOCK; }
-  return ALLOW;
-}`,
+    desc: "Zone boundaries, speed limits near humans, and restricted area enforcement. The robot physically cannot violate these constraints, regardless of what its AI model decides.",
   },
   {
     title: "Delivery Drone",
-    desc: "Altitude limits, no-fly zones, and return-to-base conditions enforced by hardware.",
-    code: `policy drone_flight(altitude: i64, lat_zone: i64, battery_pct: i64) -> decision {
-  // FAA altitude ceiling
-  if (altitude > 400) { return BLOCK; }
-  // No-fly zones (100-199)
-  if (lat_zone > 99) {
-    if (lat_zone < 200) { return BLOCK; }
-  }
-  // Force return when battery critical
-  if (battery_pct < 15) { return BLOCK; }
-  return ALLOW;
-}`,
+    desc: "Altitude ceilings, no-fly zone geofencing, and automatic return-to-base on low battery. Hardware-enforced limits that no software update can bypass.",
   },
   {
     title: "Surgical Robot Arm",
-    desc: "Force limits and movement boundaries that cannot be overridden by any software.",
-    code: `policy surgical_movement(force_n: i64, distance_mm: i64, zone: i64) -> decision {
-  // Maximum force (Newtons * 10)
-  if (force_n > 50) { return BLOCK; }
-  // Movement boundary
-  if (distance_mm > 200) { return BLOCK; }
-  // Critical zone: reduced force
-  if (zone == 1) {
-    if (force_n > 20) { return BLOCK; }
-  }
-  return ALLOW;
-}`,
+    desc: "Force limits and movement boundaries that cannot be overridden by any software. Critical zones enforce stricter constraints automatically.",
   },
 ];
 
@@ -121,9 +88,9 @@ const roadmap = [
 /* ── Tech specs ── */
 
 const specs = [
-  { param: "Monomer count", value: "64 (Core only)" },
+  { param: "Operation families", value: "8 families" },
   { param: "Policy circuit max depth", value: "256 nodes" },
-  { param: "Evaluation latency target", value: "< 1 \u00b5s (ASIC)" },
+  { param: "Evaluation latency target", value: "< 1 \u00b5s (target, ASIC)" },
   { param: "PCIe interface", value: "Gen 5 x4" },
   { param: "Policy flash capacity", value: "256 circuits" },
   { param: "Hot-swap policy update", value: "Yes (CMF re-certifies)" },
@@ -136,26 +103,28 @@ export default function BPUPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <div className="flex items-center gap-3 mb-5">
-            <span className="text-muted-foreground inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-              BPU &mdash; BRIK Processing Unit
-            </span>
-            <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400">
-              CONCEPT &mdash; ROADMAP TO SILICON
-            </span>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <span className="inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+                BPU &mdash; BRIK Processing Unit
+              </span>
+              <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400">
+                CONCEPT &mdash; ROADMAP TO SILICON
+              </span>
+            </div>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Hardware that <span className="text-[#00b8d4]">says no.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              A dedicated hardware coprocessor designed to evaluate Policy Circuits &mdash; PCD programs that produce
+              either ALLOW or BLOCK &mdash; before any AI-generated action reaches the host system.
+            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground italic">
+              &ldquo;RLHF teaches an AI to prefer correct behavior. The BPU enforces boundaries in hardware.
+              Software policies can be circumvented. Hardware gates cannot.&rdquo;
+            </p>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Hardware that <span className="text-teal">says no.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            A dedicated hardware coprocessor designed to evaluate Policy Circuits &mdash; PCD programs that produce
-            either ALLOW or BLOCK &mdash; before any AI-generated action reaches the host system.
-          </p>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground italic">
-            &ldquo;RLHF teaches an AI to want to do right. The BPU prevents it from doing wrong.
-            Education fails. Physics does not.&rdquo;
-          </p>
         </section>
 
         {/* Architecture */}
@@ -163,7 +132,7 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] ARCHITECTURE
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Three subsystems. Fixed pipeline.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -176,18 +145,16 @@ export default function BPUPage() {
             ))}
           </div>
 
-          {/* Monomer families table */}
+          {/* Monomer families */}
           <div className="mt-8 overflow-hidden border border-border">
-            <div className="grid grid-cols-3 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
+            <div className="grid grid-cols-2 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
               <div>Family</div>
-              <div>Range</div>
-              <div>Operations</div>
+              <div>Description</div>
             </div>
             {monomerFamilies.map((f) => (
-              <div key={f.family} className="grid grid-cols-3 gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
+              <div key={f.family} className="grid grid-cols-2 gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
                 <div className="text-xs font-medium">{f.family}</div>
-                <div className="font-mono text-xs text-teal">{f.range}</div>
-                <div className="text-xs text-muted-foreground">{f.ops}</div>
+                <div className="text-xs text-muted-foreground">{f.desc}</div>
               </div>
             ))}
           </div>
@@ -198,7 +165,7 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE NON-MASKABLE BLOCK
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             No software can override hardware.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -237,7 +204,7 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] POLICY CIRCUITS
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             AI safety by physics, not psychology.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
@@ -248,14 +215,10 @@ export default function BPUPage() {
           <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
             {policyExamples.map((ex) => (
               <div key={ex.title} className="flex flex-col overflow-hidden border border-border">
-                <div className="border-b border-border bg-muted/30 px-4 py-3">
+                <div className="bg-muted/30 px-4 py-5">
+                  <Shield className="mb-3 h-5 w-5 text-teal" />
                   <p className="text-sm font-medium">{ex.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{ex.desc}</p>
-                </div>
-                <div className="flex-1 bg-[#0a0e14] p-4">
-                  <pre className="overflow-x-auto text-[11px] leading-relaxed text-gray-300">
-                    <code>{ex.code}</code>
-                  </pre>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{ex.desc}</p>
                 </div>
               </div>
             ))}
@@ -267,7 +230,7 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] ROADMAP
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             From software to silicon
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
@@ -300,9 +263,9 @@ export default function BPUPage() {
             <p className="text-sm font-medium">Regulatory trajectory</p>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
-                { phase: "Voluntary adoption", timing: "Now", analogy: "ABS optional (1978)" },
-                { phase: "Industry standard", timing: "2\u20133 years", analogy: "ABS standard equipment" },
-                { phase: "Regulatory mandate", timing: "5\u201310 years", analogy: "ABS mandatory (2004)" },
+                { phase: "Concept & software prototype", timing: "Now", analogy: "ABS optional (1978)" },
+                { phase: "FPGA validation", timing: "12\u201318 months", analogy: "ABS standard equipment" },
+                { phase: "Silicon target", timing: "24\u201336 months", analogy: "ABS mandatory (2004)" },
               ].map((r) => (
                 <div key={r.phase} className="text-center">
                   <p className="text-xs font-bold text-teal">{r.phase}</p>
@@ -331,7 +294,7 @@ export default function BPUPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Use Phase 1 today.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

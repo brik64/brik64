@@ -8,7 +8,7 @@ const sections = [
     tag: "01",
     title: "The Vision",
     content:
-      "Software should work like hardware. A certified circuit does not fail \u2014 it either computes correctly or it does not execute at all. BRIK-64 brings this guarantee to software by treating every program as a composition of mathematically proven building blocks.",
+      "Software should work like hardware. A certified circuit is structurally complete \u2014 it either produces a verified output for every input in its domain, or it rejects explicitly. No silent failures, no undefined paths. BRIK-64 brings this guarantee to software by treating every program as a composition of mathematically proven building blocks.",
   },
   {
     tag: "02",
@@ -36,17 +36,19 @@ export default function AboutPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Company
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            About <span className="text-teal">BRIK-64</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Digital Circuitality is a new paradigm for building software that is mathematically guaranteed to be correct.
-            Every certified program carries a proof that <PhiC /> = 1 &mdash; the circuit is closed.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Company
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              About <span className="text-[#00b8d4]">BRIK-64</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Digital Circuitality is a new paradigm for building software that is mathematically guaranteed to be correct.
+              Every certified program carries a proof that <PhiC /> = 1 &mdash; the circuit is closed.
+            </p>
+          </div>
         </section>
 
         {/* Sections */}
@@ -58,7 +60,7 @@ export default function AboutPage() {
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               [{s.tag}] {s.title.toUpperCase()}
             </p>
-            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
               {s.title}
             </h2>
             <p className="text-center mx-auto text-muted-foreground mt-4 max-w-3xl text-sm leading-relaxed md:text-base">
@@ -69,7 +71,7 @@ export default function AboutPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Explore BRIK-64
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

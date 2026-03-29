@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -104,7 +105,7 @@ export default function CICDIntegrationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Your CI pipeline has a trust gap
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -122,7 +123,7 @@ export default function CICDIntegrationUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical certification in your pipeline
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -140,15 +141,7 @@ export default function CICDIntegrationUseCasePage() {
             </div>
 
             {/* Terminal example */}
-            <div className="mt-10 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">terminal</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`$ brikc connect github.com/your-org/your-repo
+            <CopyableCode title="terminal">{`$ brikc connect github.com/your-org/your-repo
 ✓ GitHub App installed
 ✓ Webhook configured (push, pull_request)
 ✓ Required status check: brik64/certification
@@ -166,9 +159,7 @@ $ git push origin feature/new-payment-flow
 # │ 14 circuits analyzed, 14 certified        │
 # │ Certificate: 0xe7f3...a291                │
 # │ Safe to merge.                            │
-# └──────────────────────────────────────────┘`}</code>
-              </pre>
-            </div>
+# └──────────────────────────────────────────┘`}</CopyableCode>
           </section>
 
           {/* ── Real Example ── */}
@@ -176,22 +167,14 @@ $ git push origin feature/new-payment-flow
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               GitHub Actions workflow — one step
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               Add BRIK-64 certification to your existing GitHub Actions workflow. One step.
               Runs alongside your tests. Blocks merge if certification fails.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">.github/workflows/ci.yml</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`name: CI + Certification
+            <CopyableCode title=".github/workflows/ci.yml">{`name: CI + Certification
 
 on: [push, pull_request]
 
@@ -212,9 +195,7 @@ jobs:
           # That's it. One step.
           # Lifts changed files → PCD → certification
           # Posts result as PR comment
-          # Fails the check if Φ_c ≠ 1`}</code>
-              </pre>
-            </div>
+          # Fails the check if Φ_c ≠ 1`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               One GitHub Action step. Your entire CI pipeline now produces mathematical proofs, not just test results.{" "}
               <PhiC /> = 1 or the merge is blocked.
@@ -226,7 +207,7 @@ jobs:
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What you get
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -242,7 +223,7 @@ jobs:
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Certify every merge
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

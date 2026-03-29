@@ -1,14 +1,9 @@
+import { CopyableCode } from "@/components/CopyableCode";
+
 function CodeBlock({ children }: { children: string }) {
   return (
-    <div className="my-4 overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-      </div>
-      <pre className="overflow-x-auto p-4 text-sm leading-relaxed text-emerald-400 font-mono">
-        <code>{children}</code>
-      </pre>
+    <div className="my-4">
+      <CopyableCode>{children}</CopyableCode>
     </div>
   );
 }
@@ -61,7 +56,7 @@ pip install brik64             # Python
 cargo add brik64-core          # Rust`}</CodeBlock>
       <H3>By the Numbers</H3>
       <P>
-        128 monomers (64 core + 64 extended). 207 Coq proof files. Mathematical
+        Full monomer catalog (core + extended). Coq proof suite. Mathematical
         proof, not &quot;tests pass&quot; verification. Digital Circuitality is a formally
         verified, immutable artifact. The architecture is fixed. The proofs are
         complete.
@@ -88,7 +83,7 @@ cargo add brik64-core          # Rust`}</CodeBlock>
         publish.
       </P>
       <P>
-        <strong>Certification Dashboard:</strong> Visualizes all 128 monomers as
+        <strong>Certification Dashboard:</strong> Visualizes all monomers as
         a periodic table.
       </P>
       <H3>GitHub Integration</H3>
@@ -115,7 +110,7 @@ cargo add brik64-core          # Rust`}</CodeBlock>
       </P>
       <P>
         <strong>PCD Language (9 pages)</strong> — Complete language reference.
-        Monomers, polymers, EVA algebra, 128 monomer catalog.
+        Monomers, polymers, EVA algebra, full monomer catalog.
       </P>
       <P>
         <strong>CLI Reference (2 pages)</strong> — Every brikc subcommand.
@@ -151,7 +146,7 @@ cargo add brik64-core          # Rust`}</CodeBlock>
       <H3>The 5 Skills</H3>
       <P>
         <strong>brik64-pcd-system</strong> — Core skill. PCD language syntax, all
-        128 monomers, EVA algebra, brikc CLI.
+        Full PCD language, EVA algebra, brikc CLI.
       </P>
       <P>
         <strong>brik64-javascript</strong> — Full npm SDK integration

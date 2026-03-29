@@ -15,15 +15,15 @@ const faqs = [
   },
   {
     q: "What is PCD?",
-    a: "PCD (Printed Circuit Description) is a language-agnostic representation of computation \u2014 the \u201Cblueprint\u201D of your software. Like a circuit schematic describes an electronic circuit, PCD describes the mathematical essence of what your code computes, independent of which programming language it\u2019s written in. PCD programs are composed of 128 operations (64 certified + 64 extended) organized in 16 families of 8.",
+    a: "PCD (Printed Circuit Description) is a language-agnostic representation of computation \u2014 the \u201Cblueprint\u201D of your software. Like a circuit schematic describes an electronic circuit, PCD describes the mathematical essence of what your code computes, independent of which programming language it\u2019s written in. PCD programs are composed of formally verified operations (certified + extended) organized into families.",
   },
   {
     q: "Is BRIK-64 a programming language?",
-    a: "PCD is a language, but BRIK-64 is more than that. It\u2019s a compiler, a lifter (reverse compiler), a certification engine, and a platform. You don\u2019t have to write PCD directly \u2014 you can lift existing code from 10 languages into PCD blueprints, then export to 14 targets.",
+    a: "PCD is a language, but BRIK-64 is more than that. It\u2019s a compiler, a lifter (reverse compiler), a certification engine, and a platform. You don\u2019t have to write PCD directly \u2014 you can lift existing code from multiple languages into PCD blueprints, then export to multiple targets.",
   },
   {
     q: "What does \u03A6_c = 1 mean?",
-    a: "\u03A6_c (phi-c) is the coherence coefficient computed by the TCE. When \u03A6_c = 1, it means the \u201Ccircuit is closed\u201D: every input domain is bounded, every operation is verified, every output range is proven, and no execution path is undefined. It\u2019s the computational analog of a closed electrical circuit \u2014 current flows completely or not at all. \u03A6_c = 1 certifies zero informational entropy.",
+    a: "\u03A6_c (phi-c) is the coherence coefficient computed by the TCE. When \u03A6_c = 1, it means the \u201Ccircuit is closed\u201D: every input domain is bounded, every operation is verified, every output range is proven, and no execution path is undefined. It\u2019s the computational analog of a closed electrical circuit \u2014 current flows completely or not at all. \u03A6_c = 1 certifies structural completeness \u2014 every input maps deterministically to a verified output.",
   },
   {
     q: "How is this different from testing?",
@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "Free tier: CLI + SDKs, 128 monomers, 14 export targets, 5 lifts/day, community support \u2014 $0 forever. Pro: $49/month for unlimited lifts, private registry, GitHub integration, team features. Enterprise: custom pricing for SSO, compliance, audit trails, on-premise, and dedicated support.",
+    a: "Free tier: CLI + SDKs, full monomer catalog, all export targets, 5 lifts/day, community support \u2014 $0 forever. Pro: $49/month for unlimited lifts, private registry, GitHub integration, team features. Enterprise: custom pricing for SSO, compliance, audit trails, on-premise, and dedicated support.",
   },
 ];
 
@@ -61,16 +61,18 @@ export default function FAQPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            FAQ
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Frequently asked <span className="text-teal">questions.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Everything you need to know about BRIK-64, PCD, and Digital Circuitality.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              FAQ
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Frequently asked <span className="text-[#00b8d4]">questions.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Everything you need to know about BRIK-64, PCD, and Digital Circuitality.
+            </p>
+          </div>
         </section>
 
         {/* Accordion */}
@@ -101,7 +103,7 @@ export default function FAQPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             Still have questions?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -32,7 +33,7 @@ const useCases = [
     icon: RefreshCw,
     title: "Reproducible Computation",
     description:
-      "A PCD circuit produces the same output for the same input — regardless of language, platform, or compiler version. Reproducibility by construction, not convention.",
+      "A PCD circuit produces the same output for the same input — reproducible at the logical level. Circuit semantics are platform-independent while numerical precision follows IEEE 754 bounds. Reproducibility by construction, not convention.",
   },
 ];
 
@@ -89,7 +90,7 @@ export default function ScienceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               The reproducibility crisis is a software crisis
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -127,7 +128,7 @@ export default function ScienceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Formally verified scientific computation
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -154,24 +155,14 @@ export default function ScienceIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Physics simulation with domain bounds
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               This circuit enforces physical constraints at the type level. A simulation
               cannot produce invalid states — the compiler prevents it.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  physics_simulation.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Physics Simulation — Domain-Bounded Computation
+            <CopyableCode title="physics_simulation.pcd">{`// Physics Simulation — Domain-Bounded Computation
 // Φ_c = 1 — all physical constraints enforced
 
 circuit particle_dynamics {
@@ -203,9 +194,7 @@ circuit particle_dynamics {
     p: momentum,
     V: volume
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Temperature, pressure, velocity, mass — all domain-bounded to physical reality.{" "}
               <PhiC /> = 1 means no simulation state can violate the laws of physics.
@@ -217,10 +206,10 @@ circuit particle_dynamics {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Built for scientific rigor
             </h2>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -232,7 +221,7 @@ circuit particle_dynamics {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified research software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

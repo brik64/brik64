@@ -39,8 +39,9 @@ const sourceLanguages = [
 const steps = [
   { label: "Parse", desc: "Parse source file into AST using a lightweight, language-specific frontend.", icon: <Search className="h-5 w-5" /> },
   { label: "Extract", desc: "Pattern recognition identifies operations that correspond to BRIK-64 monomers.", icon: <Layers className="h-5 w-5" /> },
-  { label: "Map", desc: "Recognized patterns mapped to MC_XX monomer equivalents with proper EVA composition.", icon: <FileCode className="h-5 w-5" /> },
-  { label: "Verify", desc: "Output as valid PCD program. Run brikc check to verify \u03a6_c = 1.", icon: <Shield className="h-5 w-5" /> },
+  { label: "Infer Domains", desc: "The lifter analyzes value flows to infer numeric bounds from existing validation logic, type constraints, and runtime guards. Inferred domains become explicit PCD declarations. Example: if (age > 0 && age < 150) → input age : Float64[0.0 .. 150.0]", icon: <Shield className="h-5 w-5" /> },
+  { label: "Map", desc: "Recognized patterns mapped to verified monomer equivalents with proper composition.", icon: <FileCode className="h-5 w-5" /> },
+  { label: "Verify", desc: "Output as valid PCD program. Run brikc check to verify certification.", icon: <Shield className="h-5 w-5" /> },
 ];
 
 /* ── Terminal demos ── */
@@ -58,8 +59,8 @@ const demos = [
       { text: "", style: "blank" },
       { text: "  # Output:", style: "muted" },
       { text: "  PC app {", style: "box-green" },
-      { text: "      let result = MC_00.ADD8(10, 20);", style: "box-green" },
-      { text: "      let _ = MC_58.WRITE(result);", style: "box-green" },
+      { text: "      let result = ADD8(10, 20);", style: "box-green" },
+      { text: "      let _ = WRITE(result);", style: "box-green" },
       { text: "      OUTPUT result;", style: "box-green" },
       { text: "  }", style: "box-green" },
     ],
@@ -89,7 +90,7 @@ const demos = [
       { text: "  \u2713 Lifted \u2192 calcPrice.pcd", style: "success" },
       { text: "", style: "blank" },
       { text: "$ brikc check calcPrice.pcd", style: "command" },
-      { text: "  \u2713 Circuit closed: \u03a6_c = 1.000", style: "success" },
+      { text: "  \u2713 Circuit closed: certified", style: "success" },
       { text: "", style: "blank" },
       { text: "$ brikc build calcPrice.pcd -t python -o dist/", style: "command" },
       { text: "  \u2713 Compiled \u2192 dist/calcPrice.py", style: "success" },
@@ -123,22 +124,24 @@ export default function LifterPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Lifter
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Reverse-compile anything <span className="text-teal">into PCD.</span>
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            A reverse compiler that analyzes existing source code and extracts the subset that maps to PCD monomers.
-            Instead of rewriting your codebase, the Lifter gives you an automatic migration path.
-          </p>
-          <div className="mt-6 flex items-center gap-3 text-sm">
-            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
-              100% liftability
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Lifter
             </span>
-            <span className="text-muted-foreground">on real-world projects (211/211 files, 73/73 circuits passing check)</span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Reverse-compile anything <span className="text-[#00b8d4]">into PCD.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              A reverse compiler that analyzes existing source code and extracts the subset that maps to PCD monomers.
+              Instead of rewriting your codebase, the Lifter gives you an automatic migration path.
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-3 text-sm">
+              <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
+                100% liftability
+              </span>
+              <span className="text-muted-foreground">on benchmark suite (211/211 files). Liftability rates vary by codebase — pure functional code lifts near 100%, side-effect-heavy code produces Contract-tier blueprints</span>
+            </div>
           </div>
         </section>
 
@@ -147,7 +150,7 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] SOURCE LANGUAGES
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             10 languages. One blueprint.
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -180,10 +183,10 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] HOW IT WORKS
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Source Code &rarr; AST &rarr; Pattern Recognition &rarr; PCD
           </h2>
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {steps.map((s, i) => (
               <div key={s.label} className="relative border border-border bg-muted/20 p-5">
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-teal">
@@ -242,7 +245,7 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] DEMO
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             See it in action
           </h2>
           <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
@@ -279,7 +282,7 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COBOL MIGRATION
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             220 billion lines of COBOL. One migration path.
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -303,7 +306,7 @@ export default function LifterPage() {
 
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-5">
               {[
-                { metric: "Timeline", trad: "3\u20135 years", pcd: "Weeks" },
+                { metric: "Timeline", trad: "3\u20135 years", pcd: "Weeks for code lifting*" },
                 { metric: "Failure rate", trad: "60%", pcd: "Verified" },
                 { metric: "Testing", trad: "Manual", pcd: "Auto-generated" },
                 { metric: "Risk", trad: "Existential", pcd: "Incremental" },
@@ -316,12 +319,15 @@ export default function LifterPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-4 text-[10px] text-muted-foreground italic">
+              * Weeks for code lifting. Integration, testing, and data migration follow standard timelines but start from a verified baseline.
+            </p>
           </div>
         </section>
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Your code already exists. Now verify it.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

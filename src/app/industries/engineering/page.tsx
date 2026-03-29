@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -89,7 +90,7 @@ export default function EngineeringIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Challenge
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Engineering software runs on trust, not proof
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -127,7 +128,7 @@ export default function EngineeringIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               How BRIK-64 Helps
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical certainty for critical systems
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -154,7 +155,7 @@ export default function EngineeringIndustryPage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Policy Circuit Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Stress calculation with safety factors
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -162,18 +163,8 @@ export default function EngineeringIndustryPage() {
               material limits and safety factors. If stress exceeds yield strength, the
               circuit rejects the design.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">
-                  structural_stress.pcd
-                </span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Structural Stress Analysis — Safety-Factor Enforced
-// Φ_c = 1 — no calculation can exceed material limits
+            <CopyableCode title="structural_stress.pcd">{`// Structural Stress Analysis — Safety-Factor Enforced
+// Φ_c = 1 — no calculation proceeds without material limit verification
 
 circuit stress_analysis {
   // Material properties (steel A36)
@@ -208,12 +199,10 @@ circuit stress_analysis {
     sigma_allow:   allowable,
     utilization:   total_stress / allowable
   }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Force, area, moment — all physically bounded. Safety factor enforced by the compiler.{" "}
-              <PhiC /> = 1 — the design is either safe or it does not compile.
+              <PhiC /> = 1 — the circuit is mathematically complete: every input path produces a verified output or an explicit rejection.
             </p>
           </section>
 
@@ -222,10 +211,10 @@ circuit stress_analysis {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Compliance &amp; Standards
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Standards compliance by construction
             </h2>
-            <ul className="mt-8 space-y-3">
+            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
@@ -237,12 +226,12 @@ circuit stress_analysis {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified engineering software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Build verified engineering software. Every calculation proven. Every component
-              certified. Every composition mathematically guaranteed.
+              certified. Every composition mathematically verified.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a

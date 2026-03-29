@@ -27,8 +27,8 @@ const tiers = [
     highlight: false,
     features: [
       "CLI + all SDKs",
-      "128 monomers (64 certified + 64 extended)",
-      "14 export targets",
+      "Full monomer catalog (certified + extended)",
+      "All export targets",
       "Platform access",
       "Public registry access",
       "5 lifts per day",
@@ -69,7 +69,7 @@ const tiers = [
       "Everything in Pro",
       "SSO / SAML / OIDC",
       "SCIM provisioning",
-      "Compliance reports (SOC2, HIPAA, PCI-DSS)",
+      "Processing logic and change control evidence mapped to SOC2 (PI1.x, CC8.1), PCI-DSS (Req 6, 10), and HIPAA processing rules",
       "Custom registry & white-label badges",
       "Audit trail & logs",
       "CI/CD gate plugins",
@@ -88,9 +88,9 @@ const comparisonSections = [
     title: "Core",
     rows: [
       { feature: "CLI access", free: true, pro: true, enterprise: true },
-      { feature: "128 monomers", free: true, pro: true, enterprise: true },
-      { feature: "14 export targets", free: true, pro: true, enterprise: true },
-      { feature: "207 Coq proofs", free: true, pro: true, enterprise: true },
+      { feature: "Full monomer catalog", free: true, pro: true, enterprise: true },
+      { feature: "All export targets", free: true, pro: true, enterprise: true },
+      { feature: "Coq proof suite", free: true, pro: true, enterprise: true },
       { feature: "Self-compilation fixpoint", free: true, pro: true, enterprise: true },
     ],
   },
@@ -112,7 +112,7 @@ const comparisonSections = [
       { feature: "SSO / SAML / OIDC", free: false, pro: false, enterprise: true },
       { feature: "SCIM provisioning", free: false, pro: false, enterprise: true },
       { feature: "Audit trail", free: false, pro: false, enterprise: true },
-      { feature: "Compliance reports", free: false, pro: false, enterprise: true },
+      { feature: "Processing logic evidence reports", free: false, pro: false, enterprise: true },
       { feature: "On-premise option", free: false, pro: false, enterprise: true },
       { feature: "Custom SLA", free: false, pro: false, enterprise: "99.9%" },
       { feature: "Dedicated support", free: false, pro: false, enterprise: true },
@@ -138,11 +138,11 @@ const faqs = [
   },
   {
     q: "What languages are supported?",
-    a: "Lift from 10 languages (JavaScript, TypeScript, Python, Rust, C, C++, Go, COBOL, PHP, Java) and export to 14 targets including WebAssembly and native x86-64.",
+    a: "Lift from multiple languages (JavaScript, TypeScript, Python, Rust, C, C++, Go, COBOL, PHP, Java) and export to multiple targets including WebAssembly and native.",
   },
   {
     q: "What does 'certified' mean?",
-    a: "A certified function has passed the Thermodynamic Coherence Engine (TCE) with \u03A6_c = 1 \u2014 mathematical proof that every input is consumed, every output is produced, and every execution path terminates correctly.",
+    a: "A certified function has passed formal verification with \u03A6_c = 1 \u2014 mathematical proof that every input is consumed, every output is produced, and every execution path terminates correctly.",
   },
   {
     q: "Is there academic pricing?",
@@ -180,17 +180,19 @@ export default function PricingPage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Pricing
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Start free. <span className="text-teal">Scale when ready.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Every plan includes the full PCD language, all 128 monomers, and export to every supported language.
-            The CLI is free forever.
-          </p>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Pricing
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Start free. <span className="text-[#00b8d4]">Scale when ready.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Every plan includes the full PCD language, all monomers, and export to every supported language.
+              The CLI is free forever.
+            </p>
+          </div>
         </section>
 
         {/* Tier cards */}
@@ -245,7 +247,7 @@ export default function PricingPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             FEATURE COMPARISON
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Full feature breakdown
           </h2>
           <div className="mt-10 overflow-x-auto">
@@ -284,7 +286,7 @@ export default function PricingPage() {
         {/* FAQ */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">FAQ</p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Common questions</h2>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Common questions</h2>
           <div className="mx-auto mt-10 max-w-3xl space-y-2">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-border">
@@ -311,7 +313,7 @@ export default function PricingPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Ready to certify your code?
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

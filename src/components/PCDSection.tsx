@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileCode, ArrowRight, Shield } from "lucide-react";
+import { FileCode, ArrowRight, Shield, Maximize2 } from "lucide-react";
 import { PhiC } from "@/components/PhiC";
 
 const targets = [
@@ -23,8 +23,8 @@ const targets = [
 
 const pcdCode = `PC hello {
     let msg = "Hello, verified world!";
-    let n = MC_43.LEN(msg);
-    MC_33.WRITE(1, msg, n);
+    let n = LEN(msg);
+    WRITE(1, msg, n);
     OUTPUT 0;
 }`;
 
@@ -66,13 +66,13 @@ const tabKeys = Object.keys(outputs);
 const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
-    title: "Not a language",
-    desc: "PCD is a format, like PDF for documents or SVG for graphics. It describes computation, not syntax.",
+    title: "A structural logic language",
+    desc: "PCD describes what your program computes, not how. Like a circuit schematic — structural, verifiable, language-agnostic.",
   },
   {
     icon: <Shield className="h-5 w-5 text-teal" />,
-    title: "128 operations",
-    desc: "Every PCD program is built from 128 formally verified operations. 64 proven in Coq. 64 contract-based.",
+    title: "Verified operations",
+    desc: "Every PCD program is built from formally verified operations. Core operations proven in Coq, plus contract-based extended set.",
   },
   {
     icon: <ArrowRight className="h-5 w-5 text-teal" />,
@@ -80,9 +80,14 @@ const keyPoints = [
     desc: (
       <>
         If the blueprint doesn&apos;t close as a circuit (<PhiC /> ≠ 1), it
-        simply won&apos;t compile. The math is the guarantee.
+        simply won&apos;t compile. The math is the proof.
       </>
     ),
+  },
+  {
+    icon: <Maximize2 className="h-5 w-5 text-teal" />,
+    title: "Domain Constraints",
+    desc: "Every input declares its valid range. The compiler enforces boundaries — no overflow, no NaN, no division by zero. By construction.",
   },
 ];
 
@@ -165,7 +170,7 @@ export function PCDSection() {
         </div>
 
         {/* Three key-point cards */}
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
           {keyPoints.map((kp) => (
             <div
               key={kp.title}

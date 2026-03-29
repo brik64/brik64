@@ -1,3 +1,4 @@
+import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -104,7 +105,7 @@ export default function AISafetyUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Problem
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               AI-generated code is unverified by default
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -129,7 +130,7 @@ export default function AISafetyUseCasePage() {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               The Solution
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Policy circuits — mathematical guardrails for AI agents
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -147,15 +148,7 @@ export default function AISafetyUseCasePage() {
             </div>
 
             {/* Terminal example */}
-            <div className="mt-10 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">terminal</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`$ brikc lift ai_output.py --to pcd
+            <CopyableCode title="terminal">{`$ brikc lift ai_output.py --to pcd
 ✓ Lifted to ai_output.pcd (23 circuits extracted)
 
 $ brikc check ai_output.pcd --policy ai_action_validator.pcd
@@ -165,9 +158,7 @@ $ brikc check ai_output.pcd --policy ai_action_validator.pcd
 
 $ brikc certify ai_output.pcd --emit badge
 ✓ Badge generated: ai_output.certified.json
-✓ Verifiable at registry.brik64.dev/verify`}</code>
-              </pre>
-            </div>
+✓ Verifiable at registry.brik64.dev/verify`}</CopyableCode>
           </section>
 
           {/* ── Real Example ── */}
@@ -175,7 +166,7 @@ $ brikc certify ai_output.pcd --emit badge
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Real Example
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               AI action validator — constrain what agents can do
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
@@ -183,15 +174,7 @@ $ brikc certify ai_output.pcd --emit badge
               If the action falls outside the verified domain, the circuit rejects it — before
               execution, not after damage.
             </p>
-            <div className="mt-8 overflow-hidden border border-border bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-white/50">ai_action_validator.pcd</span>
-              </div>
-              <pre className="overflow-x-auto p-6 font-mono text-sm leading-relaxed text-[#e0e0e0]">
-                <code>{`// Policy Circuit: AI Action Validator
+            <CopyableCode title="ai_action_validator.pcd">{`// Policy Circuit: AI Action Validator
 // Φ_c = 1 — closed circuit, no undefined behavior
 
 PC ai_action_validator {
@@ -204,9 +187,7 @@ PC ai_action_validator {
         if (tokens > 4096) { return 0; }            // BLOCK oversized outputs
         return 1;                                     // ALLOW — certified safe
     }
-}`}</code>
-              </pre>
-            </div>
+}`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Every input is domain-bounded. Every output carries a certification hash.{" "}
               <PhiC /> = 1 — the circuit is mathematically closed. No jailbreak can bypass mathematics.
@@ -218,7 +199,7 @@ PC ai_action_validator {
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
               Results
             </span>
-            <h2 className="text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What you get
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -237,7 +218,7 @@ PC ai_action_validator {
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Start building verified AI software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">

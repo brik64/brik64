@@ -30,7 +30,7 @@ const features = [
     icon: FileCheck,
     title: "Compliance Reports",
     description:
-      "Auto-generated evidence for SOC2, HIPAA, PCI-DSS, and ISO 27001. Certification hashes create an immutable audit trail tied to every deployment.",
+      "Processing logic and change control evidence mapped to SOC2 (PI1.x, CC8.1), PCI-DSS (Req 6, 10), HIPAA processing rules, and ISO 27001 change control. Certification hashes create an immutable audit trail tied to every deployment.",
   },
   {
     icon: BadgeCheck,
@@ -71,7 +71,7 @@ const useCases = [
     icon: HeartPulse,
     title: "Healthcare",
     description:
-      "HIPAA-compliant certification for medical software. Every function that processes patient data carries a formal proof of correctness.",
+      "HIPAA processing logic evidence for medical software. Every function that processes patient data carries a formal proof of correctness. Infrastructure and access controls require separate evidence.",
   },
   {
     icon: Car,
@@ -83,21 +83,20 @@ const useCases = [
     icon: Building2,
     title: "Government & Defense",
     description:
-      "Air-gapped on-premise deployment. Audit trails exportable for NIST and FedRAMP compliance. Source code never leaves your network.",
+      "Air-gapped on-premise deployment. Audit trails exportable as processing logic evidence for NIST and FedRAMP assessments. Source code never leaves your network.",
   },
 ];
 
 /* ── Compliance standards ── */
 
 const standards = [
-  "SOC2 Type II",
-  "HIPAA",
-  "PCI-DSS",
-  "ISO 27001",
-  "ISO 26262",
-  "GDPR",
-  "FedRAMP",
-  "DO-178C",
+  "SOC2 Processing Integrity (PI1.x, CC8.1)",
+  "HIPAA processing logic evidence",
+  "PCI-DSS Req 6, 10 (secure dev + audit trail)",
+  "ISO 27001 change control evidence",
+  "ISO 26262 / DO-178C processing evidence",
+  "MiFID II Art. 17 (algo trading controls)",
+  "SOX Sec 404 (internal controls on calculations)",
 ];
 
 /* ── Page ── */
@@ -108,30 +107,32 @@ export default function EnterprisePage() {
       <Navbar />
       <main className="bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 text-center">
-          <span className="text-muted-foreground mb-5 inline-block rounded-full border border-border bg-background/80 px-3.5 py-1 text-xs font-medium tracking-wide">
-            Enterprise
-          </span>
-          <h1 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Built for <span className="text-teal">regulated industries.</span>
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Fintech. Healthcare. Automotive. Government. When &ldquo;tests pass&rdquo; isn&rsquo;t
-            enough, <PhiC /> = 1 provides mathematical proof that your code is correct.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-            >
-              Request a Demo
-            </a>
-            <a
-              href="/pricing"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
-            >
-              See pricing <ArrowRight className="h-3.5 w-3.5" />
-            </a>
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
+          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              Enterprise
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Built for <span className="text-[#00b8d4]">regulated industries.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Fintech. Healthcare. Automotive. Government. When &ldquo;tests pass&rdquo; isn&rsquo;t
+              enough, <PhiC /> = 1 provides mathematical proof that your code is correct.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+              >
+                Request a Demo
+              </a>
+              <a
+                href="/pricing"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
+              >
+                See pricing <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
         </section>
 
@@ -140,7 +141,7 @@ export default function EnterprisePage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] CAPABILITIES
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Enterprise-grade verification
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -159,7 +160,7 @@ export default function EnterprisePage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] USE CASES
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Trusted across industries
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -178,8 +179,8 @@ export default function EnterprisePage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] COMPLIANCE
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Standards we help you meet
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Standards we generate evidence for
           </h2>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {standards.map((s) => (
@@ -192,8 +193,9 @@ export default function EnterprisePage() {
             ))}
           </div>
           <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed">
-            Certification hashes, audit trails, and compliance reports are generated automatically
-            from your PCD blueprints. No manual documentation \u2014 the math is the evidence.
+            BRIK-64 generates verification evidence for processing logic and change control.
+            Infrastructure, organizational, and procedural controls require separate evidence.
+            The math generates the processing integrity proof &mdash; reducing manual documentation to review and approval.
           </p>
         </section>
 
@@ -205,7 +207,7 @@ export default function EnterprisePage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] GET IN TOUCH
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
             Request a demo
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">

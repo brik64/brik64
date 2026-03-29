@@ -47,7 +47,7 @@ auth_flow = pull("AUTH-FLOW-001")  # OAuth2 handler, Φ_c = 1
 result = auth_flow.execute(request)  # certified, no PCD needed`,
   },
   rust: {
-    description: "Use Coq-proven monomers in your Rust code. The brik64-core crate provides all 128 operations with zero-cost abstractions. Compatible with the public registry.",
+    description: "Use Coq-proven monomers in your Rust code. The brik64-core crate provides all verified operations with zero-cost abstractions. Compatible with the public registry.",
     code: `use brik64_core::{mc, eva};
 use brik64_core::registry::Registry;
 
@@ -106,7 +106,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] CAPABILITIES
           </p>
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             What you can do with {lang.name}
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -151,7 +151,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               [02] SDK
             </p>
-            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
               Install the {lang.name} SDK
             </h2>
             <div className="mt-6 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
@@ -176,7 +176,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               PROGRAM WITH BRIK-64 PATTERNS
             </p>
-            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
               Write verified {lang.name} — no PCD required
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
@@ -242,7 +242,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               LIFT
             </p>
-            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
               Lift from {lang.name} to PCD
             </h2>
             <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
@@ -275,7 +275,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
               COMPILE
             </p>
-            <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
               Compile PCD to {lang.name}
             </h2>
             <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
@@ -304,7 +304,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
             See the full transpilation matrix
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

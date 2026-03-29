@@ -37,9 +37,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "universal-transpiler",
-    title: "The First Universal Transpiler: 10 Languages In, 14 Out",
+    title: "A Universal Transpiler: 10 Languages In, 14 Out",
     excerpt:
-      "Every transpiler converts one language to one other. BRIK-64 converts any of 10 to any of 14 — with formal certification that the output is equivalent to the input.",
+      "Every transpiler converts one language to one other. BRIK-64 converts any of 10 to any of 14 — with formal certification that both input and output close as verified circuits.",
     date: "MAR 23, 2026",
     tag: "PRODUCT",
     category: "Product",
@@ -163,7 +163,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "translation-validation",
-    title: "Proving Code Equivalence Across Languages",
+    title: "Validating Output Equivalence Across Languages",
     excerpt:
       "30 functions compiled to JavaScript and Python. Outputs compared bit-for-bit. Zero divergences across 50,000+ test runs.",
     date: "MAR 24, 2026",
@@ -217,9 +217,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "adversarial-corpus",
-    title: "We Built 50 Tests to Break Our Own Compiler",
+    title: "110,227 Tests to Break Our Own Compiler — 0 Failures",
     excerpt:
-      "The adversarial corpus: 50 hand-crafted attack vectors across 5 categories. 3 real bugs found and fixed. The bar only goes up.",
+      "The adversarial corpus: 110,227 tests across 7 levels — from individual monomers to real execution. Full monomer catalog, all backends, all languages. Zero failures.",
     date: "MAR 24, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
