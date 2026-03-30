@@ -6,10 +6,17 @@ export default function DesignSystemPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-background">
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
         <DesignKitSection />
+      </div>
+
       </main>
-      <Footer />
+      <div className="relative z-10">
+
+        <Footer />
+
+      </div>
     </>
   );
 }

@@ -51,8 +51,9 @@ export default async function BlogPostPage({
   return (
     <>
       <Navbar />
-      <main className="flex-1">
-        <article className="mx-auto max-w-7xl border-x border-border bg-background px-6 py-16 md:px-16 lg:px-24">
+      <main className="relative z-10 flex-1">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
+        <article className="px-6 py-16 md:px-16 lg:px-24">
           <div className="mx-auto max-w-3xl">
           {/* Back link */}
           <a
@@ -89,8 +90,14 @@ export default async function BlogPostPage({
           </div>
           </div>
         </article>
+      </div>
+
       </main>
-      <Footer />
+      <div className="relative z-10">
+
+        <Footer />
+
+      </div>
     </>
   );
 }

@@ -49,7 +49,8 @@ export default function AIIndustryPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-background">
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
         {/* ── Hero ── */}
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
           <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
@@ -250,8 +251,14 @@ circuit ai_action_validator {
             </div>
           </section>
         </div>
+      </div>
+
       </main>
-      <Footer />
+      <div className="relative z-10">
+
+        <Footer />
+
+      </div>
     </>
   );
 }

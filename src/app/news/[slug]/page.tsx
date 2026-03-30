@@ -42,7 +42,8 @@ export default async function NewsArticlePage({
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
         <article className="mx-auto max-w-3xl px-6 py-16">
           {/* Back link */}
           <a
@@ -80,8 +81,14 @@ export default async function NewsArticlePage({
             )}
           </div>
         </article>
+      </div>
+
       </main>
-      <Footer />
+      <div className="relative z-10">
+
+        <Footer />
+
+      </div>
     </>
   );
 }

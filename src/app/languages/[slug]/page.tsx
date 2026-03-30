@@ -83,7 +83,8 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
   return (
     <>
       <Navbar />
-      <main className="bg-background">
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
         {/* Hero */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
           <div className="flex items-center gap-4">
@@ -319,8 +320,14 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
             </a>
           </div>
         </section>
+      </div>
+
       </main>
-      <Footer />
+      <div className="relative z-10">
+
+        <Footer />
+
+      </div>
     </>
   );
 }

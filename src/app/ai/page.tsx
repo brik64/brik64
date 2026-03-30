@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { CircuitGrid } from "@/components/CircuitGrid";
 import { Bot, ShieldCheck, RefreshCw, Zap, Brain, Code2 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -40,9 +39,9 @@ const advantages: { icon: ReactNode; title: string; desc: string }[] = [
 export default function AIPage() {
   return (
     <>
-      <CircuitGrid />
-      <Navbar />
-      <main className="bg-background relative z-10">
+<Navbar />
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
         <section className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide">
             AI-Verified Code Generation
@@ -129,6 +128,8 @@ export default function AIPage() {
             </div>
           </div>
         </section>
+      </div>
+
       </main>
       <div className="relative z-10">
         <Footer />

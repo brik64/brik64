@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { CircuitGrid } from "@/components/CircuitGrid";
 import { Link2, ShieldCheck, Fuel, Vote, Package, Leaf, KeyRound } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -91,9 +90,9 @@ pc verify_over_18(age: Age) -> bool {
 export default function BlockchainPage() {
   return (
     <>
-      <CircuitGrid />
-      <Navbar />
-      <main className="bg-background relative z-10">
+<Navbar />
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
         <section className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide">
             Blockchain &middot; Smart Contracts
@@ -183,6 +182,8 @@ export default function BlockchainPage() {
             </div>
           </div>
         </section>
+      </div>
+
       </main>
       <div className="relative z-10">
         <Footer />
