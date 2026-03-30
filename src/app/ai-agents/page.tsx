@@ -15,6 +15,13 @@ import {
   Newspaper,
 } from "lucide-react";
 
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
+
 /* ── Copy button ── */
 
 function CopyButton({ text }: { text: string }) {
@@ -118,8 +125,9 @@ export default function AIAgentsPage() {
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
         {/* Hero */}
-        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
-          <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
+          <HeroWireframe />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
             <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
               AI-NATIVE
             </span>

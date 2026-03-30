@@ -5,6 +5,13 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Terminal, Copy, Check, ArrowRight } from "lucide-react";
 
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
+
 export default function PlaygroundPage() {
   const [copied, setCopied] = useState(false);
 
@@ -19,7 +26,8 @@ export default function PlaygroundPage() {
       <Navbar />
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-32 pb-32 md:px-12 lg:px-18 text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-32 pb-32 md:px-12 lg:px-18 text-center relative overflow-hidden">
+          <HeroWireframe />
           {/* Badge */}
           <span className="inline-block rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-amber-500">
             Coming Soon
@@ -36,7 +44,7 @@ export default function PlaygroundPage() {
           </p>
 
           {/* Terminal */}
-          <div className="mx-auto mt-12 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+          <div className="relative z-10 mx-auto mt-12 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
               <div className="h-3 w-3 rounded-full bg-red-500/60" />
               <div className="h-3 w-3 rounded-full bg-yellow-500/60" />

@@ -5,6 +5,13 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Check } from "lucide-react";
 
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
+
 export default function SignupPage() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -13,8 +20,9 @@ export default function SignupPage() {
       <Navbar />
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-20 md:px-12 lg:px-18">
-          <div className="mx-auto flex max-w-md flex-col items-center text-center">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-20 md:px-12 lg:px-18 relative overflow-hidden">
+          <HeroWireframe />
+          <div className="relative z-10 mx-auto flex max-w-md flex-col items-center text-center">
             {/* Badge */}
             <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/[0.06] px-3.5 py-1 text-xs font-medium text-teal">
               <span className="h-1.5 w-1.5 rounded-full bg-teal animate-pulse" />

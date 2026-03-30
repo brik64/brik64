@@ -1,6 +1,15 @@
+"use client";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Plane, Heart, Car, Cpu } from "lucide-react";
+
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
 
 const examples = [
   {
@@ -73,7 +82,8 @@ export default function SafetyCriticalPage() {
 <Navbar />
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        <section className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8 relative overflow-hidden">
+          <HeroWireframe />
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide">
             Safety-Critical Systems
           </span>
@@ -89,7 +99,7 @@ export default function SafetyCriticalPage() {
             The math is the proof. The compiler is the auditor.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="relative z-10 mt-8 flex flex-wrap gap-3">
             <span className="rounded-full border border-teal/30 bg-teal/10 px-3.5 py-1 text-xs font-medium text-teal">
               DO-178C (Aerospace)
             </span>

@@ -5,6 +5,13 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { blogPosts, getAllTags, getAllCategories } from "@/lib/blog-data";
 
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
+
 const tagColors: Record<string, string> = {
   VISION: "bg-purple-100 text-purple-700",
   TUTORIAL: "bg-green-100 text-green-700",
@@ -42,8 +49,9 @@ export default function BlogPage() {
       <main className="relative z-10 flex-1">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
         {/* Hero */}
-        <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20">
-          <div className="mx-auto max-w-5xl text-center">
+        <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20 relative overflow-hidden">
+          <HeroWireframe />
+          <div className="relative z-10 mx-auto max-w-5xl text-center">
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00b8d4]">
               BLOG
             </p>

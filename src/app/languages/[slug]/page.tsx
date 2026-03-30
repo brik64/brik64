@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
 import { languages, getLanguageBySlug } from "@/lib/language-data";
 import { ArrowRight, Check, X, Terminal, Package, ArrowUpDown, Puzzle, Globe, Sparkles } from "lucide-react";
+import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 const sdkExamples: Record<string, { code: string; description: string }> = {
   javascript: {
@@ -86,8 +87,9 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
         {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18">
-          <div className="flex items-center gap-4">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 relative overflow-hidden">
+          <HeroWireframeClient />
+          <div className="relative z-10 flex items-center gap-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={lang.logo} alt={lang.name} className="h-12 w-12" />
             <div>

@@ -1,7 +1,16 @@
+"use client";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Link2, ShieldCheck, Fuel, Vote, Package, Leaf, KeyRound } from "lucide-react";
 import type { ReactNode } from "react";
+
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
 
 const useCases: { icon: ReactNode; name: string; desc: string; code: string }[] = [
   {
@@ -93,7 +102,8 @@ export default function BlockchainPage() {
 <Navbar />
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        <section className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 lg:px-8 relative overflow-hidden">
+          <HeroWireframe />
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide">
             Blockchain &middot; Smart Contracts
           </span>
@@ -109,7 +119,7 @@ export default function BlockchainPage() {
             contract doesn&apos;t deploy if it has undefined behavior.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="relative z-10 mt-8 flex flex-wrap gap-3">
             <span className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
               <Link2 className="mr-1.5 inline h-3 w-3" />CosmWasm
             </span>
