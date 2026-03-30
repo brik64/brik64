@@ -1,163 +1,35 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { ArrowRight, BookOpen } from "lucide-react";
-import { PhiC } from "@/components/PhiC";
+import { BookOpen } from "lucide-react";
 
 const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
   { ssr: false }
 );
 
-const tabs = [
-  {
-    label: "AI writes",
-    lines: [
-      { text: "$ brikc ai \"Generate a speed controller with wind limits\"", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  LLM generating PCD (128 ops, 1 prompt)...", style: "muted" as const },
-      { text: "  Φ_c = 0.847 — missing case: wind > 120 km/h", style: "warning" as const },
-      { text: "  LLM fixing... (attempt 2/5)", style: "muted" as const },
-      { text: "", style: "blank" as const },
-      { text: "  ✓ Φ_c = 1 — all 12 paths verified. Certified.", style: "success" as const, hasPhiC: true },
-      { text: "  ✓ Output: speed_ctrl.pcd + speed_ctrl.cert.json", style: "success" as const },
-    ],
-  },
-  {
-    label: "Humans lift",
-    lines: [
-      { text: "$ brikc lift legacy.js --to pcd", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Analyzing legacy.js (247 lines)...", style: "muted" as const },
-      { text: "  Extracting computational graph...", style: "muted" as const },
-      { text: "  Mapping to PCD monomers...", style: "muted" as const },
-      { text: "", style: "blank" as const },
-      { text: "  ✓ Lifted → legacy.pcd", style: "success" as const },
-      { text: "  ✓ 12 monomers identified, Φ_c = 1", style: "success" as const, hasPhiC: true },
-    ],
-  },
-  {
-    label: "Compile",
-    lines: [
-      { text: "$ brikc compile app.pcd --target rust,js,python,wasm", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Parsing app.pcd... 4 monomers", style: "muted" as const },
-      { text: "  Emitting 4 targets...", style: "muted" as const },
-      { text: "", style: "blank" as const },
-      { text: "  ✓ app.rs, app.js, app.py, app.wasm", style: "success" as const },
-      { text: "  ✓ Φ_c = 1 — all targets verified identical", style: "success" as const, hasPhiC: true },
-    ],
-  },
-  {
-    label: "Certify",
-    lines: [
-      { text: "$ brikc check program.pcd", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  ┌──────────────────────────────────┐", style: "box" as const },
-      { text: "  │  CERTIFICATION REPORT             │", style: "box" as const },
-      { text: "  ├──────────────────────────────────┤", style: "box" as const },
-      { text: "  │  Status:   ✓ CERTIFIED            │", style: "box-green" as const },
-      { text: "  │  Φ_c:      1.000000               │", style: "box-green" as const },
-      { text: "  │  Panics:   0 possible              │", style: "box" as const },
-      { text: "  └──────────────────────────────────┘", style: "box" as const },
-    ],
-  },
-];
-
-function TerminalLine({ line }: { line: (typeof tabs)[number]["lines"][number] }) {
-  if (line.style === "blank") return <div className="h-3" />;
-
-  if (line.style === "command") {
-    return (
-      <div className="font-mono text-sm text-white/70">
-        <span className="text-teal">$</span> {line.text.slice(2)}
-      </div>
-    );
-  }
-
-  if (line.style === "success") {
-    const hasPhiC = "hasPhiC" in line && line.hasPhiC;
-    if (hasPhiC) {
-      const parts = line.text.split("Φ_c");
-      return (
-        <div className="font-mono text-sm text-emerald-400">
-          {parts[0]}
-          <PhiC />
-          {parts[1]}
-        </div>
-      );
-    }
-    return <div className="font-mono text-sm text-emerald-400">{line.text}</div>;
-  }
-
-  if (line.style === "warning") {
-    return <div className="font-mono text-sm text-amber-400">{line.text}</div>;
-  }
-
-  if (line.style === "box-green") {
-    return <div className="font-mono text-sm font-bold text-emerald-400">{line.text}</div>;
-  }
-
-  if (line.style === "box") {
-    return <div className="font-mono text-sm text-emerald-400/70">{line.text}</div>;
-  }
-
-  return <div className="font-mono text-sm text-zinc-400">{line.text}</div>;
-}
-
 export function HeroSection() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const totalTabs = tabs.length;
-
-  useEffect(() => {
-    if (paused) return;
-    const interval = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % totalTabs);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [paused, totalTabs]);
-
-  const handleTabClick = useCallback((i: number) => {
-    setActiveTab(i);
-    setPaused(true);
-    // Resume auto-cycle after 10s of no interaction
-    setTimeout(() => setPaused(false), 10000);
-  }, []);
-
   return (
     <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x bg-background">
       {/* Three.js wireframe background */}
       <HeroWireframe />
-      <div className="relative z-10 grid gap-8 px-6 pt-16 pb-12 md:grid-cols-2 md:gap-12 md:px-12 lg:px-18 lg:pt-20">
-        {/* Left: Copy */}
-        <div className="flex flex-col justify-center">
-          <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide shadow-sm">
-            The programming language created for AI agents
-          </span>
-
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            128 operations.{" "}
-            <span className="text-teal">Zero undefined behavior.</span>
-          </h1>
-
-          <p className="text-muted-foreground mt-4 max-w-lg text-base leading-relaxed md:text-lg">
-            PCD is a programming language an AI agent learns in one prompt.
-            Domain constraints on every input. Mathematical verification at compile time.
-            If it compiles, it&apos;s correct.
+      <div className="relative z-10 px-6 pt-20 pb-16 md:px-12 lg:px-18 lg:pt-28 lg:pb-20">
+        <div className="max-w-2xl">
+          <p className="text-muted-foreground mb-4 text-sm font-medium tracking-wide">
+            The AI-native programming language
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground">
-            <span><strong className="text-foreground">AIs</strong> write PCD directly</span>
-            <span className="text-border">|</span>
-            <span><strong className="text-foreground">Humans</strong> lift from JS, Python, Rust &rarr; PCD</span>
-            <span className="text-border">|</span>
-            <span><strong className="text-foreground">Compiler</strong> emits to 14 targets</span>
-          </div>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            The first language where AI-generated code is{" "}
+            <span className="text-teal">mathematically correct.</span>
+          </h1>
 
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <p className="text-muted-foreground mt-5 max-w-lg text-base leading-relaxed md:text-lg">
+            128 operations an AI learns completely. Domain constraints the compiler
+            enforces automatically. If it compiles, it works.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <div className="flex h-11 max-w-sm items-center border border-teal/30 bg-background pr-1.5 pl-4 shadow-sm">
               <input
                 type="email"
@@ -171,64 +43,13 @@ export function HeroSection() {
           </div>
           <div className="mt-3 flex items-center gap-5">
             <a
-              href="/registry"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
-            >
-              Browse the registry <ArrowRight className="h-3.5 w-3.5" />
-            </a>
-            <a
               href="https://docs.brik64.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
             >
-              Docs <BookOpen className="h-3.5 w-3.5" />
+              Read the docs <BookOpen className="h-3.5 w-3.5" />
             </a>
-          </div>
-
-          {/* Key numbers */}
-          <div className="mt-8 grid grid-cols-4 gap-4">
-            <div>
-              <p className="text-xl font-bold text-teal">128</p>
-              <p className="text-[10px] text-muted-foreground">verified operations</p>
-            </div>
-            <div>
-              <p className="text-xl font-bold text-teal">14</p>
-              <p className="text-[10px] text-muted-foreground">compilation targets</p>
-            </div>
-            <div>
-              <p className="text-xl font-bold text-teal">110K+</p>
-              <p className="text-[10px] text-muted-foreground">tests passing</p>
-            </div>
-            <div>
-              <p className="text-xl font-bold text-teal">207</p>
-              <p className="text-[10px] text-muted-foreground">Coq proofs</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Interactive terminal */}
-        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
-          <div className="relative z-10 flex items-center gap-2 border-b border-white/10 px-4 py-2"><span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" /><span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" /><span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" /><span className="mx-1" />
-            {tabs.map((tab, i) => (
-              <button
-                key={tab.label}
-                onClick={() => handleTabClick(i)}
-                className={`cursor-pointer px-4 py-2.5 text-xs font-medium tracking-wide transition-colors ${
-                  activeTab === i
-                    ? "border-b-2 border-teal text-teal"
-                    : "text-white/40 hover:text-white/60"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="relative z-10 flex flex-col gap-0.5 p-5">
-            {tabs[activeTab].lines.map((line, i) => (
-              <TerminalLine key={i} line={line} />
-            ))}
           </div>
         </div>
       </div>
