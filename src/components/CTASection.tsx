@@ -26,8 +26,8 @@ const resources = [
 
 export function CTASection() {
   return (
-    <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
-      <div className="mx-auto max-w-7xl text-center">
+    <div className="border-border mx-auto max-w-7xl border-x bg-background px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+      <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
           Build software that works{" "}
           <span className="text-teal">like hardware</span>.
