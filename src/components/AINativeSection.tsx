@@ -61,7 +61,7 @@ export function AINativeSection() {
 
         {/* Body */}
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          The first language where AI generates certified code. An LLM writes .b64,
+          The first language where AI generates certified code. An LLM writes PCD,
           the compiler verifies &Phi;<sub>c</sub> = 1, and if verification fails, the AI gets the error
           and retries &mdash; automatically. No other language has this.
         </p>
@@ -78,7 +78,7 @@ export function AINativeSection() {
           {/* Terminal content */}
           <div className="flex flex-col gap-1 p-5 font-mono text-xs">
             <p className="text-white/70"><span className="text-teal">$</span> brikc ai &quot;Generate a drone speed controller with wind limits&quot;</p>
-            <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM generating .b64...</p>
+            <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM generating PCD...</p>
             <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.847 &mdash; missing case: wind &gt; 120 km/h</p>
             <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM fixing...</p>
             <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; <span className="font-bold">&Phi;<sub>c</sub></span> = 1.000 &mdash; all 12 paths verified. Certified.</p>

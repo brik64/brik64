@@ -101,7 +101,7 @@ const evaOps = [
 /* ── Key properties ── */
 
 const keyProps = [
-  { icon: <FileCode className="h-5 w-5 text-teal" />, title: "A structural logic language", desc: "PCD describes what your program computes, not how. Like a circuit schematic — structural, verifiable, language-agnostic." },
+  { icon: <FileCode className="h-5 w-5 text-teal" />, title: "AI-native language", desc: "128 operations total. An LLM memorizes the entire language in one prompt. No documentation rabbit holes. No ambiguity. No undocumented behavior." },
   { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verified operations", desc: "Every PCD program is built from formally verified operations. Core proven in Coq, plus contract-based extended set." },
   { icon: <Zap className="h-5 w-5 text-teal" />, title: "Verified by design", desc: "If the blueprint doesn\u2019t close as a circuit (\u03a6_c \u2260 1), it simply won\u2019t compile. The math is the guarantee." },
   { icon: <Layers className="h-5 w-5 text-teal" />, title: "Multi-target", desc: "Compile to Rust, JavaScript, Python, C, C++, Go, COBOL, and more." },
@@ -123,11 +123,12 @@ export default function PCDPage() {
               PCD &mdash; Printed Circuit Description
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The blueprint standard <span className="text-[#00b8d4]">for software.</span>
+              The programming language <span className="text-[#00b8d4]">created for AI agents.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              PCD is a Turing-complete language where programs are circuit schematics. Every valid PCD program has
-              Thermodynamic Coherence <PhiC /> = 1: no dead branches, no unreachable code, no undefined flows.
+              128 operations. Domain constraints on every input. Deterministic by construction.
+              An AI agent learns the entire language in one prompt. Humans write JavaScript, Python, or Rust &mdash; the Lifter converts it.
+              AIs write PCD directly. <PhiC /> = 1 means every path is verified.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm italic text-muted-foreground">
               &ldquo;PCD is to code what architectural blueprints are to buildings.

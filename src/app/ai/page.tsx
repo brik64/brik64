@@ -28,7 +28,7 @@ const advantages: { icon: ReactNode; title: string; desc: string }[] = [
   {
     icon: <Code2 className="h-5 w-5 text-teal" />,
     title: "14 compilation targets",
-    desc: "AI generates one .b64 file. The compiler outputs Rust, JS, Python, C, Go, WASM, and 8 more targets. Write once, deploy everywhere.",
+    desc: "AI generates one PCD file. The compiler outputs Rust, JS, Python, C, Go, WASM, and 8 more targets. Write once, deploy everywhere.",
   },
   {
     icon: <Bot className="h-5 w-5 text-teal" />,
@@ -55,7 +55,7 @@ export default function AIPage() {
 
           <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
             The first language where AI-generated code is automatically verified.
-            An LLM writes .b64, the compiler checks &Phi;<sub>c</sub> = 1, and if
+            An LLM writes PCD directly, the compiler checks &Phi;<sub>c</sub> = 1, and if
             verification fails, the error becomes the next prompt. No other
             language has this loop.
           </p>
@@ -70,11 +70,11 @@ export default function AIPage() {
             </div>
             <div className="flex flex-col gap-1 p-5 font-mono text-xs">
               <p className="text-white/70"><span className="text-teal">$</span> brikc ai &quot;Generate a drone speed controller with wind limits&quot;</p>
-              <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM generating .b64...</p>
+              <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM generating PCD...</p>
               <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.847 &mdash; missing case: wind &gt; 120 km/h</p>
               <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM fixing... (attempt 2/5)</p>
               <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1.000 &mdash; all 12 paths verified. Certified.</p>
-              <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Output: drone_speed.b64 + drone_speed.cert.json</p>
+              <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Output: drone_speed.pcd + drone_speed.cert.json</p>
             </div>
           </div>
 
@@ -82,7 +82,7 @@ export default function AIPage() {
           <div className="mt-10 max-w-lg rounded-lg border border-border bg-card p-5">
             <p className="text-sm font-medium text-foreground">The verification loop</p>
             <div className="mt-3 space-y-2 font-mono text-xs text-muted-foreground">
-              <p>1. Prompt &rarr; LLM generates .b64 code</p>
+              <p>1. Prompt &rarr; LLM generates PCD directly</p>
               <p>2. Compiler checks &Phi;<sub>c</sub></p>
               <p>3. If &Phi;<sub>c</sub> &ne; 1 &rarr; error becomes next prompt</p>
               <p>4. Repeat until &Phi;<sub>c</sub> = 1 (typically 1-3 iterations)</p>

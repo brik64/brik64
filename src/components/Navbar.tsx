@@ -6,7 +6,6 @@ import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBra
 /* ── Product Mega Menu data ── */
 
 const productEndpoints = [
-  { icon: FileCode, label: "Language", desc: "The .b64 language — range types, verified by design", href: "/language" },
   { icon: Terminal, label: "CLI", desc: "Single binary compiler — brikc", href: "/cli" },
   { icon: Globe, label: "Platform", desc: "Circuit laboratory — brik64.com", href: "/platform" },
   { icon: Layers, label: "Registry", desc: "Public verified component registry", href: "/registry" },

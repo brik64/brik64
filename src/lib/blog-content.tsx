@@ -3401,7 +3401,7 @@ print(result.certified)  # True`}</CodeBlock>
       </P>
       <H2>The Pitch</H2>
       <P>
-        BRIK-64 is not competing with Python or Rust. It&apos;s offering something they can&apos;t: <strong>the mathematical guarantee that your program is correct</strong>. Write in .b64, compile to 14 targets (Rust, JS, Python, C, Go, WASM, native...), and get a certificate that proves it.
+        BRIK-64 is not competing with Python or Rust. It&apos;s offering something they can&apos;t: <strong>the mathematical guarantee that your program is correct</strong>. Write PCD (or lift your existing code), compile to 14 targets (Rust, JS, Python, C, Go, WASM, native...), and get a certificate that proves it.
       </P>
       <P>
         The world doesn&apos;t need another language. It needs a language where incorrect programs cannot compile.
@@ -3604,63 +3604,4 @@ fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
     </>
   ),
 
-  "b64-vs-pcd": () => (
-    <>
-      <H2>Two Layers, One System</H2>
-      <P>
-        BRIK-64 has two distinct layers that serve different purposes. Understanding the difference is key to understanding the system.
-      </P>
-      <H2>PCD: The Blueprint</H2>
-      <P>
-        PCD (Printed Circuit Description) is the <strong>intermediate representation</strong>. Think of it like LLVM IR, but verified. PCD is what the compiler operates on internally. It describes programs as circuits: inputs, monomers (operations), connections, outputs.
-      </P>
-      <CodeBlock>{`// PCD — low-level, explicit, compiler-facing
-pc speed_check(v: i64) -> i64 {
-    domain speed: Range [0, 900];
-    let bounded = MC_00.ADD8(v, 0);
-    assert bounded in speed;
-    return bounded;
-}`}</CodeBlock>
-      <P>
-        PCD is deliberately minimal: 128 monomers, explicit wiring, no syntactic sugar. It&apos;s designed for machines to generate, verify, and transform &mdash; not for humans to write daily.
-      </P>
-      <H2>.b64: The Language</H2>
-      <P>
-        .b64 is the <strong>developer-facing language</strong>. It has familiar syntax: functions, types, match expressions, range types, modules. It looks like Rust or Swift but with one critical difference: every program must satisfy <PhiC /> = 1.
-      </P>
-      <CodeBlock>{`// .b64 — high-level, ergonomic, developer-facing
-type Speed = range[0, 900];
-
-fn speed_check(v: Speed) -> Speed {
-    v  // domain is enforced by the type
-}`}</CodeBlock>
-      <P>
-        When you write .b64, the compiler translates it to PCD internally, verifies the circuit, and then compiles to your chosen target (Rust, JS, Python, WASM, etc.).
-      </P>
-      <H2>The Relationship</H2>
-      <P>
-        <strong>.b64 &rarr; PCD &rarr; Target</strong>. Developers write .b64. The compiler generates PCD. The planner optimizes PCD. The backends emit target code. The CMF verifies the PCD at every stage.
-      </P>
-      <P>
-        <strong>The Lifter works in reverse:</strong> it takes existing code (JS, Python, Rust, etc.) and reverse-compiles it to PCD. From PCD, you can emit to any of the 14 targets.
-      </P>
-      <H2>When to Use Which</H2>
-      <P>
-        <strong>Write .b64</strong> when you&apos;re building new verified software. It&apos;s the primary developer experience.
-      </P>
-      <P>
-        <strong>Write PCD</strong> when you need low-level control, when you&apos;re building compiler tools, or when you&apos;re working with the Lifter output.
-      </P>
-      <P>
-        <strong>Use the Lifter</strong> when you have existing code in another language and want to verify and certify it.
-      </P>
-      <H2>Why Both?</H2>
-      <P>
-        The same reason LLVM has both Clang (the language frontend) and LLVM IR (the intermediate representation). The language provides ergonomics. The IR provides verifiability. Separating them means you can have multiple frontends (the Lifter supports 10 languages) all targeting the same verified IR.
-      </P>
-      <P>
-        PCD is the contract. .b64 is the experience.
-      </P>
-    </>
-  ),
 };

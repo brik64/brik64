@@ -141,7 +141,7 @@ export function HeroSection() {
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-lg text-base leading-relaxed md:text-lg">
-            Write .b64. Verify automatically. Ship certified code to
+            Write PCD. Verify automatically. Ship certified code to
             Rust, JavaScript, Python, WASM, and 10 more targets.
           </p>
 

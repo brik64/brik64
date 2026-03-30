@@ -278,15 +278,6 @@ export const blogPosts: BlogPost[] = [
     tag: "ENGINEERING",
     category: "Engineering",
   },
-  {
-    slug: "b64-vs-pcd",
-    title: "PCD vs .b64: The Blueprint and the Language",
-    excerpt:
-      "PCD is the intermediate representation — the blueprint. .b64 is the language developers write. Understanding the difference is key to understanding BRIK-64.",
-    date: "MAR 30, 2026",
-    tag: "DEEP DIVE",
-    category: "Foundations",
-  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

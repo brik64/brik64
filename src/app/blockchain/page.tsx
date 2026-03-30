@@ -176,7 +176,7 @@ export default function BlockchainPage() {
               <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc build</span>
             </div>
             <div className="flex flex-col gap-1 p-5 font-mono text-xs">
-              <p className="text-white/70"><span className="text-teal">$</span> brikc build escrow.b64 --target wasm --estimate-gas</p>
+              <p className="text-white/70"><span className="text-teal">$</span> brikc build escrow.pcd --target wasm --estimate-gas</p>
               <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; Compiled: 42KB WASM</p>
               <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Estimated gas: 127,400 units</p>
               <p className="text-emerald-400">&nbsp;&nbsp;&#10003; Φc = 1 — certificate stored on-chain</p>
