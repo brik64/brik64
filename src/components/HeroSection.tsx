@@ -12,20 +12,20 @@ const HeroWireframe = dynamic(
 
 const tabs = [
   {
-    label: "Compile",
+    label: "AI writes",
     lines: [
-      { text: "$ brikc compile app.pcd --target js", style: "command" as const },
+      { text: "$ brikc ai \"Generate a speed controller with wind limits\"", style: "command" as const },
       { text: "", style: "blank" as const },
-      { text: "  Parsing app.pcd...", style: "muted" as const },
-      { text: "  Resolving 4 monomers: ADD8, STORE, WRITE, LEN", style: "muted" as const },
-      { text: "  Emitting JavaScript (ES2024)...", style: "muted" as const },
+      { text: "  LLM generating PCD (128 ops, 1 prompt)...", style: "muted" as const },
+      { text: "  Φ_c = 0.847 — missing case: wind > 120 km/h", style: "warning" as const },
+      { text: "  LLM fixing... (attempt 2/5)", style: "muted" as const },
       { text: "", style: "blank" as const },
-      { text: "  ✓ Compiled successfully → dist/app.js", style: "success" as const },
-      { text: "  ✓ Φ_c = 1 — circuit closed", style: "success" as const, hasPhiC: true },
+      { text: "  ✓ Φ_c = 1 — all 12 paths verified. Certified.", style: "success" as const, hasPhiC: true },
+      { text: "  ✓ Output: speed_ctrl.pcd + speed_ctrl.cert.json", style: "success" as const },
     ],
   },
   {
-    label: "Lift",
+    label: "Humans lift",
     lines: [
       { text: "$ brikc lift legacy.js --to pcd", style: "command" as const },
       { text: "", style: "blank" as const },
@@ -34,20 +34,19 @@ const tabs = [
       { text: "  Mapping to PCD monomers...", style: "muted" as const },
       { text: "", style: "blank" as const },
       { text: "  ✓ Lifted → legacy.pcd", style: "success" as const },
-      { text: "  ✓ 12 monomers identified", style: "success" as const },
+      { text: "  ✓ 12 monomers identified, Φ_c = 1", style: "success" as const, hasPhiC: true },
     ],
   },
   {
-    label: "Transpile",
+    label: "Compile",
     lines: [
-      { text: "$ brikc transpile app.pcd --from js --to rust", style: "command" as const },
+      { text: "$ brikc compile app.pcd --target rust,js,python,wasm", style: "command" as const },
       { text: "", style: "blank" as const },
-      { text: "  Loading PCD intermediate...", style: "muted" as const },
-      { text: "  Verifying source equivalence...", style: "muted" as const },
-      { text: "  Emitting Rust (edition 2024)...", style: "muted" as const },
+      { text: "  Parsing app.pcd... 4 monomers", style: "muted" as const },
+      { text: "  Emitting 4 targets...", style: "muted" as const },
       { text: "", style: "blank" as const },
-      { text: "  ✓ Transpiled → dist/app.rs", style: "success" as const },
-      { text: "  ✓ Φ_c = 1 — both sides verified", style: "success" as const, hasPhiC: true },
+      { text: "  ✓ app.rs, app.js, app.py, app.wasm", style: "success" as const },
+      { text: "  ✓ Φ_c = 1 — all targets verified identical", style: "success" as const, hasPhiC: true },
     ],
   },
   {
@@ -92,6 +91,10 @@ function TerminalLine({ line }: { line: (typeof tabs)[number]["lines"][number] }
     return <div className="font-mono text-sm text-emerald-400">{line.text}</div>;
   }
 
+  if (line.style === "warning") {
+    return <div className="font-mono text-sm text-amber-400">{line.text}</div>;
+  }
+
   if (line.style === "box-green") {
     return <div className="font-mono text-sm font-bold text-emerald-400">{line.text}</div>;
   }
@@ -132,18 +135,27 @@ export function HeroSection() {
         {/* Left: Copy */}
         <div className="flex flex-col justify-center">
           <span className="text-muted-foreground mb-5 inline-block w-fit rounded-full border border-border bg-background px-3.5 py-1 text-xs font-medium tracking-wide shadow-sm">
-            64 Coq-proven operations &middot; 14 compilation targets &middot; 110,000+ tests
+            The programming language created for AI agents
           </span>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            The only language where{" "}
-            <span className="text-teal">bugs don&apos;t compile</span>.
+            128 operations.{" "}
+            <span className="text-teal">Zero undefined behavior.</span>
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-lg text-base leading-relaxed md:text-lg">
-            Write PCD. Verify automatically. Ship certified code to
-            Rust, JavaScript, Python, WASM, and 10 more targets.
+            PCD is a programming language an AI agent learns in one prompt.
+            Domain constraints on every input. Mathematical verification at compile time.
+            If it compiles, it&apos;s correct.
           </p>
+
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground">
+            <span><strong className="text-foreground">AIs</strong> write PCD directly</span>
+            <span className="text-border">|</span>
+            <span><strong className="text-foreground">Humans</strong> lift from JS, Python, Rust &rarr; PCD</span>
+            <span className="text-border">|</span>
+            <span><strong className="text-foreground">Compiler</strong> emits to 14 targets</span>
+          </div>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
             <div className="flex h-11 max-w-sm items-center border border-teal/30 bg-background pr-1.5 pl-4 shadow-sm">
@@ -172,6 +184,26 @@ export function HeroSection() {
             >
               Docs <BookOpen className="h-3.5 w-3.5" />
             </a>
+          </div>
+
+          {/* Key numbers */}
+          <div className="mt-8 grid grid-cols-4 gap-4">
+            <div>
+              <p className="text-xl font-bold text-teal">128</p>
+              <p className="text-[10px] text-muted-foreground">verified operations</p>
+            </div>
+            <div>
+              <p className="text-xl font-bold text-teal">14</p>
+              <p className="text-[10px] text-muted-foreground">compilation targets</p>
+            </div>
+            <div>
+              <p className="text-xl font-bold text-teal">110K+</p>
+              <p className="text-[10px] text-muted-foreground">tests passing</p>
+            </div>
+            <div>
+              <p className="text-xl font-bold text-teal">207</p>
+              <p className="text-[10px] text-muted-foreground">Coq proofs</p>
+            </div>
           </div>
         </div>
 
