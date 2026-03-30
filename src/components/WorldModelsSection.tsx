@@ -139,8 +139,8 @@ export function WorldModelsSection() {
                     )}
                   >
                     <div className="flex w-full items-start justify-between">
-                      <div className="border-border/80 bg-secondary inline-flex h-8 w-8 items-center justify-center rounded-md border group-hover:border-teal/30 group-hover:bg-teal/10">
-                        <Icon className="h-4 w-4 text-foreground group-hover:text-teal" />
+                      <div className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-teal/30 bg-teal/10">
+                        <Icon className="h-4 w-4 text-teal" />
                       </div>
                       <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
                     </div>
