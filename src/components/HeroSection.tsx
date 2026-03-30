@@ -1,18 +1,8 @@
-"use client";
-
-import dynamic from "next/dynamic";
 import { BookOpen } from "lucide-react";
-
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
 
 export function HeroSection() {
   return (
-    <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x bg-background">
-      {/* Three.js wireframe background */}
-      <HeroWireframe />
+    <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x">
       <div className="relative z-10 px-6 pt-20 pb-16 md:px-12 lg:px-18 lg:pt-28 lg:pb-20">
         <div className="max-w-2xl">
           <p className="text-muted-foreground mb-4 text-sm font-medium tracking-wide">

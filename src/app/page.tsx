@@ -22,8 +22,9 @@ export default function Home() {
     <>
       <CircuitGrid />
       <Navbar />
-      <main className="bg-background relative z-10">
+      <main className="relative z-10">
         <HeroSection />
+        <div className="bg-background">
         <TrustedBySection />
         <div className="border-border mx-auto max-w-7xl border-x">
           <ProblemSection />
@@ -40,6 +41,7 @@ export default function Home() {
           <EnterpriseSection />
         </div>
         <CTASection />
+        </div>
       </main>
       <div className="relative z-10">
         <Footer />
