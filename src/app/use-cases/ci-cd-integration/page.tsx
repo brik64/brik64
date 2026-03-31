@@ -7,61 +7,61 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "CI/CD Integration: Certify Every Pull Request — BRIK64",
+  title: "CI/CD Integration: Push Code. Get Mathematical Proof. — BRIK64",
   description:
-    "Every PR mathematically certified. Block uncertified merges. Audit trail for compliance.",
+    "Every PR mathematically certified. Block uncertified merges. Audit trail for SOC2, ISO, and every compliance framework that exists.",
 };
 
 const painPoints = [
   {
-    title: "Tests pass but code still breaks in production",
-    desc: "Your CI pipeline runs 10,000 tests. They all pass. You merge. Production breaks. Why? Because tests only verify the cases you thought of. The bug was in the case you didn't.",
+    title: "Your tests pass. Your code still breaks.",
+    desc: "You have 10,000 tests. They all pass. Green across the board. You merge with confidence. And production breaks at 2 AM. Why? Because tests only verify the scenarios you imagined. The bug lives in the scenario you did not imagine. It always does. Testing is a net with holes — the fish that matters always slips through. Every production incident in the history of software happened in a codebase where the tests were passing. Every. Single. One.",
   },
   {
-    title: "Code review is manual and doesn't scale",
-    desc: "Senior engineers spend 30% of their time reviewing PRs. They miss things. They get tired. They rubber-stamp on Fridays. Code review is a human process with human failure modes.",
+    title: "Code review does not scale. It never did.",
+    desc: "Your senior engineers spend 30-40% of their time reviewing pull requests. They are tired. They are context-switching. They rubber-stamp on Friday afternoons. They miss the subtle logic error on line 847 because they are reviewing their fifth PR of the day. Code review is a human process with human failure modes — fatigue, distraction, boredom, deadline pressure. And now AI is generating code 10x faster than humans can review it. The bottleneck is not writing code anymore. The bottleneck is proving it works. And your process for proving it works is a person reading a diff.",
   },
   {
-    title: "No mathematical guarantee a PR is safe to merge",
-    desc: "Your merge button says 'All checks passed.' It should say 'All tests we wrote passed.' There's no way to guarantee the PR won't introduce undefined behavior, overflow, or logic errors.",
+    title: "Your merge button lies to you",
+    desc: "The green checkmark on your PR says 'All checks passed.' What it actually means is 'All tests we wrote passed for the inputs we chose.' There is no guarantee the PR does not introduce undefined behavior. No guarantee it does not overflow. No guarantee it does not break an invariant the tests do not cover. Your merge button is a confidence indicator, not a proof. And the gap between confidence and proof is where every production bug lives.",
   },
 ];
 
 const steps = [
   {
     step: "01",
-    title: "Connect your repo",
-    desc: "brikc connect installs a GitHub App with one click. Webhook configured automatically. Works with GitHub, GitLab, and Bitbucket.",
+    title: "Connect your repo — one command, done",
+    desc: "brikc connect installs a GitHub App on your repository. One click. Webhook configured automatically. Required status check registered. Works with GitHub, GitLab, and Bitbucket. No YAML to write. No pipeline to configure. No infrastructure to maintain. You connect it and it works. That is the entire setup.",
   },
   {
     step: "02",
-    title: "Every push triggers certification",
-    desc: "On every push, brikc auto-lifts changed files to PCD and runs circuit closure analysis. No manual step. No configuration. It just works.",
+    title: "Every push triggers mathematical certification — automatically",
+    desc: "On every push, BRIK64 lifts changed files to PCD and runs circuit closure analysis. Every function. Every branch. Every domain constraint. Not sampling — exhaustive analysis. Not testing — proving. This runs in parallel with your existing tests. Your tests stay. BRIK64 adds the layer your tests cannot provide: mathematical proof that the code is correct for ALL inputs, not just the ones in your test suite.",
   },
   {
     step: "03",
-    title: "PR gets a certification comment",
-    desc: "The bot posts a certification report on your PR: \u03A6_c = 1 (certified) or \u03A6_c \u2260 1 (failed) with detailed diagnostics on which circuits failed and why.",
+    title: "Your PR gets a certification report — not a test result",
+    desc: "The bot posts a certification comment directly on your pull request. Not 'tests pass.' Not 'coverage is 87%.' A mathematical verdict: circuits analyzed, domains verified, constraints satisfied, closure confirmed. If any circuit fails, you get a precise diagnostic — which function, which constraint, which input domain. Your developers do not debug. They read the proof failure and fix the exact issue.",
   },
   {
     step: "04",
-    title: "Block uncertified merges",
-    desc: "Configure BRIK64 as a required status check in GitHub. If certification fails, the merge button is blocked. No uncertified code reaches main. Ever.",
+    title: "Uncertified code cannot merge — the button is grayed out",
+    desc: "Configure BRIK64 as a required status check. If certification fails, the merge button is physically disabled. Not a warning. Not a suggestion. The button does not work. No uncertified code reaches main. No manager overrides the proof. No deadline pressure bypasses the math. This is the first CI pipeline in history where 'all checks passed' actually means something.",
   },
 ];
 
 const results = [
   {
-    title: "Every PR mathematically certified",
-    desc: "Not just tested. Certified. Every pull request gets a formal verification report. Your CI pipeline goes from 'tests pass' to 'mathematically proven.'",
+    title: "Every pull request — mathematically certified",
+    desc: "Not tested. Not reviewed. Certified. Every pull request that reaches your main branch carries a formal verification report. Your CI pipeline goes from 'tests pass and a human glanced at the diff' to 'mathematically proven correct for all possible inputs.' That is not an improvement. That is a different category of engineering.",
   },
   {
-    title: "Block uncertified merges",
-    desc: "Required status check integration means the merge button is physically grayed out until certification passes. No overrides. No exceptions.",
+    title: "Uncertified merges are physically impossible",
+    desc: "Required status check integration means the merge button is disabled until certification passes. Not a soft warning. Not a notification. The button does not function. No override. No exception. No 'ship it anyway, we will fix it Monday.' The math is the gatekeeper and the math does not negotiate.",
   },
   {
-    title: "Audit trail for compliance",
-    desc: "Every certification generates a verifiable certificate. SOC2 auditors, ISO assessors, and regulators get machine-readable proof of code correctness.",
+    title: "Audit trail that satisfies every compliance framework",
+    desc: "Every certification generates a verifiable, immutable certificate with a unique hash. SOC2 auditors get machine-readable proof. ISO 27001 assessors get formal verification records. FDA reviewers get mathematical correctness certificates. DORA compliance officers get audit trails with cryptographic integrity. Every regulator who has ever asked 'how do you know this code is correct?' now gets an answer that is not 'we tested it.'",
   },
 ];
 
@@ -80,11 +80,12 @@ export default function CICDIntegrationUseCasePage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               CI/CD Integration:{" "}
-              <span className="text-[#00b8d4]">Certify Every Pull Request</span>
+              <span className="text-[#00b8d4]">Push Code. Get Mathematical Proof. Automatically.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Tests check the cases you thought of. BRIK64 proves ALL cases.
-              One command adds mathematical certification to your CI pipeline. Free.
+              Tests check the cases you thought of. BRIK64 proves ALL cases. Every push triggers
+              mathematical certification. Every PR gets a formal proof. Every uncertified merge is
+              blocked. One command to connect. Zero configuration. Free.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -110,7 +111,7 @@ export default function CICDIntegrationUseCasePage() {
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Your CI pipeline has a trust gap
+              Your CI pipeline has a trust gap the size of a canyon
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {painPoints.map((item) => (
@@ -128,7 +129,7 @@ export default function CICDIntegrationUseCasePage() {
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Mathematical certification in your pipeline
+              Mathematical proof as a CI step — not a research project
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
@@ -172,11 +173,12 @@ $ git push origin feature/new-payment-flow
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              GitHub Actions workflow — one step
+              GitHub Actions — one step changes everything
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               Add BRIK64 certification to your existing GitHub Actions workflow. One step.
-              Runs alongside your tests. Blocks merge if certification fails.
+              It runs alongside your tests. It does not replace them — it adds the layer
+              they cannot provide. If certification fails, the merge is blocked.
             </p>
             <CopyableCode title=".github/workflows/ci.yml">{`name: CI + Certification
 
@@ -202,7 +204,7 @@ jobs:
           # Fails the check if Φ_c ≠ 1`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               One GitHub Action step. Your entire CI pipeline now produces mathematical proofs, not just test results.{" "}
-              <PhiC /> = 1 or the merge is blocked.
+              <PhiC /> = 1 or the merge is blocked. That is the new standard.
             </p>
           </section>
 
@@ -212,7 +214,7 @@ jobs:
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              What you get
+              What your pipeline becomes
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
@@ -228,10 +230,11 @@ jobs:
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Certify every merge
+              Push code. Get proof. Ship with certainty.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               One command to connect. Every PR certified. Every merge proven safe. Every audit satisfied.
+              Your pipeline is about to produce something it has never produced before: mathematical certainty.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a

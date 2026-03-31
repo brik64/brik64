@@ -7,61 +7,61 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Formal Verification: Formal Proofs Without a PhD — BRIK64",
+  title: "Formal Verification: One Command. Mathematical Proof. — BRIK64",
   description:
-    "207 mathematical proofs for all 64 core monomers. No proof-writing expertise needed. If it compiles, it's proven.",
+    "Formal verification used to require a PhD and years of training. Now it requires one command: brikc check. 207 mathematical proofs. Zero expertise needed. If it compiles, it is proven.",
 };
 
 const painPoints = [
   {
-    title: "Formal verification requires years of expertise",
-    desc: "Formal proof assistants (Lean, Isabelle) — tools that produce mathematical proofs of software correctness. Learning curve: 2-5 years. Number of developers who can use them: a few thousand worldwide.",
+    title: "Formal verification has been locked in academia for 50 years",
+    desc: "Lean. Isabelle. Coq. TLA+. Proof assistants that can mathematically prove software is correct. The technology exists. It has existed since the 1970s. And almost nobody uses it. Why? Because learning to write formal proofs takes 2-5 years of graduate-level training. There are fewer than 5,000 people on Earth who can effectively use these tools. Five thousand — out of 30 million professional developers. That means 99.98% of all software ever written has never been formally verified. Not because the math does not exist. Because the tooling was built for mathematicians, not engineers.",
   },
   {
-    title: "Only used in aerospace and nuclear",
-    desc: "The cost of formal verification is so high that only life-critical industries can justify it. Your banking app, your healthcare system, your trading platform? Unverified. 'Tests pass' is the best you get.",
+    title: "Only aerospace and nuclear can justify the cost",
+    desc: "The seL4 microkernel: 8,700 lines of C, 200,000 lines of proof, 20 person-years of work. That is the gold standard of formal verification. And it is completely impractical for anything except systems where a bug kills people. Your banking application? Unverified. Your healthcare platform processing patient data? Unverified. Your trading system moving billions per day? Unverified. Your self-driving car firmware? Partially verified at enormous cost. Formal verification costs $50-100 per line of code when done manually. A million-line codebase would cost $50-100 million to verify. So nobody does it. And the bugs keep shipping.",
   },
   {
-    title: '"Testing shows presence of bugs, never absence"',
-    desc: "Dijkstra said it in 1969. It's still true. No amount of testing can prove your code is correct. Tests only prove it works for the cases you thought of. The bugs hide in the cases you didn't.",
+    title: '"Testing shows the presence of bugs, never their absence"',
+    desc: "Dijkstra said it in 1969. Fifty-seven years later, the entire software industry still operates as if he never spoke. 100% code coverage does not mean 100% correctness. It means you tested every line — not every path, not every state, not every input combination. A function with 10 boolean parameters has 1,024 possible input combinations. Your test suite covers 50 of them. Maybe 100 if you are thorough. The bugs hide in the 924 combinations you did not test. They always do. And no amount of additional testing can prove they are not there. Only formal verification can prove absence of bugs. And until today, formal verification required a PhD.",
   },
 ];
 
 const steps = [
   {
     step: "01",
-    title: "Write PCD — that's it",
-    desc: "You write your program in PCD. No proof annotations, no tactics, no lemmas. Just the program logic with domain constraints.",
+    title: "Write PCD — just your program logic, nothing else",
+    desc: "No proof annotations. No tactics. No lemmas. No invariants. No preconditions decorated in a special syntax. You write your program in PCD with domain constraints — the same way you would write any program, except you declare the valid ranges of your data. domain temperature: Range[-273.15, 1e9]. domain pressure: Range[0.0, 1e12]. That is it. You write the program. The compiler writes the proof.",
   },
   {
     step: "02",
-    title: "The compiler generates the proof",
-    desc: "brikc automatically generates formal proofs during compilation. The 64 core monomers already have 207 verified mathematical proofs. Your program composes them.",
+    title: "The compiler generates the mathematical proof — automatically",
+    desc: "brikc check does not just compile your code. It constructs a formal proof of correctness during compilation. The 64 core monomers of BRIK64 carry 207 mathematically certified proofs — every arithmetic operation, every logical gate, every control flow construct, every I/O operation. Your program composes these monomers. The proofs compose with them. Composition is algebraic. The compiler does the math. You get the certificate.",
   },
   {
     step: "03",
-    title: "Circuit closure = correctness",
-    desc: "If all domains are bounded, all paths terminate, and all constraints hold, then \u03A6_c = 1. The circuit is closed. The program is correct. Mathematically.",
+    title: "Circuit closure equals correctness — one property, total guarantee",
+    desc: "If all domains are bounded, all paths terminate, all constraints are satisfied, and all inputs are consumed — then the circuit closes. The program is correct. Not 'probably correct for the inputs we tested.' Correct. For ALL inputs in the declared domains. Every division has a non-zero divisor — proven. Every array access is in bounds — proven. Every overflow is impossible — proven. Every null reference cannot occur — proven. One property. One check. Total mathematical guarantee.",
   },
   {
     step: "04",
-    title: "Certificate included",
-    desc: "Every compilation produces a verifiable certificate. Third parties can independently verify your code's correctness without reading the source.",
+    title: "Every compilation produces a verifiable certificate",
+    desc: "The certificate is not a badge. It is a cryptographically signed mathematical proof. Third parties can independently verify your code's correctness without reading the source code. Auditors verify the certificate, not the implementation. Regulators verify the proof, not the test suite. The certificate is permanent — it does not expire, it does not need to be re-run, it does not degrade over time. The math is the same today as it will be in a hundred years.",
   },
 ];
 
 const results = [
   {
-    title: "207 mathematical proofs — you get them for free",
-    desc: "The 64 core monomers of BRIK64 have been formally verified with 207 mathematical proofs. When you compose circuits from monomers, the proofs compose too.",
+    title: "207 mathematical proofs — you get them for free, today",
+    desc: "The 64 core monomers of BRIK64 have been mathematically certified with 207 formal proofs. Arithmetic correctness. Logical consistency. Control flow termination. Memory safety. I/O determinism. Cryptographic integrity. When you compose circuits from monomers, the proofs compose too — automatically, algebraically, without any work from you. You inherit decades of formal verification work by writing one line of PCD.",
   },
   {
-    title: "No proof-writing expertise needed",
-    desc: "You never see a proof assistant. You never write a tactic. The compiler does all the formal verification work. You write code, you get proofs.",
+    title: "No proof expertise needed — not today, not ever",
+    desc: "You will never see a proof assistant. You will never write a tactic. You will never debug a failed lemma at 3 AM wondering why your induction hypothesis does not generalize. The compiler does all the formal verification work. You write code. You get proofs. The barrier that kept formal verification locked in academia for half a century — the expertise requirement — is gone. Deleted. Every developer who can write a function can now get a formal proof that their function is correct.",
   },
   {
-    title: "If it compiles, it's proven",
-    desc: "The compilation process IS the verification process. There's no separate verification step. If brikc compiles your PCD without error, your code is formally verified.",
+    title: "If it compiles, it is proven. If it does not compile, you know exactly why.",
+    desc: "The compilation process IS the verification process. They are not separate steps. They are not separate tools. They are the same operation. If brikc compiles your PCD without error, your code has been mathematically certified correct. If it fails, you get a precise diagnostic: which circuit, which constraint, which domain, which input range. Not a cryptic error message. A mathematical explanation of exactly what is wrong and why. Fix it, recompile, get your proof.",
   },
 ];
 
@@ -80,10 +80,11 @@ export default function FormalVerificationUseCasePage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Formal Verification:{" "}
-              <span className="text-[#00b8d4]">Formal Proofs Without a PhD</span>
+              <span className="text-[#00b8d4]">One Command: brikc check</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              207 mathematical proofs. Zero expertise required. Write code, get proofs.
+              Formal verification used to require a PhD and years of training. Now it requires
+              one command. 207 mathematical proofs. Zero expertise needed. Write code, get proofs.
               The compiler does all the verification. If it compiles, it&apos;s proven. Free CLI.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -110,7 +111,7 @@ export default function FormalVerificationUseCasePage() {
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Formal verification is inaccessible
+              The most powerful technique in software engineering is inaccessible to 99.98% of developers
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {painPoints.map((item) => (
@@ -128,7 +129,7 @@ export default function FormalVerificationUseCasePage() {
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Verification inside the compiler
+              The proof is inside the compiler. You just write code.
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
@@ -155,7 +156,7 @@ export default function FormalVerificationUseCasePage() {
 ║  Domains:     all bounded ✓                      ║
 ║  Termination: all paths terminate ✓              ║
 ║  Constraints: all satisfied ✓                    ║
-║  mathematical proofs:  47 (composed from 207 base)        ║
+║  Proofs:      47 (composed from 207 base)        ║
 ║                                                  ║
 ║  Φ_c = 1  ✓  CERTIFIED                          ║
 ║                                                  ║
@@ -169,11 +170,12 @@ export default function FormalVerificationUseCasePage() {
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              A certified calculator — every operation proven
+              A certified calculator — every operation mathematically proven
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This PCD program defines a calculator with bounded domains. Every division checks for zero.
-              Every overflow is impossible. The compiler proves it.
+              This PCD program defines a calculator with bounded domains. Division by zero is not handled
+              at runtime — it is eliminated at compile time. Overflow is not caught by an exception — it
+              is made impossible by domain constraints. The compiler proves it. You ship it. It cannot fail.
             </p>
             <CopyableCode title="calculator.pcd">{`// Certified Calculator — Φ_c = 1
 // Every operation proven correct by circuit closure
@@ -195,8 +197,9 @@ PC safe_calculator {
     }
 }`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              No runtime checks needed. No error handling for impossible cases. The domain constraints
-              make undefined behavior mathematically impossible. <PhiC /> = 1.
+              No runtime checks needed. No try/catch blocks. No error handling for impossible cases.
+              The domain constraints make undefined behavior mathematically impossible. <PhiC /> = 1.
+              Ship it. It is proven.
             </p>
           </section>
 
@@ -206,7 +209,7 @@ PC safe_calculator {
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              What you get
+              What changes when every developer can get a formal proof
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
@@ -222,10 +225,11 @@ PC safe_calculator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Write code. Get proofs.
+              Write code. Get proofs. Ship certainty.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              207 mathematical proofs. Zero proof expertise required. If it compiles, it&apos;s proven.
+              207 mathematical proofs. Zero proof expertise required. One command. If it compiles, it&apos;s proven.
+              Formal verification just became as easy as running a compiler. Because it is the compiler.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
