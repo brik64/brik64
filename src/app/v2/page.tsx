@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CircuitGrid } from "@/components/CircuitGrid";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
@@ -12,88 +12,10 @@ const HeroWireframe = dynamic(
 );
 
 /* ────────────────────────────────────────────────────────────
-   V2 HOMEPAGE — CMO-aligned, 5-section narrative
-   Based on Brand Book v1, Official Language Manual v2,
-   Synthetic Language Manual v1
+   V2 HOMEPAGE — Steve Jobs version
+   Show the product. Make them want it. Make them understand
+   they can use it TODAY.
    ──────────────────────────────────────────────────────────── */
-
-/* ── Section data ── */
-
-const proofBar = [
-  "Atomic monomers",
-  "EVA composition",
-  "PCD",
-  "Structural certification",
-  "Multi-target compilation",
-];
-
-const shiftPairs = [
-  { before: "Code", after: "Circuitry" },
-  { before: "Syntax", after: "Function" },
-  { before: "Interpretation", after: "Structure" },
-  { before: "Post-hoc confidence", after: "Certifiable behavior" },
-  { before: "Human-only programming", after: "Intelligence-operable systems" },
-];
-
-const architectureSteps = [
-  {
-    label: "01",
-    title: "Atomic monomers",
-    desc: "128 formally verified operations organized in 16 families. Each monomer has a defined signature, bounded domains, and a Coq proof. The functional alphabet of a new kind of programming.",
-  },
-  {
-    label: "02",
-    title: "EVA composition",
-    desc: "Sequential, parallel, and conditional operators that preserve correctness through composition. If Part A is verified and Part B is verified, A composed with B is verified.",
-  },
-  {
-    label: "03",
-    title: "PCD description",
-    desc: "A formal language for describing programmable circuits. 128 operations an AI agent learns in one prompt. Humans write in their preferred language — the Lifter converts it to PCD.",
-  },
-  {
-    label: "04",
-    title: "Structural certification",
-    desc: "The compiler verifies every connection. Domain constraints enforced automatically. If the circuit doesn't close, the program doesn't compile. The math is the proof.",
-  },
-  {
-    label: "05",
-    title: "Portable output",
-    desc: "One definition, 14 compilation targets. Rust, JavaScript, Python, C, Go, WASM, native x86-64, and more. Certifiable behavior that travels with the code.",
-  },
-];
-
-const verticals = [
-  {
-    name: "Algorithmic Trading",
-    standard: "MiFID II Art. 17",
-    line: "Compliance evidence generated at compile time.",
-  },
-  {
-    name: "Medical Devices",
-    standard: "IEC 62304 Class C",
-    line: "Overdose is structurally impossible.",
-  },
-  {
-    name: "Aerospace",
-    standard: "DO-178C Level A",
-    line: "Every flight path has a defined response.",
-  },
-  {
-    name: "Smart Contracts",
-    standard: "WASM < 100KB",
-    line: "Bugs can't compile. Contracts can't be patched.",
-  },
-];
-
-const stats = [
-  { value: "128", label: "verified operations" },
-  { value: "14", label: "compilation targets" },
-  { value: "110K+", label: "tests passing" },
-  { value: "207", label: "Coq proofs" },
-];
-
-/* ── Page ── */
 
 export default function HomeV2() {
   return (
@@ -102,228 +24,339 @@ export default function HomeV2() {
       <Navbar />
       <main className="relative z-10">
 
-        {/* ━━━ HERO ━━━ */}
+        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            HERO — The one thing you need to understand
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x bg-background">
           <HeroWireframe />
-          <div className="relative z-10 mx-auto max-w-4xl px-6 py-28 text-center md:py-36 lg:py-44">
-            <p className="text-muted-foreground text-sm font-medium tracking-wide">
-              The AI-native synthetic language
-            </p>
+          <div className="relative z-10 px-6 py-24 md:px-16 md:py-32 lg:py-40">
+            <div className="max-w-3xl">
 
-            <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Software becomes{" "}
-              <span className="text-teal">certifiable digital circuitry.</span>
-            </h1>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                The first programming language{" "}
+                <span className="text-teal">designed for AI.</span>
+              </h1>
 
-            <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-lg leading-relaxed">
-              BRIK-64 is a formal architecture built on atomic monomers, EVA composition,
-              PCD and certifiable compilation. From software written for humans to software
-              operable by intelligences.
-            </p>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/80 md:text-xl">
+                128 operations. An AI learns the entire language in one prompt.
+                The compiler mathematically proves every program is correct.
+                Free. Open. Ready to use today.
+              </p>
 
-            {/* Proof bar */}
-            <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-2">
-              {proofBar.map((item) => (
-                <span
-                  key={item}
-                  className="text-muted-foreground/60 text-xs font-medium tracking-wide"
+              {/* The killer line */}
+              <p className="mt-6 text-sm font-medium text-teal">
+                If it compiles, it works. On every input. Every time. On every machine.
+              </p>
+
+              {/* CTAs — Jobs always had ONE clear action */}
+              <div className="mt-10 flex items-center gap-6">
+                <a
+                  href="https://docs.brik64.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
                 >
-                  {item}
-                </span>
-              ))}
-            </div>
+                  Start building — free
+                </a>
+                <a
+                  href="/pcd"
+                  className="text-foreground/60 hover:text-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                >
+                  See the language <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
 
-            {/* CTAs */}
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <a
-                href="https://docs.brik64.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-              >
-                Explore BRIK-64
-              </a>
-              <a
-                href="https://docs.brik64.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
-              >
-                Read the docs <BookOpen className="h-3.5 w-3.5" />
-              </a>
             </div>
           </div>
         </section>
 
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
 
-          {/* ━━━ 1. THE SHIFT ━━━ */}
-          <section className="border-border border-t px-6 py-20 md:py-28 lg:px-16">
-            <p className="text-muted-foreground mb-12 text-xs font-medium tracking-[3px]">
-              THE SHIFT
-            </p>
+          {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              1. THE DEMO — Show, don't tell
+              Jobs always demoed. Always.
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+          <section className="border-border border-t px-6 py-20 md:px-16 md:py-28">
 
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-              Software stops behaving like open text.{" "}
-              <span className="text-teal">It starts behaving like circuitry.</span>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              This is PCD.
             </h2>
 
-            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed md:text-lg">
-              For decades, programming meant writing human-readable instructions and hoping
-              they behaved as intended. BRIK-64 changes the substrate. It reorganizes
-              programming around atomic function, explicit composition and certifiable behavior.
+            <p className="text-foreground/60 mt-3 max-w-xl text-base md:text-lg">
+              A programming language with 128 operations, domain constraints on every input,
+              and mathematical verification at compile time. An AI agent can learn it completely
+              from a single prompt.
             </p>
 
-            {/* Shift pairs */}
-            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {shiftPairs.map((pair) => (
-                <div
-                  key={pair.before}
-                  className="border border-border p-5"
-                >
-                  <p className="text-muted-foreground/50 text-xs font-medium line-through decoration-muted-foreground/30">
-                    {pair.before}
-                  </p>
-                  <p className="mt-2 text-sm font-semibold text-teal">
-                    {pair.after}
-                  </p>
+            {/* Side by side: PCD code + what you get */}
+            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+
+              {/* Left: PCD code */}
+              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                  <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">speed_controller.pcd</span>
                 </div>
-              ))}
-            </div>
-          </section>
+                <pre className="overflow-x-auto p-5 text-[12px] leading-relaxed text-teal/80">{`PC speed_controller {
+    domain speed: Range [0, 900];
+    domain wind:  Range [0, 200];
 
-          {/* ━━━ 2. THE ARCHITECTURE ━━━ */}
-          <section className="border-border border-t px-6 py-20 md:py-28 lg:px-16">
-            <p className="text-muted-foreground mb-12 text-xs font-medium tracking-[3px]">
-              THE ARCHITECTURE
-            </p>
+    fn safe_speed(v: speed, w: wind) -> speed {
+        let adjusted = SUB8(v, MUL8(w, 2));
+        let clamped  = MAX(adjusted, 0);
+        return clamped;
+    }
 
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-              From monomers to{" "}
-              <span className="text-teal">certifiable software.</span>
-            </h2>
+    // Φ_c = 1 — every input produces
+    // a bounded, valid output.
+    // The compiler proves this.
+}`}</pre>
+              </div>
 
-            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed md:text-lg">
-              Five layers compose the system. Each preserves the guarantees of the one below.
-              The result is software that carries its proof with it.
-            </p>
-
-            {/* Architecture steps */}
-            <div className="mt-14 space-y-0 border border-border">
-              {architectureSteps.map((step, i) => (
-                <div
-                  key={step.label}
-                  className={`flex gap-6 p-6 md:p-8 ${
-                    i < architectureSteps.length - 1 ? "border-b border-border" : ""
-                  }`}
-                >
-                  <span className="text-teal/30 shrink-0 font-mono text-3xl font-bold">
-                    {step.label}
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
-                    <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
-                      {step.desc}
+              {/* Right: What happens */}
+              <div className="flex flex-col justify-between">
+                <div className="space-y-5">
+                  <div className="border-l-2 border-teal pl-4">
+                    <p className="text-xs font-medium text-teal">THE COMPILER PROVES</p>
+                    <p className="text-foreground/80 mt-1 text-sm">
+                      Every combination of speed (0-900) and wind (0-200) produces a valid output
+                      in the range [0, 900]. No exceptions. No undefined behavior. Mathematical proof.
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-foreground/20 pl-4">
+                    <p className="text-xs font-medium text-foreground/50">THEN COMPILES TO</p>
+                    <p className="text-foreground/80 mt-1 text-sm">
+                      Rust, JavaScript, Python, C, C++, Go, WASM, native x86-64, and 6 more targets.
+                      Same proof. Same guarantees. Any language.
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-foreground/20 pl-4">
+                    <p className="text-xs font-medium text-foreground/50">WORKS WITH YOUR STACK</p>
+                    <p className="text-foreground/80 mt-1 text-sm">
+                      Already have code in JavaScript or Python? The Lifter converts it to PCD.
+                      No rewrite needed. Verify what you already have.
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Stats bar */}
-            <div className="mt-14 grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label} className="bg-background p-6 text-center">
-                  <p className="text-2xl font-bold text-teal md:text-3xl">{s.value}</p>
-                  <p className="text-muted-foreground mt-1 text-xs">{s.label}</p>
+                {/* Stats */}
+                <div className="mt-8 grid grid-cols-4 border border-border">
+                  {[
+                    { v: "128", l: "operations" },
+                    { v: "14", l: "targets" },
+                    { v: "110K+", l: "tests" },
+                    { v: "207", l: "Coq proofs" },
+                  ].map((s, i) => (
+                    <div key={s.l} className={`p-4 text-center ${i < 3 ? "border-r border-border" : ""}`}>
+                      <p className="text-lg font-bold text-teal">{s.v}</p>
+                      <p className="text-[10px] text-foreground/40">{s.l}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </section>
 
-          {/* ━━━ 3. THE PROOF ━━━ */}
-          <section className="border-border border-t px-6 py-20 md:py-28 lg:px-16">
-            <p className="text-muted-foreground mb-12 text-xs font-medium tracking-[3px]">
-              THE PROOF
-            </p>
+          {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              2. THREE THINGS — Jobs always had 3 things
+              "An iPod. A phone. An internet communicator."
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+          <section className="border-border border-t px-6 py-20 md:px-16 md:py-28">
 
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-              Where correctness is{" "}
-              <span className="text-teal">not optional.</span>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              A language. A platform. A new way to build software.
             </h2>
 
-            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed md:text-lg">
-              In regulated industries, &ldquo;tests pass&rdquo; is not enough. BRIK-64
-              generates structural verification evidence automatically &mdash; at compile time,
-              not after the fact.
+            <p className="text-foreground/60 mt-3 text-base">
+              Three things. They&apos;re not three separate products.
             </p>
 
-            {/* Verticals */}
-            <div className="mt-14 grid gap-4 sm:grid-cols-2">
-              {verticals.map((v) => (
-                <div
-                  key={v.name}
-                  className="border border-border p-6"
-                >
+            <div className="mt-14 grid gap-px border border-border bg-border md:grid-cols-3">
+
+              {/* 1. Language */}
+              <div className="bg-background p-8">
+                <p className="text-xs font-medium tracking-widest text-teal">THE LANGUAGE</p>
+                <h3 className="mt-4 text-xl font-bold">PCD</h3>
+                <p className="text-foreground/60 mt-3 text-sm leading-relaxed">
+                  128 verified operations. Domain constraints on every input.
+                  An AI agent learns the entire language in one prompt. Humans write
+                  JavaScript, Python, or Rust and the Lifter converts it.
+                  AIs write PCD directly.
+                </p>
+                <p className="mt-4 text-xs text-teal">
+                  Free forever &middot; Open specification
+                </p>
+              </div>
+
+              {/* 2. Platform */}
+              <div className="bg-background p-8">
+                <p className="text-xs font-medium tracking-widest text-teal">THE PLATFORM</p>
+                <h3 className="mt-4 text-xl font-bold">Circuit Laboratory</h3>
+                <p className="text-foreground/60 mt-3 text-sm leading-relaxed">
+                  Compose software like circuits. A visual environment where you
+                  connect verified components, the platform certifies the composition,
+                  and you ship to any target. Like CAD, but for software.
+                </p>
+                <p className="mt-4 text-xs text-teal">
+                  Live at brik64.com &middot; Free tier available
+                </p>
+              </div>
+
+              {/* 3. New way */}
+              <div className="bg-background p-8">
+                <p className="text-xs font-medium tracking-widest text-teal">THE METHOD</p>
+                <h3 className="mt-4 text-xl font-bold">Digital Circuitality</h3>
+                <p className="text-foreground/60 mt-3 text-sm leading-relaxed">
+                  Software that works like hardware. Every input bounded. Every path verified.
+                  Every output certified. The compiler is the auditor.
+                  No testing required &mdash; the math is the proof.
+                </p>
+                <p className="mt-4 text-xs text-teal">
+                  207 Coq proofs &middot; 110,000+ tests
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+          {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              3. AI WRITES IT — The "boom" moment
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+          <section className="border-border border-t px-6 py-20 md:px-16 md:py-28">
+
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              Tell your AI what to build.{" "}
+              <span className="text-teal">The compiler proves it&apos;s correct.</span>
+            </h2>
+
+            <p className="text-foreground/60 mt-3 max-w-xl text-base md:text-lg">
+              No other language has this loop. The AI generates PCD.
+              The compiler verifies it. If it fails, the error becomes the next prompt.
+              The AI fixes it. Repeat until certified.
+            </p>
+
+            {/* Terminal */}
+            <div className="mt-10 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc ai</span>
+              </div>
+              <div className="flex flex-col gap-1 p-5 font-mono text-xs">
+                <p className="text-white/70"><span className="text-teal">$</span> brikc ai &quot;Build an insulin dose calculator with safety limits&quot;</p>
+                <p className="mt-2 text-zinc-400">&nbsp;&nbsp;Generating PCD...</p>
+                <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.82 &mdash; missing case: glucose &lt; 40 mg/dL</p>
+                <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Fixing...</p>
+                <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1.000 &mdash; 8 domains verified. Overdose impossible.</p>
+                <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Output: dose_calc.pcd + dose_calc.cert.json</p>
+                <p className="mt-2 text-zinc-500">&nbsp;&nbsp;Compile to: brikc compile dose_calc.pcd --target rust,python,wasm</p>
+              </div>
+            </div>
+
+            <p className="text-foreground/50 mt-6 max-w-lg text-sm">
+              Works with any LLM &mdash; Claude, GPT, Gemini, Llama.
+              The verification is in the compiler, not the model.
+            </p>
+          </section>
+
+          {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              4. WHO IT'S FOR — Jobs always showed use cases live
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+          <section className="border-border border-t px-6 py-20 md:px-16 md:py-28">
+
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              Built for industries where{" "}
+              <span className="text-teal">bugs are not acceptable.</span>
+            </h2>
+
+            <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2">
+              {[
+                {
+                  title: "Trading algorithms",
+                  badge: "MiFID II",
+                  line: "Compliance evidence at compile time. Not $1M in manual audits.",
+                  code: "domain order_value: Range [0.01, 10_000_000.0];",
+                },
+                {
+                  title: "Medical devices",
+                  badge: "IEC 62304",
+                  line: "Overdose is structurally impossible. The domain prevents it.",
+                  code: "domain dose: Range [0.0, 25.0];",
+                },
+                {
+                  title: "Flight controllers",
+                  badge: "DO-178C",
+                  line: "Every combination of speed, altitude, and fuel has a defined response.",
+                  code: "domain altitude: Range [0, 15_000];",
+                },
+                {
+                  title: "Smart contracts",
+                  badge: "WASM",
+                  line: "Deployed to blockchain. Can't be patched. Bugs can't compile.",
+                  code: "domain balance: Range [0, 1_000_000_000];",
+                },
+              ].map((v) => (
+                <div key={v.title} className="bg-background p-6 md:p-8">
                   <div className="flex items-baseline justify-between">
-                    <h3 className="text-sm font-semibold text-foreground">{v.name}</h3>
-                    <span className="rounded-full border border-teal/30 bg-teal/10 px-2.5 py-0.5 text-[10px] font-medium text-teal">
-                      {v.standard}
+                    <h3 className="text-sm font-bold text-foreground">{v.title}</h3>
+                    <span className="rounded-full border border-teal/30 bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">
+                      {v.badge}
                     </span>
                   </div>
-                  <p className="text-muted-foreground mt-2 text-sm">{v.line}</p>
+                  <p className="text-foreground/60 mt-2 text-sm">{v.line}</p>
+                  <code className="mt-3 block text-xs text-teal/60">{v.code}</code>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* ━━━ 4. THE FUTURE ━━━ */}
-          <section className="border-border border-t px-6 py-20 md:py-28 lg:px-16">
-            <p className="text-muted-foreground mb-12 text-xs font-medium tracking-[3px]">
-              THE FUTURE
+          {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              5. ONE MORE THING — The vision
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+          <section className="border-border border-t px-6 py-20 md:px-16 md:py-28">
+
+            <p className="text-foreground/30 text-xs font-medium tracking-[3px]">
+              ONE MORE THING
             </p>
 
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
-              From software written for humans{" "}
-              <span className="text-teal">to software operable by intelligences.</span>
+            <h2 className="mt-8 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl">
+              This is not just a language.{" "}
+              <span className="text-teal">
+                This is the transition from code to circuitry.
+              </span>
             </h2>
 
-            <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed md:text-lg">
-              Humans read the interface. AI operates the structure. BRIK-64 preserves
-              legibility for developers while shifting the deeper substrate of computation
-              toward explicit structure, validation and compositional logic.
-            </p>
-
-            <div className="mt-10 max-w-xl space-y-4 text-sm text-muted-foreground">
+            <div className="mt-8 max-w-2xl space-y-5 text-base leading-relaxed text-foreground/70">
               <p>
-                <strong className="text-foreground">The old model:</strong>{" "}
-                Write code. Interpret syntax. Test after the fact. Trust discipline.
+                For fifty years, programming has meant writing text that humans can read
+                and hoping machines execute it correctly.
               </p>
               <p>
-                <strong className="text-teal">The BRIK-64 model:</strong>{" "}
-                Compose atomic operations. Preserve structural coherence. Validate within
-                the pipeline. Deploy with certifiable guarantees.
+                BRIK-64 changes the substrate. Software becomes a certifiable digital circuit &mdash;
+                composed from atomic operations, verified by mathematical proof, compiled to
+                any target. The compiler doesn&apos;t just check syntax. It proves correctness.
+              </p>
+              <p className="font-medium text-foreground">
+                The AI-native synthetic language. Available today. Free to use.
               </p>
             </div>
-
-            <p className="text-foreground mt-10 max-w-xl text-sm font-medium leading-relaxed">
-              BRIK-64 is not adding another layer on top of code. It is changing the substrate.
-              The next programming paradigm is not about better syntax. It is about certifiable
-              function, compositional rigor and a computational model that intelligence itself
-              can operate.
-            </p>
           </section>
 
-          {/* ━━━ CTA ━━━ */}
-          <section className="border-border border-t px-6 py-20 text-center md:py-28 lg:px-16">
-            <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight md:text-4xl">
-              The next programming model{" "}
-              <span className="text-teal">starts here.</span>
+          {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              CTA — Simple. Clear. Now.
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+          <section className="border-border border-t px-6 py-20 text-center md:px-16 md:py-28">
+
+            <h2 className="mx-auto max-w-xl text-3xl font-bold tracking-tight md:text-4xl">
+              Start building with BRIK-64.
             </h2>
 
-            <p className="text-muted-foreground mx-auto mt-5 max-w-lg text-base leading-relaxed">
-              Explore the architecture, study the primitives and see how BRIK-64 turns
-              software into certifiable digital circuitry.
+            <p className="text-foreground/60 mx-auto mt-4 max-w-md text-base">
+              Free. Works with your existing code. Compiles to 14 languages.
+              The compiler proves your software is correct.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -331,46 +364,25 @@ export default function HomeV2() {
                 href="https://docs.brik64.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
               >
-                Start with BRIK-64
+                Get started — free
               </a>
               <a
-                href="https://digitalcircuitality.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+                href="/platform"
+                className="text-foreground/60 hover:text-foreground inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
               >
-                Learn Digital Circuitality <ArrowRight className="h-3.5 w-3.5" />
+                Open the platform <ArrowRight className="h-3.5 w-3.5" />
               </a>
             </div>
 
-            {/* Resources */}
-            <div className="mx-auto mt-14 flex flex-wrap justify-center gap-8">
-              <a
-                href="https://docs.brik64.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground/60 hover:text-foreground text-xs transition-colors"
-              >
-                docs.brik64.dev
-              </a>
-              <a
-                href="https://github.com/brik64"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground/60 hover:text-foreground text-xs transition-colors"
-              >
-                github.com/brik64
-              </a>
-              <a
-                href="https://discord.gg/brik64"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground/60 hover:text-foreground text-xs transition-colors"
-              >
-                discord.gg/brik64
-              </a>
+            {/* Links */}
+            <div className="mx-auto mt-12 flex flex-wrap justify-center gap-8 text-xs text-foreground/30">
+              <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Docs</a>
+              <a href="https://github.com/brik64" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">GitHub</a>
+              <a href="https://registry.brik64.dev" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Registry</a>
+              <a href="https://digitalcircuitality.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Digital Circuitality</a>
+              <a href="https://discord.gg/brik64" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Discord</a>
             </div>
           </section>
 
