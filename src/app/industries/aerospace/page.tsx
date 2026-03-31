@@ -234,12 +234,12 @@ circuit flight_envelope {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; free
+              From code to DO-178C Level A evidence. In minutes, not months.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Your next certification cycle just got 10x faster. Every requirement traced.
-              Every test generated. Every proof automated. From code to DO-178C Level A evidence
-              in minutes, not months.
+              Your certification cycle just got 10x faster. Every requirement traced automatically.
+              Every test generated from the algebra. Every proof a build artifact.
+              The DER reviews a mathematical certificate — not six months of manual documentation.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a

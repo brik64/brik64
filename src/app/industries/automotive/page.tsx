@@ -238,12 +238,13 @@ circuit emergency_braking {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building — free
+              Every braking decision proven. Every recall prevented.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Every braking decision proven. Every steering command certified.
-              Every battery state bounded. Every autonomous decision verified.
-              This is what automotive software should have been from the beginning.
+              Every steering command certified. Every battery state bounded.
+              Every autonomous decision verified. The Takata recall cost $24 billion.
+              Toyota&rsquo;s unintended acceleration cost lives. Both were unverified software.
+              This is what automotive engineering should have been from the beginning.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a

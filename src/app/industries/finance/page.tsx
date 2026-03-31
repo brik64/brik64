@@ -258,11 +258,12 @@ circuit transaction_validator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; free
+              Knight Capital lost $440M in 45 minutes. You won&rsquo;t.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Every transaction proven. Every calculation certified. Every audit trail automatic.
-              Your compliance team will wonder how they ever lived without this.
+              The next flash crash, the next accidental transfer, the next algo runaway —
+              none of them can originate from a verified circuit.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
