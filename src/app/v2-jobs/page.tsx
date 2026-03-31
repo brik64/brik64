@@ -117,12 +117,12 @@ export default function HomeV2Jobs() {
           </div>
           <div className="pointer-events-none relative z-20 px-6 pt-20 pb-16 md:px-12 lg:px-18 lg:pt-28 lg:pb-20">
             <div className="max-w-lg">
-              <p className="text-teal text-sm font-medium">
-                The AI-native synthetic language
+              <p className="text-teal text-xs font-bold tracking-[3px]">
+                THE AI-NATIVE SYNTHETIC LANGUAGE
               </p>
 
               <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                The first programming language{" "}
+                BRIK64 is the first programming language{" "}
                 <span className="text-teal">designed for AI.</span>
               </h1>
 
@@ -184,7 +184,7 @@ export default function HomeV2Jobs() {
 
             <div className="mt-12 grid gap-4 sm:grid-cols-2">
               {[
-                { icon: <ShieldCheck className="h-5 w-5 text-teal" />, title: "Every part is proven", desc: "64 core operations, each mathematically verified in Coq before you ever use them. Not tested. Proven." },
+                { icon: <ShieldCheck className="h-5 w-5 text-teal" />, title: "Every part is proven", desc: "64 core operations, each mathematically certified before you ever use them. Not tested. Proven." },
                 { icon: <Puzzle className="h-5 w-5 text-teal" />, title: "Composition preserves proof", desc: "If Part A works and Part B works, A + B works. That's not a promise — it's algebra. EVA guarantees it." },
                 { icon: <ScanSearch className="h-5 w-5 text-teal" />, title: "The compiler is the auditor", desc: "If any path is undefined, any input unhandled, any domain violated — it doesn't compile. Period." },
                 { icon: <TrendingUp className="h-5 w-5 text-teal" />, title: "Verified components compound", desc: "A certified circuit never needs re-verifying. The more you build, the less you need to prove from scratch." },
@@ -246,7 +246,7 @@ export default function HomeV2Jobs() {
               <div className="space-y-4">
                 {[
                   { icon: <FileCode className="h-5 w-5 text-teal" />, title: "AI-native by design", desc: "128 operations. Finite. Deterministic. An LLM memorizes the entire language. No Stack Overflow needed." },
-                  { icon: <Shield className="h-5 w-5 text-teal" />, title: "64 operations proven in Coq", desc: "Not tested. Mathematically proven. 207 proof files, zero admits. The core is formally verified." },
+                  { icon: <Shield className="h-5 w-5 text-teal" />, title: "64 operations mathematically certified", desc: "Not tested. Mathematically proven. 207 mathematical proofs, zero exceptions. The core is formally verified." },
                   { icon: <Zap className="h-5 w-5 text-teal" />, title: "If it compiles, it works", desc: "Φ_c = 1 means every input is handled, every path terminates, every output is bounded. The compiler proves it." },
                   { icon: <Maximize2 className="h-5 w-5 text-teal" />, title: "Works with your stack", desc: "Already have JavaScript or Python? The Lifter converts it to PCD. No rewrite. Verify what you already have." },
                 ].map((c) => (
@@ -345,7 +345,7 @@ export default function HomeV2Jobs() {
             <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { icon: <Cpu className="h-5 w-5 text-teal" />, title: "Compile", desc: "One PCD → verified output in any of 14 languages." },
-                { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verify", desc: "Mathematical proof in Coq. Not tests. Structural certainty." },
+                { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verify", desc: "Mathematically certified. Not tested. Structural certainty." },
                 { icon: <ArrowUpDown className="h-5 w-5 text-teal" />, title: "Lift", desc: "Import existing code into PCD. No manual rewrite." },
                 { icon: <BadgeCheck className="h-5 w-5 text-teal" />, title: "Certify", desc: "Φ_c = 1 — every path closed, every domain bounded." },
               ].map((c) => (
@@ -364,7 +364,7 @@ export default function HomeV2Jobs() {
               <p className="text-xs font-medium text-foreground/40">64 CERTIFIED + 64 EXTENDED = 128 OPERATIONS</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <div className="border border-teal/20 bg-teal/[0.03] p-4">
-                  <p className="text-xs font-semibold text-teal">64 Core &middot; Coq-proven</p>
+                  <p className="text-xs font-semibold text-teal">64 Core &middot; Mathematically certified</p>
                   <p className="text-foreground/70 mt-2 text-xs">The foundation. Pure computation. Mathematically proven correct.</p>
                   <p className="text-foreground/50 mt-1 text-xs">
                     Arithmetic &middot; Logic &middot; Memory &middot; Control &middot; I/O &middot; String &middot; Crypto &middot; System
@@ -425,11 +425,11 @@ export default function HomeV2Jobs() {
 
             <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
               Your code stays in GitHub.{" "}
-              <span className="text-teal">BRIK-64 verifies it.</span>
+              <span className="text-teal">BRIK64 verifies it.</span>
             </h2>
 
             <p className="text-foreground/60 mt-4 max-w-xl text-sm md:text-base">
-              Push as usual. BRIK-64 lifts, verifies, certifies, and comments on your PR — automatically.
+              Push as usual. BRIK64 lifts, verifies, certifies, and comments on your PR — automatically.
               No workflow changes. No new tools to learn.
             </p>
 
