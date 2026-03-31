@@ -126,8 +126,8 @@ export default function BPUPage() {
               Hardware that <span className="text-[#00b8d4]">says no.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A dedicated hardware coprocessor designed to evaluate Policy Circuits &mdash; PCD programs that produce
-              either ALLOW or BLOCK &mdash; before any AI-generated action reaches the host system.
+              A hardware coprocessor that evaluates policy circuits &mdash; ALLOW or BLOCK &mdash; before any AI action reaches the host.
+              No software can override it. The chip says no, and that's final.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground italic">
               &ldquo;RLHF teaches an AI to prefer correct behavior. The BPU enforces boundaries in hardware.
@@ -304,11 +304,11 @@ export default function BPUPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Use Phase 1 today.
+            Phase 1 is available now.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Policy circuits already compile to software guardrails. Start writing and certifying policy circuits
-            now &mdash; the hardware will catch up.
+            Policy circuits compile to Rust, JavaScript, and Python guardrails today. Free. Start writing policy circuits
+            now &mdash; the silicon will catch up.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

@@ -127,15 +127,15 @@ export default function EnterprisePage() {
               Built for <span className="text-[#00b8d4]">regulated industries.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Fintech. Healthcare. Automotive. Government. When &ldquo;tests pass&rdquo; isn&rsquo;t
-              enough, <PhiC /> = 1 provides mathematical proof that your code is correct.
+              Fintech. Healthcare. Automotive. Government. &ldquo;Tests pass&rdquo; is not enough.
+              <PhiC /> = 1 is mathematical proof. Compliance evidence at compile time. Not after the audit.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Request a Demo
+                Talk to Us
               </a>
               <a
                 href="/pricing"
@@ -204,7 +204,7 @@ export default function EnterprisePage() {
             ))}
           </div>
           <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed">
-            BRIK-64 generates verification evidence for processing logic and change control.
+            BRIK64 generates verification evidence for processing logic and change control.
             Infrastructure, organizational, and procedural controls require separate evidence.
             The math generates the processing integrity proof &mdash; reducing manual documentation to review and approval.
           </p>
@@ -223,7 +223,7 @@ export default function EnterprisePage() {
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
             Tell us about your team and we&rsquo;ll schedule a personalized walkthrough of
-            BRIK-64 Enterprise.
+            BRIK64 Enterprise.
           </p>
           <div className="mx-auto mt-10 max-w-lg space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

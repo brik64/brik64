@@ -14,7 +14,7 @@ export function TrustedBySection() {
     <section className="relative z-10 border-border mx-auto w-full max-w-7xl border-x border-t bg-background">
       <div className="px-6 py-10 md:px-12 md:py-14">
         <p className="mb-8 text-center text-[10px] font-medium uppercase tracking-[3px] text-muted-foreground/60">
-          Designed for engineering teams in
+          BUILT FOR
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-10">

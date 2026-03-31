@@ -55,14 +55,13 @@ export function VerticalsSection() {
         </p>
 
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
-          Where the cost of a bug is{" "}
-          <span className="text-teal">catastrophic</span>.
+          Industries where a bug{" "}
+          <span className="text-teal">can kill.</span>
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          PCD with range types, exhaustive pattern matching, and formal verification
-          eliminates entire classes of bugs at compile time.
-          Compile to any of 14 targets &mdash; Rust, WASM, C, Python, and more.
+          Range types. Exhaustive pattern matching. Formal verification.
+          BRIK64 eliminates entire classes of bugs at compile time &mdash; then emits to any of 14 targets.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

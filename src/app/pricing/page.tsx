@@ -29,8 +29,8 @@ const tiers = [
     name: "Free",
     price: "$0",
     period: "forever",
-    description: "For individual developers exploring verified software.",
-    cta: "Get Started",
+    description: "Everything you need to certify code. Free forever.",
+    cta: "Start building \u2014 free",
     ctaHref: "/login",
     highlight: false,
     features: [
@@ -117,7 +117,7 @@ const comparisonSections = [
       { feature: "CLI access", free: true, pro: true, team: true, enterprise: true },
       { feature: "Full monomer catalog", free: true, pro: true, team: true, enterprise: true },
       { feature: "All export targets", free: true, pro: true, team: true, enterprise: true },
-      { feature: "Coq proof suite", free: true, pro: true, team: true, enterprise: true },
+      { feature: "mathematical proof suite", free: true, pro: true, team: true, enterprise: true },
       { feature: "Self-compilation fixpoint", free: true, pro: true, team: true, enterprise: true },
     ],
   },
@@ -169,7 +169,7 @@ const comparisonSections = [
 
 const faqs = [
   {
-    q: "Can I use BRIK-64 without the platform?",
+    q: "Can I use BRIK64 without the platform?",
     a: "Yes. The CLI is free forever and works completely standalone. You can lift, certify, and export code without a platform account.",
   },
   {
@@ -189,7 +189,7 @@ const faqs = [
     a: "Enterprise plans include an on-premise deployment option. The CLI always runs locally \u2014 your source code never leaves your machine.",
   },
   {
-    q: "Does BRIK-64 store my source code?",
+    q: "Does BRIK64 store my source code?",
     a: "No. The CLI processes your code locally. Only PCD blueprints and certification hashes are stored on the platform if you choose to publish them.",
   },
   {
@@ -224,11 +224,11 @@ export default function PricingPage() {
               Pricing
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Start free. <span className="text-[#00b8d4]">Scale when ready.</span>
+              Free. <span className="text-[#00b8d4]">Ready today.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Every plan includes the full PCD language, all monomers, and export to every supported language.
-              The CLI is free forever.
+              The CLI is free forever. 128 operations. 14 export targets. All monomers. Every language.
+              Start building now. Pay only when your team needs more.
             </p>
           </div>
         </section>
@@ -354,17 +354,17 @@ export default function PricingPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Ready to certify your code?
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Install the CLI and start verifying. Every line of code you certify is a line you never have to debug again.
+            Install the CLI. Certify your first function. Every certified line is a line you never debug again.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/login"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
-              Get Started Free
+              Start building &mdash; free
             </a>
             <a
               href="/enterprise"

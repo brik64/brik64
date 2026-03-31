@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Digital Circuitality — Software That Works Like Hardware",
   description:
-    "64 formally verified atomic components composed through EVA algebra. BRIK-64: a new paradigm for verifiable, thermodynamically coherent software.",
+    "64 formally verified atomic components composed through EVA algebra. BRIK64: a new paradigm for verifiable, thermodynamically coherent software.",
   openGraph: {
     title: "Digital Circuitality — Software That Works Like Hardware",
     description:
-      "64 formally verified atomic components composed through EVA algebra. BRIK-64: a new paradigm for verifiable, thermodynamically coherent software.",
+      "64 formally verified atomic components composed through EVA algebra. BRIK64: a new paradigm for verifiable, thermodynamically coherent software.",
   },
 };
 

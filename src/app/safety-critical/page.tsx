@@ -90,13 +90,12 @@ export default function SafetyCriticalPage() {
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             When a bug{" "}
-            <span className="text-teal">can kill</span>.
+            <span className="text-teal">can kill.</span>
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Manual certification costs $1M+ per project and takes months.
-            BRIK-64 generates formal verification evidence automatically.
-            The math is the proof. The compiler is the auditor.
+            Manual certification: $1M+ and months. BRIK64: automatic, at compile time.
+            Domain constraints enforce physical safety bounds. The compiler is the auditor. The math is the proof.
           </p>
 
           <div className="relative z-10 mt-8 flex flex-wrap gap-3">
@@ -123,7 +122,7 @@ export default function SafetyCriticalPage() {
                 <span className="font-mono text-muted-foreground/60">$1M+ / 6-12 months</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <span className="text-teal">BRIK-64 formal verification:</span>
+                <span className="text-teal">BRIK64 formal verification:</span>
                 <span className="font-mono text-teal">Automatic / compile time</span>
               </div>
             </div>

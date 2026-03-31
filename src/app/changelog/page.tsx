@@ -69,8 +69,8 @@ const versions = [
     version: "v1.0.0",
     date: "September 2025",
     changes: [
-      "Initial release of BRIK-64",
-      "64 core monomers with Coq proofs",
+      "Initial release of BRIK64",
+      "64 core monomers with mathematical proofs",
       "brikc CLI compiler and certifier",
       "PCD language specification v1",
     ],
@@ -94,7 +94,7 @@ export default function ChangelogPage() {
               Changelog
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Every release, every improvement. Follow the evolution of BRIK-64.
+              Every release. Every improvement. We ship fast.
             </p>
           </div>
         </section>

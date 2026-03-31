@@ -7,9 +7,9 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Engineering — BRIK-64 Industries",
+  title: "Engineering — BRIK64 Industries",
   description:
-    "Certified components. Verified compositions. Structural analysis verification, control systems, and simulation certification with BRIK-64.",
+    "Certified components. Verified compositions. Structural analysis verification, control systems, and simulation certification with BRIK64.",
 };
 
 const useCases = [
@@ -66,7 +66,7 @@ export default function EngineeringIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Engineering software has informal testing. Critical infrastructure runs on hope.
-              BRIK-64 brings mathematical verification to every calculation, every controller,
+              BRIK64 brings mathematical verification to every calculation, every controller,
               every simulation.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -127,10 +127,10 @@ export default function EngineeringIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical certainty for critical systems
@@ -231,7 +231,7 @@ circuit stress_analysis {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building verified engineering software
+              Start building &mdash; engineering software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Build verified engineering software. Every calculation proven. Every component

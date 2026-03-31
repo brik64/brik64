@@ -57,7 +57,7 @@ const sections = [
     features: [
       "\u03A6_c = 1 \u2014 circuit closure (every branch has complete input \u2192 output path)",
       "Full formal verification across all metrics",
-      "Coq proof suite for core monomers",
+      "mathematical proof suite for core monomers",
       "Immutable certification hash per function",
       "Embeddable certification badges (green/amber/red)",
     ],
@@ -164,7 +164,7 @@ const stats = [
   { value: "128", label: "Total Operations" },
   { value: "14", label: "Export Targets" },
   { value: "10", label: "Source Languages" },
-  { value: "207", label: "Coq Proofs" },
+  { value: "207", label: "Mathematical Proofs" },
   { value: "3", label: "EVA Operators" },
   { value: "14", label: "Rust Crates" },
   { value: "1", label: "Fixpoint Hash" },
@@ -187,11 +187,11 @@ export default function FeaturesPage() {
               Features
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Software that works like <span className="text-[#00b8d4]">hardware.</span>
+              What you get. <span className="text-[#00b8d4]">Today.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A language, a compiler, a lifter, a certification engine, and a platform &mdash;
-              everything you need to write code that is structurally verified.
+              A compiler, a lifter, 128 verified operations, 14 export targets, and a platform.
+              Free CLI. Install it. Certify your first function. Ship code you never debug again.
             </p>
           </div>
         </section>
@@ -239,10 +239,10 @@ export default function FeaturesPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Ready to build verified software?
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            The CLI is free forever. Install it and certify your first function in under a minute.
+            The CLI is free forever. Install it and certify your first function in 30 seconds.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

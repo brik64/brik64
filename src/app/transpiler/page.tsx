@@ -67,11 +67,11 @@ export default function TranspilerPage() {
               Universal Transpiler
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Certified paths <span className="text-[#00b8d4]">between languages.</span>
+              Any language in. <span className="text-[#00b8d4]">Any language out. Certified.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              An N-to-N transpiler with formal intermediate representation. Any supported input language &rarr; PCD &rarr; any output target,
-              with mathematical certification that the output preserves the circuit structure of the input — both close identically over their domains.
+              10 input languages. 14 output targets. Every path carries a mathematical certificate
+              that the output preserves the computation of the input. Not tested. Proven.
             </p>
             <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
               N frontends + M backends = <span className="font-bold text-[#00b8d4]">N&times;M transpilation paths</span> with N+M effort instead of N&times;M.
@@ -187,7 +187,7 @@ export default function TranspilerPage() {
               </p>
             </div>
             <div className="rounded-md border border-teal/30 bg-teal/[0.03] p-6">
-              <h3 className="text-sm font-medium text-teal">BRIK-64 transpiler</h3>
+              <h3 className="text-sm font-medium text-teal">BRIK64 transpiler</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 N-to-N through one verified intermediate representation. Every output carries a
                 cryptographic certificate proving equivalence to the source.
@@ -220,7 +220,7 @@ export default function TranspilerPage() {
                 <span className="text-teal">$</span> brikc transpile ./cobol-banking/ --to go --output ./modern-go/
               </div>
               <div className="h-2" />
-              <div className="font-mono text-sm text-zinc-400">&nbsp; &#9889; BRIK-64 TRANSPILE: ./cobol-banking/ &rarr; go</div>
+              <div className="font-mono text-sm text-zinc-400">&nbsp; &#9889; BRIK64 TRANSPILE: ./cobol-banking/ &rarr; go</div>
               <div className="h-2" />
               <div className="font-mono text-sm text-zinc-400">&nbsp; &rarr; Step 1: SCAN &mdash; finding source files...</div>
               <div className="font-mono text-sm text-emerald-400">&nbsp; &nbsp; &#10003; Found 5 source files</div>
@@ -249,7 +249,7 @@ export default function TranspilerPage() {
             [05] COMPARISON
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            BRIK-64 vs LLVM
+            BRIK64 vs LLVM
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-xs leading-relaxed italic">
             PCD and LLVM IR serve different purposes. LLVM optimizes machine code generation; PCD preserves semantic structure for cross-language transpilation.
@@ -258,7 +258,7 @@ export default function TranspilerPage() {
             <div className="grid grid-cols-3 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
               <div>Feature</div>
               <div>LLVM</div>
-              <div>BRIK-64</div>
+              <div>BRIK64</div>
             </div>
             {comparison.map((row) => (
               <div key={row.feature} className="grid grid-cols-3 gap-0 border-b border-border px-4 py-3 last:border-b-0">
@@ -273,11 +273,11 @@ export default function TranspilerPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Convert any codebase. Certified.
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             Not a 1-to-1 transpiler. An N-to-N certified migration engine.
-            COBOL banking systems &rarr; Go microservices. With mathematical proof of equivalence.
+            COBOL &rarr; Go. Python &rarr; Rust. With mathematical proof. Free CLI.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

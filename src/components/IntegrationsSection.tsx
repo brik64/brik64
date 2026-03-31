@@ -18,7 +18,7 @@ const workflowSteps = [
     number: "2",
     title: "Lift to PCD",
     description:
-      "BRIK-64 automatically lifts your code into a PCD blueprint — a language-agnostic, verified representation.",
+      "BRIK64 automatically lifts your code into a PCD blueprint — a language-agnostic, verified representation.",
   },
   {
     number: "3",
@@ -42,12 +42,12 @@ export function IntegrationsSection() {
         </p>
 
         <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-          PCD is where your logic lives.
+          Your code stays in GitHub.
           <br />
-          GitHub is where your code lives.
+          <span className="text-teal">BRIK64 verifies it.</span>
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          <span className="text-teal font-medium">BRIK-64</span> connects both.
+          Push code as usual. BRIK64 lifts, certifies, and comments on your PR &mdash; automatically.
         </p>
 
         {/* Flow diagram */}

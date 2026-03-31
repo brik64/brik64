@@ -34,7 +34,7 @@ const traction = [
   { value: "14+", label: "Export targets" },
   { value: "15,424", label: "Tests (0 failures)" },
   { value: "14", label: "Rust crates" },
-  { value: "207", label: "Coq proofs" },
+  { value: "207", label: "mathematical proofs" },
 ];
 
 /* ── Business model ── */
@@ -75,11 +75,11 @@ export default function InvestorsPage() {
               Investors
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The infrastructure layer for <span className="text-[#00b8d4]">verified software.</span>
+              The infrastructure layer for <span className="text-[#00b8d4]">AI-generated code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              BRIK-64 is building the platform where every line of code is mathematically proven
-              correct. We&rsquo;re creating a new category: formal verification as a service.
+              AI generates 40%+ of new code. Nobody verifies it. BRIK64 is the verification layer.
+              A compiler, a platform, and eventually a chip. New category: formal verification as infrastructure.
             </p>
           </div>
         </section>
@@ -97,7 +97,7 @@ export default function InvestorsPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Bugs cost the global economy $600B+ annually (NIST). The COBOL crisis alone
                 threatens $3T+ in daily banking transactions. Current QA tools reduce bugs;
-                BRIK-64 eliminates them by construction.
+                BRIK64 eliminates them by construction.
               </p>
             </div>
             <div className="border border-border bg-muted/10 p-6">
@@ -114,18 +114,18 @@ export default function InvestorsPage() {
               <h3 className="text-sm font-bold">Regulatory tailwind</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 EU AI Act, FDA software guidelines, NHTSA autonomous vehicle rules. Regulators are
-                moving from &ldquo;test it&rdquo; to &ldquo;prove it.&rdquo; BRIK-64 provides the proof.
+                moving from &ldquo;test it&rdquo; to &ldquo;prove it.&rdquo; BRIK64 provides the proof.
               </p>
             </div>
           </div>
         </section>
 
-        {/* What BRIK-64 is */}
+        {/* What BRIK64 is */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE PRODUCT
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">What BRIK-64 is</h2>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">What BRIK64 is</h2>
           <div className="mx-auto mt-8 max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-sm leading-relaxed text-foreground">
               A self-verifying compiler and platform that lifts code from 10 languages into
@@ -181,7 +181,7 @@ export default function InvestorsPage() {
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {[
-              { title: "207 Coq proofs", desc: "Each monomer is mathematically proven correct. Building this proof library from scratch takes years." },
+              { title: "207 mathematical proofs", desc: "Each monomer is mathematically proven correct. Building this proof library from scratch takes years." },
               { title: "Self-compilation fixpoint", desc: "The compiler compiles itself to an identical hash. This is a property, not a feature \u2014 it\u2019s extremely difficult to achieve." },
               { title: "Early mover in formal AI code verification with circuit-based approach", desc: "PCD is the first language designed for AI agents. As AI code generation accelerates, the need for formal verification becomes existential." },
               { title: "Academic backing", desc: "Theoretical foundations reviewed by Prof. Laszlo B. Kish (Texas A&M) — whose work on the entropy distinction informs the framework. The framework stands on Shannon, Brillouin, and Kish-Ferry." },
@@ -249,7 +249,7 @@ export default function InvestorsPage() {
               <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Trademarks</h3>
               <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
                 <li>&bull; Digital Circuitality&trade;</li>
-                <li>&bull; BRIK-64&trade;</li>
+                <li>&bull; BRIK64&trade;</li>
                 <li>&bull; PCD&trade;</li>
                 <li>&bull; BPU&trade;</li>
               </ul>
@@ -260,7 +260,7 @@ export default function InvestorsPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-            The future of software is verified.
+            The product is built. The science is published. The market is ready.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             We&rsquo;re building the infrastructure layer for a world where every line of code

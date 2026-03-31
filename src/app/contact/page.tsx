@@ -24,7 +24,7 @@ const contacts = [
   {
     icon: Mail,
     title: "General Inquiries",
-    description: "Questions about BRIK-64, PCD, or Digital Circuitality.",
+    description: "Questions about BRIK64, PCD, or Digital Circuitality.",
     action: "hello@brik64.com",
     href: "mailto:hello@brik64.com",
   },
@@ -87,8 +87,7 @@ export default function ContactPage() {
               Get in <span className="text-[#00b8d4]">touch.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Whether you&rsquo;re exploring BRIK-64 for your team, reporting an issue, or just curious
-              about Digital Circuitality &mdash; we&rsquo;d love to hear from you.
+              Building with BRIK64? Have a question? Found a bug? We respond fast.
             </p>
           </div>
         </section>

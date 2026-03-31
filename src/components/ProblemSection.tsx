@@ -4,23 +4,23 @@ import type { ReactNode } from "react";
 const cards: { icon: ReactNode; title: string; desc: string }[] = [
   {
     icon: <ShieldCheck className="h-5 w-5 text-teal" />,
-    title: "Verified Parts",
-    desc: "Like tested beams in a bridge. Each part is mathematically verified before it's ever used.",
+    title: "128 Operations. Total.",
+    desc: "64 core, formally proven. 64 extended, bounds-checked. An AI memorizes the entire language in one context window.",
   },
   {
     icon: <Puzzle className="h-5 w-5 text-teal" />,
-    title: "Composition Laws",
-    desc: "Parts connect through algebra, not duct tape. If Part A is verified and Part B is verified, A composed with B preserves verification.",
+    title: "Algebra, Not Duct Tape",
+    desc: "Operations compose through EVA algebra. If A is verified and B is verified, A + B is verified. Mathematically guaranteed.",
   },
   {
     icon: <ScanLine className="h-5 w-5 text-teal" />,
-    title: "Automatic Check",
-    desc: "The compiler verifies every connection. If the circuit doesn't close, the program simply won't compile.",
+    title: "If It Compiles, It Works",
+    desc: "The compiler checks every path, every edge case, every domain boundary. Open circuit? It won't compile. Period.",
   },
   {
     icon: <TrendingUp className="h-5 w-5 text-teal" />,
-    title: "Compound Interest",
-    desc: "A certified component never needs rewriting. The more that exist, the less anyone needs to build from scratch.",
+    title: "Certified Once. Trusted Forever.",
+    desc: "A certified component never degrades. No regressions. No flaky tests. The proof is permanent.",
   },
 ];
 
@@ -33,16 +33,13 @@ export function ProblemSection() {
         </p>
 
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
-          We build skyscrapers with blueprints.
+          Every other language lets you ship bugs.
           <br />
-          We build software with hope.
+          <span className="text-teal">This one doesn&apos;t.</span>
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          A bridge engineer knows exactly how much weight each beam can hold. A
-          chip designer knows exactly what signal each gate produces. But a
-          software engineer? They write code, run some tests, cross their
-          fingers, and ship.
+          Python has 80,000+ built-in functions and no guarantees. JavaScript has 1,200 edge cases in type coercion alone. Every mainstream language was designed for humans to express ideas &mdash; not for machines to verify them.
         </p>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 border border-border">

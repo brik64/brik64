@@ -18,14 +18,14 @@ export function ComplianceSection() {
         </p>
 
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
-          The math is{" "}
-          <span className="text-teal">the evidence.</span>
+          Compliance evidence.{" "}
+          <span className="text-teal">At compile time.</span>
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          Generate auditor-ready compliance evidence from your verified code.
-          No manual documentation. No ambiguity. Each report includes explicit
-          scope limitations &mdash; we tell you what we cover and what we don&apos;t.
+          Generate auditor-ready compliance evidence directly from your verified code.
+          No manual documentation. No ambiguity. The compiler produces the proof &mdash; you hand it to the auditor.
+          Each report includes explicit scope limitations.
         </p>
 
         {/* Standards grid */}

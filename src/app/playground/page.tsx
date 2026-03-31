@@ -40,7 +40,7 @@ export default function PlaygroundPage() {
 
           {/* Subtitle */}
           <p className="text-muted-foreground mx-auto mt-5 max-w-2xl text-base leading-relaxed md:text-lg">
-            Write PCD in your browser. Compile, certify, and export &mdash; all without installing anything.
+            Write PCD in your browser. Compile, certify, and export &mdash; zero install. Coming soon.
           </p>
 
           {/* Terminal */}
@@ -68,7 +68,7 @@ export default function PlaygroundPage() {
               href="/cli"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
-              In the meantime, install the CLI <ArrowRight className="h-4 w-4" />
+              Start building &mdash; install the CLI <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </section>

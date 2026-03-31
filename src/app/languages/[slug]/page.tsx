@@ -12,7 +12,7 @@ const sdkExamples: Record<string, { code: string; description: string }> = {
     code: `import { mc, eva } from '@brik64/core';
 
 // Use verified monomers instead of raw operators
-const safeAdd = mc.add8(200, 100);  // 44 (wrapping, proven in Coq)
+const safeAdd = mc.add8(200, 100);  // 44 (wrapping, mathematically certified)
 const hash = mc.hashHex(Buffer.from('payload')); // SHA-256
 
 // EVA sequential composition — correctness preserved
@@ -34,7 +34,7 @@ from brik64.eva import seq, par, pipeline
 from brik64.registry import pull
 
 # Verified monomers — not just functions, proofs
-result = arithmetic.add8(200, 100)  # 44 (wrapping, Coq-proven)
+result = arithmetic.add8(200, 100)  # 44 (wrapping, mathematically certified)
 digest = crypto.hash_hex(b"payload")  # SHA-256
 
 # EVA composition — correctness propagates
@@ -48,12 +48,12 @@ auth_flow = pull("AUTH-FLOW-001")  # OAuth2 handler, Φ_c = 1
 result = auth_flow.execute(request)  # certified, no PCD needed`,
   },
   rust: {
-    description: "Use Coq-proven monomers in your Rust code. The brik64-core crate provides all verified operations with zero-cost abstractions. Compatible with the public registry.",
+    description: "Use mathematically certified monomers in your Rust code. The brik64-core crate provides all verified operations with zero-cost abstractions. Compatible with the public registry.",
     code: `use brik64_core::{mc, eva};
 use brik64_core::registry::Registry;
 
 fn main() {
-    // Verified monomers — formally proven in Coq
+    // Verified monomers — formally mathematically certified
     let sum = mc::add8(200, 100);  // 44 (wrapping)
     let hash = mc::hash_hex(b"payload");  // SHA-256
 
@@ -173,11 +173,11 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
           </section>
         )}
 
-        {/* SDK Programming — write BRIK-64 patterns in your language */}
+        {/* SDK Programming — write BRIK64 patterns in your language */}
         {lang.installCommand && sdkExamples[lang.slug] && (
           <section className="bg-background border-border mx-auto max-w-7xl border-x border-t bg-background px-6 py-16 md:px-12 lg:px-18">
             <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-              PROGRAM WITH BRIK-64 PATTERNS
+              PROGRAM WITH BRIK64 PATTERNS
             </p>
             <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
               Write verified {lang.name} — no PCD required
@@ -207,14 +207,14 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
                   <Globe className="mt-1 h-5 w-5 shrink-0 text-teal" />
                   <div>
                     <p className="text-sm font-medium">Lift to PCD is trivial</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Code written with BRIK-64 patterns maps 1:1 to PCD monomers. When you&apos;re ready to certify, <code className="text-foreground">brikc lift</code> produces a clean blueprint instantly — because your code already follows the circuit pattern.</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Code written with BRIK64 patterns maps 1:1 to PCD monomers. When you&apos;re ready to certify, <code className="text-foreground">brikc lift</code> produces a clean blueprint instantly — because your code already follows the circuit pattern.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Package className="mt-1 h-5 w-5 shrink-0 text-teal" />
                   <div>
                     <p className="text-sm font-medium">Insert into existing software</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Functions built from BRIK-64 monomers are standard {lang.name} functions. They drop into any existing codebase. No special runtime, no PCD required at deployment.</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Functions built from BRIK64 monomers are standard {lang.name} functions. They drop into any existing codebase. No special runtime, no PCD required at deployment.</p>
                   </div>
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
 
             <div className="mt-8 rounded-md border border-teal/20 bg-teal/[0.03] p-5">
               <p className="text-sm leading-relaxed text-muted-foreground">
-                <strong className="text-foreground">The key insight:</strong> You don&apos;t need to learn PCD or change your language. Use the SDK in your {lang.name} code, pull certified circuits from the registry, and your programs are automatically compatible with the BRIK-64 ecosystem. When you need formal certification, <code className="text-foreground">brikc lift</code> extracts the PCD blueprint from your already-structured code — trivially, because the patterns already match.
+                <strong className="text-foreground">The key insight:</strong> You don&apos;t need to learn PCD or change your language. Use the SDK in your {lang.name} code, pull certified circuits from the registry, and your programs are automatically compatible with the BRIK64 ecosystem. When you need formal certification, <code className="text-foreground">brikc lift</code> extracts the PCD blueprint from your already-structured code — trivially, because the patterns already match.
               </p>
             </div>
           </section>
@@ -308,10 +308,10 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-            See the full transpilation matrix
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            {lang.name} is one of 14 supported languages. Explore every certified path.
+            {lang.name} is one of 14 supported languages. See every certified path.
           </p>
           <div className="mt-8">
             <a

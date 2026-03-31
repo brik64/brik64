@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const article = getNewsArticle(slug);
   if (!article) return {};
   return {
-    title: `${article.title} — BRIK-64 News`,
+    title: `${article.title} — BRIK64 News`,
     description: article.excerpt,
   };
 }

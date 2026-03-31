@@ -50,11 +50,10 @@ export function EnterpriseSection() {
         </p>
 
         <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-          Built for <span className="text-teal">regulated industries</span>.
+          When &ldquo;tests pass&rdquo; <span className="text-teal">isn&apos;t enough.</span>
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          Fintech. Healthcare. Automotive. Government. When &ldquo;tests
-          pass&rdquo; isn&apos;t enough.
+          Fintech. Healthcare. Automotive. Government. Industries where you need mathematical proof, not just green checkmarks.
         </p>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 border border-border [&>*]:border-border [&>*]:border-b [&>*:nth-child(odd)]:border-r sm:[&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-r-0 md:[&>*:nth-child(3n+1)]:border-r md:[&>*:nth-child(3n+2)]:border-r [&>*:last-child]:border-b-0 sm:[&>*:nth-last-child(-n+2)]:border-b-0 md:[&>*:nth-last-child(-n+3)]:border-b-0">

@@ -67,12 +67,12 @@ const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
     title: "AI-native language",
-    desc: "128 operations an LLM memorizes completely. Domain constraints the compiler enforces. The first language designed for AI agents to write directly.",
+    desc: "64 + 64 operations an LLM memorizes completely. Domain constraints the compiler enforces. The first language designed for AI agents to write directly.",
   },
   {
     icon: <Shield className="h-5 w-5 text-teal" />,
     title: "Verified operations",
-    desc: "Every PCD program is built from formally verified operations. Core operations proven in Coq, plus contract-based extended set.",
+    desc: "Every PCD program is built from formally verified operations. Core operations formally proven, plus contract-based extended set.",
   },
   {
     icon: <ArrowRight className="h-5 w-5 text-teal" />,
@@ -102,13 +102,12 @@ export function PCDSection() {
         </p>
 
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl lg:text-4xl">
-          Before you build, you draw the blueprint.
+          This is PCD. Learn it in one prompt.
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          PCD is a programming language created for AI agents. 128 operations. Domain constraints on every input. Deterministic by construction.
-          An AI agent learns the entire language in one prompt.
-          Humans write JavaScript, Python, or Rust &mdash; the Lifter converts it to PCD. AIs write PCD directly.
+          64 core monomers, formally proven. 64 extended monomers, bounds-checked. Domain constraints on every input. Deterministic by construction.
+          An AI learns the entire language in one prompt. Humans write JavaScript, Python, or Rust &mdash; the Lifter converts it to PCD. AIs write PCD directly.
         </p>
 
         {/* Two-column: diagram + code */}
@@ -187,8 +186,7 @@ export function PCDSection() {
         </div>
 
         <p className="mt-14 mx-auto max-w-3xl text-center text-sm italic leading-relaxed text-muted-foreground">
-          &ldquo;PCD is to code what architectural blueprints are to buildings.
-          You describe once. You build in any material.&rdquo;
+          &ldquo;An AI doesn&apos;t need a better language. It needs a language where incorrect programs cannot compile.&rdquo;
         </p>
       </div>
     </section>

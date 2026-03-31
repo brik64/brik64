@@ -30,10 +30,10 @@ export default function SignupPage() {
             </span>
 
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Create your <span className="text-teal">BRIK-64</span> account
+              Create your <span className="text-teal">BRIK64</span> account
             </h1>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              Join the closed beta. Get access to the platform, registry, and certification dashboard.
+              Free. Platform access, registry, and certification dashboard included.
             </p>
 
             {submitted ? (

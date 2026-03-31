@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getBlogPost(slug);
   if (!post) return {};
   return {
-    title: `${post.title} — BRIK-64 Blog`,
+    title: `${post.title} — BRIK64 Blog`,
     description: post.excerpt,
   };
 }

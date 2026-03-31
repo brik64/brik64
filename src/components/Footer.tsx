@@ -100,7 +100,7 @@ export function Footer() {
             <span className="text-sm font-bold text-[#00b8d4]">64</span>
           </div>
           <p className="text-sm text-[#322F2D]/20">
-            &copy; 2026 BRIK-64. All rights reserved.
+            &copy; 2026 BRIK64. All rights reserved.
           </p>
           <div className="flex gap-3">
             <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Privacy</a>

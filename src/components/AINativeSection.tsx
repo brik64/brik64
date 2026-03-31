@@ -36,7 +36,7 @@ const endpoints = [
   },
   {
     label: "PCD Language Spec",
-    desc: "128 ops",
+    desc: "64 + 64 ops",
   },
 ];
 
@@ -53,17 +53,18 @@ export function AINativeSection() {
 
         {/* Headline with gradient accent */}
         <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
-          AI generates code.{" "}
+          Tell your AI what to build.{" "}
           <span className="bg-gradient-to-r from-teal to-emerald-400 bg-clip-text text-transparent">
-            BRIK-64 proves it&apos;s correct.
+            The compiler proves it&apos;s correct.
           </span>
         </h3>
 
         {/* Body */}
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          The first language where AI generates certified code. An LLM writes PCD,
-          the compiler verifies &Phi;<sub>c</sub> = 1, and if verification fails, the AI gets the error
-          and retries &mdash; automatically. No other language has this.
+          An LLM writes PCD, the compiler verifies &Phi;<sub>c</sub> = 1, and if verification fails,{" "}
+          <strong className="text-foreground">the error becomes the next prompt.</strong>{" "}
+          <span className="text-teal font-medium">Repeat until certified.</span>{" "}
+          No other language has this loop.
         </p>
 
         {/* brikc ai demo — terminal window with traffic lights */}

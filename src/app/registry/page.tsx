@@ -87,11 +87,11 @@ export default function RegistryPage() {
               Registry
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The npm for <span className="text-[#00b8d4]">verified software.</span>
+              npm for <span className="text-[#00b8d4]">verified code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Every package carries a mathematical proof of correctness. Search, install, and compose certified circuits &mdash;
-              never rewrite what&apos;s already proven.
+              Every package carries a mathematical proof. Search, install, compose &mdash;
+              never rewrite what&apos;s already proven. If the code changes one byte, the badge turns red.
             </p>
           </div>
         </section>
@@ -247,7 +247,7 @@ export default function RegistryPage() {
                 <span className="font-medium text-foreground">ISO 26262, DO-178C, CC EAL7:</span> The process was followed / the tests were run.
               </div>
               <div className="text-xs text-muted-foreground">
-                <span className="font-medium text-teal">BRIK-64 Certified:</span> Structurally incomplete programs cannot compile — every certified circuit handles all inputs within its domain.
+                <span className="font-medium text-teal">BRIK64 Certified:</span> Structurally incomplete programs cannot compile — every certified circuit handles all inputs within its domain.
               </div>
             </div>
           </div>
@@ -276,7 +276,7 @@ export default function RegistryPage() {
               href="/platform"
               className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
             >
-              Explore the platform <ArrowRight className="h-3.5 w-3.5" />
+              See the platform <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
         </section>

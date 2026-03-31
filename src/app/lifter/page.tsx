@@ -45,7 +45,7 @@ const sourceLanguages = [
 
 const steps = [
   { label: "Parse", desc: "Parse source file into AST using a lightweight, language-specific frontend.", icon: <Search className="h-5 w-5" /> },
-  { label: "Extract", desc: "Pattern recognition identifies operations that correspond to BRIK-64 monomers.", icon: <Layers className="h-5 w-5" /> },
+  { label: "Extract", desc: "Pattern recognition identifies operations that correspond to BRIK64 monomers.", icon: <Layers className="h-5 w-5" /> },
   { label: "Infer Domains", desc: "The lifter analyzes value flows to infer numeric bounds from existing validation logic, type constraints, and runtime guards. Inferred domains become explicit PCD declarations. Example: if (age > 0 && age < 150) → input age : Float64[0.0 .. 150.0]", icon: <Shield className="h-5 w-5" /> },
   { label: "Map", desc: "Recognized patterns mapped to verified monomer equivalents with proper composition.", icon: <FileCode className="h-5 w-5" /> },
   { label: "Verify", desc: "Output as valid PCD program. Run brikc check to verify certification.", icon: <Shield className="h-5 w-5" /> },
@@ -139,11 +139,11 @@ export default function LifterPage() {
               Lifter
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Reverse-compile anything <span className="text-[#00b8d4]">into PCD.</span>
+              Already have code?{" "}<span className="text-[#00b8d4]">Verify it.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A reverse compiler that analyzes existing source code and extracts the subset that maps to PCD monomers.
-              Instead of rewriting your codebase, the Lifter gives you an automatic migration path.
+              No rewrite needed. Point the Lifter at your existing code. It extracts, maps, and certifies.
+              10 languages in. Verified PCD out. Works with your existing code today.
             </p>
             <div className="mt-6 flex items-center justify-center gap-3 text-sm">
               <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
@@ -337,7 +337,7 @@ export default function LifterPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Your code already exists. Now verify it.
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             Point the Lifter at any file, directory, or repository. Pure functions become verified PCD blueprints.

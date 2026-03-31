@@ -7,9 +7,9 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Banking & Finance — BRIK-64 Industries",
+  title: "Banking & Finance — BRIK64 Industries",
   description:
-    "Every transaction. Mathematically verified. Trading system verification, risk calculation certification, and compliance automation with BRIK-64.",
+    "Every transaction. Mathematically verified. Trading system verification, risk calculation certification, and compliance automation with BRIK64.",
 };
 
 const useCases = [
@@ -67,7 +67,7 @@ export default function FinanceIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Financial software bugs cost billions. Compliance audits are manual and fragile.
-              BRIK-64 makes every calculation provably correct and every audit trail automatic.
+              BRIK64 makes every calculation provably correct and every audit trail automatic.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -127,10 +127,10 @@ export default function FinanceIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Provable correctness for financial logic
@@ -225,7 +225,7 @@ circuit transaction_validator {
                   <tr className="border-b border-border">
                     <th className="pb-3 font-medium text-muted-foreground">Standard</th>
                     <th className="pb-3 font-medium text-muted-foreground">Coverage</th>
-                    <th className="pb-3 font-medium text-muted-foreground">What BRIK-64 generates</th>
+                    <th className="pb-3 font-medium text-muted-foreground">What BRIK64 generates</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -248,7 +248,7 @@ circuit transaction_validator {
               </table>
             </div>
             <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
-              BRIK-64 generates verification evidence for processing logic and change control.
+              BRIK64 generates verification evidence for processing logic and change control.
               Infrastructure, organizational, and procedural controls require separate evidence.
             </p>
           </section>
@@ -256,7 +256,7 @@ circuit transaction_validator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building verified financial systems
+              Start building &mdash; financial systems
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Verify your financial systems. Every transaction proven. Every risk calculation

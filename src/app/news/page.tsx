@@ -34,11 +34,10 @@ export default function NewsPage() {
               NEWS
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-[#1A1817] sm:text-5xl">
-              What&apos;s new at BRIK-64
+              What&apos;s shipping
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-[#322F2D]/60">
-              Announcements, releases, and milestones from the Digital
-              Circuitality project.
+              Releases, milestones, and announcements. We ship fast.
             </p>
           </div>
         </section>

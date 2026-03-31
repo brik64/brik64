@@ -42,13 +42,13 @@ export default function LegalPage() {
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Terms of Service</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
-              By accessing or using the BRIK-64 platform, CLI tools, APIs, SDKs, or any associated
+              By accessing or using the BRIK64 platform, CLI tools, APIs, SDKs, or any associated
               services (collectively, the &ldquo;Service&rdquo;), you agree to be bound by these Terms
               of Service (&ldquo;Terms&rdquo;). If you do not agree to these Terms, do not use the Service.
             </p>
             <h3 className="text-sm font-bold text-foreground">1. Service Description</h3>
             <p>
-              BRIK-64 provides software verification tools including a compiler, lifter, certification
+              BRIK64 provides software verification tools including a compiler, lifter, certification
               engine, and platform for creating, verifying, and sharing PCD (Printed Circuit Description)
               blueprints. The platform is currently provided in beta and features, functionality, and
               pricing are subject to change without prior notice.
@@ -56,7 +56,7 @@ export default function LegalPage() {
             <h3 className="text-sm font-bold text-foreground">2. Beta Disclaimer</h3>
             <p>
               During the beta period, the Service is provided &ldquo;as-is&rdquo; without warranties
-              of any kind, express or implied. BRIK-64 makes no guarantees regarding uptime, data
+              of any kind, express or implied. BRIK64 makes no guarantees regarding uptime, data
               preservation, or feature availability during beta.
             </p>
             <h3 className="text-sm font-bold text-foreground">3. User Accounts</h3>
@@ -76,12 +76,12 @@ export default function LegalPage() {
             </ul>
             <h3 className="text-sm font-bold text-foreground">5. Modifications</h3>
             <p>
-              BRIK-64 reserves the right to modify these Terms at any time. Continued use of the
+              BRIK64 reserves the right to modify these Terms at any time. Continued use of the
               Service after changes constitutes acceptance of the modified Terms.
             </p>
             <h3 className="text-sm font-bold text-foreground">6. Limitation of Liability</h3>
             <p>
-              To the maximum extent permitted by law, BRIK-64 shall not be liable for any indirect,
+              To the maximum extent permitted by law, BRIK64 shall not be liable for any indirect,
               incidental, special, consequential, or punitive damages arising from your use of the
               Service. The certification provided by the TCE is a mathematical verification tool and
               does not constitute a warranty of fitness for any particular purpose.
@@ -151,13 +151,13 @@ export default function LegalPage() {
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Intellectual Property</h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
-              Digital Circuitality&trade;, BRIK-64&trade;, PCD&trade;, and BPU&trade; are trademarks
-              of BRIK-64 Inc. The compiler, runtime, Coq proofs, and TCE certification engine are
+              Digital Circuitality&trade;, BRIK64&trade;, PCD&trade;, and BPU&trade; are trademarks
+              of BRIK64 Inc. The compiler, runtime, mathematical proofs, and TCE certification engine are
               proprietary.
             </p>
             <p>
               <strong className="text-foreground">Your PCD blueprints remain your intellectual property.</strong>{" "}
-              Publishing to the registry grants BRIK-64 a non-exclusive license to host and serve the
+              Publishing to the registry grants BRIK64 a non-exclusive license to host and serve the
               content. You may remove your blueprints at any time.
             </p>
 
@@ -180,7 +180,7 @@ export default function LegalPage() {
               </a>
             </p>
             <p className="mt-2 text-xs text-muted-foreground">
-              &copy; 2026 BRIK-64 Inc. All rights reserved.
+              &copy; 2026 BRIK64 Inc. All rights reserved.
             </p>
           </div>
         </section>

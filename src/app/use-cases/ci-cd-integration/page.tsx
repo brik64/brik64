@@ -7,7 +7,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "CI/CD Integration: Certify Every Pull Request — BRIK-64",
+  title: "CI/CD Integration: Certify Every Pull Request — BRIK64",
   description:
     "Every PR mathematically certified. Block uncertified merges. Audit trail for compliance.",
 };
@@ -46,7 +46,7 @@ const steps = [
   {
     step: "04",
     title: "Block uncertified merges",
-    desc: "Configure BRIK-64 as a required status check in GitHub. If certification fails, the merge button is blocked. No uncertified code reaches main. Ever.",
+    desc: "Configure BRIK64 as a required status check in GitHub. If certification fails, the merge button is blocked. No uncertified code reaches main. Ever.",
   },
 ];
 
@@ -83,15 +83,15 @@ export default function CICDIntegrationUseCasePage() {
               <span className="text-[#00b8d4]">Certify Every Pull Request</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Tests tell you code works for known cases. BRIK-64 tells you code works for ALL cases.
-              Add mathematical certification to your CI pipeline in one command.
+              Tests check the cases you thought of. BRIK64 proves ALL cases.
+              One command adds mathematical certification to your CI pipeline. Free.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/enterprise"
@@ -151,14 +151,14 @@ export default function CICDIntegrationUseCasePage() {
 ✓ Required status check: brik64/certification
 
 $ git push origin feature/new-payment-flow
-# → BRIK-64 automatically triggers:
+# → BRIK64 automatically triggers:
 #   1. Lift changed files to PCD
 #   2. Run circuit closure analysis
 #   3. Post certification comment on PR
 
 # PR Comment:
 # ┌──────────────────────────────────────────┐
-# │ BRIK-64 Certification                     │
+# │ BRIK64 Certification                     │
 # │ Φ_c = 1  ✓  CERTIFIED                    │
 # │ 14 circuits analyzed, 14 certified        │
 # │ Certificate: 0xe7f3...a291                │
@@ -175,7 +175,7 @@ $ git push origin feature/new-payment-flow
               GitHub Actions workflow — one step
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              Add BRIK-64 certification to your existing GitHub Actions workflow. One step.
+              Add BRIK64 certification to your existing GitHub Actions workflow. One step.
               Runs alongside your tests. Blocks merge if certification fails.
             </p>
             <CopyableCode title=".github/workflows/ci.yml">{`name: CI + Certification
@@ -238,7 +238,7 @@ jobs:
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev/ci-cd"

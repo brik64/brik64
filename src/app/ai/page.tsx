@@ -16,32 +16,32 @@ const advantages: { icon: ReactNode; title: string; desc: string }[] = [
   {
     icon: <ShieldCheck className="h-5 w-5 text-teal" />,
     title: "Auto-verified output",
-    desc: "Every generated program is verified by the CMF. If Phi_c != 1, the AI retries automatically. No human review needed.",
+    desc: "Tell your AI what to build. The compiler proves it's correct. If it fails, the error becomes the next prompt. No human review needed.",
   },
   {
     icon: <RefreshCw className="h-5 w-5 text-teal" />,
-    title: "Retry loop until correct",
-    desc: "The compiler error becomes the prompt. The AI fixes the exact issue. Converges in 1-3 iterations for 95% of cases.",
+    title: "Repeat until certified",
+    desc: "The compiler error IS the prompt. The AI fixes the exact issue. 1-3 iterations. 95% convergence rate. Fully automatic.",
   },
   {
     icon: <Zap className="h-5 w-5 text-teal" />,
-    title: "Finite operation space",
-    desc: "64 core + 64 extended monomers. The AI picks from 128 verified operations instead of infinite library combinations.",
+    title: "128 operations. That's it.",
+    desc: "64 certified + 64 extended = 128 operations. The AI picks from a finite, verified set. No infinite library combinations. No guessing.",
   },
   {
     icon: <Brain className="h-5 w-5 text-teal" />,
-    title: "Works with any LLM",
-    desc: "Claude, GPT, Gemini, Llama, Mistral. The verification is in the compiler, not the model. Any LLM can generate certified code.",
+    title: "Works with every LLM",
+    desc: "Claude, GPT, Gemini, Llama, Mistral \u2014 doesn't matter. The proof is in the compiler, not the model. Any LLM generates certified code.",
   },
   {
     icon: <Code2 className="h-5 w-5 text-teal" />,
-    title: "14 compilation targets",
-    desc: "AI generates one PCD file. The compiler outputs Rust, JS, Python, C, Go, WASM, and 8 more targets. Write once, deploy everywhere.",
+    title: "One file. 14 targets.",
+    desc: "AI generates one PCD file. The compiler outputs Rust, JS, Python, C, Go, WASM, and 8 more. Write once, deploy everywhere. Today.",
   },
   {
     icon: <Bot className="h-5 w-5 text-teal" />,
-    title: "Policy circuits for AI safety",
-    desc: "PCD programs that verify AI actions before execution. The AI proposes, the circuit disposes. Hardware-enforced guardrails.",
+    title: "AI safety guardrails",
+    desc: "Policy circuits verify AI actions before execution. The AI proposes, the circuit disposes. ALLOW or BLOCK. No middle ground.",
   },
 ];
 
@@ -58,15 +58,14 @@ export default function AIPage() {
           </span>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            AI generates code.{" "}
-            <span className="text-teal">BRIK-64 proves it&apos;s correct.</span>
+            Tell your AI what to build.{" "}
+            <span className="text-teal">The compiler proves it&apos;s correct.</span>
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            The first language where AI-generated code is automatically verified.
-            An LLM writes PCD directly, the compiler checks &Phi;<sub>c</sub> = 1, and if
-            verification fails, the error becomes the next prompt. No other
-            language has this loop.
+            The first language designed for AI code generation. 128 operations. Automatic verification.
+            The LLM writes PCD, the compiler checks &Phi;<sub>c</sub> = 1, and if
+            it fails, the error becomes the next prompt. Repeat until certified.
           </p>
 
           {/* brikc ai demo terminal */}
@@ -102,9 +101,9 @@ export default function AIPage() {
 
         {/* Advantages grid */}
         <section className="border-border mx-auto max-w-7xl border-t px-4 py-16 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-medium tracking-tight">Why AI needs BRIK-64</h2>
+          <h2 className="text-xl font-medium tracking-tight">Why this changes everything</h2>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Every other language trusts the AI to be correct. BRIK-64 verifies it.
+            Every other language trusts the AI. BRIK64 verifies it. Free. Ready today.
           </p>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

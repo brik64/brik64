@@ -29,7 +29,7 @@ const cards: CardData[] = [
   {
     title: "Verify",
     icon: ShieldCheck,
-    description: "Mathematical proof in Coq — not just tests. Structural certainty for verified operations.",
+    description: "Mathematical proof — not just tests. Structural certainty for every verified operation.",
     href: "/foundations",
   },
   {
@@ -114,12 +114,11 @@ export function WorldModelsSection() {
           {/* Left */}
           <div>
             <h2 className="max-w-4xl text-2xl font-normal leading-[40px] tracking-[-0.9px] text-balance md:text-4xl">
-              One compiler. Every verification.
+              One compiler. Every guarantee.
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Write once in PCD, compile to any target, and ship with
-              mathematical proof that your code is structurally complete — every input handled, every path verified. No runtime
-              surprises — every operation verified before it runs.
+              64 Core = mathematically certified. 64 Extended = bridge to the real world.
+              Write once in PCD, compile to any target, and ship with proof that every input is handled, every path verified. No runtime surprises.
             </p>
           </div>
 
@@ -163,7 +162,7 @@ export function WorldModelsSection() {
             Operation families
           </p>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Two tiers of verified operations organized into families. Core operations are formally proven. Extended operations are bounds-checked.
+            128 operations total, organized into 16 families. 64 Core = formally proven. 64 Extended = bounds-checked, zero panic paths.
           </p>
 
           {/* Core — Certified */}
@@ -173,7 +172,7 @@ export function WorldModelsSection() {
                 Core · Certified
               </span>
               <span className="text-xs text-muted-foreground">
-                Formally proven in Coq
+                64 operations, formally proven
               </span>
             </div>
             <FamilyList families={coreFamilies} tier="core" />

@@ -7,9 +7,9 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Aerospace & Defense — BRIK-64 Industries",
+  title: "Aerospace & Defense — BRIK64 Industries",
   description:
-    "When failure is not an option. DO-178C compliance, flight control verification, and mission-critical certification with BRIK-64.",
+    "When failure is not an option. DO-178C compliance, flight control verification, and mission-critical certification with BRIK64.",
 };
 
 const useCases = [
@@ -23,7 +23,7 @@ const useCases = [
     icon: Radar,
     title: "Sensor Fusion Certification",
     description:
-      "GPS, IMU, altimeter, airspeed — each sensor has error bounds. BRIK-64 propagates uncertainty through fusion algorithms and certifies the combined output.",
+      "GPS, IMU, altimeter, airspeed — each sensor has error bounds. BRIK64 propagates uncertainty through fusion algorithms and certifies the combined output.",
   },
   {
     icon: Navigation,
@@ -35,7 +35,7 @@ const useCases = [
     icon: Cpu,
     title: "Avionics Software",
     description:
-      "DO-178C requires evidence of correctness at every Design Assurance Level. BRIK-64 generates DO-178C verification artifacts from the formal proof.",
+      "DO-178C requires evidence of correctness at every Design Assurance Level. BRIK64 generates DO-178C verification artifacts from the formal proof.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function AerospaceIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               DO-178C compliance is expensive, manual, and slow. Software certification
-              takes years. BRIK-64 accelerates evidence generation — so your team focuses on the
+              takes years. BRIK64 accelerates evidence generation — so your team focuses on the
               mission, not the paperwork.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -74,7 +74,7 @@ export default function AerospaceIndustryPage() {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Explore aerospace certification <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"
@@ -127,10 +127,10 @@ export default function AerospaceIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Automated certification evidence
@@ -234,7 +234,7 @@ circuit flight_envelope {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Explore aerospace certification with BRIK-64
+              Start building &mdash; free
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Reduce evidence generation timelines, accelerating the certification process. Every requirement traced.
@@ -245,7 +245,7 @@ circuit flight_envelope {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Explore aerospace certification <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"

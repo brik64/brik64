@@ -30,10 +30,10 @@ export default function LoginPage() {
             </span>
 
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Sign in to <span className="text-teal">BRIK-64</span>
+              Sign in to <span className="text-teal">BRIK64</span>
             </h1>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              Access the platform, registry, and certification dashboard.
+              Platform, registry, and certification dashboard. Free.
             </p>
 
             {submitted ? (

@@ -7,7 +7,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "COBOL Migration: 220 Billion Lines, Zero Rewrites — BRIK-64",
+  title: "COBOL Migration: 220 Billion Lines, Zero Rewrites — BRIK64",
   description:
     "Lift COBOL to PCD, compile to any modern language. Mathematical proof of equivalence. No manual rewriting.",
 };
@@ -83,15 +83,15 @@ export default function COBOLMigrationUseCasePage() {
               <span className="text-[#00b8d4]">220 Billion Lines, Zero Rewrites</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              The world&apos;s critical infrastructure runs on COBOL. Rewrites fail because they lose semantics.
-              BRIK-64 lifts the computational essence and compiles it to any modern language — with proof of equivalence.
+              $3 trillion per day runs on COBOL. Every rewrite fails. BRIK64 doesn&apos;t rewrite &mdash;
+              it lifts the computation and compiles to Go, Rust, Java, or any of 14 targets. With mathematical proof of equivalence.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/lifter"
@@ -233,7 +233,7 @@ $ brikc compile payroll.pcd --target java
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/lifter"

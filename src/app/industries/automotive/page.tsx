@@ -7,9 +7,9 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Automotive — BRIK-64 Industries",
+  title: "Automotive — BRIK64 Industries",
   description:
-    "ISO 26262 verification evidence. ADAS verification, sensor fusion, path planning certification, and ECU software verification with BRIK-64.",
+    "ISO 26262 verification evidence. ADAS verification, sensor fusion, path planning certification, and ECU software verification with BRIK64.",
 };
 
 const useCases = [
@@ -23,7 +23,7 @@ const useCases = [
     icon: Car,
     title: "Sensor Fusion",
     description:
-      "Camera, radar, lidar, ultrasonic — each sensor has noise bounds. BRIK-64 verifies the fusion algorithm and certifies that combined perception stays within safe domains.",
+      "Camera, radar, lidar, ultrasonic — each sensor has noise bounds. BRIK64 verifies the fusion algorithm and certifies that combined perception stays within safe domains.",
   },
   {
     icon: Route,
@@ -67,7 +67,7 @@ export default function AutomotiveIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Autonomous vehicles need verification, not guesses. ASIL certification is a
-              bottleneck. BRIK-64 accelerates evidence generation — so your engineers
+              bottleneck. BRIK64 accelerates evidence generation — so your engineers
               build the future instead of filling out spreadsheets.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -128,10 +128,10 @@ export default function AutomotiveIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Safety certification at software speed

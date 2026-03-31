@@ -7,7 +7,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Universal Transpilation: Any Language → Any Language, Proven — BRIK-64",
+  title: "Universal Transpilation: Any Language → Any Language, Proven — BRIK64",
   description:
     "140 certified transpilation paths through PCD. Semantic-level, not syntactic. Proof of equivalence included.",
 };
@@ -83,15 +83,15 @@ export default function UniversalTranspilationUseCasePage() {
               <span className="text-[#00b8d4]">Any Language → Any Language, Proven</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Stop building pair-specific transpilers. BRIK-64 routes every language through PCD —
-              one intermediate representation, 140 certified paths, algebraic proof of equivalence.
+              10 languages in. 14 targets out. 140 certified paths. One intermediate representation.
+              Every output carries a mathematical proof of equivalence. Free CLI.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/transpiler"
@@ -238,7 +238,7 @@ $ brikc verify ./dist/ --against ./src/
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/transpiler"

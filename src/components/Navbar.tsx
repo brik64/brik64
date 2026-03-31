@@ -6,17 +6,17 @@ import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBra
 /* ── Product Mega Menu data ── */
 
 const productEndpoints = [
-  { icon: Terminal, label: "CLI", desc: "Single binary compiler — brikc", href: "/cli" },
-  { icon: Globe, label: "Platform", desc: "Circuit laboratory — brik64.com", href: "/platform" },
-  { icon: Layers, label: "Registry", desc: "Public verified component registry", href: "/registry" },
-  { icon: ArrowUpDown, label: "Lifter", desc: "Reverse-compile any language to PCD", href: "/lifter" },
-  { icon: GitBranch, label: "Transpiler", desc: "Certified paths between languages", href: "/transpiler" },
-  { icon: Box, label: "SDKs", desc: "Rust, JavaScript, Python libraries", href: "/sdks" },
+  { icon: Terminal, label: "CLI", desc: "One binary. Every guarantee.", href: "/cli" },
+  { icon: Globe, label: "Platform", desc: "CAD for software. Compose circuits visually.", href: "/platform" },
+  { icon: Layers, label: "Registry", desc: "Pre-certified components. Never rewrite proven code.", href: "/registry" },
+  { icon: ArrowUpDown, label: "Lifter", desc: "Already have code? Verify it without rewriting.", href: "/lifter" },
+  { icon: GitBranch, label: "Transpiler", desc: "Any language to any language. Same proof.", href: "/transpiler" },
+  { icon: Box, label: "SDKs", desc: "Rust, JavaScript, Python libraries. Use BRIK64 in your stack.", href: "/sdks" },
 ];
 
 const productMore = [
-  { icon: Cpu, label: "BPU", desc: "Hardware coprocessor — roadmap to silicon", href: "/bpu" },
-  { icon: FileCode, label: "PCD Format", desc: "The blueprint standard for software", href: "/pcd" },
+  { icon: Cpu, label: "BPU", desc: "Hardware that enforces correctness. The roadmap.", href: "/bpu" },
+  { icon: FileCode, label: "PCD Format", desc: "The AI-native synthetic language specification.", href: "/pcd" },
 ];
 
 /* ── Industries Mega Menu data ── */
@@ -390,7 +390,7 @@ function FeaturesDropdown() {
         </p>
         <div className="space-y-0.5">
           {[
-            { icon: CheckCircle2, label: "Formal Verification", desc: "Mathematical proofs in Coq — not just tests", href: "/features" },
+            { icon: CheckCircle2, label: "Formal Verification", desc: "Mathematical proofs mathematically — not just tests", href: "/features" },
             { icon: Ruler, label: "Domain Constraints", desc: "Compiler-enforced numeric ranges on every input", href: "/features" },
             { icon: CircuitBoard, label: "Circuit Closure", desc: "Every input produces a verified output or explicit rejection", href: "/features" },
             { icon: Zap, label: "EVA Composition", desc: "Composing verified parts produces a verified whole", href: "/features" },
@@ -453,7 +453,7 @@ function FeaturesDropdown() {
           <span className="text-teal">feature overview</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          Verification, domains, composition, lifting, transpilation, certification — everything BRIK-64 does, in one page.
+          Verification, domains, composition, lifting, transpilation, certification — everything BRIK64 does, in one page.
         </p>
         <a
           href="/features"

@@ -67,7 +67,7 @@ const capabilities: { icon: ReactNode; title: string; desc: string }[] = [
   { icon: <Upload className="h-4 w-4" />, title: "Lift existing code", desc: "Connect GitHub, lift any repo to PCD blueprints. Supports multiple languages." },
   { icon: <FileCode className="h-4 w-4" />, title: "Generate PCD from scratch", desc: "Write verified blueprints in the editor. All operations at your fingertips." },
   { icon: <Search className="h-4 w-4" />, title: "Browse Public Registry", desc: "Search thousands of certified circuits. Reuse verified components." },
-  { icon: <Key className="h-4 w-4" />, title: "Create API Keys", desc: "Programmatic access to all platform features. Build on top of BRIK-64." },
+  { icon: <Key className="h-4 w-4" />, title: "Create API Keys", desc: "Programmatic access to all platform features. Build on top of BRIK64." },
   { icon: <Combine className="h-4 w-4" />, title: "Combine PCD blueprints", desc: "EVA algebra composition: sequential, parallel, and conditional operators." },
   { icon: <Code className="h-4 w-4" />, title: "Export to any language", desc: "Multiple targets: JS, TS, Python, Rust, C, C++, Go, COBOL, and more." },
   { icon: <Shield className="h-4 w-4" />, title: "Certify your code", desc: "Get mathematical proof of correctness + immutable hash. Zero ambiguity." },
@@ -106,11 +106,11 @@ export default function PlatformPage() {
               Platform
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Your circuit <span className="text-[#00b8d4]">laboratory.</span>
+              CAD for <span className="text-[#00b8d4]">software.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Everything you need to build, verify, and ship certified code. A personal library, a public registry,
-              visual composition, and certification badges &mdash; all connected through PCD blueprints.
+              Build, verify, compose, and ship certified code. Your library, a public registry,
+              visual composition, certification badges &mdash; all in one place. Free to start.
             </p>
           </div>
         </section>
@@ -254,7 +254,7 @@ export default function PlatformPage() {
             REGISTRY LAUNCHING 2026
           </div>
           <h2 className="text-center mx-auto mt-6 text-2xl font-bold tracking-tight md:text-3xl">
-            Your code. Verified. Connected.
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             GitHub integration, IDE plugins, visual composer, and certification dashboard &mdash; all coming to brik64.com.
@@ -264,7 +264,7 @@ export default function PlatformPage() {
               href="/"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
-              Join the Waitlist
+              Start building &mdash; free
             </a>
             <a
               href="/registry"

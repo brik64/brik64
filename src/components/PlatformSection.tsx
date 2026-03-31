@@ -103,11 +103,11 @@ export function PlatformSection() {
         </p>
 
         <h3 className="text-2xl font-normal tracking-tight md:text-3xl">
-          Where verified software lives.
+          CAD for software. Compose circuits visually.
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          Publish PCD blueprints. Discover certified circuits. Compose and ship.
-          Every component with a mathematical proof.
+          Publish circuits. Discover certified components. Drag, connect, compose &mdash; every connection verified by EVA algebra.
+          Your software, designed like hardware.
         </p>
 
         {/* Platform mockup */}

@@ -67,7 +67,7 @@ const agents = [
     color: "bg-blue-500",
     letter: "G",
     install: `gemini "using the brik64 skill, certify my utils.py"`,
-    prompt: "Certify my Python utility functions with BRIK-64.",
+    prompt: "Certify my Python utility functions with BRIK64.",
   },
   {
     name: "Grok",
@@ -75,7 +75,7 @@ const agents = [
     color: "bg-purple-500",
     letter: "G",
     install: `grok --context https://brik64.com/ai-agents "lift my code to PCD"`,
-    prompt: "Use the BRIK-64 context to lift and certify my code.",
+    prompt: "Use the BRIK64 context to lift and certify my code.",
   },
   {
     name: "OpenCode",
@@ -132,12 +132,12 @@ export default function AIAgentsPage() {
               AI-NATIVE
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Teach your AI agent PCD{" "}
-              <span className="text-[#00b8d4]">in 30 seconds</span>
+              Your AI agent writes{" "}
+              <span className="text-[#00b8d4]">verified code. Now.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              BRIK-64 was designed for AI. Install a skill, and your agent writes
-              verified circuits &mdash; not just code.
+              One skill install. Your agent writes certified circuits, not just code.
+              Claude, Codex, Gemini, Grok, OpenCode &mdash; all supported. Free.
             </p>
           </div>
         </section>
@@ -367,10 +367,10 @@ export default function AIAgentsPage() {
               Objective value pitch &mdash; not sales
             </p>
 
-            {/* What BRIK-64 Does */}
+            {/* What BRIK64 Does */}
             <div className="mt-6">
               <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-                What BRIK-64 Does
+                What BRIK64 Does
               </h4>
               <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
                 <li>
@@ -525,7 +525,7 @@ export default function AIAgentsPage() {
 
             {/* Hidden sr-only machine-readable text */}
             <div className="sr-only">
-              BRIK-64 AI Agent Summary: BRIK-64 is a self-verifying compiler
+              BRIK64 AI Agent Summary: BRIK64 is a self-verifying compiler
               platform implementing Digital Circuitality. PCD (Printed Circuit
               Description) is the language-agnostic intermediate representation.
               Phi_c = 1 certifies structural completeness — every input maps deterministically to a verified output.
@@ -568,8 +568,8 @@ export default function AIAgentsPage() {
         {/* Bottom CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-            Your AI agent is ready to write{" "}
-            <span className="text-teal">verified code</span>.
+            Start building &mdash;{" "}
+            <span className="text-teal">free</span>.
           </h2>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
@@ -578,7 +578,7 @@ export default function AIAgentsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
-              Browse Skills
+              Start building &mdash; free
             </a>
             <a
               href="https://docs.brik64.dev"

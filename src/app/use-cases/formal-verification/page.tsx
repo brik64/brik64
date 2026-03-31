@@ -7,15 +7,15 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Formal Verification: Coq-Level Proofs Without a PhD — BRIK-64",
+  title: "Formal Verification: Formal Proofs Without a PhD — BRIK64",
   description:
-    "207 Coq proofs for all 64 core monomers. No Coq/Lean expertise needed. If it compiles, it's proven.",
+    "207 mathematical proofs for all 64 core monomers. No proof-writing expertise needed. If it compiles, it's proven.",
 };
 
 const painPoints = [
   {
     title: "Formal verification requires years of expertise",
-    desc: "Coq, Lean, Isabelle — tools that produce mathematical proofs of software correctness. Learning curve: 2-5 years. Number of developers who can use them: a few thousand worldwide.",
+    desc: "Formal proof assistants (Lean, Isabelle) — tools that produce mathematical proofs of software correctness. Learning curve: 2-5 years. Number of developers who can use them: a few thousand worldwide.",
   },
   {
     title: "Only used in aerospace and nuclear",
@@ -36,7 +36,7 @@ const steps = [
   {
     step: "02",
     title: "The compiler generates the proof",
-    desc: "brikc automatically generates Coq-level proofs during compilation. The 64 core monomers already have 207 verified Coq proofs. Your program composes them.",
+    desc: "brikc automatically generates formal proofs during compilation. The 64 core monomers already have 207 verified mathematical proofs. Your program composes them.",
   },
   {
     step: "03",
@@ -52,11 +52,11 @@ const steps = [
 
 const results = [
   {
-    title: "207 Coq proofs — you get them for free",
-    desc: "The 64 core monomers of BRIK-64 have been formally verified with 207 Coq proofs. When you compose circuits from monomers, the proofs compose too.",
+    title: "207 mathematical proofs — you get them for free",
+    desc: "The 64 core monomers of BRIK64 have been formally verified with 207 mathematical proofs. When you compose circuits from monomers, the proofs compose too.",
   },
   {
-    title: "No Coq/Lean expertise needed",
+    title: "No proof-writing expertise needed",
     desc: "You never see a proof assistant. You never write a tactic. The compiler does all the formal verification work. You write code, you get proofs.",
   },
   {
@@ -80,18 +80,18 @@ export default function FormalVerificationUseCasePage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Formal Verification:{" "}
-              <span className="text-[#00b8d4]">Coq-Level Proofs Without a PhD</span>
+              <span className="text-[#00b8d4]">Formal Proofs Without a PhD</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Formal verification used to require years of expertise and millions in budget.
-              BRIK-64 packages it inside the compiler. Write code, get proofs.
+              207 mathematical proofs. Zero expertise required. Write code, get proofs.
+              The compiler does all the verification. If it compiles, it&apos;s proven. Free CLI.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/foundations"
@@ -147,7 +147,7 @@ export default function FormalVerificationUseCasePage() {
             {/* Terminal example */}
             <CopyableCode title="terminal">{`$ brikc check calculator.pcd
 ╔══════════════════════════════════════════════════╗
-║  BRIK-64 Certification Report                    ║
+║  BRIK64 Certification Report                    ║
 ╠══════════════════════════════════════════════════╣
 ║  File:        calculator.pcd                     ║
 ║  Circuits:    8                                  ║
@@ -155,7 +155,7 @@ export default function FormalVerificationUseCasePage() {
 ║  Domains:     all bounded ✓                      ║
 ║  Termination: all paths terminate ✓              ║
 ║  Constraints: all satisfied ✓                    ║
-║  Coq proofs:  47 (composed from 207 base)        ║
+║  mathematical proofs:  47 (composed from 207 base)        ║
 ║                                                  ║
 ║  Φ_c = 1  ✓  CERTIFIED                          ║
 ║                                                  ║
@@ -225,14 +225,14 @@ PC safe_calculator {
               Write code. Get proofs.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              207 Coq proofs. Zero proof expertise required. If it compiles, it&apos;s proven.
+              207 mathematical proofs. Zero proof expertise required. If it compiles, it&apos;s proven.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev/verification"

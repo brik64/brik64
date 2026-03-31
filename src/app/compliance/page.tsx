@@ -136,14 +136,13 @@ export default function CompliancePage() {
           </span>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            The math is{" "}
-            <span className="text-teal">the evidence.</span>
+            Compliance evidence.{" "}
+            <span className="text-teal">At compile time.</span>
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Generate auditor-ready compliance evidence from your verified code.
-            We say &ldquo;evidence,&rdquo; not &ldquo;compliance&rdquo; &mdash; because we&apos;re honest
-            about what formal verification can and cannot prove.
+            Not after the audit. Not after the incident. At compile time. Your verified code generates
+            auditor-ready evidence automatically. We say &ldquo;evidence,&rdquo; not &ldquo;compliance&rdquo; &mdash; because we&apos;re honest about scope.
           </p>
 
           {/* CLI demo — terminal with traffic lights */}

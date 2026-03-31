@@ -133,7 +133,7 @@ const commands = [
       { text: "  Running TCE verification...", style: "muted" as const },
       { text: "  \u2713 \u03a6_c = 1 (circuit closed)", style: "success" as const },
       { text: "", style: "blank" as const },
-      { text: "  BRIK-64 CERTIFICATION", style: "box-green" as const },
+      { text: "  BRIK64 CERTIFICATION", style: "box-green" as const },
       { text: "  Function:  add8", style: "box" as const },
       { text: "  Status:    \u2713 CERTIFIED", style: "box-green" as const },
       { text: "  Hash:      a7f3c9e1...d4b2", style: "box" as const },
@@ -175,7 +175,7 @@ const commands = [
     example: [
       { text: "$ brikc lsp --stdio", style: "command" as const },
       { text: "", style: "blank" as const },
-      { text: "  BRIK-64 LSP Server v5.0.0-beta.1", style: "muted" as const },
+      { text: "  BRIK64 LSP Server v5.0.0-beta.1", style: "muted" as const },
       { text: "  Supports: highlighting, diagnostics, hover,", style: "muted" as const },
       { text: "            go-to-definition, completion", style: "muted" as const },
       { text: "  \u2713 Listening on stdio", style: "success" as const },
@@ -189,7 +189,7 @@ const commands = [
     example: [
       { text: "$ brikc mcp-server --transport sse --port 3100", style: "command" as const },
       { text: "", style: "blank" as const },
-      { text: "  BRIK-64 MCP Server", style: "muted" as const },
+      { text: "  BRIK64 MCP Server", style: "muted" as const },
       { text: "  Tools: brik64.discover, brik64.execute", style: "muted" as const },
       { text: "  \u2713 SSE transport on port 3100", style: "success" as const },
     ],
@@ -203,7 +203,7 @@ const commands = [
       { text: "$ brikc catalog list --family arithmetic", style: "command" as const },
       { text: "", style: "blank" as const },
       { text: "  Arithmetic family \u2014 8 operations", style: "box-green" as const },
-      { text: "  All operations formally verified (Coq)", style: "box" as const },
+      { text: "  All operations formally verified", style: "box" as const },
       { text: "  Domains and ranges: bounded, proven", style: "box" as const },
       { text: "  Proof status: \u2713 complete", style: "box-green" as const },
     ],
@@ -313,8 +313,8 @@ export default function CLIPage() {
               One binary. <span className="text-[#00b8d4]">Every guarantee.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Install <code className="rounded bg-muted px-1.5 py-0.5 text-sm font-medium text-foreground">brikc</code> and
-              start lifting, certifying, and compiling code from your terminal. A compiler that achieves self-compilation fixpoint — compiling itself produces a bit-identical binary, proving build reproducibility.
+              One binary. Zero dependencies. 708 KB. Install <code className="rounded bg-muted px-1.5 py-0.5 text-sm font-medium text-foreground">brikc</code> and
+              start certifying code in 30 seconds. It compiles itself to an identical hash &mdash; that's the proof it works.
             </p>
           </div>
         </section>
@@ -451,7 +451,7 @@ export default function CLIPage() {
               <Zap className="mb-3 h-5 w-5 text-teal" />
               <h3 className="text-sm font-medium">Self-Verifying Binary</h3>
               <p className="mt-3 text-xs text-muted-foreground">
-                The <code>brikc</code> compiler is itself a certified BRIK-64 program. It compiles to a 708 KB standalone
+                The <code>brikc</code> compiler is itself a certified BRIK64 program. It compiles to a 708 KB standalone
                 x86-64 ELF &mdash; no Rust runtime, no libc dependency.
               </p>
             </div>
@@ -469,11 +469,10 @@ export default function CLIPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Ready to start?
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Install the CLI, pick your SDK, and certify your first function. Every line of code you certify is a line
-            you never have to debug again.
+            Install the CLI. Certify your first function. Every certified line is a line you never debug again. Free forever.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

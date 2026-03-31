@@ -189,11 +189,11 @@ export default function SDKsPage() {
               SDKs
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Verified operations <span className="text-[#00b8d4]">in your language.</span>
+              Drop verified operations <span className="text-[#00b8d4]">into your code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Use verified operations inside your existing project. No new language, no compiler install required.
-              Any function built from verified operations via composition primitives automatically carries <PhiC /> = 1.
+              No new language. No compiler install. Add a library to your existing Rust, JavaScript, or Python project.
+              Every function built from verified operations automatically carries <PhiC /> = 1. Works with your existing code.
             </p>
           </div>
         </section>
@@ -315,7 +315,7 @@ export default function SDKsPage() {
             </div>
           </div>
           <p className="mt-6 text-xs italic text-muted-foreground">
-            Correctness preserved by composition. Proven in Coq. Any function built from Core monomers via EVA operators
+            Correctness preserved by composition. Mathematically certified. Any function built from Core monomers via EVA operators
             retains <PhiC /> = 1 &mdash; regardless of which language it runs in.
           </p>
         </section>
@@ -323,10 +323,10 @@ export default function SDKsPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Drop in. Verify.
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Add a library to your existing codebase and start using formally verified operations today. No new language required.
+            Add one library. Get verified operations. No new language. Works with your existing code today.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

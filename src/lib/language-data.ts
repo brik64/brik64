@@ -27,7 +27,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\nexport function add(a, b) {\n  return (a + b) & 0xFF;\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\nexport function add(a, b) {\n  return (a + b) & 0xFF;\n}`,
     },
   },
   {
@@ -44,7 +44,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\nexport function add(a: number, b: number): number {\n  return (a + b) & 0xFF;\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\nexport function add(a: number, b: number): number {\n  return (a + b) & 0xFF;\n}`,
     },
   },
   {
@@ -62,7 +62,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `# BRIK-64 certified \u2014 \u03a6_c = 1\ndef add(a: int, b: int) -> int:\n    return (a + b) & 0xFF`,
+      output: `# BRIK64 certified \u2014 \u03a6_c = 1\ndef add(a: int, b: int) -> int:\n    return (a + b) & 0xFF`,
     },
   },
   {
@@ -80,7 +80,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\npub fn add(a: u8, b: u8) -> u8 {\n    a.wrapping_add(b)\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\npub fn add(a: u8, b: u8) -> u8 {\n    a.wrapping_add(b)\n}`,
     },
   },
   {
@@ -97,7 +97,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `/* BRIK-64 certified \u2014 \u03a6_c = 1 */\nuint8_t add(uint8_t a, uint8_t b) {\n    return (uint8_t)(a + b);\n}`,
+      output: `/* BRIK64 certified \u2014 \u03a6_c = 1 */\nuint8_t add(uint8_t a, uint8_t b) {\n    return (uint8_t)(a + b);\n}`,
     },
   },
   {
@@ -114,7 +114,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\nconstexpr auto add(uint8_t a, uint8_t b) -> uint8_t {\n    return static_cast<uint8_t>(a + b);\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\nconstexpr auto add(uint8_t a, uint8_t b) -> uint8_t {\n    return static_cast<uint8_t>(a + b);\n}`,
     },
   },
   {
@@ -131,7 +131,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\nfunc add(a, b uint8) uint8 {\n    return a + b\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\nfunc add(a, b uint8) uint8 {\n    return a + b\n}`,
     },
   },
   {
@@ -148,7 +148,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add_nums {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `      * BRIK-64 certified \u2014 \u03a6_c = 1\n       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ADD-NUMS.\n       PROCEDURE DIVISION.\n           ADD A TO B GIVING RESULT.`,
+      output: `      * BRIK64 certified \u2014 \u03a6_c = 1\n       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ADD-NUMS.\n       PROCEDURE DIVISION.\n           ADD A TO B GIVING RESULT.`,
     },
   },
   {
@@ -165,7 +165,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\nfunction add(int $a, int $b): int {\n    return ($a + $b) & 0xFF;\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\nfunction add(int $a, int $b): int {\n    return ($a + $b) & 0xFF;\n}`,
     },
   },
   {
@@ -182,7 +182,7 @@ export const languages: LanguageData[] = [
     },
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\npublic static int add(int a, int b) {\n    return (a + b) & 0xFF;\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\npublic static int add(int a, int b) {\n    return (a + b) & 0xFF;\n}`,
     },
   },
   {
@@ -195,7 +195,7 @@ export const languages: LanguageData[] = [
     description: "Apple\u2019s modern language. Compile certified PCD circuits to Swift for iOS, macOS, and server-side deployment.",
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `// BRIK-64 certified \u2014 \u03a6_c = 1\nfunc add(_ a: UInt8, _ b: UInt8) -> UInt8 {\n    return a &+ b\n}`,
+      output: `// BRIK64 certified \u2014 \u03a6_c = 1\nfunc add(_ a: UInt8, _ b: UInt8) -> UInt8 {\n    return a &+ b\n}`,
     },
   },
   {
@@ -208,7 +208,7 @@ export const languages: LanguageData[] = [
     description: "Near-native performance everywhere. Compile certified PCD circuits to WebAssembly for browser, edge, and embedded runtimes.",
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `(module\n  ;; BRIK-64 certified \u2014 \u03a6_c = 1\n  (func $add (param $a i32) (param $b i32) (result i32)\n    local.get $a\n    local.get $b\n    i32.add\n    i32.const 0xFF\n    i32.and))`,
+      output: `(module\n  ;; BRIK64 certified \u2014 \u03a6_c = 1\n  (func $add (param $a i32) (param $b i32) (result i32)\n    local.get $a\n    local.get $b\n    i32.add\n    i32.const 0xFF\n    i32.and))`,
     },
   },
   {
@@ -221,7 +221,7 @@ export const languages: LanguageData[] = [
     description: "Direct machine code. Compile certified PCD circuits to standalone x86-64 ELF binaries with zero dependencies \u2014 just like brikc itself.",
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `; BRIK-64 certified \u2014 \u03a6_c = 1\n; x86-64 ELF binary, 708 bytes\nadd:\n    movzx eax, dil\n    add   al, sil\n    ret`,
+      output: `; BRIK64 certified \u2014 \u03a6_c = 1\n; x86-64 ELF binary, 708 bytes\nadd:\n    movzx eax, dil\n    add   al, sil\n    ret`,
     },
   },
   {
@@ -231,10 +231,10 @@ export const languages: LanguageData[] = [
     canLiftFrom: false,
     canCompileTo: true,
     extension: ".bir",
-    description: "BRIK-64\u2019s native bytecode. Compile PCD to BIR for execution on the BPU hardware coprocessor or the software BIR interpreter.",
+    description: "BRIK64\u2019s native bytecode. Compile PCD to BIR for execution on the BPU hardware coprocessor or the software BIR interpreter.",
     compileExample: {
       input: `circuit add {\n  input a: u8, b: u8;\n  output result: u8;\n  wire result = ADD8(a, b);\n}`,
-      output: `; BRIK-64 certified \u2014 \u03a6_c = 1\n; BIR v1 bytecode\nLOAD  r0, a\nLOAD  r1, b\nADD8  r2, r0, r1\nSTORE result, r2`,
+      output: `; BRIK64 certified \u2014 \u03a6_c = 1\n; BIR v1 bytecode\nLOAD  r0, a\nLOAD  r1, b\nADD8  r2, r0, r1\nSTORE result, r2`,
     },
   },
 ];

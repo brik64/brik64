@@ -56,7 +56,7 @@ pip install brik64             # Python
 cargo add brik64-core          # Rust`}</CodeBlock>
       <H3>By the Numbers</H3>
       <P>
-        Full monomer catalog (core + extended). Coq proof suite. Mathematical
+        Full monomer catalog (core + extended). mathematical proof suite. Mathematical
         proof, not &quot;tests pass&quot; verification. Digital Circuitality is a formally
         verified, immutable artifact. The architecture is fixed. The proofs are
         complete.
@@ -66,9 +66,9 @@ cargo add brik64-core          # Rust`}</CodeBlock>
 
   platform: () => (
     <>
-      <H2>BRIK-64 Platform Enters Development</H2>
+      <H2>BRIK64 Platform Enters Development</H2>
       <P>
-        The BRIK-64 platform is now in active development — a visual circuit
+        The BRIK64 platform is now in active development — a visual circuit
         laboratory at <strong>brik64.com</strong>.
       </P>
       <H3>Features</H3>
@@ -99,7 +99,7 @@ cargo add brik64-core          # Rust`}</CodeBlock>
     <>
       <H2>Complete Documentation Live</H2>
       <P>
-        Full BRIK-64 documentation is now live at{" "}
+        Full BRIK64 documentation is now live at{" "}
         <strong>docs.brik64.dev</strong>, powered by Mintlify. 33+ pages
         covering the entire ecosystem.
       </P>
@@ -141,7 +141,7 @@ cargo add brik64-core          # Rust`}</CodeBlock>
     <>
       <H2>Claude Code Skills Published</H2>
       <P>
-        Five Claude Code skills for BRIK-64 are now publicly available.
+        Five Claude Code skills for BRIK64 are now publicly available.
       </P>
       <H3>The 5 Skills</H3>
       <P>
@@ -199,7 +199,7 @@ cp -r brik64-tools-skills/skills/* ~/.claude/skills/`}</CodeBlock>
       <P>
         brik64/brik64-platform — Next.js dashboard.{" "}
         brik64/brik64-docs-site — Mintlify documentation source.{" "}
-        brik64/brik64-theory-proofs — 207 Coq proof files.{" "}
+        brik64/brik64-theory-proofs — 207 mathematical proof files.{" "}
         brik64/brik64-tools-skills — 5 Claude Code skills.{" "}
         brik64/brik64-community-awesome — Curated resources.
       </P>

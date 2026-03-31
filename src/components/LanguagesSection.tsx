@@ -17,7 +17,7 @@ export function LanguagesSection() {
         </p>
 
         <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-          Every language. <span className="text-teal">One blueprint.</span>
+          10 languages in. <span className="text-teal">14 targets out.</span>
         </h3>
 
         <div className="mt-12 flex flex-col items-center gap-8 md:flex-row md:gap-6">

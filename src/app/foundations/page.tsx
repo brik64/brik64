@@ -37,11 +37,11 @@ export default function FoundationsPage() {
               Foundations
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The science behind <span className="text-[#00b8d4]">Digital Circuitality.</span>
+              The science is real. <span className="text-[#00b8d4]">The math is published.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A deterministic, verified computational system has informational entropy zero.
-              This is a statement about information, not about heat.
+              A deterministic, verified system has zero informational entropy. Every state known. Every path verified.
+              That is a statement about information, not about heat. And it is what our compiler proves.
             </p>
           </div>
         </section>
@@ -253,7 +253,7 @@ export default function FoundationsPage() {
               <p className="text-sm text-muted-foreground">
                 This is analogous to how hardware engineers specify voltage ranges for every pin.
                 A logic gate rated for 0&ndash;5V does not accept 12V &mdash; the domain IS the specification.
-                In BRIK-64, the same principle applies to every variable in every circuit.
+                In BRIK64, the same principle applies to every variable in every circuit.
               </p>
             </div>
           </div>
@@ -335,7 +335,7 @@ export default function FoundationsPage() {
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
               Traditional transpilers operate at the <strong className="text-foreground">syntactic</strong> level:
-              parse an AST in one language, emit an AST in another. BRIK-64 operates at the{" "}
+              parse an AST in one language, emit an AST in another. BRIK64 operates at the{" "}
               <strong className="text-foreground">semantic</strong> level &mdash; extracting the computational
               essence (what it computes, not how it&rsquo;s expressed) and encoding it as a PCD circuit.
             </p>
@@ -446,19 +446,19 @@ export default function FoundationsPage() {
                 Submitted to arXiv (ID 7419107) &mdash; cs.PL + cs.AI + cs.AR
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                128 monomers, 110,000+ tests, 14 compilation targets, Coq-verified
+                128 monomers, 110,000+ tests, 14 compilation targets, mathematically certified
               </p>
             </div>
             <div className="border border-border bg-muted/10 p-5">
               <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">Zenodo Archive</p>
               <p className="text-sm font-medium text-foreground">
-                BRIK-64 Papers I-IV v3 + Coq Proofs
+                BRIK64 Papers I-IV v3 + Mathematical Proofs
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
                 DOI: 10.5281/zenodo.19313743 &mdash; Permanent academic archive
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                207 Coq proof files, 0 admits, complete formal verification
+                207 mathematical proof files, 0 admits, complete formal verification
               </p>
             </div>
           </div>
@@ -473,7 +473,7 @@ export default function FoundationsPage() {
             <p>1. Shannon (1948) establishes that deterministic systems have zero informational entropy</p>
             <p>2. Modern research confirms informational entropy is distinct from thermal entropy</p>
             <p>3. A deterministic, verified computer has zero informational uncertainty</p>
-            <p>4. BRIK-64 builds a compiler that certifies this property by mathematical construction</p>
+            <p>4. BRIK64 builds a compiler that certifies this property by mathematical construction</p>
             <p>5. The BPU materializes this certification in silicon, where verification is physical and non-maskable</p>
           </div>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

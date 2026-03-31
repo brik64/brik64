@@ -17,16 +17,16 @@ const HeroWireframe = dynamic(
 
 const faqs = [
   {
-    q: "What is BRIK-64?",
-    a: "BRIK-64 is a Digital Circuitality architecture: a self-verifying compiler and platform that treats software like hardware. It uses 64 formally verified atomic operations (monomers), composed through EVA algebra, and certified by the Thermodynamic Coherence Engine (TCE). The compiler compiles itself to an identical hash \u2014 a self-compilation fixpoint.",
+    q: "What is BRIK64?",
+    a: "A compiler and platform that treats software like hardware. 128 verified operations (64 certified + 64 extended), composed through EVA algebra, certified by the TCE. The compiler compiles itself to an identical binary. Free CLI. Ready today.",
   },
   {
     q: "What is PCD?",
-    a: "PCD (Printed Circuit Description) is a language-agnostic representation of computation \u2014 the \u201Cblueprint\u201D of your software. Like a circuit schematic describes an electronic circuit, PCD describes the mathematical essence of what your code computes, independent of which programming language it\u2019s written in. PCD programs are composed of formally verified operations (certified + extended) organized into families.",
+    a: "The programming language designed for AI. 64 certified operations. 64 extended. 128 total. Learn it in one prompt. PCD describes WHAT your code computes, not HOW. Language-agnostic. An AI writes PCD directly. Humans use the Lifter to convert existing code.",
   },
   {
-    q: "Is BRIK-64 a programming language?",
-    a: "PCD is a language, but BRIK-64 is more than that. It\u2019s a compiler, a lifter (reverse compiler), a certification engine, and a platform. You don\u2019t have to write PCD directly \u2014 you can lift existing code from multiple languages into PCD blueprints, then export to multiple targets.",
+    q: "Is BRIK64 a programming language?",
+    a: "PCD is a language, but BRIK64 is more than that. It\u2019s a compiler, a lifter (reverse compiler), a certification engine, and a platform. You don\u2019t have to write PCD directly \u2014 you can lift existing code from multiple languages into PCD blueprints, then export to multiple targets.",
   },
   {
     q: "What does \u03A6_c = 1 mean?",
@@ -34,11 +34,11 @@ const faqs = [
   },
   {
     q: "How is this different from testing?",
-    a: "Testing checks specific inputs and hopes the rest work. Dijkstra said it best: \u201CTesting shows the presence of bugs, never their absence.\u201D BRIK-64 provides formal mathematical proof of correctness \u2014 207 Coq proofs for the core monomers. When \u03A6_c = 1, correctness is proven for ALL inputs in the domain, not just the ones you tested.",
+    a: "Testing checks the cases you thought of. BRIK64 proves correctness for ALL inputs in the domain. 207 mathematical proofs back the core monomers. When \u03A6_c = 1, it's proven \u2014 not hoped. Not sampled. Proven.",
   },
   {
-    q: "Can I use BRIK-64 with my existing code?",
-    a: "Yes. The Lifter reverse-compiles existing code into PCD blueprints. Point it at any file, directory, or GitHub repository. It analyzes purity, extracts computational essence, and generates verified blueprints. Pure functions get full certification (\u03A6_c = 1); impure functions (I/O, network, state) get CONTRACT certification with documented side-effect boundaries.",
+    q: "Can I use BRIK64 with my existing code?",
+    a: "Already have code? Verify it. No rewrite needed. The Lifter reverse-compiles your existing code into PCD blueprints. Point it at any file or repo. Pure functions get full certification. Impure functions get CONTRACT certification. Works with your existing code today.",
   },
   {
     q: "What languages does it support?",
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "Free tier: CLI + SDKs, full monomer catalog, all export targets, 5 lifts/day, community support \u2014 $0 forever. Pro: $49/month for unlimited lifts, private registry, GitHub integration, team features. Enterprise: custom pricing for SSO, compliance, audit trails, on-premise, and dedicated support.",
+    a: "Free. The CLI, SDKs, full monomer catalog, all 14 export targets, 5 lifts/day \u2014 $0 forever. Pro adds unlimited lifts, private registry, GitHub integration. Enterprise adds SSO, compliance, on-premise. Start free. Scale when ready.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function FAQPage() {
               Frequently asked <span className="text-[#00b8d4]">questions.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Everything you need to know about BRIK-64, PCD, and Digital Circuitality.
+              Straight answers. No jargon.
             </p>
           </div>
         </section>

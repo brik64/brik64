@@ -56,11 +56,11 @@ export default function BlogPage() {
               BLOG
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-[#1A1817] sm:text-5xl">
-              Stories from the frontier
+              Engineering blog
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-[#322F2D]/60">
-              Thoughts on verification, composition, coherence, and the future
-              of software that works like hardware.
+              How we build. What we learn. Technical deep dives into verification,
+              transpilation, and the compiler that compiles itself.
             </p>
           </div>
         </section>

@@ -7,7 +7,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Science & Research — BRIK-64 Industries",
+  title: "Science & Research — BRIK64 Industries",
   description:
     "Algorithms you can cite. Results you can reproduce. Domain constraints for physical units, error propagation tracking, and reproducible computation.",
 };
@@ -23,7 +23,7 @@ const useCases = [
     icon: BarChart3,
     title: "Error Propagation Tracking",
     description:
-      "Every measurement carries uncertainty. BRIK-64 propagates error bounds through every composition — so your final result includes verified uncertainty ranges.",
+      "Every measurement carries uncertainty. BRIK64 propagates error bounds through every composition — so your final result includes verified uncertainty ranges.",
   },
   {
     icon: FlaskConical,
@@ -66,7 +66,7 @@ export default function ScienceIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Computational science has a reproducibility crisis. Code published alongside
-              papers is untested, platform-dependent, and fragile. BRIK-64 makes scientific
+              papers is untested, platform-dependent, and fragile. BRIK64 makes scientific
               computation formally verifiable.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -127,10 +127,10 @@ export default function ScienceIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Formally verified scientific computation
@@ -226,7 +226,7 @@ circuit particle_dynamics {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building verified research software
+              Start building &mdash; research software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Certify your research code. Publish reproducible algorithms. Make your

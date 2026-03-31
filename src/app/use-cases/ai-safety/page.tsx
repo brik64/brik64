@@ -7,7 +7,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "AI Safety: Guardrails That Can't Be Bypassed — BRIK-64",
+  title: "AI Safety: Guardrails That Can't Be Bypassed — BRIK64",
   description:
     "Policy circuits as mathematical guardrails for AI-generated code. Not alignment — verification. Works with Claude, Codex, Gemini, Grok.",
 };
@@ -57,7 +57,7 @@ const results = [
   },
   {
     title: "Works with Claude, Codex, Gemini, Grok",
-    desc: "Any AI agent that speaks MCP can connect to BRIK-64. The guardrails are external to the model — they can't be trained away.",
+    desc: "Any AI agent that speaks MCP can connect to BRIK64. The guardrails are external to the model — they can't be trained away.",
   },
   {
     title: "From software guardrails to hardware enforcement",
@@ -83,15 +83,15 @@ export default function AISafetyUseCasePage() {
               <span className="text-[#00b8d4]">Guardrails That Can&apos;t Be Bypassed</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              RLHF is a hope. Constitutional AI is a suggestion. Policy circuits are a mathematical proof.
-              BRIK-64 gives AI-generated code guarantees that no prompt injection can break.
+              RLHF is a hope. Constitutional AI is a suggestion. Policy circuits are math.
+              No prompt injection breaks math. Free CLI. Works with Claude, Codex, Gemini, Grok.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="/industries/ai"
@@ -226,7 +226,7 @@ PC ai_action_validator {
               Start building verified AI software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Connect your AI agent to BRIK-64. Every action verified. Every output certified.
+              Connect your AI agent to BRIK64. Every action verified. Every output certified.
               Every guardrail mathematically enforced.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
@@ -234,7 +234,7 @@ PC ai_action_validator {
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Start building <ArrowRight className="h-4 w-4" />
+                Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev/mcp"

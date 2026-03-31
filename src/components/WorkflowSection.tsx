@@ -19,7 +19,7 @@ const steps: Step[] = [
     label: "CONNECT",
     title: "Connect Your Repo",
     description:
-      "Link any GitHub repository. On every push, BRIK-64 auto-lifts your code into PCD blueprints.",
+      "Link any GitHub repository. On every push, BRIK64 auto-lifts your code into PCD blueprints.",
     bullets: [
       "GitHub App 1-click install",
       "Auto-lift on push",
@@ -84,7 +84,7 @@ export function WorkflowSection() {
         </p>
 
         <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-          Three steps to <span className="text-teal">verified software</span>.
+          Three commands. <span className="text-teal">Verified software.</span>
         </h3>
 
         <div className="mt-12 space-y-8">

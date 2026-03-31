@@ -109,14 +109,13 @@ export default function BlockchainPage() {
           </span>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Code is law.{" "}
-            <span className="text-teal">Make sure it&apos;s correct.</span>
+            Smart contracts can&apos;t be patched.{" "}
+            <span className="text-teal">So bugs can&apos;t compile.</span>
           </h1>
 
           <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed md:text-lg">
-            Smart contracts can&apos;t be patched after deployment. A single bug has
-            caused billions in losses. BRIK-64 is the only language where the
-            contract doesn&apos;t deploy if it has undefined behavior.
+            A single smart contract bug has caused billions in losses. You can&apos;t patch after deployment.
+            BRIK64 makes it simple: if the contract has undefined behavior, it doesn&apos;t compile. The bugs never ship.
           </p>
 
           <div className="relative z-10 mt-8 flex flex-wrap gap-3">
@@ -140,7 +139,7 @@ export default function BlockchainPage() {
             <div className="mt-3 space-y-2 text-sm">
               <p className="text-muted-foreground"><span className="text-muted-foreground/40">Solidity:</span> &ldquo;Hope the auditor finds the bugs&rdquo;</p>
               <p className="text-muted-foreground"><span className="text-muted-foreground/40">Rust/WASM:</span> &ldquo;Hope the tests cover the edge cases&rdquo;</p>
-              <p className="text-teal font-medium">BRIK-64: &ldquo;The bugs don&apos;t compile&rdquo;</p>
+              <p className="text-teal font-medium">BRIK64: &ldquo;The bugs don&apos;t compile&rdquo;</p>
             </div>
           </div>
         </section>

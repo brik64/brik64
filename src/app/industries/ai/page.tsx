@@ -7,7 +7,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "AI & Machine Learning — BRIK-64 Industries",
+  title: "AI & Machine Learning — BRIK64 Industries",
   description:
     "Verified AI. Not just aligned AI. Policy circuits as guardrails for AI-generated code, MCP integration, and vibe coding safety nets.",
 };
@@ -23,7 +23,7 @@ const useCases = [
     icon: Bot,
     title: "MCP Integration",
     description:
-      "Connect AI agents to the BRIK-64 registry via Model Context Protocol. Your agent queries 127,000+ certified circuits before generating new code.",
+      "Connect AI agents to the BRIK64 registry via Model Context Protocol. Your agent queries 127,000+ certified circuits before generating new code.",
   },
   {
     icon: Lock,
@@ -35,13 +35,13 @@ const useCases = [
     icon: Zap,
     title: "Vibe Coding Safety Net",
     description:
-      "AI writes 70% of new code. Who verifies it? BRIK-64 catches what code review misses — mathematically, not statistically.",
+      "AI writes 70% of new code. Who verifies it? BRIK64 catches what code review misses — mathematically, not statistically.",
   },
 ];
 
 const standards = [
   "No formal AI code safety standards exist yet",
-  "BRIK-64 Policy Circuits fill the vacuum",
+  "BRIK64 Policy Circuits fill the vacuum",
   "Generates evidence aligned with NIST AI RMF",
   "Supports EU AI Act compliance workflows",
   "SOC2 audit trail for AI-generated code",
@@ -65,7 +65,7 @@ export default function AIIndustryPage() {
               <span className="text-[#00b8d4]">Not just aligned AI.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Alignment is a hope. Verification is a proof. BRIK-64 gives AI-generated code
+              Alignment is a hope. Verification is a proof. BRIK64 gives AI-generated code
               mathematical verification — not probabilistic guesses.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -126,10 +126,10 @@ export default function AIIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical guardrails for AI agents
@@ -210,10 +210,10 @@ circuit ai_action_validator {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              No formal standard exists — BRIK-64 <em>is</em> the standard
+              No formal standard exists — BRIK64 <em>is</em> the standard
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              The AI safety industry talks about alignment. BRIK-64 delivers verification.
+              The AI safety industry talks about alignment. BRIK64 delivers verification.
               Policy circuits are an enforceable, circuit-based framework for
               constraining AI-generated code.
             </p>
@@ -230,10 +230,10 @@ circuit ai_action_validator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building verified AI software
+              Start building &mdash; AI software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Connect your AI agent to BRIK-64. Every action verified. Every output certified.
+              Connect your AI agent to BRIK64. Every action verified. Every output certified.
               Every guardrail mathematically enforced.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">

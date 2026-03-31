@@ -7,9 +7,9 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Healthcare — BRIK-64 Industries",
+  title: "Healthcare — BRIK64 Industries",
   description:
-    "Patient safety. Provably. Drug dosage calculation, diagnostic algorithm certification, and medical device software verification with BRIK-64.",
+    "Patient safety. Provably. Drug dosage calculation, diagnostic algorithm certification, and medical device software verification with BRIK64.",
 };
 
 const useCases = [
@@ -35,7 +35,7 @@ const useCases = [
     icon: MonitorSmartphone,
     title: "Medical Device Software",
     description:
-      "IEC 62304 requires risk-based software classification. BRIK-64 accelerates Class C evidence collection — circuit proofs support the highest safety classification workflows.",
+      "IEC 62304 requires risk-based software classification. BRIK64 accelerates Class C evidence collection — circuit proofs support the highest safety classification workflows.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function HealthcareIndustryPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Medical device software has lives at stake. IEC 62304 compliance is complex and
-              expensive. BRIK-64 provides mathematical verification that every calculation,
+              expensive. BRIK64 provides mathematical verification that every calculation,
               every data path, and every decision is correct.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
@@ -128,10 +128,10 @@ export default function HealthcareIndustryPage() {
             </div>
           </section>
 
-          {/* ── How BRIK-64 Helps ── */}
+          {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
             <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK-64 Helps
+              How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Mathematical proof for patient safety
@@ -235,7 +235,7 @@ circuit dosage_calculator {
               ))}
             </ul>
             <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
-              BRIK-64 generates verification evidence for processing logic and change control.
+              BRIK64 generates verification evidence for processing logic and change control.
               Infrastructure, organizational, and procedural controls require separate evidence.
             </p>
           </section>
@@ -243,7 +243,7 @@ circuit dosage_calculator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building verified healthcare software
+              Start building &mdash; healthcare software
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
               Build verified healthcare software. Every dosage proven. Every data path

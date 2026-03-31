@@ -26,14 +26,14 @@ const HeroWireframe = dynamic(
 /* ── Monomer families ── */
 
 const coreFamilies = [
-  { family: "Arithmetic", ops: "8 operations for integer math", proof: "Coq" },
-  { family: "Logic", ops: "8 operations for bitwise logic", proof: "Coq" },
-  { family: "Memory", ops: "8 operations for memory management", proof: "Coq" },
-  { family: "Control", ops: "8 operations for control flow", proof: "Coq" },
-  { family: "I/O", ops: "8 operations for input/output", proof: "Coq" },
-  { family: "String", ops: "8 operations for string processing", proof: "Coq" },
-  { family: "Crypto", ops: "8 operations for cryptography", proof: "Coq" },
-  { family: "System", ops: "8 operations for system calls", proof: "Coq" },
+  { family: "Arithmetic", ops: "8 operations for integer math", proof: "Certified" },
+  { family: "Logic", ops: "8 operations for bitwise logic", proof: "Certified" },
+  { family: "Memory", ops: "8 operations for memory management", proof: "Certified" },
+  { family: "Control", ops: "8 operations for control flow", proof: "Certified" },
+  { family: "I/O", ops: "8 operations for input/output", proof: "Certified" },
+  { family: "String", ops: "8 operations for string processing", proof: "Certified" },
+  { family: "Crypto", ops: "8 operations for cryptography", proof: "Certified" },
+  { family: "System", ops: "8 operations for system calls", proof: "Certified" },
 ];
 
 const extendedFamilies = [
@@ -109,7 +109,7 @@ const evaOps = [
 
 const keyProps = [
   { icon: <FileCode className="h-5 w-5 text-teal" />, title: "AI-native language", desc: "128 operations total. An LLM memorizes the entire language in one prompt. No documentation rabbit holes. No ambiguity. No undocumented behavior." },
-  { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verified operations", desc: "Every PCD program is built from formally verified operations. Core proven in Coq, plus contract-based extended set." },
+  { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verified operations", desc: "Every PCD program is built from formally verified operations. Core mathematically certified, plus contract-based extended set." },
   { icon: <Zap className="h-5 w-5 text-teal" />, title: "Verified by design", desc: "If the blueprint doesn\u2019t close as a circuit (\u03a6_c \u2260 1), it simply won\u2019t compile. The math is the guarantee." },
   { icon: <Layers className="h-5 w-5 text-teal" />, title: "Multi-target", desc: "Compile to Rust, JavaScript, Python, C, C++, Go, COBOL, and more." },
   { icon: <Code className="h-5 w-5 text-teal" />, title: "Self-compiling", desc: "The brikc compiler compiles itself producing an identical hash. The fixpoint is the proof." },
@@ -132,16 +132,14 @@ export default function PCDPage() {
               PCD &mdash; Printed Circuit Description
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The programming language <span className="text-[#00b8d4]">created for AI agents.</span>
+              This is PCD. <span className="text-[#00b8d4]">The language designed for AI.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              128 operations. Domain constraints on every input. Deterministic by construction.
-              An AI agent learns the entire language in one prompt. Humans write JavaScript, Python, or Rust &mdash; the Lifter converts it.
-              AIs write PCD directly. <PhiC /> = 1 means every path is verified.
+              64 certified operations. 64 extended. Learn it in one prompt. An AI writes PCD directly.
+              Humans use the Lifter. <PhiC /> = 1 means every path is verified. 14 export targets. Free. Ready today.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm italic text-muted-foreground">
-              &ldquo;PCD is to code what architectural blueprints are to buildings.
-              You describe once. You build in any material.&rdquo;
+              &ldquo;Describe once. Build in any material.&rdquo;
             </p>
           </div>
         </section>
@@ -289,7 +287,7 @@ input time     : Float64[1.0 .. 86400.0] // seconds — never zero`}</CopyableCo
             The complete operation catalog
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            64 formally verified atomic operations (Core, Coq-proven) + 64 bounds-checked extended operations (CONTRACT).
+            64 formally verified atomic operations (Core, mathematically certified) + 64 bounds-checked extended operations (CONTRACT).
             Every monomer has a declared domain, range, postconditions, and termination guarantee.
           </p>
 
@@ -352,7 +350,7 @@ input time     : Float64[1.0 .. 86400.0] // seconds — never zero`}</CopyableCo
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Correctness preserved by composition. Proven in Coq. <PhiC /> = 1 for the entire composition if all
+            Correctness preserved by composition. Mathematically certified. <PhiC /> = 1 for the entire composition if all
             constituent monomers are Core.
           </p>
         </section>
@@ -360,7 +358,7 @@ input time     : Float64[1.0 .. 86400.0] // seconds — never zero`}</CopyableCo
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            One blueprint. Any material.
+            Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             PCD describes WHAT your program computes &mdash; not HOW. Language-agnostic. Mathematically verifiable.
