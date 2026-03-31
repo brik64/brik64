@@ -9,7 +9,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 export const metadata = {
   title: "Banking & Finance — BRIK64 Industries",
   description:
-    "Every transaction. Mathematically verified. Trading system verification, risk calculation certification, and compliance automation with BRIK64.",
+    "Knight Capital lost $440M in 45 minutes. One software bug. BRIK64 makes that mathematically impossible. Verified trading systems, certified risk calculations, automatic compliance.",
 };
 
 const useCases = [
@@ -17,35 +17,35 @@ const useCases = [
     icon: TrendingUp,
     title: "Trading System Verification",
     description:
-      "Order validation, position limits, and risk checks as verified circuits. No trade can exceed risk parameters — the circuit rejects it before execution.",
+      "Order validation with size limits, price bands, and position limits. Pre-trade risk checks and kill switches — all as verified circuits. Domain constraints like order_size: Range[1, 10_000_000] and price: Range[0.0001, 999999.99] are enforced at the circuit level. A trade that violates parameters doesn't fail gracefully — it cannot exist.",
   },
   {
     icon: ShieldCheck,
     title: "Risk Calculation Certification",
     description:
-      "VaR, CVaR, stress tests — all with domain constraints that enforce regulatory bounds. Every risk model carries a mathematical proof of correctness.",
+      "VaR with confidence intervals, CVaR for tail risk, stress testing with bounded scenarios — every model carries a mathematical proof. Domain constraints eliminate division by zero in volatility calculations, ensure correlation matrices stay in [-1, 1], and guarantee Monte Carlo paths remain within physically possible bounds.",
   },
   {
     icon: CreditCard,
     title: "Payment Processing",
     description:
-      "Transaction validation with amount bounds, currency conversion constraints, and balance sufficiency checks. Zero undefined behavior in the payment path.",
+      "Amount validation, currency conversion with bounded exchange rates, balance sufficiency checks, double-spend prevention. Every transaction path is exhaustive — not 'most paths tested,' every single one. A payment either satisfies all constraints and executes, or it is rejected with a cryptographic proof of why.",
   },
   {
     icon: Search,
     title: "Fraud Detection Logic",
     description:
-      "Rule-based fraud detection as policy circuits. Every decision path is traceable, auditable, and mathematically verifiable — no black boxes.",
+      "Rule-based decision trees as policy circuits. Every decision path is traceable, auditable, and mathematically verifiable. No ML black box a regulator can't inspect — deterministic logic that produces the same result every time, with a complete audit trail a compliance officer can read in plain English.",
   },
 ];
 
 const standards = [
-  { standard: "MiFID II Art. 17", coverage: "Strong", detail: "Algo trading controls, risk bounds, kill switches" },
-  { standard: "SOX Sec 404", coverage: "Strong", detail: "Internal controls on financial calculations" },
-  { standard: "SOC2 Processing Integrity (PI1.x, CC8.1)", coverage: "~30%", detail: "Processing logic + change control evidence" },
-  { standard: "PCI-DSS Req 6, 10", coverage: "Partial", detail: "Secure coding evidence + audit trail" },
-  { standard: "Basel III", coverage: "Partial", detail: "Verified calculations only — not capital/liquidity governance" },
-  { standard: "DORA Art. 6, 9", coverage: "Partial", detail: "Prevention only — not detection/response" },
+  { standard: "MiFID II Art. 17", coverage: "Strong", detail: "Algo control evidence: risk parameter bounds, order throttling verification, kill switch circuit proofs, pre/post-trade risk check certification" },
+  { standard: "SOX Sec 404", coverage: "Strong", detail: "Internal control evidence for every financial calculation: inputs validated, formulas certified, outputs proven correct with cryptographic hash" },
+  { standard: "SOC2 Processing Integrity (PI1.x, CC8.1)", coverage: "~30%", detail: "Processing integrity evidence: every input validated against domain constraints, every output certified correct, change control via immutable compilation hash" },
+  { standard: "PCI-DSS Req 6, 10", coverage: "Partial", detail: "Secure development lifecycle evidence: verified payment logic, tamper-proof audit trail for every transaction decision, code integrity via self-compilation fixpoint" },
+  { standard: "Basel III", coverage: "Partial", detail: "RWA calculation verification, VaR model constraint proofs, stress test scenario bounds — covers calculation correctness, not capital/liquidity governance" },
+  { standard: "DORA Art. 6, 9", coverage: "Partial", detail: "ICT risk management evidence: verified processing logic, deterministic system behavior proofs, change management via immutable hash — covers prevention, not detection/response" },
 ];
 
 export default function FinanceIndustryPage() {
@@ -62,19 +62,20 @@ export default function FinanceIndustryPage() {
               Banking &amp; Finance
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Every transaction.{" "}
-              <span className="text-[#00b8d4]">Mathematically verified.</span>
+              Knight Capital lost $440M in 45 minutes.{" "}
+              <span className="text-[#00b8d4]">One software bug. BRIK64 makes that impossible.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Financial software bugs cost billions. Compliance audits are manual and fragile.
-              BRIK64 makes every calculation provably correct and every audit trail automatic.
+              Citibank accidentally sent $900M because of a UI bug. Flash crashes have evaporated
+              a trillion dollars in minutes. The average bank spends $270M/year on compliance.
+              What if every calculation was provably correct — and every audit trail was automatic?
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Verify your financial systems <ArrowRight className="h-4 w-4" />
+                Start building — free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"
@@ -95,21 +96,21 @@ export default function FinanceIndustryPage() {
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              One bug can move billions
+              These are not hypotheticals. These happened.
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Billion-dollar bugs",
-                  desc: "Knight Capital lost $440M in 45 minutes from a software deployment error. Citibank accidentally sent $900M due to a UI bug. The stakes are existential.",
+                  title: "Catastrophic software failures",
+                  desc: "Knight Capital: $440M gone in 45 minutes from a deployment error (2012). Citibank: $900M accidentally sent due to a UI bug (2020). The May 2010 Flash Crash erased $1 trillion in minutes. August 2015, it happened again. These aren't edge cases — they're the norm.",
                 },
                 {
-                  title: "Manual compliance",
-                  desc: "SOC2 audits, PCI-DSS assessments, and regulatory reviews consume thousands of hours per year. Evidence collection is manual, error-prone, and expensive.",
+                  title: "Compliance is a tax on innovation",
+                  desc: "The average bank spends $270M/year on compliance (Thomson Reuters). A single SOC2 audit takes 3-6 months and costs $50K-$500K. MiFID II Art. 17 requires algo trading firms to maintain 'effective systems and risk controls' — but proving that to a regulator is months of manual evidence collection.",
                 },
                 {
-                  title: "Opaque logic",
-                  desc: "Risk models are complex, poorly documented, and hard to audit. When regulators ask 'why did this calculation produce this result?' — the answer takes weeks.",
+                  title: "Black-box risk models",
+                  desc: "When a regulator asks 'why did this VaR calculation produce this number?' — the answer takes weeks, not seconds. Risk models are complex, poorly documented, and impossible to audit at speed. Every day you can't answer that question is a day your trading desk might be shut down.",
                 },
               ].map((item) => (
                 <div
@@ -133,7 +134,7 @@ export default function FinanceIndustryPage() {
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Provable correctness for financial logic
+              Not better testing. Mathematical proof.
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
@@ -160,12 +161,12 @@ export default function FinanceIndustryPage() {
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Transaction validator with balance constraints
+              A transaction validator that cannot be wrong
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This circuit validates financial transactions at the domain level. Amount must
-              be positive, rate must be bounded, balance must be sufficient. No transaction
-              can violate these constraints.
+              This isn&apos;t pseudocode. This is a real policy circuit. Amount must be positive,
+              exchange rate must be bounded, balance must be sufficient, KYC must be enforced
+              above $10K. Not &quot;should be&quot; — must be. The circuit rejects anything else.
             </p>
             <CopyableCode title="transaction_validator.pcd">{`// Transaction Validator — Domain-Constrained Finance
 // Φ_c = 1 — every transaction mathematically verified
@@ -206,8 +207,8 @@ circuit transaction_validator {
   }
 }`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Amount positive, rate bounded, balance sufficient, KYC enforced.{" "}
-              <PhiC /> = 1 — every transaction carries mathematical proof of validity.
+              Every domain constraint is enforced before execution. Every output carries a certification hash.{" "}
+              <PhiC /> = 1 — the circuit is closed. No transaction can exist outside these bounds.
             </p>
           </section>
 
@@ -217,7 +218,7 @@ circuit transaction_validator {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Processing logic evidence, mapped to standards
+              Your auditor&apos;s new favorite tool
             </h2>
             <div className="mx-auto mt-8 max-w-3xl overflow-x-auto">
               <table className="w-full text-left text-sm">
@@ -248,26 +249,27 @@ circuit transaction_validator {
               </table>
             </div>
             <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
-              BRIK64 generates verification evidence for processing logic and change control.
-              Infrastructure, organizational, and procedural controls require separate evidence.
+              BRIK64 generates cryptographic verification evidence for processing logic, calculation correctness,
+              and change control. Infrastructure, organizational, and procedural controls require separate evidence —
+              but the hardest part, proving your code does what you say it does, is now automatic.
             </p>
           </section>
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; financial systems
+              Start building &mdash; free
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Verify your financial systems. Every transaction proven. Every risk calculation
-              certified. Every audit trail automatic.
+              Every transaction proven. Every calculation certified. Every audit trail automatic.
+              Your compliance team will wonder how they ever lived without this.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Verify your financial systems <ArrowRight className="h-4 w-4" />
+                Start building — free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"

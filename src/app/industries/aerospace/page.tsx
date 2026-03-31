@@ -9,7 +9,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 export const metadata = {
   title: "Aerospace & Defense — BRIK64 Industries",
   description:
-    "When failure is not an option. DO-178C compliance, flight control verification, and mission-critical certification with BRIK64.",
+    "When a line of code controls a $150M aircraft carrying 300 people, 'tests pass' is not enough. DO-178C certification with BRIK64.",
 };
 
 const useCases = [
@@ -17,34 +17,33 @@ const useCases = [
     icon: Plane,
     title: "Flight Control Verification",
     description:
-      "Every flight control law as a verified circuit. Pitch, roll, yaw — domain-bounded to physical limits. The autopilot cannot command what physics forbids.",
+      "Pitch, roll, yaw — every flight control law bounded to the physical envelope. Stall speed at 1G, Vne at altitude, G-limits from +2.5 to -1.0. Domain constraints map directly to flight parameters: airspeed in knots, bank angle in degrees, angle of attack in real units. The autopilot literally cannot command what the airframe cannot survive.",
   },
   {
     icon: Radar,
     title: "Sensor Fusion Certification",
     description:
-      "GPS, IMU, altimeter, airspeed — each sensor has error bounds. BRIK64 propagates uncertainty through fusion algorithms and certifies the combined output.",
+      "GPS accuracy ±3 meters. IMU drift accumulates at 0.01°/hr. Barometric altimeter precision ±30 feet. Pitot-static airspeed error ±5 knots. Every sensor carries error bounds. BRIK64 propagates that uncertainty mathematically through every fusion algorithm — so the combined output carries a certified confidence interval, not a hope.",
   },
   {
     icon: Navigation,
     title: "Mission Planning",
     description:
-      "Waypoint calculations, fuel consumption models, and abort criteria — all formally verified. No mission plan can violate fuel reserves or flight envelope constraints.",
+      "Fuel burn = specific fuel consumption × time × thrust setting. Waypoint distance via Vincenty geodesic, not flat-earth math. Alternate airport fuel reserves calculated to FAR 91.167 minimums. Abort criteria formally verified against remaining fuel, distance to divert, and wind component. No mission plan can violate reserves — the math won't let it.",
   },
   {
     icon: Cpu,
     title: "Avionics Software",
     description:
-      "DO-178C requires evidence of correctness at every Design Assurance Level. BRIK64 generates DO-178C verification artifacts from the formal proof.",
+      "DO-178C demands five lifecycle processes: Requirements, Design, Code, Verification, and Configuration Management. Each produces dozens of artifacts — traceability matrices, test procedures, coverage analysis, problem reports. BRIK64 generates the Verification artifacts automatically from the formal proof. What used to take a team of 12 engineers six months now takes minutes.",
   },
 ];
 
 const standards = [
-  "Generates DO-178C verification artifacts (Level A through E)",
-  "AS9100 — Quality Management Systems for Aviation, Space, and Defense",
-  "ITAR — International Traffic in Arms Regulations compliance",
-  "DO-254 — Design Assurance Guidance for Airborne Electronic Hardware",
-  "MIL-STD-882 — System Safety Engineering",
+  "DO-178C — Software lifecycle with 5 Design Assurance Levels (A through E). Level A: catastrophic failure condition. BRIK64 generates Level A evidence: requirements traceability, structural coverage (MC/DC), and formal verification artifacts.",
+  "DO-254 — Design assurance for airborne electronic hardware. BRIK64's hardware roadmap (the BPU coprocessor) maps directly to DO-254 — 64 verified logic units in silicon, with certification evidence built into the architecture.",
+  "AS9100 — Quality management for aviation, space, and defense. Requires end-to-end traceability from requirements to verified code. Every BRIK64 circuit carries that traceability by construction — not by process.",
+  "MIL-STD-882 — System safety standard requiring hazard analysis and risk assessment. BRIK64 circuits encode mitigations as mathematical constraints. Hazards don't get documented and forgotten — they get verified and enforced.",
 ];
 
 export default function AerospaceIndustryPage() {
@@ -61,13 +60,14 @@ export default function AerospaceIndustryPage() {
               Aerospace &amp; Defense
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              When failure is{" "}
-              <span className="text-[#00b8d4]">not an option.</span>
+              When a line of code controls a $150M aircraft carrying 300 people,{" "}
+              <span className="text-[#00b8d4]">&lsquo;tests pass&rsquo; is not enough.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              DO-178C compliance is expensive, manual, and slow. Software certification
-              takes years. BRIK64 accelerates evidence generation — so your team focuses on the
-              mission, not the paperwork.
+              DO-178C Level A certification costs $100M+ per aircraft program and takes 3-5 years.
+              A single software change can trigger 6 months of re-certification. The Boeing 787 has
+              6.5 million lines of code. The Airbus A350 has over 100 million. Each line needs traceability.
+              BRIK64 generates that traceability automatically.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -95,21 +95,21 @@ export default function AerospaceIndustryPage() {
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Certification costs more than development
+              Certification costs more than the software itself
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Years of documentation",
-                  desc: "DO-178C Level A requires complete traceability from requirements to code. Manual processes create multi-year certification timelines.",
+                  title: "3-5 years per program",
+                  desc: "DO-178C Level A requires complete traceability from every requirement to every line of code, plus MC/DC structural coverage. The Airbus A350 has 100M+ lines. Every single one needs a traced path from requirement to test to verification. Manual processes turn this into multi-year timelines.",
                 },
                 {
-                  title: "$100M+ per program",
-                  desc: "Software certification accounts for up to 50% of total avionics development cost. Every change triggers re-verification.",
+                  title: "$100M+ and climbing",
+                  desc: "Software certification accounts for up to 50% of total avionics development cost. Worse: a single software change — one bug fix, one parameter update — can trigger 6 months and millions in re-verification. Teams freeze code not because it's done, but because they can't afford to change it.",
                 },
                 {
-                  title: "Human bottleneck",
-                  desc: "Designated Engineering Representatives (DERs) review every artifact. Their bandwidth limits how fast programs can certify.",
+                  title: "~2,000 DERs for the entire US",
+                  desc: "Designated Engineering Representatives are the FAA's bottleneck. There are roughly 2,000 DERs in the entire United States, and every certification artifact must pass through their review. Their bandwidth — not your engineering team's — determines how fast your program certifies.",
                 },
               ].map((item) => (
                 <div
@@ -133,7 +133,7 @@ export default function AerospaceIndustryPage() {
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Automated certification evidence
+              Certification evidence generated, not written
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
@@ -160,12 +160,12 @@ export default function AerospaceIndustryPage() {
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Flight computer with envelope constraints
+              A flight computer that cannot exceed its envelope
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This circuit enforces the aircraft flight envelope. Speed, altitude, fuel —
-              every parameter is bounded. The flight computer cannot command states outside
-              the certified envelope.
+              This is not a simulation. This is a circuit with physical constraints baked into the type system.
+              Speed between stall and Vne. AoA below critical alpha. Fuel above bingo. Bank angle within structural G-limits.
+              The flight computer does not check these limits — it is incapable of violating them.
             </p>
             <CopyableCode title="flight_computer.pcd">{`// Flight Computer — Envelope-Constrained
 // Φ_c = 1 — DO-178C Level A certification evidence
@@ -208,8 +208,8 @@ circuit flight_envelope {
   }
 }`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Speed between stall and Vne. Altitude within service ceiling. Fuel above bingo.{" "}
-              <PhiC /> = 1 — the flight computer is mathematically constrained to the certified envelope.
+              Every parameter carries physical units and hard limits. Airspeed: 60-340 knots. AoA: -5 to 18 degrees. Fuel: 0-48,000 lbs.{" "}
+              <PhiC /> = 1 — the flight computer is mathematically constrained to the certified envelope. Not by convention. By construction.
             </p>
           </section>
 
@@ -219,7 +219,7 @@ circuit flight_envelope {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Certification evidence by construction
+              Every standard. Every artifact. By construction.
             </h2>
             <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
@@ -237,8 +237,9 @@ circuit flight_envelope {
               Start building &mdash; free
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Reduce evidence generation timelines, accelerating the certification process. Every requirement traced.
-              Every test generated. Every proof automated.
+              Your next certification cycle just got 10x faster. Every requirement traced.
+              Every test generated. Every proof automated. From code to DO-178C Level A evidence
+              in minutes, not months.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a

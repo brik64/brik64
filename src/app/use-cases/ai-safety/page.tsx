@@ -7,61 +7,61 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "AI Safety: Guardrails That Can't Be Bypassed — BRIK64",
+  title: "AI Safety: Guardrails Built from Math, Not Hope — BRIK64",
   description:
-    "Policy circuits as mathematical guardrails for AI-generated code. Not alignment — verification. Works with Claude, Codex, Gemini, Grok.",
+    "Policy circuits are mathematical constraints that no prompt injection can bypass. Not alignment training — algebraic verification. External to the model. Works with Claude, Codex, Gemini, Grok.",
 };
 
 const painPoints = [
   {
-    title: "AI generates code with no guarantees",
-    desc: "Large language models produce code that compiles, passes tests, and looks correct — but has zero mathematical proof of correctness. You're trusting vibes, not verification.",
+    title: "AI generates code that looks correct. That\u2019s the danger.",
+    desc: "GPT-4, Claude, Gemini \u2014 they all produce code that compiles, passes the tests you wrote, and reads like a senior engineer wrote it. But \u2018looks correct\u2019 is not \u2018is correct.\u2019 There is zero mathematical proof behind any line of AI-generated code. You\u2019re deploying to production on vibes. Every company using Copilot right now is running unverified code in production. Every single one.",
   },
   {
-    title: "RLHF and Constitutional AI are bypassable",
-    desc: "Current AI safety approaches are software guardrails trained into the model. They can be jailbroken, prompt-injected, or simply ignored by fine-tuned variants. Software guardrails are suggestions, not laws.",
+    title: "RLHF is a prayer. Constitutional AI is a suggestion.",
+    desc: "Every current AI safety approach works by training the model to \u2018want\u2019 to be safe. RLHF, Constitutional AI, system prompts \u2014 these are software guardrails embedded inside the model. They can be jailbroken with a clever prompt. They can be bypassed by fine-tuning. They can be ignored by open-weight variants. You\u2019re trusting the wolf to guard the sheep because you asked it nicely. Education fails. Math does not.",
   },
   {
-    title: "No formal way to certify AI-generated code",
-    desc: "There is no standard, no framework, and no tool that can take AI-generated code and produce a mathematical certificate of correctness. Until now.",
+    title: "There is no standard for certifying AI-generated code",
+    desc: "Ask any enterprise: \u2018How do you verify AI-generated code?\u2019 The answer is code review. A human reads what the machine wrote and hopes they catch the bugs. There is no framework, no tool, no ISO standard for producing a mathematical certificate that AI output is correct. The industry is flying blind. The first company to solve this wins the entire market.",
   },
 ];
 
 const steps = [
   {
     step: "01",
-    title: "Define Policy Circuits",
-    desc: "Write domain constraints as PCD programs. Each circuit defines the mathematical boundaries of what an AI agent can produce.",
+    title: "Define Policy Circuits \u2014 the mathematical boundaries",
+    desc: "Write constraints as PCD programs. domain confidence: Range[0.0, 1.0]. domain action_risk: Range[0, 10]. domain token_count: Range[0, 4096]. Each policy circuit defines a closed mathematical space. If the AI\u2019s output falls inside the space, it\u2019s allowed. If it falls outside, it\u2019s blocked. Not by a filter. By algebra.",
   },
   {
     step: "02",
-    title: "AI generates, brikc certifies",
-    desc: "The AI agent generates code. brikc lifts it to PCD and checks circuit closure. If \u03A6_c = 1, the code is certified. If not, it's rejected — before execution, not after damage.",
+    title: "AI generates. The compiler judges.",
+    desc: "The AI agent writes code. brikc lifts it to PCD and runs circuit closure analysis. If \u03A6_c = 1 \u2014 every input consumed, every output produced, every domain constraint satisfied \u2014 the code is certified. If not, it\u2019s rejected with a precise diagnostic. Before execution. Before deployment. Before damage. The AI gets the error message as its next prompt and tries again. Iterate until the math says yes.",
   },
   {
     step: "03",
-    title: "MCP integration",
-    desc: "Connect any AI agent via Model Context Protocol. The agent compiles and certifies in the same flow — Claude, Codex, Gemini, Grok, any MCP-compatible agent.",
+    title: "MCP integration \u2014 works with every major AI agent",
+    desc: "Two MCP tools: brik64.discover (search the registry) and brik64.execute (compile and certify). Any agent that speaks Model Context Protocol connects in one function call. Claude, Codex, Gemini, Grok, Llama, Mistral \u2014 the guardrails are external to the model. They can\u2019t be fine-tuned away. They can\u2019t be prompt-injected. The verification lives outside the AI.",
   },
   {
     step: "04",
-    title: "BPU roadmap: hardware enforcement",
-    desc: "The BPU coprocessor physically blocks uncertified code from executing. Software guardrails become hardware laws. No jailbreak possible when the silicon says no.",
+    title: "BPU roadmap \u2014 when software guardrails become silicon laws",
+    desc: "Phase 1 is now: compiler-level verification. Phase 2 is the BPU coprocessor \u2014 64 monomer units in silicon, an EVA Router, and a TCE Unit that physically blocks uncertified code from executing. A non-maskable hardware BLOCK signal. No driver override. No kernel bypass. No jailbreak. When the silicon says no, the code does not run. Like ABS for cars: today voluntary, tomorrow mandatory.",
   },
 ];
 
 const results = [
   {
-    title: "The math is the trust",
-    desc: "No probabilistic alignment. No hope-based safety. Circuit closure is a mathematical proof — it either holds or it doesn't.",
+    title: "The math is the trust \u2014 not the model",
+    desc: "No probabilistic alignment. No reward hacking. No hope-based safety. \u03A6_c = 1 is a binary mathematical property. The circuit is closed or it isn\u2019t. The proof holds or it doesn\u2019t. There is no \u2018mostly safe.\u2019 There is no \u201895% aligned.\u2019 The math doesn\u2019t care what the model intended. It only cares what the code does.",
   },
   {
-    title: "Works with Claude, Codex, Gemini, Grok",
-    desc: "Any AI agent that speaks MCP can connect to BRIK64. The guardrails are external to the model — they can't be trained away.",
+    title: "Model-agnostic \u2014 works with every LLM, today and tomorrow",
+    desc: "Claude, GPT, Gemini, Grok, Llama, Mistral, and every model that will exist next year. The guardrails are external to the model architecture. They verify outputs, not intentions. When a better model ships, the policy circuits don\u2019t change. When an open-weight model removes safety training, the policy circuits still hold. The verification is permanent.",
   },
   {
-    title: "From software guardrails to hardware enforcement",
-    desc: "Today: compiler-level verification. Tomorrow: the BPU coprocessor enforces policy circuits in silicon. Unstoppable safety.",
+    title: "From compiler verification to hardware enforcement",
+    desc: "Today: every AI output runs through the compiler\u2019s closure analysis. Uncertified code is rejected. Tomorrow: the BPU coprocessor enforces policy circuits in silicon \u2014 a hardware BLOCK signal that cannot be overridden by software. RLHF teaches AI to want to do right. The BPU prevents it from doing wrong. Education fails. Physics does not.",
   },
 ];
 
@@ -80,11 +80,11 @@ export default function AISafetyUseCasePage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               AI Safety:{" "}
-              <span className="text-[#00b8d4]">Guardrails That Can&apos;t Be Bypassed</span>
+              <span className="text-[#00b8d4]">Guardrails Built from Math, Not Hope</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              RLHF is a hope. Constitutional AI is a suggestion. Policy circuits are math.
-              No prompt injection breaks math. Free CLI. Works with Claude, Codex, Gemini, Grok.
+              RLHF teaches AI to want to be safe. Policy circuits make unsafe output mathematically impossible.
+              No prompt injection bypasses algebra. No jailbreak rewrites a theorem. External to the model. Works with Claude, Codex, Gemini, Grok, and every LLM that will ever exist.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -110,7 +110,7 @@ export default function AISafetyUseCasePage() {
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              AI-generated code is unverified by default
+              Every company using AI-generated code is flying blind
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {painPoints.map((item) => (
@@ -135,7 +135,7 @@ export default function AISafetyUseCasePage() {
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Policy circuits — mathematical guardrails for AI agents
+              Policy circuits \u2014 guardrails that live outside the model
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
@@ -171,12 +171,12 @@ $ brikc certify ai_output.pcd --emit badge
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              AI action validator — constrain what agents can do
+              A policy circuit that constrains what any AI agent can do
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This policy circuit defines hard mathematical boundaries for AI agent actions.
-              If the action falls outside the verified domain, the circuit rejects it — before
-              execution, not after damage.
+              This is a real policy circuit. Three domain constraints define the entire
+              mathematical space of allowed AI actions. Confidence below 0.9 on a high-risk action? Blocked.
+              Output exceeds 4096 tokens? Blocked. Not by a filter. By algebra. The circuit is closed \u2014 there is no path through it that produces an unsafe action.
             </p>
             <CopyableCode title="ai_action_validator.pcd">{`// Policy Circuit: AI Action Validator
 // Φ_c = 1 — closed circuit, no undefined behavior
@@ -204,7 +204,7 @@ PC ai_action_validator {
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              What you get
+              What changes when math replaces hope
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
@@ -223,11 +223,10 @@ PC ai_action_validator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building verified AI software
+              Make your AI provably safe. Not hopefully safe.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Connect your AI agent to BRIK64. Every action verified. Every output certified.
-              Every guardrail mathematically enforced.
+              Connect your AI agent via MCP. Define policy circuits. Every action verified before execution. Every output certified with an immutable hash. Every guardrail enforced by algebra, not by asking the model to behave.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a

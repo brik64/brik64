@@ -7,44 +7,44 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 
 export const metadata = {
-  title: "Engineering — BRIK64 Industries",
+  title: "Engineering & Infrastructure — BRIK64 Industries",
   description:
-    "Certified components. Verified compositions. Structural analysis verification, control systems, and simulation certification with BRIK64.",
+    "Bridges have load calculations. Buildings have structural analysis. Software has hope. BRIK64 brings mathematical verification to SCADA, PLC, and industrial control systems.",
 };
 
 const useCases = [
   {
     icon: Wrench,
-    title: "Structural Analysis Verification",
+    title: "PLC Logic Verification",
     description:
-      "Stress calculations, load analysis, and material fatigue models — all with domain constraints that enforce safety factors. The compiler rejects designs that exceed material limits.",
+      "Every PLC program in every factory, power plant, and water treatment facility is a control loop running without formal proof. BRIK64 lifts ladder logic and structured text to PCD circuits — and the compiler proves your safety interlocks actually interlock.",
   },
   {
     icon: Activity,
-    title: "Control Systems Certification",
+    title: "SCADA Protocol Validation",
     description:
-      "PID controllers, feedback loops, and state machines formally verified. Every control path is bounded, every transition is proven, every output is constrained.",
+      "Modbus, DNP3, IEC 61850 — industrial protocols that control the power grid, water supply, and gas pipelines. BRIK64 verifies that every protocol handler stays within domain bounds. A pressure reading outside physical limits doesn't just trigger an alarm — it cannot exist.",
   },
   {
     icon: Radio,
-    title: "Signal Processing",
+    title: "Safety Instrumented Systems (SIS)",
     description:
-      "DSP algorithms with verified frequency bounds, amplitude constraints, and sampling rate enforcement. No signal can exceed its physical domain.",
+      "SIL 1 through SIL 4 require proof that safety functions perform on demand. BRIK64 generates that proof automatically. Your emergency shutdown circuit doesn't just pass functional tests — it carries mathematical certification that every failure mode is handled.",
   },
   {
     icon: Cog,
-    title: "Simulation Certification",
+    title: "Control Loop Bounds Verification",
     description:
-      "Certify your FEA, CFD, and multiphysics simulations. Domain constraints ensure no simulation step produces physically impossible states.",
+      "A PID controller with unbounded integral windup destroyed a $200M satellite. A valve that opened 2% too far caused the Bhopal disaster. BRIK64 constrains every control output to its physical domain. The compiler rejects configurations that can exceed safe operating limits.",
   },
 ];
 
 const standards = [
-  "IEC 61508 — Functional Safety of E/E/PE systems",
-  "ISO 9001 — Quality Management Systems",
-  "IEC 61131 — Programmable Controllers",
-  "IEEE 603 — Nuclear Power Plant Safety Systems",
-  "ASME V&V — Verification and Validation in Computational Modeling",
+  "IEC 61508 — Functional Safety: SIL verification evidence for E/E/PE safety-related systems",
+  "IEC 61511 — Process Industry Safety: safety instrumented function proof for chemical, oil & gas plants",
+  "ISA/IEC 62443 — Industrial Cybersecurity: verified processing logic for IACS components",
+  "IEC 61131-3 — Programmable Controllers: formal verification of structured text and function blocks",
+  "IEEE 603 — Nuclear Safety: mathematical proof of safety system logic for nuclear power plants",
 ];
 
 export default function EngineeringIndustryPage() {
@@ -58,23 +58,23 @@ export default function EngineeringIndustryPage() {
           <HeroWireframeClient />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
             <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
-              Engineering
+              Engineering &amp; Infrastructure
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Certified components.{" "}
-              <span className="text-[#00b8d4]">Verified compositions.</span>
+              Bridges have load calculations. Buildings have structural analysis.{" "}
+              <span className="text-[#00b8d4]">Software has... hope. Not anymore.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Engineering software has informal testing. Critical infrastructure runs on hope.
-              BRIK64 brings mathematical verification to every calculation, every controller,
-              every simulation.
+              The software controlling your power grid, water treatment plant, and gas pipeline has
+              never been formally verified. Every SCADA system, every PLC program, every safety
+              interlock runs on testing and prayer. BRIK64 replaces prayer with proof.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Build verified engineering software <ArrowRight className="h-4 w-4" />
+                Verify your control systems <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"
@@ -95,21 +95,21 @@ export default function EngineeringIndustryPage() {
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Engineering software runs on trust, not proof
+              When infrastructure software fails, people die
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Informal testing",
-                  desc: "Structural calculations are verified by spot-checking outputs. A missed edge case in a bridge design tool could be catastrophic.",
+                  title: "SCADA/ICS vulnerabilities",
+                  desc: "80% of critical infrastructure facilities have experienced a cybersecurity incident in the past two years. The Colonial Pipeline attack shut down fuel supply to the entire U.S. East Coast. These systems were designed for isolated networks in the 1980s — now they're connected to the internet with software that has never been formally verified.",
                 },
                 {
-                  title: "Composition gaps",
-                  desc: "Individual components pass tests, but their composition is untested. A verified motor controller connected to an unverified sensor is a liability.",
+                  title: "Control loop failures",
+                  desc: "The Therac-25 killed patients with radiation overdoses because of a software race condition. The Bhopal disaster killed thousands partly due to a safety system that failed to engage. Every day, millions of PID controllers, safety interlocks, and emergency shutdowns run without mathematical proof of correctness.",
                 },
                 {
-                  title: "Standards overhead",
-                  desc: "IEC 61508 compliance requires extensive documentation of verification. Manual processes create bottlenecks and cost millions per year.",
+                  title: "IEC 61508 compliance burden",
+                  desc: "Achieving SIL 3 certification costs $2-5 million per system and takes 18-24 months of manual documentation. Companies spend more proving their software is safe than building it. And after all that, the proof is still based on testing — not mathematical verification.",
                 },
               ].map((item) => (
                 <div
@@ -133,7 +133,7 @@ export default function EngineeringIndustryPage() {
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Mathematical certainty for critical systems
+              Every valve, every sensor, every interlock — mathematically proven
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
@@ -160,12 +160,12 @@ export default function EngineeringIndustryPage() {
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Stress calculation with safety factors
+              Structural stress analysis — the compiler rejects unsafe designs
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This circuit calculates structural stress with domain constraints that enforce
-              material limits and safety factors. If stress exceeds yield strength, the
-              circuit rejects the design.
+              This circuit doesn't just calculate stress — it enforces AISC safety factors at the
+              compiler level. A design that exceeds allowable stress doesn't produce a warning.
+              It produces a compilation error. The unsafe design literally cannot be built.
             </p>
             <CopyableCode title="structural_stress.pcd">{`// Structural Stress Analysis — Safety-Factor Enforced
 // Φ_c = 1 — no calculation proceeds without material limit verification
@@ -205,8 +205,8 @@ circuit stress_analysis {
   }
 }`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Force, area, moment — all physically bounded. Safety factor enforced by the compiler.{" "}
-              <PhiC /> = 1 — the circuit is mathematically complete: every input path produces a verified output or an explicit rejection.
+              Force, area, moment — all physically bounded. Safety factor enforced by the compiler, not the engineer's memory.{" "}
+              <PhiC /> = 1 — a design that exceeds material limits is not a warning. It is a compile-time impossibility.
             </p>
           </section>
 
@@ -216,7 +216,7 @@ circuit stress_analysis {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Standards compliance by construction
+              Compliance by construction, not documentation
             </h2>
             <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
@@ -231,18 +231,18 @@ circuit stress_analysis {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; engineering software
+              Infrastructure that proves itself safe
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Build verified engineering software. Every calculation proven. Every component
-              certified. Every composition mathematically verified.
+              Every calculation proven. Every control loop bounded. Every safety interlock
+              mathematically certified. Software as rigorous as the engineering it serves.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Build verified engineering software <ArrowRight className="h-4 w-4" />
+                Verify your control systems <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"

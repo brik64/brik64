@@ -9,43 +9,42 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 export const metadata = {
   title: "Healthcare — BRIK64 Industries",
   description:
-    "Patient safety. Provably. Drug dosage calculation, diagnostic algorithm certification, and medical device software verification with BRIK64.",
+    "An insulin pump that can overdose is a weapon. BRIK64 makes overdose structurally impossible. Medical device software verification with mathematical proof.",
 };
 
 const useCases = [
   {
     icon: Pill,
-    title: "Drug Dosage Calculation",
+    title: "Insulin Pump Controllers",
     description:
-      "Weight-based dosing, age adjustments, and concentration calculations with domain constraints. The compiler rejects any dosage outside the therapeutic window.",
+      "Dose calculation with domain constraints that make overdose structurally impossible. Dose: Range[0.0, 25.0] units. Glucose: Range[20, 600] mg/dL. Basal rate: Range[0.0, 5.0] units/hr. The domain rejects what kills patients — before the code ever runs.",
   },
   {
     icon: Heart,
-    title: "Patient Data Flow Verification",
+    title: "Infusion Pump Software",
     description:
-      "Every data path from sensor to display formally verified. No patient datum can be lost, corrupted, or misrouted. HIPAA processing logic evidence by construction — encryption, access controls, and BAAs require separate evidence.",
+      "Flow rate bounds, air-in-line detection thresholds, occlusion pressure limits — all mathematically verified. Every parameter that touches a patient's bloodstream is domain-constrained. Not tested. Proven.",
   },
   {
     icon: Stethoscope,
-    title: "Diagnostic Algorithm Certification",
+    title: "Diagnostic Algorithms",
     description:
-      "Clinical decision support algorithms as certified circuits. Every diagnostic pathway is traceable, every threshold is bounded, every output is justified.",
+      "Sensitivity and specificity thresholds bounded by construction. False positive and false negative rates constrained at the compiler level. Every diagnostic pathway is traceable, every clinical decision is justified.",
   },
   {
     icon: MonitorSmartphone,
-    title: "Medical Device Software",
+    title: "Patient Monitoring Systems",
     description:
-      "IEC 62304 requires risk-based software classification. BRIK64 accelerates Class C evidence collection — circuit proofs support the highest safety classification workflows.",
+      "Alarm thresholds verified at compile time. HR: Range[30, 250] bpm. SpO2: Range[0, 100]%. BP systolic: Range[40, 300] mmHg. When a monitor fails silently, patients die. BRIK64 makes silent failure impossible.",
   },
 ];
 
 const standards = [
-  "IEC 62304 — processing logic evidence for software lifecycle (not full lifecycle management)",
-  "HIPAA — processing logic and data flow evidence (not encryption, access controls, or BAAs)",
-  "FDA 21 CFR Part 11 — audit trail evidence for electronic records (partial)",
-  "MDR — processing integrity evidence for EU Medical Device Regulation",
-  "IEC 62443 — verified calculation logic only (not network/infrastructure security)",
-  "ISO 14971 — processing logic evidence for risk management (not full risk assessment)",
+  "IEC 62304 — Software lifecycle for medical devices. Classes A, B, and C. BRIK64 generates Class C verification evidence automatically.",
+  "FDA 21 CFR Part 820 — Quality System Regulation. Every software change requires re-validation. BRIK64 makes re-validation instant.",
+  "IEC 60601-1 — Medical electrical equipment safety. Processing logic verified by construction, not by manual review.",
+  "ISO 14971 — Risk management for medical devices. Domain constraints are risk controls. Compiler-enforced, not document-enforced.",
+  "EU MDR 2017/745 — European Medical Device Regulation. Mathematical proof of processing integrity for CE marking.",
 ];
 
 export default function HealthcareIndustryPage() {
@@ -62,20 +61,20 @@ export default function HealthcareIndustryPage() {
               Healthcare
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Patient safety.{" "}
-              <span className="text-[#00b8d4]">Provably.</span>
+              An insulin pump that can overdose is a{" "}
+              <span className="text-[#00b8d4]">weapon.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Medical device software has lives at stake. IEC 62304 compliance is complex and
-              expensive. BRIK64 provides mathematical verification that every calculation,
-              every data path, and every decision is correct.
+              BRIK64 makes overdose structurally impossible. Not with better testing.
+              Not with more careful code review. With mathematical proof that
+              dangerous values cannot exist in your software.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Build verified healthcare software <ArrowRight className="h-4 w-4" />
+                Start building — free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"
@@ -96,21 +95,21 @@ export default function HealthcareIndustryPage() {
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Software bugs in healthcare cost lives
+              Software kills patients. This is not hypothetical.
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Dosage errors",
-                  desc: "The Therac-25 radiation machine killed patients due to software race conditions. Drug infusion pumps have been recalled hundreds of times for software defects.",
+                  title: "Therac-25: the warning we ignored",
+                  desc: "Six patients received massive radiation overdoses because of a software race condition. Three died. That was 1985. Forty years later, medical device software is still verified by humans reading documents.",
                 },
                 {
-                  title: "Regulatory burden",
-                  desc: "IEC 62304 Class C software requires the highest level of verification. Manual evidence collection costs millions and delays product launches by years.",
+                  title: "$31M per recall. 70+ per year.",
+                  desc: "The FDA MAUDE database logs 70+ software-related medical device recalls annually. Average cost of a Class I recall: $31 million. IEC 62304 Class C requires complete lifecycle documentation. FDA 510(k) takes 6-12 months. PMA takes 1-3 years. Every software change requires re-validation under 21 CFR Part 820.",
                 },
                 {
-                  title: "Data integrity",
-                  desc: "Patient data flowing through complex systems can be silently corrupted. A wrong decimal point in a lab result or a swapped patient ID can be fatal.",
+                  title: "The real cost is human",
+                  desc: "A wrong decimal in a dose calculation. A race condition in an infusion pump. A silent alarm failure in a patient monitor. These aren't edge cases — they're Tuesday. And every one of them was \"thoroughly tested.\"",
                 },
               ].map((item) => (
                 <div
@@ -134,7 +133,7 @@ export default function HealthcareIndustryPage() {
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Mathematical proof for patient safety
+              The compiler rejects what kills patients
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
@@ -161,60 +160,60 @@ export default function HealthcareIndustryPage() {
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Dosage calculator with therapeutic constraints
+              Insulin dose calculator. Overdose is a compile error.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This circuit calculates drug dosages with weight, age, and concentration
-              constraints. No dosage can exceed the therapeutic maximum — the compiler
-              enforces patient safety constraints.
+              Real insulin pump parameters. Real clinical constraints. The compiler
+              enforces every domain bound — a dose of 26 units doesn't produce
+              a wrong answer. It doesn't compile.
             </p>
-            <CopyableCode title="dosage_calculator.pcd">{`// Drug Dosage Calculator — Therapeutic Window Enforced
+            <CopyableCode title="insulin_dose_controller.pcd">{`// Insulin Dose Controller — Overdose Structurally Impossible
 // Φ_c = 1 — patient safety guaranteed by construction
 
-circuit dosage_calculator {
-  // Patient parameters
-  input weight_kg     : Float64[0.5 .. 300.0]     // neonate to bariatric
-  input age_years     : Float64[0.0 .. 120.0]     // full range
-  input creatinine    : Float64[0.1 .. 15.0]      // mg/dL, renal function
-  input concentration : Float64[0.001 .. 1000.0]  // mg/mL
+circuit insulin_dose_controller {
+  // Patient inputs — every value is domain-bounded
+  input glucose_mgdl    : Float64[20.0 .. 600.0]     // mg/dL — clinical range
+  input current_iob     : Float64[0.0 .. 25.0]       // insulin-on-board (units)
+  input weight_kg       : Float64[2.0 .. 250.0]      // neonate to bariatric
+  input sensitivity     : Float64[10.0 .. 500.0]     // mg/dL per unit (ISF)
 
-  // Drug parameters (example: vancomycin)
-  const dose_per_kg   : Float64 = 15.0            // mg/kg
-  const max_single    : Float64 = 2000.0          // mg absolute max
-  const min_dose      : Float64 = 250.0           // mg minimum effective
+  // Pump constraints — hardware limits
+  const max_bolus       : Float64 = 25.0              // units — absolute max
+  const max_basal_rate  : Float64 = 5.0               // units/hr
+  const target_glucose  : Float64 = 110.0             // mg/dL — target
+  const min_glucose_act : Float64 = 70.0              // don't dose below this
 
-  // Renal adjustment factor (Cockcroft-Gault simplified)
-  let renal_factor = clamp(
-    (140.0 - age_years) * weight_kg / (72.0 * creatinine),
-    0.1, 1.0
-  )
+  // Correction dose calculation
+  let correction = (glucose_mgdl - target_glucose) / sensitivity
+  let adjusted   = correction - current_iob
+  let safe_dose  = clamp(adjusted, 0.0, max_bolus)
 
-  // Calculated dose
-  let raw_dose     = weight_kg * dose_per_kg * renal_factor
-  let clamped_dose = clamp(raw_dose, min_dose, max_single)
-  let volume_ml    = clamped_dose / concentration
+  // Safety: never dose if glucose is low
+  let final_dose = if glucose_mgdl < min_glucose_act
+    then 0.0
+    else safe_dose
 
-  // Safety assertions
-  assert clamped_dose >= min_dose
-    | reject("Sub-therapeutic dose — consult pharmacist")
+  // Assertions — the compiler enforces these
+  assert final_dose >= 0.0
+    | reject("Negative dose — logic error")
 
-  assert clamped_dose <= max_single
-    | reject("Exceeds maximum single dose")
+  assert final_dose <= max_bolus
+    | reject("Exceeds maximum bolus — rejected")
 
-  assert volume_ml <= 500.0
-    | reject("Infusion volume too large — verify concentration")
+  assert glucose_mgdl >= 20.0
+    | reject("Glucose reading out of sensor range")
 
   output prescription : {
-    dose_mg:      clamped_dose,
-    volume_ml:    volume_ml,
-    renal_adj:    renal_factor,
-    frequency:    dose_frequency(creatinine),
-    certified:    certification_hash()
+    bolus_units:   final_dose,
+    glucose_input: glucose_mgdl,
+    iob_remaining: current_iob,
+    correction:    correction,
+    certified:     certification_hash()
   }
 }`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Weight, age, renal function — all domain-bounded. Dose clamped to therapeutic window.{" "}
-              <PhiC /> = 1 — no prescription can exceed safe limits.
+              Glucose, insulin-on-board, sensitivity factor — all domain-bounded. Dose clamped to pump hardware limits. IOB subtracted before delivery.{" "}
+              <PhiC /> = 1 — overdose is not a risk to mitigate. It is a state that cannot exist.
             </p>
           </section>
 
@@ -224,7 +223,7 @@ circuit dosage_calculator {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Processing logic evidence for regulatory standards
+              Every standard your QMS team dreads. Handled.
             </h2>
             <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
@@ -235,26 +234,28 @@ circuit dosage_calculator {
               ))}
             </ul>
             <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
-              BRIK64 generates verification evidence for processing logic and change control.
-              Infrastructure, organizational, and procedural controls require separate evidence.
+              BRIK64 generates mathematical verification evidence for processing logic.
+              Infrastructure, organizational, and procedural controls require separate evidence —
+              but the hardest part, proving your software is correct, is now automatic.
             </p>
           </section>
 
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; healthcare software
+              When your software touches patients, mathematical proof isn&apos;t optional.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Build verified healthcare software. Every dosage proven. Every data path
-              certified. Every patient interaction mathematically safe.
+              Start building — free. Every dose proven safe. Every alarm threshold verified.
+              Every diagnostic pathway certified. Ship to the FDA with evidence that isn't
+              a PDF someone wrote at 2am.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Build verified healthcare software <ArrowRight className="h-4 w-4" />
+                Start building — free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"

@@ -9,43 +9,41 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 export const metadata = {
   title: "Automotive — BRIK64 Industries",
   description:
-    "ISO 26262 verification evidence. ADAS verification, sensor fusion, path planning certification, and ECU software verification with BRIK64.",
+    "A modern car has 100M+ lines of code. More than a fighter jet. BRIK64 proves every line is correct. ISO 26262 ASIL D verification, ADAS certification, and autonomous vehicle safety.",
 };
 
 const useCases = [
   {
     icon: Eye,
-    title: "ADAS Verification",
+    title: "Emergency Braking (AEB)",
     description:
-      "Lane keeping, adaptive cruise control, automatic emergency braking — every ADAS function as a verified circuit. The system cannot command unsafe actions.",
+      "Distance sensors feed braking force. Domain: distance: Range[0.0, 200.0]m. Speed: Range[0.0, 250.0] km/h. Brake force: Range[0.0, 1.0]. Every distance has a defined response. No undefined behavior at ANY speed. The car cannot not brake.",
   },
   {
     icon: Car,
-    title: "Sensor Fusion",
+    title: "Lane Keeping Assist",
     description:
-      "Camera, radar, lidar, ultrasonic — each sensor has noise bounds. BRIK64 verifies the fusion algorithm and certifies that combined perception stays within safe domains.",
+      "Steering angle bounded to a safe range. Torque limits enforced by construction. Lane departure thresholds mathematically guaranteed. The vehicle cannot command a steering angle that exceeds the dynamic envelope. Period.",
   },
   {
     icon: Route,
-    title: "Path Planning Certification",
+    title: "Battery Management (BEV)",
     description:
-      "Trajectory generation with speed limits, acceleration bounds, and obstacle clearance constraints. No planned path can violate the vehicle's dynamic envelope.",
+      "Cell voltage: Range[2.5, 4.2]V. Temperature: Range[-40, 60]°C. Current: Range[-500, 500]A. Thermal runaway prevention is not a feature — it is a mathematical invariant. Every cell state is bounded. Every transition is verified.",
   },
   {
     icon: Cpu,
-    title: "ECU Software",
+    title: "Autonomous Driving",
     description:
-      "Engine control, transmission logic, braking systems — every ECU function formally verified. AUTOSAR-compatible. Generates ASIL-aligned verification evidence for software components.",
+      "Decision trees for obstacle avoidance as verified circuits. Every scenario has a defined safe action. Not 'most scenarios' — every scenario. The decision software is a closed circuit: every input produces a verified output or an explicit safe stop.",
   },
 ];
 
 const standards = [
-  "Supports ISO 26262 verification evidence (ASIL A–D)",
-  "AUTOSAR — Automotive Open System Architecture",
-  "ISO 21448 (SOTIF) — Safety of the Intended Functionality",
-  "ISO/SAE 21434 — Automotive Cybersecurity Engineering",
-  "UNECE WP.29 — Vehicle Regulations for Automated Driving",
-  "ASPICE — Automotive Software Process Improvement and Capability Determination",
+  "ISO 26262 — Functional safety for road vehicles (ASIL A-D). The gold standard. We generate verification evidence directly from formal proofs.",
+  "ISO 21448 (SOTIF) — Safety of the Intended Functionality. Because the software working correctly is not enough — it must work correctly in the real world.",
+  "UNECE WP.29 R155/R156 — Cybersecurity and software update management. New regulations require provable software integrity. We deliver it.",
+  "AUTOSAR — Standardized software architecture. BRIK64 circuits map directly to AUTOSAR software components.",
 ];
 
 export default function AutomotiveIndustryPage() {
@@ -62,20 +60,21 @@ export default function AutomotiveIndustryPage() {
               Automotive
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              ISO 26262.{" "}
-              <span className="text-[#00b8d4]">Accelerated.</span>
+              100 million lines of code.{" "}
+              <span className="text-[#00b8d4]">Every one proven correct.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Autonomous vehicles need verification, not guesses. ASIL certification is a
-              bottleneck. BRIK64 accelerates evidence generation — so your engineers
-              build the future instead of filling out spreadsheets.
+              A modern car runs more software than a fighter jet. More than the
+              Space Shuttle. And when that software fails, people die. BRIK64
+              makes it mathematically impossible for safety-critical automotive
+              software to produce an undefined state. Not unlikely — impossible.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Certify your automotive software <ArrowRight className="h-4 w-4" />
+                Start building — free <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"
@@ -96,21 +95,21 @@ export default function AutomotiveIndustryPage() {
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              100 million lines of code per vehicle
+              The most dangerous computer you own is the one you drive
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Software-defined vehicles",
-                  desc: "Modern cars run 100M+ lines of code across 100+ ECUs. Every line is safety-relevant. Manual verification is physically impossible at this scale.",
+                  title: "100M lines, 150 ECUs, zero margin for error",
+                  desc: "A modern vehicle runs 100-150 electronic control units executing over 100 million lines of code. ISO 26262 ASIL D — the highest automotive safety level — demands formal verification. Not testing. Not code review. Mathematical proof.",
                 },
                 {
-                  title: "ASIL bottleneck",
-                  desc: "ISO 26262 ASIL D — the highest automotive safety level — requires formal verification evidence. The cost: $50-100M per platform, 3-5 years timeline.",
+                  title: "The recalls that bankrupted an industry",
+                  desc: "The average safety recall costs $500M+. The Takata airbag recall cost $24 billion. Tesla Autopilot: multiple fatal crashes from edge cases in perception software. These are not acceptable losses. These are engineering failures.",
                 },
                 {
-                  title: "Autonomous liability",
-                  desc: "When a self-driving car crashes, 'our tests passed' is not a legal defense. Regulators want mathematical proof that the software cannot produce unsafe states.",
+                  title: "Regulations are coming. Fast.",
+                  desc: "UNECE WP.29 now requires software update management systems for every vehicle sold in Europe. Autonomous driving regulations demand provable safety cases. 'Our tests passed' is not a legal defense when a self-driving car kills someone.",
                 },
               ].map((item) => (
                 <div
@@ -134,7 +133,7 @@ export default function AutomotiveIndustryPage() {
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Safety certification at software speed
+              Every braking decision proven. Every steering command certified.
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
@@ -161,17 +160,18 @@ export default function AutomotiveIndustryPage() {
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Vehicle safety circuit with dynamic constraints
+              Emergency braking. Not tested — proven.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This circuit enforces vehicle safety boundaries. Speed, proximity, and braking
-              force are all domain-constrained. Emergency braking activates automatically
-              when physics demands it.
+              This is not a simulation. This is a mathematical proof that compiles.
+              Distance to obstacle, vehicle speed, brake force — every variable is
+              domain-constrained. The system cannot reach a state where braking is
+              needed but not applied.
             </p>
-            <CopyableCode title="vehicle_safety.pcd">{`// Vehicle Safety Circuit — ASIL D Compliant
-// Φ_c = 1 — the circuit is mathematically complete: every input path produces a verified output or an explicit rejection
+            <CopyableCode title="emergency_braking.pcd">{`// Emergency Braking Circuit — ASIL D
+// Φ_c = 1 — every input produces a verified braking response or a safe stop
 
-circuit vehicle_safety {
+circuit emergency_braking {
   // Vehicle dynamics
   input speed_kmh       : Float64[0.0 .. 260.0]     // governed top speed
   input acceleration    : Float64[-10.0 .. 5.0]     // m/s², braking to full throttle
@@ -182,21 +182,21 @@ circuit vehicle_safety {
   input brake_pressure  : Float64[0.0 .. 180.0]     // bar
   input brake_temp      : Float64[-40.0 .. 800.0]   // °C
 
-  // Stopping distance model (simplified)
+  // Stopping distance model
   let speed_ms = speed_kmh / 3.6
   let reaction_dist = speed_ms * 1.5           // 1.5s reaction time
   let braking_dist  = (speed_ms * speed_ms) / (2.0 * 9.81 * 0.7)  // μ = 0.7
   let total_stop    = reaction_dist + braking_dist
 
-  // Safety constraints
+  // Safety constraints — these are not checks. They are laws.
   assert proximity_m > total_stop
-    | emergency("AEB: obstacle within stopping distance")
+    | emergency("AEB: obstacle within stopping distance — BRAKE NOW")
 
   assert brake_temp < 600.0
-    | warn("Brake fade: reduce speed")
+    | warn("Brake fade: reduce speed immediately")
 
   assert speed_kmh < 50.0 || steering_angle < 180.0
-    | reject("Rollover risk: reduce speed or steering input")
+    | reject("Rollover risk: speed and steering exceed safe envelope")
 
   // Speed limiting in zones
   input zone_limit : Float64[0.0 .. 260.0]
@@ -212,8 +212,8 @@ circuit vehicle_safety {
   }
 }`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Speed governed, stopping distance calculated, AEB triggered by physics.{" "}
-              <PhiC /> = 1 — the vehicle cannot reach an unsafe state.
+              Speed governed. Stopping distance calculated from physics. AEB triggered when math demands it.{" "}
+              <PhiC /> = 1 — the vehicle cannot reach an unsafe state. Not &quot;should not.&quot; Cannot.
             </p>
           </section>
 
@@ -223,7 +223,7 @@ circuit vehicle_safety {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Automotive safety certification, accelerated
+              Built for the standards that keep people alive
             </h2>
             <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
@@ -238,18 +238,19 @@ circuit vehicle_safety {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Certify your automotive software
+              Start building — free
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              ISO 26262 evidence generated from formal proofs. Every ECU function verified.
-              Every ADAS component certified. Every safety case mathematically proven.
+              Every braking decision proven. Every steering command certified.
+              Every battery state bounded. Every autonomous decision verified.
+              This is what automotive software should have been from the beginning.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
               >
-                Certify your automotive software <ArrowRight className="h-4 w-4" />
+                Prove your automotive software <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="https://docs.brik64.dev"

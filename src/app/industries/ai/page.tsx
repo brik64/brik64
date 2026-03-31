@@ -9,42 +9,42 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 export const metadata = {
   title: "AI & Machine Learning — BRIK64 Industries",
   description:
-    "Verified AI. Not just aligned AI. Policy circuits as guardrails for AI-generated code, MCP integration, and vibe coding safety nets.",
+    "AI generates millions of lines of code daily. None of it is verified. BRIK64 policy circuits verify AI-generated code before execution — mathematically, not statistically.",
 };
 
 const useCases = [
   {
     icon: Shield,
-    title: "Policy Circuits as Guardrails",
+    title: "Policy Circuits as AI Guardrails",
     description:
-      "Define hard mathematical boundaries for what AI agents can output. Not alignment — constraint. Every output passes through a verified circuit that validates domain constraints before execution.",
+      "Tell your AI what to build. The compiler proves it's correct. The error becomes the next prompt. Repeat until certified. This is not alignment training — this is a mathematical wall that no hallucination can cross.",
   },
   {
     icon: Bot,
-    title: "MCP Integration",
+    title: "Verified Code Generation",
     description:
-      "Connect AI agents to the BRIK64 registry via Model Context Protocol. Your agent queries 127,000+ certified circuits before generating new code.",
+      "Every function your AI generates gets lifted to PCD and certified. GPT-4, Claude, Gemini, Llama — it doesn't matter. The verification is in the compiler, not the model. Works with any LLM, today and tomorrow.",
   },
   {
     icon: Lock,
-    title: "AI Agent Certification",
+    title: "Prompt Injection Defense",
     description:
-      "Every function an AI agent produces can be lifted to PCD and certified. If the proof fails, the code doesn't ship. No exceptions.",
+      "Malicious prompts can hijack AI agents into producing backdoored code that passes every test. BRIK64 doesn't test — it proves. A backdoor that violates domain constraints cannot compile. Period.",
   },
   {
     icon: Zap,
-    title: "Vibe Coding Safety Net",
+    title: "The Vibe Coding Problem",
     description:
-      "AI writes 70% of new code. Who verifies it? BRIK64 catches what code review misses — mathematically, not statistically.",
+      "92% of developers now use AI to write code. Who reviews it? Not humans — they rubber-stamp AI output in 3 seconds. BRIK64 reviews every line mathematically, in milliseconds, with zero fatigue.",
   },
 ];
 
 const standards = [
-  "No formal AI code safety standards exist yet",
-  "BRIK64 Policy Circuits fill the vacuum",
-  "Generates evidence aligned with NIST AI RMF",
-  "Supports EU AI Act compliance workflows",
-  "SOC2 audit trail for AI-generated code",
+  "NIST AI RMF — verification evidence for AI risk management frameworks",
+  "EU AI Act — auditable proof that AI-generated code meets declared constraints",
+  "SOC 2 — complete audit trail for every AI-generated function",
+  "ISO/IEC 42001 — AI management system evidence generation",
+  "BRIK64 Policy Circuits — the first enforceable standard for AI code safety",
 ];
 
 export default function AIIndustryPage() {
@@ -61,12 +61,13 @@ export default function AIIndustryPage() {
               AI &amp; Machine Learning
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Verified AI.{" "}
-              <span className="text-[#00b8d4]">Not just aligned AI.</span>
+              AI generates millions of lines of code daily.{" "}
+              <span className="text-[#00b8d4]">None of it is verified. Until now.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Alignment is a hope. Verification is a proof. BRIK64 gives AI-generated code
-              mathematical verification — not probabilistic guesses.
+              Every day, AI writes more code than every human developer combined. And not a single line
+              carries a mathematical proof of correctness. BRIK64 changes that — with policy circuits
+              that verify AI output before it ever executes.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -94,21 +95,21 @@ export default function AIIndustryPage() {
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              AI-generated code has no guarantees
+              The alignment problem isn't in the model. It's in the code.
             </h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "Prompt injection",
-                  desc: "Malicious prompts can make AI agents produce code that passes tests but contains backdoors. No test suite catches what it wasn't designed to find.",
+                  title: "AI hallucinations in code",
+                  desc: "LLMs generate code that looks correct, compiles correctly, and passes tests — but implements the wrong algorithm. GitHub Copilot alone produces 46% of all new code. A 2024 Stanford study found that developers using AI assistants wrote significantly more security vulnerabilities. The bug is invisible because it's fluent.",
                 },
                 {
-                  title: "Hallucinated logic",
-                  desc: "LLMs generate plausible-looking code that compiles and runs — but implements the wrong algorithm. The bug hides in plain sight.",
+                  title: "Prompt injection attacks",
+                  desc: "A single malicious instruction hidden in a codebase comment can hijack your AI agent into producing backdoored code. The output passes every test because the tests were written by the same compromised agent. This isn't theoretical — it's happening today in production.",
                 },
                 {
-                  title: "Circular testing",
-                  desc: "Tests written by the same AI that wrote the code are circular by definition. They verify what the model thinks is correct, not what is correct.",
+                  title: "The circular verification trap",
+                  desc: "AI writes code. AI writes tests for that code. AI reviews that code. At no point does any entity with ground truth enter the loop. You're asking the same model that hallucinated the bug to verify it doesn't exist. That's not verification — that's confirmation bias at scale.",
                 },
               ].map((item) => (
                 <div
@@ -132,7 +133,7 @@ export default function AIIndustryPage() {
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Mathematical guardrails for AI agents
+              The verification is in the compiler, not the model
             </h2>
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
@@ -159,12 +160,12 @@ export default function AIIndustryPage() {
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              AI action validator — constrain output domains
+              AI action validator — the wall no hallucination can cross
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              This policy circuit constrains what an AI agent can output. If the action
-              falls outside the verified domain, the circuit rejects it — before execution,
-              not after damage.
+              This policy circuit defines exactly what an AI agent is allowed to do. Not what it
+              should do, not what it's been trained to do — what it mathematically can do. Every
+              action outside these bounds is rejected before execution, not after damage.
             </p>
             <div className="mt-8">
               <CopyableCode title="ai_action_validator.pcd">{`// Policy Circuit: AI Action Validator
@@ -200,7 +201,8 @@ circuit ai_action_validator {
             </div>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               Every input is domain-bounded. Every output carries a certification hash.{" "}
-              <PhiC /> = 1 — the circuit is mathematically closed.
+              <PhiC /> = 1 — the circuit is mathematically closed. An AI that tries to delete system
+              files with 80% confidence doesn't get an error message — it gets a compile-time impossibility.
             </p>
           </section>
 
@@ -210,12 +212,12 @@ circuit ai_action_validator {
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              No formal standard exists — BRIK64 <em>is</em> the standard
+              The AI safety industry talks about alignment. We ship verification.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              The AI safety industry talks about alignment. BRIK64 delivers verification.
-              Policy circuits are an enforceable, circuit-based framework for
-              constraining AI-generated code.
+              RLHF teaches AI to want to do right. Policy circuits prevent it from doing wrong.
+              Education fails. Mathematics does not. BRIK64 generates enforceable, auditable
+              proof for every framework that matters.
             </p>
             <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
@@ -230,11 +232,11 @@ circuit ai_action_validator {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; AI software
+              Your AI writes the code. BRIK64 proves it&rsquo;s correct.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Connect your AI agent to BRIK64. Every action verified. Every output certified.
-              Every guardrail mathematically enforced.
+              Connect any LLM. Every action verified. Every output certified.
+              Every guardrail mathematically enforced. The model changes. The proof doesn't.
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
