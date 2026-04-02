@@ -3610,4 +3610,122 @@ fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
     </>
   ),
 
+  "ai-governance-compliance-evidence": () => (
+    <>
+      <H2>The Regulation Is Real. The Deadline Is August 2026.</H2>
+      <P>
+        The EU AI Act is not a white paper. It is law. High-risk AI systems — the ones making credit decisions, hiring recommendations, medical diagnoses, and safety-critical evaluations — must demonstrate technical controls, risk documentation, and evidence of correct behavior. Fines reach €35 million or 7% of global turnover, whichever is higher.
+      </P>
+      <P>
+        The August 2026 enforcement deadline is nine months away. Most enterprises are still answering that requirement with policy documents, risk registers, and spreadsheets. That is not what the regulation demands.
+      </P>
+      <P>
+        <strong>The regulation demands evidence. Technical, auditable, reproducible evidence that your system does what you say it does.</strong>
+      </P>
+      <P>
+        No existing compiler produces that evidence. BRIK-64 does.
+      </P>
+
+      <H2>What the Market Is Doing Wrong</H2>
+      <P>
+        Look at what the major players launched in early 2026. IBM introduced Sovereign Core — a self-managed deployment platform. HPE announced hardware-rooted network protections. A dozen AI governance platforms (Credo AI, Holistic AI, others) sell dashboards that track model versions, flag drift, and generate compliance reports.
+      </P>
+      <P>
+        All of these are software layers on top of systems that remain unverified. They measure and monitor behavior. They do not prove it. The difference is fundamental.
+      </P>
+      <P>
+        A monitoring dashboard tells you the AI did something wrong after it happened. A formal proof tells you the AI cannot do something wrong before it runs. One is surveillance. The other is architecture.
+      </P>
+      <P>
+        ISO 42001 certification is already becoming table stakes for enterprise AI procurement. Microsoft obtained it. Regulators and enterprise buyers are starting to require it as a condition of doing business. The question is not whether you will need formal verification. The question is where it comes from.
+      </P>
+
+      <H2>How BRIK-64 Generates Compliance Evidence</H2>
+      <P>
+        Every BRIK-64 program produces a Thermodynamic Coherence certificate: <strong>Φ_c = 1</strong>. This is not a test result. It is a mathematical proof that the program's information is closed — that the system is deterministic, that every input produces a defined output, that there are no hidden states or undefined behaviors.
+      </P>
+      <P>
+        The certificate is generated automatically at compile time. You do not annotate your code. You do not write proof obligations. You do not hire a formal methods team. You compile your program and the proof is a byproduct.
+      </P>
+      <CodeBlock>{`# Compile and certify
+brikc check payment_processor.pcd
+
+# Output:
+# Phi_c = 1 — circuit closed
+# 64 operations verified
+# 0 undefined paths
+# Certificate: sha256:a3f7b2...`}</CodeBlock>
+      <P>
+        That certificate is machine-readable, timestamped, and tied to the exact source that produced it. It is the technical evidence the EU AI Act demands — not a policy document written after the fact, but a proof generated at the moment of creation.
+      </P>
+
+      <H2>The Three Properties That Matter for Compliance</H2>
+      <H3>1. Determinism</H3>
+      <P>
+        A BRIK-64 certified program produces identical outputs for identical inputs — always, on every platform, in every execution. Φ_c = 1 means the information entropy of the system is zero: no randomness, no undefined behavior, no platform-specific surprises. For a regulator asking "does this AI system behave consistently across demographics and environments," this is a direct mathematical answer.
+      </P>
+      <H3>2. Finite Operation Space</H3>
+      <P>
+        BRIK-64 programs are composed from exactly 64 verified atomic operations. Not 640. Not 6,400. 64. Every operation has a machine-checked proof of its behavior. The complete behavior space of any program is the composition of those 64 operations under three algebraic laws. A human auditor — or a regulator — can enumerate the entire space. That is not possible with Python or Java. It is structurally possible with PCD.
+      </P>
+      <H3>3. Immutable Certificate Chain</H3>
+      <P>
+        The compiler itself has a self-compilation fixpoint: brikc compiles brikc and produces an identical binary. The hash is immutable. This means the tool that produced your compliance evidence cannot itself be tampered with — there are no supply chain attacks, no compiler backdoors, no hidden modifications. The trust chain is end-to-end verifiable.
+      </P>
+
+      <H2>What This Looks Like in Practice</H2>
+      <P>
+        Imagine your legal team is preparing the technical documentation package for an AI system under EU AI Act Article 9 (risk management). They need to demonstrate:
+      </P>
+      <P>
+        <strong>Accuracy and robustness</strong> — The system behaves correctly under the declared input domain. BRIK-64 closure domains define that domain formally. The certificate proves the system respects it.
+      </P>
+      <P>
+        <strong>Transparency and explainability</strong> — The system's behavior can be traced and audited. PCD is a blueprint. Every operation is named, typed, and proven. An auditor can read a PCD program like a schematic.
+      </P>
+      <P>
+        <strong>Human oversight</strong> — The system does not take actions outside its defined operation space. Policy circuits in PCD define permitted actions formally. The compiler rejects any program that violates them.
+      </P>
+      <P>
+        Instead of assembling that documentation manually, your team runs one command. The certificate covers all three requirements. The audit trail is the compilation log.
+      </P>
+
+      <H2>The Convergence That Is Happening Now</H2>
+      <P>
+        Three forces are converging simultaneously in 2026. First, regulatory enforcement: the EU AI Act, ISO 42001, NIST AI RMF, and multiple national frameworks all arriving at the same moment with the same requirement — technical evidence, not ethical intent. Second, enterprise procurement: buyers are starting to require compliance certification as a condition of purchase, the same way GDPR made data processing agreements mandatory. Third, the boundary between governance and security is dissolving — regulators and CISOs are both asking the same question: can you prove it?
+      </P>
+      <P>
+        The market for a tool that answers that question is not a niche. It is the entire enterprise software stack, at the moment of the most significant regulatory shift in computing history.
+      </P>
+
+      <H2>What Comes Next: Hardware-Level Enforcement</H2>
+      <P>
+        Software-based compliance has a ceiling. Any layer that runs on the same CPU as the AI it governs can, in principle, be bypassed. RLHF teaches an AI to want to behave correctly. Software filters check behavior after the fact. Neither is architecturally sound.
+      </P>
+      <P>
+        The next phase of BRIK-64 — already in design — is hardware enforcement. Policy circuits written in PCD, certified by the TCE, running in UEFI firmware before the operating system loads. An AI action that violates a policy circuit does not get a warning. It does not get logged. It does not execute. The hardware says no, and no software running above it can override that answer.
+      </P>
+      <P>
+        This is the BPU: a hardware coprocessor where 64 monomers live in silicon. RLHF teaches. The BPU prevents. Education fails. Architecture does not.
+      </P>
+      <P>
+        The trajectory from voluntary compliance to industry standard to mandatory regulation follows every safety technology that mattered — seatbelts, ABS, circuit breakers. BRIK-64 is building the infrastructure layer for that trajectory in AI.
+      </P>
+
+      <H2>Start Today</H2>
+      <P>
+        The compliance deadline is not hypothetical. The enforcement actions are already happening — Italy fined OpenAI €15 million in early 2026 for GDPR violations in training data. The FTC's Operation AI Comply is active. Regulators have made clear that aspirational policies do not satisfy technical control requirements.
+      </P>
+      <P>
+        BRIK-64 is the only compiler that makes compliance evidence a byproduct of building software rather than a separate, expensive, manual process. Install brikc, certify your first program, and produce the documentation your legal team needs in the same command that builds your binary.
+      </P>
+      <CodeBlock>{`npm install -g brikc
+brikc check your_ai_system.pcd
+# Φ_c = 1 — ready for audit`}</CodeBlock>
+      <P>
+        The proof is in the compiler. The compiler is ready. The deadline is August.
+      </P>
+    </>
+  ),
+
 };

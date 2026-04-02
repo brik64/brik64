@@ -278,6 +278,15 @@ export const blogPosts: BlogPost[] = [
     tag: "ENGINEERING",
     category: "Engineering",
   },
+  {
+    slug: "ai-governance-compliance-evidence",
+    title: "EU AI Act Is Here. Your Compiler Should Generate the Proof.",
+    excerpt:
+      "€35 million fines. August 2026 deadline. Every enterprise needs technical evidence that their AI systems behave within declared limits. BRIK-64 generates that evidence automatically — as a byproduct of compilation.",
+    date: "APR 2, 2026",
+    tag: "AI SAFETY",
+    category: "AI Safety",
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
