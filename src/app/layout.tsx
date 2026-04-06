@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Jura } from "next/font/google";
 import { StaticCircuitGrid } from "@/components/StaticCircuitGrid";
+import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -45,6 +46,7 @@ export default function RootLayout({
         <div className="relative z-10 flex min-h-full flex-col">
           {children}
         </div>
+        <CookieBanner />
       </body>
     </html>
   );
