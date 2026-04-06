@@ -10,13 +10,11 @@ import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
 import {
   Terminal,
   Cpu,
-  Apple,
-  MonitorSmartphone,
   Download,
   ExternalLink,
   CheckCircle2,
-  Box,
 } from "lucide-react";
+import { AppleIcon, WindowsIcon, LinuxIcon } from "@/components/icons/os-icons";
 
 import dynamic from "next/dynamic";
 
@@ -28,12 +26,12 @@ const HeroWireframe = dynamic(
 /* ── Download categories ── */
 
 const cliDownloads = [
-  { os: "macOS", arch: "Apple Silicon (ARM64)", file: "brikc-darwin-arm64", icon: "🍎", primary: true },
-  { os: "macOS", arch: "Intel (x86_64)", file: "brikc-darwin-x64", icon: "🍎", primary: false },
-  { os: "Linux", arch: "x86_64", file: "brikc-linux-x64", icon: "🐧", primary: true },
-  { os: "Linux", arch: "ARM64", file: "brikc-linux-arm64", icon: "🐧", primary: false },
-  { os: "Windows", arch: "x86_64", file: "brikc-win-x64.exe", icon: "🪟", primary: true },
-  { os: "Windows", arch: "ARM64", file: "brikc-win-arm64.exe", icon: "🪟", primary: false },
+  { os: "macOS", arch: "Apple Silicon (ARM64)", file: "brikc-darwin-arm64", Icon: AppleIcon, primary: true },
+  { os: "macOS", arch: "Intel (x86_64)", file: "brikc-darwin-x64", Icon: AppleIcon, primary: false },
+  { os: "Linux", arch: "x86_64", file: "brikc-linux-x64", Icon: LinuxIcon, primary: true },
+  { os: "Linux", arch: "ARM64", file: "brikc-linux-arm64", Icon: LinuxIcon, primary: false },
+  { os: "Windows", arch: "x86_64", file: "brikc-win-x64.exe", Icon: WindowsIcon, primary: true },
+  { os: "Windows", arch: "ARM64", file: "brikc-win-arm64.exe", Icon: WindowsIcon, primary: false },
 ];
 
 const platformApps = [
@@ -42,7 +40,7 @@ const platformApps = [
     format: ".dmg",
     desc: "Universal binary — Apple Silicon & Intel",
     file: "BRIK64-Platform.dmg",
-    icon: Apple,
+    Icon: AppleIcon,
     available: false,
   },
   {
@@ -50,7 +48,7 @@ const platformApps = [
     format: ".exe",
     desc: "Windows 10+ installer",
     file: "BRIK64-Platform-Setup.exe",
-    icon: MonitorSmartphone,
+    Icon: WindowsIcon,
     available: false,
   },
   {
@@ -58,7 +56,7 @@ const platformApps = [
     format: ".AppImage",
     desc: "Universal Linux package",
     file: "BRIK64-Platform.AppImage",
-    icon: Terminal,
+    Icon: LinuxIcon,
     available: false,
   },
 ];
@@ -144,7 +142,7 @@ export default function DownloadPage() {
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-lg">{d.icon}</span>
+                      <d.Icon className="h-5 w-5 text-muted-foreground" />
                       <div>
                         <p className="text-sm font-medium">{d.os}</p>
                         <p className="text-[10px] text-muted-foreground">{d.arch}</p>
@@ -251,7 +249,7 @@ export default function DownloadPage() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {platformApps.map((app) => {
-                const Icon = app.icon;
+                const Icon = app.Icon;
                 return (
                   <div
                     key={app.os}
