@@ -41,7 +41,7 @@ export function IntegrationsSection() {
           [07] · INTEGRATIONS
         </p>
 
-        <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
           Your code stays in GitHub.
           <br />
           <span className="text-teal">BRIK64 verifies it.</span>

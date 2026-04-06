@@ -108,7 +108,7 @@ export function CustomerStoriesSection() {
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
             [05] · CAPABILITIES
           </p>
-          <h2 className="text-2xl font-normal leading-[40px] tracking-[-0.9px] md:text-4xl">
+          <h2 className="text-2xl font-semibold leading-[40px] tracking-[-0.9px] md:text-4xl">
             What you can build today.
           </h2>
           <a

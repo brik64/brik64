@@ -10,7 +10,7 @@ export function AgentsSection() {
             <p className="text-xs font-medium uppercase tracking-[2px] text-muted-foreground">
               [06] · START BUILDING
             </p>
-            <h2 className="mt-3 max-w-4xl text-balance text-2xl font-normal leading-[40px] tracking-[-0.9px] tracking-tight md:text-4xl">
+            <h2 className="mt-3 max-w-4xl text-balance text-2xl font-semibold leading-[40px] tracking-[-0.9px] tracking-tight md:text-4xl">
               Download the CLI. Use the SDKs.
             </h2>
           </div>

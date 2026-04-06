@@ -1,3 +1,5 @@
+"use client";
+
 import {
   GitBranch,
   FileCheck,
@@ -7,6 +9,10 @@ import {
   Headset,
 } from "lucide-react";
 import type { ReactNode } from "react";
+import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
+import { PremiumButton } from "@/components/ui/pixel-perfect/premium-button";
+import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
+import { CircuitDivider } from "@/components/ui/pixel-perfect/circuit-divider";
 
 const features: { icon: ReactNode; title: string; description: string }[] = [
   {
@@ -45,12 +51,15 @@ export function EnterpriseSection() {
   return (
     <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [09] · ENTERPRISE
-        </p>
+        <div className="mb-10 flex items-center gap-3 md:mb-14">
+          <Crosshair size={20} />
+          <p className="text-xs font-medium tracking-[2px] text-muted-foreground">
+            [09] · ENTERPRISE
+          </p>
+        </div>
 
-        <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
-          When &ldquo;tests pass&rdquo; <span className="text-teal">isn&apos;t enough.</span>
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
+          <TextReveal>When "tests pass"</TextReveal> <span className="text-teal"><TextReveal delay={0.4}>isn&apos;t enough.</TextReveal></span>
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
           Fintech. Healthcare. Automotive. Government. Industries where you need mathematical proof, not just green checkmarks.
@@ -69,6 +78,15 @@ export function EnterpriseSection() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <PremiumButton
+            className="bg-foreground text-white px-8 py-4 text-base"
+            onClick={() => window.open("/contact", "_self")}
+          >
+            Contact Sales
+          </PremiumButton>
         </div>
       </div>
     </section>

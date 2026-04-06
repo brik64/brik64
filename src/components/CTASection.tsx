@@ -1,6 +1,10 @@
 "use client";
 
 import { ArrowRight, BookOpen } from "lucide-react";
+import { TextGradient } from "@/components/ui/pixel-perfect/text-gradient";
+import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
+import { StripeButton } from "@/components/ui/pixel-perfect/stripe-button";
+import { AnimatedCard } from "@/components/ui/pixel-perfect/animated-card";
 
 /* eslint-disable @next/next/no-img-element */
 const resources = [
@@ -29,24 +33,24 @@ export function CTASection() {
     <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
       <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
-          Start building with{" "}
-          <span className="text-teal">BRIK64.</span>
+          <TextReveal>Start building with</TextReveal>{" "}
+          <TextGradient className="text-3xl font-bold tracking-tight md:text-5xl">
+            BRIK64.
+          </TextGradient>
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground md:text-base">
-          The compiler is free. The language is finite. The proof is permanent.
+          <TextReveal delay={0.6}>The compiler is free. The language is finite. The proof is permanent.</TextReveal>
         </p>
 
         {/* CTA */}
         <div className="mx-auto mt-10 flex flex-col items-center gap-4">
-          <a
-            href="https://docs.brik64.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center bg-teal px-8 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+          <StripeButton
+            onClick={() => window.open("https://docs.brik64.dev", "_blank")}
+            className="h-12 px-8 text-base"
           >
             Get started &mdash; free
-          </a>
+          </StripeButton>
           <a
             href="https://digitalcircuitality.com"
             target="_blank"
@@ -66,15 +70,16 @@ export function CTASection() {
               href={resource.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group border border-border bg-background p-5 text-center transition-colors hover:border-teal/30"
             >
-              <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">
-                {resource.icon}
-              </div>
-              <p className="text-sm font-semibold">{resource.title}</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {resource.description}
-              </p>
+              <AnimatedCard className="text-center">
+                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">
+                  {resource.icon}
+                </div>
+                <p className="text-sm font-semibold">{resource.title}</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {resource.description}
+                </p>
+              </AnimatedCard>
             </a>
           ))}
         </div>

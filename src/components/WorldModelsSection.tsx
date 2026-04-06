@@ -11,6 +11,9 @@ import {
 import { cn } from "@/lib/utils";
 import type { ComponentType, SVGProps } from "react";
 import type { ReactNode } from "react";
+import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
+import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
+import { GridDots } from "@/components/ui/pixel-perfect/grid-dots";
 
 interface CardData {
   title: string;
@@ -106,15 +109,19 @@ export function WorldModelsSection() {
   return (
     <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [05] · THE FOUNDATION
-        </p>
+        <div className="mb-10 flex items-center gap-3 md:mb-14">
+          <Crosshair size={20} />
+          <p className="text-xs font-medium tracking-[2px] text-muted-foreground">
+            [05] · THE FOUNDATION
+          </p>
+        </div>
 
-        <div className="grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
+        <div className="relative grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
+          <GridDots className="absolute -top-4 -right-4 hidden opacity-50 md:block" cols={6} rows={4} />
           {/* Left */}
           <div>
-            <h2 className="max-w-4xl text-2xl font-normal leading-[40px] tracking-[-0.9px] text-balance md:text-4xl">
-              One compiler. Every guarantee.
+            <h2 className="max-w-4xl text-2xl font-semibold leading-[40px] tracking-[-0.9px] text-balance md:text-4xl">
+              <TextReveal>One compiler. Every guarantee.</TextReveal>
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
               64 Core = mathematically certified. 64 Extended = bridge to the real world.

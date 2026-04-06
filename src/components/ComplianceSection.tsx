@@ -17,7 +17,7 @@ export function ComplianceSection() {
           [11] &middot; COMPLIANCE EVIDENCE
         </p>
 
-        <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
+        <h3 className="max-w-3xl text-2xl font-semibold tracking-tight md:text-3xl">
           Compliance evidence.{" "}
           <span className="text-teal">At compile time.</span>
         </h3>

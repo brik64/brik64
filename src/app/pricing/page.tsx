@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import dynamic from "next/dynamic";
+import { StripeButton } from "@/components/ui/pixel-perfect/stripe-button";
 
 const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
@@ -265,16 +266,21 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={tier.ctaHref}
-                  className={`mt-8 inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium transition-colors ${
-                    tier.highlight
-                      ? "bg-teal text-white hover:bg-teal-hover"
-                      : "border border-border bg-muted/20 text-foreground hover:bg-muted/40"
-                  }`}
-                >
-                  {tier.cta}
-                </a>
+                {tier.highlight ? (
+                  <StripeButton
+                    className="mt-8 w-full"
+                    onClick={() => window.open(tier.ctaHref, "_self")}
+                  >
+                    {tier.cta}
+                  </StripeButton>
+                ) : (
+                  <a
+                    href={tier.ctaHref}
+                    className="mt-8 inline-flex items-center justify-center rounded-md border border-border bg-muted/20 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted/40"
+                  >
+                    {tier.cta}
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -301,8 +307,8 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {comparisonSections.map((section) => (
-                  <>
-                    <tr key={section.title}>
+                  <React.Fragment key={section.title}>
+                    <tr>
                       <td colSpan={5} className="pt-6 pb-2 text-xs font-medium uppercase tracking-widest text-teal">
                         {section.title}
                       </td>
@@ -316,7 +322,7 @@ export default function PricingPage() {
                         <td className="py-3 text-center"><CellValue value={row.enterprise} /></td>
                       </tr>
                     ))}
-                  </>
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>

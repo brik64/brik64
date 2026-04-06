@@ -2,6 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { BookOpen } from "lucide-react";
+import { TextGradient } from "@/components/ui/pixel-perfect/text-gradient";
+import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
+import { TextSlideUp } from "@/components/ui/pixel-perfect/text-slide-up";
+import { BorderGradientButton } from "@/components/ui/pixel-perfect/border-gradient-button";
 
 const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
@@ -28,17 +32,18 @@ export function HeroSection() {
       <div className="pointer-events-none relative z-20 px-6 pt-20 pb-16 md:px-12 lg:px-18 lg:pt-28 lg:pb-20">
         <div className="max-w-lg">
           <p className="text-muted-foreground mb-4 text-sm font-medium uppercase tracking-[3px]">
-            THE AI-NATIVE SYNTHETIC LANGUAGE
+            <TextSlideUp delay={0.1}>THE AI-NATIVE SYNTHETIC LANGUAGE</TextSlideUp>
           </p>
 
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            BRIK64 is the first programming language{" "}
-            <span className="text-teal">designed for AI.</span>
+            <TextReveal delay={0.3}>BRIK64 is the first programming language</TextReveal>{" "}
+            <TextGradient className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              designed for AI.
+            </TextGradient>
           </h1>
 
           <p className="text-muted-foreground mt-5 max-w-lg text-base leading-relaxed md:text-lg">
-            64 certified operations. 64 extended. An AI learns the entire language in one prompt.
-            The compiler proves every program is correct. Free. Ready today.
+            <TextReveal delay={1.0}>64 certified operations. 64 extended. An AI learns the entire language in one prompt. The compiler proves every program is correct. Free. Ready today.</TextReveal>
           </p>
 
           <div className="pointer-events-auto mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -52,14 +57,11 @@ export function HeroSection() {
             </a>
           </div>
           <div className="pointer-events-auto mt-3 flex items-center gap-5">
-            <a
-              href="https://docs.brik64.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
+            <BorderGradientButton
+              onClick={() => window.open("https://docs.brik64.dev", "_blank")}
             >
-              Read the docs <BookOpen className="h-3.5 w-3.5" />
-            </a>
+              Read the docs
+            </BorderGradientButton>
           </div>
         </div>
       </div>

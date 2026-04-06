@@ -52,7 +52,7 @@ export function AINativeSection() {
         </p>
 
         {/* Headline with gradient accent */}
-        <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
+        <h3 className="max-w-3xl text-2xl font-semibold tracking-tight md:text-3xl">
           Tell your AI what to build.{" "}
           <span className="bg-gradient-to-r from-teal to-emerald-400 bg-clip-text text-transparent">
             The compiler proves it&apos;s correct.

@@ -59,7 +59,7 @@ export function EditorsSection() {
           [08] · EDITORS
         </p>
 
-        <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
           Works where you code. Today.
         </h3>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">

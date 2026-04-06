@@ -16,7 +16,7 @@ export function LanguagesSection() {
           [03] · LANGUAGES
         </p>
 
-        <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
           10 languages in. <span className="text-teal">14 targets out.</span>
         </h3>
 

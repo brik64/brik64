@@ -101,7 +101,7 @@ export function PCDSection() {
           [02] · THE BLUEPRINT
         </p>
 
-        <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl lg:text-4xl">
+        <h3 className="max-w-3xl text-2xl font-semibold tracking-tight md:text-3xl">
           This is PCD. Learn it in one prompt.
         </h3>
 

@@ -54,7 +54,7 @@ export function VerticalsSection() {
           [12] &middot; VERTICALS
         </p>
 
-        <h3 className="max-w-3xl text-2xl font-normal tracking-tight md:text-3xl">
+        <h3 className="max-w-3xl text-2xl font-semibold tracking-tight md:text-3xl">
           Industries where a bug{" "}
           <span className="text-teal">can kill.</span>
         </h3>

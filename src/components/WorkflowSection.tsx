@@ -83,7 +83,7 @@ export function WorkflowSection() {
           [06] · WORKFLOW
         </p>
 
-        <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
           Three commands. <span className="text-teal">Verified software.</span>
         </h3>
 

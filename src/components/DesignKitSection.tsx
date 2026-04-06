@@ -1,5 +1,6 @@
 import { ArrowUpRight, Check, AlertCircle, Info, ChevronRight } from "lucide-react";
 import { PhiC } from "@/components/PhiC";
+import { PixelPerfectShowcase } from "@/components/PixelPerfectShowcase";
 
 export function DesignKitSection() {
   return (
@@ -10,7 +11,7 @@ export function DesignKitSection() {
           DESIGN KIT
         </p>
         <h2 className="mt-3 max-w-4xl text-2xl font-normal leading-[40px] tracking-[-0.9px] text-balance md:text-4xl">
-          PlayerZero Design System — Complete Reference
+          BRIK64 Design System — Complete Reference
         </h2>
         <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground">
           Every element, token, and pattern used across the site. Built with
@@ -54,21 +55,21 @@ export function DesignKitSection() {
         <div className="mt-16 border-t border-border pt-12">
           <h3 className="text-lg font-medium tracking-tight">Typography</h3>
           <p className="mt-1 text-sm text-muted-foreground">
-            Geist Sans + Geist Mono — PlayerZero heading scale
+            Jura (headings h1–h3) + Geist Sans (body) + Geist Mono (code)
           </p>
 
           <div className="mt-8 space-y-6">
             <div className="border-b border-border pb-4">
-              <p className="text-4xl font-normal tracking-tight">Heading 1 — text-4xl / tracking-tight</p>
-              <p className="mt-1 font-mono text-[10px] text-muted-foreground">36px · font-normal · leading-[40px] · tracking-[-0.9px]</p>
+              <h1 className="text-4xl font-semibold tracking-tight">Heading 1 — Jura / text-4xl</h1>
+              <p className="mt-1 font-mono text-[10px] text-muted-foreground">36px · Jura · font-semibold · tracking-tight · applied via CSS base layer</p>
             </div>
             <div className="border-b border-border pb-4">
-              <p className="text-2xl font-normal tracking-tight">Heading 2 — text-2xl / tracking-tight</p>
-              <p className="mt-1 font-mono text-[10px] text-muted-foreground">24px · font-normal · leading-[32px]</p>
+              <h2 className="text-2xl font-semibold tracking-tight">Heading 2 — Jura / text-2xl</h2>
+              <p className="mt-1 font-mono text-[10px] text-muted-foreground">24px · Jura · font-semibold · leading-[32px]</p>
             </div>
             <div className="border-b border-border pb-4">
-              <p className="text-xl font-normal tracking-tight">Heading 3 — text-xl / tracking-tight</p>
-              <p className="mt-1 font-mono text-[10px] text-muted-foreground">20px · font-normal</p>
+              <h3 className="text-xl font-medium tracking-tight">Heading 3 — Jura / text-xl</h3>
+              <p className="mt-1 font-mono text-[10px] text-muted-foreground">20px · Jura · font-medium</p>
             </div>
             <div className="border-b border-border pb-4">
               <p className="text-base leading-relaxed">Body — text-base / leading-relaxed</p>
@@ -407,6 +408,8 @@ export function DesignKitSection() {
             ))}
           </div>
         </div>
+
+        <PixelPerfectShowcase />
 
       </div>
     </section>

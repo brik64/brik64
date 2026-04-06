@@ -102,7 +102,7 @@ export function PlatformSection() {
           [04] · THE PLATFORM
         </p>
 
-        <h3 className="text-2xl font-normal tracking-tight md:text-3xl">
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
           CAD for software. Compose circuits visually.
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
