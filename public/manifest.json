@@ -1,0 +1,16 @@
+{
+  "name": "BRIK64 — Digital Circuitality",
+  "short_name": "BRIK64",
+  "description": "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00e5ff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Jura } from "next/font/google";
 import { StaticCircuitGrid } from "@/components/StaticCircuitGrid";
 import { CookieBanner } from "@/components/CookieBanner";
+import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,13 +22,49 @@ const jura = Jura({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Circuitality — Software That Works Like Hardware",
+  title: {
+    default: "BRIK64 — Digital Circuitality",
+    template: "%s | BRIK64",
+  },
   description:
-    "64 formally verified atomic components composed through EVA algebra. BRIK64: a new paradigm for verifiable, thermodynamically coherent software.",
+    "The AI-native synthetic language. 128 verified operations composed through EVA algebra. Write once, verify everywhere.",
+  metadataBase: new URL("https://brik64.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Digital Circuitality — Software That Works Like Hardware",
+    type: "website",
+    siteName: "BRIK64",
+    title: "BRIK64 — Digital Circuitality",
     description:
-      "64 formally verified atomic components composed through EVA algebra. BRIK64: a new paradigm for verifiable, thermodynamically coherent software.",
+      "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
+    url: "https://brik64.com",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BRIK64 — Digital Circuitality",
+    description:
+      "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
+    creator: "@brik64dev",
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.svg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  other: {
+    "msapplication-TileColor": "#00e5ff",
   },
 };
 
@@ -41,6 +78,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${jura.variable} h-full antialiased`}
     >
+      <head>
+        <StructuredData />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <StaticCircuitGrid />
         <div className="relative z-10 flex min-h-full flex-col">

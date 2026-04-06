@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://brik64.com</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://brik64.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/ai</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/ai-agents</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/blockchain</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://brik64.com/bpu</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/changelog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/cli</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://brik64.com/compliance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/design-system</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://brik64.com/download</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://brik64.com/enterprise</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://brik64.com/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/features</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/foundations</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/investors</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/legal</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://brik64.com/lifter</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/news</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/pcd</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://brik64.com/platform</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://brik64.com/playground</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/pricing</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://brik64.com/registry</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/safety-critical</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/sdks</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://brik64.com/transpiler</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- Industries -->
+  <url><loc>https://brik64.com/industries/aerospace</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/ai</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/automotive</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/engineering</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/finance</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/government</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/healthcare</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/industries/science</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- Languages -->
+  <url><loc>https://brik64.com/languages/javascript</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/typescript</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/python</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/rust</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/c</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/cpp</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/go</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/cobol</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/php</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/java</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/swift</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/wasm</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/native</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://brik64.com/languages/bir</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- Use Cases -->
+  <url><loc>https://brik64.com/use-cases/ai-safety</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://brik64.com/use-cases/ci-cd-integration</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://brik64.com/use-cases/cobol-migration</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://brik64.com/use-cases/formal-verification</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://brik64.com/use-cases/universal-transpilation</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+</urlset>
