@@ -14,7 +14,7 @@ import {
   ExternalLink,
   CheckCircle2,
 } from "lucide-react";
-import { AppleIcon, WindowsIcon, LinuxIcon } from "@/components/icons/os-icons";
+import { AppleIcon, WindowsIcon, DebianIcon, UbuntuIcon } from "@/components/icons/os-icons";
 import { PythonIcon, RustIcon, JavaScriptIcon, GoIcon } from "@/components/icons/lang-icons";
 import type { ComponentType } from "react";
 
@@ -30,8 +30,10 @@ const HeroWireframe = dynamic(
 const cliDownloads = [
   { os: "macOS", arch: "Apple Silicon (ARM64)", file: "brikc-darwin-arm64", Icon: AppleIcon, primary: true },
   { os: "macOS", arch: "Intel (x86_64)", file: "brikc-darwin-x64", Icon: AppleIcon, primary: false },
-  { os: "Linux", arch: "x86_64", file: "brikc-linux-x64", Icon: LinuxIcon, primary: true },
-  { os: "Linux", arch: "ARM64", file: "brikc-linux-arm64", Icon: LinuxIcon, primary: false },
+  { os: "Ubuntu", arch: "x86_64", file: "brikc-linux-x64.deb", Icon: UbuntuIcon, primary: true },
+  { os: "Ubuntu", arch: "ARM64", file: "brikc-linux-arm64.deb", Icon: UbuntuIcon, primary: false },
+  { os: "Debian", arch: "x86_64", file: "brikc-linux-x64.deb", Icon: DebianIcon, primary: true },
+  { os: "Debian", arch: "ARM64", file: "brikc-linux-arm64.deb", Icon: DebianIcon, primary: false },
   { os: "Windows", arch: "x86_64", file: "brikc-win-x64.exe", Icon: WindowsIcon, primary: true },
   { os: "Windows", arch: "ARM64", file: "brikc-win-arm64.exe", Icon: WindowsIcon, primary: false },
 ];
@@ -54,11 +56,11 @@ const platformApps = [
     available: false,
   },
   {
-    os: "Linux",
-    format: ".AppImage",
-    desc: "Universal Linux package",
-    file: "BRIK64-Platform.AppImage",
-    Icon: LinuxIcon,
+    os: "Ubuntu / Debian",
+    format: ".deb",
+    desc: "Ubuntu 22.04+ / Debian 12+",
+    file: "BRIK64-Platform.deb",
+    Icon: UbuntuIcon,
     available: false,
   },
 ];
