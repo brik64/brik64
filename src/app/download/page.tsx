@@ -272,7 +272,7 @@ export default function DownloadPage() {
                       className="mt-4 flex w-full items-center justify-center gap-2 rounded-md border border-border bg-muted/20 px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <Download className="h-4 w-4" />
-                      {app.available ? `Download ${app.format}` : "Notify me"}
+                      {app.available ? `Download ${app.format}` : "Coming Soon"}
                     </button>
                   </div>
                 );
