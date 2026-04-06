@@ -170,6 +170,19 @@ export default function AIAgentsPage() {
               </div>
             ))}
           </div>
+          <div className="mt-6 text-center">
+            <a
+              href="https://github.com/brik64-admin/brik64-skills"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-teal transition-colors hover:text-teal-hover"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brands/github.svg" alt="GitHub" className="h-4 w-4 grayscale" />
+              Browse skills on GitHub
+              <ArrowRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </section>
 
         {/* Agent Setup */}
