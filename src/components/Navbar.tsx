@@ -22,12 +22,12 @@ const productMore = [
 /* ── Industries Mega Menu data ── */
 
 const industryItems = [
-  { icon: Plane, label: "Aerospace & Defense", desc: "DO-178C evidence, mission-critical certification", href: "/safety-critical" },
-  { icon: HeartPulse, label: "Healthcare", desc: "IEC 62304 evidence, medical device software", href: "/safety-critical" },
-  { icon: Landmark, label: "Banking & Finance", desc: "MiFID II, SOC2, SOX compliance evidence", href: "/compliance" },
-  { icon: Car, label: "Automotive", desc: "ISO 26262 ASIL D, autonomous vehicle safety", href: "/safety-critical" },
-  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/ai" },
-  { icon: Cog, label: "Blockchain", desc: "Verified smart contracts, WASM, on-chain certificates", href: "/blockchain" },
+  { icon: Plane, label: "Aerospace & Defense", desc: "DO-178C evidence, mission-critical certification", href: "/industries/aerospace" },
+  { icon: HeartPulse, label: "Healthcare", desc: "IEC 62304 evidence, medical device software", href: "/industries/healthcare" },
+  { icon: Landmark, label: "Banking & Finance", desc: "MiFID II, SOC2, SOX compliance evidence", href: "/industries/finance" },
+  { icon: Car, label: "Automotive", desc: "ISO 26262 ASIL D, autonomous vehicle safety", href: "/industries/automotive" },
+  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/industries/ai" },
+  { icon: Cog, label: "Engineering", desc: "IEC 61508, structural analysis, control systems", href: "/industries/engineering" },
   { icon: FlaskConical, label: "Science & Research", desc: "Verified algorithms, domain constraints", href: "/industries/science" },
   { icon: Building2, label: "Government", desc: "FedRAMP evidence, classified system verification", href: "/industries/government" },
 ];
@@ -611,6 +611,9 @@ export function Navbar() {
           <a href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Pricing
           </a>
+          <a href="/download" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            Download
+          </a>
           <a href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Blog
           </a>
@@ -679,6 +682,7 @@ export function Navbar() {
             ))}
             <hr className="my-2 border-border" />
             <a href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</a>
+            <a href="/download" className="px-3 py-2 text-sm text-muted-foreground">Download</a>
             <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
             <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</p>
             <a href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</a>

@@ -1,0 +1,214 @@
+<h2>Forge Demo — Contraste mejorado</h2>
+<p class="subtitle">Versión A compacta con mejor contraste en las celdas</p>
+
+<div class="cards">
+  <div class="card" data-choice="dark-active" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#ffffff;padding:24px;border-radius:12px;font-family:system-ui;border:1px solid #eee">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+          <div>
+            <span style="font-size:10px;letter-spacing:2px;color:#888">✦ [04.1] · THE FORGE</span>
+            <h3 style="font-size:20px;margin:8px 0 4px;font-family:'Jura',sans-serif;color:#1A1817">Compose polymers visually.</h3>
+            <p style="font-size:12px;color:#666;max-width:320px">Select a polymer to see its monomer recipe. Active monomers glow. Badge counts show repetitions.</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="background:#f0efeb;padding:4px 10px;border-radius:12px;font-size:10px;color:#666">OAuth2 Handler</span>
+            <span style="background:#1A1817;color:#00e5ff;padding:6px 12px;border-radius:6px;font-size:11px;font-family:monospace;font-weight:600">Φ_c = 1 ✓</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:20px">
+          <!-- Core -->
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+              <div style="width:8px;height:8px;border-radius:2px;background:#00e5ff"></div>
+              <span style="font-size:9px;letter-spacing:1.5px;color:#00b8d4;font-weight:700">CORE · CERTIFIED</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:2px;padding:6px;border:1px solid rgba(0,229,255,0.15);border-radius:8px;background:rgba(0,229,255,0.02)">
+              <style>
+                .mc-cell { aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:4px;position:relative;transition:all 0.2s; }
+                .mc-idle { background:#f8f8f8;border:1px solid #e8e8e8; }
+                .mc-idle span { color:#ccc;font-size:8px;font-family:monospace;font-weight:500; }
+                .mc-active { background:#1A1817;border:1px solid #333;box-shadow:0 0 8px rgba(0,229,255,0.3); }
+                .mc-active span { color:#ffffff;font-size:8px;font-family:monospace;font-weight:700; }
+                .mc-active .mc-name { color:#00e5ff;font-size:6px;font-weight:600; }
+                .mc-badge { position:absolute;top:-4px;right:-4px;background:#cc3333;color:white;font-size:7px;min-width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;border:2px solid white;font-family:monospace;z-index:1; }
+                .mx-idle { background:#fafafa;border:1px solid #efefef; }
+                .mx-idle span { color:#d5d5d5;font-size:8px;font-family:monospace;font-weight:400; }
+                .mx-active { background:#1A1817;border:1px solid #333;box-shadow:0 0 6px rgba(0,184,212,0.2); }
+                .mx-active span { color:#ffffff;font-size:8px;font-family:monospace;font-weight:700; }
+                .mx-active .mc-name { color:#5ce5f0;font-size:6px;font-weight:600; }
+              </style>
+              <div class="mc-cell mc-active"><div class="mc-badge">1</div><span>00</span><span class="mc-name">ADD</span></div>
+              <div class="mc-cell mc-idle"><span>01</span></div>
+              <div class="mc-cell mc-active"><div class="mc-badge">3</div><span>02</span><span class="mc-name">MUL</span></div>
+              <div class="mc-cell mc-idle"><span>03</span></div>
+              <div class="mc-cell mc-idle"><span>04</span></div>
+              <div class="mc-cell mc-idle"><span>05</span></div>
+              <div class="mc-cell mc-idle"><span>06</span></div>
+              <div class="mc-cell mc-idle"><span>07</span></div>
+
+              <div class="mc-cell mc-idle"><span>08</span></div>
+              <div class="mc-cell mc-idle"><span>09</span></div>
+              <div class="mc-cell mc-active"><div class="mc-badge">2</div><span>10</span><span class="mc-name">XOR</span></div>
+              <div class="mc-cell mc-idle"><span>11</span></div>
+              <div class="mc-cell mc-active"><div class="mc-badge">2</div><span>12</span><span class="mc-name">SAL</span></div>
+              <div class="mc-cell mc-idle"><span>13</span></div>
+              <div class="mc-cell mc-idle"><span>14</span></div>
+              <div class="mc-cell mc-idle"><span>15</span></div>
+
+              <div class="mc-cell mc-idle"><span>16</span></div>
+              <div class="mc-cell mc-idle"><span>17</span></div>
+              <div class="mc-cell mc-idle"><span>18</span></div>
+              <div class="mc-cell mc-idle"><span>19</span></div>
+              <div class="mc-cell mc-idle"><span>20</span></div>
+              <div class="mc-cell mc-idle"><span>21</span></div>
+              <div class="mc-cell mc-idle"><span>22</span></div>
+              <div class="mc-cell mc-idle"><span>23</span></div>
+
+              <div class="mc-cell mc-active"><span>24</span><span class="mc-name">IF</span></div>
+              <div class="mc-cell mc-idle"><span>25</span></div>
+              <div class="mc-cell mc-idle"><span>26</span></div>
+              <div class="mc-cell mc-idle"><span>27</span></div>
+              <div class="mc-cell mc-idle"><span>28</span></div>
+              <div class="mc-cell mc-idle"><span>29</span></div>
+              <div class="mc-cell mc-idle"><span>30</span></div>
+              <div class="mc-cell mc-idle"><span>31</span></div>
+
+              <div class="mc-cell mc-idle"><span>32</span></div>
+              <div class="mc-cell mc-idle"><span>33</span></div>
+              <div class="mc-cell mc-idle"><span>34</span></div>
+              <div class="mc-cell mc-active"><div class="mc-badge">5</div><span>35</span><span class="mc-name">WRT</span></div>
+              <div class="mc-cell mc-idle"><span>36</span></div>
+              <div class="mc-cell mc-idle"><span>37</span></div>
+              <div class="mc-cell mc-idle"><span>38</span></div>
+              <div class="mc-cell mc-idle"><span>39</span></div>
+
+              <div class="mc-cell mc-idle"><span>40</span></div>
+              <div class="mc-cell mc-idle"><span>41</span></div>
+              <div class="mc-cell mc-idle"><span>42</span></div>
+              <div class="mc-cell mc-idle"><span>43</span></div>
+              <div class="mc-cell mc-idle"><span>44</span></div>
+              <div class="mc-cell mc-idle"><span>45</span></div>
+              <div class="mc-cell mc-idle"><span>46</span></div>
+              <div class="mc-cell mc-idle"><span>47</span></div>
+
+              <div class="mc-cell mc-idle"><span>48</span></div>
+              <div class="mc-cell mc-idle"><span>49</span></div>
+              <div class="mc-cell mc-idle"><span>50</span></div>
+              <div class="mc-cell mc-idle"><span>51</span></div>
+              <div class="mc-cell mc-idle"><span>52</span></div>
+              <div class="mc-cell mc-idle"><span>53</span></div>
+              <div class="mc-cell mc-idle"><span>54</span></div>
+              <div class="mc-cell mc-idle"><span>55</span></div>
+
+              <div class="mc-cell mc-idle"><span>56</span></div>
+              <div class="mc-cell mc-idle"><span>57</span></div>
+              <div class="mc-cell mc-idle"><span>58</span></div>
+              <div class="mc-cell mc-idle"><span>59</span></div>
+              <div class="mc-cell mc-idle"><span>60</span></div>
+              <div class="mc-cell mc-idle"><span>61</span></div>
+              <div class="mc-cell mc-idle"><span>62</span></div>
+              <div class="mc-cell mc-idle"><span>63</span></div>
+            </div>
+          </div>
+          <!-- Extended -->
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+              <div style="width:8px;height:8px;border-radius:2px;background:#e0b020"></div>
+              <span style="font-size:9px;letter-spacing:1.5px;color:#999;font-weight:700">EXTENDED · CONTRACT</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:2px;padding:6px;border:1px solid #efefef;border-radius:8px">
+              <div class="mc-cell mx-idle"><span>00</span></div>
+              <div class="mc-cell mx-active"><span>01</span><span class="mc-name">HTTP</span></div>
+              <div class="mc-cell mx-idle"><span>02</span></div>
+              <div class="mc-cell mx-idle"><span>03</span></div>
+              <div class="mc-cell mx-idle"><span>04</span></div>
+              <div class="mc-cell mx-idle"><span>05</span></div>
+              <div class="mc-cell mx-idle"><span>06</span></div>
+              <div class="mc-cell mx-idle"><span>07</span></div>
+
+              <div class="mc-cell mx-idle"><span>08</span></div>
+              <div class="mc-cell mx-idle"><span>09</span></div>
+              <div class="mc-cell mx-idle"><span>10</span></div>
+              <div class="mc-cell mx-idle"><span>11</span></div>
+              <div class="mc-cell mx-idle"><span>12</span></div>
+              <div class="mc-cell mx-idle"><span>13</span></div>
+              <div class="mc-cell mx-idle"><span>14</span></div>
+              <div class="mc-cell mx-active"><span>15</span><span class="mc-name">DNS</span></div>
+
+              <div class="mc-cell mx-idle"><span>16</span></div>
+              <div class="mc-cell mx-idle"><span>17</span></div>
+              <div class="mc-cell mx-idle"><span>18</span></div>
+              <div class="mc-cell mx-idle"><span>19</span></div>
+              <div class="mc-cell mx-idle"><span>20</span></div>
+              <div class="mc-cell mx-idle"><span>21</span></div>
+              <div class="mc-cell mx-idle"><span>22</span></div>
+              <div class="mc-cell mx-idle"><span>23</span></div>
+
+              <div class="mc-cell mx-idle"><span>24</span></div>
+              <div class="mc-cell mx-idle"><span>25</span></div>
+              <div class="mc-cell mx-idle"><span>26</span></div>
+              <div class="mc-cell mx-idle"><span>27</span></div>
+              <div class="mc-cell mx-idle"><span>28</span></div>
+              <div class="mc-cell mx-idle"><span>29</span></div>
+              <div class="mc-cell mx-idle"><span>30</span></div>
+              <div class="mc-cell mx-idle"><span>31</span></div>
+
+              <div class="mc-cell mx-idle"><span>32</span></div>
+              <div class="mc-cell mx-idle"><span>33</span></div>
+              <div class="mc-cell mx-idle"><span>34</span></div>
+              <div class="mc-cell mx-idle"><span>35</span></div>
+              <div class="mc-cell mx-idle"><span>36</span></div>
+              <div class="mc-cell mx-idle"><span>37</span></div>
+              <div class="mc-cell mx-idle"><span>38</span></div>
+              <div class="mc-cell mx-active"><span>39</span><span class="mc-name">STDO</span></div>
+
+              <div class="mc-cell mx-idle"><span>40</span></div>
+              <div class="mc-cell mx-idle"><span>41</span></div>
+              <div class="mc-cell mx-idle"><span>42</span></div>
+              <div class="mc-cell mx-idle"><span>43</span></div>
+              <div class="mc-cell mx-idle"><span>44</span></div>
+              <div class="mc-cell mx-idle"><span>45</span></div>
+              <div class="mc-cell mx-idle"><span>46</span></div>
+              <div class="mc-cell mx-idle"><span>47</span></div>
+
+              <div class="mc-cell mx-idle"><span>48</span></div>
+              <div class="mc-cell mx-idle"><span>49</span></div>
+              <div class="mc-cell mx-idle"><span>50</span></div>
+              <div class="mc-cell mx-idle"><span>51</span></div>
+              <div class="mc-cell mx-idle"><span>52</span></div>
+              <div class="mc-cell mx-idle"><span>53</span></div>
+              <div class="mc-cell mx-idle"><span>54</span></div>
+              <div class="mc-cell mx-idle"><span>55</span></div>
+
+              <div class="mc-cell mx-idle"><span>56</span></div>
+              <div class="mc-cell mx-idle"><span>57</span></div>
+              <div class="mc-cell mx-idle"><span>58</span></div>
+              <div class="mc-cell mx-idle"><span>59</span></div>
+              <div class="mc-cell mx-idle"><span>60</span></div>
+              <div class="mc-cell mx-idle"><span>61</span></div>
+              <div class="mc-cell mx-idle"><span>62</span></div>
+              <div class="mc-cell mx-idle"><span>63</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Legend -->
+        <div style="display:flex;gap:16px;margin-top:12px;justify-content:center">
+          <div style="display:flex;align-items:center;gap:4px;font-size:9px;color:#888">
+            <div style="width:12px;height:12px;background:#1A1817;border-radius:2px"></div> Active (used)
+          </div>
+          <div style="display:flex;align-items:center;gap:4px;font-size:9px;color:#888">
+            <div style="width:12px;height:12px;background:#f8f8f8;border:1px solid #e8e8e8;border-radius:2px"></div> Idle
+          </div>
+          <div style="display:flex;align-items:center;gap:4px;font-size:9px;color:#888">
+            <div style="width:12px;height:12px;background:#cc3333;border-radius:50%;color:white;font-size:7px;display:flex;align-items:center;justify-content:center;font-weight:bold">3</div> Count badge
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Forge — Contraste mejorado</h3>
+      <p>Celdas activas: fondo negro (#1A1817) con texto blanco y nombre teal. Celdas idle: gris claro apagado. Badges rojos con borde blanco. Glow teal sutil en activas.</p>
+    </div>
+  </div>
+</div>

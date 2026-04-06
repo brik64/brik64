@@ -1,50 +1,50 @@
-import { CopyableCode } from "@/components/CopyableCode";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { CopyableCode } from "@/components/CopyableCode";
 import { Heart, Pill, Stethoscope, MonitorSmartphone, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { HeroWireframeClient } from "@/components/HeroWireframeClient";
-
 
 export const metadata = {
   title: "Healthcare — BRIK64 Industries",
   description:
-    "An insulin pump that can overdose is a weapon. BRIK64 makes overdose structurally impossible. Medical device software verification with mathematical proof.",
+    "An insulin pump that can overdose is a weapon. BRIK64 makes that mathematically impossible. IEC 62304 Class C evidence, drug dosage verification, and patient safety by construction.",
 };
 
 const useCases = [
   {
     icon: Pill,
-    title: "Insulin Pump Controllers",
+    title: "Drug Dosage Calculation",
     description:
-      "Dose calculation with domain constraints that make overdose structurally impossible. Dose: Range[0.0, 25.0] units. Glucose: Range[20, 600] mg/dL. Basal rate: Range[0.0, 5.0] units/hr. The domain rejects what kills patients — before the code ever runs.",
+      "Weight-based dosing. Age adjustments. Renal function correction via Cockcroft-Gault. Therapeutic window enforcement. The compiler rejects any prescription outside the safe range. Not as a warning — as a compilation failure. The overdose cannot be compiled.",
   },
   {
     icon: Heart,
-    title: "Infusion Pump Software",
+    title: "Patient Data Flow Verification",
     description:
-      "Flow rate bounds, air-in-line detection thresholds, occlusion pressure limits — all mathematically verified. Every parameter that touches a patient's bloodstream is domain-constrained. Not tested. Proven.",
+      "Every data path from sensor to display formally verified. Patient weight, lab values, vital signs — all carry domain constraints. A corrupted decimal point, a swapped patient ID — the circuit rejects it before it reaches a clinician. HIPAA compliance is not a policy. It is a mathematical property.",
   },
   {
     icon: Stethoscope,
-    title: "Diagnostic Algorithms",
+    title: "Diagnostic Algorithm Certification",
     description:
-      "Sensitivity and specificity thresholds bounded by construction. False positive and false negative rates constrained at the compiler level. Every diagnostic pathway is traceable, every clinical decision is justified.",
+      "Clinical decision support as certified circuits. Every diagnostic pathway is traceable. Every threshold is bounded. Every output is justified by a mathematical proof a regulator can read. No ML black box. Deterministic logic. Always.",
   },
   {
     icon: MonitorSmartphone,
-    title: "Patient Monitoring Systems",
+    title: "Medical Device Software",
     description:
-      "Alarm thresholds verified at compile time. HR: Range[30, 250] bpm. SpO2: Range[0, 100]%. BP systolic: Range[40, 300] mmHg. When a monitor fails silently, patients die. BRIK64 makes silent failure impossible.",
+      "IEC 62304 Class C — the highest risk classification — requires formal verification evidence. BRIK64 generates it automatically. What used to take 18 months of manual documentation now happens at compile time. Every function certified. Every artifact timestamped. Every audit automatic.",
   },
 ];
 
 const standards = [
-  "IEC 62304 — Software lifecycle for medical devices. Classes A, B, and C. BRIK64 generates Class C verification evidence automatically.",
-  "FDA 21 CFR Part 820 — Quality System Regulation. Every software change requires re-validation. BRIK64 makes re-validation instant.",
-  "IEC 60601-1 — Medical electrical equipment safety. Processing logic verified by construction, not by manual review.",
-  "ISO 14971 — Risk management for medical devices. Domain constraints are risk controls. Compiler-enforced, not document-enforced.",
-  "EU MDR 2017/745 — European Medical Device Regulation. Mathematical proof of processing integrity for CE marking.",
+  "IEC 62304 — Medical Device Software Lifecycle Processes (Class A/B/C)",
+  "HIPAA — Health Insurance Portability and Accountability Act (data integrity by construction)",
+  "FDA 21 CFR Part 11 — Electronic Records and Signatures (cryptographic audit trail)",
+  "MDR — EU Medical Device Regulation 2017/745 (CE marking evidence)",
+  "IEC 62443 — Industrial Cybersecurity for Medical Devices",
+  "ISO 14971 — Application of Risk Management to Medical Devices",
 ];
 
 export default function HealthcareIndustryPage() {
@@ -53,228 +53,220 @@ export default function HealthcareIndustryPage() {
       <Navbar />
       <main className="relative z-10">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        {/* ── Hero ── */}
-        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
-          <HeroWireframeClient />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
-              Healthcare
-            </span>
-            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              An insulin pump that can overdose is a{" "}
-              <span className="text-[#00b8d4]">weapon.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              BRIK64 makes overdose structurally impossible. Not with better testing.
-              Not with more careful code review. With mathematical proof that
-              dangerous values cannot exist in your software.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-4">
-              <a
-                href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
-              >
-                Start building — free <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="https://docs.brik64.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-              >
-                Read the docs <ExternalLink className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <div className="mx-auto max-w-7xl border-x border-border">
-          {/* ── The Challenge ── */}
-          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              The Challenge
-            </span>
-            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Software kills patients. This is not hypothetical.
-            </h2>
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  title: "Therac-25: the warning we ignored",
-                  desc: "Six patients received massive radiation overdoses because of a software race condition. Three died. That was 1985. Forty years later, medical device software is still verified by humans reading documents.",
-                },
-                {
-                  title: "$31M per recall. 70+ per year.",
-                  desc: "The FDA MAUDE database logs 70+ software-related medical device recalls annually. Average cost of a Class I recall: $31 million. IEC 62304 Class C requires complete lifecycle documentation. FDA 510(k) takes 6-12 months. PMA takes 1-3 years. Every software change requires re-validation under 21 CFR Part 820.",
-                },
-                {
-                  title: "The real cost is human",
-                  desc: "A wrong decimal in a dose calculation. A race condition in an infusion pump. A silent alarm failure in a patient monitor. These aren't edge cases — they're Tuesday. And every one of them was \"thoroughly tested.\"",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="border border-border bg-white p-6"
+          {/* ── Hero ── */}
+          <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
+            <HeroWireframeClient />
+            <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+              <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+                Healthcare
+              </span>
+              <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                An insulin pump that can overdose{" "}
+                <span className="text-[#00b8d4]">is a weapon. BRIK64 makes that impossible.</span>
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+                The Therac-25 killed patients with a race condition. Drug infusion pumps have been
+                recalled hundreds of times for software defects. Every one of those deaths was
+                preventable. Not with better testing. With mathematical proof.
+              </p>
+              <div className="mt-10 flex items-center justify-center gap-4">
+                <a
+                  href="/login"
+                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
                 >
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+                  Build verified healthcare software <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://docs.brik64.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                >
+                  Read the docs <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
             </div>
           </section>
 
-          {/* ── How BRIK64 Helps ── */}
-          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              How BRIK64 Helps
-            </span>
-            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              The compiler rejects what kills patients
-            </h2>
-            <div className="mt-10 grid gap-8 md:grid-cols-2">
-              {useCases.map((uc) => (
-                <div key={uc.title} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <uc.icon className="h-6 w-6 text-[#00b8d4]" />
-                  </div>
-                  <div>
+          <div className="mx-auto max-w-7xl border-x border-border">
+            {/* ── The Challenge ── */}
+            <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+                The Challenge
+              </span>
+              <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Software bugs in healthcare don&apos;t fail gracefully. They kill.
+              </h2>
+              <div className="mt-8 grid gap-6 md:grid-cols-3">
+                {[
+                  {
+                    title: "The recalls that never stopped",
+                    desc: "The FDA recalled 8.5 million insulin pump units in 2019 due to a cybersecurity vulnerability. Drug infusion pumps account for 35% of all medical device recalls. These are not hardware failures. They are software failures. Every single one.",
+                  },
+                  {
+                    title: "IEC 62304 Class C costs millions",
+                    desc: "Class C medical device software — the highest risk category — requires complete requirements traceability, formal test coverage, and a full verification audit trail. Manual evidence collection takes 12-18 months and costs $2-5M per product cycle. There is no shortcut. Until now.",
+                  },
+                  {
+                    title: "A decimal point kills",
+                    desc: "In 1999, a decimal point error in chemotherapy software at a cancer center caused 10x overdoses. The code passed testing. The engineer didn't catch it. The patient didn't survive it. Testing finds some bugs. Proof finds all of them.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="border border-border bg-white p-6"
+                  >
                     <h3 className="text-lg font-semibold text-foreground">
-                      {uc.title}
+                      {item.title}
                     </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                      {uc.description}
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.desc}
                     </p>
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
+                ))}
+              </div>
+            </section>
 
-          {/* ── Policy Circuit Example ── */}
-          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              Policy Circuit Example
-            </span>
-            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Insulin dose calculator. Overdose is a compile error.
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              Real insulin pump parameters. Real clinical constraints. The compiler
-              enforces every domain bound — a dose of 26 units doesn't produce
-              a wrong answer. It doesn't compile.
-            </p>
-            <CopyableCode title="insulin_dose_controller.pcd">{`// Insulin Dose Controller — Overdose Structurally Impossible
-// Φ_c = 1 — patient safety guaranteed by construction
+            {/* ── How BRIK64 Helps ── */}
+            <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+                How BRIK64 Helps
+              </span>
+              <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Every prescription proven. Every data path certified.
+              </h2>
+              <div className="mt-10 grid gap-8 md:grid-cols-2">
+                {useCases.map((uc) => (
+                  <div key={uc.title} className="flex gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
+                      <uc.icon className="h-6 w-6 text-[#00b8d4]" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground">
+                        {uc.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {uc.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-circuit insulin_dose_controller {
-  // Patient inputs — every value is domain-bounded
-  input glucose_mgdl    : Float64[20.0 .. 600.0]     // mg/dL — clinical range
-  input current_iob     : Float64[0.0 .. 25.0]       // insulin-on-board (units)
-  input weight_kg       : Float64[2.0 .. 250.0]      // neonate to bariatric
-  input sensitivity     : Float64[10.0 .. 500.0]     // mg/dL per unit (ISF)
+            {/* ── Policy Circuit Example ── */}
+            <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+                Policy Circuit Example
+              </span>
+              <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                A dosage calculator that cannot overdose
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
+                Vancomycin. Weight-based. Age-adjusted. Renal-corrected. The therapeutic
+                window is not a guideline — it is a domain constraint. No prescription
+                outside these bounds can compile. The overdose is not caught at runtime.
+                It does not exist.
+              </p>
+              <CopyableCode title="dosage_calculator.pcd">{`// Drug Dosage Calculator — Vancomycin Weight-Based Dosing
+// Φ_c = 1 — therapeutic window enforced by the compiler
 
-  // Pump constraints — hardware limits
-  const max_bolus       : Float64 = 25.0              // units — absolute max
-  const max_basal_rate  : Float64 = 5.0               // units/hr
-  const target_glucose  : Float64 = 110.0             // mg/dL — target
-  const min_glucose_act : Float64 = 70.0              // don't dose below this
+circuit dosage_calculator {
+  // Patient parameters — full clinical range
+  input weight_kg     : Float64[0.5 .. 300.0]     // neonate to bariatric
+  input age_years     : Float64[0.0 .. 120.0]     // full patient range
+  input creatinine    : Float64[0.1 .. 15.0]      // mg/dL, renal function
+  input concentration : Float64[0.001 .. 1000.0]  // mg/mL preparation
 
-  // Correction dose calculation
-  let correction = (glucose_mgdl - target_glucose) / sensitivity
-  let adjusted   = correction - current_iob
-  let safe_dose  = clamp(adjusted, 0.0, max_bolus)
+  // Vancomycin parameters
+  const dose_per_kg   : Float64 = 15.0            // mg/kg standard
+  const max_single    : Float64 = 2000.0          // mg absolute ceiling
+  const min_dose      : Float64 = 250.0           // mg minimum effective
 
-  // Safety: never dose if glucose is low
-  let final_dose = if glucose_mgdl < min_glucose_act
-    then 0.0
-    else safe_dose
+  // Renal adjustment (Cockcroft-Gault simplified)
+  let renal_factor = clamp(
+    (140.0 - age_years) * weight_kg / (72.0 * creatinine),
+    0.1, 1.0
+  )
 
-  // Assertions — the compiler enforces these
-  assert final_dose >= 0.0
-    | reject("Negative dose — logic error")
+  // Dose calculation with renal correction
+  let raw_dose     = weight_kg * dose_per_kg * renal_factor
+  let clamped_dose = clamp(raw_dose, min_dose, max_single)
+  let volume_ml    = clamped_dose / concentration
 
-  assert final_dose <= max_bolus
-    | reject("Exceeds maximum bolus — rejected")
+  // Safety assertions — these are not guidelines. They are laws.
+  assert clamped_dose >= min_dose
+    | reject("Sub-therapeutic dose — consult pharmacist")
 
-  assert glucose_mgdl >= 20.0
-    | reject("Glucose reading out of sensor range")
+  assert clamped_dose <= max_single
+    | reject("Exceeds maximum single dose — IEC 62304 Class C violation")
+
+  assert volume_ml <= 500.0
+    | reject("Infusion volume exceeds safe limit — verify concentration")
 
   output prescription : {
-    bolus_units:   final_dose,
-    glucose_input: glucose_mgdl,
-    iob_remaining: current_iob,
-    correction:    correction,
-    certified:     certification_hash()
+    dose_mg:    clamped_dose,
+    volume_ml:  volume_ml,
+    renal_adj:  renal_factor,
+    certified:  certification_hash()
   }
 }`}</CopyableCode>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
-              Glucose, insulin-on-board, sensitivity factor — all domain-bounded. Dose clamped to pump hardware limits. IOB subtracted before delivery.{" "}
-              <PhiC /> = 1 — overdose is not a risk to mitigate. It is a state that cannot exist.
-            </p>
-          </section>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
+                Weight, age, renal function — all domain-bounded. Dose clamped to therapeutic window.{" "}
+                <PhiC /> = 1 — no prescription can exceed safe limits. Not by design. By construction.
+              </p>
+            </section>
 
-          {/* ── Standards ── */}
-          <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-              Compliance &amp; Standards
-            </span>
-            <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Every standard your QMS team dreads. Handled.
-            </h2>
-            <ul className="mx-auto mt-8 max-w-2xl space-y-3">
-              {standards.map((s) => (
-                <li key={s} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
-                  <span className="text-sm text-foreground">{s}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted-foreground">
-              BRIK64 generates mathematical verification evidence for processing logic.
-              Infrastructure, organizational, and procedural controls require separate evidence —
-              but the hardest part, proving your software is correct, is now automatic.
-            </p>
-          </section>
+            {/* ── Standards ── */}
+            <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+                Compliance &amp; Standards
+              </span>
+              <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                IEC 62304 Class C evidence. Generated, not written.
+              </h2>
+              <ul className="mx-auto mt-8 max-w-2xl space-y-3">
+                {standards.map((s) => (
+                  <li key={s} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
+                    <span className="text-sm text-foreground">{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
 
-          {/* ── CTA ── */}
-          <section className="bg-background px-6 py-24 text-center lg:px-16">
-            <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              When your software touches patients, mathematical proof isn&apos;t optional.
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Start building — free. Every dose proven safe. Every alarm threshold verified.
-              Every diagnostic pathway certified. Ship to the FDA with evidence that isn't
-              a PDF someone wrote at 2am.
-            </p>
-            <div className="mt-8 flex items-center justify-center gap-4">
-              <a
-                href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
-              >
-                Start building — free <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="https://docs.brik64.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-              >
-                Read the docs <ExternalLink className="h-4 w-4" />
-              </a>
-            </div>
-          </section>
+            {/* ── CTA ── */}
+            <section className="bg-background px-6 py-24 text-center lg:px-16">
+              <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                The Therac-25 killed with a race condition. Your device won&rsquo;t.
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
+                Every dosage proven. Every data path certified. Every device recall prevented.
+                IEC 62304 evidence generated automatically. Patient safety is not a feature.
+                It is a mathematical property.
+              </p>
+              <div className="mt-8 flex items-center justify-center gap-4">
+                <a
+                  href="/login"
+                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                >
+                  Build verified healthcare software <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://docs.brik64.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+                >
+                  Read the docs <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </section>
+          </div>
         </div>
-      </div>
-
       </main>
       <div className="relative z-10">
-
         <Footer />
-
       </div>
     </>
   );

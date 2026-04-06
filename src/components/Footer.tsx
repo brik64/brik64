@@ -30,6 +30,7 @@ export function Footer() {
               <li><a href="/lifter" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Lifter</a></li>
               <li><a href="/transpiler" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Transpiler</a></li>
               <li><a href="/pricing" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Pricing</a></li>
+              <li><a href="/download" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Download</a></li>
             </ul>
           </div>
 

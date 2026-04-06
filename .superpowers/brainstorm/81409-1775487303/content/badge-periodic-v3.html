@@ -1,0 +1,234 @@
+<h2>Forge — Estilo tabla periódica</h2>
+<p class="subtitle">Celdas grandes con layout tipo elemento químico. Badge pill arriba-derecha.</p>
+
+<style>
+  .pg { display:flex;gap:32px;justify-content:center;padding:24px 0;flex-wrap:wrap; }
+
+  /* Celda estilo tabla periódica - ACTIVA */
+  .el-active {
+    width:72px;height:72px;
+    background:#1A1817;
+    border-radius:6px;
+    position:relative;
+    display:flex;flex-direction:column;
+    padding:6px 7px 5px;
+    box-shadow:0 0 12px rgba(0,229,255,0.25);
+    border:1px solid #333;
+  }
+  .el-active .el-id {
+    font-size:8px;font-family:monospace;color:rgba(255,255,255,0.5);
+    line-height:1;
+  }
+  .el-active .el-num {
+    font-size:26px;font-weight:700;font-family:'Jura',system-ui,sans-serif;
+    color:#ffffff;
+    line-height:1;margin-top:auto;
+    text-align:center;
+    letter-spacing:-1px;
+  }
+  .el-active .el-name {
+    font-size:9px;font-weight:600;color:#00e5ff;
+    text-align:center;line-height:1;
+    font-family:monospace;
+  }
+  .el-active .el-fam {
+    font-size:6px;color:rgba(255,255,255,0.35);
+    text-align:center;line-height:1;margin-top:1px;
+  }
+
+  /* Celda estilo tabla periódica - IDLE */
+  .el-idle {
+    width:72px;height:72px;
+    background:#f8f8f8;
+    border:1px solid #e8e8e8;
+    border-radius:6px;
+    position:relative;
+    display:flex;flex-direction:column;
+    padding:6px 7px 5px;
+  }
+  .el-idle .el-id {
+    font-size:8px;font-family:monospace;color:#ccc;
+    line-height:1;
+  }
+  .el-idle .el-num {
+    font-size:26px;font-weight:700;font-family:'Jura',system-ui,sans-serif;
+    color:#ddd;
+    line-height:1;margin-top:auto;
+    text-align:center;
+    letter-spacing:-1px;
+  }
+  .el-idle .el-name {
+    font-size:9px;font-weight:500;color:#ccc;
+    text-align:center;line-height:1;
+    font-family:monospace;
+  }
+  .el-idle .el-fam {
+    font-size:6px;color:#ddd;
+    text-align:center;line-height:1;margin-top:1px;
+  }
+
+  /* Badge pill */
+  .el-badge {
+    position:absolute;top:-6px;right:-6px;
+    background:#cc3333;color:white;
+    font-size:9px;font-weight:700;font-family:monospace;
+    min-width:18px;height:18px;
+    border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid white;
+    padding:0 4px;
+    box-shadow:0 1px 4px rgba(204,51,51,0.4);
+    z-index:1;
+  }
+</style>
+
+<div class="cards">
+  <div class="card" data-choice="periodic" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;padding:32px;border-radius:12px">
+        <!-- Sample row -->
+        <div style="text-align:center;margin-bottom:16px">
+          <span style="font-size:10px;letter-spacing:2px;color:#00b8d4;font-weight:700">CORE · CERTIFIED</span>
+        </div>
+        <div class="pg">
+          <div class="el-active">
+            <div class="el-badge">3</div>
+            <span class="el-id">MC_00</span>
+            <span class="el-num">00</span>
+            <span class="el-name">ADD</span>
+            <span class="el-fam">Arithmetic</span>
+          </div>
+          <div class="el-idle">
+            <span class="el-id">MC_01</span>
+            <span class="el-num">01</span>
+            <span class="el-name">SUB</span>
+            <span class="el-fam">Arithmetic</span>
+          </div>
+          <div class="el-active">
+            <div class="el-badge">5</div>
+            <span class="el-id">MC_02</span>
+            <span class="el-num">02</span>
+            <span class="el-name">MUL</span>
+            <span class="el-fam">Arithmetic</span>
+          </div>
+          <div class="el-idle">
+            <span class="el-id">MC_03</span>
+            <span class="el-num">03</span>
+            <span class="el-name">DIV</span>
+            <span class="el-fam">Arithmetic</span>
+          </div>
+          <div class="el-active">
+            <div class="el-badge">15</div>
+            <span class="el-id">MC_10</span>
+            <span class="el-num">10</span>
+            <span class="el-name">XOR</span>
+            <span class="el-fam">Logic</span>
+          </div>
+          <div class="el-idle">
+            <span class="el-id">MC_11</span>
+            <span class="el-num">11</span>
+            <span class="el-name">NOT</span>
+            <span class="el-fam">Logic</span>
+          </div>
+          <div class="el-active">
+            <div class="el-badge">99</div>
+            <span class="el-id">MC_35</span>
+            <span class="el-num">35</span>
+            <span class="el-name">WRT</span>
+            <span class="el-fam">I/O</span>
+          </div>
+          <div class="el-active">
+            <span class="el-id">MC_24</span>
+            <span class="el-num">24</span>
+            <span class="el-name">IF</span>
+            <span class="el-fam">Control</span>
+          </div>
+        </div>
+
+        <!-- Full 8x8 mini preview -->
+        <div style="text-align:center;margin-top:24px;margin-bottom:8px">
+          <span style="font-size:9px;color:#999">Vista completa 8×8 con este estilo:</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:3px;max-width:520px;margin:0 auto">
+          <div class="el-active" style="width:auto;height:auto;padding:4px 3px 3px">
+            <div class="el-badge" style="font-size:7px;min-width:14px;height:14px;border-radius:7px;top:-4px;right:-4px;padding:0 3px">3</div>
+            <span class="el-id" style="font-size:6px">MC_00</span>
+            <span class="el-num" style="font-size:18px">00</span>
+            <span class="el-name" style="font-size:7px">ADD</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_01</span>
+            <span class="el-num" style="font-size:18px">01</span>
+            <span class="el-name" style="font-size:7px">SUB</span>
+          </div>
+          <div class="el-active" style="width:auto;height:auto;padding:4px 3px 3px">
+            <div class="el-badge" style="font-size:7px;min-width:14px;height:14px;border-radius:7px;top:-4px;right:-4px;padding:0 3px">5</div>
+            <span class="el-id" style="font-size:6px">MC_02</span>
+            <span class="el-num" style="font-size:18px">02</span>
+            <span class="el-name" style="font-size:7px">MUL</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_03</span>
+            <span class="el-num" style="font-size:18px">03</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_04</span>
+            <span class="el-num" style="font-size:18px">04</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_05</span>
+            <span class="el-num" style="font-size:18px">05</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_06</span>
+            <span class="el-num" style="font-size:18px">06</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_07</span>
+            <span class="el-num" style="font-size:18px">07</span>
+          </div>
+
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_08</span>
+            <span class="el-num" style="font-size:18px">08</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_09</span>
+            <span class="el-num" style="font-size:18px">09</span>
+          </div>
+          <div class="el-active" style="width:auto;height:auto;padding:4px 3px 3px">
+            <div class="el-badge" style="font-size:7px;min-width:14px;height:14px;border-radius:7px;top:-4px;right:-4px;padding:0 3px">2</div>
+            <span class="el-id" style="font-size:6px">MC_10</span>
+            <span class="el-num" style="font-size:18px">10</span>
+            <span class="el-name" style="font-size:7px">XOR</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_11</span>
+            <span class="el-num" style="font-size:18px">11</span>
+          </div>
+          <div class="el-active" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_12</span>
+            <span class="el-num" style="font-size:18px">12</span>
+            <span class="el-name" style="font-size:7px">SAL</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_13</span>
+            <span class="el-num" style="font-size:18px">13</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_14</span>
+            <span class="el-num" style="font-size:18px">14</span>
+          </div>
+          <div class="el-idle" style="width:auto;height:auto;padding:4px 3px 3px">
+            <span class="el-id" style="font-size:6px">MC_15</span>
+            <span class="el-num" style="font-size:18px">15</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Estilo Tabla Periódica — Badge arriba-derecha</h3>
+      <p>Número grande central (Jura 26px), ID pequeño arriba-izquierda (MC_XX), nombre teal debajo, familia en texto diminuto. Badge pill rojo arriba-derecha, escala a 2+ dígitos. Vista completa 8×8 debajo.</p>
+    </div>
+  </div>
+</div>

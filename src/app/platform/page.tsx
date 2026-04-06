@@ -26,6 +26,8 @@ import {
 import type { ReactNode } from "react";
 
 import dynamic from "next/dynamic";
+import { ForgeSection } from "@/components/forge/ForgeSection";
+import { CircuitAnalyzerSection } from "@/components/forge/CircuitAnalyzerSection";
 
 const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
@@ -247,6 +249,10 @@ export default function PlatformPage() {
             ))}
           </div>
         </section>
+
+        {/* Forge & Analyzer */}
+        <ForgeSection />
+        <CircuitAnalyzerSection />
 
         {/* Registry Launching */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">

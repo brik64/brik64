@@ -5,8 +5,6 @@ import { ProblemSection } from "@/components/ProblemSection";
 import { PCDSection } from "@/components/PCDSection";
 import { LanguagesSection } from "@/components/LanguagesSection";
 import { PlatformSection } from "@/components/PlatformSection";
-import { ForgeSection } from "@/components/forge/ForgeSection";
-import { CircuitAnalyzerSection } from "@/components/forge/CircuitAnalyzerSection";
 import { WorldModelsSection } from "@/components/WorldModelsSection";
 import { WorkflowSection } from "@/components/WorkflowSection";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
@@ -33,8 +31,6 @@ export default function Home() {
           <PCDSection />
           <LanguagesSection />
           <PlatformSection />
-          <ForgeSection />
-          <CircuitAnalyzerSection />
           <WorldModelsSection />
           <WorkflowSection />
           <IntegrationsSection />
