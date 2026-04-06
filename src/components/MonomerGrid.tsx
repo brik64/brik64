@@ -178,29 +178,31 @@ export function MonomerGrid() {
       const color = FAMILY_COLORS[m.row];
 
       if (isHovered) {
-        // Hovered: dark bg, white text, teal name — stays in place
-        ctx.fillStyle = "#1A1817";
+        // Hovered: family color bg, white text — stays in place
+        ctx.fillStyle = color;
         roundRect(ctx, x, y, CELL_W, CELL_H, 3);
         ctx.fill();
 
-        // Subtle glow
-        ctx.shadowColor = "#00e5ff";
+        // Subtle glow in family color
+        ctx.shadowColor = color;
         ctx.shadowBlur = 8;
-        ctx.strokeStyle = "rgba(0,229,255,0.4)";
+        ctx.strokeStyle = color;
+        ctx.globalAlpha = 0.5;
         ctx.lineWidth = 1;
         roundRect(ctx, x, y, CELL_W, CELL_H, 3);
         ctx.stroke();
         ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
 
         // ID
-        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.fillStyle = "rgba(255,255,255,0.7)";
         ctx.font = "bold 7px monospace";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(m.id, cx, cy - 5);
 
         // Name
-        ctx.fillStyle = "#00e5ff";
+        ctx.fillStyle = "#ffffff";
         ctx.font = "bold 6px monospace";
         ctx.fillText(m.name, cx, cy + 6);
       } else if (isNeighborActive) {
