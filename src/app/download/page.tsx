@@ -15,6 +15,8 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { AppleIcon, WindowsIcon, LinuxIcon } from "@/components/icons/os-icons";
+import { PythonIcon, RustIcon, JavaScriptIcon, GoIcon } from "@/components/icons/lang-icons";
+import type { ComponentType } from "react";
 
 import dynamic from "next/dynamic";
 
@@ -61,11 +63,11 @@ const platformApps = [
   },
 ];
 
-const sdkPackages = [
-  { lang: "Python", cmd: "pip install brik64", pkg: "brik64", registry: "PyPI", color: "#3776ab" },
-  { lang: "Rust", cmd: "cargo add brik64", pkg: "brik64", registry: "crates.io", color: "#dea584" },
-  { lang: "JavaScript", cmd: "npm install brik64", pkg: "brik64", registry: "npm", color: "#f7df1e" },
-  { lang: "Go", cmd: "go get github.com/brik64/brik64-go", pkg: "brik64-go", registry: "pkg.go.dev", color: "#00add8" },
+const sdkPackages: { lang: string; cmd: string; pkg: string; registry: string; Icon: ComponentType<{ className?: string }> }[] = [
+  { lang: "Python", cmd: "pip install brik64", pkg: "brik64", registry: "PyPI", Icon: PythonIcon },
+  { lang: "Rust", cmd: "cargo add brik64", pkg: "brik64", registry: "crates.io", Icon: RustIcon },
+  { lang: "JavaScript", cmd: "npm install brik64", pkg: "brik64", registry: "npm", Icon: JavaScriptIcon },
+  { lang: "Go", cmd: "go get github.com/brik64/brik64-go", pkg: "brik64-go", registry: "pkg.go.dev", Icon: GoIcon },
 ];
 
 export default function DownloadPage() {
@@ -211,10 +213,7 @@ export default function DownloadPage() {
               {sdkPackages.map((sdk) => (
                 <AnimatedCard key={sdk.lang}>
                   <div className="flex items-center gap-2 mb-3">
-                    <div
-                      className="h-3 w-3 rounded-sm"
-                      style={{ background: sdk.color }}
-                    />
+                    <sdk.Icon className="h-4 w-4 text-foreground" />
                     <span className="text-sm font-semibold">{sdk.lang}</span>
                     <span className="ml-auto text-[9px] text-muted-foreground">
                       {sdk.registry}

@@ -1,46 +1,55 @@
 import { PhiC } from "@/components/PhiC";
+import {
+  VSCodeIcon,
+  CursorIcon,
+  WindsurfIcon,
+  ZedIcon,
+  IntelliJIcon,
+  AntigravityIcon,
+} from "@/components/icons/editor-icons";
+import type { ComponentType } from "react";
 
 const editors: {
   name: string;
   subtitle: string;
   status: string;
-  logo: string;
+  Icon: ComponentType<{ className?: string }>;
 }[] = [
   {
     name: "VSCode",
     subtitle: "Extension + LSP",
     status: "AVAILABLE",
-    logo: "/brands/vscode.svg",
+    Icon: VSCodeIcon,
   },
   {
     name: "Cursor",
     subtitle: "AI + PCD native",
     status: "ALPHA",
-    logo: "/brands/cursor.svg",
+    Icon: CursorIcon,
   },
   {
     name: "Windsurf",
     subtitle: "AI-powered coding",
     status: "PLANNED",
-    logo: "/brands/windsurf.svg",
+    Icon: WindsurfIcon,
   },
   {
     name: "Zed",
     subtitle: "High-performance editor",
     status: "PLANNED",
-    logo: "/brands/zed.svg",
+    Icon: ZedIcon,
   },
   {
     name: "IntelliJ",
     subtitle: "JetBrains IDEs",
     status: "PLANNED",
-    logo: "/brands/intellij.svg",
+    Icon: IntelliJIcon,
   },
   {
     name: "Antigravity",
     subtitle: "Google AI IDE",
     status: "PLANNED",
-    logo: "/brands/antigravity.svg",
+    Icon: AntigravityIcon,
   },
 ];
 
@@ -75,7 +84,7 @@ export function EditorsSection() {
               className="bg-background p-5 transition-colors hover:bg-teal/[0.03]"
             >
               <div className="flex items-center gap-3">
-                <img src={editor.logo} alt={editor.name} className="h-8 w-8" />
+                <editor.Icon className="h-7 w-7 text-foreground" />
                 <div>
                   <p className="text-sm font-semibold">{editor.name}</p>
                   <p className="text-[10px] text-muted-foreground">
