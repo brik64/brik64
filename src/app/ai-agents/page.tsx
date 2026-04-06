@@ -48,40 +48,35 @@ const agents = [
   {
     name: "Claude Code",
     company: "Anthropic",
-    color: "bg-orange-500",
-    letter: "C",
+    logo: "/brands/claude-code.svg",
     install: `claude "read the brik64-pcd-system skill and lift my auth.js to PCD"`,
     prompt: "Lift my authentication module to PCD and certify it.",
   },
   {
     name: "Codex",
     company: "OpenAI",
-    color: "bg-emerald-500",
-    letter: "C",
+    logo: "/brands/codex.svg",
     install: `codex --skill brik64-pcd-system "lift this function to PCD"`,
     prompt: "Lift this function to a certified PCD blueprint.",
   },
   {
     name: "Gemini CLI",
     company: "Google",
-    color: "bg-blue-500",
-    letter: "G",
+    logo: "/brands/gemini-cli.svg",
     install: `gemini "using the brik64 skill, certify my utils.py"`,
     prompt: "Certify my Python utility functions with BRIK64.",
   },
   {
     name: "Grok",
     company: "xAI",
-    color: "bg-purple-500",
-    letter: "G",
+    logo: "/brands/grok.svg",
     install: `grok --context https://brik64.com/ai-agents "lift my code to PCD"`,
     prompt: "Use the BRIK64 context to lift and certify my code.",
   },
   {
     name: "OpenCode",
     company: "Open Source",
-    color: "bg-cyan-500",
-    letter: "O",
+    logo: "/brands/opencode.svg",
     install: `opencode --skill brik64-pcd-system "export my PCD to Rust and Python"`,
     prompt: "Export my PCD circuits to Rust and Python targets.",
   },
@@ -192,11 +187,8 @@ export default function AIAgentsPage() {
                 className="border border-border bg-muted/10 p-6"
               >
                 <div className="flex items-center gap-3">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white ${agent.color}`}
-                  >
-                    {agent.letter}
-                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={agent.logo} alt={agent.name} className="h-8 w-8 grayscale" />
                   <div>
                     <h3 className="text-sm font-bold">{agent.name}</h3>
                     <p className="text-xs text-muted-foreground">
