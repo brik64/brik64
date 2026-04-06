@@ -170,6 +170,143 @@ export default function LegalPage() {
           </div>
         </section>
 
+        {/* Cookie Policy */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [04] COOKIE POLICY
+          </p>
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">Cookie Policy</h2>
+          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              This Cookie Policy explains how BRIK64 Inc. (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;)
+              uses cookies and similar tracking technologies when you visit brik64.com and related services.
+              This policy complies with the EU General Data Protection Regulation (GDPR), the ePrivacy
+              Directive, and the California Consumer Privacy Act (CCPA).
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">What Are Cookies</h3>
+            <p>
+              Cookies are small text files stored on your device when you visit a website. They help
+              the site remember your preferences and understand how you interact with the content.
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">Types of Cookies We Use</h3>
+
+            <div className="overflow-hidden rounded-lg border border-border">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-border bg-muted/30">
+                    <th className="px-4 py-2.5 text-left font-semibold text-foreground">Category</th>
+                    <th className="px-4 py-2.5 text-left font-semibold text-foreground">Purpose</th>
+                    <th className="px-4 py-2.5 text-left font-semibold text-foreground">Duration</th>
+                    <th className="px-4 py-2.5 text-left font-semibold text-foreground">Required</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  <tr>
+                    <td className="px-4 py-2.5 font-medium text-foreground">Essential</td>
+                    <td className="px-4 py-2.5">Site functionality, authentication, security, cookie consent preferences</td>
+                    <td className="px-4 py-2.5">Session &ndash; 1 year</td>
+                    <td className="px-4 py-2.5 font-medium text-emerald-600">Always on</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2.5 font-medium text-foreground">Analytics</td>
+                    <td className="px-4 py-2.5">Anonymous usage metrics, page views, feature adoption, error tracking</td>
+                    <td className="px-4 py-2.5">Up to 2 years</td>
+                    <td className="px-4 py-2.5 font-medium text-teal">Opt-in</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-2.5 font-medium text-foreground">Marketing</td>
+                    <td className="px-4 py-2.5">Personalized content, retargeting, campaign measurement</td>
+                    <td className="px-4 py-2.5">Up to 1 year</td>
+                    <td className="px-4 py-2.5 font-medium text-teal">Opt-in</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-sm font-bold text-foreground">Essential Cookies</h3>
+            <p>
+              These cookies are strictly necessary for the website to function. They include cookies
+              that remember your cookie consent choice, maintain your session if logged in, and protect
+              against cross-site request forgery (CSRF). These cannot be disabled.
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li><code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">brik64-cookie-consent</code> &mdash; Stores your cookie preferences (localStorage)</li>
+              <li><code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">brik64-session</code> &mdash; Authentication session token</li>
+              <li><code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">__cf_bm</code> &mdash; Cloudflare bot management</li>
+            </ul>
+
+            <h3 className="text-sm font-bold text-foreground">Analytics Cookies</h3>
+            <p>
+              When you consent to analytics cookies, we collect anonymous usage data to understand how
+              visitors interact with our site. This data is aggregated and cannot identify you personally.
+              We use privacy-focused analytics that do not track users across sites.
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">Marketing Cookies</h3>
+            <p>
+              Marketing cookies are only set with your explicit consent. They allow us to deliver
+              relevant content and measure the effectiveness of our campaigns. You can opt out at any
+              time through the cookie banner or by contacting us.
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">Your Rights</h3>
+            <p>Under GDPR and CCPA, you have the right to:</p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li><strong className="text-foreground">Access</strong> &mdash; Request a copy of the data we hold about you</li>
+              <li><strong className="text-foreground">Rectification</strong> &mdash; Correct inaccurate personal data</li>
+              <li><strong className="text-foreground">Erasure</strong> &mdash; Request deletion of your personal data</li>
+              <li><strong className="text-foreground">Restrict processing</strong> &mdash; Limit how we use your data</li>
+              <li><strong className="text-foreground">Data portability</strong> &mdash; Export your data in a machine-readable format</li>
+              <li><strong className="text-foreground">Withdraw consent</strong> &mdash; Change your cookie preferences at any time via the cookie banner</li>
+              <li><strong className="text-foreground">Opt-out of sale</strong> (CCPA) &mdash; We do not sell personal information</li>
+            </ul>
+
+            <h3 className="text-sm font-bold text-foreground">Managing Cookies</h3>
+            <p>
+              You can manage your cookie preferences at any time by clicking the cookie banner that
+              appears at the bottom of any page, or by clearing your browser cookies to reset your
+              preferences. Most browsers also allow you to block or delete cookies in their settings.
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">Third-Party Cookies</h3>
+            <p>
+              We minimize the use of third-party cookies. When present, they are limited to:
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li><strong className="text-foreground">Cloudflare</strong> &mdash; CDN, security, and performance (essential)</li>
+              <li><strong className="text-foreground">GitHub</strong> &mdash; Embedded content from our repositories (functional)</li>
+            </ul>
+
+            <h3 className="text-sm font-bold text-foreground">Do Not Track</h3>
+            <p>
+              We respect the Do Not Track (DNT) browser signal. When detected, we disable all
+              non-essential cookies regardless of your consent preferences.
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">Changes to This Policy</h3>
+            <p>
+              We may update this Cookie Policy from time to time. Any changes will be posted on this
+              page with an updated &ldquo;last modified&rdquo; date. Significant changes will be
+              communicated via email or a notice on our website.
+            </p>
+
+            <h3 className="text-sm font-bold text-foreground">Contact</h3>
+            <p>
+              For questions about this Cookie Policy or to exercise your data rights, contact our
+              Data Protection Officer at{" "}
+              <a href="mailto:privacy@brik64.com" className="text-teal hover:underline">
+                privacy@brik64.com
+              </a>.
+            </p>
+
+            <p className="text-xs text-muted-foreground/60 italic">
+              Last updated: April 2026
+            </p>
+          </div>
+        </section>
+
         {/* Contact */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <div className="mx-auto max-w-3xl border border-border bg-muted/10 p-6">
