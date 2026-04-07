@@ -17,6 +17,13 @@ Recommended asset naming:
 
 - `brik64-logo-primary-horizontal-menu.ai`
 - `brik64-logo-primary-horizontal-menu.svg`
+- `brik64-logo-primary-horizontal-black.svg`
+- `brik64-logo-primary-horizontal-white.svg`
+
+Color usage:
+
+- Black horizontal: default website header/footer logo on light backgrounds
+- White horizontal: inverted variant for dark backgrounds or overlays
 
 ### 2. Compact `B64` mark
 
@@ -79,6 +86,8 @@ Source-of-truth imported asset set:
 Runtime web assets:
 
 - `public/brand/brik64-logo-primary-horizontal-menu.svg`
+- `public/brand/brik64-logo-primary-horizontal-black.svg`
+- `public/brand/brik64-logo-primary-horizontal-white.svg`
 - `public/brand/brik64-logo-favicon-b64-master.svg`
 - `public/brand/brik64-logo-opengraph-stacked.svg`
 - `public/favicon.svg`

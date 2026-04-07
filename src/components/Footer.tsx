@@ -12,7 +12,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <img
-              src="/brand/brik64-logo-primary-horizontal-menu.svg"
+              src="/brand/brik64-logo-primary-horizontal-black.svg"
               alt="BRIK64"
               className="h-8 w-auto"
             />
@@ -99,7 +99,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#EEEEEE] pt-8 md:flex-row">
           <img
-            src="/brand/brik64-logo-primary-horizontal-menu.svg"
+            src="/brand/brik64-logo-primary-horizontal-black.svg"
             alt="BRIK64"
             className="h-6 w-auto"
           />

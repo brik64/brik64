@@ -600,7 +600,7 @@ export function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center">
           <img
-            src="/brand/brik64-logo-primary-horizontal-menu.svg"
+            src="/brand/brik64-logo-primary-horizontal-black.svg"
             alt="BRIK64"
             className="h-8 w-auto lg:h-10"
           />

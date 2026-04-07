@@ -2,7 +2,7 @@
 // All data is hardcoded constants — no user input, no XSS risk
 
 export function StructuredData() {
-  const canonicalLogo = "https://brik64.com/brand/brik64-logo-primary-horizontal-menu.svg";
+  const canonicalLogo = "https://brik64.com/brand/brik64-logo-primary-horizontal-black.svg";
 
   const jsonLd = {
     "@context": "https://schema.org",
