@@ -14,7 +14,7 @@ export function Footer() {
             <img
               src="/brand/brik64-logo-primary-horizontal-menu.svg"
               alt="BRIK64"
-              className="h-7 w-auto"
+              className="h-8 w-auto"
             />
             <p className="mt-1 text-xs text-[#322F2D]/40">Digital Circuitality</p>
           </div>
@@ -101,7 +101,7 @@ export function Footer() {
           <img
             src="/brand/brik64-logo-primary-horizontal-menu.svg"
             alt="BRIK64"
-            className="h-5 w-auto"
+            className="h-6 w-auto"
           />
           <p className="text-sm text-[#322F2D]/20">
             &copy; 2026 BRIK64. All rights reserved.

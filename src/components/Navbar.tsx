@@ -596,13 +596,13 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <a href="/" className="flex items-center">
           <img
             src="/brand/brik64-logo-primary-horizontal-menu.svg"
             alt="BRIK64"
-            className="h-6 w-auto"
+            className="h-8 w-auto lg:h-10"
           />
         </a>
 
