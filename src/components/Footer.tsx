@@ -97,33 +97,31 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#EEEEEE] pt-8 md:flex-row">
+        <div className="mt-12 flex flex-col gap-5 border-t border-[#EEEEEE] pt-8 md:flex-row md:items-center md:justify-between">
           <img
             src="/brand/brik64-logo-primary-horizontal-black.svg"
             alt="BRIK64"
-            className="h-6 w-auto"
+            className="h-7 w-auto self-center md:self-auto"
           />
-          <p className="text-sm text-[#322F2D]/20">
-            &copy; 2026 BRIK64. All rights reserved.
-          </p>
-          <div className="flex gap-3">
-            <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Privacy</a>
-            <span className="text-sm text-[#322F2D]/20">&middot;</span>
-            <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Terms</a>
+          <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap md:justify-end">
+            <a
+              href="https://status.brik64.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-md border border-emerald-100 bg-emerald-50 px-2.5 py-1.5 transition-colors hover:bg-emerald-100"
+            >
+              <span className="text-emerald-500">&#9679;</span>
+              <span className="text-sm font-medium text-emerald-700">All systems normal</span>
+            </a>
+            <p className="text-center text-sm text-[#322F2D]/20 md:text-left">
+              &copy; 2026 BRIK64. All rights reserved.
+            </p>
+            <div className="flex items-center gap-3">
+              <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Privacy</a>
+              <span className="text-sm text-[#322F2D]/20">&middot;</span>
+              <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Terms</a>
+            </div>
           </div>
-        </div>
-
-        {/* Status badge */}
-        <div className="mt-0 border-t border-[#EEEEEE] pt-4">
-          <a
-            href="https://status.brik64.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md px-2 py-1 transition-colors hover:bg-[#f0fdf4]"
-          >
-            <span className="text-emerald-500">&#9679;</span>
-            <span className="text-sm font-medium text-emerald-600">All systems normal</span>
-          </a>
         </div>
       </div>
     </footer>
