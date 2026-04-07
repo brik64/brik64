@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
-  <rect x="2" y="2" width="28" height="28" rx="4" fill="none" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="16" y="22" text-anchor="middle" fill="#00e5ff" font-family="monospace" font-weight="bold" font-size="14">B</text>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 4000" xml:space="preserve">
+  <rect width="4000" height="4000" fill="#FFFFFF"/>
+  <g>
+    <g>
+      <polygon fill="#19A7C2" points="3645.7,2061.9 3645.7,3078.1 3391.7,3078.1 3391.7,2697.1 2794.2,2697.1 2629.5,2532.4 2629.5,2061.9 2883.6,2061.9 2883.6,2443 3391.7,2443 3391.7,2316"/>
+    </g>
+    <path fill="#19A7C2" d="M2883.6,1302.9v-127h508.1l254.1-254.1h-851.5l-164.7,164.7v686.8l164.7,164.7H3481l164.7-164.7v-305.7L3481,1302.9H2883.6z M3391.7,1684h-508.1v-127h508.1V1684z"/>
+    <path d="M2161.1,921.9h-189.6h-269.5h-539.1H893.3H354.3v539.1v269.5v539.1v269.5v539.1h539.1h269.5h539.1h269.5h539.1v-539.1v-267.2l-2.4-2.4h2.4L2238.6,2000l271.9-269.5h-2.4l2.4-2.4v-267.2v-189.6L2161.1,921.9z M1971.5,2539.1h-269.5h-539.1H893.3v-269.5v-539.1v-269.5h269.5h539.1h269.5v0l-269,269.5h-0.6h-539.1v539.1h539.1h269.5V2539.1z"/>
+  </g>
 </svg>

@@ -2,6 +2,8 @@
 // All data is hardcoded constants — no user input, no XSS risk
 
 export function StructuredData() {
+  const canonicalLogo = "https://brik64.com/brand/brik64-logo-primary-horizontal-menu.svg";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -22,7 +24,7 @@ export function StructuredData() {
       "@type": "Organization",
       name: "BRIK64 Inc.",
       url: "https://brik64.com",
-      logo: "https://brik64.com/favicon.svg",
+      logo: canonicalLogo,
       sameAs: [
         "https://github.com/brik64",
         "https://discord.gg/brik64",
@@ -35,7 +37,7 @@ export function StructuredData() {
     "@type": "Organization",
     name: "BRIK64 Inc.",
     url: "https://brik64.com",
-    logo: "https://brik64.com/favicon.svg",
+    logo: canonicalLogo,
     description:
       "Digital Circuitality — Software that works like hardware. Formally verified programming language and platform.",
     sameAs: [

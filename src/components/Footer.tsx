@@ -11,9 +11,11 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="text-xl font-bold">
-              BRIK<span className="text-[#00b8d4]">64</span>
-            </div>
+            <img
+              src="/brand/brik64-logo-primary-horizontal-menu.svg"
+              alt="BRIK64"
+              className="h-7 w-auto"
+            />
             <p className="mt-1 text-xs text-[#322F2D]/40">Digital Circuitality</p>
           </div>
 
@@ -96,10 +98,11 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#EEEEEE] pt-8 md:flex-row">
-          <div className="flex items-center gap-1">
-            <span className="text-sm font-bold">BRIK</span>
-            <span className="text-sm font-bold text-[#00b8d4]">64</span>
-          </div>
+          <img
+            src="/brand/brik64-logo-primary-horizontal-menu.svg"
+            alt="BRIK64"
+            className="h-5 w-auto"
+          />
           <p className="text-sm text-[#322F2D]/20">
             &copy; 2026 BRIK64. All rights reserved.
           </p>

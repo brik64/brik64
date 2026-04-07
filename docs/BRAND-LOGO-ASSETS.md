@@ -67,13 +67,21 @@ These should not replace the canonical master files above when a full logo is re
 - Treat `.ai` and `.svg` as source-of-truth vector masters.
 - Treat `.jpg` and `.png` as exports or previews unless explicitly promoted to canonical output.
 
-## Current Asset Organization
+## Repository Organization
 
-The current manually classified asset set was organized outside the repository in a local working directory:
+Source-of-truth imported asset set:
 
-- `~/Downloads/BRIK64-official-logos/01-primary-horizontal-menu/`
-- `~/Downloads/BRIK64-official-logos/02-favicon-b64/`
-- `~/Downloads/BRIK64-official-logos/03-opengraph-stacked/`
-- `~/Downloads/BRIK64-official-logos/support-assets/`
+- `docs/design-references/brand-assets/BRIK64-official-logos/01-primary-horizontal-menu/`
+- `docs/design-references/brand-assets/BRIK64-official-logos/02-favicon-b64/`
+- `docs/design-references/brand-assets/BRIK64-official-logos/03-opengraph-stacked/`
+- `docs/design-references/brand-assets/BRIK64-official-logos/support-assets/`
 
-If these assets are later imported into the repository, preserve the same naming and classification scheme to avoid semantic drift between favicon, navigation, and social-sharing assets.
+Runtime web assets:
+
+- `public/brand/brik64-logo-primary-horizontal-menu.svg`
+- `public/brand/brik64-logo-favicon-b64-master.svg`
+- `public/brand/brik64-logo-opengraph-stacked.svg`
+- `public/favicon.svg`
+- `public/seo/brik64-opengraph-stacked.png`
+
+Preserve this naming and classification scheme to avoid semantic drift between favicon, navigation, footer, and social-sharing assets.

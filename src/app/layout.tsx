@@ -40,6 +40,14 @@ export const metadata: Metadata = {
       "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
     url: "https://brik64.com",
     locale: "en_US",
+    images: [
+      {
+        url: "/seo/brik64-opengraph-stacked.png",
+        width: 1200,
+        height: 630,
+        alt: "BRIK64 stacked social sharing logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -47,10 +55,18 @@ export const metadata: Metadata = {
     description:
       "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
     creator: "@brik64dev",
+    images: ["/seo/brik64-opengraph-stacked.png"],
   },
   manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,

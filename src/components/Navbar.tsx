@@ -598,9 +598,12 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-0.5">
-          <span className="text-sm font-bold tracking-tight text-foreground">BRIK</span>
-          <span className="text-sm font-bold tracking-tight text-[#00b8d4]">64</span>
+        <a href="/" className="flex items-center">
+          <img
+            src="/brand/brik64-logo-primary-horizontal-menu.svg"
+            alt="BRIK64"
+            className="h-6 w-auto"
+          />
         </a>
 
         {/* Desktop nav */}
