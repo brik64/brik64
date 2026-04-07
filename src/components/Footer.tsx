@@ -97,13 +97,8 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col gap-5 border-t border-[#EEEEEE] pt-8 md:flex-row md:items-center md:justify-between">
-          <img
-            src="/brand/brik64-logo-primary-horizontal-black.svg"
-            alt="BRIK64"
-            className="h-7 w-auto self-center md:self-auto"
-          />
-          <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap md:justify-end">
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-[#EEEEEE] pt-8 md:flex-row md:justify-between">
+          <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap">
             <a
               href="https://status.brik64.com"
               target="_blank"
@@ -113,6 +108,8 @@ export function Footer() {
               <span className="text-emerald-500">&#9679;</span>
               <span className="text-sm font-medium text-emerald-700">All systems normal</span>
             </a>
+          </div>
+          <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap">
             <p className="text-center text-sm text-[#322F2D]/20 md:text-left">
               &copy; 2026 BRIK64. All rights reserved.
             </p>
