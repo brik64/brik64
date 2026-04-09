@@ -20,25 +20,25 @@ const features: FeatureCard[] = [
     icon: <FolderOpen className="h-5 w-5 text-teal" />,
     title: "Personal Library",
     description:
-      "Your circuits, organized by project. Build, test, and recompose with real-time certification status.",
+      "Organize certified circuits by project and reuse them fast.",
   },
   {
     icon: <Globe className="h-5 w-5 text-teal" />,
     title: "Public Registry",
     description:
-      "A growing catalog of pre-certified circuits. Search, explore, and implement — never rewrite what's already proven.",
+      "Search pre-certified circuits instead of rewriting solved logic.",
   },
   {
     icon: <GitBranch className="h-5 w-5 text-teal" />,
     title: "Visual Composition",
     description:
-      "Drag, connect, compose. Every connection verified automatically through EVA algebra.",
+      "Compose visually while EVA checks every connection.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
     title: "Certification Badges",
     description:
-      "Live proof embedded in your README. If the code changes one byte, the badge invalidates instantly.",
+      "Badges expose live proof and invalidate on any drift.",
   },
 ];
 
@@ -106,8 +106,7 @@ export function PlatformSection() {
           CAD for software. Compose circuits visually.
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          Publish circuits. Discover certified components. Drag, connect, compose &mdash; every connection verified by EVA algebra.
-          Your software, designed like hardware.
+          Publish, discover, and compose circuits visually while EVA verifies every join.
         </p>
 
         {/* Platform mockup */}

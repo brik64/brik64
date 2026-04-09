@@ -23,7 +23,7 @@ const features = [
 
 export function EditorsSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
           [08] · EDITORS
@@ -38,7 +38,7 @@ export function EditorsSection() {
         </p>
 
         {/* Editor grid */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 border border-border [&>*]:border-border [&>*]:border-b [&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-r-0 md:[&>*:nth-child(3n+1)]:border-r md:[&>*:nth-child(3n+2)]:border-r [&>*:nth-last-child(-n+2)]:border-b-0 md:[&>*:nth-last-child(-n+3)]:border-b-0">
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-3 border border-border [&>*]:border-border [&>*]:border-b [&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-r-0 md:[&>*:nth-child(3n+1)]:border-r md:[&>*:nth-child(3n+2)]:border-r [&>*:nth-last-child(-n+2)]:border-b-0 md:[&>*:nth-last-child(-n+3)]:border-b-0">
           {editors.map((editor) => (
             <div
               key={editor.name}

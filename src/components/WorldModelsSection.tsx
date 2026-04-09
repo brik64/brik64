@@ -26,19 +26,19 @@ const cards: CardData[] = [
   {
     title: "Compile",
     icon: Cpu,
-    description: "Write PCD once, emit verified binaries to any target. One blueprint, every language.",
+    description: "Write PCD once, emit verified binaries anywhere.",
     href: "/foundations",
   },
   {
     title: "Verify",
     icon: ShieldCheck,
-    description: "Mathematical proof — not just tests. Structural certainty for every verified operation.",
+    description: "Mathematical proof, not just passing tests.",
     href: "/foundations",
   },
   {
     title: "Lift",
     icon: ArrowUpDown,
-    description: "Import existing code from any mainstream language into PCD. No manual rewriting required.",
+    description: "Lift existing code into PCD without manual rewrites.",
     href: "/foundations",
   },
   {
@@ -59,25 +59,25 @@ interface FamilyInfo {
 }
 
 const coreFamilies: FamilyInfo[] = [
-  { name: "Arithmetic", desc: "Integer math with wrapping semantics" },
-  { name: "Logic", desc: "Bitwise operations for digital circuits" },
-  { name: "Memory", desc: "Stack and heap management" },
-  { name: "Control", desc: "Branching, loops, and flow control" },
-  { name: "I/O", desc: "Input and output streams" },
-  { name: "String", desc: "Text processing with verified boundaries" },
-  { name: "Crypto", desc: "Hashing, encryption, and signatures" },
-  { name: "System", desc: "Host environment and diagnostics" },
+  { name: "Arithmetic", desc: "Certified integer math" },
+  { name: "Logic", desc: "Bitwise circuit operations" },
+  { name: "Memory", desc: "Verified stack and heap" },
+  { name: "Control", desc: "Deterministic flow control" },
+  { name: "I/O", desc: "Explicit input and output" },
+  { name: "String", desc: "Bounded text processing" },
+  { name: "Crypto", desc: "Hashes, signatures, ciphers" },
+  { name: "System", desc: "Host diagnostics and runtime" },
 ];
 
 const extendedFamilies: FamilyInfo[] = [
-  { name: "Float64", desc: "IEEE 754 decimal math" },
-  { name: "Math", desc: "Scientific computation" },
+  { name: "Float64", desc: "IEEE 754 math" },
+  { name: "Math", desc: "Scientific functions" },
   { name: "Network", desc: "TCP, HTTP, DNS" },
-  { name: "Graphics", desc: "Visual output" },
-  { name: "Audio", desc: "Sound processing" },
+  { name: "Graphics", desc: "Rendering and pixels" },
+  { name: "Audio", desc: "Sound pipelines" },
   { name: "Filesystem", desc: "Persistent storage" },
-  { name: "Concurrency", desc: "Parallel execution" },
-  { name: "Interop", desc: "Connecting systems" },
+  { name: "Concurrency", desc: "Parallel coordination" },
+  { name: "Interop", desc: "External bridges" },
 ];
 
 function FamilyList({ families, tier }: { families: FamilyInfo[]; tier: "core" | "extended" }) {
@@ -107,7 +107,7 @@ function FamilyList({ families, tier }: { families: FamilyInfo[]; tier: "core" |
 
 export function WorldModelsSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-center gap-3 md:mb-14">
           <Crosshair size={20} />
@@ -116,7 +116,7 @@ export function WorldModelsSection() {
           </p>
         </div>
 
-        <div className="relative grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
+        <div className="relative grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-10">
           <GridDots className="absolute -top-4 -right-4 hidden opacity-50 md:block" cols={6} rows={4} />
           {/* Left */}
           <div>
@@ -124,13 +124,12 @@ export function WorldModelsSection() {
               <TextReveal>One compiler. Every guarantee.</TextReveal>
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              64 Core = mathematically certified. 64 Extended = bridge to the real world.
-              Write once in PCD, compile to any target, and ship with proof that every input is handled, every path verified. No runtime surprises.
+              64 Core is certified. 64 Extended bridges to the real world. Write once in PCD, compile anywhere, and ship with proof instead of runtime hope.
             </p>
           </div>
 
           {/* Right — 4 Cards */}
-          <div className="border-border/70 mt-16 overflow-hidden border">
+          <div className="border-border/70 overflow-hidden border self-start">
             <div className="grid grid-cols-2">
               {cards.map((card, index) => {
                 const Icon = card.icon;
@@ -164,12 +163,12 @@ export function WorldModelsSection() {
         </div>
 
         {/* Bottom — Operation Families */}
-        <div className="mt-14">
+        <div className="mt-12">
           <p className="text-xs font-medium uppercase tracking-[2px] text-muted-foreground">
             Operation families
           </p>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            128 operations total, organized into 16 families. 64 Core = formally proven. 64 Extended = bounds-checked, zero panic paths.
+            128 operations across 16 families. Core is formally proven. Extended stays bounded and zero-panic.
           </p>
 
           {/* Core — Certified */}

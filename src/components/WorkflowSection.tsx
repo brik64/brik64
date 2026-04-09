@@ -1,5 +1,5 @@
 import { PhiC } from "@/components/PhiC";
-import { GitBranch, ShieldCheck, Package } from "lucide-react";
+import { ArrowRight, GitBranch, ShieldCheck, Package, CheckCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 
 interface Step {
@@ -9,7 +9,12 @@ interface Step {
   title: string;
   description: ReactNode;
   bullets: string[];
-  terminal: { text: string; style: "command" | "success" | "muted" }[];
+  panel: {
+    eyebrow: string;
+    title: string;
+    metrics: { label: string; value: string }[];
+    summary: string;
+  };
 }
 
 const steps: Step[] = [
@@ -19,19 +24,23 @@ const steps: Step[] = [
     label: "CONNECT",
     title: "Connect Your Repo",
     description:
-      "Link any GitHub repository. On every push, BRIK64 auto-lifts your code into PCD blueprints.",
+      "Link a repo and auto-lift code to PCD on every push.",
     bullets: [
       "GitHub App 1-click install",
       "Auto-lift on push",
-      "PR comments with certification",
+      "PR certification comments",
       "Monorepo support",
     ],
-    terminal: [
-      { text: "$ brikc connect github.com/acme/api", style: "command" },
-      { text: "✓ Repository connected", style: "success" },
-      { text: "✓ Webhook installed", style: "success" },
-      { text: "✓ Auto-lift enabled on push", style: "success" },
-    ],
+    panel: {
+      eyebrow: "Connection state",
+      title: "Repository link established",
+      metrics: [
+        { label: "Webhook", value: "Active" },
+        { label: "Lift mode", value: "On push" },
+        { label: "PR sync", value: "Enabled" },
+      ],
+      summary: "Source remains in GitHub. BRIK64 watches, lifts, and annotates automatically.",
+    },
   },
   {
     number: "02",
@@ -41,17 +50,20 @@ const steps: Step[] = [
     description: null as unknown as ReactNode,
     bullets: [
       "Automatic TCE verification",
-      "Φ_c = 1 certification badge",
+      "Φc = 1 certification badge",
       "Domain constraint validation",
       "Two-tier: CORE + CONTRACT",
     ],
-    terminal: [
-      { text: "circuit validate(x: I64) -> Bool", style: "muted" },
-      { text: "───────────────────────────", style: "muted" },
-      { text: "TCE: Φ_c = 1.000  ● CERTIFIED", style: "success" },
-      { text: "Domains: speed ∈ [0, 900] ✓", style: "success" },
-      { text: "Closure: all paths terminate ✓", style: "success" },
-    ],
+    panel: {
+      eyebrow: "Certification state",
+      title: "Closed circuit",
+      metrics: [
+        { label: "Closure", value: "Φc = 1" },
+        { label: "Domains", value: "Checked" },
+        { label: "Paths", value: "Exhaustive" },
+      ],
+      summary: "Open circuits never ship. Missing paths and invalid domains fail before release.",
+    },
   },
   {
     number: "03",
@@ -59,27 +71,31 @@ const steps: Step[] = [
     label: "PUBLISH",
     title: "Publish to Registry",
     description:
-      "Ship certified PCD packages to the public registry. Every package carries an immutable proof.",
+      "Ship certified PCD packages with immutable proof attached.",
     bullets: [
       "Public & private registries",
       "Semantic versioning",
       "Dependency resolution",
       "Searchable marketplace",
     ],
-    terminal: [
-      { text: "$ brikc publish validate@1.0.0", style: "command" },
-      { text: "✓ Certificate: Φ_c = 1", style: "success" },
-      { text: "✓ Published to registry.brik64.dev", style: "success" },
-      { text: "✓ Badge embedded", style: "success" },
-    ],
+    panel: {
+      eyebrow: "Registry state",
+      title: "Certified package published",
+      metrics: [
+        { label: "Version", value: "1.0.0" },
+        { label: "Certificate", value: "Attached" },
+        { label: "Discovery", value: "Indexed" },
+      ],
+      summary: "Reusable logic ships with immutable proof and a live certification badge.",
+    },
   },
 ];
 
 export function WorkflowSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
+        <p className="mb-8 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-12">
           [06] · WORKFLOW
         </p>
 
@@ -87,11 +103,11 @@ export function WorkflowSection() {
           Three commands. <span className="text-teal">Verified software.</span>
         </h3>
 
-        <div className="mt-12 space-y-8">
-          {steps.map((step) => (
+        <div className="mt-10 space-y-6">
+          {steps.map((step, index) => (
             <div
               key={step.number}
-              className="grid gap-6 border border-border bg-background p-6 md:grid-cols-2 md:p-8"
+              className="grid gap-6 rounded-2xl border border-border bg-background p-6 md:grid-cols-[0.95fr_1.05fr] md:p-8"
             >
               {/* Left — info */}
               <div>
@@ -112,8 +128,7 @@ export function WorkflowSection() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {step.number === "02" ? (
                     <>
-                      Every extracted circuit is verified by the TCE. If{" "}
-                      <PhiC /> = 1, it&apos;s mathematically verified.
+                      Every extracted circuit is checked by the TCE before it can ship.
                     </>
                   ) : (
                     step.description
@@ -127,7 +142,7 @@ export function WorkflowSection() {
                       className="flex items-center gap-2 text-sm text-muted-foreground"
                     >
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-teal/60" />
-                      {bullet.includes("Φ_c") ? (
+                      {bullet.includes("Φc") ? (
                         <span>
                           <PhiC /> = 1 certification badge
                         </span>
@@ -139,55 +154,56 @@ export function WorkflowSection() {
                 </ul>
               </div>
 
-              {/* Right — terminal */}
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]"><div className="flex items-center gap-2 border-b border-white/10 px-4 py-2"><span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" /><span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" /><span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" /></div>
-                <div className="border-b border-white/10 px-4 py-2">
-                  <span className="text-[10px] font-medium tracking-wider text-white/30">
-                    TERMINAL
-                  </span>
+              <div className="rounded-2xl border border-border bg-gradient-to-br from-muted/35 to-background p-5">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                      {step.panel.eyebrow}
+                    </p>
+                    <h5 className="mt-2 text-lg font-semibold text-foreground">
+                      {step.panel.title}
+                    </h5>
+                  </div>
+                  <div className="rounded-full border border-teal/20 bg-teal/[0.06] p-2 text-teal">
+                    {step.icon}
+                  </div>
                 </div>
-                <div className="flex flex-col gap-0.5 p-5">
-                  {step.terminal.map((line, i) => {
-                    if (line.style === "command") {
-                      return (
-                        <div
-                          key={i}
-                          className="font-mono text-sm text-white/70"
-                        >
-                          <span className="text-teal">$</span>{" "}
-                          {line.text.slice(2)}
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  {step.panel.metrics.map((metric) => (
+                    <div key={metric.label} className="rounded-xl border border-border bg-card p-3">
+                      <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                        {metric.label}
+                      </p>
+                      <p className="mt-2 text-base font-semibold text-foreground">
+                        {metric.label === "Closure" ? <><PhiC /> = 1</> : metric.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-xl border border-border bg-background p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 p-1.5 text-emerald-400">
+                      <CheckCircle2 className="h-4 w-4" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-foreground">
+                        {step.panel.summary}
+                      </p>
+                      {index < steps.length - 1 ? (
+                        <div className="mt-3 inline-flex items-center gap-2 text-xs text-muted-foreground">
+                          Next stage
+                          <ArrowRight className="h-3.5 w-3.5" />
+                          <span>{steps[index + 1].label}</span>
                         </div>
-                      );
-                    }
-                    if (line.style === "success") {
-                      if (line.text.includes("Φ_c")) {
-                        const parts = line.text.split("Φ_c");
-                        return (
-                          <div
-                            key={i}
-                            className="font-mono text-sm text-emerald-400"
-                          >
-                            {parts[0]}
-                            <PhiC />
-                            {parts[1]}
-                          </div>
-                        );
-                      }
-                      return (
-                        <div
-                          key={i}
-                          className="font-mono text-sm text-emerald-400"
-                        >
-                          {line.text}
+                      ) : (
+                        <div className="mt-3 inline-flex items-center gap-2 text-xs text-teal">
+                          Registry badge live
                         </div>
-                      );
-                    }
-                    return (
-                      <div key={i} className="font-mono text-sm text-zinc-400">
-                        {line.text}
-                      </div>
-                    );
-                  })}
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

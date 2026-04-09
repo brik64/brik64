@@ -12,8 +12,8 @@ export function TrustedBySection() {
 
   return (
     <section className="relative z-10 border-border mx-auto w-full max-w-7xl border-x border-t bg-background">
-      <div className="px-6 py-10 md:px-12 md:py-14">
-        <p className="mb-8 text-center text-[10px] font-medium uppercase tracking-[3px] text-muted-foreground/60">
+      <div className="px-6 py-8 md:px-12 md:py-10">
+        <p className="mb-6 text-center text-[10px] font-medium uppercase tracking-[3px] text-muted-foreground/60">
           BUILT FOR
         </p>
 

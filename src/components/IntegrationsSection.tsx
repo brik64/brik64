@@ -1,5 +1,3 @@
-import { PhiC } from "@/components/PhiC";
-
 const flowSteps = [
   { label: "GitHub Repo", accent: false },
   { label: "brikc lift", accent: true },
@@ -12,13 +10,13 @@ const workflowSteps = [
   {
     number: "1",
     title: "Push to GitHub",
-    description: "Your team pushes code as usual. No workflow changes required.",
+    description: "Your team pushes code exactly as it does today.",
   },
   {
     number: "2",
     title: "Lift to PCD",
     description:
-      "BRIK64 automatically lifts your code into a PCD blueprint — a language-agnostic, verified representation.",
+      "BRIK64 lifts source into a verified language-agnostic blueprint.",
   },
   {
     number: "3",
@@ -29,7 +27,7 @@ const workflowSteps = [
     number: "4",
     title: "Build to any target",
     description:
-      "Emit verified code to Rust, JavaScript, Python, or any supported target from the same blueprint.",
+      "Emit the same verified blueprint to any supported target.",
   },
 ];
 
@@ -47,7 +45,7 @@ export function IntegrationsSection() {
           <span className="text-teal">BRIK64 verifies it.</span>
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          Push code as usual. BRIK64 lifts, certifies, and comments on your PR &mdash; automatically.
+          Push code as usual. BRIK64 lifts, certifies, and comments on the PR automatically.
         </p>
 
         {/* Flow diagram */}
@@ -71,7 +69,7 @@ export function IntegrationsSection() {
         </div>
 
         {/* The Full Workflow */}
-        <div className="mt-16">
+        <div className="mt-14">
           <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
             The Full Workflow
           </p>
@@ -90,8 +88,7 @@ export function IntegrationsSection() {
                   <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
                     {step.description ?? (
                       <>
-                        TCE verifies every circuit. <PhiC /> = 1, and your PR
-                        gets a certification comment automatically.
+                        TCE verifies the circuit and posts certification straight to the PR.
                       </>
                     )}
                   </p>

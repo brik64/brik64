@@ -11,22 +11,22 @@ const cards: { icon: ReactNode; title: string; desc: string }[] = [
   {
     icon: <ShieldCheck className="h-5 w-5 text-teal" />,
     title: "128 Operations. Total.",
-    desc: "64 core, formally proven. 64 extended, bounds-checked. An AI memorizes the entire language in one context window.",
+    desc: "A finite language an LLM can learn completely.",
   },
   {
     icon: <Puzzle className="h-5 w-5 text-teal" />,
     title: "Algebra, Not Duct Tape",
-    desc: "Operations compose through EVA algebra. If A is verified and B is verified, A + B is verified. Mathematically guaranteed.",
+    desc: "EVA composition preserves correctness across joins.",
   },
   {
     icon: <ScanLine className="h-5 w-5 text-teal" />,
     title: "If It Compiles, It Works",
-    desc: "The compiler checks every path, every edge case, every domain boundary. Open circuit? It won't compile. Period.",
+    desc: "Open circuits fail at compile time, not in production.",
   },
   {
     icon: <TrendingUp className="h-5 w-5 text-teal" />,
     title: "Certified Once. Trusted Forever.",
-    desc: "A certified component never degrades. No regressions. No flaky tests. The proof is permanent.",
+    desc: "Certified components stay reusable instead of decaying.",
   },
 ];
 

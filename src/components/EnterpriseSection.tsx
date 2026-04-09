@@ -12,7 +12,6 @@ import type { ReactNode } from "react";
 import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
 import { PremiumButton } from "@/components/ui/pixel-perfect/premium-button";
 import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
-import { CircuitDivider } from "@/components/ui/pixel-perfect/circuit-divider";
 
 const features: { icon: ReactNode; title: string; description: string }[] = [
   {
@@ -23,7 +22,7 @@ const features: { icon: ReactNode; title: string; description: string }[] = [
   {
     icon: <FileCheck className="h-5 w-5 text-teal" />,
     title: "Compliance Evidence",
-    description: "Auditor-ready reports for MiFID II (40%), SOC2 (30%), SOX (25%), PCI-DSS (15%), DORA (15%), Basel III (10%)",
+    description: "Auditor-ready reports with explicit mapped controls.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
@@ -43,7 +42,7 @@ const features: { icon: ReactNode; title: string; description: string }[] = [
   {
     icon: <Headset className="h-5 w-5 text-teal" />,
     title: "SLA & Support",
-    description: "99.9% uptime, dedicated support, on-premise option",
+    description: "Dedicated support with on-prem and uptime guarantees.",
   },
 ];
 
@@ -59,7 +58,8 @@ export function EnterpriseSection() {
         </div>
 
         <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          <TextReveal>When "tests pass"</TextReveal> <span className="text-teal"><TextReveal delay={0.4}>isn&apos;t enough.</TextReveal></span>
+          <TextReveal>When &ldquo;tests pass&rdquo;</TextReveal>{" "}
+          <span className="text-teal"><TextReveal delay={0.4}>isn&apos;t enough.</TextReveal></span>
         </h3>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
           Fintech. Healthcare. Automotive. Government. Industries where you need mathematical proof, not just green checkmarks.

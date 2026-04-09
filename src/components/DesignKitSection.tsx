@@ -18,6 +18,38 @@ export function DesignKitSection() {
           Tailwind CSS v4 + shadcn/ui design tokens.
         </p>
 
+        <div className="mt-12 border border-border bg-background p-6">
+          <p className="text-xs font-medium uppercase tracking-[1.44px] text-muted-foreground">
+            Archived Motion Asset
+          </p>
+          <h3 className="mt-2 text-lg font-medium tracking-tight">
+            CircuitGrid Background
+          </h3>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+            The animated background with active monomer nodes was removed from the canonical home to reduce visual noise. The asset stays preserved as <code className="font-mono text-xs">CircuitGrid</code> with a static companion <code className="font-mono text-xs">StaticCircuitGrid</code> for future use in experimental pages, demos, or brand motion.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <div className="border border-border p-5">
+              <p className="text-sm font-semibold">Animated Source</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                <code className="font-mono">src/components/CircuitGrid.tsx</code>
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                Canvas-based full-screen background with energized paths, activated monomer nodes, and low-opacity circuit rails.
+              </p>
+            </div>
+            <div className="border border-border p-5">
+              <p className="text-sm font-semibold">Static Companion</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                <code className="font-mono">src/components/StaticCircuitGrid.tsx</code>
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                SVG fallback for mockups, design references, or static surfaces where the animated layer would be too busy.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* ─── COLORS ─── */}
         <div className="mt-16">
           <h3 className="text-lg font-medium tracking-tight">Color Palette</h3>

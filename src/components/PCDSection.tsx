@@ -67,27 +67,26 @@ const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
     title: "AI-native language",
-    desc: "64 + 64 operations an LLM memorizes completely. Domain constraints the compiler enforces. The first language designed for AI agents to write directly.",
+    desc: "A finite syntax an LLM can learn end to end.",
   },
   {
     icon: <Shield className="h-5 w-5 text-teal" />,
     title: "Verified operations",
-    desc: "Every PCD program is built from formally verified operations. Core operations formally proven, plus contract-based extended set.",
+    desc: "Core ops are proven; extended ops stay contract-bounded.",
   },
   {
     icon: <ArrowRight className="h-5 w-5 text-teal" />,
     title: "Verified by design",
     desc: (
       <>
-        If the blueprint doesn&apos;t close as a circuit (<PhiC /> ≠ 1), it
-        simply won&apos;t compile. The math is the proof.
+        If the blueprint stays open (<PhiC /> ≠ 1), it never ships.
       </>
     ),
   },
   {
     icon: <Maximize2 className="h-5 w-5 text-teal" />,
     title: "Domain Constraints",
-    desc: "Every input declares its valid range. The compiler enforces boundaries — no overflow, no NaN, no division by zero. By construction.",
+    desc: "Every input range is explicit and compiler-enforced.",
   },
 ];
 
@@ -106,8 +105,7 @@ export function PCDSection() {
         </h3>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          64 core monomers, formally proven. 64 extended monomers, bounds-checked. Domain constraints on every input. Deterministic by construction.
-          An AI learns the entire language in one prompt. Humans write JavaScript, Python, or Rust &mdash; the Lifter converts it to PCD. AIs write PCD directly.
+          64 core monomers, 64 extended monomers, explicit domains, deterministic output. Humans lift into PCD; AIs can write it directly.
         </p>
 
         {/* Two-column: diagram + code */}

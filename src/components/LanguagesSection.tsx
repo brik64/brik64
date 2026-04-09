@@ -10,7 +10,7 @@ const targetLanguages = [
 
 export function LanguagesSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-16 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
           [03] · LANGUAGES
@@ -20,7 +20,7 @@ export function LanguagesSection() {
           10 languages in. <span className="text-teal">14 targets out.</span>
         </h3>
 
-        <div className="mt-12 flex flex-col items-center gap-8 md:flex-row md:gap-6">
+        <div className="mt-10 flex flex-col items-center gap-6 md:flex-row md:gap-6">
           {/* Source languages */}
           <div className="flex-1">
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
