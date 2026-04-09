@@ -108,7 +108,7 @@ export default function BlockchainPage() {
             Blockchain &middot; Smart Contracts
           </span>
 
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="text-center text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl lg:text-left">
             Smart contracts can&apos;t be patched.{" "}
             <span className="text-teal">So bugs can&apos;t compile.</span>
           </h1>

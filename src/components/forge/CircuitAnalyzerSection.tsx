@@ -24,12 +24,12 @@ interface Connection {
 }
 
 const NODES: GraphNode[] = [
-  { id: "MC_00", num: "00", name: "ADD", family: "Arithmetic", x: 160, y: 60 },
-  { id: "MC_02", num: "02", name: "MUL", family: "Arithmetic", x: 160, y: 180 },
-  { id: "MC_10", num: "10", name: "XOR", family: "Logic", x: 320, y: 120, selected: true },
-  { id: "MC_12", num: "12", name: "SAL", family: "Memory", x: 480, y: 60 },
-  { id: "MC_35", num: "35", name: "WRT", family: "I/O", x: 480, y: 195 },
-  { id: "MC_24", num: "24", name: "IF", family: "Control", x: 630, y: 120 },
+  { id: "AR-00", num: "00", name: "ADD", family: "Arithmetic", x: 160, y: 60 },
+  { id: "AR-02", num: "02", name: "MUL", family: "Arithmetic", x: 160, y: 180 },
+  { id: "LG-10", num: "10", name: "XOR", family: "Logic", x: 320, y: 120, selected: true },
+  { id: "ME-12", num: "12", name: "SAL", family: "Memory", x: 480, y: 60 },
+  { id: "IO-35", num: "35", name: "WRT", family: "I/O", x: 480, y: 195 },
+  { id: "CT-24", num: "24", name: "IF", family: "Control", x: 630, y: 120 },
 ];
 
 const CONNECTIONS: Connection[] = [

@@ -34,7 +34,7 @@ export default function PlaygroundPage() {
           </span>
 
           {/* Heading */}
-          <h1 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="mt-8 text-center text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             PCD <span className="text-teal">Playground</span>
           </h1>
 

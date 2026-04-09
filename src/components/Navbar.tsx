@@ -66,15 +66,6 @@ const compileToLanguages = [
 
 /* ── Resources Mega Menu data ── */
 
-const resourcesProducts = [
-  { label: "Playground", href: "/playground" },
-  { label: "CLI", href: "/cli" },
-  { label: "Platform", href: "/platform" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Changelog", href: "/changelog" },
-  { label: "PCD Format", href: "/pcd" },
-];
-
 const resourcesUseCases = [
   { label: "Compliance Evidence", href: "/compliance" },
   { label: "Blockchain", href: "/blockchain" },
@@ -469,35 +460,28 @@ function FeaturesDropdown() {
 function ResourcesDropdown() {
   return (
     <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
-      {/* Left — Use Cases */}
+      {/* Left — Shop */}
       <div>
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Use Cases
+          Shop
         </p>
         <div className="space-y-0.5">
-          {[
-            { icon: Shield, label: "AI Safety", desc: "Policy circuits as guardrails for AI agents", href: "/use-cases/ai-safety" },
-            { icon: FileCode, label: "COBOL Migration", desc: "Lift legacy code to verified blueprints", href: "/use-cases/cobol-migration" },
-            { icon: GitBranch, label: "Universal Transpilation", desc: "Certified paths between languages", href: "/use-cases/universal-transpilation" },
-            { icon: CheckCircle2, label: "Formal Verification", desc: "Mathematical proofs, not just tests", href: "/use-cases/formal-verification" },
-            { icon: Zap, label: "CI/CD Integration", desc: "Verify on every push", href: "/use-cases/ci-cd-integration" },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+            <a
+              href="/shop"
+              className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
+            >
+              <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
+              <div>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-medium text-foreground">Shop</p>
+                  <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
+                    Coming soon
+                  </span>
                 </div>
-              </a>
-            );
-          })}
-        </div>
+                <p className="text-xs text-muted-foreground">Merch storefront preview</p>
+              </div>
+            </a>
+          </div>
       </div>
 
       {/* Center — Documentation */}
@@ -538,21 +522,20 @@ function ResourcesDropdown() {
       {/* Right — Featured card */}
       <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
         <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Latest
+          Coming soon
         </p>
         <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          Stories from the{" "}
-          <span className="text-teal">frontier</span>
+          Shop preview{" "}
+          <span className="text-teal">for the community</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          Thoughts on verification, composition, coherence, and the future
-          of software that works like hardware.
+          Public placeholder for the future merch store.
         </p>
         <a
-          href="/blog"
+          href="/shop"
           className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
         >
-          Read the blog <ArrowRight className="h-3 w-3" />
+          Open Shop <ArrowRight className="h-3 w-3" />
         </a>
       </div>
     </div>
@@ -688,6 +671,14 @@ export function Navbar() {
             <a href="/download" className="px-3 py-2 text-sm text-muted-foreground">Download</a>
             <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
             <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</p>
+            <a href="/shop" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+              <span className="inline-flex items-center gap-2">
+                <span>Shop</span>
+                <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
+                  Coming soon
+                </span>
+              </span>
+            </a>
             <a href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</a>
             <a href="/pricing" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Pricing</a>
             <a href="/changelog" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Changelog</a>

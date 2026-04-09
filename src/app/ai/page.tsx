@@ -57,7 +57,7 @@ export default function AIPage() {
             AI-Verified Code Generation
           </span>
 
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="text-center text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl lg:text-left">
             Tell your AI what to build.{" "}
             <span className="text-teal">The compiler proves it&apos;s correct.</span>
           </h1>

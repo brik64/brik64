@@ -1,88 +1,71 @@
-# AI Website Clone Template
+# brik64.com
 
-A reusable template for reverse-engineering any website and rebuilding it as a pixel-perfect clone using [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
+Public website repository for BRIK-64. This repo contains the marketing site,
+brand-facing content surfaces, and the supporting documentation that constrains
+what the site is allowed to claim.
 
-Point it at a URL, run `/clone-website`, and Claude Code will inspect the site via Chrome MCP, extract design tokens and assets, write component specs, and dispatch parallel builder agents to reconstruct every section — all in isolated git worktrees that merge automatically.
+The site is not the source of truth for formal semantics, compiler behavior, or
+certification guarantees. Those claims must stay aligned with the engineering
+repositories and the evidence they expose. This repo owns presentation,
+navigation, brand assets, and audience-specific framing without inventing new
+technical guarantees.
 
-## Quick Start
+## Repository Role
 
-1. **Use this template** — click "Use this template" on GitHub (or clone it)
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-3. **Edit `TARGET.md`** — set the URL, scope, and fidelity level for the site you want to clone
-4. **Run the skill** in Claude Code:
-   ```
-   /clone-website <url>
-   ```
-5. **Customize** (optional) — after the base clone is built, modify as needed
+- Publish the external narrative for BRIK-64 across landing pages and content
+  surfaces.
+- Maintain canonical website brand assets and their runtime exports.
+- Keep marketing copy bounded by a documented truth set.
+- Provide a stable public shell for product, platform, and registry messaging.
 
-## Prerequisites
+## Core Documentation
 
-- [Node.js](https://nodejs.org/) 20+
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) with Chrome MCP enabled (required for site inspection)
+- `AGENTS.md` - repo-specific operating rules for agents editing the website.
+- `docs/content-marketing-scope.md` - allowed surfaces, audience boundaries, and
+  claim discipline for public messaging.
+- `docs/BRAND-LOGO-ASSETS.md` - canonical logo variants, classification, and
+  runtime asset mapping.
+- `docs/perspectives/03-CMO.md` - current communication thesis and go-to-market
+  framing.
+- `docs/research/brik64-content.md` - extracted historical site content used as
+  reference material, not as an automatic truth source.
 
 ## Tech Stack
 
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
-
-## How It Works
-
-The `/clone-website` skill runs a multi-phase pipeline:
-
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
-
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
-
-## Project Structure
-
-```
-src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
-public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
-docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
-scripts/            # Asset download scripts
-TARGET.md           # Clone target configuration
-AGENTS.md           # Agent instructions & code style
-```
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Wrangler Pages deploy target
 
 ## Commands
 
 ```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
+npm install
+npm run dev
+npm run build
+npm run lint
+npx vitest run
+npm run deploy
 ```
 
-## Configuration
+## Editing Rules
 
-Edit **`TARGET.md`** before cloning:
+- Do not add public claims that lack a traceable evidence path.
+- When copy changes affect positioning or scope, update
+  `docs/content-marketing-scope.md` in the same pass.
+- When logo usage changes, update `docs/BRAND-LOGO-ASSETS.md` in the same pass.
+- Treat screenshots, extracted copy, and inspiration documents as references,
+  not authority.
+- Preserve existing user changes outside the documentation scope you are
+  touching.
 
-- **URL** — the site to reverse-engineer
-- **Pages** — which pages to replicate
-- **Fidelity** — pixel-perfect, high fidelity, or structural
-- **Scope** — what's in/out of scope
-- **Customization plans** — modifications to apply after the base clone
+## Validation Expectations
 
-## License
+For copy-only changes, verify at least:
 
-MIT
+- the modified Markdown files exist at the documented paths
+- referenced commands and files are real
+- no new claim contradicts the documented scope note
+
+For site code changes, also run the relevant lint, build, and targeted tests.

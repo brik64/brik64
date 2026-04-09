@@ -8,6 +8,7 @@ const workflowFile = path.join(ROOT, "src/components/WorkflowSection.tsx");
 const aiNativeFile = path.join(ROOT, "src/components/AINativeSection.tsx");
 const complianceFile = path.join(ROOT, "src/components/ComplianceSection.tsx");
 const verticalsFile = path.join(ROOT, "src/components/VerticalsSection.tsx");
+const pcdFile = path.join(ROOT, "src/components/PCDSection.tsx");
 
 function read(filePath: string): string {
   return fs.readFileSync(filePath, "utf-8");
@@ -74,6 +75,24 @@ describe("Home visuals — sections migrated away from terminal demos", () => {
 });
 
 describe("Home visuals — new narrative panels remain present", () => {
+  it("PCD keeps the blueprint map connected to the code view", () => {
+    const content = read(pcdFile);
+    expect(content).toContain("Blueprint map");
+    expect(content).toContain("One semantic circuit. Many materials.");
+    expect(content).toContain("What PCD preserves");
+    expect(content).toContain("View blueprint");
+    expect(content).toContain("Compile to");
+    expect(content).toContain("Active view");
+    expect(content).toContain("Canonical representation");
+    expect(content).toContain("Select the blueprint or a target.");
+  });
+
+  it("PCD no longer uses the old disconnected slogan-only chip cloud", () => {
+    const content = read(pcdFile);
+    expect(content).not.toContain("One blueprint. Any material.");
+    expect(content).not.toContain("Visual analogy");
+  });
+
   it("Workflow keeps state panels for all three stages", () => {
     const content = read(workflowFile);
     expect(content).toContain("Connection state");

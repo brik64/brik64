@@ -32,7 +32,7 @@ export default function HomeV2() {
           <div className="relative z-10 px-6 py-24 md:px-16 md:py-32 lg:py-40">
             <div className="max-w-3xl">
 
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl lg:text-left">
                 The first programming language{" "}
                 <span className="text-teal">designed for AI.</span>
               </h1>

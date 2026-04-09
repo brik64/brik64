@@ -47,10 +47,14 @@ export function Footer() {
               <li><a href="/news" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">News</a></li>
               <li><a href="/faq" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">FAQ</a></li>
               <li><a href="/features" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Features</a></li>
-              <li><a href="/compliance" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Compliance Evidence</a></li>
-              <li><a href="/blockchain" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blockchain</a></li>
-              <li><a href="/safety-critical" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Safety-Critical</a></li>
-              <li><a href="/ai" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI-Verified Code</a></li>
+              <li>
+                <a href="/shop" className="inline-flex items-center gap-2 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">
+                  <span>Shop</span>
+                  <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
+                    Coming soon
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -64,6 +68,10 @@ export function Footer() {
               <li><a href="/foundations" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Foundations</a></li>
               <li><a href="/bpu" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">BPU Unit</a></li>
               <li><a href="/pcd" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">PCD Format</a></li>
+              <li><a href="/compliance" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Compliance Evidence</a></li>
+              <li><a href="/blockchain" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blockchain</a></li>
+              <li><a href="/safety-critical" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Safety-Critical</a></li>
+              <li><a href="/ai" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI-Verified Code</a></li>
             </ul>
           </div>
 

@@ -121,7 +121,7 @@ export default function HomeV2Jobs() {
                 THE AI-NATIVE SYNTHETIC LANGUAGE
               </p>
 
-              <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              <h1 className="mt-4 text-center text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl lg:text-left">
                 BRIK64 is the first programming language{" "}
                 <span className="text-teal">designed for AI.</span>
               </h1>
