@@ -15,8 +15,8 @@ export function EditorsSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[08] · EDITORS"
-          title="Editor support should feel operational, not aspirational."
-          description="PCD syntax highlighting, inline certification, one-click lift, and `brikc lsp` belong inside the editor loop. The point is not a logo strip; the point is that proof shows up where code is written."
+          title="Proof belongs where code is written."
+          description="PCD syntax highlighting, inline certification, one-click lift, and `brikc lsp` stay inside the authoring loop so proof is visible before the PR."
         />
 
         <div className="mt-10">

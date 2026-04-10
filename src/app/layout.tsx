@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Jura } from "next/font/google";
-import { StaticCircuitGrid } from "@/components/StaticCircuitGrid";
 import { CookieBanner } from "@/components/CookieBanner";
 import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
@@ -99,7 +98,6 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <StaticCircuitGrid />
         <div className="relative z-10 flex min-h-full flex-col">
           {children}
         </div>

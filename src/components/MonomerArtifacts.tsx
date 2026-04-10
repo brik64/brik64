@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Layers3, Sparkles } from "lucide-react";
 import { ArtifactFrame, ArtifactHeader, MetricTile, StatusPill } from "@/components/HomeProofArtifacts";
 import { CORE_MONOMERS, EXTENDED_MONOMERS, type Monomer } from "@/lib/monomer-data";
@@ -294,14 +293,8 @@ export function MonomerFamilyBoard() {
 
 function MonomerSpotlightCard({
   record,
-  active,
-  onActivate,
-  onDeactivate,
 }: {
   record: OfficialMonomerRecord;
-  active: boolean;
-  onActivate: () => void;
-  onDeactivate: () => void;
 }) {
   const isCore = record.tier === "core";
   const description = describeMonomer(record.monomer);
@@ -309,18 +302,12 @@ function MonomerSpotlightCard({
   const pcdSketch = getMonomerPcdSketch(record);
 
   return (
-    <button
-      type="button"
-      onMouseEnter={onActivate}
-      onMouseLeave={onDeactivate}
-      onFocus={onActivate}
-      onBlur={onDeactivate}
+    <div
       className={cx(
-        "group relative flex h-full flex-col overflow-hidden rounded-[2rem] border p-4 text-left transition-all duration-300",
+        "group relative flex h-full flex-col overflow-hidden rounded-[2rem] border p-4 text-left transition-all duration-300 hover:-translate-y-0.5",
         isCore
           ? "border-teal/20 bg-teal/[0.05] hover:border-teal/35 hover:bg-teal/[0.08]"
           : "border-orange-400/20 bg-orange-400/[0.05] hover:border-orange-400/35 hover:bg-orange-400/[0.08]",
-        active && "shadow-[0_22px_55px_rgba(15,23,42,0.12)]",
       )}
     >
       <div className="space-y-5">
@@ -331,10 +318,7 @@ function MonomerSpotlightCard({
           tone={record.tier}
           variant="positive"
           detail={record.monomer.family}
-          className={cx(
-            "mx-auto w-full max-w-[170px] transition-transform duration-300 sm:max-w-[186px] lg:max-w-[196px]",
-            active ? "scale-[1.015]" : "scale-[0.985] opacity-95",
-          )}
+          className="mx-auto w-full max-w-[170px] opacity-95 transition-transform duration-300 group-hover:scale-[1.015] sm:max-w-[186px] lg:max-w-[196px]"
         />
 
         <div className="flex items-center gap-2">
@@ -349,10 +333,10 @@ function MonomerSpotlightCard({
           <span
             className={cx(
               "rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em]",
-              active ? "border-foreground/15 bg-foreground text-background" : "border-border bg-background text-muted-foreground",
+              "border-border bg-background text-muted-foreground",
             )}
           >
-            {active ? "Focused" : "Hover to inspect"}
+            Hover to inspect
           </span>
         </div>
 
@@ -400,7 +384,7 @@ function MonomerSpotlightCard({
           </div>
         </div>
       </div>
-    </button>
+    </div>
   );
 }
 
@@ -413,7 +397,6 @@ export function MonomerSpotlightPair({
 }) {
   const leftRecord = resolveOfficialMonomer(leftOfficialNumber);
   const rightRecord = resolveOfficialMonomer(rightOfficialNumber);
-  const [activeSide, setActiveSide] = useState<"left" | "right">("left");
 
   if (!leftRecord || !rightRecord) {
     return null;
@@ -436,15 +419,9 @@ export function MonomerSpotlightPair({
       <div className="grid gap-6 xl:grid-cols-2">
         <MonomerSpotlightCard
           record={leftRecord}
-          active={activeSide === "left"}
-          onActivate={() => setActiveSide("left")}
-          onDeactivate={() => setActiveSide("left")}
         />
         <MonomerSpotlightCard
           record={rightRecord}
-          active={activeSide === "right"}
-          onActivate={() => setActiveSide("right")}
-          onDeactivate={() => setActiveSide("left")}
         />
       </div>
     </ArtifactFrame>

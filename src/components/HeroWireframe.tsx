@@ -1,223 +1,79 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
+const circuitPaths = [
+  "M 0,180 L 120,180 L 120,60 L 300,60",
+  "M 0,540 L 180,540 L 180,420 L 360,420",
+  "M 0,360 L 60,360 L 60,240 L 180,240 L 180,120",
+  "M 240,720 L 240,600 L 420,600 L 420,480",
+  "M 300,0 L 300,120 L 180,120 L 180,300",
+  "M 480,0 L 480,120 L 360,120 L 360,300 L 480,300",
+  "M 720,180 L 600,180 L 600,420 L 720,420",
+  "M 600,720 L 600,660 L 780,660 L 780,540",
+  "M 960,60 L 840,60 L 840,180 L 720,180",
+  "M 840,720 L 840,540 L 960,540 L 960,360 L 1080,360",
+  "M 1440,120 L 1320,120 L 1320,240 L 1200,240 L 1200,360",
+  "M 1920,180 L 1680,180 L 1680,300 L 1560,300",
+  "M 1200,0 L 1200,120 L 1380,120 L 1380,300 L 1500,300",
+  "M 1920,480 L 1800,480 L 1800,360 L 1680,360 L 1680,240",
+  "M 1440,720 L 1440,600 L 1560,600 L 1560,480 L 1680,480",
+  "M 1200,540 L 1320,540 L 1320,420 L 1500,420",
+];
 
-const VERTEX_SHADER = `
-  uniform float uTime;
-  uniform vec2 uMouse;
-
-  varying float vElevation;
-  varying float vDistToMouse;
-
-  void main() {
-    vec3 pos = position;
-
-    // Gentle layered sine waves — slow, calm
-    float wave1 = sin(uTime * 0.2 + pos.x * 0.6 + pos.y * 0.3) * 0.18;
-    float wave2 = sin(uTime * 0.35 + pos.x * 0.4 - pos.y * 0.5) * 0.12;
-    float wave3 = cos(uTime * 0.25 + pos.y * 0.5) * 0.08;
-
-    float elevation = wave1 + wave2 + wave3;
-
-    // Mouse push — subtle displacement near cursor
-    float dist = length(pos.xy - uMouse);
-    float mouseEffect = smoothstep(3.0, 0.0, dist);
-    elevation += mouseEffect * 0.4;
-
-    pos.z += elevation;
-
-    vElevation = elevation;
-    vDistToMouse = mouseEffect;
-
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-  }
-`;
-
-const FRAGMENT_SHADER = `
-  varying float vElevation;
-  varying float vDistToMouse;
-
-  void main() {
-    // Teal grid — visible but not overwhelming
-    float intensity = 0.14 + vElevation * 0.06;
-
-    // Brighten where mouse pushes
-    intensity += vDistToMouse * 0.3;
-
-    vec3 teal = vec3(0.0, 0.722, 0.831);
-    vec3 white = vec3(1.0, 1.0, 1.0);
-    vec3 color = mix(teal, white, vDistToMouse * 0.4);
-
-    gl_FragColor = vec4(color, intensity);
-  }
-`;
+const pads: [number, number][] = [
+  [120,180],[120,60],[300,60],[480,120],[360,120],[360,300],
+  [600,180],[600,420],[840,60],[840,180],[1320,120],[1320,240],
+  [1200,240],[1680,180],[1680,300],[1560,300],[180,540],[180,420],
+  [360,420],[1320,540],[1320,420],[1500,420],[240,600],[420,600],
+  [1560,480],[1440,600],[480,840],[600,840],[1320,1080],[1200,1080],
+];
 
 export function HeroWireframe() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseRef = useRef({ x: 999, y: 999, tx: 999, ty: 999 });
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const scene = new THREE.Scene();
-
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      container.clientWidth / container.clientHeight,
-      0.1,
-      100
-    );
-    camera.position.set(0, -3.5, 4.5);
-    camera.lookAt(0, 1.5, 0);
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-
-    // Square grid — use EdgesGeometry from a PlaneGeometry to get QUAD wireframe
-    const segW = 80;
-    const segH = 60;
-    const planeW = 14;
-    const planeH = 10;
-
-    // Create a grid of line segments manually (squares, not triangles)
-    const positions: number[] = [];
-    const stepX = planeW / segW;
-    const stepY = planeH / segH;
-    const halfW = planeW / 2;
-    const halfH = planeH / 2;
-
-    // Horizontal lines
-    for (let j = 0; j <= segH; j++) {
-      const y = -halfH + j * stepY;
-      for (let i = 0; i < segW; i++) {
-        const x1 = -halfW + i * stepX;
-        const x2 = x1 + stepX;
-        positions.push(x1, y, 0, x2, y, 0);
-      }
-    }
-
-    // Vertical lines
-    for (let i = 0; i <= segW; i++) {
-      const x = -halfW + i * stepX;
-      for (let j = 0; j < segH; j++) {
-        const y1 = -halfH + j * stepY;
-        const y2 = y1 + stepY;
-        positions.push(x, y1, 0, x, y2, 0);
-      }
-    }
-
-    const lineGeometry = new THREE.BufferGeometry();
-    lineGeometry.setAttribute(
-      "position",
-      new THREE.Float32BufferAttribute(positions, 3)
-    );
-
-    const uniforms = {
-      uTime: { value: 0 },
-      uMouse: { value: new THREE.Vector2(999, 999) },
-    };
-
-    const lineMaterial = new THREE.ShaderMaterial({
-      vertexShader: VERTEX_SHADER,
-      fragmentShader: FRAGMENT_SHADER,
-      uniforms,
-      transparent: true,
-      depthWrite: false,
-    });
-
-    const linesMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
-    linesMesh.rotation.x = -Math.PI * 0.38;
-    linesMesh.position.y = 0.5;
-    scene.add(linesMesh);
-
-    // Invisible plane for raycasting mouse position
-    const hitGeometry = new THREE.PlaneGeometry(planeW, planeH);
-    const hitMaterial = new THREE.MeshBasicMaterial({
-      visible: false,
-      side: THREE.DoubleSide,
-    });
-    const hitPlane = new THREE.Mesh(hitGeometry, hitMaterial);
-    hitPlane.rotation.x = -Math.PI * 0.38;
-    hitPlane.position.y = 0.5;
-    scene.add(hitPlane);
-
-    const raycaster = new THREE.Raycaster();
-    const pointer = new THREE.Vector2();
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-      raycaster.setFromCamera(pointer, camera);
-      const hits = raycaster.intersectObject(hitPlane);
-      if (hits.length > 0) {
-        // Transform hit point to local space of the linesMesh
-        const local = linesMesh.worldToLocal(hits[0].point.clone());
-        mouseRef.current.tx = local.x;
-        mouseRef.current.ty = local.y;
-      }
-    };
-
-    const handleMouseLeave = () => {
-      mouseRef.current.tx = 999;
-      mouseRef.current.ty = 999;
-    };
-
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
-
-    let animId: number;
-    const clock = new THREE.Clock();
-
-    const animate = () => {
-      animId = requestAnimationFrame(animate);
-
-      // Smooth lerp mouse
-      mouseRef.current.x += (mouseRef.current.tx - mouseRef.current.x) * 0.06;
-      mouseRef.current.y += (mouseRef.current.ty - mouseRef.current.y) * 0.06;
-
-      uniforms.uTime.value = clock.getElapsedTime();
-      uniforms.uMouse.value.set(mouseRef.current.x, mouseRef.current.y);
-
-      renderer.render(scene, camera);
-    };
-    animate();
-
-    const handleResize = () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("resize", handleResize);
-      renderer.dispose();
-      lineGeometry.dispose();
-      lineMaterial.dispose();
-      hitGeometry.dispose();
-      hitMaterial.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
-    };
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="pointer-events-auto absolute inset-0 z-0"
-    />
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,229,255,0.10),transparent_30%),radial-gradient(circle_at_80%_15%,rgba(0,229,255,0.08),transparent_24%),linear-gradient(180deg,rgba(0,229,255,0.06),transparent_38%)]" />
+      <svg
+        className="absolute inset-0 h-full w-full opacity-90"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1920 720"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <defs>
+          <pattern id="hero-grid-sm" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="60" y1="0" x2="60" y2="60" stroke="#00b8d4" strokeWidth="0.5" opacity="0.08" />
+            <line x1="0" y1="60" x2="60" y2="60" stroke="#00b8d4" strokeWidth="0.5" opacity="0.08" />
+          </pattern>
+          <pattern id="hero-grid-lg" width="240" height="240" patternUnits="userSpaceOnUse">
+            <line x1="240" y1="0" x2="240" y2="240" stroke="#00b8d4" strokeWidth="0.8" opacity="0.12" />
+            <line x1="0" y1="240" x2="240" y2="240" stroke="#00b8d4" strokeWidth="0.8" opacity="0.12" />
+          </pattern>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#hero-grid-sm)" />
+        <rect width="100%" height="100%" fill="url(#hero-grid-lg)" />
+
+        {circuitPaths.map((d, i) => (
+          <path
+            key={i}
+            d={d}
+            fill="none"
+            stroke="#00b8d4"
+            strokeWidth="0.8"
+            opacity={0.12 - i * 0.003}
+          />
+        ))}
+
+        {pads.map(([x, y], i) => (
+          <rect
+            key={`pad-${i}`}
+            x={x - 2}
+            y={y - 2}
+            width="4"
+            height="4"
+            fill="#00b8d4"
+            opacity="0.12"
+          />
+        ))}
+      </svg>
+    </div>
   );
 }

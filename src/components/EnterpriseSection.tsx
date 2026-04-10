@@ -1,5 +1,3 @@
-"use client";
-
 import { HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 import { EvidenceSurface, FeatureMatrixSurface, HomeSectionHeader } from "@/components/PageArtifacts";
 
@@ -10,7 +8,7 @@ export function EnterpriseSection() {
         <HomeSectionHeader
           eyebrow="[09] · ENTERPRISE"
           title="Enterprise proof means operational evidence, not just passing tests."
-          description="Fintech, healthcare, automotive, and government teams need explicit scope, traceability, and deployable proof packets."
+          description="Platform teams need explicit scope, traceability, and deployable proof packets."
         />
 
         <div className="mt-10 grid gap-6">
@@ -45,7 +43,7 @@ export function EnterpriseSection() {
 
         <div className="mt-10 flex justify-center">
           <HomeSecondaryButton href="/contact" className="opacity-90">
-            Contact Sales
+            Request architecture review
           </HomeSecondaryButton>
         </div>
       </div>

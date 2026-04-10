@@ -9,13 +9,13 @@ import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
 import {
   ArtifactFrame,
   ArtifactHeader,
-  BlueprintHubArtifact,
   CodeProofPanel,
   FlowNode,
   MetricTile,
   ProofBadge,
   StatusPill,
 } from "@/components/HomeProofArtifacts";
+import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts.client";
 import { EvidenceSurface, PageSectionHeader } from "@/components/PageArtifacts";
 import {
   FileCode,

@@ -1,5 +1,3 @@
-"use client";
-
 import { GuaranteeMatrixArtifact } from "@/components/HomeProofArtifacts";
 import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
 import { HomeSectionHeader } from "@/components/PageArtifacts";

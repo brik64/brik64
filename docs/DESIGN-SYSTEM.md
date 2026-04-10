@@ -24,6 +24,14 @@
   - `Core Monomers` with explicit certified state
   - `Extended Monomers` with explicit contract-bounded state
 
+### Audience calibration
+
+- Primary buyer persona: `Staff / Principal Engineer` or `Platform Lead`.
+- The home can keep the AI hook, but the supporting copy must quickly move to structure, traceability, deterministic behavior, and explicit scope.
+- The body of the site should prove fit with real delivery paths: `CLI -> PCD -> platform -> registry -> proof`.
+- Marketing language is acceptable in the hero and the first lead section, but the surrounding sections must anchor it in evidence, bounded claims, and operator-friendly surfaces.
+- Sections that read as generic feature clouds, ornamental CTA treatments, or unbounded claims are regressions even when they look visually polished.
+
 > The notes below describe older implementation details and should not override the current site grammar.
 
 ---

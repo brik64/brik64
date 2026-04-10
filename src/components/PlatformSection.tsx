@@ -14,25 +14,25 @@ const features: FeatureCard[] = [
     icon: <FolderOpen className="h-5 w-5 text-teal" />,
     title: "Personal Library",
     description:
-      "Organize certified circuits by project and reuse them fast.",
+      "Reuse certified circuits by project without lifting proven work again.",
   },
   {
     icon: <Globe className="h-5 w-5 text-teal" />,
     title: "Public Registry",
     description:
-      "Search pre-certified circuits instead of rewriting solved logic.",
+      "Search certified circuits before rewriting solved logic.",
   },
   {
     icon: <GitBranch className="h-5 w-5 text-teal" />,
     title: "Visual Composition",
     description:
-      "Compose visually while EVA checks every connection.",
+      "Compose with explicit EVA boundaries instead of loose diagrams.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
     title: "Certification Badges",
     description:
-      "Badges expose live proof and invalidate on any drift.",
+      "Live proof invalidates the moment the circuit drifts.",
   },
 ];
 
@@ -42,8 +42,8 @@ export function PlatformSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[04] · THE PLATFORM"
-          title="CAD for software, built from explicit monomer materials."
-          description="The platform is not just a registry UI. It is the place where monomers, blueprints, packages, and proof metadata become one inspectable workbench."
+          title="CAD for software, built for teams that need proof."
+          description="The platform is not just a registry UI. It is the inspectable workbench where monomers, blueprints, packages, and proof metadata become one operational surface."
         />
 
         <div className="mt-10">
@@ -72,12 +72,10 @@ export function PlatformSection() {
             REGISTRY LIVE &mdash; registry.brik64.dev
           </span>
           <a
-            href="https://brik64.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/registry"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-teal transition-colors hover:text-teal/80"
           >
-            Join the waitlist
+            Browse the registry
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>

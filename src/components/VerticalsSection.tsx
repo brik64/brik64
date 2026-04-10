@@ -7,8 +7,8 @@ export function VerticalsSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[12] · VERTICALS"
-          title="Industries where a bug can kill."
-          description="Range types, exhaustive matching, and formal verification for domains where runtime bugs are unacceptable."
+          title="High-assurance domains need explicit scope."
+          description="Range types, exhaustive matching, and formal verification for systems where runtime bugs are not acceptable."
         />
 
         <div className="mt-8">

@@ -7,8 +7,8 @@ export function IntegrationsSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[07] · INTEGRATIONS"
-          title="The repository stays where the team already works."
-          description="Push code as usual. BRIK64 lifts, certifies, comments on the PR, and emits packages without forcing a parallel workflow."
+          title="GitHub stays the source of truth."
+          description="BRIK64 lifts, certifies, comments on the PR, and emits packages without forcing a parallel workflow."
         />
 
         <div className="mt-10">

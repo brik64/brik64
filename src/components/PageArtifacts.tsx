@@ -20,10 +20,10 @@ function SectionHeaderBase({
   titleClassName: string;
 }) {
   return (
-    <div className="mx-auto max-w-3xl text-center">
+    <div className="mx-auto max-w-4xl text-center">
       <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-teal">{eyebrow}</p>
-      <h2 className={cx("mt-3 text-3xl font-semibold tracking-tight sm:text-4xl", titleClassName)}>{title}</h2>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{description}</p>
+      <h2 className={cx("mt-3 text-balance text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-[2.5rem]", titleClassName)}>{title}</h2>
+      <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">{description}</p>
     </div>
   );
 }

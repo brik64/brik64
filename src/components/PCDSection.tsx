@@ -1,5 +1,5 @@
 import { ArrowRight, FileCode, Maximize2, Shield } from "lucide-react";
-import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts";
+import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts.client";
 import { PhiC } from "@/components/PhiC";
 import { HomeSectionHeader } from "@/components/PageArtifacts";
 import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
@@ -7,7 +7,7 @@ import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-pe
 const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
-    title: "AI-native language",
+    title: "Shared grammar",
     desc: "A finite syntax an LLM can learn end to end.",
   },
   {
@@ -17,7 +17,7 @@ const keyPoints = [
   },
   {
     icon: <ArrowRight className="h-5 w-5 text-teal" />,
-    title: "Verified by design",
+    title: "Closure before shipping",
     desc: (
       <>
         If the blueprint stays open (<PhiC /> ≠ 1), it never ships.
@@ -38,7 +38,7 @@ export function PCDSection() {
         <HomeSectionHeader
           eyebrow="[02] · THE BLUEPRINT"
           title="Teach your agent PCD. Install the official skills now."
-          description="BRIK64 ships the skills that give your agent the ability to program in PCD and BRIK64 from this instant, so it can learn the system instead of guessing it."
+          description="BRIK64 ships official skills so your agent learns the same PCD grammar, EVA composition, and BRIK64 operations your team uses instead of guessing a looser approximation."
         />
 
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">

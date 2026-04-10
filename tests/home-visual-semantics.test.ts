@@ -115,8 +115,17 @@ describe("Home visuals — sections migrated away from terminal demos", () => {
 });
 
 describe("Home visuals — new narrative panels remain present", () => {
+  it("Hero keeps the hype hook but adds technical proof language", () => {
+    const content = read(path.join(ROOT, "src/components/HeroSection.tsx"));
+    expect(content).toContain("the first programming language");
+    expect(content).toContain("designed for AI");
+    expect(content).toContain("learns the entire language in one prompt");
+    expect(content).toContain("Compile · Certify · Publish");
+    expect(content).toContain("Representative monomer families, proof state, and outputs stay visible.");
+  });
+
   it("PCD keeps the blueprint map connected to the code view", () => {
-    const content = read(artifactFile);
+    const content = read(path.join(ROOT, "src/components/HomeProofArtifacts.client.tsx"));
     expect(content).toContain("Blueprint Hub");
     expect(content).toContain("PCD is the canonical circuit between languages.");
     expect(content).toContain("Active Blueprint View");
@@ -177,7 +186,7 @@ describe("Home visuals — new narrative panels remain present", () => {
     const content = read(artifactFile);
     expect(content).toContain("Problem Frame");
     expect(content).toContain("verification gap");
-    expect(content).toContain("Mainstream languages optimize expression. BRIK64 optimizes certifiable structure.");
+    expect(content).toContain("Mainstream languages optimize expression. Teams still need certifiable structure.");
     expect(read(problemFile)).toContain("<ProblemFrameArtifact />");
   });
 
@@ -249,6 +258,15 @@ describe("Home visuals — new narrative panels remain present", () => {
     expect(read(path.join(ROOT, "src/app/platform/page.tsx"))).toContain("leftOfficialNumber={0}");
     expect(read(path.join(ROOT, "src/app/platform/page.tsx"))).toContain("rightOfficialNumber={67}");
   });
+
+  it("TrustedBySection now speaks to technical buyers rather than broad industries", () => {
+    const content = read(path.join(ROOT, "src/components/TrustedBySection.tsx"));
+    expect(content).toContain("Platform Engineering");
+    expect(content).toContain("AI Engineering");
+    expect(content).toContain("Formal Methods");
+    expect(content).not.toContain("Aerospace");
+    expect(content).not.toContain("Healthcare");
+  });
 });
 
 describe("Home visuals — section titles are standardized", () => {
@@ -312,6 +330,7 @@ describe("Enterprise CTA — no black oval button", () => {
   it("Enterprise uses the shared secondary button instead of the old dark CTA", () => {
     const content = read(enterpriseFile);
     expect(content).toContain("HomeSecondaryButton");
+    expect(content).toContain("Request architecture review");
     expect(content).not.toContain("rounded-full border border-foreground bg-foreground");
   });
 });

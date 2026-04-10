@@ -1,13 +1,13 @@
 export function TrustedBySection() {
   const industries = [
-    "Aerospace",
-    "Fintech",
-    "Healthcare",
-    "Automotive",
-    "AI & ML",
-    "Government",
-    "Engineering",
-    "Science",
+    "Platform Engineering",
+    "AI Engineering",
+    "Developer Tools",
+    "Formal Methods",
+    "High-Assurance Systems",
+    "Infrastructure Teams",
+    "Technical Leadership",
+    "Runtime Owners",
   ];
 
   return (

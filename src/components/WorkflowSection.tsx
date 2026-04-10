@@ -7,7 +7,7 @@ export function WorkflowSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[06] · WORKFLOW"
-          title="Three commands. Verified software."
+          title="Lift, certify, publish. Without leaving the review loop."
           description="Connect the repo, lift changed logic, certify the circuit, then publish the proof where review already happens."
         />
 

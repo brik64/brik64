@@ -1,10 +1,5 @@
-"use client";
-
-import { ArrowRight, BookOpen } from "lucide-react";
-import { TextGradient } from "@/components/ui/pixel-perfect/text-gradient";
-import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
+import { ArrowRight, BookOpen, Globe } from "lucide-react";
 import { HomePrimaryButton } from "@/components/ui/pixel-perfect/home-buttons";
-import { AnimatedCard } from "@/components/ui/pixel-perfect/animated-card";
 
 /* eslint-disable @next/next/no-img-element */
 const resources = [
@@ -15,16 +10,16 @@ const resources = [
     description: "docs.brik64.dev",
   },
   {
-    title: "GitHub",
-    href: "https://github.com/brik64",
-    icon: <img src="/brands/github.svg" alt="GitHub" className="h-5 w-5" style={{ filter: "brightness(0) saturate(100%) invert(58%) sepia(78%) saturate(1640%) hue-rotate(152deg) brightness(101%) contrast(101%)" }} />,
-    description: "github.com/brik64",
+    title: "Registry",
+    href: "/registry",
+    icon: <Globe className="h-5 w-5 text-teal" />,
+    description: "registry.brik64.dev",
   },
   {
-    title: "Discord",
-    href: "https://discord.gg/brik64",
-    icon: <img src="/brands/discord.svg" alt="Discord" className="h-5 w-5" style={{ filter: "brightness(0) saturate(100%) invert(58%) sepia(78%) saturate(1640%) hue-rotate(152deg) brightness(101%) contrast(101%)" }} />,
-    description: "discord.gg/brik64",
+    title: "GitHub",
+    href: "https://github.com/brik64",
+    icon: <img src="/brands/github.svg" alt="" aria-hidden="true" className="h-5 w-5" style={{ filter: "brightness(0) saturate(100%) invert(58%) sepia(78%) saturate(1640%) hue-rotate(152deg) brightness(101%) contrast(101%)" }} />,
+    description: "github.com/brik64",
   },
 ];
 
@@ -33,20 +28,19 @@ export function CTASection() {
     <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
       <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
-          <TextReveal>Start building with</TextReveal>{" "}
-          <TextGradient className="text-3xl font-bold tracking-tight md:text-5xl">
+          Start building with{" "}
+          <span className="text-teal">
             BRIK64.
-          </TextGradient>
+          </span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground md:text-base">
-          <TextReveal delay={0.6}>The compiler is free. The language is finite. The proof is permanent.</TextReveal>
+          Read the spec, inspect the registry, and verify the proof chain before you change your workflow.
         </p>
 
-        {/* CTA */}
         <div className="mx-auto mt-10 flex flex-col items-center gap-4">
           <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
-            Get started &mdash; free
+            Read the docs
           </HomePrimaryButton>
           <a
             href="https://digitalcircuitality.com"
@@ -54,12 +48,11 @@ export function CTASection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal"
           >
-            Learn the theory at Digital Circuitality{" "}
+            Learn the theory at Digital Circuitality
             <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
 
-        {/* Resource cards */}
         <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
           {resources.map((resource) => (
             <a
@@ -67,16 +60,13 @@ export function CTASection() {
               href={resource.href}
               target="_blank"
               rel="noopener noreferrer"
+              className="rounded-xl border border-border bg-background p-6 transition-colors hover:border-teal/30 hover:shadow-sm"
             >
-              <AnimatedCard className="text-center">
-                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">
-                  {resource.icon}
-                </div>
-                <p className="text-sm font-semibold">{resource.title}</p>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  {resource.description}
-                </p>
-              </AnimatedCard>
+              <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">
+                {resource.icon}
+              </div>
+              <p className="text-sm font-semibold">{resource.title}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{resource.description}</p>
             </a>
           ))}
         </div>

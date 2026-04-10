@@ -17,7 +17,7 @@ export function ComplianceSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[11] · COMPLIANCE EVIDENCE"
-          title="Compliance evidence. At compile time."
+          title="Compliance evidence, at compile time."
           description="Generate auditor-ready evidence directly from verified code, with scope limitations made explicit."
         />
 
