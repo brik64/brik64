@@ -1,29 +1,35 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BadgeCheck, FolderOpen, GitBranch, Globe } from "lucide-react";
 import { RegistryWorkbenchArtifact } from "@/components/HomeProofArtifacts";
-import { FeatureMatrixSurface, HomeSectionHeader } from "@/components/PageArtifacts";
+import { HomeSectionHeader } from "@/components/PageArtifacts";
+import type { ReactNode } from "react";
 
 interface FeatureCard {
+  icon: ReactNode;
   title: string;
   description: string;
 }
 
 const features: FeatureCard[] = [
   {
+    icon: <FolderOpen className="h-5 w-5 text-teal" />,
     title: "Personal Library",
     description:
       "Reuse certified circuits by project without lifting proven work again.",
   },
   {
+    icon: <Globe className="h-5 w-5 text-teal" />,
     title: "Public Registry",
     description:
       "Search certified circuits before rewriting solved logic.",
   },
   {
+    icon: <GitBranch className="h-5 w-5 text-teal" />,
     title: "Visual Composition",
     description:
       "Compose with explicit EVA boundaries instead of loose diagrams.",
   },
   {
+    icon: <BadgeCheck className="h-5 w-5 text-teal" />,
     title: "Certification Badges",
     description:
       "Live proof invalidates the moment the circuit drifts.",
@@ -44,22 +50,21 @@ export function PlatformSection() {
           <RegistryWorkbenchArtifact />
         </div>
 
-        <div className="mt-8">
-          <FeatureMatrixSurface
-            eyebrow="Platform Surface"
-            title="One workbench holds reuse, proof state, and publication."
-            description="The registry workbench is the protagonist. The supporting payload explains how packages, proof, and composition stay attached to the same operational object."
-            metrics={[
-              { label: "Registry", value: "Live", detail: "Packages retain closure and export metadata." },
-              { label: "Review path", value: "Inspectable", detail: "Teams review the same object they publish." },
-              { label: "Reuse", value: "Bounded", detail: "Certified circuits survive across projects without semantic drift." },
-            ]}
-            rows={features.map((feature) => ({
-              title: feature.title,
-              body: feature.description,
-              state: feature.title === "Certification Badges" ? "accent" : "default",
-            }))}
-          />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {features.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-3xl border border-border/80 bg-background p-6 shadow-sm transition-colors hover:border-teal/30"
+            >
+              <div className="mb-3 flex items-center gap-2.5">
+                {f.icon}
+                <span className="text-sm font-semibold">{f.title}</span>
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {f.description}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

@@ -1,7 +1,7 @@
-import { ArrowRight, FileCode, Shield, Maximize2 } from "lucide-react";
+import { ArrowRight, FileCode, Maximize2, Shield } from "lucide-react";
 import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts.client";
 import { PhiC } from "@/components/PhiC";
-import { FeatureMatrixSurface, HomeSectionHeader } from "@/components/PageArtifacts";
+import { HomeSectionHeader } from "@/components/PageArtifacts";
 import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
 const keyPoints = [
@@ -69,22 +69,21 @@ export function PCDSection() {
           <BlueprintHubArtifact />
         </div>
 
-        <div className="mt-12">
-          <FeatureMatrixSurface
-            eyebrow="Blueprint Surface"
-            title="The skill install is only useful because the grammar stays finite, closed, and reviewable."
-            description="The same payload that makes PCD learnable for an agent also makes it inspectable for a staff engineer reviewing proof, domains, and composition."
-            metrics={[
-              { label: "Grammar", value: "finite", detail: "A bounded syntax an LLM and a reviewer can both hold." },
-              { label: "Closure", value: <><PhiC /> = 1</>, detail: "Open blueprints stop before shipping." },
-              { label: "Domains", value: "explicit", detail: "Input envelopes are compiler-visible, not implied." },
-            ]}
-            rows={keyPoints.map((point) => ({
-              title: point.title,
-              body: typeof point.desc === "string" ? point.desc : "If the blueprint stays open, it never ships.",
-              state: point.title === "Closure before shipping" ? "accent" : "default",
-            }))}
-          />
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
+          {keyPoints.map((kp) => (
+            <div
+              key={kp.title}
+              className="group rounded-3xl border border-border/80 bg-muted/70 p-6 shadow-sm transition-colors hover:border-teal/30 hover:bg-teal/[0.03]"
+            >
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl border border-teal/20 bg-teal/[0.05]">
+                {kp.icon}
+              </div>
+              <p className="text-sm font-medium">{kp.title}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                {kp.desc}
+              </p>
+            </div>
+          ))}
         </div>
 
         <p className="mt-14 mx-auto max-w-3xl text-center text-sm italic leading-relaxed text-muted-foreground">

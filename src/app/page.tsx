@@ -1,39 +1,49 @@
-import { CTASection } from "@/components/CTASection";
-import { ComplianceSection } from "@/components/ComplianceSection";
+import { Navbar } from "@/components/Navbar";
+import { HeroSection } from "@/components/HeroSection";
+import { TrustedBySection } from "@/components/TrustedBySection";
+import { ProblemSection } from "@/components/ProblemSection";
+import { PCDSection } from "@/components/PCDSection";
+import { LanguagesSection } from "@/components/LanguagesSection";
+import { PlatformSection } from "@/components/PlatformSection";
+import { WorldModelsSection } from "@/components/WorldModelsSection";
+import { WorkflowSection } from "@/components/WorkflowSection";
+import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { EditorsSection } from "@/components/EditorsSection";
 import { EnterpriseSection } from "@/components/EnterpriseSection";
-import { Footer } from "@/components/Footer";
-import { HeroSection } from "@/components/HeroSection";
-import { IntegrationsSection } from "@/components/IntegrationsSection";
-import { Navbar } from "@/components/Navbar";
-import { PCDSection } from "@/components/PCDSection";
-import { PlatformSection } from "@/components/PlatformSection";
-import { ProblemSection } from "@/components/ProblemSection";
-import { TrustedBySection } from "@/components/TrustedBySection";
+import { AINativeSection } from "@/components/AINativeSection";
+import { ComplianceSection } from "@/components/ComplianceSection";
 import { VerticalsSection } from "@/components/VerticalsSection";
-import { WorkflowSection } from "@/components/WorkflowSection";
-import { WorldModelsSection } from "@/components/WorldModelsSection";
+import { CTASection } from "@/components/CTASection";
+import { Footer } from "@/components/Footer";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
-        <TrustedBySection />
-        <ProblemSection />
-        <PCDSection />
-        <PlatformSection />
-        <WorldModelsSection />
-        <WorkflowSection />
-        <IntegrationsSection />
-        <EditorsSection />
-        <EnterpriseSection />
-        <ComplianceSection />
-        <VerticalsSection />
-        <CTASection />
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
+          <TrustedBySection />
+          <div>
+            <ProblemSection />
+            <PCDSection />
+            <LanguagesSection />
+            <PlatformSection />
+            <WorldModelsSection />
+            <WorkflowSection />
+            <IntegrationsSection />
+            <EditorsSection />
+            <EnterpriseSection />
+            <AINativeSection />
+            <ComplianceSection />
+            <VerticalsSection />
+          </div>
+          <CTASection />
+        </div>
       </main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </>
   );
 }

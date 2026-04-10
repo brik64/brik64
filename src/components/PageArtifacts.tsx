@@ -115,7 +115,7 @@ export function FeatureMatrixSurface({
   eyebrow: string;
   title: string;
   description: string;
-  metrics: Array<{ label: string; value: ReactNode; detail: string }>;
+  metrics: Array<{ label: string; value: string; detail: string }>;
   rows: Array<{ title: string; body: string; state?: "default" | "accent" }>;
 }) {
   return (
@@ -126,7 +126,7 @@ export function FeatureMatrixSurface({
           <MetricTile key={metric.label} label={metric.label} value={metric.value} detail={metric.detail} />
         ))}
       </div>
-      <div className="grid gap-3">
+      <div className="grid gap-4 lg:grid-cols-3">
         {rows.map((row) => (
           <div
             key={row.title}
@@ -135,12 +135,7 @@ export function FeatureMatrixSurface({
               row.state === "accent" ? "border-teal/25 bg-teal/[0.05]" : "border-border/80 bg-background/90",
             )}
           >
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <p className="text-sm font-semibold text-foreground">{row.title}</p>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                structured payload
-              </span>
-            </div>
+            <p className="text-sm font-semibold text-foreground">{row.title}</p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{row.body}</p>
           </div>
         ))}
@@ -159,7 +154,7 @@ export function EvidenceSurface({
   eyebrow: string;
   title: string;
   description: string;
-  items: Array<{ label: ReactNode; body: string }>;
+  items: Array<{ label: string; body: string }>;
   footer?: ReactNode;
 }) {
   return (
@@ -171,8 +166,8 @@ export function EvidenceSurface({
         status={<StatusPill tone="success"><ShieldCheck className="h-3.5 w-3.5" />Evidence Surface</StatusPill>}
       />
       <div className="grid gap-3">
-        {items.map((item, index) => (
-          <div key={index} className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4">
+        {items.map((item) => (
+          <div key={item.label} className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm font-semibold text-foreground">{item.label}</p>
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">

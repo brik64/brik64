@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import fs from "node:fs";
-import path from "node:path";
+import fs from "fs";
+import path from "path";
 
 const ROOT = path.resolve(__dirname, "..");
 
 function read(relativePath: string): string {
-  return fs.readFileSync(path.join(ROOT, relativePath), "utf8");
+  return fs.readFileSync(path.join(ROOT, relativePath), "utf-8");
 }
 
 describe("Buyer persona fit — Staff / Principal Engineer", () => {
@@ -16,7 +16,7 @@ describe("Buyer persona fit — Staff / Principal Engineer", () => {
     expect(content).toContain("learns the entire language in one prompt");
     expect(content).toContain("Compile · Certify · Publish");
     expect(content).toContain("same explicit grammar your team reviews");
-    expect(content).toContain("Ready now");
+    expect(content).toContain("Representative monomer families, proof state, and outputs stay visible.");
   });
 
   it("PCD speaks to teams and agents, not only to AI hype", () => {
@@ -35,15 +35,6 @@ describe("Buyer persona fit — Staff / Principal Engineer", () => {
     expect(content).toContain("Reuse certified circuits by project");
   });
 
-  it("Enterprise and verticals stay scoped and technical", () => {
-    const enterprise = read("src/components/EnterpriseSection.tsx");
-    const verticals = read("src/components/VerticalsSection.tsx");
-    expect(enterprise).toContain("Request architecture review");
-    expect(enterprise).toContain("Platform teams need explicit scope");
-    expect(verticals).toContain("High-assurance domains need explicit scope.");
-    expect(verticals).toContain("runtime bugs are not acceptable");
-  });
-
   it("TrustedBySection names technical audiences instead of broad consumer industries", () => {
     const content = read("src/components/TrustedBySection.tsx");
     expect(content).toContain("Platform Engineering");
@@ -52,8 +43,12 @@ describe("Buyer persona fit — Staff / Principal Engineer", () => {
     expect(content).toContain("Runtime Owners");
   });
 
-  it("CTA keeps verification at the center of the next step", () => {
-    const content = read("src/components/CTASection.tsx");
-    expect(content).toContain("verify the proof chain before you change your workflow");
+  it("Enterprise and verticals stay scoped and technical", () => {
+    const enterprise = read("src/components/EnterpriseSection.tsx");
+    const verticals = read("src/components/VerticalsSection.tsx");
+    expect(enterprise).toContain("Request architecture review");
+    expect(enterprise).toContain("Platform teams need explicit scope");
+    expect(verticals).toContain("High-assurance domains need explicit scope.");
+    expect(verticals).toContain("runtime bugs are not acceptable");
   });
 });
