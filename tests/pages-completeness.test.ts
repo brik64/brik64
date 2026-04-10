@@ -1,136 +1,165 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
 
-const APP_DIR = path.resolve(__dirname, "../src/app");
+import { industryPages, thesisPages, useCasePages } from "@/lib/risk-page-data";
+import { utilityPages } from "@/lib/utility-page-data";
 
-describe("Page Completeness — All expected routes exist", () => {
-  const expectedRoutes = [
-    "page.tsx", // home
-    "about/page.tsx",
-    "cli/page.tsx",
-    "pcd/page.tsx",
-    "platform/page.tsx",
-    "lifter/page.tsx",
-    "transpiler/page.tsx",
-    "sdks/page.tsx",
-    "bpu/page.tsx",
-    "registry/page.tsx",
-    "pricing/page.tsx",
-    "enterprise/page.tsx",
-    "features/page.tsx",
-    "foundations/page.tsx",
-    "investors/page.tsx",
-    "faq/page.tsx",
-    "contact/page.tsx",
-    "changelog/page.tsx",
-    "ai-agents/page.tsx",
-    "blog/page.tsx",
-    "blog/[slug]/page.tsx",
-    "news/page.tsx",
-    "news/[slug]/page.tsx",
-    "login/page.tsx",
-    "legal/page.tsx",
-    "not-found.tsx",
-    "layout.tsx",
+import {
+  APP_DIR,
+  ROOT,
+  editorialPages,
+  getAllPageFiles,
+  productCorePages,
+  productMigratedPages,
+  read,
+  retiredPages,
+  riskDirectPages,
+  riskWrapperPages,
+  utilityDirectPages,
+  utilityWrapperPages,
+} from "./site-grammar";
+
+describe("Page completeness — recovered public tree remains intact", () => {
+  const expectedRouteFiles = [
+    "src/app/page.tsx",
+    ...productCorePages,
+    ...productMigratedPages,
+    ...editorialPages,
+    ...utilityDirectPages,
+    ...utilityWrapperPages.map(([file]) => file),
+    ...riskDirectPages,
+    ...riskWrapperPages.map(([file]) => file),
+    ...retiredPages,
+    "src/app/layout.tsx",
+    "src/app/not-found.tsx",
   ];
 
-  for (const route of expectedRoutes) {
-    it(`route ${route} exists`, () => {
-      const fullPath = path.join(APP_DIR, route);
-      expect(fs.existsSync(fullPath)).toBe(true);
+  for (const file of expectedRouteFiles) {
+    it(`${file} exists`, () => {
+      expect(fs.existsSync(path.join(ROOT, file))).toBe(true);
     });
   }
+
+  it("keeps a full public route surface instead of the collapsed shell", () => {
+    expect(getAllPageFiles().length).toBeGreaterThanOrEqual(50);
+  });
 });
 
-describe("Page Completeness — Industry pages exist", () => {
-  const industries = [
-    "ai",
-    "aerospace",
-    "automotive",
-    "engineering",
-    "finance",
-    "government",
-    "healthcare",
-    "science",
-  ];
-
-  for (const industry of industries) {
-    it(`industry/${industry} exists`, () => {
-      const fullPath = path.join(APP_DIR, "industries", industry, "page.tsx");
-      expect(fs.existsSync(fullPath)).toBe(true);
+describe("Page completeness — wrapper architecture is explicit", () => {
+  for (const [file, key] of utilityWrapperPages) {
+    it(`${file} delegates to UtilityPageView using utilityPages.${key}`, () => {
+      const content = read(file);
+      expect(content).toContain('import { UtilityPageView } from "@/components/PageArchetypes"');
+      expect(content).toContain("return <UtilityPageView");
+      expect(content).toContain(`utilityPages.${key}`);
     });
   }
-});
 
-describe("Page Completeness — Use-case pages exist", () => {
-  const useCases = [
-    "ai-safety",
-    "ci-cd-integration",
-    "cobol-migration",
-    "formal-verification",
-    "universal-transpilation",
-  ];
-
-  for (const uc of useCases) {
-    it(`use-cases/${uc} exists`, () => {
-      const fullPath = path.join(APP_DIR, "use-cases", uc, "page.tsx");
-      expect(fs.existsSync(fullPath)).toBe(true);
+  for (const [file, pageRef] of riskWrapperPages) {
+    it(`${file} delegates to RiskPageView using ${pageRef}`, () => {
+      const content = read(file);
+      expect(content).toContain('import { RiskPageView } from "@/components/PageArchetypes"');
+      expect(content).toContain("return <RiskPageView");
+      expect(content).toContain(pageRef);
     });
   }
+
+  for (const file of retiredPages) {
+    it(`${file} is retired via redirect instead of rendering a legacy shell`, () => {
+      const content = read(file);
+      expect(content).toContain('import { redirect } from "next/navigation"');
+      expect(content).toContain('redirect("/")');
+    });
+  }
+
+  it("languages/[slug] remains a dynamic route with precomputed params", () => {
+    const content = read("src/app/languages/[slug]/page.tsx");
+    expect(content).toContain("generateStaticParams");
+    expect(content).toContain("LanguageExchangeSurface");
+    expect(content).toContain("DocsRailSurface");
+  });
 });
 
-describe("Page Completeness — Blog posts have content", () => {
-  const blogContentPath = path.resolve(
-    __dirname,
-    "../src/lib/blog-content.tsx"
-  );
-  const blogDataPath = path.resolve(__dirname, "../src/lib/blog-data.ts");
+describe("Page completeness — shared archetype data stays populated", () => {
+  it("utility page specs cover every utility wrapper route", () => {
+    const expectedKeys = utilityWrapperPages.map(([, key]) => key);
+    expect(Object.keys(utilityPages).sort()).toEqual(expectedKeys.slice().sort());
+  });
 
-  it("blog-content.tsx exists and is substantial", () => {
+  it("industry page specs cover all industry routes", () => {
+    expect(Object.keys(industryPages).sort()).toEqual(
+      [
+        "aerospace",
+        "ai",
+        "automotive",
+        "engineering",
+        "finance",
+        "government",
+        "healthcare",
+        "science",
+      ].sort(),
+    );
+  });
+
+  it("use-case page specs cover all use-case routes", () => {
+    expect(Object.keys(useCasePages).sort()).toEqual(
+      [
+        "aiSafety",
+        "ciCdIntegration",
+        "cobolMigration",
+        "formalVerification",
+        "universalTranspilation",
+      ].sort(),
+    );
+  });
+
+  it("applied thesis page specs stay populated", () => {
+    expect(Object.keys(thesisPages).sort()).toEqual(
+      ["ai", "blockchain", "safetyCritical"].sort(),
+    );
+  });
+});
+
+describe("Page completeness — editorial content remains substantive", () => {
+  const blogContentPath = path.resolve(ROOT, "src/lib/blog-content.tsx");
+  const blogDataPath = path.resolve(ROOT, "src/lib/blog-data.ts");
+  const newsContentPath = path.resolve(ROOT, "src/lib/news-content.tsx");
+  const newsDataPath = path.resolve(ROOT, "src/lib/news-data.ts");
+
+  it("blog content remains substantial", () => {
     const content = fs.readFileSync(blogContentPath, "utf-8");
     expect(content.length).toBeGreaterThan(10000);
   });
 
-  it("blog-data.ts exists and has posts", () => {
+  it("blog data still contains a meaningful number of posts", () => {
     const content = fs.readFileSync(blogDataPath, "utf-8");
     const slugMatches = content.match(/slug:/g);
     expect(slugMatches).not.toBeNull();
     expect(slugMatches!.length).toBeGreaterThanOrEqual(20);
   });
 
-  it("all blog data slugs have content entries", () => {
+  it("all blog data slugs still have content entries", () => {
     const dataContent = fs.readFileSync(blogDataPath, "utf-8");
     const contentContent = fs.readFileSync(blogContentPath, "utf-8");
-
     const slugs =
-      dataContent.match(/slug:\s*"([^"]+)"/g)?.map((m) => {
-        const match = m.match(/"([^"]+)"/);
-        return match ? match[1] : "";
-      }) || [];
+      dataContent.match(/slug:\s*"([^"]+)"/g)?.map((match) => {
+        const inner = match.match(/"([^"]+)"/);
+        return inner ? inner[1] : "";
+      }) ?? [];
 
     for (const slug of slugs) {
       if (!slug) continue;
       expect(
         contentContent.includes(`"${slug}":`),
-        `Missing content for blog slug: ${slug}`
+        `Missing content for blog slug: ${slug}`,
       ).toBe(true);
     }
   });
-});
 
-describe("Page Completeness — News articles have content", () => {
-  const newsContentPath = path.resolve(
-    __dirname,
-    "../src/lib/news-content.tsx"
-  );
-  const newsDataPath = path.resolve(__dirname, "../src/lib/news-data.ts");
-
-  it("news-content.tsx exists", () => {
+  it("news content and metadata remain present", () => {
     expect(fs.existsSync(newsContentPath)).toBe(true);
-  });
 
-  it("news-data.ts exists and has articles", () => {
     const content = fs.readFileSync(newsDataPath, "utf-8");
     const slugMatches = content.match(/slug:/g);
     expect(slugMatches).not.toBeNull();
@@ -138,31 +167,9 @@ describe("Page Completeness — News articles have content", () => {
   });
 });
 
-describe("Page Completeness — Pages are non-trivial", () => {
-  function getAllPageFiles(dir: string): string[] {
-    const results: string[] = [];
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory()) results.push(...getAllPageFiles(fullPath));
-      else if (entry.name === "page.tsx") results.push(fullPath);
-    }
-    return results;
-  }
-
-  const pages = getAllPageFiles(APP_DIR);
-
-  for (const file of pages) {
-    const relPath = path.relative(APP_DIR, file);
-    // Skip docs redirect and thin wrapper pages
-    if (relPath.includes("docs/")) continue;
-    if (relPath === "design-system/page.tsx") continue;
-    // Home page.tsx is a thin wrapper that imports components
-    if (relPath === "page.tsx") continue;
-
-    it(`${relPath} has substantial content (>50 lines)`, () => {
-      const content = fs.readFileSync(file, "utf-8");
-      const lines = content.split("\n").length;
-      expect(lines).toBeGreaterThan(50);
-    });
-  }
+describe("Page completeness — public app shell stays canonical", () => {
+  it("keeps the global app layout and not-found entrypoint", () => {
+    expect(fs.existsSync(path.join(APP_DIR, "layout.tsx"))).toBe(true);
+    expect(fs.existsSync(path.join(APP_DIR, "not-found.tsx"))).toBe(true);
+  });
 });

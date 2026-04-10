@@ -1,150 +1,101 @@
-import { describe, it, expect } from "vitest";
-import fs from "fs";
+import { describe, expect, it } from "vitest";
 import path from "path";
 
-function getAllPageFiles(dir: string): string[] {
-  const results: string[] = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      results.push(...getAllPageFiles(fullPath));
-    } else if (entry.name === "page.tsx") {
-      results.push(fullPath);
-    }
-  }
-  return results;
-}
+import {
+  getAllPageFiles,
+  productMigratedPages,
+  read,
+  riskDirectPages,
+  utilityDirectPages,
+} from "./site-grammar";
 
-const APP_DIR = path.resolve(__dirname, "../src/app");
-const allPages = getAllPageFiles(APP_DIR);
+const archetypesFile = "src/components/PageArchetypes.tsx";
 
-describe("Alignment — h2 with text-center must have mx-auto", () => {
-  for (const file of allPages) {
-    const relPath = path.relative(APP_DIR, file);
-    const content = fs.readFileSync(file, "utf-8");
-    const lines = content.split("\n");
+describe("Alignment — canonical shell lives in the shared archetype layer", () => {
+  const content = read(archetypesFile);
 
-    it(`${relPath} — all centered h2 have mx-auto`, () => {
-      const issues: string[] = [];
-      lines.forEach((line, i) => {
-        // Match h2 with text-center but without mx-auto
-        if (
-          line.includes("<h2") &&
-          line.includes("text-center") &&
-          !line.includes("mx-auto")
-        ) {
-          issues.push(`Line ${i + 1}: h2 has text-center but no mx-auto`);
-        }
-      });
-      expect(issues).toEqual([]);
-    });
-  }
+  it("CanonicalPageLayout owns Navbar, Footer, and the max-width shell", () => {
+    expect(content).toContain("export function CanonicalPageLayout");
+    expect(content).toContain("<Navbar />");
+    expect(content).toContain("<Footer />");
+    expect(content).toContain("mx-auto max-w-7xl border-x border-border bg-background");
+  });
+
+  it("CanonicalPageHero keeps centered title and subtitle rhythm", () => {
+    expect(content).toContain("export function CanonicalPageHero");
+    expect(content).toContain("mx-auto max-w-5xl text-center");
+    expect(content).toContain("mx-auto mt-6 max-w-2xl");
+  });
+
+  it("ArchetypeSectionHeader routes through PageSectionHeader instead of local one-off h2 blocks", () => {
+    expect(content).toContain("export function ArchetypeSectionHeader");
+    expect(content).toContain("<PageSectionHeader");
+  });
 });
 
-describe("Alignment — Hero sections are centered", () => {
-  for (const file of allPages) {
-    const relPath = path.relative(APP_DIR, file);
-    const content = fs.readFileSync(file, "utf-8");
-
-    it(`${relPath} — h1 has text-center or is in a text-center container`, () => {
-      // Article detail pages intentionally have left-aligned h1
-      if (relPath.includes("[slug]")) return;
-      const h1Match = content.match(/<h1[^>]*className="([^"]*)"/);
-      if (h1Match) {
-        const classes = h1Match[1];
-        // h1 should be centered — either directly or via parent
-        const isCentered =
-          classes.includes("text-center") ||
-          content.includes('text-center">\n') ||
-          content.includes("text-center lg:");
-        // Just warn, don't fail — some pages intentionally have left-aligned h1
-        if (!isCentered) {
-          // Check if parent div has text-center
-          const h1Index = content.indexOf(h1Match[0]);
-          const contextBefore = content.slice(
-            Math.max(0, h1Index - 200),
-            h1Index
-          );
-          const parentCentered = contextBefore.includes("text-center");
-          expect(parentCentered).toBe(true);
-        }
-      }
-    });
-  }
-});
-
-describe("Structure — All pages have Navbar and Footer", () => {
-  for (const file of allPages) {
-    const relPath = path.relative(APP_DIR, file);
-    const content = fs.readFileSync(file, "utf-8");
-
-    // Skip layout files and special pages
-    if (relPath === "layout.tsx" || relPath === "not-found.tsx") continue;
-    // Skip docs redirect page
-    if (relPath.includes("docs/")) continue;
-
-    it(`${relPath} — has Navbar`, () => {
-      expect(content).toMatch(/<Navbar/);
-    });
-
-    it(`${relPath} — has Footer`, () => {
-      expect(content).toMatch(/<Footer/);
-    });
-  }
-});
-
-describe("Structure — Pages use consistent border pattern", () => {
-  for (const file of allPages) {
-    const relPath = path.relative(APP_DIR, file);
-    const content = fs.readFileSync(file, "utf-8");
-
-    // Skip non-content pages
-    if (
-      relPath === "layout.tsx" ||
-      relPath === "not-found.tsx" ||
-      relPath.includes("docs/") ||
-      relPath.includes("login/") ||
-      relPath.includes("design-system/") ||
-      relPath.includes("playground/") ||
-      relPath.includes("news/") ||
-      relPath.includes("blog/[slug]")
-    )
-      continue;
-
-    it(`${relPath} — uses max-w-7xl container`, () => {
-      expect(content).toMatch(/max-w-7xl|max-w-5xl|max-w-3xl/);
-    });
-  }
-});
-
-describe("Consistency — No hardcoded colors in page files", () => {
-  // Allowed hardcoded colors
-  const allowedHardcoded = [
-    "#00b8d4", // Brand teal
-    "#00a0bc", // Brand teal hover
-    "#1A1817", // Dark text
-    "#322F2D", // Muted text
-    "#EEEEEE", // Light border
-    "#FAFAFA", // Light bg
-    "#0a0e14", // Code block bg
-    "#e0e0e0", // Code text
-    "#ff5f57", // Traffic light red
-    "#febc2e", // Traffic light yellow
-    "#28c840", // Traffic light green
-    "#f0fdff", // Light gradient
+describe("Alignment — migrated direct pages use the canonical layout primitives", () => {
+  const directPages = [
+    ...productMigratedPages,
+    ...riskDirectPages,
+    ...utilityDirectPages,
   ];
 
-  for (const file of allPages) {
-    const relPath = path.relative(APP_DIR, file);
-    const content = fs.readFileSync(file, "utf-8");
+  for (const file of directPages) {
+    it(`${file} uses the canonical page layout`, () => {
+      const content = read(file);
+      expect(content).toContain("CanonicalPageLayout");
+    });
+  }
 
-    it(`${relPath} — no unexpected hardcoded colors`, () => {
-      const hexColors = content.match(/#[0-9a-fA-F]{6}/g) || [];
-      const unexpected = hexColors.filter(
-        (c) => !allowedHardcoded.includes(c)
-      );
-      // Allow some variance but flag if too many unknown colors
-      expect(unexpected.length).toBeLessThan(5);
+  for (const file of productMigratedPages) {
+    it(`${file} keeps the canonical hero and section cadence`, () => {
+      const content = read(file);
+      expect(content).toContain("CanonicalPageHero");
+      expect(content).toContain("CanonicalSection");
+      expect(content).toContain('className="mx-auto mt-10');
+    });
+  }
+});
+
+describe("Alignment — wrapper pages point into the canonical views", () => {
+  const wrapperPages = getAllPageFiles().filter((file) => {
+    const rel = path.relative(path.resolve(__dirname, ".."), file);
+    const content = read(rel);
+    return content.includes("UtilityPageView") || content.includes("RiskPageView");
+  });
+
+  it("keeps a large set of wrapper routes routed through shared views", () => {
+    expect(wrapperPages.length).toBeGreaterThanOrEqual(25);
+  });
+
+  for (const file of wrapperPages) {
+    const rel = path.relative(path.resolve(__dirname, ".."), file);
+    it(`${rel} does not inline its own Navbar/Footer because the shared view owns them`, () => {
+      const content = read(rel);
+      expect(content.includes("<Navbar")).toBe(false);
+      expect(content.includes("<Footer")).toBe(false);
+    });
+  }
+});
+
+describe("Alignment — unexpected blue accents stay out of route files", () => {
+  const forbiddenPatterns = [
+    /text-blue-400/,
+    /text-blue-500/,
+    /text-blue-700/,
+    /bg-blue-500/,
+    /border-blue-500/,
+  ];
+
+  const routeFiles = getAllPageFiles();
+
+  for (const file of routeFiles) {
+    const rel = path.relative(path.resolve(__dirname, ".."), file);
+    it(`${rel} avoids legacy blue utility classes`, () => {
+      const content = read(rel);
+      for (const pattern of forbiddenPatterns) {
+        expect(pattern.test(content)).toBe(false);
+      }
     });
   }
 });

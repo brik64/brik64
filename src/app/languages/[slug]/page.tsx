@@ -1,335 +1,182 @@
 import { notFound } from "next/navigation";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { PhiC } from "@/components/PhiC";
-import { languages, getLanguageBySlug } from "@/lib/language-data";
-import { ArrowRight, Check, X, Terminal, Package, ArrowUpDown, Puzzle, Globe, Sparkles } from "lucide-react";
-import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
-const sdkExamples: Record<string, { code: string; description: string }> = {
+import {
+  ArchetypeSectionHeader,
+  CanonicalPageHero,
+  CanonicalPageLayout,
+  CanonicalSection,
+  DocsRailSurface,
+  LanguageExchangeSurface,
+} from "@/components/PageArchetypes";
+import { getLanguageBySlug, languages } from "@/lib/language-data";
+
+const sdkExamples: Record<string, { description: string; code: string }> = {
   javascript: {
-    description: "Use verified monomers directly in your JavaScript/TypeScript code. Every function built from Core monomers via EVA operators automatically carries Φc = 1 — regardless of the host language.",
-    code: `import { mc, eva } from '@brik64/core';
+    description:
+      "Use verified monomer patterns inside a JavaScript or TypeScript workflow and keep the path back to PCD explicit when you need a bounded artifact.",
+    code: `import { mc, eva } from "@brik64/core";
 
-// Use verified monomers instead of raw operators
-const safeAdd = mc.add8(200, 100);  // 44 (wrapping, mathematically certified)
-const hash = mc.hashHex(Buffer.from('payload')); // SHA-256
-
-// EVA sequential composition — correctness preserved
+const safeAdd = mc.add8(200, 100);
 const pipeline = eva.seq(
   (x) => mc.add8(x, 10),
-  (x) => mc.mod8(x, 7)
-);
-
-// Pull a certified circuit from the public registry
-// and use it directly in your code
-import { registry } from '@brik64/core';
-const jwtValidator = await registry.pull('CRYPTO-005');
-const isValid = jwtValidator.run(token); // Φc = 1`,
+  (x) => mc.mod8(x, 7),
+);`,
   },
   python: {
-    description: "Drop verified monomers into your Python codebase. Every operation carries its mathematical proof. Pull certified circuits from the registry and use them as regular Python functions.",
-    code: `from brik64.mc import arithmetic, crypto, string
-from brik64.eva import seq, par, pipeline
-from brik64.registry import pull
+    description:
+      "Use the Python package as a host-language bridge while keeping the formal path available when the workflow needs certification or liftability.",
+    code: `from brik64.mc import arithmetic
 
-# Verified monomers — not just functions, proofs
-result = arithmetic.add8(200, 100)  # 44 (wrapping, mathematically certified)
-digest = crypto.hash_hex(b"payload")  # SHA-256
-
-# EVA composition — correctness propagates
-process = seq(
-    lambda x: arithmetic.add8(x, 10),
-    lambda x: arithmetic.mod8(x, 7)
-)
-
-# Pull from the public registry — drop into existing code
-auth_flow = pull("AUTH-FLOW-001")  # OAuth2 handler, Φc = 1
-result = auth_flow.execute(request)  # certified, no PCD needed`,
+result = arithmetic.add8(200, 100)
+digest = arithmetic.mod8(result, 7)`,
   },
   rust: {
-    description: "Use mathematically certified monomers in your Rust code. The brik64-core crate provides all verified operations with zero-cost abstractions. Compatible with the public registry.",
-    code: `use brik64_core::{mc, eva};
-use brik64_core::registry::Registry;
+    description:
+      "Use Rust as a strongly typed host while keeping the same lift, check, and publish story visible to the operator.",
+    code: `use brik64_core::mc;
 
-fn main() {
-    // Verified monomers — formally mathematically certified
-    let sum = mc::add8(200, 100);  // 44 (wrapping)
-    let hash = mc::hash_hex(b"payload");  // SHA-256
-
-    // EVA sequential composition
-    let pipeline = eva::seq(
-        |x: (u8, u8)| mc::add8(x.0, x.1),
-        |s| mc::mod8(s, 7)
-    );
-    println!("{}", pipeline((250, 10))); // Φc = 1
-
-    // Pull certified circuits from registry
-    let registry = Registry::public();
-    let sort = registry.pull("SORT-ALG-042").unwrap(); // Quicksort
-    let sorted = sort.run(&mut data); // certified, Φc = 1
-}`,
+let sum = mc::add8(200, 100);
+let reduced = mc::mod8(sum, 7);`,
   },
 };
 
 export function generateStaticParams() {
-  return languages.map((l) => ({ slug: l.slug }));
+  return languages.map((language) => ({ slug: language.slug }));
 }
 
-export default async function LanguagePage(props: { params: Promise<{ slug: string }> }) {
+export default async function LanguagePage(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await props.params;
-  const lang = getLanguageBySlug(slug);
-  if (!lang) return notFound();
+  const language = getLanguageBySlug(slug);
+
+  if (!language) {
+    return notFound();
+  }
+
+  const exchangeCode =
+    sdkExamples[language.slug]?.code ??
+    language.compileExample?.output ??
+    language.liftExample?.output ??
+    language.liftExample?.input;
+
+  const exchangeDescription =
+    sdkExamples[language.slug]?.description ??
+    `Use ${language.name} as part of the same bounded lift, check, and compile story that appears elsewhere on the site.`;
 
   return (
-    <>
-      <Navbar />
-      <main className="relative z-10">
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        {/* Hero */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x px-6 pt-20 pb-16 md:px-12 lg:px-18 relative overflow-hidden">
-          <HeroWireframeClient />
-          <div className="relative z-10 flex items-center gap-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lang.logo} alt={lang.name} className="h-12 w-12" />
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                {lang.name}
-              </h1>
-              <p className="text-muted-foreground mt-1 text-sm">{lang.extension}</p>
-            </div>
-          </div>
-          <p className="text-muted-foreground mt-6 max-w-2xl text-base leading-relaxed md:text-lg">
-            {lang.description}
-          </p>
-        </section>
+    <CanonicalPageLayout>
+      <CanonicalPageHero
+        eyebrow={`Language · ${language.name}`}
+        title={`Work with ${language.name} through the`}
+        description={language.description}
+        metrics={[
+          {
+            label: "Lift from source",
+            value: language.canLiftFrom ? "Supported" : "Not primary",
+            detail: language.canLiftFrom
+              ? `The public workflow can lift ${language.extension} source into a bounded blueprint.`
+              : `This language is primarily a compilation target in the current public story.`,
+          },
+          {
+            label: "Compile target",
+            value: language.canCompileTo ? "Supported" : "Not primary",
+            detail: language.canCompileTo
+              ? `PCD can emit ${language.name} artifacts as part of the broader target story.`
+              : `Compilation into ${language.name} is not the emphasis of this route today.`,
+          },
+          {
+            label: "Host artifact",
+            value: language.extension,
+            detail: language.installCommand
+              ? `The page can also route into the ${language.name} package path.`
+              : `This route is presented as part of the target and interoperability story.`,
+          },
+        ]}
+      />
 
-        {/* Capabilities */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [01] CAPABILITIES
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-            What you can do with {lang.name}
-          </h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="flex items-center gap-3 border border-border bg-muted/20 p-5">
-              <ArrowUpDown className="h-5 w-5 shrink-0 text-teal" />
-              <div>
-                <p className="text-sm font-medium">Lift from {lang.name}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  Reverse-compile {lang.extension} files to PCD
-                </p>
-              </div>
-              <div className="ml-auto">
-                {lang.canLiftFrom ? (
-                  <Check className="h-5 w-5 text-emerald-500" />
-                ) : (
-                  <X className="h-5 w-5 text-zinc-400" />
-                )}
-              </div>
-            </div>
-            <div className="flex items-center gap-3 border border-border bg-muted/20 p-5">
-              <Terminal className="h-5 w-5 shrink-0 text-teal" />
-              <div>
-                <p className="text-sm font-medium">Compile to {lang.name}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground">
-                  Generate certified {lang.extension} from PCD
-                </p>
-              </div>
-              <div className="ml-auto">
-                {lang.canCompileTo ? (
-                  <Check className="h-5 w-5 text-emerald-500" />
-                ) : (
-                  <X className="h-5 w-5 text-zinc-400" />
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SDK Install */}
-        {lang.installCommand && (
-          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-            <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-              [02] SDK
-            </p>
-            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-              Install the {lang.name} SDK
-            </h2>
-            <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <div className="h-3 w-3 rounded-full bg-red-500/60" />
-                <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-                <div className="h-3 w-3 rounded-full bg-green-500/60" />
-                <span className="ml-2 text-xs text-white/30 font-mono">install</span>
-              </div>
-              <div className="px-5 py-4">
-                <code className="font-mono text-sm text-emerald-400">
-                  <span className="text-teal">$</span> {lang.installCommand}
-                </code>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* SDK Programming — write BRIK64 patterns in your language */}
-        {lang.installCommand && sdkExamples[lang.slug] && (
-          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t bg-background px-6 py-16 md:px-12 lg:px-18">
-            <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-              PROGRAM WITH BRIK64 PATTERNS
-            </p>
-            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-              Write verified {lang.name} — no PCD required
-            </h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed">
-              {sdkExamples[lang.slug].description}
-            </p>
-
-            <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1fr]">
-              {/* Left — benefits */}
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <Sparkles className="mt-1 h-5 w-5 shrink-0 text-teal" />
-                  <div>
-                    <p className="text-sm font-medium">Keep your existing workflow</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Write {lang.name} as you always do. Use <code className="text-foreground">mc.*</code> monomers instead of raw operators. Your code stays in {lang.name} — no context switching to PCD.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Puzzle className="mt-1 h-5 w-5 shrink-0 text-teal" />
-                  <div>
-                    <p className="text-sm font-medium">Pull from the registry</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Certified circuits from the public registry can be pulled and used directly as {lang.name} functions. OAuth handlers, sorting algorithms, validators — all pre-verified.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Globe className="mt-1 h-5 w-5 shrink-0 text-teal" />
-                  <div>
-                    <p className="text-sm font-medium">Lift to PCD is trivial</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Code written with BRIK64 patterns maps 1:1 to PCD monomers. When you&apos;re ready to certify, <code className="text-foreground">brikc lift</code> produces a clean blueprint instantly — because your code already follows the circuit pattern.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Package className="mt-1 h-5 w-5 shrink-0 text-teal" />
-                  <div>
-                    <p className="text-sm font-medium">Insert into existing software</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Functions built from BRIK64 monomers are standard {lang.name} functions. They drop into any existing codebase. No special runtime, no PCD required at deployment.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right — code example */}
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                  <span className="ml-2 font-mono text-xs text-white/30">app{lang.extension}</span>
-                </div>
-                <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed text-zinc-300 whitespace-pre-wrap">{sdkExamples[lang.slug].code}</pre>
-              </div>
-            </div>
-
-            <div className="mt-8 rounded-md border border-teal/20 bg-teal/[0.03] p-5">
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                <strong className="text-foreground">The key insight:</strong> You don&apos;t need to learn PCD or change your language. Use the SDK in your {lang.name} code, pull certified circuits from the registry, and your programs are automatically compatible with the BRIK64 ecosystem. When you need formal certification, <code className="text-foreground">brikc lift</code> extracts the PCD blueprint from your already-structured code — trivially, because the patterns already match.
-              </p>
-            </div>
-          </section>
-        )}
-
-        {/* Lift Example */}
-        {lang.canLiftFrom && lang.liftExample && (
-          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-            <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-              LIFT
-            </p>
-            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-              Lift from {lang.name} to PCD
-            </h2>
-            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-              <Terminal className="h-3.5 w-3.5" />
-              <code className="text-foreground">brikc lift file{lang.extension} --to pcd</code>
-            </div>
-            <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                  <span className="ml-2 text-xs text-white/40 font-mono">input{lang.extension}</span>
-                </div>
-                <pre className="p-4 text-sm text-zinc-400 font-mono whitespace-pre-wrap">{lang.liftExample.input}</pre>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-                <div className="border-b border-white/10 px-4 py-2">
-                  <span className="text-xs text-emerald-400/60 font-mono">output.pcd</span>
-                </div>
-                <pre className="p-4 text-sm text-emerald-400 font-mono whitespace-pre-wrap">{lang.liftExample.output}</pre>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Compile Example */}
-        {lang.canCompileTo && lang.compileExample && (
-          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-            <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-              COMPILE
-            </p>
-            <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-              Compile PCD to {lang.name}
-            </h2>
-            <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-              <Terminal className="h-3.5 w-3.5" />
-              <code className="text-foreground">brikc compile app.pcd --target {lang.slug}</code>
-            </div>
-            <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-                  <span className="ml-2 text-xs text-white/40 font-mono">app.pcd</span>
-                </div>
-                <pre className="p-4 text-sm text-zinc-400 font-mono whitespace-pre-wrap">{lang.compileExample.input}</pre>
-              </div>
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-                <div className="border-b border-white/10 px-4 py-2">
-                  <span className="text-xs text-emerald-400/60 font-mono">output{lang.extension}</span>
-                </div>
-                <pre className="p-4 text-sm text-emerald-400 font-mono whitespace-pre-wrap">{lang.compileExample.output}</pre>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* CTA */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-            Start building &mdash; free
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            {lang.name} is one of 14 supported languages. See every certified path.
-          </p>
-          <div className="mt-8">
-            <a
-              href="/transpiler"
-              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-            >
-              Transpiler matrix <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-        </section>
-      </div>
-
-      </main>
-      <div className="relative z-10">
-
-        <Footer />
-
-      </div>
-    </>
+      <CanonicalSection>
+        <ArchetypeSectionHeader
+          eyebrow="Language Surface"
+          title="Each language route now behaves like one bounded exchange surface."
+          description="The page explains how the language enters the BRIK64 flow, what can be lifted or emitted, and where the operator should go next."
+        />
+        <div className="mx-auto mt-10 grid max-w-6xl gap-6">
+          <LanguageExchangeSurface
+            eyebrow="Language Exchange"
+            title={`${language.name} in the BRIK64 path`}
+            description={exchangeDescription}
+            metrics={[
+              {
+                label: "Install path",
+                value: language.installCommand ? "Available" : "Indirect",
+                detail: language.installCommand
+                  ? language.installCommand
+                  : "This route currently behaves more as a lift or target surface than as an installable SDK.",
+              },
+              {
+                label: "Lift posture",
+                value: language.canLiftFrom ? "Source bridge" : "Target-first",
+                detail: language.canLiftFrom
+                  ? `Existing ${language.name} code can be interpreted as source material for a bounded blueprint.`
+                  : `The public story emphasizes ${language.name} as a destination rather than a lift source.`,
+              },
+              {
+                label: "Registry fit",
+                value: "Shared grammar",
+                detail: "Language-specific routes should still point back to the same CLI, PCD, platform, and registry flow.",
+              },
+            ]}
+            exchanges={[
+              {
+                title: `How ${language.name} enters the workflow`,
+                body: language.canLiftFrom
+                  ? `This route can start from existing ${language.name} source and move into an explicit bounded blueprint before deeper verification or publication.`
+                  : `This route is presented primarily as a target emitted from a bounded intermediate form.`,
+              },
+              {
+                title: "What the page should prove",
+                body: "The route should make clear whether the language is a source bridge, a compile target, or an SDK host without mixing those stories loosely.",
+              },
+              {
+                title: "Where the operator goes next",
+                body: "Language pages should still hand off to CLI, PCD, docs, or SDK surfaces instead of behaving like isolated microsites.",
+              },
+            ]}
+            codeTitle={`${language.name} example`}
+            code={exchangeCode}
+            footer={
+              language.installCommand
+                ? `Install path: ${language.installCommand}`
+                : "No package install path is advertised here. The route remains valuable as a bounded source or target surface."
+            }
+          />
+          <DocsRailSurface
+            eyebrow="Reference Rails"
+            title="Language pages should always terminate in concrete operator routes."
+            description="A reader evaluating a language integration needs the next technical path immediately."
+            links={[
+              {
+                title: "CLI",
+                body: "The operator entrypoint for lift, check, certify, and build workflows.",
+                href: "/cli",
+              },
+              {
+                title: "PCD",
+                body: "The formal language surface behind the bounded blueprint story.",
+                href: "/pcd",
+              },
+              {
+                title: "Documentation",
+                body: "Reference material for language-specific install and workflow detail.",
+                href: "https://docs.brik64.dev",
+                external: true,
+              },
+            ]}
+            note="Language routes are useful only when they remain attached to the same product grammar as the rest of the site."
+          />
+        </div>
+      </CanonicalSection>
+    </CanonicalPageLayout>
   );
 }

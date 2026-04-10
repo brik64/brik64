@@ -1,223 +1,212 @@
-# BRIK-64 Design System v6
+# BRIK-64 Design System
 
-> Current canonical site grammar. Legacy v5 notes below are retained only as historical context.
+> Canonical site grammar for `brik64.com`. Historical notes from earlier visual
+> systems are retained only as archival context and must not override the rules
+> below.
 
 ## Current canonical site grammar
 
 - Section headers are centered and use the official teal accent for the title.
-- Home and internal product pages share the same header structure, differing only in content and density.
-- Each section should have one protagonist artifact with header, status, payload, proof metadata, and scoped claim.
-- CTA rows use one teal primary action, one muted secondary action, and external links with an arrow icon.
-- Black oval CTA buttons, mixed title alignments, and generic card clouds without a protagonist object are treated as regressions.
+- Home, product, utility, and risk pages all inherit the same baseline cadence:
+  one protagonist surface, one supporting surface, and bounded CTA treatment.
+- A page only counts as migrated when it has:
+  - a centered teal header
+  - a protagonist artifact or structured surface
+  - explicit payload or proof metadata
+  - CTA treatment aligned with the site canon
+- `HeroWireframe` can remain as ambient scaffolding, but it is not itself proof
+  of migration.
+- CTA rows use one teal primary action, one muted secondary action, and external
+  links with a visible affordance.
+- Generic card clouds, ornamental resource shelves, and legacy split grammars
+  are regressions even if they look polished.
 
-### Product page canon — PCD
+## Page archetypes
 
-- `pcd` now uses four named page-level artifacts:
-  - `Format Surface`
-  - `Syntax Workbench`
-  - `Domain Surface`
-  - `EvaAlgebraArtifact`
-- Syntax examples are no longer stacked as disconnected terminal/code boxes. They live inside a centered workbench with one active proof panel.
-- Domain explanation is no longer a loose code snippet plus four cards. It is a bounded surface with metrics, one domain code panel, and explicit closure consequences.
-- EVA algebra is no longer three flat cards. It is a single composition artifact with metrics, flow nodes, evidence reading, and one PCD sketch.
-- The monomer catalog is split into two surfaces:
-  - `Core Monomers` with explicit certified state
-  - `Extended Monomers` with explicit contract-bounded state
+Every public route must fit one of these families.
 
-### Audience calibration
+### 1. Product Surface
 
-- Primary buyer persona: `Staff / Principal Engineer` or `Platform Lead`.
-- The home can keep the AI hook, but the supporting copy must quickly move to structure, traceability, deterministic behavior, and explicit scope.
-- The body of the site should prove fit with real delivery paths: `CLI -> PCD -> platform -> registry -> proof`.
-- Marketing language is acceptable in the hero and the first lead section, but the surrounding sections must anchor it in evidence, bounded claims, and operator-friendly surfaces.
-- Sections that read as generic feature clouds, ornamental CTA treatments, or unbounded claims are regressions even when they look visually polished.
+Used by:
 
-> The notes below describe older implementation details and should not override the current site grammar.
+- `/`
+- `/pcd`
+- `/platform`
+- `/registry`
+- `/cli`
+- `/sdks`
+- `/transpiler`
+- `/lifter`
+- `/bpu`
+- `/features`
+- `/foundations`
+- `/enterprise`
+- `/compliance`
+- `/ai-agents`
 
----
+Rules:
 
-## 1. Colores
+- keep one protagonist artifact per section
+- keep proof or state visible in the same surface
+- subordinate code or terminal payload to the artifact
+- keep CTA rows technical and compact
 
-| Token | Valor | Uso |
-|-------|-------|-----|
-| teal (primary) | #00b8d4 | Accent, CTAs, links, terminal prompts |
-| teal-hover | #00e5ff | Hover states |
-| border | var(--border) | Borders de secciones y cards |
-| background | white | Fondo de secciones y cards |
-| foreground | dark text | Body text |
-| muted-foreground | gray | Subtitles, descriptions |
-| terminal-bg | #0a0e14 | Fondo de bloques de código/terminal |
+### 2. Editorial Surface
 
-## 2. Bordes y Esquinas
+Used by:
 
-### REGLA: Cards y contenedores tienen bordes cuadrados (sin rounded)
-- Cards, secciones, contenedores, grids: **SIN `rounded-*`** (bordes cuadrados)
-- Solo conservan rounded:
-  - `rounded-xl` → SOLO en bloques de terminal/código (bg-[#0a0e14])
-  - `rounded-md` → SOLO en botones de acción (CTA, submit)
-  - `rounded-full` → SOLO en badges, pills, avatares, dots
+- `/blog`
+- `/blog/page/[page]`
+- `/blog/[slug]`
+- `/news`
+- `/news/[slug]`
 
-### REGLA: Cards adyacentes usan border-separators, no gaps
-En lugar de `gap-4` entre cards, usar border-based grid:
-```tsx
-<div className="grid grid-cols-2 border border-border">
-  <div className="border-b border-r border-border p-6">Card 1</div>
-  <div className="border-b border-border p-6">Card 2</div>
-  <div className="border-r border-border p-6">Card 3</div>
-  <div className="p-6">Card 4</div>
-</div>
-```
+Rules:
 
-## 3. Terminal Blocks
+- preserve `EditorialSystem`
+- keep covers, metadata strips, and pagination rails coherent
+- avoid importing product cards into editorial detail pages
 
-### Anatomía de un bloque de terminal:
-```tsx
-<div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
-  {/* Window dots — SIEMPRE presentes */}
-  <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-    <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-    <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-    <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-    <span className="ml-2 font-mono text-xs text-white/30">title</span>
-  </div>
-  {/* Content */}
-  <pre className="p-5 font-mono text-sm text-zinc-300">{code}</pre>
-</div>
-```
+### 3. Risk / Use-Case Surface
 
-### Reglas:
-1. **Siempre** `rounded-xl` (es la ÚNICA excepción a bordes cuadrados)
-2. **Siempre** window dots (rojo/amarillo/verde) en la barra superior
-3. **Siempre** `bg-[#0a0e14]` (no bg-zinc-950 ni bg-black)
-4. Prompt: `<span className="text-teal">$</span>` seguido del comando
-5. Success output: `text-emerald-400`
-6. Muted output: `text-zinc-400`
+Used by:
 
-## 4. Section Counters
+- `/industries/*`
+- `/use-cases/*`
+- `/ai`
+- `/blockchain`
+- `/safety-critical`
+- `/languages/[slug]`
 
-Formato: `[0N] · TITLE`
-```tsx
-<p className="text-xs font-medium uppercase tracking-[2px] text-muted-foreground">
-  [01] · THE PROBLEM
-</p>
-```
+Rules:
 
-Solo en el landing page (home). Las páginas internas no usan counters numerados.
+- hero centered in teal
+- one `RiskEvidenceSurface` or equivalent protagonist object
+- one `ConstraintEnvelopeSurface` or `ScenarioFlowSurface`
+- code examples are evidence, not the protagonist
+- copy should talk about constraint, traceability, bounded behavior, and proof
 
-## 5. Secciones
+### 4. Utility / Company Surface
 
-### Landing (home):
-```tsx
-<section className="border-border border-t bg-background px-6 py-16 md:py-24">
-```
-- `border-t` para separar de la sección anterior
-- `bg-background` sólido (para que el circuit grid no se vea a través)
-- Padding vertical generoso (py-16 md:py-24)
+Used by:
 
-### Páginas internas:
-```tsx
-<section className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-```
-- `max-w-7xl` + `border-x` para contener el ancho
-- Sin bg-background (las internas no tienen circuit grid)
+- `/about`
+- `/contact`
+- `/download`
+- `/pricing`
+- `/faq`
+- `/legal`
+- `/investors`
+- `/playground`
+- `/changelog`
+- `/docs`
+- `/shop`
+- `/login`
+- `/signup`
+- `/design-system`
 
-## 6. Headings (centrado)
+Rules:
 
-### Regla: TODOS los section headings son centrados
-```tsx
-<h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
-  Título
-</h2>
-<p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-  Subtítulo
-</p>
-```
+- keep the same header cadence as product pages
+- do not turn every utility page into a product demo
+- favor one main service or thesis surface plus one supporting surface
+- keep auth, legal, and docs visually sober but still on-system
 
-### Excepción: layouts de 2 columnas (izq copy + der visual)
-```tsx
-<div className="grid md:grid-cols-2 gap-12">
-  <div><!-- heading left-aligned --></div>
-  <div><!-- visual/terminal --></div>
-</div>
-```
+### 5. Retired Route
 
-## 7. Botones
+Used by:
 
-| Tipo | Clases |
-|------|--------|
-| Primary | `rounded-md bg-teal px-6 py-2.5 text-sm font-medium text-white` |
-| Secondary | `rounded-md border border-teal px-5 py-2 text-sm font-medium text-teal` |
-| Ghost | `text-sm text-muted-foreground hover:text-foreground` |
-| Link | `text-sm font-medium text-teal + ArrowRight icon` |
+- `/v2`
+- `/v2-jobs`
 
-### Regla: botones son `rounded-md` (NO `rounded-full`, NO `rounded-lg`)
+Rules:
 
-## 8. Badges / Pills
+- redirect out of the public navigation
+- do not keep a parallel public grammar alive
 
-```tsx
-<span className="rounded-full border border-teal/20 bg-teal/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-teal">
-  CERTIFIED
-</span>
-```
-- `rounded-full` (es pill, no card)
-- Text: `text-[10px]` o `text-xs`
-- Tracking: `tracking-widest` o `tracking-wide`
+## Canonical surfaces
 
-## 9. Logos / Brand Images
+These are the reusable surfaces the site is allowed to compose.
 
-- Trusted By: `opacity-40 grayscale`, hover: `opacity-70 grayscale-0`
-- Editor logos: `h-8 w-8` con alt text
-- Footer social icons: `h-4 w-4 opacity-50` inline con texto
-- External link icon: `ExternalLink h-3 w-3` junto a links que salen del sitio
+- `PageSectionHeader`
+- `ComparisonSurface`
+- `FeatureMatrixSurface`
+- `EvidenceSurface`
+- `RiskEvidenceSurface`
+- `ConstraintEnvelopeSurface`
+- `ScenarioFlowSurface`
+- `LanguageExchangeSurface`
+- `UtilitySurface`
+- `CompanyThesisSurface`
+- `ActionSurface`
+- `DocsRailSurface`
+- `EditorialSystem`
 
-## 10. Circuit Grid (solo home)
+## Canonical spacing and rhythm
 
-- Canvas-based, fixed position, z-0
-- Grid lines teal a baja opacidad
-- Circuit traces con giros 90°
-- Energy dots: sólidos teal (#00e5ff), r=3, sin blur
-- Monomer nodes: white bg, gray border → invert a teal cuando energía pasa
-- Secciones del landing: `bg-background` sólido (opacan la grid)
-- Footer: sólido, z-10
+- section shell: `border-t border-border px-6 py-16 md:px-12 md:py-24`
+- header width: `mx-auto max-w-4xl text-center`
+- subtitle width: `mx-auto max-w-2xl`
+- protagonist surface gap from section header: `mt-10`
+- CTA groups should stay compact and not form a third design language
 
-## 11. Tipografía
+## CTA canon
 
-| Elemento | Tamaño | Peso |
-|----------|--------|------|
-| Hero h1 | text-3xl sm:text-4xl lg:text-5xl | font-bold |
-| Section h2 | text-2xl md:text-3xl | font-bold |
-| Section subtitle | text-base md:text-lg | font-normal |
-| Card title | text-sm | font-medium |
-| Card description | text-xs | font-normal |
-| Section counter | text-xs | font-medium uppercase tracking-[2px] |
-| Terminal code | text-sm font-mono | — |
+- primary: teal background, white text
+- secondary: bordered or muted surface action
+- external links: visible arrow or external-link icon
+- the CTA row should read like an operator next step, not a decorative shelf
 
-## 12. Spacing
+## Audience calibration
 
-| Contexto | Clase |
-|----------|-------|
-| Section padding vertical | py-16 md:py-24 |
-| Section padding horizontal | px-6 md:px-12 lg:px-18 |
-| Gap entre heading y content | mt-8 o mt-12 |
-| Gap entre subtitle y heading | mt-3 o mt-4 |
-| Counter a heading | mb-3 |
+- Primary buyer persona: `Staff / Principal Engineer` or `Platform Lead`
+- The hero can keep the AI hook, but surrounding sections must move quickly to:
+  - structure
+  - traceability
+  - deterministic behavior
+  - explicit scope
+- The body of the site should make the delivery path legible:
+  - `CLI -> PCD -> platform -> registry -> proof`
+- Marketing language is acceptable in the hero and top lead, but supporting
+  surfaces must anchor it in evidence and bounded claims.
 
----
+## What counts as migrated
 
-## Inconsistencias a corregir en páginas internas
+A page is considered migrated only when all of the following are true:
 
-### Alta prioridad:
-1. **237 instancias de `rounded-lg/xl/2xl` en cards** → eliminar (bordes cuadrados)
-2. **Terminales sin window dots** → añadir dots rojo/amarillo/verde
-3. **Terminales con `bg-zinc-950`** → cambiar a `bg-[#0a0e14]`
-4. **Botones con `rounded-lg`** → cambiar a `rounded-md`
-5. **Cards con gap entre ellas** → usar border-separator pattern donde aplique
+1. it uses the centered teal section header grammar
+2. it presents a protagonist surface instead of a cloud of equal-weight cards
+3. it makes state, proof, or scope visible inside that surface
+4. it avoids mixing legacy v5 and current site grammar in the same reading path
+5. its CTA row follows the site canon
 
-### Media prioridad:
-6. **Headings no centrados** en algunas secciones internas
-7. **Subtitles sin `mx-auto max-w-2xl text-center`**
-8. **Links externos sin ExternalLink icon**
+## Prohibited patterns
 
-### Baja prioridad:
-9. **Spacing inconsistente** (algunos py-12, otros py-20)
-10. **Font sizes inconsistentes** en cards
+- grids of 3-6 equivalent cards as the main object of a section
+- `HeroWireframe` plus text plus CTA as the only modernization step
+- arbitrary mixing of legacy and current grammar on the same page
+- ornamental resource shelves with no protagonist object
+- left-aligned code windows as the main object of already-migrated pages
+- unsupported claims about certification, customers, or compliance posture
+- internal links rendered like generic external resources
+
+## Qualified claims
+
+When numbers or strong capability claims appear on the site, they must stay
+traceable to current repo evidence. This includes:
+
+- counts of monomers, targets, tests, or proofs
+- claims about supported AI workflows or IDE integrations
+- compliance or safety positioning
+- registry or enterprise readiness language
+
+If the evidence is not present in the repo, the claim must be qualified or
+removed.
+
+## Historical appendix
+
+Earlier versions of the site experimented with square-card grids, border-only
+separators, and a broader use of terminal windows. Those notes remain useful as
+implementation history, but they are not normative for the current site. When a
+historical rule conflicts with the sections above, the current canonical site
+grammar wins.

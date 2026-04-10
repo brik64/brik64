@@ -45,11 +45,14 @@ describe("PCD page — canonical visual system", () => {
     const designSystem = read(designSystemDoc);
     const rollout = read(rolloutDoc);
 
-    expect(designSystem).toContain("Product page canon — PCD");
-    expect(designSystem).toContain("Syntax Workbench");
-    expect(designSystem).toContain("Domain Surface");
-    expect(designSystem).toContain("EvaAlgebraArtifact");
+    expect(designSystem).toContain("Product Surface");
+    expect(designSystem).toContain("What counts as migrated");
+    expect(designSystem).toContain("HeroWireframe");
     expect(rollout).toContain("PCD page migration");
+    expect(rollout).toContain("Format Surface");
+    expect(rollout).toContain("Syntax Workbench");
+    expect(rollout).toContain("Domain Surface");
+    expect(rollout).toContain("EvaAlgebraArtifact");
     expect(rollout).toContain("Do not reintroduce `CopyableCode`");
   });
 });

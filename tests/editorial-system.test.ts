@@ -83,11 +83,14 @@ describe("Design system — page and editorial artifacts are documented", () => 
 });
 
 describe("Secondary pages — previously thin routes now carry substantive content", () => {
-  it("shop page is no longer a thin wrapper", () => {
-    const content = read("src/app/shop/page.tsx");
-    expect(content.split("\n").length).toBeGreaterThan(50);
-    expect(content).toContain("Merch Launch Plan");
-    expect(content).toContain("EvidenceSurface");
+  it("shop page is intentionally a utility wrapper backed by the shared data spec", () => {
+    const page = read("src/app/shop/page.tsx");
+    const spec = read("src/lib/utility-page-data.ts");
+    expect(page).toContain("UtilityPageView");
+    expect(page).toContain("utilityPages.shop");
+    expect(spec).toContain("shop: {");
+    expect(spec).toContain("Brand support items");
+    expect(spec).toContain('highlight: "brand surface."');
   });
 });
 

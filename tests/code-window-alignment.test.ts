@@ -1,34 +1,44 @@
 import { describe, expect, it } from "vitest";
-import fs from "fs";
-import path from "path";
 
-const ROOT = path.resolve(__dirname, "..");
+import { read } from "./site-grammar";
 
-function read(relativePath: string): string {
-  return fs.readFileSync(path.join(ROOT, relativePath), "utf-8");
-}
+describe("Code surfaces — embedded proof panels replace standalone terminal windows", () => {
+  it("shared archetype surfaces embed code through CodeProofPanel", () => {
+    const content = read("src/components/PageArchetypes.tsx");
+    expect(content).toContain("export function ConstraintEnvelopeSurface");
+    expect(content).toContain("export function LanguageExchangeSurface");
+    expect(content).toContain("<CodeProofPanel");
+    expect(content).toContain('eyebrow="Bounded example"');
+    expect(content).toContain('eyebrow="Language example"');
+  });
 
-describe("standalone code windows", () => {
-  it("keep standalone terminal/code surfaces centered in the main routes that expose them", () => {
-    const expectations: Array<[string, string]> = [
-      ["src/app/cli/page.tsx", "mx-auto mt-8 max-w-3xl"],
-      ["src/app/registry/page.tsx", "mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]"],
-      ["src/app/lifter/page.tsx", "mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl"],
-      ["src/app/transpiler/page.tsx", "mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl"],
-      ["src/app/ai/page.tsx", "mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl"],
-      ["src/app/blockchain/page.tsx", "mx-auto mt-4 max-w-md overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl"],
-      ["src/app/v2-jobs/page.tsx", "mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl"],
-      ["src/app/languages/[slug]/page.tsx", "mx-auto mt-6 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]"],
-    ];
+  it("cli, compliance, ai-agents, and language routes no longer depend on raw CopyableCode blocks", () => {
+    const files = [
+      "src/app/cli/page.tsx",
+      "src/app/compliance/page.tsx",
+      "src/app/ai-agents/page.tsx",
+      "src/app/languages/[slug]/page.tsx",
+    ] as const;
 
-    for (const [file, marker] of expectations) {
-      expect(read(file), `${file} should center standalone code windows`).toContain(marker);
+    for (const file of files) {
+      const content = read(file);
+      expect(content, `${file} should use archetype surfaces instead of CopyableCode`).not.toContain("CopyableCode");
     }
   });
 
-  it("centers the explanatory text that introduces blockchain gas estimation", () => {
-    const content = read("src/app/blockchain/page.tsx");
-    expect(content).toContain('mx-auto text-center text-xl font-medium tracking-tight text-teal');
-    expect(content).toContain('mx-auto mt-2 max-w-xl text-center text-sm text-muted-foreground');
+  it("risk and utility wrappers now delegate code rendering to archetype surfaces instead of local terminal chrome", () => {
+    const files = [
+      "src/app/ai/page.tsx",
+      "src/app/blockchain/page.tsx",
+      "src/app/industries/finance/page.tsx",
+      "src/app/use-cases/cobol-migration/page.tsx",
+      "src/app/about/page.tsx",
+      "src/app/docs/page.tsx",
+    ] as const;
+
+    for (const file of files) {
+      const content = read(file);
+      expect(content.includes("bg-[#0a0e14]"), `${file} should not inline raw terminal chrome`).toBe(false);
+    }
   });
 });

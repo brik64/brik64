@@ -1,524 +1,103 @@
-"use client";
-
-import { useState } from "react";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import {
-  Terminal,
-  Shield,
-  Zap,
-  ArrowRight,
-  Copy,
-  Check,
-  Server,
-  BookOpen,
-} from "lucide-react";
+  ArchetypeSectionHeader,
+  CanonicalPageHero,
+  CanonicalPageLayout,
+  CanonicalSection,
+  ConstraintEnvelopeSurface,
+  ScenarioFlowSurface,
+} from "@/components/PageArchetypes";
+import {
+  EvidenceSurface,
+  FeatureMatrixSurface,
+} from "@/components/PageArtifacts";
 
-import dynamic from "next/dynamic";
-
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
-
-/* ── Install methods ── */
-
-const installMethods = [
-  { label: "curl", command: "curl -fsSL https://brik64.dev/install | sh" },
-  { label: "Homebrew", command: "brew install brik64/tap/brikc" },
-  { label: "Cargo", command: "cargo install brikc" },
-  { label: "npm", command: "npm install -g @brik64/cli" },
-];
-
-/* ── CLI Commands ── */
-
-const commands = [
-  {
-    name: "compile",
-    desc: "Compile PCD to any target language",
-    usage: "brikc compile src/main.pcd --target rust",
-    flags: ["--target <lang>", "--output <file>", "--emit-tests"],
-    example: [
-      { text: "$ brikc compile app.pcd --target js --emit-tests", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Parsing app.pcd...", style: "muted" as const },
-      { text: "  Resolving 4 monomers...", style: "muted" as const },
-      { text: "  Emitting JavaScript (ES2024)...", style: "muted" as const },
-      { text: "", style: "blank" as const },
-      { text: "  \u2713 Compiled \u2192 dist/app.js", style: "success" as const },
-      { text: "  \u2713 Tests \u2192 dist/app.spec.js (12 tests)", style: "success" as const },
-      { text: "  \u2713 \u03a6_c = 1 \u2014 circuit closed", style: "success" as const },
-    ],
-  },
-  {
-    name: "lift",
-    desc: "Reverse-compile source code to PCD blueprints",
-    usage: "brikc lift app.js --output app.pcd",
-    flags: ["--language <lang>", "--output <file>", "--format <text|json>", "--min-liftability <0.0-1.0>", "--domains"],
-    example: [
-      { text: "$ brikc lift legacy.js --to pcd", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Analyzing legacy.js (247 lines)...", style: "muted" as const },
-      { text: "  Extracting computational graph...", style: "muted" as const },
-      { text: "  Mapping to PCD monomers...", style: "muted" as const },
-      { text: "", style: "blank" as const },
-      { text: "  \u2713 Lifted \u2192 legacy.pcd", style: "success" as const },
-      { text: "  \u2713 12 monomers identified", style: "success" as const },
-    ],
-  },
-  {
-    name: "transpile",
-    desc: "Convert entire directories between languages with certification",
-    usage: "brikc transpile ./src/ --to rust --output ./dist/",
-    flags: ["--to <target>", "--output <dir>", "--from <lang>", "--force", "--certify"],
-    example: [
-      { text: "$ brikc transpile ./cobol/ --to go --output ./modern/", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  \u2192 SCAN \u2014 finding source files...", style: "muted" as const },
-      { text: "    \u2713 Found 5 source files", style: "success" as const },
-      { text: "  \u2192 LIFT \u2014 converting to PCD...", style: "muted" as const },
-      { text: "    \u2713 interest.cob \u2192 1 circuit", style: "success" as const },
-      { text: "    \u2713 tax.cob \u2192 1 circuit", style: "success" as const },
-      { text: "  \u2192 CHECK \u2014 certifying PCDs...", style: "muted" as const },
-      { text: "    \u2713 All circuits: \u03a6_c = 1", style: "success" as const },
-      { text: "  \u2192 BUILD \u2014 generating go output...", style: "muted" as const },
-      { text: "    \u2713 5 files transpiled (100%)", style: "success" as const },
-    ],
-  },
-  {
-    name: "check",
-    desc: "Type-check and verify TCE metrics without running",
-    usage: "brikc check program.pcd",
-    flags: ["--self (verify compiler itself)"],
-    example: [
-      { text: "$ brikc check program.pcd", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510", style: "box" as const },
-      { text: "  \u2502  CERTIFICATION REPORT             \u2502", style: "box" as const },
-      { text: "  \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524", style: "box" as const },
-      { text: "  \u2502  Status:   \u2713 CERTIFIED            \u2502", style: "box-green" as const },
-      { text: "  \u2502  \u03a6c:      1                      \u2502", style: "box-green" as const },
-      { text: "  \u2502  Panics:   0 possible              \u2502", style: "box" as const },
-      { text: "  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518", style: "box" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Checking inputs...", style: "muted" as const },
-      { text: "    speed    : Float64[0.0 .. 340.0]  \u2713 bounded", style: "success" as const },
-      { text: "    altitude : Float64[0.0 .. 51000.0] \u2713 bounded", style: "success" as const },
-      { text: "    time     : Float64[1.0 .. 86400.0] \u2713 bounded, excludes zero", style: "success" as const },
-      { text: "  Tracing operations...", style: "muted" as const },
-      { text: "    \u2713 All outputs bounded", style: "success" as const },
-      { text: "    \u2713 No division by zero paths", style: "success" as const },
-      { text: "    \u2713 No overflow paths", style: "success" as const },
-    ],
-  },
-  {
-    name: "certify",
-    desc: "Run TCE verification, generate immutable certification hash",
-    usage: "brikc certify add8.pcd",
-    flags: [],
-    example: [
-      { text: "$ brikc certify add8.pcd", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Parsing add8.pcd...", style: "muted" as const },
-      { text: "  Running TCE verification...", style: "muted" as const },
-      { text: "  \u2713 \u03a6_c = 1 (circuit closed)", style: "success" as const },
-      { text: "", style: "blank" as const },
-      { text: "  BRIK64 CERTIFICATION", style: "box-green" as const },
-      { text: "  Function:  add8", style: "box" as const },
-      { text: "  Status:    \u2713 CERTIFIED", style: "box-green" as const },
-      { text: "  Hash:      a7f3c9e1...d4b2", style: "box" as const },
-      { text: "  Badge URL: brik64.dev/badge/a7f3c9e1", style: "box" as const },
-    ],
-  },
-  {
-    name: "publish",
-    desc: "Publish certified circuits to the public or private registry",
-    usage: "brikc registry publish circuit.pcd",
-    flags: ["--private", "--org <name>"],
-    example: [
-      { text: "$ brikc registry publish validate_token.pcd", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Verifying certification...", style: "muted" as const },
-      { text: "  \u2713 \u03a6_c = 1 \u2014 circuit certified", style: "success" as const },
-      { text: "  Publishing to registry.brik64.dev...", style: "muted" as const },
-      { text: "  \u2713 Published: @acme/validate_token@1.0.0", style: "success" as const },
-    ],
-  },
-  {
-    name: "connect",
-    desc: "Connect GitHub repository for auto-lift on push",
-    usage: "brikc connect github",
-    flags: ["--repo <url>"],
-    example: [
-      { text: "$ brikc connect github --repo github.com/acme/api", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  \u2713 Repository connected", style: "success" as const },
-      { text: "  \u2713 Webhook installed (push, pull_request)", style: "success" as const },
-      { text: "  \u2713 Auto-lift enabled", style: "success" as const },
-    ],
-  },
-  {
-    name: "lsp",
-    desc: "Start Language Server Protocol server for IDE integration",
-    usage: "brikc lsp --stdio",
-    flags: ["--stdio"],
-    example: [
-      { text: "$ brikc lsp --stdio", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  BRIK64 LSP Server v5.0.0-beta.1", style: "muted" as const },
-      { text: "  Supports: highlighting, diagnostics, hover,", style: "muted" as const },
-      { text: "            go-to-definition, completion", style: "muted" as const },
-      { text: "  \u2713 Listening on stdio", style: "success" as const },
-    ],
-  },
-  {
-    name: "mcp-server",
-    desc: "Start MCP server for AI agent integration",
-    usage: "brikc mcp-server",
-    flags: ["--transport sse", "--port <number>"],
-    example: [
-      { text: "$ brikc mcp-server --transport sse --port 3100", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  BRIK64 MCP Server", style: "muted" as const },
-      { text: "  Tools: brik64.discover, brik64.execute", style: "muted" as const },
-      { text: "  \u2713 SSE transport on port 3100", style: "success" as const },
-    ],
-  },
-  {
-    name: "catalog",
-    desc: "List and inspect all monomers",
-    usage: "brikc catalog list",
-    flags: ["list", "show <name>"],
-    example: [
-      { text: "$ brikc catalog list --family arithmetic", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  Arithmetic family \u2014 8 operations", style: "box-green" as const },
-      { text: "  All operations formally verified", style: "box" as const },
-      { text: "  Domains and ranges: bounded, proven", style: "box" as const },
-      { text: "  Proof status: \u2713 complete", style: "box-green" as const },
-    ],
-  },
-  {
-    name: "verify",
-    desc: "Self-verification — compiler verifies its own compilation hash",
-    usage: "brikc verify",
-    flags: [],
-    example: [
-      { text: "$ brikc verify", style: "command" as const },
-      { text: "", style: "blank" as const },
-      { text: "  \u2713 Self-compilation verified", style: "success" as const },
-      { text: "  \u2713 Compiler integrity: PASS", style: "success" as const },
-      { text: "  \u2713 All checks passed", style: "success" as const },
-    ],
-  },
-];
-
-/* ── Stats ── */
-
-const stats = [
-  { value: "708 KB", label: "Binary size" },
-  { value: "0", label: "Dependencies" },
-  { value: "128", label: "Monomers" },
-  { value: "14", label: "Target languages" },
-];
-
-/* ── Terminal line renderer ── */
-
-function TerminalLine({ line }: { line: { text: string; style: string } }) {
-  if (line.style === "blank") return <div className="h-3" />;
-  if (line.style === "command")
-    return (
-      <div className="font-mono text-sm text-white/70">
-        <span className="text-teal">$</span> {line.text.slice(2)}
-      </div>
-    );
-  if (line.style === "success")
-    return <div className="font-mono text-sm text-emerald-400">{line.text}</div>;
-  if (line.style === "box-green")
-    return <div className="font-mono text-sm font-bold text-emerald-400">{line.text}</div>;
-  if (line.style === "box")
-    return <div className="font-mono text-sm text-emerald-400/70">{line.text}</div>;
-  return <div className="font-mono text-sm text-zinc-400">{line.text}</div>;
-}
-
-/* ── Install Tab ── */
-
-function InstallBlock() {
-  const [active, setActive] = useState(0);
-  const [copied, setCopied] = useState(false);
-
-  const copy = () => {
-    navigator.clipboard.writeText(installMethods[active].command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="overflow-hidden rounded-[1.75rem] border border-border/80 bg-gradient-to-br from-muted/35 via-background to-background shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
-      <div className="border-b border-border/70 px-4 py-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          {installMethods.map((m, i) => (
-            <button
-              key={m.label}
-              onClick={() => setActive(i)}
-              className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors ${
-                active === i
-                  ? "border-teal/30 bg-teal/[0.08] text-teal"
-                  : "border-border bg-background text-muted-foreground hover:border-teal/20 hover:text-foreground"
-              }`}
-            >
-              {m.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4 p-4">
-        <div className="flex items-center justify-between gap-3 rounded-2xl border border-teal/15 bg-teal/[0.05] px-4 py-3">
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">
-              Install method
-            </p>
-            <p className="mt-1 text-sm font-semibold text-foreground">
-              {installMethods[active].label}
-            </p>
-          </div>
-          <div className="text-right text-xs text-muted-foreground">
-            <div>708 KB binary</div>
-            <div>0 dependencies</div>
-          </div>
-        </div>
-
-        <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0a0e14] shadow-2xl">
-          <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-            <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
-            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
-            <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-            <span className="ml-2 text-[10px] font-medium uppercase tracking-[0.16em] text-white/35">
-              install command
-            </span>
-          </div>
-          <div className="flex items-center gap-3 px-5 py-5">
-            <code className="flex-1 overflow-x-auto font-mono text-sm text-emerald-400">
-              <span className="text-teal">$</span> {installMethods[active].command}
-            </code>
-            <button onClick={copy} className="cursor-pointer text-muted-foreground transition-colors hover:text-teal" aria-label="Copy install command">
-              {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ── Page ── */
+export const metadata = {
+  title: "CLI — BRIK64",
+  description:
+    "The BRIK64 CLI page rendered as a bounded install and workflow surface instead of terminal stacks and detached command cards.",
+};
 
 export default function CLIPage() {
-  const [activeCmd, setActiveCmd] = useState(0);
-
   return (
-    <>
-      <Navbar />
-      <main className="relative z-10">
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        {/* Hero */}
-        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
-          <HeroWireframe />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
-              Developer Tools
-            </span>
-            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              One binary. <span className="text-teal">Every guarantee.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              One binary. Zero dependencies. 708 KB. Install <code className="rounded bg-muted px-1.5 py-0.5 text-sm font-medium text-foreground">brikc</code> and
-              start certifying code in 30 seconds. It compiles itself to an identical hash &mdash; that&apos;s the proof it works.
-            </p>
-          </div>
-        </section>
+    <CanonicalPageLayout>
+      <CanonicalPageHero
+        eyebrow="CLI"
+        title="The operator path starts with one bounded"
+        highlight="command surface."
+        description="The CLI page should show the install path, the command grammar, and the proof loop in one consistent product cadence."
+        actions={[
+          { label: "Open docs", href: "https://docs.brik64.dev", tone: "primary", external: true },
+          { label: "PCD", href: "/pcd", tone: "secondary" },
+        ]}
+        metrics={[
+          { label: "Entry surface", value: "brikc", detail: "The CLI remains the first operator path into the BRIK-64 system." },
+          { label: "Core loop", value: "lift → check → certify", detail: "The command surface should make the proof loop explicit." },
+          { label: "Operator fit", value: "local + CI + IDE", detail: "The CLI page should route into product and workflow surfaces instead of acting like a command dump." },
+        ]}
+      />
 
-        {/* Stats */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-12 md:px-12 lg:px-18">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="border border-border bg-muted/20 p-4 text-center">
-                <div className="text-2xl font-bold text-teal">{s.value}</div>
-                <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Install */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [01] INSTALL
-          </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Up and running in 30 seconds
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            Four installation methods. One result: a 708 KB binary with zero dependencies that can verify its own compilation.
-          </p>
-          <div className="mx-auto mt-8 max-w-3xl">
-            <InstallBlock />
-          </div>
-          <div className="mx-auto mt-6 flex max-w-2xl items-center justify-center gap-2 rounded-full border border-teal/15 bg-teal/[0.05] px-4 py-3 text-xs text-muted-foreground">
-            <Terminal className="h-3.5 w-3.5 text-teal" />
-            <span>Verify: <code className="text-foreground">brikc --version</code> &rarr; brikc 5.0.0-beta.1</span>
-          </div>
-        </section>
-
-        {/* Commands Reference */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [02] COMMANDS
-          </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Everything from the terminal
-          </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
-            Compile, lift, transpile, certify, publish, and connect &mdash; all through a single binary.
-          </p>
-
-          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
-            {/* Command list */}
-            <div className="flex flex-col gap-1">
-              {commands.map((cmd, i) => (
-                <button
-                  key={cmd.name}
-                  onClick={() => setActiveCmd(i)}
-                  className={`cursor-pointer rounded-lg px-4 py-3 text-left transition-colors ${
-                    activeCmd === i
-                      ? "border border-teal/30 bg-teal/[0.06] text-foreground"
-                      : "border border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/30"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Terminal className="h-3.5 w-3.5 text-teal" />
-                    <span className="text-sm font-medium font-mono">{cmd.name}</span>
-                  </div>
-                  <p className="mt-1 text-xs text-muted-foreground">{cmd.desc}</p>
-                </button>
-              ))}
-            </div>
-
-            {/* Terminal output */}
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <div className="h-3 w-3 rounded-full bg-red-500/60" />
-                <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-                <div className="h-3 w-3 rounded-full bg-green-500/60" />
-                <span className="ml-2 text-xs text-white/30 font-mono">brikc {commands[activeCmd].name}</span>
-              </div>
-              <div className="p-5">
-                <p className="mb-1 text-[10px] font-medium uppercase tracking-widest text-teal/60">
-                  Usage
-                </p>
-                <code className="mb-4 block font-mono text-xs text-zinc-400">
-                  {commands[activeCmd].usage}
-                </code>
-                {commands[activeCmd].flags.length > 0 && (
-                  <div className="mb-4">
-                    <p className="mb-1 text-[10px] font-medium uppercase tracking-widest text-teal/60">
-                      Flags
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {commands[activeCmd].flags.map((f) => (
-                        <span key={f} className="rounded border border-white/10 px-2 py-0.5 font-mono text-[11px] text-zinc-500">
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                <div className="border-t border-white/10 pt-4">
-                  <p className="mb-2 text-[10px] font-medium uppercase tracking-widest text-teal/60">
-                    Example
-                  </p>
-                  <div className="flex flex-col gap-0.5">
-                    {commands[activeCmd].example.map((line, i) => (
-                      <TerminalLine key={i} line={line} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* System Requirements */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [03] SYSTEM
-          </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Requirements
-          </h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="border border-border bg-muted/20 p-6">
-              <Server className="mb-3 h-5 w-5 text-teal" />
-              <h3 className="text-sm font-medium">Operating Systems</h3>
-              <ul className="mt-3 space-y-1.5 text-xs text-muted-foreground">
-                <li>macOS 12+ (arm64, x86_64)</li>
-                <li>Linux (Ubuntu 20.04+, Debian 11+, Fedora 36+)</li>
-                <li>Windows 10+ (WSL2)</li>
-              </ul>
-            </div>
-            <div className="border border-border bg-muted/20 p-6">
-              <Zap className="mb-3 h-5 w-5 text-teal" />
-              <h3 className="text-sm font-medium">Self-Verifying Binary</h3>
-              <p className="mt-3 text-xs text-muted-foreground">
-                The <code>brikc</code> compiler is itself a certified BRIK64 program. It compiles to a 708 KB standalone
-                x86-64 ELF &mdash; no Rust runtime, no libc dependency.
-              </p>
-            </div>
-            <div className="border border-border bg-muted/20 p-6">
-              <Shield className="mb-3 h-5 w-5 text-teal" />
-              <h3 className="text-sm font-medium">Verification</h3>
-              <p className="mt-3 text-xs text-muted-foreground">
-                Run <code>brikc verify</code> to confirm the self-compilation fixpoint.
-                Run <code>brikc catalog</code> to list all monomers with signatures.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Start building &mdash; free
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Install the CLI. Certify your first function. Every certified line is a line you never debug again. Free forever.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="https://docs.brik64.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-            >
-              <BookOpen className="h-4 w-4" /> Read the docs
-            </a>
-            <a
-              href="/sdks"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
-            >
-              Browse SDKs <ArrowRight className="h-3.5 w-3.5" />
-            </a>
-          </div>
-        </section>
-      </div>
-
-      </main>
-      <div className="relative z-10">
-
-        <Footer />
-
-      </div>
-    </>
+      <CanonicalSection>
+        <ArchetypeSectionHeader
+          eyebrow="CLI Surface"
+          title="The page now behaves like a single install and workflow object."
+          description="The reader should understand what the CLI does, where certification fits, and what comes next without scanning stacks of disconnected terminal cards."
+        />
+        <div className="mx-auto mt-10 grid max-w-6xl gap-6">
+          <FeatureMatrixSurface
+            eyebrow="CLI Matrix"
+            title="One command surface replaces the old command gallery"
+            description="The matrix keeps the command families visible while presenting them as parts of one operator loop."
+            metrics={[
+              { label: "Install posture", value: "Docs-led", detail: "The canonical install path remains documented and explicit." },
+              { label: "Command families", value: "Lift, check, certify, publish", detail: "The page should group commands by workflow role, not by visual novelty." },
+              { label: "Downstream fit", value: "IDE + platform", detail: "The CLI is the first step, not a disconnected product island." },
+            ]}
+            rows={[
+              { title: "Lift", body: "Interpret existing source into a bounded blueprint before deeper review or emission." },
+              { title: "Check", body: "Run closure and domain analysis before the artifact is trusted or shared.", state: "accent" },
+              { title: "Certify", body: "Emit explicit evidence and immutable state when the bounded circuit closes." },
+              { title: "Publish", body: "Move the certified artifact into registry or wider platform workflows." },
+            ]}
+          />
+          <ConstraintEnvelopeSurface
+            eyebrow="Install + Quickstart"
+            title="The protagonist artifact is now a bounded install and proof workbench"
+            description="Terminal syntax remains visible, but it sits inside one artifact with explicit operator consequences."
+            constraints={[
+              { title: "Install from docs", body: "The page should route installation to the documented path instead of pretending every binary or package route is equally primary.", outcome: "operator route" },
+              { title: "Check before trust", body: "The useful public story is the check and certify loop, not the existence of many commands.", outcome: "proof gate" },
+              { title: "Hand off to product surfaces", body: "The CLI should route the user into PCD, platform, and registry pages once they understand the local workflow.", outcome: "system fit" },
+            ]}
+            codeTitle="brikc quickstart"
+            code={`$ brikc lift src/ --to pcd
+$ brikc check dist/project.pcd
+$ brikc certify dist/project.pcd
+$ brikc registry publish dist/project.pcd`}
+            footer="The CLI page is strongest when it behaves like the first bounded product surface, not like a gallery of terminal snapshots."
+          />
+          <ScenarioFlowSurface
+            eyebrow="Operator Loop"
+            title="The CLI story is a four-step proof loop"
+            description="Every command should reinforce the same delivery narrative already visible on home, platform, and registry."
+            steps={[
+              { label: "01", title: "Start locally", body: "Install or open docs, then begin from real source or a fresh blueprint.", state: "active" },
+              { label: "02", title: "Encode the bounded object", body: "Lift or write PCD so the computation becomes explicit and inspectable.", state: "warning" },
+              { label: "03", title: "Check and certify", body: "Run closure and evidence steps before the artifact is shared.", state: "success" },
+              { label: "04", title: "Publish or integrate", body: "Move the result into registry, IDE, CI, or enterprise review flows.", state: "idle" },
+            ]}
+          />
+          <EvidenceSurface
+            eyebrow="CLI Scope"
+            title="What the page should promise"
+            description="The CLI page can be technical and direct without overstating what the command layer alone proves."
+            items={[
+              { label: "Local operator path", body: "Use the CLI to move from source material into bounded blueprints and explicit review steps." },
+              { label: "Shared grammar", body: "The same command story must line up with PCD, platform, and registry pages instead of inventing a parallel product." },
+              { label: "Scoped posture", body: "The CLI is a disciplined interface into the system. It is not the whole system by itself." },
+            ]}
+          />
+        </div>
+      </CanonicalSection>
+    </CanonicalPageLayout>
   );
 }
