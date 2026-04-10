@@ -3,7 +3,7 @@
 import { ArrowRight, BookOpen } from "lucide-react";
 import { TextGradient } from "@/components/ui/pixel-perfect/text-gradient";
 import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
-import { StripeButton } from "@/components/ui/pixel-perfect/stripe-button";
+import { HomePrimaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 import { AnimatedCard } from "@/components/ui/pixel-perfect/animated-card";
 
 /* eslint-disable @next/next/no-img-element */
@@ -45,12 +45,9 @@ export function CTASection() {
 
         {/* CTA */}
         <div className="mx-auto mt-10 flex flex-col items-center gap-4">
-          <StripeButton
-            onClick={() => window.open("https://docs.brik64.dev", "_blank")}
-            className="h-12 px-8 text-base"
-          >
+          <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
             Get started &mdash; free
-          </StripeButton>
+          </HomePrimaryButton>
           <a
             href="https://digitalcircuitality.com"
             target="_blank"

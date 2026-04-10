@@ -1,4 +1,6 @@
-export interface BlogPost {
+import { getEditorialCover, type EditorialCoverMeta, type EditorialCoverTheme } from "@/lib/editorial-utils";
+
+export interface BlogPost extends EditorialCoverMeta {
   slug: string;
   title: string;
   excerpt: string;
@@ -7,7 +9,17 @@ export interface BlogPost {
   category: string;
 }
 
-export const blogPosts: BlogPost[] = [
+interface BlogPostSeed {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  tag: string;
+  category: string;
+  coverTheme: EditorialCoverTheme;
+}
+
+const blogPostSeeds: BlogPostSeed[] = [
   {
     slug: "what-is-digital-circuitality",
     title: "64 Operations. Infinite Programs. Zero Bugs.",
@@ -16,6 +28,7 @@ export const blogPosts: BlogPost[] = [
     date: "JAN 15, 2026",
     tag: "VISION",
     category: "Foundations",
+    coverTheme: "blueprint-grid",
   },
   {
     slug: "first-pcd-circuit",
@@ -25,6 +38,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 5, 2026",
     tag: "TUTORIAL",
     category: "Getting Started",
+    coverTheme: "blueprint-grid",
   },
   {
     slug: "eva-algebra-deep-dive",
@@ -34,6 +48,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 1, 2026",
     tag: "DEEP DIVE",
     category: "Theory",
+    coverTheme: "circuit-lab",
   },
   {
     slug: "universal-transpiler",
@@ -43,6 +58,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 23, 2026",
     tag: "PRODUCT",
     category: "Product",
+    coverTheme: "migration-bridge",
   },
   {
     slug: "error-elimination",
@@ -52,6 +68,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 24, 2026",
     tag: "VERIFICATION",
     category: "Engineering",
+    coverTheme: "finance-evidence",
   },
   {
     slug: "cobol-migration-revolution",
@@ -61,6 +78,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 21, 2026",
     tag: "MIGRATION",
     category: "Product",
+    coverTheme: "migration-bridge",
   },
   {
     slug: "bpu-hardware-that-says-no",
@@ -70,6 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: "JAN 29, 2026",
     tag: "HARDWARE",
     category: "Hardware",
+    coverTheme: "hardware-control",
   },
   {
     slug: "why-your-ai-needs-blueprints",
@@ -79,6 +98,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 20, 2026",
     tag: "PRODUCT",
     category: "AI Safety",
+    coverTheme: "agent-proof",
   },
   {
     slug: "pcd-for-ai-agents",
@@ -88,6 +108,7 @@ export const blogPosts: BlogPost[] = [
     date: "FEB 10, 2026",
     tag: "AI AGENTS",
     category: "AI",
+    coverTheme: "agent-proof",
   },
   {
     slug: "kish-ferry-distinction",
@@ -97,6 +118,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 12, 2026",
     tag: "RESEARCH",
     category: "Research",
+    coverTheme: "research-wave",
   },
   {
     slug: "prof-kish-noise-logic",
@@ -106,6 +128,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 15, 2026",
     tag: "RESEARCH",
     category: "Research",
+    coverTheme: "research-wave",
   },
   {
     slug: "ai-safety-policy-circuits",
@@ -115,6 +138,7 @@ export const blogPosts: BlogPost[] = [
     date: "JAN 22, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
+    coverTheme: "agent-proof",
   },
   {
     slug: "ai-guardrails-for-robots",
@@ -124,6 +148,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 8, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
+    coverTheme: "hardware-control",
   },
   {
     slug: "reverse-compile-anything",
@@ -133,6 +158,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 21, 2026",
     tag: "TOOLING",
     category: "Product",
+    coverTheme: "migration-bridge",
   },
   {
     slug: "javascript-to-rust-3-commands",
@@ -142,6 +168,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 21, 2026",
     tag: "TUTORIAL",
     category: "Getting Started",
+    coverTheme: "migration-bridge",
   },
   {
     slug: "verification-gap",
@@ -151,6 +178,7 @@ export const blogPosts: BlogPost[] = [
     date: "FEB 20, 2026",
     tag: "RESEARCH",
     category: "Research",
+    coverTheme: "research-wave",
   },
   {
     slug: "clean-code-from-blueprints",
@@ -160,6 +188,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 21, 2026",
     tag: "REVOLUTION",
     category: "Product",
+    coverTheme: "migration-bridge",
   },
   {
     slug: "translation-validation",
@@ -169,6 +198,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 24, 2026",
     tag: "RESEARCH",
     category: "Research",
+    coverTheme: "research-wave",
   },
   {
     slug: "building-with-sdks",
@@ -178,6 +208,7 @@ export const blogPosts: BlogPost[] = [
     date: "FEB 25, 2026",
     tag: "SDKS",
     category: "Getting Started",
+    coverTheme: "registry-atlas",
   },
   {
     slug: "what-artificial-intuition-cant-verify",
@@ -187,6 +218,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 22, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
+    coverTheme: "agent-proof",
   },
   {
     slug: "your-code-exists-now-verify",
@@ -196,6 +228,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 18, 2026",
     tag: "PRODUCT",
     category: "Product",
+    coverTheme: "registry-atlas",
   },
   {
     slug: "full-spectrum-pcd",
@@ -205,6 +238,7 @@ export const blogPosts: BlogPost[] = [
     date: "FEB 15, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
+    coverTheme: "blueprint-grid",
   },
   {
     slug: "precision-as-domain",
@@ -214,6 +248,7 @@ export const blogPosts: BlogPost[] = [
     date: "FEB 5, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
+    coverTheme: "finance-evidence",
   },
   {
     slug: "adversarial-corpus",
@@ -223,6 +258,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 24, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
+    coverTheme: "circuit-lab",
   },
   {
     slug: "api-and-mcp",
@@ -232,6 +268,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 21, 2026",
     tag: "PLATFORM",
     category: "Product",
+    coverTheme: "registry-atlas",
   },
   {
     slug: "why-new-language",
@@ -241,6 +278,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 30, 2026",
     tag: "VISION",
     category: "Foundations",
+    coverTheme: "blueprint-grid",
   },
   {
     slug: "formal-verification-without-phd",
@@ -250,6 +288,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 30, 2026",
     tag: "VISION",
     category: "Foundations",
+    coverTheme: "compliance-ledger",
   },
   {
     slug: "blockchain-meets-circuitality",
@@ -259,6 +298,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 30, 2026",
     tag: "PRODUCT",
     category: "Product",
+    coverTheme: "finance-evidence",
   },
   {
     slug: "safety-critical-software",
@@ -268,6 +308,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 30, 2026",
     tag: "PRODUCT",
     category: "Product",
+    coverTheme: "compliance-ledger",
   },
   {
     slug: "benchmarks-110k-tests",
@@ -277,6 +318,7 @@ export const blogPosts: BlogPost[] = [
     date: "MAR 30, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
+    coverTheme: "circuit-lab",
   },
   {
     slug: "ai-governance-compliance-evidence",
@@ -286,25 +328,31 @@ export const blogPosts: BlogPost[] = [
     date: "APR 2, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
+    coverTheme: "compliance-ledger",
   },
 ];
 
+export const blogPosts: BlogPost[] = blogPostSeeds.map((post) => ({
+  ...post,
+  ...getEditorialCover(post.coverTheme, `Editorial cover for ${post.title}`),
+}));
+
 export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+  return blogPosts.find((post) => post.slug === slug);
 }
 
 export function getBlogPostsByTag(tag: string): BlogPost[] {
-  return blogPosts.filter((p) => p.tag === tag);
+  return blogPosts.filter((post) => post.tag === tag);
 }
 
 export function getBlogPostsByCategory(category: string): BlogPost[] {
-  return blogPosts.filter((p) => p.category === category);
+  return blogPosts.filter((post) => post.category === category);
 }
 
 export function getAllTags(): string[] {
-  return [...new Set(blogPosts.map((p) => p.tag))];
+  return [...new Set(blogPosts.map((post) => post.tag))];
 }
 
 export function getAllCategories(): string[] {
-  return [...new Set(blogPosts.map((p) => p.category))];
+  return [...new Set(blogPosts.map((post) => post.category))];
 }

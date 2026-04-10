@@ -58,12 +58,12 @@ export default function FinanceIndustryPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframeClient />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Banking &amp; Finance
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Knight Capital lost $440M in 45 minutes.{" "}
-              <span className="text-[#00b8d4]">One software bug. BRIK64 makes that impossible.</span>
+              <span className="text-teal">One software bug. BRIK64 makes that impossible.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Citibank accidentally sent $900M because of a UI bug. Flash crashes have evaporated
@@ -73,7 +73,7 @@ export default function FinanceIndustryPage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building — free <ArrowRight className="h-4 w-4" />
               </a>
@@ -92,7 +92,7 @@ export default function FinanceIndustryPage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Challenge ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Challenge
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -130,7 +130,7 @@ export default function FinanceIndustryPage() {
 
           {/* ── How BRIK64 Helps ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               How BRIK64 Helps
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -139,8 +139,8 @@ export default function FinanceIndustryPage() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {useCases.map((uc) => (
                 <div key={uc.title} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <uc.icon className="h-6 w-6 text-[#00b8d4]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                    <uc.icon className="h-6 w-6 text-teal" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">
@@ -157,7 +157,7 @@ export default function FinanceIndustryPage() {
 
           {/* ── Policy Circuit Example ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Policy Circuit Example
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -169,7 +169,7 @@ export default function FinanceIndustryPage() {
               above $10K. Not &quot;should be&quot; — must be. The circuit rejects anything else.
             </p>
             <CopyableCode title="transaction_validator.pcd">{`// Transaction Validator — Domain-Constrained Finance
-// Φ_c = 1 — every transaction mathematically verified
+// Φc = 1 — every transaction mathematically verified
 
 circuit transaction_validator {
   // Input domains
@@ -214,7 +214,7 @@ circuit transaction_validator {
 
           {/* ── Standards ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Compliance &amp; Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -268,7 +268,7 @@ circuit transaction_validator {
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building — free <ArrowRight className="h-4 w-4" />
               </a>

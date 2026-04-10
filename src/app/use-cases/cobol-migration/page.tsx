@@ -75,12 +75,12 @@ export default function COBOLMigrationUseCasePage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframeClient />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Use Case
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               COBOL Migration:{" "}
-              <span className="text-[#00b8d4]">$3T Runs on COBOL. Verify and Modernize It Without Rewriting.</span>
+              <span className="text-teal">$3T Runs on COBOL. Verify and Modernize It Without Rewriting.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               95% of ATM transactions. 80% of in-person transactions. 220 billion lines. Every rewrite fails.
@@ -90,7 +90,7 @@ export default function COBOLMigrationUseCasePage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
@@ -107,7 +107,7 @@ export default function COBOLMigrationUseCasePage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Problem ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -125,7 +125,7 @@ export default function COBOLMigrationUseCasePage() {
 
           {/* ── The Solution ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -134,8 +134,8 @@ export default function COBOLMigrationUseCasePage() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
                 <div key={s.step} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <span className="text-sm font-bold text-[#00b8d4]">{s.step}</span>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                    <span className="text-sm font-bold text-teal">{s.step}</span>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">{s.title}</h3>
@@ -150,7 +150,7 @@ export default function COBOLMigrationUseCasePage() {
 ✓ Parsed 847 lines of COBOL-85
 ✓ Extracted 12 paragraphs → 12 PCD circuits
 ✓ WORKING-STORAGE mapped to domain constraints
-✓ Output: payroll.pcd (Φ_c = 1)
+✓ Output: payroll.pcd (Φc = 1)
 
 $ brikc compile payroll.pcd --target java
 ✓ Compiled 12 circuits → 12 Java classes
@@ -164,7 +164,7 @@ $ brikc compile payroll.pcd --target java
 
           {/* ── Real Example ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -194,7 +194,7 @@ $ brikc compile payroll.pcd --target java
     fn compute(hours: Range[0.0,744.0], rate: Range[0.0,10000.0]) {
         let gross = hours * rate;
         let tax = if (gross > 5000.0) { gross * 0.30 } else { gross * 0.20 };
-        return gross - tax;  // Φ_c = 1
+        return gross - tax;  // Φc = 1
     }
 }`}</CopyableCode>
 
@@ -207,7 +207,7 @@ $ brikc compile payroll.pcd --target java
 
           {/* ── Results ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -216,7 +216,7 @@ $ brikc compile payroll.pcd --target java
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
                 <div key={item.title} className="border border-border bg-white p-6">
-                  <CheckCircle2 className="mb-3 h-6 w-6 text-[#00b8d4]" />
+                  <CheckCircle2 className="mb-3 h-6 w-6 text-teal" />
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
@@ -237,7 +237,7 @@ $ brikc compile payroll.pcd --target java
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>

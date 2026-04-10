@@ -7,19 +7,11 @@ import { PhiC } from "@/components/PhiC";
 import {
   Search,
   Package,
-  Shield,
-  BadgeCheck,
   ArrowRight,
   Download,
-  GitBranch,
   Terminal,
-  Globe,
-  Copy,
-  Check,
-  Upload,
-  Eye,
-  Lock,
 } from "lucide-react";
+import { EvidenceSurface, FeatureMatrixSurface } from "@/components/PageArtifacts";
 
 import dynamic from "next/dynamic";
 
@@ -50,7 +42,7 @@ const badges = [
   },
   {
     name: "OPEN 78%",
-    color: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    color: "bg-orange-500/10 text-orange-400 border-orange-500/20",
     condition: "Hash in registry, Core + Extended",
     meaning: "Certified where Core, contracted at the boundary. The percentage shows Core monomer coverage.",
   },
@@ -83,11 +75,11 @@ export default function RegistryPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Registry
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              npm for <span className="text-[#00b8d4]">verified code.</span>
+              npm for <span className="text-teal">verified code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Every package carries a mathematical proof. Search, install, compose &mdash;
@@ -123,7 +115,7 @@ export default function RegistryPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] FEATURED CIRCUITS
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Pre-certified. Ready to use.
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +137,7 @@ export default function RegistryPage() {
                       className={`rounded-full border px-2 py-0.5 text-[10px] font-bold ${
                         c.tier === "CORE"
                           ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-400"
-                          : "border-blue-500/20 bg-blue-500/10 text-blue-400"
+                          : "border-orange-500/20 bg-orange-500/10 text-orange-400"
                       }`}
                     >
                       {c.badge}
@@ -168,7 +160,7 @@ export default function RegistryPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] PUBLISHING
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             From code to registry in minutes
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -184,7 +176,7 @@ export default function RegistryPage() {
           </div>
 
           {/* Terminal example */}
-          <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
+          <div className="mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
               <div className="h-3 w-3 rounded-full bg-red-500/60" />
               <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
@@ -196,7 +188,7 @@ export default function RegistryPage() {
                 <span className="text-teal">$</span> brikc check validate_token.pcd
               </div>
               <div className="font-mono text-sm text-emerald-400">
-                &nbsp; &#10003; Circuit closed: <PhiC /> = 1.000
+                &nbsp; &#10003; Circuit closed: <PhiC /> = 1
               </div>
               <div className="h-2" />
               <div className="font-mono text-sm text-white/70">
@@ -220,7 +212,7 @@ export default function RegistryPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] BADGE SYSTEM
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Live proof. Not a static label.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -251,6 +243,34 @@ export default function RegistryPage() {
               </div>
             </div>
           </div>
+
+          <div className="mt-8 grid gap-6">
+            <FeatureMatrixSurface
+              eyebrow="Registry Surface"
+              title="Packages stay legible because proof lives on the package, not in a decorative badge."
+              description="Certified rows, contract-bound rows, and invalid rows now read as a single evidence system."
+              metrics={[
+                { label: "Certified", value: "4", detail: "Rows marked CERTIFIED carry Φc = 1 through publication." },
+                { label: "Open", value: "2", detail: "Contract-bounded packages remain explicit about the boundary." },
+                { label: "Invalid", value: "1", detail: "A hash mismatch should be visible as a failure state, not hidden." },
+              ]}
+              rows={[
+                { title: "CERTIFIED", body: "Registry rows with closed proof state and immutable hashes." },
+                { title: "OPEN", body: "Rows that carry proof metadata but remain contract-bounded." },
+                { title: "INVALID", body: "Rows that no longer match the certified source and must not be treated as proof.", state: "accent" },
+              ]}
+            />
+            <EvidenceSurface
+              eyebrow="Registry Evidence"
+              title="What the registry actually exposes"
+              description="State, versioning, and proof remain explicit so every package can be inspected without ambiguity."
+              items={[
+                { label: "Proof attachment", body: "Every published circuit retains a certification hash and a visible closure state." },
+                { label: "Contract boundary", body: "Open packages stay explicit about the part of the system that is not fully certified." },
+                { label: "Invalidation", body: "A single-byte change must immediately break the trust surface so the registry never lies." },
+              ]}
+            />
+          </div>
         </section>
 
         {/* CTA */}
@@ -258,7 +278,7 @@ export default function RegistryPage() {
           <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
             REGISTRY LAUNCHING 2026
           </div>
-          <h2 className="mx-auto text-center mt-6 text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center mt-6 text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Publish your first circuit
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

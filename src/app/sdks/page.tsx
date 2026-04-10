@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
+import { EvidenceSurface } from "@/components/PageArtifacts";
 import {
   ArrowRight,
-  Terminal,
   Package,
   ExternalLink,
   Copy,
@@ -164,7 +165,7 @@ function CopyButton({ text }: { text: string }) {
     setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <button onClick={copy} className="cursor-pointer text-zinc-500 hover:text-white transition-colors">
+    <button onClick={copy} className="cursor-pointer text-muted-foreground transition-colors hover:text-teal">
       {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
     </button>
   );
@@ -185,11 +186,11 @@ export default function SDKsPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               SDKs
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Drop verified operations <span className="text-[#00b8d4]">into your code.</span>
+              Drop verified operations <span className="text-teal">into your code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               No new language. No compiler install. Add a library to your existing Rust, JavaScript, or Python project.
@@ -200,80 +201,149 @@ export default function SDKsPage() {
 
         {/* SDK Selector */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          {/* Language tabs */}
-          <div className="flex gap-3">
-            {sdks.map((s, i) => (
-              <button
-                key={s.name}
-                onClick={() => { setActiveSDK(i); setActiveTab("code"); }}
-                className={`cursor-pointer flex items-center gap-2 rounded-lg border px-5 py-3 text-sm font-medium transition-colors ${
-                  activeSDK === i
-                    ? "border-teal/30 bg-teal/[0.06] text-foreground"
-                    : "border-border text-muted-foreground hover:text-foreground hover:bg-muted/30"
-                }`}
-              >
-                <Image src={s.logo} alt={s.name} width={20} height={20} className="h-5 w-5" />
-                {s.name}
-              </button>
-            ))}
-          </div>
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [01] SDK WORKBENCH
+          </p>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
+            One substrate. Three host languages.
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            Choose a runtime, inspect the install path, and verify how the same certified substrate appears in host-language code.
+          </p>
 
-          {/* Install + link */}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-            <div className="flex items-center gap-3 border border-border bg-[#0a0e14] px-4 py-2.5">
-              <code className="font-mono text-sm text-emerald-400">
-                <span className="text-teal">$</span> {sdk.install}
-              </code>
-              <CopyButton text={sdk.install} />
-            </div>
-            <a
-              href={sdk.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-teal inline-flex items-center gap-1 text-sm transition-colors"
-            >
-              {sdk.linkLabel} <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          </div>
-
-          {/* Features */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {sdk.features.map((f) => (
-              <span key={f} className="rounded-full border border-border bg-muted/20 px-3 py-1 text-xs text-muted-foreground">
-                {f}
-              </span>
-            ))}
-          </div>
-
-          {/* Code tabs */}
-          <div className="mt-8 overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
-            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-            </div>
-            <div className="flex border-b border-white/10">
-              {(["code", "domains", "eva", "families"] as const).map((tab) => (
+          <div className="mx-auto mt-8 max-w-5xl rounded-[1.9rem] border border-border/80 bg-gradient-to-br from-muted/35 via-background to-background p-5 shadow-[0_24px_70px_rgba(15,23,42,0.05)]">
+            <div className="grid gap-3 border-b border-border/70 pb-5 sm:grid-cols-3">
+              {sdks.map((s, i) => (
                 <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`cursor-pointer px-4 py-2.5 text-xs font-medium transition-colors ${
-                    activeTab === tab
-                      ? "border-b-2 border-teal text-teal"
-                      : "text-white/40 hover:text-white/60"
+                  key={s.name}
+                  onClick={() => { setActiveSDK(i); setActiveTab("code"); }}
+                  className={`cursor-pointer rounded-2xl border px-5 py-4 text-center text-sm font-medium transition-colors ${
+                    activeSDK === i
+                      ? "border-teal/25 bg-teal/[0.06] text-foreground shadow-[0_18px_50px_rgba(13,148,136,0.08)]"
+                      : "border-border/70 bg-background/90 text-muted-foreground hover:bg-muted/20 hover:text-foreground"
                   }`}
                 >
-                  {tab === "code" ? "Quick Start" : tab === "domains" ? "Domain Constraints" : tab === "eva" ? "Composition" : "All Families"}
+                  <div className="flex items-center justify-center gap-2">
+                    <Image src={s.logo} alt={s.name} width={20} height={20} className="h-5 w-5" />
+                    <span>{s.name}</span>
+                  </div>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {s.pkg}
+                  </p>
                 </button>
               ))}
             </div>
-            <div className="p-5">
-              <pre className="overflow-x-auto text-xs leading-relaxed text-gray-300">
-                <code>
-                  {activeTab === "code" ? sdk.code : activeTab === "domains" ? sdk.domainExample : activeTab === "eva" ? sdk.evaExample : sdk.families}
-                </code>
-              </pre>
+
+            <div className="mt-6 grid gap-5 lg:grid-cols-[0.95fr_1.25fr]">
+              <div className="space-y-4">
+                <div className="rounded-[1.6rem] border border-teal/15 bg-teal/[0.05] p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">Selected runtime</p>
+                  <div className="mt-3 flex items-center justify-center gap-3 text-center">
+                    <Image src={sdk.logo} alt={sdk.name} width={26} height={26} className="h-6 w-6" />
+                    <div>
+                      <p className="text-lg font-semibold tracking-tight text-teal">{sdk.name}</p>
+                      <p className="text-xs text-muted-foreground">{sdk.pkg}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#0a0e14] shadow-2xl">
+                  <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                    <span className="ml-2 text-xs font-mono text-white/30">install</span>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-4">
+                    <code className="font-mono text-sm text-emerald-400">
+                      <span className="text-teal">$</span> {sdk.install}
+                    </code>
+                    <CopyButton text={sdk.install} />
+                  </div>
+                </div>
+
+                <div className="rounded-[1.6rem] border border-border/80 bg-background/90 p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Package source</p>
+                  <a
+                    href={sdk.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-teal"
+                  >
+                    {sdk.linkLabel} <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+
+                <div className="grid gap-2">
+                  {sdk.features.map((f) => (
+                    <div key={f} className="rounded-2xl border border-border/70 bg-background/80 px-4 py-3 text-xs text-muted-foreground">
+                      {f}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#0a0e14] shadow-2xl">
+                <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                  <span className="ml-2 text-xs font-mono text-white/30">{sdk.name.toLowerCase()} surface</span>
+                </div>
+                <div className="flex flex-wrap gap-2 border-b border-white/10 px-4 py-3">
+                  {(["code", "domains", "eva", "families"] as const).map((tab) => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`cursor-pointer rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                        activeTab === tab
+                          ? "bg-teal/15 text-teal"
+                          : "text-white/45 hover:text-white/70"
+                      }`}
+                    >
+                      {tab === "code" ? "Quick Start" : tab === "domains" ? "Domain Constraints" : tab === "eva" ? "Composition" : "All Families"}
+                    </button>
+                  ))}
+                </div>
+                <div className="border-b border-white/10 px-4 py-4">
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-center">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">Host</p>
+                      <p className="mt-2 text-sm font-semibold text-teal">{sdk.name}</p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-center">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">Proof surface</p>
+                      <p className="mt-2 text-sm font-semibold text-teal"><PhiC /> = 1</p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-center">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">Material</p>
+                      <p className="mt-2 text-sm font-semibold text-teal">Core + bounded bridges</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <pre className="overflow-x-auto text-xs leading-relaxed text-gray-300">
+                    <code>
+                      {activeTab === "code" ? sdk.code : activeTab === "domains" ? sdk.domainExample : activeTab === "eva" ? sdk.evaExample : sdk.families}
+                    </code>
+                  </pre>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="mt-8 grid gap-6">
+            <MonomerFamilyBoard />
+            <EvidenceSurface
+              eyebrow="SDK Evidence"
+              title="Libraries expose proof-preserving operations instead of hiding the substrate."
+              description="The host-language wrappers keep the certified surface, bounded bridges, and runtime target explicit."
+              items={[
+                { label: "Rust", body: "Zero-cost composition with compile-time domain and closure checks." },
+                { label: "JavaScript / Python", body: "Structured APIs expose the same verified operations without introducing a new language." },
+                { label: "Boundary", body: "Extended material remains explicit so host-language ergonomics do not blur certification scope." },
+              ]}
+            />
           </div>
         </section>
 
@@ -282,12 +352,16 @@ export default function SDKsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             COMPOSITION
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Three primitives. Infinite composition.
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="border border-border bg-muted/20 p-6">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            These are the three composition moves exposed by the SDKs: enough to build larger verified functions without changing the underlying algebra.
+          </p>
+          <div className="mx-auto mt-8 max-w-5xl rounded-[1.9rem] border border-border/80 bg-gradient-to-br from-muted/35 via-background to-background p-5 shadow-[0_24px_70px_rgba(15,23,42,0.05)]">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-6 text-center">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
                 S
               </div>
               <p className="text-sm font-medium">Sequential</p>
@@ -295,8 +369,8 @@ export default function SDKsPage() {
                 Output of f feeds into g. Pipeline. <code>compose.sequential(f, g)</code>
               </p>
             </div>
-            <div className="border border-border bg-muted/20 p-6">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-6 text-center">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
                 P
               </div>
               <p className="text-sm font-medium">Parallel</p>
@@ -304,8 +378,8 @@ export default function SDKsPage() {
                 Both f and g execute on the same input. <code>compose.parallel(f, g)</code>
               </p>
             </div>
-            <div className="border border-border bg-muted/20 p-6">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-6 text-center">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-lg font-bold text-teal">
                 C
               </div>
               <p className="text-sm font-medium">Conditional</p>
@@ -314,15 +388,19 @@ export default function SDKsPage() {
               </p>
             </div>
           </div>
-          <p className="mt-6 text-xs italic text-muted-foreground">
+          <div className="mt-4 rounded-2xl border border-teal/15 bg-teal/[0.05] px-4 py-4 text-center">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">Composition surface</p>
+            <p className="mt-2 text-xs italic text-muted-foreground">
             Correctness preserved by composition. Mathematically certified. Any function built from Core monomers via EVA operators
             retains <PhiC /> = 1 &mdash; regardless of which language it runs in.
-          </p>
+            </p>
+          </div>
+          </div>
         </section>
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

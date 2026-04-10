@@ -1,10 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { CopyableCode } from "@/components/CopyableCode";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
+import {
+  ArtifactFrame,
+  ArtifactHeader,
+  BlueprintHubArtifact,
+  CodeProofPanel,
+  FlowNode,
+  MetricTile,
+  ProofBadge,
+  StatusPill,
+} from "@/components/HomeProofArtifacts";
+import { EvidenceSurface, PageSectionHeader } from "@/components/PageArtifacts";
 import {
   FileCode,
   ArrowRight,
@@ -14,6 +26,9 @@ import {
   BookOpen,
   Zap,
   Code,
+  Braces,
+  Split,
+  GitBranch,
 } from "lucide-react";
 
 import dynamic from "next/dynamic";
@@ -105,6 +120,36 @@ const evaOps = [
   { symbol: "COND", name: "Conditional", desc: "If predicate P holds, do A; otherwise do B. Both branches verified." },
 ];
 
+const syntaxArtifacts = [
+  {
+    label: "Program shell",
+    title: "Named circuit block",
+    body: "Every program declares a single circuit boundary and a single terminal OUTPUT.",
+    code: `PC circuit_name {\n    OUTPUT result;\n}`,
+  },
+  {
+    label: "State model",
+    title: "Immutable bindings",
+    body: "PCD keeps SSA-style reassignment explicit so the compiler can trace every value path.",
+    code: `let x = 42;\nlet name = "hello";\nlet flag = true;`,
+  },
+  {
+    label: "Control surface",
+    title: "Functions, loops, closures",
+    body: "Higher-level constructs remain available, but they still lower into explicit composition paths.",
+    code: `fn add(a, b) { return a + b; }\nloop(10) as i {\n    let count = count + 1;\n}\nlet double = fn(n) { n * 2 };`,
+  },
+];
+
+const domainCards = [
+  { title: "No division by zero", desc: "Lower bounds exclude zero exactly where the circuit requires it." },
+  { title: "No overflow drift", desc: "Bounded inputs keep outputs inside a known envelope before export." },
+  { title: "No NaN / Infinity", desc: "Float domains remove degenerate values from the legal input set." },
+  { title: "Deterministic closure", desc: "The same domain declaration closes the same circuit every time." },
+];
+
+const evaExample = `PC policy_gate {\n    let normalized = SEQ(parse_input, validate_domain);\n    let mirrored = PAR(score_risk, derive_trace);\n    let decision = COND(authorized, allow_action, block_action);\n    OUTPUT decision;\n}`;
+
 /* ── Key properties ── */
 
 const keyProps = [
@@ -115,6 +160,196 @@ const keyProps = [
   { icon: <Code className="h-5 w-5 text-teal" />, title: "Self-compiling", desc: "The brikc compiler compiles itself producing an identical hash. The fixpoint is the proof." },
   { icon: <Terminal className="h-5 w-5 text-teal" />, title: "Designed for AI", desc: "128 total operations. An LLM can learn the entire language. Generate certified PCD in seconds." },
 ];
+
+function SyntaxWorkbench({
+  activeExample,
+}: {
+  activeExample: number;
+}) {
+  return (
+    <div className="mx-auto mt-8 grid max-w-6xl gap-6 lg:grid-cols-[1.05fr_1.15fr]">
+      <ArtifactFrame className="space-y-5">
+        <ArtifactHeader
+          eyebrow="Syntax Workbench"
+          title="A small grammar with explicit circuit boundaries."
+          description="PCD is concise on purpose: the parser sees a finite language, and the human sees the same closure structure the compiler checks."
+          status={<StatusPill tone="teal"><Braces className="h-3.5 w-3.5" />pcd syntax</StatusPill>}
+        />
+        <div className="grid gap-4">
+          {syntaxArtifacts.map((artifact) => (
+            <div key={artifact.label} className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5 shadow-sm">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{artifact.label}</p>
+              <h3 className="mt-3 text-base font-semibold tracking-tight text-foreground">{artifact.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{artifact.body}</p>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-border/70 bg-muted/25 px-4 py-3">
+                <pre className="overflow-x-auto whitespace-pre-wrap font-mono text-xs leading-relaxed text-foreground">
+                  <code>{artifact.code}</code>
+                </pre>
+              </div>
+            </div>
+          ))}
+        </div>
+      </ArtifactFrame>
+
+      <CodeProofPanel
+        eyebrow="Live example"
+        title={codeExamples[activeExample].label}
+        badge={<ProofBadge />}
+        code={codeExamples[activeExample].code}
+      />
+    </div>
+  );
+}
+
+function DomainSurface() {
+  return (
+    <ArtifactFrame className="mx-auto mt-8 max-w-5xl space-y-6">
+      <ArtifactHeader
+        eyebrow="Domain Surface"
+        title="Domains define the legal input envelope before evaluation starts."
+        description="Types alone are not enough. PCD binds values to declared ranges so the compiler can reason about the whole circuit, not only local types."
+        status={<ProofBadge />}
+      />
+      <div className="grid gap-4 md:grid-cols-3">
+        <MetricTile label="Speed" value="0.0 .. 340.0" detail="Flight envelope stays explicit." />
+        <MetricTile label="Altitude" value="0.0 .. 51000.0" detail="No unconstrained service ceiling." />
+        <MetricTile label="Time" value="1.0 .. 86400.0" detail="Zero removed from critical divisors." />
+      </div>
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <CodeProofPanel
+          eyebrow="Declared ranges"
+          title="Domain Syntax"
+          badge={<StatusPill tone="teal">domain checked</StatusPill>}
+          code={`input speed    : Float64[0.0 .. 340.0]   // knots — bounded to flight envelope\ninput altitude : Float64[0.0 .. 51000.0] // feet — bounded to service ceiling\ninput time     : Float64[1.0 .. 86400.0] // seconds — never zero`}
+        />
+        <div className="grid gap-3">
+          {domainCards.map((card) => (
+            <div key={card.title} className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4">
+              <p className="text-sm font-semibold text-foreground">{card.title}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="rounded-[1.4rem] border border-teal/15 bg-teal/[0.04] p-4 text-center text-sm text-muted-foreground">
+        Deep dive:{" "}
+        <Link href="/blog/precision-as-domain" className="font-medium text-teal underline underline-offset-2 hover:text-teal-hover">
+          Why Your Calculator Is Lying to You
+        </Link>
+      </div>
+    </ArtifactFrame>
+  );
+}
+
+function MonomerCatalogSurface() {
+  return (
+    <div className="mx-auto mt-8 grid max-w-6xl gap-6">
+      <BlueprintHubArtifact compact />
+      <MonomerFamilyBoard />
+      <div className="grid gap-6 xl:grid-cols-2">
+        <ArtifactFrame className="space-y-5">
+          <ArtifactHeader
+            eyebrow="Core Monomers"
+            title="64 certified operations remain inside the formal substrate."
+            description="Core monomers are the mathematically certified surface. They anchor closure, domains, and compiler proofs."
+            status={<ProofBadge />}
+          />
+          <div className="grid gap-3">
+            {coreFamilies.map((f) => (
+              <div key={f.family} className="grid grid-cols-[110px_1fr_auto] items-center gap-4 rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4">
+                <span className="text-sm font-semibold text-foreground">{f.family}</span>
+                <span className="text-sm text-muted-foreground">{f.ops}</span>
+                <span className="rounded-full border border-emerald-500/25 bg-emerald-500/[0.09] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-600">
+                  {f.proof}
+                </span>
+              </div>
+            ))}
+          </div>
+        </ArtifactFrame>
+
+        <ArtifactFrame className="space-y-5">
+          <ArtifactHeader
+            eyebrow="Extended Monomers"
+            title="64 contract-bounded bridges expand the surface without faking certification."
+            description="Extended monomers are explicit bridges to floating-point, network, filesystem, and other system-bound concerns."
+            status={<StatusPill tone="warning">contract surface</StatusPill>}
+          />
+          <div className="grid gap-3">
+            {extendedFamilies.map((f) => (
+              <div key={f.family} className="grid grid-cols-[110px_1fr] items-center gap-4 rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4">
+                <span className="text-sm font-semibold text-foreground">{f.family}</span>
+                <span className="text-sm text-muted-foreground">{f.ops}</span>
+              </div>
+            ))}
+          </div>
+          <div className="rounded-[1.4rem] border border-orange-400/20 bg-orange-400/[0.06] p-4 text-sm leading-relaxed text-muted-foreground">
+            Core monomers remain formally verified regardless of what extended monomers surround them. The compiler keeps that boundary explicit.
+          </div>
+        </ArtifactFrame>
+      </div>
+    </div>
+  );
+}
+
+function EvaAlgebraArtifact() {
+  return (
+    <div className="mx-auto mt-8 grid max-w-6xl gap-6 lg:grid-cols-[1.15fr_0.95fr]">
+      <ArtifactFrame className="space-y-6">
+        <ArtifactHeader
+          eyebrow="EVA Algebra"
+          title="Three operators build larger circuits without changing the proof model."
+          description="EVA is the composition layer. It keeps sequencing, fan-out, and branching explicit instead of hiding them inside runtime conventions."
+          status={<ProofBadge />}
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          <MetricTile label="Operators" value="3" detail="Finite composition surface." />
+          <MetricTile label="Guarantee" value={<><PhiC /> = 1</>} detail="Closure remains attached to composition." />
+          <MetricTile label="Evaluation" value="explicit" detail="Order, branch and parallel fan-out are all named." />
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <FlowNode
+            label={evaOps[0].symbol}
+            title={evaOps[0].name}
+            body={evaOps[0].desc}
+            icon={<ArrowRight className="h-4 w-4" />}
+            state="active"
+          />
+          <FlowNode
+            label={evaOps[1].symbol}
+            title={evaOps[1].name}
+            body={evaOps[1].desc}
+            icon={<Split className="h-4 w-4" />}
+            state="idle"
+          />
+          <FlowNode
+            label={evaOps[2].symbol}
+            title={evaOps[2].name}
+            body={evaOps[2].desc}
+            icon={<GitBranch className="h-4 w-4" />}
+            state="success"
+          />
+        </div>
+        <EvidenceSurface
+          eyebrow="Composition Reading"
+          title="EVA does not add magic syntax. It names the only three composition moves the compiler needs."
+          description="That is why the algebra remains learnable and inspectable."
+          items={[
+            { label: "SEQ", body: "Output of one stage becomes the input of the next stage in a deterministic pipeline." },
+            { label: "PAR", body: "The same input fans out to independent branches and returns a tuple of results." },
+            { label: "COND", body: "Both branches are explicit in the circuit; the predicate selects the terminal path." },
+          ]}
+        />
+      </ArtifactFrame>
+
+      <CodeProofPanel
+        eyebrow="Composition sketch"
+        title="A small policy circuit using all EVA operators"
+        badge={<StatusPill tone="teal">seq / par / cond</StatusPill>}
+        code={evaExample}
+      />
+    </div>
+  );
+}
 
 export default function PCDPage() {
   const [activeExample, setActiveExample] = useState(0);
@@ -128,11 +363,11 @@ export default function PCDPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               PCD &mdash; Printed Circuit Description
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              This is PCD. <span className="text-[#00b8d4]">The language designed for AI.</span>
+              This is PCD. <span className="text-teal">The language designed for AI.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               64 certified operations. 64 extended. Learn it in one prompt. An AI writes PCD directly.
@@ -146,218 +381,102 @@ export default function PCDPage() {
 
         {/* Key properties */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [01] NOT A LANGUAGE &mdash; A FORMAT
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {keyProps.map((kp) => (
-              <div key={kp.title} className="group border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
-                  {kp.icon}
-                </div>
-                <p className="text-sm font-medium">{kp.title}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{kp.desc}</p>
+          <PageSectionHeader
+            eyebrow="[01] NOT A LANGUAGE — A FORMAT"
+            title="PCD is a bounded circuit format, not an open syntax playground."
+            description="The language surface stays finite so AI agents and human reviewers can reason about the same material system without ambiguity."
+          />
+          <div className="mx-auto mt-8 grid max-w-6xl gap-6">
+            <ArtifactFrame className="space-y-6">
+              <ArtifactHeader
+                eyebrow="Format Surface"
+                title="The whole format fits inside one explicit operational envelope."
+                description="The value of PCD is not stylistic minimalism. It is that every program is assembled from a finite substrate, explicit domains, and a closed composition algebra."
+                status={<ProofBadge />}
+              />
+              <div className="grid gap-4 md:grid-cols-3">
+                <MetricTile label="Core" value="64 certified" detail="Formally proven monomers." />
+                <MetricTile label="Extended" value="64 contract-bounded" detail="System bridges that stay explicit." />
+                <MetricTile label="Targets" value="14" detail="One blueprint, many export materials." />
               </div>
-            ))}
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {keyProps.map((kp) => (
+                  <div key={kp.title} className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5 shadow-sm">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
+                      {kp.icon}
+                    </div>
+                    <p className="mt-4 text-sm font-semibold text-foreground">{kp.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{kp.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </ArtifactFrame>
           </div>
         </section>
 
         {/* Syntax overview */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [02] SYNTAX
-          </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Circuit schematics, not source code
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Every PCD program is a named circuit block. The OUTPUT directive marks the final value emitted.
-            Variables are immutable (SSA form). Functions, closures, loops, and conditionals are all supported.
-          </p>
+          <PageSectionHeader
+            eyebrow="[02] SYNTAX"
+            title="Circuit schematics, not source code."
+            description="A PCD program is a named circuit block with immutable bindings, explicit composition and one terminal OUTPUT."
+          />
 
-          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {/* Syntax snippets */}
-            <div className="space-y-4">
-              <CopyableCode title="Program Structure">{`PC circuit_name {
-    // functions and logic here
-    OUTPUT result;
-}`}</CopyableCode>
-              <CopyableCode title="Variables & Functions">{`let x = 42;           // immutable
-let name = "hello";    // string
-let flag = true;       // boolean
-
-fn add(a, b) {
-    return a + b;
-}
-
-fn factorial(n) {
-    if (n <= 1) { return 1; }
-    return n * factorial(n - 1);
-}`}</CopyableCode>
-              <CopyableCode title="Loops & Closures">{`// Loop with carried variable
-let count = 0;
-loop(10) as i {
-    let count = count + 1;
-}
-
-// Closure
-let double = fn(n) { n * 2 };
-let result = double(5);   // 10`}</CopyableCode>
-            </div>
-
-            {/* Code examples with tabs */}
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-              </div>
-              <div className="flex flex-wrap border-b border-white/10">
-                {codeExamples.map((ex, i) => (
-                  <button
-                    key={ex.label}
-                    onClick={() => setActiveExample(i)}
-                    className={`cursor-pointer px-3 py-2.5 text-[11px] font-medium transition-colors ${
-                      activeExample === i
-                        ? "border-b-2 border-teal text-teal"
-                        : "text-white/40 hover:text-white/60"
-                    }`}
-                  >
-                    {ex.label}
-                  </button>
-                ))}
-              </div>
-              <div className="p-5">
-                <pre className="overflow-x-auto text-xs leading-relaxed text-gray-300">
-                  <code>{codeExamples[activeExample].code}</code>
-                </pre>
-              </div>
+          <div className="mx-auto mt-8 max-w-3xl">
+            <div className="flex flex-wrap justify-center gap-2">
+              {codeExamples.map((ex, i) => (
+                <button
+                  key={ex.label}
+                  onClick={() => setActiveExample(i)}
+                  className={`cursor-pointer rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                    activeExample === i
+                      ? "border-teal/30 bg-teal/[0.08] text-teal"
+                      : "border-border/80 bg-background text-muted-foreground hover:border-teal/20 hover:text-foreground"
+                  }`}
+                >
+                  {ex.label}
+                </button>
+              ))}
             </div>
           </div>
+
+          <SyntaxWorkbench activeExample={activeExample} />
         </section>
 
         {/* Closure Domains */}
         <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-          <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
-            Closure Domains
-          </span>
-          <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Types tell you <em>what</em>. Domains tell you <em>where</em>.
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-muted-foreground">
-            Every input in PCD lives inside a declared domain — a numeric range enforced by
-            the compiler. Without domains, a circuit cannot close. With domains, the compiler
-            can prove that every input path produces a valid output.
-          </p>
-
-          <div className="mx-auto mt-10 max-w-3xl">
-            <CopyableCode title="Domain Syntax">{`input speed    : Float64[0.0 .. 340.0]   // knots — bounded to flight envelope
-input altitude : Float64[0.0 .. 51000.0] // feet — bounded to service ceiling
-input time     : Float64[1.0 .. 86400.0] // seconds — never zero`}</CopyableCode>
-          </div>
-
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2">
-            {[
-              { title: "No division by zero", desc: "Lower bounds exclude zero when needed." },
-              { title: "No overflow", desc: "Bounded inputs produce bounded outputs." },
-              { title: "No NaN or Infinity", desc: "Float64 ranges exclude degenerate values." },
-              { title: "Deterministic behavior", desc: "Same inputs, same outputs, every time." },
-            ].map((card) => (
-              <div key={card.title} className="border border-border bg-muted/20 p-6 transition-colors hover:border-teal/30 hover:bg-teal/[0.03]">
-                <p className="text-sm font-bold text-foreground">{card.title}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
-            Deep dive:{" "}
-            <a href="/blog/precision-as-domain" className="font-medium text-teal underline underline-offset-2 hover:text-teal-hover">
-              Why Your Calculator Is Lying to You
-            </a>
-          </p>
+          <PageSectionHeader
+            eyebrow="Closure Domains"
+            title="Types tell you what. Domains tell you where."
+            description="Without domains, a circuit cannot close. With domains, the compiler can prove that every input path remains inside the legal envelope."
+          />
+          <DomainSurface />
         </section>
 
         {/* 128 Monomers */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [03] 128 MONOMERS
-          </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            The complete operation catalog
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            64 formally verified atomic operations (Core, mathematically certified) + 64 bounds-checked extended operations (CONTRACT).
-            Every monomer has a declared domain, range, postconditions, and termination guarantee.
-          </p>
+          <PageSectionHeader
+            eyebrow="[03] 128 MONOMERS"
+            title="The complete operation catalog."
+            description="64 core certified operations and 64 extended contract-bounded bridges define the full computational material available to PCD."
+          />
 
-          {/* Core monomers */}
-          <h3 className="mt-8 text-sm font-bold">
-            Core Monomers &mdash; 64 operations{" "}
-            <span className="ml-2 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
-              <PhiC /> = 1
-            </span>
-          </h3>
-          <div className="mt-4 overflow-hidden border border-border">
-            {coreFamilies.map((f) => (
-              <div key={f.family} className="grid grid-cols-[100px_1fr_60px] items-center gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
-                <span className="text-xs font-medium">{f.family}</span>
-                <span className="text-xs text-muted-foreground">{f.ops}</span>
-                <span className="text-right text-[10px] font-bold text-emerald-400">{f.proof}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Extended monomers */}
-          <h3 className="mt-8 text-sm font-bold">
-            Extended Monomers &mdash; 64 operations{" "}
-            <span className="ml-2 rounded-full bg-blue-500/10 px-2 py-0.5 text-[10px] font-bold text-blue-400">
-              CONTRACT
-            </span>
-          </h3>
-          <div className="mt-4 overflow-hidden border border-border">
-            {extendedFamilies.map((f) => (
-              <div key={f.family} className="grid grid-cols-[100px_1fr] items-center gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
-                <span className="text-xs font-medium">{f.family}</span>
-                <span className="text-xs text-muted-foreground">{f.ops}</span>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-4 text-xs italic text-muted-foreground">
-            Core monomers remain formally verified regardless of what Extended monomers surround them.
-            The compiler enforces the boundary statically.
-          </p>
+          <MonomerCatalogSurface />
         </section>
 
         {/* EVA Composition */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [04] EVA ALGEBRA
-          </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Three operators. Correctness preserved.
-          </h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {evaOps.map((op) => (
-              <div key={op.name} className="border border-border bg-muted/20 p-6">
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05] text-xl font-bold text-teal">
-                  {op.symbol}
-                </div>
-                <p className="text-sm font-bold">{op.name}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{op.desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-xs text-muted-foreground">
-            Correctness preserved by composition. Mathematically certified. <PhiC /> = 1 for the entire composition if all
-            constituent monomers are Core.
-          </p>
+          <PageSectionHeader
+            eyebrow="[04] EVA ALGEBRA"
+            title="Three operators. Correctness preserved."
+            description="EVA is the formal composition algebra behind PCD: sequence, parallel fan-out, and conditional branching."
+          />
+          <EvaAlgebraArtifact />
         </section>
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

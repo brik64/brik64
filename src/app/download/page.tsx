@@ -184,7 +184,7 @@ export default function DownloadPage() {
                 { v: "708 KB", l: "Binary size" },
                 { v: "128", l: "Operations" },
                 { v: "14", l: "Target languages" },
-                { v: "Φ_c = 1", l: "Self-certified" },
+                { v: "Φc = 1", l: "Self-certified" },
               ].map((s) => (
                 <div key={s.l} className="border border-border bg-muted/20 p-4 text-center">
                   <div className="text-xl font-bold text-teal">{s.v}</div>

@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ShieldCheck, FileText, ArrowRight, ExternalLink, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, FileText, ArrowRight, ExternalLink } from "lucide-react";
 import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 export const metadata = {
@@ -132,12 +132,12 @@ export default function CompliancePage() {
           <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
             <HeroWireframeClient />
             <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-              <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
                 Compliance Evidence Engine
               </span>
               <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 Compliance evidence.{" "}
-                <span className="text-[#00b8d4]">At compile time.</span>
+                <span className="text-teal">At compile time.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
                 Not after the audit. Not after the incident. At compile time. Your verified code generates
@@ -147,7 +147,7 @@ export default function CompliancePage() {
               <div className="mt-10 flex items-center justify-center gap-4">
                 <a
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
                 >
                   Start building &mdash; free <ArrowRight className="h-4 w-4" />
                 </a>
@@ -165,14 +165,14 @@ export default function CompliancePage() {
 
           {/* ── CLI Demo ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               How It Works
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               One command. Auditor-ready output.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-              Run brikc certify against any PCD file. The compiler verifies Φ_c = 1, maps your
+              Run brikc certify against any PCD file. The compiler verifies Φc = 1, maps your
               certified constraints to the applicable regulatory articles, and generates a JSON + PDF
               evidence package. Your compliance team walks into the audit with mathematical proof, not screenshots.
             </p>
@@ -184,11 +184,11 @@ export default function CompliancePage() {
                 <span className="ml-3 text-[10px] font-medium tracking-wide text-white/30">brikc certify</span>
               </div>
               <div className="flex flex-col gap-1 p-5 font-mono text-xs">
-                <p className="text-white/70"><span className="text-blue-400">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
-                <p className="mt-1 text-blue-400">&nbsp;&nbsp;&#10003; Parsing trading_algo.pcd... 4 domains, 3 assertions</p>
-                <p className="text-blue-400">&nbsp;&nbsp;&#10003; Φc = 1.000 — circuit closed</p>
-                <p className="text-blue-400">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence: 5 controls mapped</p>
-                <p className="text-blue-400">&nbsp;&nbsp;&#10003; Scope limitation included</p>
+                <p className="text-white/70"><span className="text-teal">$</span> brikc certify --evidence mifid2 trading_algo.pcd</p>
+                <p className="mt-1 text-teal">&nbsp;&nbsp;&#10003; Parsing trading_algo.pcd... 4 domains, 3 assertions</p>
+                <p className="text-teal">&nbsp;&nbsp;&#10003; Φc = 1 — circuit closed</p>
+                <p className="text-teal">&nbsp;&nbsp;&#10003; MiFID II Art. 17 evidence: 5 controls mapped</p>
+                <p className="text-teal">&nbsp;&nbsp;&#10003; Scope limitation included</p>
                 <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Output: evidence_mifid2.json + evidence_mifid2.pdf</p>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function CompliancePage() {
 
           {/* ── Standards Grid ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Regulatory Coverage
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -212,26 +212,26 @@ export default function CompliancePage() {
                 <div key={std.name} className="rounded-lg border border-border bg-card p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <ShieldCheck className="h-5 w-5 text-[#00b8d4]" />
+                      <ShieldCheck className="h-5 w-5 text-teal" />
                       <div>
                         <h3 className="text-lg font-medium text-foreground">{std.name}</h3>
                         <p className="text-xs text-muted-foreground">{std.desc}</p>
                       </div>
                     </div>
-                    <span className="rounded-full bg-[#00b8d4]/10 px-3 py-1 text-sm font-medium text-[#00b8d4]">
+                    <span className="rounded-full bg-teal/10 px-3 py-1 text-sm font-medium text-teal">
                       {std.coverage}% coverage
                     </span>
                   </div>
                   <p className="mt-2 text-xs text-muted-foreground/60">{std.articles}</p>
                   <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-border">
                     <div
-                      className="h-full rounded-full bg-[#00b8d4]"
+                      className="h-full rounded-full bg-teal"
                       style={{ width: `${std.coverage}%` }}
                     />
                   </div>
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
                     <div>
-                      <p className="mb-2 flex items-center gap-1.5 text-xs font-medium text-[#00b8d4]">
+                      <p className="mb-2 flex items-center gap-1.5 text-xs font-medium text-teal">
                         <ShieldCheck className="h-3 w-3" /> What we cover
                       </p>
                       <ul className="space-y-1">
@@ -262,7 +262,7 @@ export default function CompliancePage() {
 
           {/* ── What Makes This Different ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Difference
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -303,7 +303,7 @@ export default function CompliancePage() {
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>

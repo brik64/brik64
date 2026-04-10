@@ -45,7 +45,7 @@ export function ForgeSection() {
               onChange={setPolymerIdx}
             />
             <span className="rounded-md bg-foreground px-3 py-1.5 font-mono text-xs font-semibold text-teal">
-              Φ_c = {polymer.phiC} ✓
+              Φc = {polymer.phiC} ✓
             </span>
           </div>
         </div>

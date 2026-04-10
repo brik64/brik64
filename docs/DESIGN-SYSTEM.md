@@ -1,6 +1,30 @@
-# BRIK-64 Design System v5
+# BRIK-64 Design System v6
 
-> Patrones de diseño extraídos del landing page (home) — deben aplicarse uniformemente a toda la web.
+> Current canonical site grammar. Legacy v5 notes below are retained only as historical context.
+
+## Current canonical site grammar
+
+- Section headers are centered and use the official teal accent for the title.
+- Home and internal product pages share the same header structure, differing only in content and density.
+- Each section should have one protagonist artifact with header, status, payload, proof metadata, and scoped claim.
+- CTA rows use one teal primary action, one muted secondary action, and external links with an arrow icon.
+- Black oval CTA buttons, mixed title alignments, and generic card clouds without a protagonist object are treated as regressions.
+
+### Product page canon — PCD
+
+- `pcd` now uses four named page-level artifacts:
+  - `Format Surface`
+  - `Syntax Workbench`
+  - `Domain Surface`
+  - `EvaAlgebraArtifact`
+- Syntax examples are no longer stacked as disconnected terminal/code boxes. They live inside a centered workbench with one active proof panel.
+- Domain explanation is no longer a loose code snippet plus four cards. It is a bounded surface with metrics, one domain code panel, and explicit closure consequences.
+- EVA algebra is no longer three flat cards. It is a single composition artifact with metrics, flow nodes, evidence reading, and one PCD sketch.
+- The monomer catalog is split into two surfaces:
+  - `Core Monomers` with explicit certified state
+  - `Extended Monomers` with explicit contract-bounded state
+
+> The notes below describe older implementation details and should not override the current site grammar.
 
 ---
 

@@ -57,12 +57,12 @@ export default function HealthcareIndustryPage() {
           <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
             <HeroWireframeClient />
             <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-              <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
                 Healthcare
               </span>
               <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 An insulin pump that can overdose{" "}
-                <span className="text-[#00b8d4]">is a weapon. BRIK64 makes that impossible.</span>
+                <span className="text-teal">is a weapon. BRIK64 makes that impossible.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
                 The Therac-25 killed patients with a race condition. Drug infusion pumps have been
@@ -72,7 +72,7 @@ export default function HealthcareIndustryPage() {
               <div className="mt-10 flex items-center justify-center gap-4">
                 <a
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
                 >
                   Build verified healthcare software <ArrowRight className="h-4 w-4" />
                 </a>
@@ -91,7 +91,7 @@ export default function HealthcareIndustryPage() {
           <div className="mx-auto max-w-7xl border-x border-border">
             {/* ── The Challenge ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 The Challenge
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -129,7 +129,7 @@ export default function HealthcareIndustryPage() {
 
             {/* ── How BRIK64 Helps ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 How BRIK64 Helps
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -138,8 +138,8 @@ export default function HealthcareIndustryPage() {
               <div className="mt-10 grid gap-8 md:grid-cols-2">
                 {useCases.map((uc) => (
                   <div key={uc.title} className="flex gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                      <uc.icon className="h-6 w-6 text-[#00b8d4]" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                      <uc.icon className="h-6 w-6 text-teal" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">
@@ -156,7 +156,7 @@ export default function HealthcareIndustryPage() {
 
             {/* ── Policy Circuit Example ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 Policy Circuit Example
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -169,7 +169,7 @@ export default function HealthcareIndustryPage() {
                 It does not exist.
               </p>
               <CopyableCode title="dosage_calculator.pcd">{`// Drug Dosage Calculator — Vancomycin Weight-Based Dosing
-// Φ_c = 1 — therapeutic window enforced by the compiler
+// Φc = 1 — therapeutic window enforced by the compiler
 
 circuit dosage_calculator {
   // Patient parameters — full clinical range
@@ -219,7 +219,7 @@ circuit dosage_calculator {
 
             {/* ── Standards ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 Compliance &amp; Standards
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -228,7 +228,7 @@ circuit dosage_calculator {
               <ul className="mx-auto mt-8 max-w-2xl space-y-3">
                 {standards.map((s) => (
                   <li key={s} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal" />
                     <span className="text-sm text-foreground">{s}</span>
                   </li>
                 ))}
@@ -248,7 +248,7 @@ circuit dosage_calculator {
               <div className="mt-8 flex items-center justify-center gap-4">
                 <a
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
                 >
                   Build verified healthcare software <ArrowRight className="h-4 w-4" />
                 </a>

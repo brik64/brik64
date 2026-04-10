@@ -5,14 +5,10 @@ import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
 import {
   BookOpen,
-  Sigma,
-  CircuitBoard,
-  Cpu,
-  Atom,
-  Lightbulb,
   GraduationCap,
   ArrowRight,
 } from "lucide-react";
+import { ComparisonSurface, EvidenceSurface, FeatureMatrixSurface, PageSectionHeader } from "@/components/PageArtifacts";
 
 import dynamic from "next/dynamic";
 
@@ -33,11 +29,11 @@ export default function FoundationsPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Foundations
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The science is real. <span className="text-[#00b8d4]">The math is published.</span>
+              The science is real. <span className="text-teal">The math is published.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               A deterministic, verified system has zero informational entropy. Every state known. Every path verified.
@@ -46,12 +42,55 @@ export default function FoundationsPage() {
           </div>
         </section>
 
+        <section className="border-t border-border px-6 py-16 lg:px-16">
+          <PageSectionHeader
+            eyebrow="Foundational Artifacts"
+            title="The science page now opens with bounded explanatory objects before the long-form theory."
+            description="Foundations still carries the full argument, but the user now gets a compact comparison, metrics, and scope statement before reading the deeper formal sections."
+          />
+          <div className="mx-auto mt-10 grid max-w-6xl gap-6">
+            <ComparisonSurface
+              eyebrow="Information Model"
+              title="What BRIK64 is claiming mathematically"
+              leftTitle="Testing reduces uncertainty"
+              leftBody="Conventional software samples behavior and lowers uncertainty only for the cases explored by the test suite."
+              rightTitle="Digital Circuitality removes uncertainty structurally"
+              rightBody="Bounded domains, closed composition, and verification completeness push the specification to a deterministic state instead of hoping test coverage was enough."
+            />
+            <FeatureMatrixSurface
+              eyebrow="Foundations Matrix"
+              title="Three foundational handles for the reader"
+              description="The first useful block should tell the user what is being measured, what is preserved, and where the analogy stops."
+              metrics={[
+                { label: "Entropy", value: "H(X) = 0", detail: "Formal specification reaches zero informational uncertainty when all states are bounded and closed." },
+                { label: "Closure", value: "Φc = 1", detail: "Closure remains binary and compile-time enforced." },
+                { label: "Composition", value: "EVA", detail: "Sequential, parallel, and conditional composition preserve certified structure." },
+              ]}
+              rows={[
+                { title: "Analogy boundary", body: "The thermodynamic vocabulary is explanatory, not a claim about physical laws governing compilation.", state: "accent" },
+                { title: "Proof boundary", body: "The page describes formal guarantees attached to the circuit model, not operational guarantees outside the modeled system." },
+                { title: "Reader payoff", body: "A new visitor can now grasp the core thesis before dropping into the longer scientific exposition below." },
+              ]}
+            />
+            <EvidenceSurface
+              eyebrow="Scope"
+              title="What the foundations page must stay honest about"
+              description="The redesign improves structure, but the content still needs a sharp line between theorem, analogy, and positioning."
+              items={[
+                { label: "Formal claim", body: "BRIK64 argues for deterministic specifications with bounded domains and closed circuits." },
+                { label: "Analogy claim", body: "Circuit and thermodynamic language is used as a mapping aid, not as a substitute for information-theoretic reasoning." },
+                { label: "Practical claim", body: "The compiler enforces closure and domain soundness on the formal representation, not on every uncontrolled environment surrounding deployment." },
+              ]}
+            />
+          </div>
+        </section>
+
         {/* Digital Circuitality definition */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] FORMAL DEFINITION
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Digital Circuitality
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -98,7 +137,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THERMODYNAMIC ANALOGY
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             The analogy and its limits
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -137,7 +176,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] EVA ALGEBRA
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Composition operators
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -169,7 +208,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] COHERENCE METRICS FRAMEWORK
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             CMF: Three metrics, one condition
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -216,7 +255,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04.5] CLOSURE THROUGH DOMAINS
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Closure through domains
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -264,7 +303,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] INFORMATION THEORY BASIS
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Informational entropy &ne; thermal entropy
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -287,7 +326,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [06] BRILLOUIN CONNECTION
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             From Landauer to Brillouin as inspiration
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -309,7 +348,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [07] DETERMINISTIC VERIFICATION
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Zero informational uncertainty by construction
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -329,7 +368,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [08] UNIVERSAL TRANSPILATION
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Transpilation through informational closure
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
@@ -366,7 +405,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [09] REFERENCES
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Academic foundations
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
@@ -433,7 +472,7 @@ export default function FoundationsPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             PUBLICATIONS
           </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Academic publications
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
@@ -466,7 +505,7 @@ export default function FoundationsPage() {
 
         {/* Synthesis */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             The logical chain
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-3 text-sm text-muted-foreground text-left">

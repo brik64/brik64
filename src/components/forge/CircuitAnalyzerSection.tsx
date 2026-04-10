@@ -124,7 +124,7 @@ export function CircuitAnalyzerSection() {
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
               See how monomers connect inside a polymer. Every path verified.
-              Every circuit closed. If Φ_c = 1, the circuit is complete.
+              Every circuit closed. If Φc = 1, the circuit is complete.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -135,7 +135,7 @@ export function CircuitAnalyzerSection() {
               6 nodes · 9 connections
             </span>
             <span className="rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-semibold text-white">
-              Φ_c = 1 ✓
+              Φc = 1 ✓
             </span>
           </div>
         </div>

@@ -1,30 +1,37 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { EditorialArticleHero, EditorialCard } from "@/components/EditorialSystem";
 import { newsArticles, getNewsArticle } from "@/lib/news-data";
 import { newsContent } from "@/lib/news-content";
-import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-
-const tagColors: Record<string, string> = {
-  LAUNCH: "bg-green-100 text-green-700",
-  PLATFORM: "bg-sky-100 text-sky-700",
-  DOCS: "bg-blue-100 text-blue-700",
-  TOOLS: "bg-amber-100 text-amber-700",
-  "OPEN SOURCE": "bg-purple-100 text-purple-700",
-  COMMUNITY: "bg-rose-100 text-rose-700",
-};
 
 export function generateStaticParams() {
   return newsArticles.map((article) => ({ slug: article.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const article = getNewsArticle(slug);
+
   if (!article) return {};
+
   return {
     title: `${article.title} — BRIK64 News`,
     description: article.excerpt,
+    alternates: {
+      canonical: `/news/${article.slug}`,
+    },
+    openGraph: {
+      title: `${article.title} — BRIK64 News`,
+      description: article.excerpt,
+      images: [{ url: article.coverImage, alt: article.coverAlt }],
+    },
   };
 }
 
@@ -35,59 +42,62 @@ export default async function NewsArticlePage({
 }) {
   const { slug } = await params;
   const article = getNewsArticle(slug);
+
   if (!article) notFound();
 
   const Content = newsContent[slug];
+  const relatedArticles = newsArticles.filter((candidate) => candidate.slug !== slug).slice(0, 3);
 
   return (
     <>
       <Navbar />
       <main className="relative z-10 flex-1">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        <article className="mx-auto max-w-3xl px-6 py-16">
-          {/* Back link */}
-          <a
+          <EditorialArticleHero
             href="/news"
-            className="mb-8 inline-flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to News
-          </a>
+            eyebrow="News Item"
+            title={article.title}
+            excerpt={article.excerpt}
+            date={article.date}
+            tag={article.tag}
+            coverImage={article.coverImage}
+            coverAlt={article.coverAlt}
+          />
 
-          {/* Header */}
-          <header className="mb-10">
-            <div className="mb-4 flex items-center gap-3">
-              <span
-                className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
-                  tagColors[article.tag] ?? "bg-gray-100 text-gray-600"
-                }`}
-              >
-                {article.tag}
-              </span>
-              <span className="text-sm text-[#322F2D]/40">{article.date}</span>
+          <article className="px-6 py-12 lg:px-16">
+            <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
+              <div className="prose-brik min-w-0">
+                {Content ? <Content /> : <p className="text-muted-foreground">Content coming soon.</p>}
+              </div>
+              <aside className="space-y-5">
+                <div className="rounded-[1.6rem] border border-border/80 bg-muted/30 p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    Update scope
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    News is intentionally lighter than the blog: same polished shell, faster payload, and no pagination until volume requires it.
+                  </p>
+                </div>
+              </aside>
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-[#1A1817] sm:text-4xl">
-              {article.title}
-            </h1>
-            <p className="mt-4 text-lg text-[#322F2D]/60">
-              {article.excerpt}
-            </p>
-          </header>
+          </article>
 
-          {/* Content */}
-          <div className="prose-brik">
-            {Content ? <Content /> : (
-              <p className="text-[#322F2D]/60">Content coming soon.</p>
-            )}
-          </div>
-        </article>
-      </div>
-
+          <section className="border-t border-border px-6 py-12 lg:px-16">
+            <div className="mx-auto max-w-6xl">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                Related updates
+              </p>
+              <div className="mt-8 grid gap-6 md:grid-cols-3">
+                {relatedArticles.map((related) => (
+                  <EditorialCard key={related.slug} item={related} hrefBase="/news" />
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
       <div className="relative z-10">
-
         <Footer />
-
       </div>
     </>
   );

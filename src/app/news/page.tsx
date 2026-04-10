@@ -1,85 +1,58 @@
-"use client";
+import type { Metadata } from "next";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { EditorialCard, EditorialHero, FeaturedEditorialCard } from "@/components/EditorialSystem";
 import { newsArticles } from "@/lib/news-data";
 
-import dynamic from "next/dynamic";
-
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
-
-const tagColors: Record<string, string> = {
-  LAUNCH: "bg-green-100 text-green-700",
-  PLATFORM: "bg-sky-100 text-sky-700",
-  DOCS: "bg-blue-100 text-blue-700",
-  TOOLS: "bg-amber-100 text-amber-700",
-  "OPEN SOURCE": "bg-purple-100 text-purple-700",
-  COMMUNITY: "bg-rose-100 text-rose-700",
+export const metadata: Metadata = {
+  title: "News — BRIK64",
+  description: "Launches, platform updates, documentation drops, and community milestones from BRIK64.",
+  alternates: {
+    canonical: "/news",
+  },
 };
 
 export default function NewsPage() {
+  const [featuredArticle, ...restArticles] = newsArticles;
+
   return (
     <>
       <Navbar />
       <main className="relative z-10 flex-1">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        {/* Hero */}
-        <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20 relative overflow-hidden">
-          <HeroWireframe />
-          <div className="relative z-10 mx-auto max-w-5xl text-center">
-            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00b8d4]">
-              NEWS
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight text-[#1A1817] sm:text-5xl">
-              What&apos;s shipping
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-[#322F2D]/60">
-              Releases, milestones, and announcements. We ship fast.
-            </p>
-          </div>
-        </section>
+          <EditorialHero
+            eyebrow="News"
+            title="Launches, platform updates, and public milestones without the flat release-list feel."
+            description="News keeps the same design grammar as the blog, but with lighter density and faster scanning. The two sections are aligned visually and differentiated editorially."
+            chips={["LAUNCH", "PLATFORM", "DOCS", "COMMUNITY"]}
+          />
 
-        {/* Articles */}
-        <section className="bg-background bg-white px-6 py-16">
-          <div className="mx-auto max-w-3xl space-y-6">
-            {newsArticles.map((article) => (
-              <a
-                key={article.slug}
-                href={`/news/${article.slug}`}
-                className="group block border border-[#EEEEEE] p-6 transition-all hover:border-[#00b8d4]/30 hover:shadow-md"
-              >
-                <div className="mb-3 flex items-center gap-3">
-                  <span
-                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                      tagColors[article.tag] ?? "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    {article.tag}
-                  </span>
-                  <span className="text-xs text-[#322F2D]/30">
-                    {article.date}
-                  </span>
+          <section className="px-6 py-12 lg:px-16">
+            <div className="mx-auto max-w-6xl">
+              <FeaturedEditorialCard item={featuredArticle} hrefBase="/news" />
+
+              <div className="mt-12 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    Recent updates
+                  </p>
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">What shipped</h2>
                 </div>
-                <h2 className="mb-2 text-xl font-semibold text-[#1A1817] group-hover:text-[#00b8d4] transition-colors">
-                  {article.title}
-                </h2>
-                <p className="text-sm leading-relaxed text-[#322F2D]/60">
-                  {article.excerpt}
-                </p>
-              </a>
-            ))}
-          </div>
-        </section>
-      </div>
+                <p className="text-sm text-muted-foreground">{newsArticles.length} public updates</p>
+              </div>
 
+              <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {restArticles.map((article) => (
+                  <EditorialCard key={article.slug} item={article} hrefBase="/news" />
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
       <div className="relative z-10">
-
         <Footer />
-
       </div>
     </>
   );

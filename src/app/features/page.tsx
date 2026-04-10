@@ -2,7 +2,6 @@
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PhiC } from "@/components/PhiC";
 import {
   Cpu,
   Shield,
@@ -12,14 +11,15 @@ import {
   Bot,
   Building2,
   Terminal,
-  FileCode,
   Check,
-  BadgeCheck,
-  GitBranch,
-  Layers,
-  Zap,
   ArrowRight,
 } from "lucide-react";
+import {
+  ComparisonSurface,
+  EvidenceSurface,
+  FeatureMatrixSurface,
+  PageSectionHeader,
+} from "@/components/PageArtifacts";
 
 import dynamic from "next/dynamic";
 
@@ -53,13 +53,13 @@ const sections = [
     icon: Shield,
     title: "The compiler doesn\u2019t check syntax. It proves correctness.",
     description:
-      "Here\u2019s the idea. Every program is a circuit. Every circuit must close. We call this \u03A6_c = 1. It means something very specific: every input is consumed. Every output is produced. Every branch terminates. No dangling references. No undefined states. No paths to nowhere. Think of it like an electrical circuit \u2014 if one wire is disconnected, nothing works. We applied that principle to software. If even one input goes unused, one output is missing, one path stays open \u2014 the program does not compile. Not a warning. Not a lint error. It does not compile. Period. You find out at your desk, not in production at 3 AM.",
+      "Here\u2019s the idea. Every program is a circuit. Every circuit must close. We call this Φc = 1. It means something very specific: every input is consumed. Every output is produced. Every branch terminates. No dangling references. No undefined states. No paths to nowhere. Think of it like an electrical circuit \u2014 if one wire is disconnected, nothing works. We applied that principle to software. If even one input goes unused, one output is missing, one path stays open \u2014 the program does not compile. Not a warning. Not a lint error. It does not compile. Period. You find out at your desk, not in production at 3 AM.",
     features: [
-      "\u03A6_c = 1 \u2014 circuit closure. Every input consumed, every output produced, every conditional branch terminated. One open wire = program rejected. Before a single line of code is generated.",
+      "Φc = 1 \u2014 circuit closure. Every input consumed, every output produced, every conditional branch terminated. One open wire = program rejected. Before a single line of code is generated.",
       "207 mathematically certified proofs for all 64 core monomers \u2014 not unit tests. Not assertions. Machine-checked mathematical theorems verified by an independent proof assistant. This is certainty, not confidence.",
       "Domain completeness analysis \u2014 the compiler proves your declared ranges cover every possible execution path. Not most paths. Every path. Zero room for undefined behavior.",
       "Immutable certification hash per function \u2014 a SHA-256 fingerprint of the verified circuit. Change one character, get a different hash. Tamper-proof by construction. Trust that travels with the code.",
-      "Certification badges you can embed anywhere \u2014 green means \u03A6_c = 1, amber means CONTRACT-tier with extended monomers, red means open circuit. Your stakeholders see proof, not promises.",
+      "Certification badges you can embed anywhere \u2014 green means Φc = 1, amber means CONTRACT-tier with extended monomers, red means open circuit. Your stakeholders see proof, not promises.",
     ],
   },
   {
@@ -82,10 +82,10 @@ const sections = [
     icon: ArrowUpFromLine,
     title: "Already have code? Don\u2019t rewrite it. Verify it.",
     description:
-      "You\u2019ve got millions of lines of JavaScript. Python. Rust. C++. Maybe even COBOL. We\u2019re not going to ask you to throw that away. The Lifter reads your existing code \u2014 10 languages, 515 test cases \u2014 and extracts the computational essence into PCD. Point it at a function. The Lifter identifies the pure computation, maps variables to domain constraints, and generates a verified blueprint. Automatically. It separates what\u2019s pure (\u03A6_c = 1, certifiable) from what has side effects (I/O, network, database). The pure part gets mathematical proof. The rest gets tracked. Every lifted circuit is immediately certifiable. Your legacy code just became verifiable code.",
+      "You\u2019ve got millions of lines of JavaScript. Python. Rust. C++. Maybe even COBOL. We\u2019re not going to ask you to throw that away. The Lifter reads your existing code \u2014 10 languages, 515 test cases \u2014 and extracts the computational essence into PCD. Point it at a function. The Lifter identifies the pure computation, maps variables to domain constraints, and generates a verified blueprint. Automatically. It separates what\u2019s pure (Φc = 1, certifiable) from what has side effects (I/O, network, database). The pure part gets mathematical proof. The rest gets tracked. Every lifted circuit is immediately certifiable. Your legacy code just became verifiable code.",
     features: [
       "10 source languages \u2014 JavaScript, TypeScript, TSX/JSX, Python, Rust, C, C++, Go, COBOL, PHP, Java. Whatever your team wrote over the last 20 years, the Lifter reads it.",
-      "Automatic purity analysis \u2014 separates CORE (pure computation, \u03A6_c = 1) from CONTRACT (database calls, file I/O, HTTP requests). Pure logic gets full mathematical certification. Side effects get contract-level tracking. No manual annotation required.",
+      "Automatic purity analysis \u2014 separates CORE (pure computation, Φc = 1) from CONTRACT (database calls, file I/O, HTTP requests). Pure logic gets full mathematical certification. Side effects get contract-level tracking. No manual annotation required.",
       "GitHub integration \u2014 install the GitHub App, and every push triggers auto-lifting. Changed files become certified blueprints. No new workflow. No developer friction. It just works.",
       "Bundle decompilation \u2014 point the Lifter at a compiled webpack or esbuild bundle. It reverse-engineers module boundaries, extracts individual functions, and lifts each one independently. Even your build artifacts are verifiable.",
       "Incremental lifting \u2014 only changed files are re-lifted on subsequent pushes. Minutes for a PR, not hours for a monorepo. The Lifter tracks diffs, not entire repositories.",
@@ -118,7 +118,7 @@ const sections = [
     features: [
       "Public and private PCD registries \u2014 publish certified circuits like npm packages, but every version carries an immutable certification hash. Uncertified code does not enter the registry. Period.",
       "GitHub App \u2014 one-click install, auto-lift on every push, certification report posted as a PR comment. Your existing workflow, unchanged. Mathematical proof, added automatically.",
-      "IDE support for VSCode, Cursor, Windsurf, Zed, IntelliJ, and Trae \u2014 all through a single LSP server. Inline certification status, domain hover tooltips, real-time \u03A6_c feedback as you type. The proof follows you everywhere.",
+      "IDE support for VSCode, Cursor, Windsurf, Zed, IntelliJ, and Trae \u2014 all through a single LSP server. Inline certification status, domain hover tooltips, real-time Φc feedback as you type. The proof follows you everywhere.",
       "Certification dashboard \u2014 one screen showing every circuit in your organization, its certification status, its hash history, its dependency graph. When the SOC2 auditor walks in, you pull up one page.",
       "REST API at registry.brik64.dev \u2014 programmatic access to search, publish, verify, and compose circuits. Build your own tooling on top of the verification engine. We give you the primitives.",
       "MCP Server with 2 tools \u2014 any AI agent that speaks Model Context Protocol can search the registry, compile PCD, and get certification results in a single call. The platform speaks AI natively.",
@@ -130,7 +130,7 @@ const sections = [
     icon: Bot,
     title: "Tell your AI what to build. The compiler proves it\u2019s correct.",
     description:
-      "Here\u2019s why this matters so much right now. PCD has 128 operations. That\u2019s it. Not thousands of library functions. Not infinite syntax combinations. 128 verified atomic operations composed through 3 algebraic operators. An LLM memorizes the entire language in a single prompt. The AI writes PCD. The compiler verifies it. If \u03A6_c \u2260 1, the error message becomes the next prompt. The AI fixes it. Loop until certified. And here\u2019s the breakthrough: this works with ANY LLM. Claude, GPT, Gemini, Grok, Llama, Mistral \u2014 it doesn\u2019t matter. Because the verification is external to the model. The model doesn\u2019t need to be trustworthy. The compiler is. We just made every AI on earth a verified software engineer.",
+      "Here\u2019s why this matters so much right now. PCD has 128 operations. That\u2019s it. Not thousands of library functions. Not infinite syntax combinations. 128 verified atomic operations composed through 3 algebraic operators. An LLM memorizes the entire language in a single prompt. The AI writes PCD. The compiler verifies it. If Φc \u2260 1, the error message becomes the next prompt. The AI fixes it. Loop until certified. And here\u2019s the breakthrough: this works with ANY LLM. Claude, GPT, Gemini, Grok, Llama, Mistral \u2014 it doesn\u2019t matter. Because the verification is external to the model. The model doesn\u2019t need to be trustworthy. The compiler is. We just made every AI on earth a verified software engineer.",
     features: [
       "Ready-made skills for Claude Code, Codex, Gemini CLI, Grok, and OpenCode \u2014 drop-in files that teach any agent the full PCD specification, all 128 monomers, and the compilation workflow. One prompt. Full capability.",
       "MCP server with 2 tools \u2014 any MCP-compatible agent can search the registry and compile new PCD in a single function call. Zero integration code. Zero configuration. It just works.",
@@ -183,27 +183,77 @@ export default function FeaturesPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Features
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Software that works like <span className="text-[#00b8d4]">hardware.</span>
+              Software that works like <span className="text-teal">hardware.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A compiler that doesn't check your code — it proves it correct. 128 mathematically certified operations. 14 export targets. 10 source languages. A self-compiling fixpoint that produces the same hash every time. And a platform that turns mathematical proof into a developer workflow. The CLI is free. Install it now. Your first certified function ships in 30 seconds.
+              A compiler that doesn&apos;t check your code — it proves it correct. 128 mathematically certified operations. 14 export targets. 10 source languages. A self-compiling fixpoint that produces the same hash every time. And a platform that turns mathematical proof into a developer workflow. The CLI is free. Install it now. Your first certified function ships in 30 seconds.
             </p>
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-12 md:px-12 lg:px-18">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {stats.map((s) => (
-              <div key={s.label} className="border border-border bg-muted/20 p-4 text-center">
-                <div className="text-xl font-bold text-teal">{s.value}</div>
-                <div className="mt-1 text-[10px] text-muted-foreground">{s.label}</div>
-              </div>
-            ))}
+        <section className="border-t border-border px-6 py-16 lg:px-16">
+          <PageSectionHeader
+            eyebrow="Core Surfaces"
+            title="One rigorous product page grammar instead of many unrelated card grids."
+            description="Features now open with protagonist artifacts: a comparison surface, a compact matrix, and an evidence layer that tells the user what the system proves and what the page is actually claiming."
+          />
+          <div className="mx-auto mt-10 grid max-w-6xl gap-6">
+            <ComparisonSurface
+              eyebrow="Why this page changed"
+              title="The old feature page explained too much before showing anything concrete."
+              leftTitle="Flat feature sprawl"
+              leftBody="Large blocks of copy and many equal-weight cards force the reader to reconstruct the hierarchy themselves."
+              rightTitle="Artifact-first explanation"
+              rightBody="A small number of stronger objects establish the operating model first, then the detailed sections underneath carry the full technical argument."
+            />
+            <FeatureMatrixSurface
+              eyebrow="Feature Matrix"
+              title="The system-level numbers still matter, but they now live inside one inspectable artifact."
+              description="Core metrics stay visible without forcing the user through a generic stats rail."
+              metrics={stats.slice(0, 3).map((stat) => ({
+                label: stat.label,
+                value: stat.value,
+                detail: "Directly tied to the underlying compiler and certification surface.",
+              }))}
+              rows={[
+                {
+                  title: "Compilation hub",
+                  body: "One blueprint feeds many targets, but the protagonist object is the canonical circuit, not the target list alone.",
+                  state: "accent",
+                },
+                {
+                  title: "Verification layer",
+                  body: "Closure, bounded domains, and deterministic composition remain explicit instead of buried in secondary bullets.",
+                },
+                {
+                  title: "Operational rollout",
+                  body: "Lifting, transpilation, AI, and enterprise pages can now reuse this same artifact grammar instead of inventing new local card styles.",
+                },
+              ]}
+            />
+            <EvidenceSurface
+              eyebrow="Claim Scope"
+              title="What this page is promising"
+              description="The feature layer should state its scope as directly as the compiler does."
+              items={[
+                {
+                  label: "Proof surfaces",
+                  body: "The page explains formal compilation, closure, and evidence generation. It does not claim every surrounding operational concern is mathematically proven.",
+                },
+                {
+                  label: "Migration story",
+                  body: "Legacy lifting and transpilation are framed as certification of the computational core, with explicit handling for external side effects.",
+                },
+                {
+                  label: "AI positioning",
+                  body: "The page presents AI as a producer of blueprints constrained by external verification, not as a trusted source of truth.",
+                },
+              ]}
+            />
           </div>
         </section>
 
@@ -219,7 +269,7 @@ export default function FeaturesPage() {
             </p>
             <div className="text-center">
               <section.icon className="mx-auto mb-3 h-6 w-6 text-teal" />
-              <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">{section.title}</h2>
+              <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">{section.title}</h2>
               <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-relaxed">
                 {section.description}
               </p>
@@ -237,7 +287,7 @@ export default function FeaturesPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Stop debugging. Start proving.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

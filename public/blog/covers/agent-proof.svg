@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#081018"/>
+  <rect width="1600" height="900" fill="url(#paint0_radial)"/>
+  <circle cx="396" cy="430" r="184" fill="#102330" stroke="#3AD3EA" stroke-width="2"/>
+  <path d="M330 496H462V556H330V496Z" fill="#3AD3EA"/>
+  <path d="M324 360C324 320.236 356.236 288 396 288C435.764 288 468 320.236 468 360V450H324V360Z" fill="#D9FBFF"/>
+  <rect x="590" y="182" width="764" height="154" rx="32" fill="#0E1823" stroke="#243547"/>
+  <rect x="590" y="380" width="764" height="338" rx="32" fill="#0E1823" stroke="#243547"/>
+  <rect x="654" y="242" width="252" height="18" rx="9" fill="#3AD3EA"/>
+  <rect x="654" y="284" width="412" height="12" rx="6" fill="#D9FBFF" opacity="0.5"/>
+  <path d="M684 464H1272" stroke="#243547" stroke-width="2"/>
+  <path d="M684 536H1272" stroke="#243547" stroke-width="2"/>
+  <path d="M684 608H1272" stroke="#243547" stroke-width="2"/>
+  <circle cx="722" cy="500" r="18" fill="#3AD3EA"/>
+  <circle cx="722" cy="572" r="18" fill="#3AD3EA"/>
+  <circle cx="722" cy="644" r="18" fill="#72E5C5"/>
+  <text x="120" y="104" fill="#EAFEFF" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Agent Proof Loop</text>
+  <text x="120" y="820" fill="#A3E8F3" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="6">PROMPT · VERIFY · REPAIR · CERTIFY</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1127 145) rotate(147.089) scale(981.375 963.868)">
+      <stop stop-color="#1197B1" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#081018" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

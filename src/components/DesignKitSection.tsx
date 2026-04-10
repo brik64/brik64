@@ -1,6 +1,9 @@
 import { ArrowUpRight, Check, AlertCircle, Info, ChevronRight } from "lucide-react";
 import { PhiC } from "@/components/PhiC";
 import { PixelPerfectShowcase } from "@/components/PixelPerfectShowcase";
+import { HomeProofArtifactsShowcase } from "@/components/HomeProofArtifacts";
+import { PageArtifactsShowcase } from "@/components/PageArtifacts";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
 export function DesignKitSection() {
   return (
@@ -128,37 +131,31 @@ export function DesignKitSection() {
         <div className="mt-16 border-t border-border pt-12">
           <h3 className="text-lg font-medium tracking-tight">Buttons</h3>
           <p className="mt-1 text-sm text-muted-foreground">
-            Primary (teal), secondary (outlined), ghost, and link variants
+            Primary teal, muted secondary, and external-link actions now share one site grammar.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <button className="inline-flex h-9 items-center justify-center rounded-md bg-teal px-6 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
-              Primary
-            </button>
-            <button className="inline-flex h-9 items-center justify-center rounded-full border border-teal px-5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
-              Outlined
-            </button>
-            <button className="inline-flex h-9 items-center justify-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary">
-              Secondary
-            </button>
-            <button className="inline-flex h-9 items-center justify-center rounded-lg px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
-              Ghost
-            </button>
-            <a href="#" className="inline-flex items-center gap-1 text-sm font-medium text-foreground underline-offset-4 hover:underline">
-              Link style <ArrowUpRight className="h-3.5 w-3.5" />
+            <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
+              Primary CTA
+            </HomePrimaryButton>
+            <HomeSecondaryButton href="https://github.com/brik64-admin/brik64-skills" target="_blank" rel="noopener noreferrer">
+              Secondary CTA
+            </HomeSecondaryButton>
+            <a href="https://digitalcircuitality.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-base font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-teal hover:underline">
+              External link <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <button className="inline-flex h-8 items-center justify-center rounded-md bg-teal px-4 text-xs font-medium text-white">
-              Small Primary
-            </button>
-            <button className="inline-flex h-10 items-center justify-center rounded-md bg-teal px-8 text-base font-medium text-white">
-              Large Primary
-            </button>
-            <button className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-foreground px-6 text-sm font-medium text-background transition-colors hover:bg-foreground/90">
-              Dark <ChevronRight className="h-4 w-4" />
-            </button>
+            <span className="inline-flex h-12 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.04] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-teal">
+              Button family
+            </span>
+            <span className="inline-flex h-12 items-center justify-center rounded-md border border-border px-4 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              No black CTA
+            </span>
+            <span className="inline-flex h-12 items-center justify-center rounded-md border border-border px-4 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              External icon required
+            </span>
           </div>
         </div>
 
@@ -225,6 +222,93 @@ export function DesignKitSection() {
               <span className="mt-3 inline-block rounded-full border border-border px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                 bg-secondary/30
               </span>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── HOME PROOF ARTIFACTS ─── */}
+        <div className="mt-16 border-t border-border pt-12">
+          <p className="text-xs font-medium uppercase tracking-[1.44px] text-muted-foreground">
+            HOME PROOF ARTIFACTS
+          </p>
+          <h3 className="mt-3 text-lg font-medium tracking-tight">
+            Certification Artifacts
+          </h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            Polished home-page objects for formal proof narratives. Each artifact must carry
+            a header, a status, a visual payload, proof metadata, and a scoped claim. These are
+            the canonical surfaces for Blueprint Hub, Registry Workbench, Workflow Rail, Agent
+            Proof Loop, Evidence Dossier, and Risk Case Board.
+          </p>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            The same family now covers Problem Frame, Language Exchange, Guarantee Matrix,
+            Integration Relay, and Editor Control so the home reads as one system instead of
+            isolated card variants.
+          </p>
+
+          <div className="mt-8">
+            <HomeProofArtifactsShowcase />
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-border pt-12">
+          <p className="text-xs font-medium uppercase tracking-[1.44px] text-muted-foreground">
+            PAGE ARTIFACTS
+          </p>
+          <h3 className="mt-3 text-lg font-medium tracking-tight">
+            Product, Evidence, and Editorial Surfaces
+          </h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            The redesign extends beyond the home. Comparison Surface, Feature Matrix, and Evidence
+            Surface are the shared grammar for product pages, compliance narratives, and editorial
+            listings. Blog and news now use local covers, strong featured artifacts, and paginated
+            archive rails instead of flat post grids.
+          </p>
+
+          <div className="mt-8">
+            <PageArtifactsShowcase />
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-border pt-12">
+          <p className="text-xs font-medium uppercase tracking-[1.44px] text-muted-foreground">
+            SITE GRAMMAR
+          </p>
+          <h3 className="mt-3 text-lg font-medium tracking-tight">
+            One section language across home, product, and editorial pages
+          </h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            The public site now uses the same centered teal section header, the same artifact-first narrative, and the same CTA family everywhere that matters. Home sections, product sections, and editorial surfaces differ in content, not in grammar.
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Headers</p>
+              <p className="mt-3 text-sm font-semibold text-foreground">Centered teal titles</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                `HomeSectionHeader` and `PageSectionHeader` now share the same alignment, eyebrow treatment, and hierarchy.
+              </p>
+            </div>
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Actions</p>
+              <p className="mt-3 text-sm font-semibold text-foreground">Teal primary + muted secondary</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Primary buttons are solid teal. Secondary buttons are subdued. External links carry the arrow icon.
+              </p>
+            </div>
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Artifacts</p>
+              <p className="mt-3 text-sm font-semibold text-foreground">One protagonist per section</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Each block should show header, status, payload, proof metadata, and a scoped claim rather than many equal-weight cards.
+              </p>
+            </div>
+            <div className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Forbidden</p>
+              <p className="mt-3 text-sm font-semibold text-foreground">No isolated black oval CTA</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Mixed alignment, section-specific title colors, and generic card clouds are treated as regressions.
+              </p>
             </div>
           </div>
         </div>

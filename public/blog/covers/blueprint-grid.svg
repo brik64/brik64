@@ -1,0 +1,24 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#07141A"/>
+  <rect width="1600" height="900" fill="url(#paint0_radial)"/>
+  <g opacity="0.2">
+    <path d="M0 120H1600M0 240H1600M0 360H1600M0 480H1600M0 600H1600M0 720H1600M0 840H1600" stroke="#A7F3FF"/>
+    <path d="M160 0V900M320 0V900M480 0V900M640 0V900M800 0V900M960 0V900M1120 0V900M1280 0V900M1440 0V900" stroke="#A7F3FF"/>
+  </g>
+  <rect x="146" y="172" width="520" height="312" rx="28" fill="#0D2028" stroke="#3AD3EA" stroke-width="2"/>
+  <rect x="202" y="250" width="232" height="22" rx="11" fill="#3AD3EA" opacity="0.8"/>
+  <rect x="202" y="302" width="410" height="14" rx="7" fill="#DFFBFF" opacity="0.7"/>
+  <rect x="202" y="338" width="348" height="14" rx="7" fill="#DFFBFF" opacity="0.42"/>
+  <rect x="202" y="390" width="128" height="48" rx="24" fill="#102F38" stroke="#3AD3EA"/>
+  <path d="M865 203L1027 203L1140 316L1140 478L978 478L865 365V203Z" fill="#3AD3EA" opacity="0.95"/>
+  <path d="M1028 203L1188 203L1302 316L1302 478L1140 478L1140 316L1028 203Z" fill="#123641"/>
+  <path d="M865 494H1302V560H865V494Z" fill="#DFFBFF" opacity="0.14"/>
+  <text x="148" y="110" fill="#DFFBFF" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">BRIK64 Blueprint</text>
+  <text x="148" y="820" fill="#89DDEA" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="6">CANONICAL CIRCUIT · VERIFIED STRUCTURE</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1092 214) rotate(140.318) scale(955.467 994.973)">
+      <stop stop-color="#0FA6BF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#07141A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

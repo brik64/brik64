@@ -8,7 +8,7 @@ import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 
 const sdkExamples: Record<string, { code: string; description: string }> = {
   javascript: {
-    description: "Use verified monomers directly in your JavaScript/TypeScript code. Every function built from Core monomers via EVA operators automatically carries Φ_c = 1 — regardless of the host language.",
+    description: "Use verified monomers directly in your JavaScript/TypeScript code. Every function built from Core monomers via EVA operators automatically carries Φc = 1 — regardless of the host language.",
     code: `import { mc, eva } from '@brik64/core';
 
 // Use verified monomers instead of raw operators
@@ -25,7 +25,7 @@ const pipeline = eva.seq(
 // and use it directly in your code
 import { registry } from '@brik64/core';
 const jwtValidator = await registry.pull('CRYPTO-005');
-const isValid = jwtValidator.run(token); // Φ_c = 1`,
+const isValid = jwtValidator.run(token); // Φc = 1`,
   },
   python: {
     description: "Drop verified monomers into your Python codebase. Every operation carries its mathematical proof. Pull certified circuits from the registry and use them as regular Python functions.",
@@ -44,7 +44,7 @@ process = seq(
 )
 
 # Pull from the public registry — drop into existing code
-auth_flow = pull("AUTH-FLOW-001")  # OAuth2 handler, Φ_c = 1
+auth_flow = pull("AUTH-FLOW-001")  # OAuth2 handler, Φc = 1
 result = auth_flow.execute(request)  # certified, no PCD needed`,
   },
   rust: {
@@ -62,12 +62,12 @@ fn main() {
         |x: (u8, u8)| mc::add8(x.0, x.1),
         |s| mc::mod8(s, 7)
     );
-    println!("{}", pipeline((250, 10))); // Φ_c = 1
+    println!("{}", pipeline((250, 10))); // Φc = 1
 
     // Pull certified circuits from registry
     let registry = Registry::public();
     let sort = registry.pull("SORT-ALG-042").unwrap(); // Quicksort
-    let sorted = sort.run(&mut data); // certified, Φ_c = 1
+    let sorted = sort.run(&mut data); // certified, Φc = 1
 }`,
   },
 };
@@ -157,7 +157,7 @@ export default async function LanguagePage(props: { params: Promise<{ slug: stri
             <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
               Install the {lang.name} SDK
             </h2>
-            <div className="mt-6 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
+            <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14]">
               <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
                 <div className="h-3 w-3 rounded-full bg-red-500/60" />
                 <div className="h-3 w-3 rounded-full bg-yellow-500/60" />

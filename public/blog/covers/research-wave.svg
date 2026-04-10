@@ -1,0 +1,17 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#07111A"/>
+  <rect width="1600" height="900" fill="url(#paint0_radial)"/>
+  <path d="M0 560C120 500 240 440 360 440C480 440 600 540 720 540C840 540 960 360 1080 360C1200 360 1320 500 1440 500C1520 500 1573.33 473.333 1600 460V900H0V560Z" fill="#0E2230"/>
+  <path d="M0 470C120 410 240 350 360 350C480 350 600 450 720 450C840 450 960 270 1080 270C1200 270 1320 410 1440 410C1520 410 1573.33 383.333 1600 370" stroke="#3AD3EA" stroke-width="8"/>
+  <path d="M0 560C120 500 240 440 360 440C480 440 600 540 720 540C840 540 960 360 1080 360C1200 360 1320 500 1440 500C1520 500 1573.33 473.333 1600 460" stroke="#72E5C5" stroke-width="8" opacity="0.75"/>
+  <rect x="126" y="150" width="460" height="244" rx="30" fill="#0F1824" stroke="#1E3443"/>
+  <rect x="1012" y="164" width="462" height="224" rx="30" fill="#0F1824" stroke="#1E3443"/>
+  <text x="120" y="102" fill="#F4FEFF" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Research Wave</text>
+  <text x="120" y="822" fill="#A1E5F1" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="6">SHANNON · DETERMINISM · MEASURED CERTAINTY</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1137 145) rotate(148.11) scale(1014.94 1022.53)">
+      <stop stop-color="#0F9AB3" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#07111A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

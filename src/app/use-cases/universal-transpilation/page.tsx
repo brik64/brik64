@@ -75,12 +75,12 @@ export default function UniversalTranspilationUseCasePage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframeClient />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Use Case
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Universal Transpilation:{" "}
-              <span className="text-[#00b8d4]">10 Languages In. 14 Out. 140 Proven Paths.</span>
+              <span className="text-teal">10 Languages In. 14 Out. 140 Proven Paths.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               10 languages in. 14 targets out. 140 migration paths. Same mathematical proof on every single one.
@@ -90,7 +90,7 @@ export default function UniversalTranspilationUseCasePage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
@@ -107,7 +107,7 @@ export default function UniversalTranspilationUseCasePage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Problem ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -125,7 +125,7 @@ export default function UniversalTranspilationUseCasePage() {
 
           {/* ── The Solution ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -134,8 +134,8 @@ export default function UniversalTranspilationUseCasePage() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
                 <div key={s.step} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <span className="text-sm font-bold text-[#00b8d4]">{s.step}</span>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                    <span className="text-sm font-bold text-teal">{s.step}</span>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">{s.title}</h3>
@@ -148,7 +148,7 @@ export default function UniversalTranspilationUseCasePage() {
             {/* Terminal example */}
             <CopyableCode title="terminal">{`$ brikc transpile ./src/ --from python --to rust --output ./dist/
 ✓ Lifting 34 Python files to PCD...
-✓ Extracted 127 circuits (Φ_c = 1 for all)
+✓ Extracted 127 circuits (Φc = 1 for all)
 ✓ Compiling 127 circuits to Rust...
 ✓ Equivalence proof: python/src ≡ rust/dist
 ✓ Output: ./dist/
@@ -165,7 +165,7 @@ $ brikc verify ./dist/ --against ./src/
 
           {/* ── Real Example ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -191,7 +191,7 @@ $ brikc verify ./dist/ --against ./src/
     assert max_val > min_val | reject("Invalid range");
 
     fn normalize(values: List[Float64], min_val: Float64, max_val: Float64) {
-        return values.map(|v| (v - min_val) / (max_val - min_val));  // Φ_c = 1
+        return values.map(|v| (v - min_val) / (max_val - min_val));  // Φc = 1
     }
 }`}</CopyableCode>
 
@@ -211,7 +211,7 @@ $ brikc verify ./dist/ --against ./src/
 
           {/* ── Results ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -220,7 +220,7 @@ $ brikc verify ./dist/ --against ./src/
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
                 <div key={item.title} className="border border-border bg-white p-6">
-                  <CheckCircle2 className="mb-3 h-6 w-6 text-[#00b8d4]" />
+                  <CheckCircle2 className="mb-3 h-6 w-6 text-teal" />
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
@@ -240,7 +240,7 @@ $ brikc verify ./dist/ --against ./src/
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>

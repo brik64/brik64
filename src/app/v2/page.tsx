@@ -109,7 +109,7 @@ export default function HomeV2() {
         return clamped;
     }
 
-    // Φ_c = 1 — every input produces
+    // Φc = 1 — every input produces
     // a bounded, valid output.
     // The compiler proves this.
 }`}</pre>
@@ -250,7 +250,7 @@ export default function HomeV2() {
                 <p className="mt-2 text-zinc-400">&nbsp;&nbsp;Generating PCD...</p>
                 <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.82 &mdash; missing case: glucose &lt; 40 mg/dL</p>
                 <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Fixing...</p>
-                <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1.000 &mdash; 8 domains verified. Overdose impossible.</p>
+                <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1 &mdash; 8 domains verified. Overdose impossible.</p>
                 <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Output: dose_calc.pcd + dose_calc.cert.json</p>
                 <p className="mt-2 text-zinc-500">&nbsp;&nbsp;Compile to: brikc compile dose_calc.pcd --target rust,python,wasm</p>
               </div>

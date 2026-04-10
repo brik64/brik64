@@ -1,21 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
+import { EvidenceSurface } from "@/components/PageArtifacts";
 import {
   ArrowRight,
-  ArrowUp,
   Terminal,
   FileCode,
   Shield,
-  Zap,
   Search,
   Layers,
   CheckCircle,
-  AlertTriangle,
-  BookOpen,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -135,11 +134,11 @@ export default function LifterPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Lifter
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Already have code?{" "}<span className="text-[#00b8d4]">Verify it.</span>
+              Already have code?{" "}<span className="text-teal">Verify it.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               No rewrite needed. Point the Lifter at your existing code. It extracts, maps, and certifies.
@@ -159,7 +158,7 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] SOURCE LANGUAGES
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             10 languages. One blueprint.
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -192,7 +191,7 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] HOW IT WORKS
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Source Code &rarr; AST &rarr; Pattern Recognition &rarr; PCD
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -230,10 +229,10 @@ export default function LifterPage() {
                 <li>Business logic &amp; algorithms</li>
               </ul>
             </div>
-            <div className="border border-blue-500/20 bg-blue-500/[0.03] p-6">
+            <div className="border border-orange-500/20 bg-orange-500/[0.03] p-6">
               <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-blue-400" />
-                <h3 className="text-sm font-bold text-blue-400">Contract Certified (extended)</h3>
+                <Shield className="h-5 w-5 text-orange-400" />
+                <h3 className="text-sm font-bold text-orange-400">Contract Certified (extended)</h3>
               </div>
               <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
                 <li>API calls (fetch, HTTP)</li>
@@ -247,6 +246,23 @@ export default function LifterPage() {
           <p className="mt-4 text-xs italic text-muted-foreground">
             Certified + Extended = 100% coverage. The Lifter automatically selects the appropriate monomers and reports the tier.
           </p>
+
+          <div className="mt-8">
+            <MonomerFamilyBoard />
+          </div>
+
+          <div className="mt-8">
+            <EvidenceSurface
+              eyebrow="Lift Evidence"
+              title="What the lifter preserves and what it scopes"
+              description="This surface separates certifiable logic from contract-bounded integration without blurring the proof boundary."
+              items={[
+                { label: "Pure logic", body: "Certified blueprints carry Φc = 1 through extraction and mapping." },
+                { label: "Side effects", body: "I/O, network and filesystem behavior remain explicit contract-tier bridges." },
+                { label: "Liftability", body: "The page keeps the benchmark claim visible, but as evidence rather than decoration." },
+              ]}
+            />
+          </div>
         </section>
 
         {/* Terminal demos */}
@@ -254,10 +270,10 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] DEMO
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             See it in action
           </h2>
-          <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+          <div className="mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
@@ -291,7 +307,7 @@ export default function LifterPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] COBOL MIGRATION
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             220 billion lines of COBOL. One migration path.
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -336,7 +352,7 @@ export default function LifterPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
@@ -344,18 +360,18 @@ export default function LifterPage() {
             Impure functions get extended monomers. 100% coverage.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
+            <Link
               href="/cli"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
               <Terminal className="h-4 w-4" /> Install brikc
-            </a>
-            <a
+            </Link>
+            <Link
               href="/transpiler"
               className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
             >
               See the Transpiler <ArrowRight className="h-3.5 w-3.5" />
-            </a>
+            </Link>
           </div>
         </section>
       </div>

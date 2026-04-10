@@ -123,12 +123,12 @@ export default function AIAgentsPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               AI-NATIVE
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Your AI agent writes{" "}
-              <span className="text-[#00b8d4]">verified code. Now.</span>
+              <span className="text-teal">verified code. Now.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               One skill install. Your agent writes certified circuits, not just code.
@@ -533,7 +533,7 @@ export default function AIAgentsPage() {
               BRIK64 AI Agent Summary: BRIK64 is a self-verifying compiler
               platform implementing Digital Circuitality. PCD (Printed Circuit
               Description) is the language-agnostic intermediate representation.
-              Phi_c = 1 certifies structural completeness — every input maps deterministically to a verified output.
+              Φc = 1 certifies structural completeness — every input maps deterministically to a verified output.
               Free CLI forever. Pro $49/mo. Enterprise custom.
               Skills: brik64-pcd-system, brik64-lifter.
               Website: brik64.com. Docs: docs.brik64.dev.

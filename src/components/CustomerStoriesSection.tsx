@@ -17,7 +17,7 @@ const tabs: Record<TabKey, TabData> = {
   compile: {
     label: "Compile",
     description:
-      "Write PCD once, compile to any target. The compiler preserves semantic equivalence across all outputs — verified by Φ_c.",
+      "Write PCD once, compile to any target. The compiler preserves semantic equivalence across all outputs — verified by Φc.",
     stat: "Multiple compilation targets",
     command: "brikc compile app.pcd --target rust",
     output: [
@@ -26,11 +26,11 @@ const tabs: Record<TabKey, TabData> = {
       "  Parsing    app.pcd ........................ ok",
       "  Lowering   PCD → IR ....................... ok",
       "  Emitting   IR → Rust ...................... ok",
-      "  Verifying  Φ_c equivalence ................ ok",
+      "  Verifying  Φc equivalence ................. ok",
       "",
       '  ✓ Output written to dist/app.rs (342 lines)',
       "  ✓ Semantic equivalence: certified",
-      "  ✓ Closure metric Φ_c = 1.0000",
+      "  ✓ Closure certificate Φc = 1",
     ],
   },
   lift: {
@@ -68,13 +68,13 @@ const tabs: Record<TabKey, TabData> = {
       "",
       "  ✓ 23 files transpiled to dist/rust/",
       "  ✓ Path: Python → PCD → Rust",
-      "  ✓ All 23 files Φ_c-certified",
+      "  ✓ All 23 files Φc-certified",
     ],
   },
   certify: {
     label: "Certify",
     description:
-      "Run the closure metric on any PCD program. Φ_c mathematically proves whether a program is semantically complete.",
+      "Run the closure metric on any PCD program. Φc mathematically proves whether a program is semantically complete.",
     stat: "Mathematical proof, not tests",
     command: "brikc check program.pcd",
     output: [
@@ -82,10 +82,10 @@ const tabs: Record<TabKey, TabData> = {
       "",
       "  Loading    program.pcd .................... ok",
       "  Building   dependency graph ............... ok",
-      "  Computing  Φ_c ........................... ok",
+      "  Computing  Φc ............................ ok",
       "",
       "  ┌─────────────────────────────────┐",
-      "  │  Φ_c = 1.0000                   │",
+      "  │  Φc = 1                          │",
       "  │  Status: CERTIFIED              │",
       "  │  Unclosed operations: 0          │",
       "  │  Total operations: 312           │",
@@ -180,7 +180,7 @@ export function CustomerStoriesSection() {
                   ) : line.startsWith("  ✓") ? (
                     <span className="text-emerald-400">{line}</span>
                   ) : line.includes("CERTIFIED") ||
-                    line.includes("Φ_c = 1.0000") ? (
+                    line.includes("Φc = 1") ? (
                     <span className="font-bold text-emerald-400">{line}</span>
                   ) : line.startsWith("  ┌") ||
                     line.startsWith("  └") ||

@@ -172,11 +172,11 @@ export default function BlockchainPage() {
 
         {/* Gas estimation */}
         <section className="border-border mx-auto max-w-7xl border-t px-4 py-16 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-medium tracking-tight">Gas estimation from PCD</h2>
-          <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+          <h2 className="mx-auto text-center text-xl font-medium tracking-tight text-teal">Gas estimation from PCD</h2>
+          <p className="mx-auto mt-2 max-w-xl text-center text-sm text-muted-foreground">
             Count monomers = count operations = estimate gas. Within 20% of actual execution cost.
           </p>
-          <div className="mt-4 max-w-md overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+          <div className="mx-auto mt-4 max-w-md overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />

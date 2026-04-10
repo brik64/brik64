@@ -1,177 +1,74 @@
-"use client";
+import type { Metadata } from "next";
 
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { blogPosts, getAllTags, getAllCategories } from "@/lib/blog-data";
+import {
+  EditorialCard,
+  EditorialHero,
+  FeaturedEditorialCard,
+  PaginationRail,
+} from "@/components/EditorialSystem";
+import { blogPosts } from "@/lib/blog-data";
+import { paginateItems } from "@/lib/editorial-utils";
 
-import dynamic from "next/dynamic";
+const POSTS_PER_PAGE = 9;
 
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
-
-const tagColors: Record<string, string> = {
-  VISION: "bg-purple-100 text-purple-700",
-  TUTORIAL: "bg-green-100 text-green-700",
-  "DEEP DIVE": "bg-blue-100 text-blue-700",
-  PRODUCT: "bg-cyan-100 text-cyan-700",
-  VERIFICATION: "bg-red-100 text-red-700",
-  MIGRATION: "bg-orange-100 text-orange-700",
-  HARDWARE: "bg-yellow-100 text-yellow-800",
-  "AI AGENTS": "bg-indigo-100 text-indigo-700",
-  RESEARCH: "bg-teal-100 text-teal-700",
-  "AI SAFETY": "bg-rose-100 text-rose-700",
-  TOOLING: "bg-amber-100 text-amber-700",
-  REVOLUTION: "bg-fuchsia-100 text-fuchsia-700",
-  SDKS: "bg-lime-100 text-lime-700",
-  ENGINEERING: "bg-slate-100 text-slate-700",
-  PLATFORM: "bg-sky-100 text-sky-700",
+export const metadata: Metadata = {
+  title: "Engineering Blog — BRIK64",
+  description:
+    "Technical writing, product notes, research, and proof-driven engineering articles from the BRIK64 team.",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default function BlogPage() {
-  const [activeTag, setActiveTag] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-  const tags = getAllTags();
-  const categories = getAllCategories();
-
-  const filtered = blogPosts.filter((post) => {
-    if (activeTag && post.tag !== activeTag) return false;
-    if (activeCategory && post.category !== activeCategory) return false;
-    return true;
-  });
+  const [featuredPost, ...restPosts] = blogPosts;
+  const pagination = paginateItems(restPosts, 1, POSTS_PER_PAGE - 1);
 
   return (
     <>
       <Navbar />
       <main className="relative z-10 flex-1">
         <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        {/* Hero */}
-        <section className="bg-background border-b border-[#EEEEEE] bg-white px-6 py-20 relative overflow-hidden">
-          <HeroWireframe />
-          <div className="relative z-10 mx-auto max-w-5xl text-center">
-            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00b8d4]">
-              BLOG
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight text-[#1A1817] sm:text-5xl">
-              Engineering blog
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-[#322F2D]/60">
-              How we build. What we learn. Technical deep dives into verification,
-              transpilation, and the compiler that compiles itself.
-            </p>
-          </div>
-        </section>
+          <EditorialHero
+            eyebrow="Blog"
+            title="Proof-first engineering, compiler rigor, and the operating model behind BRIK64."
+            description="The blog now behaves like an editorial surface: one featured artifact, compact metadata, paginated archives, and local covers that make every post scannable before you read a line."
+            chips={["VISION", "ENGINEERING", "AI SAFETY", "PLATFORM"]}
+          />
 
-        {/* Filters */}
-        <section className="bg-background border-b border-[#EEEEEE] bg-[#FAFAFA] px-6 py-6">
-          <div className="mx-auto max-w-6xl">
-            <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#322F2D]/40">
-                Category:
-              </span>
-              <button
-                onClick={() => setActiveCategory(null)}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                  !activeCategory
-                    ? "bg-[#1A1817] text-white"
-                    : "bg-white text-[#322F2D]/60 hover:text-[#1A1817]"
-                }`}
-              >
-                All
-              </button>
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() =>
-                    setActiveCategory(activeCategory === cat ? null : cat)
-                  }
-                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                    activeCategory === cat
-                      ? "bg-[#1A1817] text-white"
-                      : "bg-white text-[#322F2D]/60 hover:text-[#1A1817]"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#322F2D]/40">
-                Tag:
-              </span>
-              <button
-                onClick={() => setActiveTag(null)}
-                className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                  !activeTag
-                    ? "bg-[#1A1817] text-white"
-                    : "bg-white text-[#322F2D]/60 hover:text-[#1A1817]"
-                }`}
-              >
-                All
-              </button>
-              {tags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() =>
-                    setActiveTag(activeTag === tag ? null : tag)
-                  }
-                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                    activeTag === tag
-                      ? "bg-[#1A1817] text-white"
-                      : "bg-white text-[#322F2D]/60 hover:text-[#1A1817]"
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
+          <section className="px-6 py-12 lg:px-16">
+            <div className="mx-auto max-w-6xl">
+              <FeaturedEditorialCard item={featuredPost} hrefBase="/blog" />
 
-        {/* Grid */}
-        <section className="bg-background bg-white px-6 py-16">
-          <div className="mx-auto max-w-6xl">
-            <p className="mb-8 text-sm text-[#322F2D]/40">
-              {filtered.length} article{filtered.length !== 1 ? "s" : ""}
-            </p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((post) => (
-                <a
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group flex flex-col border border-[#EEEEEE] bg-white p-6 transition-all hover:border-[#00b8d4]/30 hover:shadow-md"
-                >
-                  <div className="mb-3 flex items-center gap-2">
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                        tagColors[post.tag] ?? "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {post.tag}
-                    </span>
-                  </div>
-                  <h2 className="mb-2 text-lg font-semibold leading-snug text-[#1A1817] group-hover:text-[#00b8d4] transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="mb-4 flex-1 text-sm leading-relaxed text-[#322F2D]/60">
-                    {post.excerpt}
+              <div className="mt-12 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    Archive
                   </p>
-                  <p className="text-xs text-[#322F2D]/30">{post.date}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
+                    Latest posts
+                  </h2>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {pagination.totalItems + 1} posts total. Page 1 of {pagination.totalPages}.
+                </p>
+              </div>
 
+              <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                {pagination.items.map((post) => (
+                  <EditorialCard key={post.slug} item={post} hrefBase="/blog" />
+                ))}
+              </div>
+
+              <PaginationRail basePath="/blog" page={1} totalPages={pagination.totalPages} />
+            </div>
+          </section>
+        </div>
       </main>
       <div className="relative z-10">
-
         <Footer />
-
       </div>
     </>
   );

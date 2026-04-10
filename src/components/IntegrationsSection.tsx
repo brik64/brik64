@@ -1,101 +1,18 @@
-const flowSteps = [
-  { label: "GitHub Repo", accent: false },
-  { label: "brikc lift", accent: true },
-  { label: "PCD Blueprint", accent: true },
-  { label: "brikc build", accent: true },
-  { label: "Any Language", accent: false },
-];
-
-const workflowSteps = [
-  {
-    number: "1",
-    title: "Push to GitHub",
-    description: "Your team pushes code exactly as it does today.",
-  },
-  {
-    number: "2",
-    title: "Lift to PCD",
-    description:
-      "BRIK64 lifts source into a verified language-agnostic blueprint.",
-  },
-  {
-    number: "3",
-    title: "Certify",
-    description: null,
-  },
-  {
-    number: "4",
-    title: "Build to any target",
-    description:
-      "Emit the same verified blueprint to any supported target.",
-  },
-];
+import { IntegrationRelayArtifact } from "@/components/HomeProofArtifacts";
+import { HomeSectionHeader } from "@/components/PageArtifacts";
 
 export function IntegrationsSection() {
   return (
     <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [07] · INTEGRATIONS
-        </p>
+        <HomeSectionHeader
+          eyebrow="[07] · INTEGRATIONS"
+          title="The repository stays where the team already works."
+          description="Push code as usual. BRIK64 lifts, certifies, comments on the PR, and emits packages without forcing a parallel workflow."
+        />
 
-        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          Your code stays in GitHub.
-          <br />
-          <span className="text-teal">BRIK64 verifies it.</span>
-        </h3>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          Push code as usual. BRIK64 lifts, certifies, and comments on the PR automatically.
-        </p>
-
-        {/* Flow diagram */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-2 md:gap-3">
-          {flowSteps.map((step, i) => (
-            <div key={step.label} className="flex items-center gap-2 md:gap-3">
-              <div
-                className={`border px-4 py-2.5 text-xs font-medium ${
-                  step.accent
-                    ? "border-teal/30 bg-teal/10 text-teal"
-                    : "border-border bg-background text-foreground"
-                }`}
-              >
-                {step.label}
-              </div>
-              {i < flowSteps.length - 1 && (
-                <span className="text-muted-foreground">→</span>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* The Full Workflow */}
-        <div className="mt-14">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-            The Full Workflow
-          </p>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {workflowSteps.map((step) => (
-              <div
-                key={step.number}
-                className="group flex gap-5 border border-border bg-background p-5 transition-colors hover:border-teal/30"
-              >
-                <span className="text-2xl font-light tabular-nums text-muted-foreground/40 transition-colors group-hover:text-teal/60">
-                  {step.number}
-                </span>
-                <div>
-                  <p className="text-sm font-medium">{step.title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                    {step.description ?? (
-                      <>
-                        TCE verifies the circuit and posts certification straight to the PR.
-                      </>
-                    )}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-10">
+          <IntegrationRelayArtifact />
         </div>
       </div>
     </section>

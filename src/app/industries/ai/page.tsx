@@ -22,7 +22,7 @@ const useCases = [
     icon: Bot,
     title: "MCP Integration",
     description:
-      "Connect AI agents to the BRIK64 registry via Model Context Protocol. Your agent queries certified circuits before generating new code. Two tools: certify() and query(). The agent writes PCD. The compiler verifies it. If Φ_c ≠ 1, the error message becomes the next prompt. Loop until certified.",
+      "Connect AI agents to the BRIK64 registry via Model Context Protocol. Your agent queries certified circuits before generating new code. Two tools: certify() and query(). The agent writes PCD. The compiler verifies it. If Φc ≠ 1, the error message becomes the next prompt. Loop until certified.",
   },
   {
     icon: Lock,
@@ -56,12 +56,12 @@ export default function AIIndustryPage() {
           <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
             <HeroWireframeClient />
             <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-              <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
                 AI &amp; Machine Learning
               </span>
               <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 RLHF teaches AI to{" "}
-                <span className="text-[#00b8d4]">want to do right. BRIK64 prevents it from doing wrong.</span>
+                <span className="text-teal">want to do right. BRIK64 prevents it from doing wrong.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
                 70% of new code is now AI-generated. Not a single line carries a mathematical
@@ -71,7 +71,7 @@ export default function AIIndustryPage() {
               <div className="mt-10 flex items-center justify-center gap-4">
                 <a
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
                 >
                   Certify AI-generated code <ArrowRight className="h-4 w-4" />
                 </a>
@@ -90,7 +90,7 @@ export default function AIIndustryPage() {
           <div className="mx-auto max-w-7xl border-x border-border">
             {/* ── The Challenge ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 The Challenge
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -128,7 +128,7 @@ export default function AIIndustryPage() {
 
             {/* ── How BRIK64 Helps ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 How BRIK64 Helps
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -137,8 +137,8 @@ export default function AIIndustryPage() {
               <div className="mt-10 grid gap-8 md:grid-cols-2">
                 {useCases.map((uc) => (
                   <div key={uc.title} className="flex gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                      <uc.icon className="h-6 w-6 text-[#00b8d4]" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                      <uc.icon className="h-6 w-6 text-teal" />
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">
@@ -155,7 +155,7 @@ export default function AIIndustryPage() {
 
             {/* ── Policy Circuit Example ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 Policy Circuit Example
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -169,7 +169,7 @@ export default function AIIndustryPage() {
                 bounds can proceed. The circuit does not negotiate.
               </p>
               <CopyableCode title="ai_agent_policy.pcd">{`// AI Agent Policy Circuit — Authorization Bounds
-// Φ_c = 1 — every agent action mathematically authorized
+// Φc = 1 — every agent action mathematically authorized
 
 circuit ai_agent_policy {
   // Action classification
@@ -220,7 +220,7 @@ circuit ai_agent_policy {
 
             {/* ── Standards ── */}
             <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+              <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
                 Compliance &amp; Standards
               </span>
               <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -229,7 +229,7 @@ circuit ai_agent_policy {
               <ul className="mx-auto mt-8 max-w-2xl space-y-3">
                 {standards.map((s) => (
                   <li key={s} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal" />
                     <span className="text-sm text-foreground">{s}</span>
                   </li>
                 ))}
@@ -249,7 +249,7 @@ circuit ai_agent_policy {
               <div className="mt-8 flex items-center justify-center gap-4">
                 <a
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
                 >
                   Certify AI-generated code <ArrowRight className="h-4 w-4" />
                 </a>

@@ -3,24 +3,14 @@
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PhiC } from "@/components/PhiC";
 import {
   Terminal,
-  Download,
   Shield,
   Zap,
-  Package,
-  FileCode,
   ArrowRight,
   Copy,
   Check,
   Server,
-  Globe,
-  Search,
-  BadgeCheck,
-  GitBranch,
-  Layers,
-  Cpu,
   BookOpen,
 } from "lucide-react";
 
@@ -107,7 +97,7 @@ const commands = [
       { text: "  \u2502  CERTIFICATION REPORT             \u2502", style: "box" as const },
       { text: "  \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524", style: "box" as const },
       { text: "  \u2502  Status:   \u2713 CERTIFIED            \u2502", style: "box-green" as const },
-      { text: "  \u2502  \u03a6_c:      1.000000               \u2502", style: "box-green" as const },
+      { text: "  \u2502  \u03a6c:      1                      \u2502", style: "box-green" as const },
       { text: "  \u2502  Panics:   0 possible              \u2502", style: "box" as const },
       { text: "  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518", style: "box" as const },
       { text: "", style: "blank" as const },
@@ -264,29 +254,59 @@ function InstallBlock() {
   };
 
   return (
-    <div className="overflow-hidden border border-border">
-      <div className="flex border-b border-border bg-muted/30">
-        {installMethods.map((m, i) => (
-          <button
-            key={m.label}
-            onClick={() => setActive(i)}
-            className={`cursor-pointer px-4 py-2.5 text-xs font-medium transition-colors ${
-              active === i
-                ? "border-b-2 border-teal text-teal"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {m.label}
-          </button>
-        ))}
+    <div className="overflow-hidden rounded-[1.75rem] border border-border/80 bg-gradient-to-br from-muted/35 via-background to-background shadow-[0_20px_60px_rgba(15,23,42,0.06)]">
+      <div className="border-b border-border/70 px-4 py-4">
+        <div className="flex flex-wrap justify-center gap-2">
+          {installMethods.map((m, i) => (
+            <button
+              key={m.label}
+              onClick={() => setActive(i)}
+              className={`cursor-pointer rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors ${
+                active === i
+                  ? "border-teal/30 bg-teal/[0.08] text-teal"
+                  : "border-border bg-background text-muted-foreground hover:border-teal/20 hover:text-foreground"
+              }`}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="flex items-center gap-3 bg-[#0a0e14] px-5 py-4">
-        <code className="flex-1 font-mono text-sm text-emerald-400">
-          <span className="text-teal">$</span> {installMethods[active].command}
-        </code>
-        <button onClick={copy} className="cursor-pointer text-zinc-500 hover:text-white transition-colors">
-          {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-        </button>
+
+      <div className="space-y-4 p-4">
+        <div className="flex items-center justify-between gap-3 rounded-2xl border border-teal/15 bg-teal/[0.05] px-4 py-3">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">
+              Install method
+            </p>
+            <p className="mt-1 text-sm font-semibold text-foreground">
+              {installMethods[active].label}
+            </p>
+          </div>
+          <div className="text-right text-xs text-muted-foreground">
+            <div>708 KB binary</div>
+            <div>0 dependencies</div>
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0a0e14] shadow-2xl">
+          <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+            <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
+            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
+            <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
+            <span className="ml-2 text-[10px] font-medium uppercase tracking-[0.16em] text-white/35">
+              install command
+            </span>
+          </div>
+          <div className="flex items-center gap-3 px-5 py-5">
+            <code className="flex-1 overflow-x-auto font-mono text-sm text-emerald-400">
+              <span className="text-teal">$</span> {installMethods[active].command}
+            </code>
+            <button onClick={copy} className="cursor-pointer text-muted-foreground transition-colors hover:text-teal" aria-label="Copy install command">
+              {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -306,15 +326,15 @@ export default function CLIPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Developer Tools
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              One binary. <span className="text-[#00b8d4]">Every guarantee.</span>
+              One binary. <span className="text-teal">Every guarantee.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               One binary. Zero dependencies. 708 KB. Install <code className="rounded bg-muted px-1.5 py-0.5 text-sm font-medium text-foreground">brikc</code> and
-              start certifying code in 30 seconds. It compiles itself to an identical hash &mdash; that's the proof it works.
+              start certifying code in 30 seconds. It compiles itself to an identical hash &mdash; that&apos;s the proof it works.
             </p>
           </div>
         </section>
@@ -336,17 +356,17 @@ export default function CLIPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] INSTALL
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Up and running in 30 seconds
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
             Four installation methods. One result: a 708 KB binary with zero dependencies that can verify its own compilation.
           </p>
-          <div className="mt-8 max-w-2xl">
+          <div className="mx-auto mt-8 max-w-3xl">
             <InstallBlock />
           </div>
-          <div className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
-            <Terminal className="h-3.5 w-3.5" />
+          <div className="mx-auto mt-6 flex max-w-2xl items-center justify-center gap-2 rounded-full border border-teal/15 bg-teal/[0.05] px-4 py-3 text-xs text-muted-foreground">
+            <Terminal className="h-3.5 w-3.5 text-teal" />
             <span>Verify: <code className="text-foreground">brikc --version</code> &rarr; brikc 5.0.0-beta.1</span>
           </div>
         </section>
@@ -356,7 +376,7 @@ export default function CLIPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] COMMANDS
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Everything from the terminal
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
@@ -434,7 +454,7 @@ export default function CLIPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] SYSTEM
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Requirements
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -468,7 +488,7 @@ export default function CLIPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Start building &mdash; free
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

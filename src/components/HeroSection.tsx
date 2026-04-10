@@ -1,11 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { BookOpen } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { TextGradient } from "@/components/ui/pixel-perfect/text-gradient";
 import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
 import { TextSlideUp } from "@/components/ui/pixel-perfect/text-slide-up";
-import { BorderGradientButton } from "@/components/ui/pixel-perfect/border-gradient-button";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
 const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
@@ -46,22 +46,19 @@ export function HeroSection() {
             <TextReveal delay={1.0}>64 certified operations. 64 extended. An AI learns the entire language in one prompt. The compiler proves every program is correct. Free. Ready today.</TextReveal>
           </p>
 
-          <div className="pointer-events-auto mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href="https://docs.brik64.dev"
+          <div className="pointer-events-auto mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
+              Start building &mdash; free
+            </HomePrimaryButton>
+            <HomeSecondaryButton
+              href="https://digitalcircuitality.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 cursor-pointer items-center justify-center bg-teal px-6 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              className="opacity-80 hover:opacity-100"
             >
-              Start building &mdash; free
-            </a>
-          </div>
-          <div className="pointer-events-auto mt-3 flex items-center gap-5">
-            <BorderGradientButton
-              onClick={() => window.open("https://docs.brik64.dev", "_blank")}
-            >
-              Read the docs
-            </BorderGradientButton>
+              Learn the theory
+              <ExternalLink className="h-3.5 w-3.5" />
+            </HomeSecondaryButton>
           </div>
         </div>
       </div>

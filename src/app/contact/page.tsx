@@ -10,6 +10,7 @@ import {
   MessageCircle,
   Bug,
 } from "lucide-react";
+import { EvidenceSurface, PageSectionHeader } from "@/components/PageArtifacts";
 
 import dynamic from "next/dynamic";
 
@@ -80,15 +81,35 @@ export default function ContactPage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Contact
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Get in <span className="text-[#00b8d4]">touch.</span>
+              Get in <span className="text-teal">touch.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Building with BRIK64? Have a question? Found a bug? We respond fast.
             </p>
+          </div>
+        </section>
+
+        <section className="border-t border-border px-6 py-16 lg:px-16">
+          <PageSectionHeader
+            eyebrow="Contact Surface"
+            title="The contact page now declares scope before dropping the user into cards and form fields."
+            description="Email channels, community links, and support routes stay visible, but they now sit under one explicit service surface instead of feeling like disconnected boxes."
+          />
+          <div className="mx-auto mt-10 max-w-5xl">
+            <EvidenceSurface
+              eyebrow="Contact Scope"
+              title="Where each request should go"
+              description="This block reduces ambiguity before the user reaches the individual cards."
+              items={[
+                { label: "General inquiries", body: "Use the general route for product questions, architecture clarifications, and initial contact." },
+                { label: "Enterprise route", body: "Route deployment, compliance, and commercial conversations to the enterprise channel instead of mixing them with product support." },
+                { label: "Support + bugs", body: "Operational issues and bug reports should go through support or GitHub so they stay traceable." },
+              ]}
+            />
           </div>
         </section>
 

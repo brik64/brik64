@@ -75,12 +75,12 @@ export default function AISafetyUseCasePage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframeClient />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Use Case
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               AI Safety:{" "}
-              <span className="text-[#00b8d4]">Guardrails That Actually Work</span>
+              <span className="text-teal">Guardrails That Actually Work</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Policy circuits that verify before execution. Not alignment training — algebraic verification.
@@ -91,7 +91,7 @@ export default function AISafetyUseCasePage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
@@ -108,7 +108,7 @@ export default function AISafetyUseCasePage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Problem ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -133,7 +133,7 @@ export default function AISafetyUseCasePage() {
 
           {/* ── The Solution ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -142,8 +142,8 @@ export default function AISafetyUseCasePage() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
                 <div key={s.step} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <span className="text-sm font-bold text-[#00b8d4]">{s.step}</span>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                    <span className="text-sm font-bold text-teal">{s.step}</span>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">{s.title}</h3>
@@ -158,7 +158,7 @@ export default function AISafetyUseCasePage() {
 ✓ Lifted to ai_output.pcd (23 circuits extracted)
 
 $ brikc check ai_output.pcd --policy ai_action_validator.pcd
-✓ Policy circuit check: Φ_c = 1
+✓ Policy circuit check: Φc = 1
 ✓ All 23 circuits pass domain constraints
 ✓ Certification hash: 0xa3f7...c291
 
@@ -169,7 +169,7 @@ $ brikc certify ai_output.pcd --emit badge
 
           {/* ── Real Example ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -183,7 +183,7 @@ $ brikc certify ai_output.pcd --emit badge
               an uncertified action. Not one. Not ever.
             </p>
             <CopyableCode title="ai_action_validator.pcd">{`// Policy Circuit: AI Action Validator
-// Φ_c = 1 — closed circuit, no undefined behavior
+// Φc = 1 — closed circuit, no undefined behavior
 
 PC ai_action_validator {
     domain confidence: Range [0.0, 1.0];
@@ -204,7 +204,7 @@ PC ai_action_validator {
 
           {/* ── Results ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -216,7 +216,7 @@ PC ai_action_validator {
                   key={item.title}
                   className="border border-border bg-white p-6"
                 >
-                  <CheckCircle2 className="mb-3 h-6 w-6 text-[#00b8d4]" />
+                  <CheckCircle2 className="mb-3 h-6 w-6 text-teal" />
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
@@ -237,7 +237,7 @@ PC ai_action_validator {
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>

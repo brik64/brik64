@@ -72,7 +72,7 @@ const outputs: Record<string, { lang: string; code: string }> = {
     let msg = "Hello, verified world!";
     let n = msg.len();
     io::stdout().write_all(msg.as_bytes()).unwrap();
-    0 // Φ_c = 1 — circuit closed
+    0 // Φc = 1 — circuit closed
 }`,
   },
   JavaScript: {
@@ -81,7 +81,7 @@ const outputs: Record<string, { lang: string; code: string }> = {
     const msg = "Hello, verified world!";
     const n = msg.length;
     process.stdout.write(msg);
-    return 0; // Φ_c = 1 — circuit closed
+    return 0; // Φc = 1 — circuit closed
 }`,
   },
   Python: {
@@ -90,7 +90,7 @@ const outputs: Record<string, { lang: string; code: string }> = {
     msg = "Hello, verified world!"
     n = len(msg)
     sys.stdout.write(msg)
-    return 0  # Φ_c = 1 — circuit closed`,
+    return 0  # Φc = 1 — circuit closed`,
   },
 };
 
@@ -247,7 +247,7 @@ export default function HomeV2Jobs() {
                 {[
                   { icon: <FileCode className="h-5 w-5 text-teal" />, title: "AI-native by design", desc: "128 operations. Finite. Deterministic. An LLM memorizes the entire language. No Stack Overflow needed." },
                   { icon: <Shield className="h-5 w-5 text-teal" />, title: "64 operations mathematically certified", desc: "Not tested. Mathematically proven. 207 mathematical proofs, zero exceptions. The core is formally verified." },
-                  { icon: <Zap className="h-5 w-5 text-teal" />, title: "If it compiles, it works", desc: "Φ_c = 1 means every input is handled, every path terminates, every output is bounded. The compiler proves it." },
+                  { icon: <Zap className="h-5 w-5 text-teal" />, title: "If it compiles, it works", desc: "Φc = 1 means every input is handled, every path terminates, every output is bounded. The compiler proves it." },
                   { icon: <Maximize2 className="h-5 w-5 text-teal" />, title: "Works with your stack", desc: "Already have JavaScript or Python? The Lifter converts it to PCD. No rewrite. Verify what you already have." },
                 ].map((c) => (
                   <div key={c.title} className="flex gap-3">
@@ -347,7 +347,7 @@ export default function HomeV2Jobs() {
                 { icon: <Cpu className="h-5 w-5 text-teal" />, title: "Compile", desc: "One PCD → verified output in any of 14 languages." },
                 { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verify", desc: "Mathematically certified. Not tested. Structural certainty." },
                 { icon: <ArrowUpDown className="h-5 w-5 text-teal" />, title: "Lift", desc: "Import existing code into PCD. No manual rewrite." },
-                { icon: <BadgeCheck className="h-5 w-5 text-teal" />, title: "Certify", desc: "Φ_c = 1 — every path closed, every domain bounded." },
+                { icon: <BadgeCheck className="h-5 w-5 text-teal" />, title: "Certify", desc: "Φc = 1 — every path closed, every domain bounded." },
               ].map((c) => (
                 <div key={c.title} className="border border-border p-5">
                   <div className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-teal/30 bg-teal/10">
@@ -399,7 +399,7 @@ export default function HomeV2Jobs() {
                   desc: "Link your repo. Auto-lift on every push. PR certification comments. One-click GitHub App.",
                 },
                 {
-                  step: "02", title: "Certify", cmd: "$ brikc check → Φ_c = 1.000 CERTIFIED",
+                  step: "02", title: "Certify", cmd: "$ brikc check → Φc = 1 CERTIFIED",
                   desc: "The compiler verifies every circuit. Domain constraints checked. All paths closed. Two tiers: Core + Extended.",
                 },
                 {
@@ -543,7 +543,7 @@ export default function HomeV2Jobs() {
             </p>
 
             {/* Terminal */}
-            <div className="mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+            <div className="mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
               <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
@@ -555,7 +555,7 @@ export default function HomeV2Jobs() {
                 <p className="mt-2 text-zinc-400">&nbsp;&nbsp;Generating PCD...</p>
                 <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.82 &mdash; missing case: glucose &lt; 40 mg/dL</p>
                 <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Fixing...</p>
-                <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1.000 &mdash; 8 domains verified. Overdose impossible.</p>
+                <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1 &mdash; 8 domains verified. Overdose impossible.</p>
                 <p className="mt-1 text-zinc-400">&nbsp;&nbsp;&#10003; Output: dose_calc.pcd + dose_calc.cert.json</p>
               </div>
             </div>

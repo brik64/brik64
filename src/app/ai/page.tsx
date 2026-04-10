@@ -69,7 +69,7 @@ export default function AIPage() {
           </p>
 
           {/* brikc ai demo terminal */}
-          <div className="relative z-10 mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
+          <div className="relative z-10 mx-auto mt-8 max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
@@ -81,7 +81,7 @@ export default function AIPage() {
               <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM generating PCD...</p>
               <p className="mt-1 text-amber-400">&nbsp;&nbsp;&Phi;<sub>c</sub> = 0.847 &mdash; missing case: wind &gt; 120 km/h</p>
               <p className="mt-1 text-zinc-400">&nbsp;&nbsp;LLM fixing... (attempt 2/5)</p>
-              <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1.000 &mdash; all 12 paths verified. Certified.</p>
+              <p className="mt-1 text-emerald-400">&nbsp;&nbsp;&#10003; &Phi;<sub>c</sub> = 1 &mdash; all 12 paths verified. Certified.</p>
               <p className="mt-1 text-zinc-400">&nbsp;&nbsp;Output: drone_speed.pcd + drone_speed.cert.json</p>
             </div>
           </div>

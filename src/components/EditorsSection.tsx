@@ -1,18 +1,6 @@
 import { PhiC } from "@/components/PhiC";
-
-const editors: {
-  name: string;
-  subtitle: string;
-  status: string;
-  logo: string;
-}[] = [
-  { name: "VSCode", subtitle: "Extension + LSP", status: "AVAILABLE", logo: "/brands/vscode.svg" },
-  { name: "Cursor", subtitle: "AI + PCD native", status: "ALPHA", logo: "/brands/cursor.svg" },
-  { name: "Windsurf", subtitle: "AI-powered coding", status: "PLANNED", logo: "/brands/windsurf.svg" },
-  { name: "Zed", subtitle: "High-performance editor", status: "PLANNED", logo: "/brands/zed.svg" },
-  { name: "IntelliJ", subtitle: "JetBrains IDEs", status: "PLANNED", logo: "/brands/intellij.svg" },
-  { name: "Antigravity", subtitle: "Google AI IDE", status: "PLANNED", logo: "/brands/antigravity.svg" },
-];
+import { EditorControlArtifact } from "@/components/HomeProofArtifacts";
+import { HomeSectionHeader } from "@/components/PageArtifacts";
 
 const features = [
   "Syntax highlighting for .pcd files",
@@ -25,54 +13,17 @@ export function EditorsSection() {
   return (
     <section className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <p className="mb-10 text-xs font-medium tracking-[2px] text-muted-foreground md:mb-14">
-          [08] · EDITORS
-        </p>
+        <HomeSectionHeader
+          eyebrow="[08] · EDITORS"
+          title="Editor support should feel operational, not aspirational."
+          description="PCD syntax highlighting, inline certification, one-click lift, and `brikc lsp` belong inside the editor loop. The point is not a logo strip; the point is that proof shows up where code is written."
+        />
 
-        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          Works where you code. Today.
-        </h3>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-          PCD syntax highlighting, inline certification, and one-click lift.
-          No new tools to learn. No new workflow to adopt.
-        </p>
-
-        {/* Editor grid */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-3 border border-border [&>*]:border-border [&>*]:border-b [&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-r-0 md:[&>*:nth-child(3n+1)]:border-r md:[&>*:nth-child(3n+2)]:border-r [&>*:nth-last-child(-n+2)]:border-b-0 md:[&>*:nth-last-child(-n+3)]:border-b-0">
-          {editors.map((editor) => (
-            <div
-              key={editor.name}
-              className="bg-background p-5 transition-colors hover:bg-teal/[0.03]"
-            >
-              <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={editor.logo}
-                  alt={editor.name}
-                  className="h-8 w-8 grayscale"
-                />
-                <div>
-                  <p className="text-sm font-semibold">{editor.name}</p>
-                  <p className="text-[10px] text-muted-foreground">
-                    {editor.subtitle}
-                  </p>
-                </div>
-              </div>
-              <span className={`mt-3 inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
-                editor.status === "AVAILABLE"
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : editor.status === "ALPHA"
-                    ? "bg-amber-500/10 text-amber-400"
-                    : "bg-zinc-500/10 text-zinc-400"
-              }`}>
-                {editor.status}
-              </span>
-            </div>
-          ))}
+        <div className="mt-10">
+          <EditorControlArtifact />
         </div>
 
-        {/* Feature bullets */}
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 rounded-[1.5rem] border border-border/70 bg-muted/20 px-5 py-4">
           {features.map((feature, i) => (
             <div
               key={i}

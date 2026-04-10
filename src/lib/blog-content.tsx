@@ -217,7 +217,7 @@ export const blogContent: Record<string, () => React.ReactNode> = {
   Composition: sequential
   TCE: 7 metrics evaluated
   ─────────────────────────
-  Φ_c = 1.000 ✓ CERTIFIED`}</CodeBlock>
+  Φc = 1 ✓ CERTIFIED`}</CodeBlock>
       <H2>What Does <PhiC /> = 1 Mean?</H2>
       <P>
         <PhiC /> = 1 means the circuit is closed — every input maps deterministically to an output, with zero information leakage. Not for some inputs. For all inputs within the declared domain. Your first circuit is not just tested. It is certified. Go build something.
@@ -533,7 +533,7 @@ cd brik64-demos
       <CodeBlock>{`COBOL → brikc lift → PCD Blueprint → brikc build → Rust / JS / Python / Go / C
 
 Step 1: LIFT       Extract computational logic from COBOL source
-Step 2: VERIFY     Certify the PCD blueprint (Φ_c = 1)
+Step 2: VERIFY     Certify the PCD blueprint (Φc = 1)
 Step 3: EMIT       Compile to any modern language`}</CodeBlock>
       <H3>Step 1: LIFT — Read the COBOL, Extract the Math</H3>
       <P>
@@ -569,7 +569,7 @@ Step 3: EMIT       Compile to any modern language`}</CodeBlock>
       <CodeBlock>{`// PCD Blueprint: interest_calc
 // Domains: principal [0, 1000000], rate [0, 30], max_interest [0, 100000]
 // Computes: interest capped at max, added to principal
-// Verified: Φ_c = 1`}</CodeBlock>
+// Verified: Φc = 1`}</CodeBlock>
       <P>
         The PCD circuit does exactly what the COBOL does — but now with explicit domain constraints, mathematical certification, and a liftability score of 0.95+. The TCE certifies <PhiC /> = 1: the circuit is closed, deterministic, and correct. For the first time, you can see what the COBOL actually computes.
       </P>
@@ -590,10 +590,10 @@ brikc build interest_calc.pcd -t c         # Embedded / legacy integration`}</Co
       </P>
       <CodeBlock>{`Migration Strategy: Incremental Lift
 ─────────────────────────────────────────
-Week 1    Lift INTEREST-CALC paragraph       → Φ_c = 1 ✓
-Week 2    Lift ACCOUNT-BALANCE paragraph     → Φ_c = 1 ✓
-Week 3    Lift TRANSACTION-VALIDATE paragraph → Φ_c = 1 ✓
-Week 4    Lift FEE-COMPUTATION paragraph     → Φ_c = 1 ✓
+Week 1    Lift INTEREST-CALC paragraph       → Φc = 1 ✓
+Week 2    Lift ACCOUNT-BALANCE paragraph     → Φc = 1 ✓
+Week 3    Lift TRANSACTION-VALIDATE paragraph → Φc = 1 ✓
+Week 4    Lift FEE-COMPUTATION paragraph     → Φc = 1 ✓
   ...
 Week N    All critical paths lifted and verified
 ─────────────────────────────────────────
@@ -618,7 +618,7 @@ Commonwealth Bank migration (2012):  $750 million over 5 years
 The PCD Alternative
 ─────────────────────────────────────────────────
 Lift-verify-emit cycle per module:   Days to weeks
-Mathematical equivalence proof:      Automatic (Φ_c = 1)
+Mathematical equivalence proof:      Automatic (Φc = 1)
 Rollback capability:                 Instant (PCD is source of truth)
 Target language flexibility:         Any (Rust, JS, Python, Go, C)
 New talent pool:                     Millions of modern developers`}</CodeBlock>
@@ -636,7 +636,7 @@ curl -fsSL https://brik64.dev/install | bash
 brikc lift legacy_system.cob
 
 # Verify the lifted blueprint
-brikc check lifted.pcd              # Verify Φ_c = 1
+brikc check lifted.pcd              # Verify Φc = 1
 
 # Emit to your target language
 brikc build lifted.pcd -t rust      # → lifted.rs
@@ -704,11 +704,11 @@ Step 2: Action Translator converts to descriptor
 Step 3: BPU evaluates policy circuit in hardware
         64 monomer units (the genetic code of computation) evaluate the policy
         EVA Router connects them according to the circuit topology
-        TCE Unit computes Φ_c (genetic coherence)
+        TCE Unit computes Φc (genetic coherence)
 
 Step 4: Result
-        Φ_c = 1 → ALLOW → action executes
-        Φ_c ≠ 1 → BLOCK → non-maskable interrupt → action blocked`}</CodeBlock>
+        Φc = 1 → ALLOW → action executes
+        Φc ≠ 1 → BLOCK → non-maskable interrupt → action blocked`}</CodeBlock>
       <P>
         The entire evaluation takes less than 10 microseconds. The AI does not slow down. The user does not notice. But every single action is verified against mathematically certified safety constraints before it touches the real world. Every action. No exceptions.
       </P>
@@ -1381,7 +1381,7 @@ brikc emit python policies/ai_safety.pcd -o guardrails.py
 
 # Certify the policy circuits
 brikc certify policies/ai_safety.pcd
-# TCE: Φ_c = 1 ✓ — All policies are coherent`}</CodeBlock>
+# TCE: Φc = 1 ✓ — All policies are coherent`}</CodeBlock>
       <P>
         Then drop it into your agent. Three lines of integration:
       </P>
@@ -1399,7 +1399,7 @@ def execute_action(action):
 
     if not allowed:
         log_blocked_action(action)
-        return ActionBlocked(reason="Policy circuit: Φ_c ≠ 1")
+        return ActionBlocked(reason="Policy circuit: Φc ≠ 1")
 
     return action.execute()`}</CodeBlock>
       <P>
@@ -1471,7 +1471,7 @@ def execute_action(action):
     //            emergency stop not asserted
     // All three conditions must pass via AND composition
     // OUTPUT BLOCK when any condition fails
-    // Compiler verifies: Φ_c = 1
+    // Compiler verifies: Φc = 1
 }`}</CodeBlock>
       <P>
         The <code>OUTPUT BLOCK</code> declaration is everything. When the BPU asserts BLOCK, the PWM signal to the arm&apos;s servo drivers is physically gated — cut at the hardware level before it reaches the motor controller. The AI planner never even knows the signal was intercepted. It simply does not arrive. The arm does not move. The human is safe. Physics enforced it.
@@ -1490,7 +1490,7 @@ def execute_action(action):
     //   2. Proximity must satisfy 2-second rule (safe following distance)
     //   Both conditions composed via AND
     //   OUTPUT BLOCK when either fails
-    // Compiler verifies: Φ_c = 1
+    // Compiler verifies: Φc = 1
 }`}</CodeBlock>
       <P>
         Notice something important: the road speed limit is a runtime input, not a hard-coded constant. It comes from the vehicle&apos;s map system and is cryptographically signed. The policy circuit does not need to know about roads or maps — it only computes whether the commanded speed satisfies the supplied constraint. Clean separation of concerns. The circuit does one thing and does it perfectly.
@@ -1508,7 +1508,7 @@ def execute_action(action):
     // Stricter for consumer contexts, more permissive for research
     // Human-in-loop override only for research/restricted contexts
     // OUTPUT BLOCK when harm score exceeds threshold
-    // Compiler verifies: Φ_c = 1
+    // Compiler verifies: Φc = 1
 }`}</CodeBlock>
       <P>
         The human-in-the-loop override is itself constrained by the circuit: it only applies in professional and research contexts, and it requires a live bit from the human oversight interface — a physical signal, not a software flag the model can assert about itself. The AI cannot claim a human is watching when one is not. The hardware knows the difference.
@@ -1528,7 +1528,7 @@ def execute_action(action):
     //   2. Human approval quorum satisfied
     //   Both conditions must pass
     //   OUTPUT BLOCK when capability exceeds budget or quorum unmet
-    // Compiler verifies: Φ_c = 1
+    // Compiler verifies: Φc = 1
 }`}</CodeBlock>
       <P>
         Capability scores are assigned at agent registration time and are cryptographically bound to the agent identity. The coalition cannot self-report a lower capability sum — that would be like a prisoner forging their own parole documents. The score is computed externally and injected as a hardware-signed input to the policy circuit. The math does not care what the agents want.
@@ -1580,7 +1580,7 @@ brikc emit python policies/robot_arm_safety.pcd -o arm_guardrails.py
 
 # Run TCE coherence certification
 brikc certify policies/robot_arm_safety.pcd
-# TCE: Φ_c = 1 ✓ — Policy set is coherent and complete
+# TCE: Φc = 1 ✓ — Policy set is coherent and complete
 
 # Generate Coq proof obligations
 brikc prove policies/robot_arm_safety.pcd -o proofs/arm_safety.v`}</CodeBlock>
@@ -2120,7 +2120,7 @@ function calcPrice(qty, price, tax, disc) {
   Found: calcPrice (4 params, 1 return)
   Liftability: 0.92 (pure arithmetic, no side effects)
   Monomers: 4 (arithmetic family)
-  Status: CORE (Φ_c = 1)
+  Status: CORE (Φc = 1)
 
   Output: pricing.pcd`}</CodeBlock>
       <P>
@@ -2151,14 +2151,14 @@ function calcPrice(qty, price, tax, disc) {
   Target: JavaScript (ES2020)
   Monomers: 4 (arithmetic family)
   Tests: 12 generated
-  Status: CERTIFIED (Φ_c = 1)
+  Status: CERTIFIED (Φc = 1)
 
   Output: calcPrice.js, calcPrice.test.js`}</CodeBlock>
       <P>
         The emitted JavaScript is clean, typed, and beautifully structured. But the real breakthrough is <code>calcPrice.test.js</code> — twelve tests auto-generated from the mathematical certification. Not random inputs someone threw together. Not edge cases a developer guessed at during a sprint. Tests derived from the mathematical properties of the circuit itself: boundary conditions, zero inputs, maximum values, the discount-before-tax ordering. The math writes the tests.
       </P>
       <H3>Step 4: The Auto-Generated Tests</H3>
-      <CodeBlock>{`// Auto-generated from PCD certification (Φ_c = 1)
+      <CodeBlock>{`// Auto-generated from PCD certification (Φc = 1)
 // calcPrice: 4 inputs → 1 output, 4 monomers
 
 test('zero quantity returns zero', () => {
@@ -2239,7 +2239,7 @@ PROBLEM                          PCD ROUNDTRIP
 "Only Bob knows this code"       Blueprint explains it — Bob can retire
 "Can't switch to Rust" (500K JS) Emit to Rust from the same blueprints
 "Docs are outdated"              Blueprint IS the documentation
-"How do we prove compliance?"    Φ_c = 1 is the proof — auditable, permanent
+"How do we prove compliance?"    Φc = 1 is the proof — auditable, permanent
 ──────────────────────────────────────────────────`}</CodeBlock>
       <P>
         The roundtrip does not just improve your code. It fundamentally changes the economics of software maintenance. Every function you lift becomes a function that any developer on Earth can understand, any language can render, and any auditor can verify in seconds. The cost of understanding code drops to zero — because the blueprint IS the understanding.
@@ -2667,11 +2667,11 @@ brikc lift src/utils.js --format json`}</CodeBlock>
       <P>
         PCD does not force you into a binary choice between &quot;fully certified&quot; and &quot;not certified at all.&quot; That would be useless. Instead, it gives you something no other language on Earth provides — a <strong>spectrum</strong>:
       </P>
-      <CodeBlock>{`Φ_c = 1.0        — Pure. All 64 core monomers. Mathematical proof.
-Φ_c = OPEN 87%   — Mixed. Core + some extended. 87% proven, 13% contracted.
-Φ_c = OPEN 50%   — Balanced. Half proven, half contracted.
-Φ_c = OPEN 12%   — Mostly external. Heavy I/O, network, graphics.
-Φ_c = CONTRACT    — All extended. No proof, but bounded contracts.`}</CodeBlock>
+      <CodeBlock>{`Φc = 1        — Pure. All 64 core monomers. Mathematical proof.
+Φc = OPEN 87%   — Mixed. Core + some extended. 87% proven, 13% contracted.
+Φc = OPEN 50%   — Balanced. Half proven, half contracted.
+Φc = OPEN 12%   — Mostly external. Heavy I/O, network, graphics.
+Φc = CONTRACT    — All extended. No proof, but bounded contracts.`}</CodeBlock>
       <P>
         The compiler tells you exactly where you stand. Not a guess. Not an estimate. A mathematically computed number. Every other language in existence gives you zero information about correctness. PCD gives you a percentage.
       </P>
@@ -2847,10 +2847,10 @@ brikc lift src/utils.js --format json`}</CodeBlock>
       <H2>You Choose the Mix</H2>
       <CodeBlock>{`Use Case                Core %   Extended %   Badge
 ──────────────────────  ───────  ──────────   ─────────────────────
-Banking / Finance       100%     0%           Φ_c = 1 CERTIFIED
+Banking / Finance       100%     0%           Φc = 1 CERTIFIED
 AI Safety Policy        95%      5%           OPEN 95%
 Game Score + Render     70%      30%          OPEN 70%
-Physics Simulation      100%     0%           Φ_c = 1 CERTIFIED
+Physics Simulation      100%     0%           Φc = 1 CERTIFIED
 Trading Bot             72%      28%          OPEN 72%
 AI + LLM Pipeline       60%      40%          OPEN 60%
 World Gen + Graphics    65%      35%          OPEN 65%
@@ -2937,9 +2937,9 @@ brikc check my_game.pcd        # shows: "BRIK64 OPEN 72%"`}</CodeBlock>
       <H3>Three Levels of Math in Digital Circuitality</H3>
       <CodeBlock>{`Approach               Type           Error              Certification
 ─────────────────────  ─────────────  ─────────────────  ─────────────
-Integer arithmetic     U8, I64        Zero — exact       Φ_c = 1 ✓
-Scaled integers        I64 + scale    Declared           Φ_c = 1 ✓
-Floating point         F64            IEEE 754 rounding  Φ_c = CONTRACT`}</CodeBlock>
+Integer arithmetic     U8, I64        Zero — exact       Φc = 1 ✓
+Scaled integers        I64 + scale    Declared           Φc = 1 ✓
+Floating point         F64            IEEE 754 rounding  Φc = CONTRACT`}</CodeBlock>
       <P>
         The first two give you full certification — <PhiC /> = 1, mathematically proven. The third gives you convenience at the cost of predictability. You choose. But now, for the first time, you are making an informed choice instead of accepting a hidden compromise.
       </P>
@@ -2989,7 +2989,7 @@ PC certified_ln {
     fn ln_scaled(x) {
         // Taylor: ln(1+t) = t - t²/2 + t³/3 - t⁴/4 + ...
         // Using only ADD, SUB, MUL, DIV (core monomers)
-        // Φ_c = 1 guaranteed
+        // Φc = 1 guaranteed
     }
 }`}</CodeBlock>
       <P>
@@ -3240,7 +3240,7 @@ Content-Type: application/json
 Response:
 {
   "pid": "brik64:factorial:a3f8c1",
-  "phi_c": 1.000,
+  "phi_c": 1,
   "certified": true,
   "metrics_evaluated": 7,
   "targets": {
@@ -3349,7 +3349,7 @@ const result = await client.circuits.certify("brik64:factorial:a3f8c1", {
   targets: ["javascript"],
 });
 
-console.log(result.phi_c);      // 1.000
+console.log(result.phi_c);      // 1
 console.log(result.certified);  // true`}</CodeBlock>
       <CodeBlock>{`# Python example
 from brik64 import Brik64Client
@@ -3361,7 +3361,7 @@ result = client.circuits.certify("brik64:factorial:a3f8c1",
     targets=["python"],
 )
 
-print(result.phi_c)      # 1.000
+print(result.phi_c)      # 1
 print(result.certified)  # True`}</CodeBlock>
       <H2>The Vision: AI-Native Development</H2>
       <P>
@@ -3538,7 +3538,7 @@ type Glucose = range[20, 600];      // mg/dL
 fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
     // Overdose is structurally impossible.
     // The domain rejects any dose > 25.0 at compile time.
-    // Phi_c = 1: every input produces a valid, bounded output.
+    // Φc = 1: every input produces a valid, bounded output.
 }`}</CodeBlock>
       <H2>Industries</H2>
       <P>
@@ -3642,7 +3642,7 @@ fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
 
       <H2>How BRIK-64 Generates Compliance Evidence</H2>
       <P>
-        Every BRIK-64 program produces a Thermodynamic Coherence certificate: <strong>Φ_c = 1</strong>. This is not a test result. It is a mathematical proof that the program's information is closed — that the system is deterministic, that every input produces a defined output, that there are no hidden states or undefined behaviors.
+        Every BRIK-64 program produces a Thermodynamic Coherence certificate: <strong>Φc = 1</strong>. This is not a test result. It is a mathematical proof that the program's information is closed — that the system is deterministic, that every input produces a defined output, that there are no hidden states or undefined behaviors.
       </P>
       <P>
         The certificate is generated automatically at compile time. You do not annotate your code. You do not write proof obligations. You do not hire a formal methods team. You compile your program and the proof is a byproduct.
@@ -3651,7 +3651,7 @@ fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
 brikc check payment_processor.pcd
 
 # Output:
-# Phi_c = 1 — circuit closed
+# Φc = 1 — circuit closed
 # 64 operations verified
 # 0 undefined paths
 # Certificate: sha256:a3f7b2...`}</CodeBlock>
@@ -3662,7 +3662,7 @@ brikc check payment_processor.pcd
       <H2>The Three Properties That Matter for Compliance</H2>
       <H3>1. Determinism</H3>
       <P>
-        A BRIK-64 certified program produces identical outputs for identical inputs — always, on every platform, in every execution. Φ_c = 1 means the information entropy of the system is zero: no randomness, no undefined behavior, no platform-specific surprises. For a regulator asking "does this AI system behave consistently across demographics and environments," this is a direct mathematical answer.
+        A BRIK-64 certified program produces identical outputs for identical inputs — always, on every platform, in every execution. Φc = 1 means the information entropy of the system is zero: no randomness, no undefined behavior, no platform-specific surprises. For a regulator asking "does this AI system behave consistently across demographics and environments," this is a direct mathematical answer.
       </P>
       <H3>2. Finite Operation Space</H3>
       <P>
@@ -3721,7 +3721,7 @@ brikc check payment_processor.pcd
       </P>
       <CodeBlock>{`npm install -g brikc
 brikc check your_ai_system.pcd
-# Φ_c = 1 — ready for audit`}</CodeBlock>
+# Φc = 1 — ready for audit`}</CodeBlock>
       <P>
         The proof is in the compiler. The compiler is ready. The deadline is August.
       </P>

@@ -88,7 +88,7 @@ const guarantees = [
     desc: "Every compile generates requirements traceability, structural coverage analysis, and formal verification artifacts. The output of brikc certify IS the DO-178C evidence package. What a team of 12 engineers produces in six months, BRIK64 generates in milliseconds.",
   },
   {
-    title: "Φ_c = 1 — the circuit is closed",
+    title: "Φc = 1 — the circuit is closed",
     desc: "Every input consumed. Every output produced. Every branch terminated. No undefined states. No paths to nowhere. If one path is missing — the program does not compile. This is what safety certification has always been trying to prove. BRIK64 makes it impossible to prove false.",
   },
 ];
@@ -111,12 +111,12 @@ export default function SafetyCriticalPage() {
           <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
             <HeroWireframeClient />
             <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-              <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
                 Safety-Critical Systems
               </span>
               <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 When a bug can kill,{" "}
-                <span className="text-[#00b8d4]">&lsquo;tests pass&rsquo; is not a defense.</span>
+                <span className="text-teal">&lsquo;tests pass&rsquo; is not a defense.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
                 An insulin pump that can overdose is a weapon. A flight controller that can overspeed is a missile.
@@ -126,7 +126,7 @@ export default function SafetyCriticalPage() {
               <div className="mt-10 flex items-center justify-center gap-4">
                 <a
                   href="/login"
-                  className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                  className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
                 >
                   Start building &mdash; free <ArrowRight className="h-4 w-4" />
                 </a>
@@ -144,7 +144,7 @@ export default function SafetyCriticalPage() {
 
           {/* ── The Problem ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Problem
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -175,7 +175,7 @@ export default function SafetyCriticalPage() {
 
           {/* ── How BRIK64 Solves It ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Solution
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -189,8 +189,8 @@ export default function SafetyCriticalPage() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {guarantees.map((g) => (
                 <div key={g.title} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <CheckCircle2 className="h-6 w-6 text-[#00b8d4]" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                    <CheckCircle2 className="h-6 w-6 text-teal" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">{g.title}</h3>
@@ -203,11 +203,11 @@ export default function SafetyCriticalPage() {
 
           {/* ── Code Examples ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Verified Examples
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Every example compiles with Φ_c = 1. No exceptions.
+              Every example compiles with Φc = 1. No exceptions.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
               These are not demos. They are certified circuits. Every input produces a valid output.
@@ -218,10 +218,10 @@ export default function SafetyCriticalPage() {
                 <div key={ex.name} className="rounded-lg border border-border bg-card p-5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <ex.icon className="h-5 w-5 text-[#00b8d4]" />
+                      <ex.icon className="h-5 w-5 text-teal" />
                       <h3 className="text-sm font-medium text-foreground">{ex.name}</h3>
                     </div>
-                    <span className="rounded-full bg-[#00b8d4]/10 px-2.5 py-0.5 text-[10px] font-medium text-[#00b8d4]">
+                    <span className="rounded-full bg-teal/10 px-2.5 py-0.5 text-[10px] font-medium text-teal">
                       {ex.standard}
                     </span>
                   </div>
@@ -231,7 +231,7 @@ export default function SafetyCriticalPage() {
                       <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
                       <span className="h-2 w-2 rounded-full bg-[#28c840]" />
                     </div>
-                    <pre className="overflow-x-auto p-3 text-[11px] leading-relaxed text-[#00b8d4]/80">
+                    <pre className="overflow-x-auto p-3 text-[11px] leading-relaxed text-teal/80">
                       {ex.code}
                     </pre>
                   </div>
@@ -242,7 +242,7 @@ export default function SafetyCriticalPage() {
 
           {/* ── Standards ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Certification Standards
             </span>
             <h2 className="mx-auto text-center max-w-3xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -255,7 +255,7 @@ export default function SafetyCriticalPage() {
             <ul className="mx-auto mt-8 max-w-2xl space-y-3">
               {standards.map((s) => (
                 <li key={s} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#00b8d4]" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal" />
                   <span className="text-sm text-foreground">{s}</span>
                 </li>
               ))}
@@ -274,7 +274,7 @@ export default function SafetyCriticalPage() {
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>

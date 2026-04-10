@@ -3,15 +3,14 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
+import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
+import { EvidenceSurface } from "@/components/PageArtifacts";
 import {
   Cpu,
   Shield,
   ArrowRight,
-  Zap,
   AlertTriangle,
   Lock,
-  Terminal,
-  CircuitBoard,
   BookOpen,
 } from "lucide-react";
 
@@ -104,6 +103,58 @@ const specs = [
   { param: "Side-channel resistance", value: "Constant-time evaluation" },
 ];
 
+function BpuRoadmapRail() {
+  return (
+    <div className="mx-auto mt-8 max-w-5xl rounded-[1.9rem] border border-border/80 bg-gradient-to-br from-muted/35 via-background to-background p-5 shadow-[0_24px_70px_rgba(15,23,42,0.05)]">
+      <div className="relative">
+        <div className="absolute left-8 right-8 top-9 hidden h-px bg-gradient-to-r from-teal/20 via-teal/40 to-orange-400/30 md:block" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {roadmap.map((r, index) => (
+            <div key={r.phase} className="relative rounded-[1.6rem] border border-border/80 bg-background/90 p-6">
+              <div className="flex items-center justify-between gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-teal/20 bg-teal/[0.06] text-sm font-semibold text-teal">
+                  {index + 1}
+                </span>
+                <span
+                  className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
+                    r.status === "NOW"
+                      ? "border border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                      : r.phase.includes("Silicon")
+                        ? "border border-orange-400/30 bg-orange-400/10 text-orange-300"
+                        : "border border-border bg-muted/30 text-muted-foreground"
+                  }`}
+                >
+                  {r.status}
+                </span>
+              </div>
+              <h3 className="mt-4 text-lg font-semibold tracking-tight text-foreground">{r.phase}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
+              {r.cmd ? (
+                <div className="mt-4 rounded-2xl border border-white/10 bg-[#0a0e14] px-4 py-3">
+                  <code className="font-mono text-xs text-emerald-400">
+                    <span className="text-teal">$</span> {r.cmd}
+                  </code>
+                </div>
+              ) : (
+                <div className="mt-4 rounded-2xl border border-border/70 bg-muted/25 px-4 py-3 text-xs text-muted-foreground">
+                  Delivery milestone with hardware-specific verification gates.
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-5 rounded-2xl border border-teal/15 bg-teal/[0.05] px-4 py-4 text-center">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">Roadmap surface</p>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Software is available now. FPGA validates the execution model. Silicon turns the same policy boundary into a physical gate.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function BPUPage() {
   return (
     <>
@@ -115,7 +166,7 @@ export default function BPUPage() {
           <HeroWireframe />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
             <div className="mb-4 flex items-center justify-center gap-3">
-              <span className="inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+              <span className="inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
                 BPU &mdash; BRIK Processing Unit
               </span>
               <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400">
@@ -123,11 +174,11 @@ export default function BPUPage() {
               </span>
             </div>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Hardware that <span className="text-[#00b8d4]">says no.</span>
+              Hardware that <span className="text-teal">says no.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               A hardware coprocessor that evaluates policy circuits &mdash; ALLOW or BLOCK &mdash; before any AI action reaches the host.
-              No software can override it. The chip says no, and that's final.
+              No software can override it. The chip says no, and that&rsquo;s final.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground italic">
               &ldquo;RLHF teaches an AI to prefer correct behavior. The BPU enforces boundaries in hardware.
@@ -141,31 +192,47 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [01] ARCHITECTURE
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Three subsystems. Fixed pipeline.
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
+            The enforcement boundary at a glance.
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            The architecture surface separates fixed silicon gates, the routing layer, and the proof boundary without relying on a decorative diagram.
+          </p>
+
+          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
             {architecture.map((a) => (
-              <div key={a.title} className="border border-border bg-muted/20 p-6">
-                <Cpu className="mb-3 h-5 w-5 text-teal" />
+              <div key={a.title} className="rounded-[1.5rem] border border-border/80 bg-gradient-to-br from-background to-muted/20 p-6 text-center shadow-[0_18px_50px_rgba(15,23,42,0.04)]">
+                <Cpu className="mx-auto mb-3 h-5 w-5 text-teal" />
                 <p className="text-sm font-bold">{a.title}</p>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{a.desc}</p>
               </div>
             ))}
           </div>
 
-          {/* Monomer families */}
-          <div className="mt-8 overflow-hidden border border-border">
-            <div className="grid grid-cols-2 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
-              <div>Family</div>
-              <div>Description</div>
-            </div>
-            {monomerFamilies.map((f) => (
-              <div key={f.family} className="grid grid-cols-2 gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
-                <div className="text-xs font-medium">{f.family}</div>
-                <div className="text-xs text-muted-foreground">{f.desc}</div>
+          <div className="mt-8 grid gap-6">
+            <MonomerFamilyBoard />
+            <EvidenceSurface
+              eyebrow="Hardware Evidence"
+              title="The hardware map stays explicit about what is enforced in silicon and what remains a bridge."
+              description="The hardware surface distinguishes fixed silicon enforcement from contract-bounded bridges."
+              items={[
+                { label: "Certified core", body: "Core families map to the fixed teal substrate and preserve the proof boundary." },
+                { label: "Extended bridges", body: "Orange bridges remain contract-bounded and never masquerade as the silicon core." },
+                { label: "Threat model", body: "The non-maskable block and roadmap stay explicit about what the concept protects and what remains outside scope." },
+              ]}
+            />
+            <div className="mx-auto max-w-4xl overflow-hidden rounded-[1.75rem] border border-border/80 bg-background shadow-[0_20px_60px_rgba(15,23,42,0.05)]">
+              <div className="grid grid-cols-2 gap-0 border-b border-border bg-muted/30 px-4 py-2.5 text-xs font-medium text-muted-foreground">
+                <div>Family</div>
+                <div>Description</div>
               </div>
-            ))}
+              {monomerFamilies.map((f) => (
+                <div key={f.family} className="grid grid-cols-2 gap-0 border-b border-border px-4 py-2.5 last:border-b-0">
+                  <div className="text-xs font-medium">{f.family}</div>
+                  <div className="text-xs text-muted-foreground">{f.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -174,11 +241,14 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [02] THE NON-MASKABLE BLOCK
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             No software can override hardware.
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="border border-red-500/20 bg-red-500/[0.03] p-6">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            The host can request an action, but the chip is the final gate on the transaction boundary.
+          </p>
+          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="rounded-[1.5rem] border border-red-500/20 bg-red-500/[0.03] p-6 text-center">
               <AlertTriangle className="mb-3 h-5 w-5 text-red-400" />
               <h3 className="text-sm font-bold text-red-400">Software Guardrails</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
@@ -187,8 +257,8 @@ export default function BPUPage() {
                 If it runs as software on the same CPU, it can be disabled.
               </p>
             </div>
-            <div className="rounded-md border border-teal/30 bg-teal/[0.03] p-6">
-              <Shield className="mb-3 h-5 w-5 text-teal" />
+            <div className="rounded-[1.5rem] border border-teal/30 bg-teal/[0.03] p-6 text-center shadow-[0_18px_50px_rgba(13,148,136,0.08)]">
+              <Shield className="mx-auto mb-3 h-5 w-5 text-teal" />
               <h3 className="text-sm font-bold text-teal">Hardware Enforcement</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 The BPU sits on the PCIe bus between the AI accelerator and the host I/O subsystem.
@@ -196,8 +266,8 @@ export default function BPUPage() {
                 no signal, no exception. The AI process never learns the block happened.
               </p>
             </div>
-            <div className="border border-border bg-muted/20 p-6">
-              <Lock className="mb-3 h-5 w-5 text-muted-foreground" />
+            <div className="rounded-[1.5rem] border border-border bg-muted/20 p-6 text-center">
+              <Lock className="mx-auto mb-3 h-5 w-5 text-muted-foreground" />
               <h3 className="text-sm font-bold">Threat Model</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 Protects against: compromised, jailbroken, or misaligned AI models.
@@ -213,7 +283,7 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [03] POLICY CIRCUITS
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             AI safety by physics, not psychology.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
@@ -221,11 +291,11 @@ export default function BPUPage() {
             exactly ALLOW or BLOCK. <PhiC /> = 1 means every possible input maps deterministically to one of two terminal states.
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-3">
             {policyExamples.map((ex) => (
-              <div key={ex.title} className="flex flex-col overflow-hidden border border-border">
-                <div className="bg-muted/30 px-4 py-5">
-                  <Shield className="mb-3 h-5 w-5 text-teal" />
+              <div key={ex.title} className="flex flex-col overflow-hidden rounded-[1.5rem] border border-border/80 bg-gradient-to-br from-background to-muted/20">
+                <div className="px-5 py-6 text-center">
+                  <Shield className="mx-auto mb-3 h-5 w-5 text-teal" />
                   <p className="text-sm font-medium">{ex.title}</p>
                   <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{ex.desc}</p>
                 </div>
@@ -239,44 +309,24 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [04] ROADMAP
           </p>
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             From software to silicon
           </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-4">
-            {roadmap.map((r) => (
-              <div key={r.phase} className="border border-border bg-muted/20 p-6">
-                <div className="flex items-center gap-3">
-                  <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
-                    r.status === "NOW"
-                      ? "border border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                      : "border border-border bg-muted/30 text-muted-foreground"
-                  }`}>
-                    {r.status}
-                  </span>
-                  <h3 className="text-sm font-bold">{r.phase}</h3>
-                </div>
-                <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{r.desc}</p>
-                {r.cmd && (
-                  <div className="mt-3 bg-[#0a0e14] px-4 py-2.5">
-                    <code className="font-mono text-xs text-emerald-400">
-                      <span className="text-teal">$</span> {r.cmd}
-                    </code>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            The roadmap separates what is available in software today, what gets validated on FPGA next, and what only becomes true at tape-out.
+          </p>
+          <BpuRoadmapRail />
 
           {/* Regulatory trajectory */}
-          <div className="mt-8 border border-border bg-muted/20 p-6">
-            <p className="text-sm font-medium">Regulatory trajectory</p>
+          <div className="mx-auto mt-8 max-w-4xl rounded-[1.75rem] border border-border/80 bg-gradient-to-br from-background to-muted/20 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.05)]">
+            <p className="text-center text-sm font-medium">Regulatory trajectory</p>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
                 { phase: "Concept & software prototype", timing: "Now", analogy: "ABS optional (1978)" },
                 { phase: "FPGA validation", timing: "12\u201318 months", analogy: "ABS standard equipment" },
                 { phase: "Silicon target", timing: "24\u201336 months", analogy: "ABS mandatory (2004)" },
               ].map((r) => (
-                <div key={r.phase} className="text-center">
+                <div key={r.phase} className="rounded-2xl border border-border/70 bg-background/80 px-4 py-4 text-center">
                   <p className="text-xs font-bold text-teal">{r.phase}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{r.timing}</p>
                   <p className="mt-1 text-[10px] italic text-muted-foreground">{r.analogy}</p>
@@ -291,7 +341,13 @@ export default function BPUPage() {
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
             [05] SPECIFICATIONS
           </p>
-          <div className="overflow-hidden border border-border">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
+            Target envelope
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            These are target constraints for the BPU surface. They define the envelope of the concept, not a claim that tape-out has already happened.
+          </p>
+          <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-[1.75rem] border border-border/80 bg-background shadow-[0_20px_60px_rgba(15,23,42,0.05)]">
             {specs.map((s) => (
               <div key={s.param} className="flex items-center justify-between border-b border-border px-4 py-3 last:border-b-0">
                 <span className="text-xs text-muted-foreground">{s.param}</span>
@@ -303,7 +359,7 @@ export default function BPUPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Phase 1 is available now.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">

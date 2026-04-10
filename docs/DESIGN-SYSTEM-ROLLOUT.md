@@ -1,6 +1,8 @@
 # Design System Rollout Plan
 
 > Aplicar los patrones del landing a TODA la web (55+ páginas)
+>
+> Historical rollout notes. The current canonical site grammar now lives in the live design system page and the updated `docs/DESIGN-SYSTEM.md` front matter.
 
 ---
 
@@ -150,3 +152,39 @@ blog/page, blog/[slug]/page, news/page, news/[slug]/page
 ai-agents, not-found
 
 **Total: ~40 unique files to process**
+# Design System Rollout Notes
+
+## PCD page migration
+
+The `pcd` route is now treated as a canonical product page under the same site grammar used by the home and the newer product cluster pages.
+
+### Replaced legacy structures
+
+- Removed stacked `CopyableCode` blocks for syntax walkthroughs.
+- Removed the old EVA algebra presentation based on three flat cards.
+- Removed the raw monomer tables as the primary visual narrative.
+
+### New surfaces
+
+- `Format Surface`
+  - Explains why PCD is a bounded format rather than an open syntax space.
+  - Carries explicit metrics for certified core, contract surface, and export targets.
+- `Syntax Workbench`
+  - Keeps one active example selector.
+  - Uses a left-side syntax explanation and a right-side proof/code panel.
+- `Domain Surface`
+  - Makes declared ranges the protagonist instead of a loose snippet.
+  - Ties domains to explicit closure consequences.
+- `MonomerCatalogSurface`
+  - Preserves `BlueprintHubArtifact` and `MonomerFamilyBoard`.
+  - Splits core and extended monomers into separate surfaces with explicit state.
+- `EvaAlgebraArtifact`
+  - Presents EVA as one composition artifact.
+  - Uses metrics, flow nodes, evidence reading, and a compact PCD sketch.
+
+### Regression rules
+
+- Do not reintroduce `CopyableCode` for PCD syntax walkthroughs or domain explanation.
+- Do not render EVA as a plain `evaOps.map(...)` grid again.
+- Keep section headers centered and teal.
+- Keep the active code/example view centered and attached to a single proof panel.

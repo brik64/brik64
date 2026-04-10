@@ -75,12 +75,12 @@ export default function CICDIntegrationUseCasePage() {
         <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
           <HeroWireframeClient />
           <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-[#00b8d4]/30 bg-[#00b8d4]/10 px-4 py-1.5 text-sm font-medium text-[#00b8d4]">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
               Use Case
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               CI/CD Integration:{" "}
-              <span className="text-[#00b8d4]">Push Code. Get Mathematical Proof. Automatically.</span>
+              <span className="text-teal">Push Code. Get Mathematical Proof. Automatically.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Tests check the cases you thought of. BRIK64 proves ALL cases. Every push triggers
@@ -90,7 +90,7 @@ export default function CICDIntegrationUseCasePage() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
@@ -107,7 +107,7 @@ export default function CICDIntegrationUseCasePage() {
         <div className="mx-auto max-w-7xl border-x border-border">
           {/* ── The Problem ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Problem
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -125,7 +125,7 @@ export default function CICDIntegrationUseCasePage() {
 
           {/* ── The Solution ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               The Solution
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -134,8 +134,8 @@ export default function CICDIntegrationUseCasePage() {
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               {steps.map((s) => (
                 <div key={s.step} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-[#00b8d4]/10">
-                    <span className="text-sm font-bold text-[#00b8d4]">{s.step}</span>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-teal/10">
+                    <span className="text-sm font-bold text-teal">{s.step}</span>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">{s.title}</h3>
@@ -160,7 +160,7 @@ $ git push origin feature/new-payment-flow
 # PR Comment:
 # ┌──────────────────────────────────────────┐
 # │ BRIK64 Certification                     │
-# │ Φ_c = 1  ✓  CERTIFIED                    │
+# │ Φc = 1  ✓  CERTIFIED                    │
 # │ 14 circuits analyzed, 14 certified        │
 # │ Certificate: 0xe7f3...a291                │
 # │ Safe to merge.                            │
@@ -169,7 +169,7 @@ $ git push origin feature/new-payment-flow
 
           {/* ── Real Example ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Real Example
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -201,7 +201,7 @@ jobs:
           # That's it. One step.
           # Lifts changed files → PCD → certification
           # Posts result as PR comment
-          # Fails the check if Φ_c ≠ 1`}</CopyableCode>
+          # Fails the check if Φc ≠ 1`}</CopyableCode>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-muted-foreground">
               One GitHub Action step. Your entire CI pipeline now produces mathematical proofs, not just test results.{" "}
               <PhiC /> = 1 or the merge is blocked. That is the new standard.
@@ -210,7 +210,7 @@ jobs:
 
           {/* ── Results ── */}
           <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
-            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-[#00b8d4]">
+            <span className="mb-3 block text-center text-sm font-semibold uppercase tracking-widest text-teal">
               Results
             </span>
             <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -219,7 +219,7 @@ jobs:
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {results.map((item) => (
                 <div key={item.title} className="border border-border bg-white p-6">
-                  <CheckCircle2 className="mb-3 h-6 w-6 text-[#00b8d4]" />
+                  <CheckCircle2 className="mb-3 h-6 w-6 text-teal" />
                   <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
                 </div>
@@ -239,7 +239,7 @@ jobs:
             <div className="mt-8 flex items-center justify-center gap-4">
               <a
                 href="/login"
-                className="inline-flex items-center gap-2 rounded-md bg-[#00b8d4] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#00a0bc] transition-colors"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
               >
                 Start building &mdash; free <ArrowRight className="h-4 w-4" />
               </a>
