@@ -1,6 +1,6 @@
 import { BookOpen, ExternalLink, Globe } from "lucide-react";
 import { ArtifactFrame, ArtifactHeader, StatusPill } from "@/components/HomeProofArtifacts";
-import { HomePrimaryButton, HomeSecondaryButton } from "@/components/HomeButtons";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
 /* eslint-disable @next/next/no-img-element */
 const resources = [
@@ -55,7 +55,7 @@ export function CTASection() {
                 rel="noopener noreferrer"
                 className={`grid gap-3 px-5 py-4 transition-colors hover:bg-teal/[0.03] md:grid-cols-[auto_120px_1fr_auto] md:items-center ${index > 0 ? "border-t border-border/70" : ""}`}
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal/10">
+                <div className="flex h-10 w-10 items-center justify-center bg-teal/10">
                   {resource.icon}
                 </div>
                 <p className="text-sm font-semibold text-foreground">{resource.title}</p>

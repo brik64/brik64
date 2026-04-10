@@ -1,18 +1,22 @@
+import { ArrowRight, FileCode, Shield, Maximize2 } from "lucide-react";
 import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts.client";
 import { PhiC } from "@/components/PhiC";
 import { FeatureMatrixSurface, HomeSectionHeader } from "@/components/PageArtifacts";
-import { HomePrimaryButton, HomeSecondaryButton } from "@/components/HomeButtons";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
 const keyPoints = [
   {
+    icon: <FileCode className="h-5 w-5 text-teal" />,
     title: "Shared grammar",
     desc: "A finite syntax an LLM can learn end to end.",
   },
   {
+    icon: <Shield className="h-5 w-5 text-teal" />,
     title: "Verified operations",
     desc: "Core ops are proven; extended ops stay contract-bounded.",
   },
   {
+    icon: <ArrowRight className="h-5 w-5 text-teal" />,
     title: "Closure before shipping",
     desc: (
       <>
@@ -21,6 +25,7 @@ const keyPoints = [
     ),
   },
   {
+    icon: <Maximize2 className="h-5 w-5 text-teal" />,
     title: "Domain Constraints",
     desc: "Every input range is explicit and compiler-enforced.",
   },

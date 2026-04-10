@@ -1,7 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import { HeroWireframe } from "@/components/HeroWireframe";
 import { MonomerGrid } from "@/components/MonomerGrid";
-import { HomePrimaryButton, HomeSecondaryButton } from "@/components/HomeButtons";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
 export function HeroSection() {
   return (
@@ -42,23 +42,21 @@ export function HeroSection() {
             </HomeSecondaryButton>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-border/80 bg-background/90 shadow-sm">
-            <div className="grid md:grid-cols-3">
-              <div className="border-b border-border/70 p-5 md:border-r md:border-b-0">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Operations</p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">128</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">64 core and 64 extended, all named and bounded.</p>
-              </div>
-              <div className="border-b border-border/70 p-5 md:border-r md:border-b-0">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Closure</p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Φc = 1</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Closed circuits expose proof state instead of hidden runtime drift.</p>
-              </div>
-              <div className="p-5">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Targets</p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">14</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">One blueprint emits across deterministic compilation targets.</p>
-              </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Operations</p>
+              <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">128</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">64 core and 64 extended, all named and bounded.</p>
+            </div>
+            <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Closure</p>
+              <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Φc = 1</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Closed circuits expose proof state instead of hidden runtime drift.</p>
+            </div>
+            <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Targets</p>
+              <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">14</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">One blueprint emits across deterministic compilation targets.</p>
             </div>
           </div>
         </div>
@@ -75,7 +73,7 @@ export function HeroSection() {
                 <p className="mt-2 text-sm font-semibold text-foreground">Representative monomer families, proof state, and outputs stay visible.</p>
               </div>
               <div className="rounded-full border border-teal/20 bg-teal/[0.08] px-3 py-1 text-xs font-semibold text-teal">
-                Operator proof chain
+                Ready now
               </div>
             </div>
           </div>
