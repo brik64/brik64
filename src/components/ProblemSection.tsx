@@ -1,6 +1,6 @@
 import { ProblemFrameArtifact } from "@/components/HomeProofArtifacts";
 import { HomeSectionHeader } from "@/components/PageArtifacts";
-import { CircuitDivider } from "@/components/ui/pixel-perfect/circuit-divider";
+import { CircuitDivider } from "@/components/CircuitDivider";
 
 export function ProblemSection() {
   return (

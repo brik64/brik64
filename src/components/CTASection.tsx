@@ -1,5 +1,6 @@
-import { ArrowRight, BookOpen, Globe } from "lucide-react";
-import { HomePrimaryButton } from "@/components/ui/pixel-perfect/home-buttons";
+import { BookOpen, ExternalLink, Globe } from "lucide-react";
+import { ArtifactFrame, ArtifactHeader, StatusPill } from "@/components/HomeProofArtifacts";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/HomeButtons";
 
 /* eslint-disable @next/next/no-img-element */
 const resources = [
@@ -26,50 +27,47 @@ const resources = [
 export function CTASection() {
   return (
     <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
-      <div className="mx-auto text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
-          Start building with{" "}
-          <span className="text-teal">
-            BRIK64.
-          </span>
-        </h2>
+      <div className="mx-auto max-w-5xl">
+        <ArtifactFrame className="space-y-6">
+          <ArtifactHeader
+            eyebrow="Technical next step"
+            title={<span className="text-balance text-3xl font-bold tracking-tight md:text-5xl">Start building with <span className="text-teal">BRIK64.</span></span>}
+            description="Read the spec, inspect the registry, and verify the proof chain before you change your workflow."
+            status={<StatusPill tone="teal">next step</StatusPill>}
+          />
 
-        <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground md:text-base">
-          Read the spec, inspect the registry, and verify the proof chain before you change your workflow.
-        </p>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
+              Read the docs
+            </HomePrimaryButton>
+            <HomeSecondaryButton href="https://digitalcircuitality.com" target="_blank" rel="noopener noreferrer">
+              Learn the theory
+              <ExternalLink className="h-3.5 w-3.5" />
+            </HomeSecondaryButton>
+          </div>
 
-        <div className="mx-auto mt-10 flex flex-col items-center gap-4">
-          <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
-            Read the docs
-          </HomePrimaryButton>
-          <a
-            href="https://digitalcircuitality.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal"
-          >
-            Learn the theory at Digital Circuitality
-            <ArrowRight className="h-3.5 w-3.5" />
-          </a>
-        </div>
-
-        <div className="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
-          {resources.map((resource) => (
-            <a
-              key={resource.title}
-              href={resource.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl border border-border bg-background p-6 transition-colors hover:border-teal/30 hover:shadow-sm"
-            >
-              <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">
-                {resource.icon}
-              </div>
-              <p className="text-sm font-semibold">{resource.title}</p>
-              <p className="mt-1 text-xs text-muted-foreground">{resource.description}</p>
-            </a>
-          ))}
-        </div>
+          <div className="overflow-hidden rounded-[1.5rem] border border-border/80 bg-background/80">
+            {resources.map((resource, index) => (
+              <a
+                key={resource.title}
+                href={resource.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`grid gap-3 px-5 py-4 transition-colors hover:bg-teal/[0.03] md:grid-cols-[auto_120px_1fr_auto] md:items-center ${index > 0 ? "border-t border-border/70" : ""}`}
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal/10">
+                  {resource.icon}
+                </div>
+                <p className="text-sm font-semibold text-foreground">{resource.title}</p>
+                <p className="text-sm text-muted-foreground">{resource.description}</p>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-teal">
+                  Open
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </ArtifactFrame>
       </div>
     </div>
   );

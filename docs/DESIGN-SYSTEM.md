@@ -7,8 +7,10 @@
 - Section headers are centered and use the official teal accent for the title.
 - Home and internal product pages share the same header structure, differing only in content and density.
 - Each section should have one protagonist artifact with header, status, payload, proof metadata, and scoped claim.
+- Supporting payload blocks inside an `ArtifactFrame` may use soft rounded corners when they are clearly subordinate to the protagonist surface.
 - CTA rows use one teal primary action, one muted secondary action, and external links with an arrow icon.
 - Black oval CTA buttons, mixed title alignments, and generic card clouds without a protagonist object are treated as regressions.
+- Resource shelves without a clear protagonist surface, purely typographic audience clouds, and disconnected evidence grids are also regressions.
 
 ### Product page canon — PCD
 
@@ -32,7 +34,7 @@
 - Marketing language is acceptable in the hero and the first lead section, but the surrounding sections must anchor it in evidence, bounded claims, and operator-friendly surfaces.
 - Sections that read as generic feature clouds, ornamental CTA treatments, or unbounded claims are regressions even when they look visually polished.
 
-> The notes below describe older implementation details and should not override the current site grammar.
+> The notes below describe older implementation details and should not override the current site grammar. Where those notes conflict with the canon above, the canon above wins.
 
 ---
 
@@ -50,14 +52,14 @@
 
 ## 2. Bordes y Esquinas
 
-### REGLA: Cards y contenedores tienen bordes cuadrados (sin rounded)
+### REGLA LEGACY: Cards y contenedores tienen bordes cuadrados (sin rounded)
 - Cards, secciones, contenedores, grids: **SIN `rounded-*`** (bordes cuadrados)
 - Solo conservan rounded:
   - `rounded-xl` → SOLO en bloques de terminal/código (bg-[#0a0e14])
   - `rounded-md` → SOLO en botones de acción (CTA, submit)
   - `rounded-full` → SOLO en badges, pills, avatares, dots
 
-### REGLA: Cards adyacentes usan border-separators, no gaps
+### REGLA LEGACY: Cards adyacentes usan border-separators, no gaps
 En lugar de `gap-4` entre cards, usar border-based grid:
 ```tsx
 <div className="grid grid-cols-2 border border-border">
@@ -204,7 +206,7 @@ Solo en el landing page (home). Las páginas internas no usan counters numerados
 
 ---
 
-## Inconsistencias a corregir en páginas internas
+## Inconsistencias legacy a corregir en páginas internas
 
 ### Alta prioridad:
 1. **237 instancias de `rounded-lg/xl/2xl` en cards** → eliminar (bordes cuadrados)

@@ -1,4 +1,4 @@
-import { HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
+import { HomeSecondaryButton } from "@/components/HomeButtons";
 import { EvidenceSurface, FeatureMatrixSurface, HomeSectionHeader } from "@/components/PageArtifacts";
 
 export function EnterpriseSection() {

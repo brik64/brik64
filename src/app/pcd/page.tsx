@@ -16,7 +16,7 @@ import {
   StatusPill,
 } from "@/components/HomeProofArtifacts";
 import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts.client";
-import { EvidenceSurface, PageSectionHeader } from "@/components/PageArtifacts";
+import { EvidenceSurface, FeatureMatrixSurface, PageSectionHeader } from "@/components/PageArtifacts";
 import {
   FileCode,
   ArrowRight,
@@ -387,30 +387,21 @@ export default function PCDPage() {
             description="The language surface stays finite so AI agents and human reviewers can reason about the same material system without ambiguity."
           />
           <div className="mx-auto mt-8 grid max-w-6xl gap-6">
-            <ArtifactFrame className="space-y-6">
-              <ArtifactHeader
-                eyebrow="Format Surface"
-                title="The whole format fits inside one explicit operational envelope."
-                description="The value of PCD is not stylistic minimalism. It is that every program is assembled from a finite substrate, explicit domains, and a closed composition algebra."
-                status={<ProofBadge />}
-              />
-              <div className="grid gap-4 md:grid-cols-3">
-                <MetricTile label="Core" value="64 certified" detail="Formally proven monomers." />
-                <MetricTile label="Extended" value="64 contract-bounded" detail="System bridges that stay explicit." />
-                <MetricTile label="Targets" value="14" detail="One blueprint, many export materials." />
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {keyProps.map((kp) => (
-                  <div key={kp.title} className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5 shadow-sm">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-md border border-teal/20 bg-teal/[0.05]">
-                      {kp.icon}
-                    </div>
-                    <p className="mt-4 text-sm font-semibold text-foreground">{kp.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{kp.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </ArtifactFrame>
+            <FeatureMatrixSurface
+              eyebrow="Format Surface"
+              title="The whole format fits inside one explicit operational envelope."
+              description="The value of PCD is not stylistic minimalism. It is that every program is assembled from a finite substrate, explicit domains, and a closed composition algebra."
+              metrics={[
+                { label: "Core", value: "64 certified", detail: "Formally proven monomers." },
+                { label: "Extended", value: "64 contract-bounded", detail: "System bridges that stay explicit." },
+                { label: "Targets", value: "14", detail: "One blueprint, many export materials." },
+              ]}
+              rows={keyProps.map((property) => ({
+                title: property.title,
+                body: property.desc,
+                state: property.title === "Verified by design" ? "accent" : "default",
+              }))}
+            />
           </div>
         </section>
 
@@ -444,7 +435,7 @@ export default function PCDPage() {
         </section>
 
         {/* Closure Domains */}
-        <section className="bg-background border-b border-border px-6 py-20 lg:px-16">
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <PageSectionHeader
             eyebrow="Closure Domains"
             title="Types tell you what. Domains tell you where."
@@ -475,30 +466,31 @@ export default function PCDPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Start building &mdash; free
-          </h2>
-          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            PCD describes WHAT your program computes &mdash; not HOW. Language-agnostic. Mathematically verifiable.
-            Compiles to any target.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="https://docs.brik64.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-            >
-              <BookOpen className="h-4 w-4" /> Full PCD Reference
-            </a>
-            <a
-              href="/cli"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
-            >
-              Install the CLI <ArrowRight className="h-3.5 w-3.5" />
-            </a>
-          </div>
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <ArtifactFrame className="mx-auto max-w-4xl text-center">
+            <ArtifactHeader
+              eyebrow="PCD Next Step"
+              title="Start building with the bounded language surface."
+              description="PCD describes what the circuit computes while keeping closure, domains, and export material explicit."
+              status={<ProofBadge />}
+            />
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <a
+                href="https://docs.brik64.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              >
+                <BookOpen className="h-4 w-4" /> Full PCD Reference
+              </a>
+              <a
+                href="/cli"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
+              >
+                Install the CLI <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </ArtifactFrame>
         </section>
       </div>
 

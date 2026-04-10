@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7fbfc;
+  --foreground: #0f1720;
+  --muted: #eef6f7;
+  --muted-foreground: #5d6d76;
+  --border: rgba(15, 23, 32, 0.12);
+  --teal: #00b8d4;
+  --teal-hover: #00e5ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-teal: var(--teal);
+  --color-teal-hover: var(--teal-hover);
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(0, 184, 212, 0.08), transparent 28%),
+    linear-gradient(180deg, #f7fbfc 0%, #fdfefe 100%);
+  color: var(--foreground);
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

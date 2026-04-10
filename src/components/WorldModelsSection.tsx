@@ -4,7 +4,7 @@ import { HomeSectionHeader } from "@/components/PageArtifacts";
 
 export function WorldModelsSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
+    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[05] · THE FOUNDATION"
