@@ -15,8 +15,8 @@ export function HeroSection() {
           </p>
 
           <h1 className="max-w-xl text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            BRIK64 is the first programming language{" "}
-            <span className="text-teal">designed for AI.</span>
+            BRIK64 is the first programming language
+            <span className="text-teal"> designed for AI.</span>
           </h1>
 
           <p className="text-muted-foreground mt-5 max-w-lg text-base leading-relaxed md:text-lg">

@@ -190,14 +190,9 @@ const ACTIVATION_RADIUS = 25;
 
 export function CircuitGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const dotsRef = useRef<DotState[]>([]);
+  const dotsRef = useRef<DotState[]>(parsedPaths.map((_, i) => createDot(i)));
   const rafRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
-
-  // Initialize dots
-  if (dotsRef.current.length === 0) {
-    dotsRef.current = parsedPaths.map((_, i) => createDot(i));
-  }
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -353,41 +348,47 @@ export function CircuitGrid() {
     }
   }, []);
 
-  const animate = useCallback(
-    (time: number) => {
+  useEffect(() => {
+    const animate = (time: number) => {
       if (lastTimeRef.current === 0) lastTimeRef.current = time;
-      const dt = Math.min((time - lastTimeRef.current) / 1000, 0.1); // cap dt
+      const dt = Math.min((time - lastTimeRef.current) / 1000, 0.1);
       lastTimeRef.current = time;
 
-      // Update dots
-      for (const dot of dotsRef.current) {
+      dotsRef.current = dotsRef.current.map((dot) => {
         if (dot.delayRemaining > 0) {
-          dot.delayRemaining -= dt;
-          dot.active = false;
-          continue;
+          return {
+            ...dot,
+            delayRemaining: Math.max(0, dot.delayRemaining - dt),
+            active: false,
+          };
         }
-        dot.active = true;
-        dot.distance += dot.speed * dt;
+
+        const distance = dot.distance + dot.speed * dt;
         const pathLen = parsedPaths[dot.pathIndex].length;
-        if (dot.distance >= pathLen) {
-          // Reset with random delay
-          dot.distance = 0;
-          dot.active = false;
-          dot.delayRemaining = 1 + seededRandom(dot.pathIndex * 31 + time) * 4;
-          dot.speed = 40 + seededRandom(dot.pathIndex * 17 + time) * 40;
+        if (distance >= pathLen) {
+          return {
+            ...dot,
+            distance: 0,
+            active: false,
+            delayRemaining: 1 + seededRandom(dot.pathIndex * 31 + time) * 4,
+            speed: 40 + seededRandom(dot.pathIndex * 17 + time) * 40,
+          };
         }
-      }
+
+        return {
+          ...dot,
+          distance,
+          active: true,
+        };
+      });
 
       draw();
       rafRef.current = requestAnimationFrame(animate);
-    },
-    [draw]
-  );
+    };
 
-  useEffect(() => {
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [animate]);
+  }, [draw]);
 
   return (
     <canvas

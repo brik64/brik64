@@ -28,10 +28,8 @@ export function CTASection() {
     <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
       <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
-          Start building with{" "}
-          <span className="text-teal">
-            BRIK64.
-          </span>
+          Start building with
+          <span className="text-teal"> BRIK64.</span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground md:text-base">

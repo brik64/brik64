@@ -2073,7 +2073,7 @@ brikc run your_program.pcd`}</CodeBlock>
         Every codebase starts clean. Pristine. Beautiful. Six months later? Patches on patches. Edge cases nobody documented. Functions that &quot;work&quot; but nobody on the team knows why. Tests? Some, maybe. Documentation? Laughably outdated. Confidence that any of it is correct? Absolute zero.
       </P>
       <P>
-        You know this feeling in your bones. You open a file and see a function with a comment that says <code>// TODO: fix this later</code> — dated three years ago. Four different developers have modified it since then. There are no tests. There is no specification. There is only the code itself, and the code is supposed to be the truth — except nobody on your team is sure what truth it is telling.
+        You know this feeling in your bones. You open a file and see a function with a comment that says <code>{"// TODO: fix this later"}</code> — dated three years ago. Four different developers have modified it since then. There are no tests. There is no specification. There is only the code itself, and the code is supposed to be the truth — except nobody on your team is sure what truth it is telling.
       </P>
       <P>
         The &quot;big rewrite&quot; takes months, costs a fortune, and usually fails. Refactoring? That is lipstick on a pig — you reorganize the mess without ever proving it was correct in the first place. Both options are broken. But what if there was a third option?
@@ -3642,7 +3642,7 @@ fn calculate_dose(glucose: Glucose, weight: range[1, 300]) {
 
       <H2>How BRIK-64 Generates Compliance Evidence</H2>
       <P>
-        Every BRIK-64 program produces a Thermodynamic Coherence certificate: <strong>Φc = 1</strong>. This is not a test result. It is a mathematical proof that the program's information is closed — that the system is deterministic, that every input produces a defined output, that there are no hidden states or undefined behaviors.
+        Every BRIK-64 program produces a Thermodynamic Coherence certificate: <strong>Φc = 1</strong>. This is not a test result. It is a mathematical proof that the program&apos;s information is closed — that the system is deterministic, that every input produces a defined output, that there are no hidden states or undefined behaviors.
       </P>
       <P>
         The certificate is generated automatically at compile time. You do not annotate your code. You do not write proof obligations. You do not hire a formal methods team. You compile your program and the proof is a byproduct.
@@ -3662,7 +3662,7 @@ brikc check payment_processor.pcd
       <H2>The Three Properties That Matter for Compliance</H2>
       <H3>1. Determinism</H3>
       <P>
-        A BRIK-64 certified program produces identical outputs for identical inputs — always, on every platform, in every execution. Φc = 1 means the information entropy of the system is zero: no randomness, no undefined behavior, no platform-specific surprises. For a regulator asking "does this AI system behave consistently across demographics and environments," this is a direct mathematical answer.
+        A BRIK-64 certified program produces identical outputs for identical inputs — always, on every platform, in every execution. Φc = 1 means the information entropy of the system is zero: no randomness, no undefined behavior, no platform-specific surprises. For a regulator asking &quot;does this AI system behave consistently across demographics and environments,&quot; this is a direct mathematical answer.
       </P>
       <H3>2. Finite Operation Space</H3>
       <P>
@@ -3681,7 +3681,7 @@ brikc check payment_processor.pcd
         <strong>Accuracy and robustness</strong> — The system behaves correctly under the declared input domain. BRIK-64 closure domains define that domain formally. The certificate proves the system respects it.
       </P>
       <P>
-        <strong>Transparency and explainability</strong> — The system's behavior can be traced and audited. PCD is a blueprint. Every operation is named, typed, and proven. An auditor can read a PCD program like a schematic.
+        <strong>Transparency and explainability</strong> — The system&apos;s behavior can be traced and audited. PCD is a blueprint. Every operation is named, typed, and proven. An auditor can read a PCD program like a schematic.
       </P>
       <P>
         <strong>Human oversight</strong> — The system does not take actions outside its defined operation space. Policy circuits in PCD define permitted actions formally. The compiler rejects any program that violates them.
@@ -3714,7 +3714,7 @@ brikc check payment_processor.pcd
 
       <H2>Start Today</H2>
       <P>
-        The compliance deadline is not hypothetical. The enforcement actions are already happening — Italy fined OpenAI €15 million in early 2026 for GDPR violations in training data. The FTC's Operation AI Comply is active. Regulators have made clear that aspirational policies do not satisfy technical control requirements.
+        The compliance deadline is not hypothetical. The enforcement actions are already happening — Italy fined OpenAI €15 million in early 2026 for GDPR violations in training data. The FTC&apos;s Operation AI Comply is active. Regulators have made clear that aspirational policies do not satisfy technical control requirements.
       </P>
       <P>
         BRIK-64 is the only compiler that makes compliance evidence a byproduct of building software rather than a separate, expensive, manual process. Install brikc, certify your first program, and produce the documentation your legal team needs in the same command that builds your binary.

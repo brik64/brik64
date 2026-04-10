@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { X } from "lucide-react";
 
 const CONSENT_KEY = "brik64-cookie-consent";
@@ -8,15 +9,13 @@ const CONSENT_KEY = "brik64-cookie-consent";
 type ConsentChoice = "all" | "essential" | null;
 
 export function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !localStorage.getItem(CONSENT_KEY);
+  });
   const [showPrefs, setShowPrefs] = useState(false);
   const [analytics, setAnalytics] = useState(true);
   const [marketing, setMarketing] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(CONSENT_KEY);
-    if (!stored) setVisible(true);
-  }, []);
 
   function accept(choice: ConsentChoice) {
     const consent = {
@@ -42,12 +41,12 @@ export function CookieBanner() {
               We use cookies to ensure the best experience. Essential cookies are
               required for the site to function. Analytics and marketing cookies
               help us improve and reach you with relevant content.{" "}
-              <a
+              <Link
                 href="/legal"
                 className="text-teal underline-offset-2 hover:underline"
               >
                 Privacy Policy
-              </a>
+              </Link>
             </p>
           </div>
           <button

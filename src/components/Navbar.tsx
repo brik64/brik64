@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe, ExternalLink, Brain, FlaskConical, Cog, Plane, Landmark, HeartPulse, Car, Building2, Shield, BookOpen, Zap, Ruler, CircuitBoard, CheckCircle2, Rocket, Code2, FileText, Sparkles } from "lucide-react";
 
@@ -581,28 +582,28 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img
             src="/brand/brik64-logo-primary-horizontal-black.svg"
             alt="BRIK64"
             className="h-8 w-auto lg:h-10"
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 lg:flex">
           <NavTrigger label="Product" active={openMenu === "product"} onClick={() => toggle("product")} />
           <NavTrigger label="Industries" active={openMenu === "industries"} onClick={() => toggle("industries")} />
           <NavTrigger label="Features" active={openMenu === "features"} onClick={() => toggle("features")} />
-          <a href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          <Link href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Pricing
-          </a>
-          <a href="/download" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          </Link>
+          <Link href="/download" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Download
-          </a>
-          <a href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          </Link>
+          <Link href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             Blog
-          </a>
+          </Link>
           <NavTrigger label="Resources" active={openMenu === "resources"} onClick={() => toggle("resources")} />
           <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
             Docs <ExternalLink className="h-3 w-3" />
@@ -622,12 +623,12 @@ export function Navbar() {
             </svg>
             GitHub
           </a>
-          <a href="/login" className="rounded-md border border-teal px-5 py-1.5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
+          <Link href="/login" className="rounded-md border border-teal px-5 py-1.5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
             Login
-          </a>
-          <a href="/signup" className="rounded-md bg-teal px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+          </Link>
+          <Link href="/signup" className="rounded-md bg-teal px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
             Sign Up
-          </a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -656,42 +657,42 @@ export function Navbar() {
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Product</p>
             {productEndpoints.concat(productMore).map((item) => (
-              <a key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+              <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
                 {item.label}
-              </a>
+              </Link>
             ))}
             <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Industries</p>
             {industryItems.map((item) => (
-              <a key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+              <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
                 {item.label}
-              </a>
+              </Link>
             ))}
             <hr className="my-2 border-border" />
-            <a href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</a>
-            <a href="/download" className="px-3 py-2 text-sm text-muted-foreground">Download</a>
-            <a href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</a>
+            <Link href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</Link>
+            <Link href="/download" className="px-3 py-2 text-sm text-muted-foreground">Download</Link>
+            <Link href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</Link>
             <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</p>
-            <a href="/shop" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
+            <Link href="/shop" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
               <span className="inline-flex items-center gap-2">
                 <span>Shop</span>
                 <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
                   Coming soon
                 </span>
               </span>
-            </a>
-            <a href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</a>
-            <a href="/pricing" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Pricing</a>
-            <a href="/changelog" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Changelog</a>
-            <a href="/news" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">News</a>
-            <a href="/about" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">About</a>
-            <a href="/investors" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Investors</a>
-            <a href="/contact" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Contact</a>
+            </Link>
+            <Link href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</Link>
+            <Link href="/pricing" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Pricing</Link>
+            <Link href="/changelog" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Changelog</Link>
+            <Link href="/news" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">News</Link>
+            <Link href="/about" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">About</Link>
+            <Link href="/investors" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Investors</Link>
+            <Link href="/contact" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Contact</Link>
             <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
               Docs <ExternalLink className="h-3 w-3" />
             </a>
             <hr className="my-2 border-border" />
-            <a href="/login" className="px-3 py-2 text-sm text-foreground">Login</a>
-            <a href="/signup" className="mt-1 rounded-md bg-teal px-5 py-1.5 text-center text-sm font-medium text-white">Sign Up</a>
+            <Link href="/login" className="px-3 py-2 text-sm text-foreground">Login</Link>
+            <Link href="/signup" className="mt-1 rounded-md bg-teal px-5 py-1.5 text-center text-sm font-medium text-white">Sign Up</Link>
           </nav>
         </div>
       )}

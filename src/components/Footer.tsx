@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
 function ExtIcon() {
@@ -11,11 +12,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <img
-              src="/brand/brik64-logo-primary-horizontal-black.svg"
-              alt="BRIK64"
-              className="h-8 w-auto"
-            />
+            <img src="/brand/brik64-logo-primary-horizontal-black.svg" alt="BRIK64" className="h-8 w-auto" />
             <p className="mt-1 text-xs text-[#322F2D]/40">Digital Circuitality</p>
           </div>
 
@@ -25,14 +22,14 @@ export function Footer() {
               Product
             </h4>
             <ul className="space-y-2">
-              <li><a href="/cli" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">CLI</a></li>
-              <li><a href="/platform" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Platform</a></li>
-              <li><a href="/registry" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Registry</a></li>
-              <li><a href="/sdks" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">SDKs</a></li>
-              <li><a href="/lifter" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Lifter</a></li>
-              <li><a href="/transpiler" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Transpiler</a></li>
-              <li><a href="/pricing" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Pricing</a></li>
-              <li><a href="/download" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Download</a></li>
+              <li><Link href="/cli" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">CLI</Link></li>
+              <li><Link href="/platform" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Platform</Link></li>
+              <li><Link href="/registry" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Registry</Link></li>
+              <li><Link href="/sdks" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">SDKs</Link></li>
+              <li><Link href="/lifter" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Lifter</Link></li>
+              <li><Link href="/transpiler" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Transpiler</Link></li>
+              <li><Link href="/pricing" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Pricing</Link></li>
+              <li><Link href="/download" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Download</Link></li>
             </ul>
           </div>
 
@@ -43,17 +40,17 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               <li><a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Documentation <ExtIcon /></a></li>
-              <li><a href="/blog" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blog</a></li>
-              <li><a href="/news" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">News</a></li>
-              <li><a href="/faq" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">FAQ</a></li>
-              <li><a href="/features" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Features</a></li>
+              <li><Link href="/blog" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blog</Link></li>
+              <li><Link href="/news" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">News</Link></li>
+              <li><Link href="/faq" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">FAQ</Link></li>
+              <li><Link href="/features" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Features</Link></li>
               <li>
-                <a href="/shop" className="inline-flex items-center gap-2 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">
+                <Link href="/shop" className="inline-flex items-center gap-2 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">
                   <span>Shop</span>
                   <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
                     Coming soon
                   </span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -65,13 +62,13 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               <li><a href="https://digitalcircuitality.com" target="_blank" rel="noopener noreferrer" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Digital Circuitality <ExtIcon /></a></li>
-              <li><a href="/foundations" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Foundations</a></li>
-              <li><a href="/bpu" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">BPU Unit</a></li>
-              <li><a href="/pcd" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">PCD Format</a></li>
-              <li><a href="/compliance" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Compliance Evidence</a></li>
-              <li><a href="/blockchain" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blockchain</a></li>
-              <li><a href="/safety-critical" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Safety-Critical</a></li>
-              <li><a href="/ai" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI-Verified Code</a></li>
+              <li><Link href="/foundations" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Foundations</Link></li>
+              <li><Link href="/bpu" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">BPU Unit</Link></li>
+              <li><Link href="/pcd" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">PCD Format</Link></li>
+              <li><Link href="/compliance" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Compliance Evidence</Link></li>
+              <li><Link href="/blockchain" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blockchain</Link></li>
+              <li><Link href="/safety-critical" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Safety-Critical</Link></li>
+              <li><Link href="/ai" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI-Verified Code</Link></li>
             </ul>
           </div>
 
@@ -81,12 +78,12 @@ export function Footer() {
               Company
             </h4>
             <ul className="space-y-2">
-              <li><a href="/about" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">About</a></li>
-              <li><a href="/investors" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Investors</a></li>
-              <li><a href="/enterprise" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Enterprise</a></li>
-              <li><a href="/ai-agents" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI Agents</a></li>
-              <li><a href="/contact" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Contact</a></li>
-              <li><a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Legal</a></li>
+              <li><Link href="/about" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">About</Link></li>
+              <li><Link href="/investors" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Investors</Link></li>
+              <li><Link href="/enterprise" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Enterprise</Link></li>
+              <li><Link href="/ai-agents" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI Agents</Link></li>
+              <li><Link href="/contact" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Contact</Link></li>
+              <li><Link href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Legal</Link></li>
             </ul>
           </div>
 
@@ -122,9 +119,9 @@ export function Footer() {
               &copy; 2026 BRIK64. All rights reserved.
             </p>
             <div className="flex items-center gap-3">
-              <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Privacy</a>
+              <Link href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Privacy</Link>
               <span className="text-sm text-[#322F2D]/20">&middot;</span>
-              <a href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Terms</a>
+              <Link href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Terms</Link>
             </div>
           </div>
         </div>
