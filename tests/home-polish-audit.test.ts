@@ -18,12 +18,12 @@ describe("Home polish audit — section headers stay visually stable", () => {
 });
 
 describe("Home polish audit — hero density stays controlled", () => {
-  it("renders core + extended 8x8 monomer matrices with interactive inspection", () => {
+  it("renders core + extended monomer matrices with interactive inspection", () => {
     const hero = read("src/components/HeroSection.tsx");
     const grid = read("src/components/MonomerGrid.tsx");
     expect(hero).toContain('<MonomerGrid variant="hero" />');
     expect(grid).toContain('const HERO_CORE_MONOMERS = CORE_MONOMERS.slice(0, 64);');
-    expect(grid).toContain('const HERO_EXTENDED_MONOMERS = EXTENDED_MONOMERS.slice(0, 64);');
+    expect(grid).toContain('const HERO_EXTENDED_MONOMERS = EXTENDED_MONOMERS.slice(0, 60);');
     expect(grid).toContain('className="grid grid-cols-8');
     expect(grid).toContain("onMouseOver={() => setActiveMonomerId(track, monomer.id)}");
     expect(grid).toContain("onMouseEnter={() => setActiveMonomerId(track, monomer.id)}");
@@ -31,6 +31,9 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(grid).toContain('translateX(-${activeTrackIndex * 100}%)');
     expect(grid).toContain("CORE CERTIFIED");
     expect(grid).toContain("EXTENDED CONTRACT");
+    expect(grid).toContain("Core atomic operations");
+    expect(grid).toContain("Extended atomic operations");
+    expect(grid).toContain("return id + 68;");
     expect(grid).not.toContain("Hover or focus any core monomer");
   });
 
