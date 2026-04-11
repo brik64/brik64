@@ -94,7 +94,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               <li><a href="https://github.com/brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/github.svg" alt="" className="h-4 w-4 opacity-50" />GitHub <ExtIcon /></a></li>
-              <li><a href="https://x.com/brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/x-twitter.svg" alt="" className="h-4 w-4 opacity-50" />X / Twitter <ExtIcon /></a></li>
+              <li><a href="https://x.com/brik64com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/x-twitter.svg" alt="" className="h-4 w-4 opacity-50" />X / Twitter <ExtIcon /></a></li>
               <li><a href="https://medium.com/@brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/medium.svg" alt="" className="h-4 w-4 opacity-50" />Medium <ExtIcon /></a></li>
               <li><a href="https://discord.gg/brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/discord.svg" alt="" className="h-4 w-4 opacity-50" />Discord <ExtIcon /></a></li>
             </ul>
