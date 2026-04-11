@@ -94,7 +94,7 @@ export default function CompliancePage() {
             items={[
               { label: "Allowed", body: "Talk about bounded software evidence, explicit review state, and operator-readable review packets." },
               { label: "Qualified", body: "Mention standards or control classes only when the page keeps the software-evidence boundary explicit." },
-              { label: "Blocked", body: "Do not imply full legal, regulatory, or organizational certification based on this page alone." },
+              { label: "Blocked", body: "Do not imply full legal, regulatory, or organizational certification from software evidence alone." },
             ]}
           />
         </div>

@@ -17,6 +17,10 @@ const bannedMetaCopy = [
   "action rail",
   "docs rail",
   "promissory copy",
+  "The operator path starts with one bounded command workflow.",
+  "The CLI route shows the install path, command grammar, and verification loop in one consistent product cadence.",
+  "One install and workflow route",
+  "This route explains what enterprise teams can operationalize today and where legal/compliance programs require separate controls.",
 ];
 
 const bannedClaims = [

@@ -242,12 +242,12 @@ export const featureOverview = {
       {
         label: "Migration and transpilation",
         body:
-          "The page covers how existing logic is lifted, reviewed, and moved across targets through the same intermediate form.",
+          "The overview covers how existing logic is lifted, reviewed, and moved across targets through the same intermediate form.",
       },
       {
         label: "Platform and audit posture",
         body:
-          "The page shows how review-ready outputs feed registry, platform, and enterprise workflows without claiming that the whole environment becomes formally verified.",
+          "The overview shows how review-ready outputs feed registry, platform, and enterprise workflows without claiming that the whole environment becomes formally verified.",
       },
     ],
   } as const satisfies EvidenceSurfaceSpec,

@@ -40,7 +40,7 @@ export default function CLIPage() {
         <ArchetypeSectionHeader
           eyebrow="CLI"
           title="Install once, then run the verification sequence"
-          description="This page maps each CLI stage to its technical output so teams can adopt the same flow in local and CI contexts."
+          description="Each CLI stage maps to a technical output so teams can adopt the same flow in local and CI contexts."
         />
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
           <FeatureMatrixSurface

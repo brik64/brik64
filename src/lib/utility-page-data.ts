@@ -77,7 +77,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "Route the request to the right",
       highlight: "channel.",
       description:
-        "General questions, enterprise evaluation, and support requests move faster when each route is explicit. This page maps the request to the correct mailbox or public channel.",
+        "General questions, enterprise evaluation, and support requests move faster when each route is explicit. The contact route maps each request to the correct mailbox or public channel.",
       actions: [primary("Email enterprise", "mailto:enterprise@brik64.com"), secondary("Open GitHub", "https://github.com/brik64/brik64/issues", true)],
       metrics: [
         { label: "General route", value: "hello@brik64.com", detail: "Product questions and initial contact." },
@@ -257,7 +257,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
         { title: "Is BRIK-64 a language, a compiler, or a platform?", body: "Publicly, it is presented as a formal language and compiler path wrapped by broader platform and registry workflows." },
         { title: "Do I need PCD to start?", body: "No. The public entry path can begin with CLI and SDK material, then move into PCD when formal structure matters." },
         { title: "Does the site claim full compliance or certification?", body: "No. Compliance language stays scoped to evidence posture, bounded logic, and operator review workflows." },
-        { title: "Where should I go after this page?", body: "Docs, the platform page, or contact, depending on whether the question is technical, exploratory, or commercial." },
+        { title: "Where should I go next?", body: "Docs, the platform page, or contact, depending on whether the question is technical, exploratory, or commercial." },
       ],
     },
     secondarySurface: {
@@ -596,7 +596,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     cta: {
       title: "Need brand assets or a partnership conversation?",
       description:
-        "Open the design system or contact routes rather than treating this page like a full retail storefront.",
+        "Open the design system or contact routes rather than treating the shop route like a full retail storefront.",
       actions: [primary("Contact", "/contact"), link("Open design system", "/design-system")],
     },
   },
@@ -658,7 +658,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Access model",
       title: "What the login route communicates",
       description:
-        "This page is about access posture, support routing, and where the platform sits in the overall public flow.",
+        "Login focuses on access posture, support routing, and where the platform sits in the overall public flow.",
       rows: [
         { title: "Platform access", body: "Use login only as the bridge into authenticated platform work, not as a standalone marketing page." },
         { title: "Support", body: "If the user cannot access the platform, route them into support or enterprise channels explicitly." },
