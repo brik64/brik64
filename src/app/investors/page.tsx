@@ -4,19 +4,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
 import {
-  TrendingUp,
   Bug,
   Bot,
   Scale,
   Shield,
-  Layers,
-  Users,
-  BadgeCheck,
-  Rocket,
-  Globe,
   ArrowRight,
   Mail,
-  Cpu,
 } from "lucide-react";
 
 import dynamic from "next/dynamic";
@@ -32,7 +25,7 @@ const traction = [
   { value: "Full", label: "Monomer catalog (certified + extended)" },
   { value: "10+", label: "Lift-from languages" },
   { value: "14+", label: "Export targets" },
-  { value: "15,424", label: "Tests (0 failures)" },
+  { value: "15,424", label: "Tests (repo evidence)" },
   { value: "14", label: "Rust crates" },
   { value: "207", label: "mathematical proofs" },
 ];
@@ -78,8 +71,8 @@ export default function InvestorsPage() {
               The infrastructure layer for <span className="text-teal">AI-generated code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              AI generates 40%+ of new code. Nobody verifies it. BRIK64 is the verification layer.
-              A compiler, a platform, and eventually a chip. New category: formal verification as infrastructure.
+              BRIK64 is positioned as infrastructure for bounded software verification:
+              compiler chain, platform workflows, and a hardware roadmap discussed with explicit phase boundaries.
             </p>
           </div>
         </section>
@@ -93,12 +86,12 @@ export default function InvestorsPage() {
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div className="border border-border bg-muted/10 p-6">
               <Bug className="mb-4 h-6 w-6 text-teal" />
-              <h3 className="text-sm font-bold">$600B+ software quality market</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Bugs cost the global economy $600B+ annually (NIST). The COBOL crisis alone
-                threatens $3T+ in daily banking transactions. Current QA tools reduce bugs;
-                BRIK64 eliminates them by construction.
-              </p>
+                <h3 className="text-sm font-bold">$600B+ software quality market</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Bugs cost the global economy $600B+ annually (NIST). The COBOL crisis alone
+                  threatens $3T+ in daily banking transactions. Current QA tools reduce bugs;
+                  BRIK64 targets structural risk reduction through bounded verification workflows.
+                </p>
             </div>
             <div className="border border-border bg-muted/10 p-6">
               <Bot className="mb-4 h-6 w-6 text-teal" />
@@ -111,11 +104,12 @@ export default function InvestorsPage() {
             </div>
             <div className="border border-border bg-muted/10 p-6">
               <Scale className="mb-4 h-6 w-6 text-teal" />
-              <h3 className="text-sm font-bold">Regulatory tailwind</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                EU AI Act, FDA software guidelines, NHTSA autonomous vehicle rules. Regulators are
-                moving from &ldquo;test it&rdquo; to &ldquo;prove it.&rdquo; BRIK64 provides the proof.
-              </p>
+                <h3 className="text-sm font-bold">Regulatory tailwind</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  EU AI Act, FDA software guidelines, NHTSA autonomous vehicle rules. Regulators are
+                  increasing evidence expectations. BRIK64 contributes software evidence and review posture;
+                  it does not replace full regulatory programs.
+                </p>
             </div>
           </div>
         </section>
@@ -129,10 +123,9 @@ export default function InvestorsPage() {
           <div className="mx-auto mt-8 max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
             <p className="text-sm leading-relaxed text-foreground">
               A self-verifying compiler and platform that lifts code from 10 languages into
-              mathematically certified blueprints (PCD), then exports to 14 targets with formal
-              proof of correctness. <PhiC /> = 1 means zero informational entropy: every input
-              consumed, every output produced, every path verified. The compiler verifies its own
-              compilation.
+              bounded blueprints (PCD), then exports to 14 targets through a normalized chain.
+              <PhiC /> = 1 is used here as a closure condition for the modeled circuit and declared domains.
+              The self-hosting fixpoint is presented as consistency evidence for the current compiler build chain.
             </p>
           </div>
         </section>
@@ -181,9 +174,9 @@ export default function InvestorsPage() {
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-4">
             {[
-              { title: "207 mathematical proofs", desc: "Each monomer is mathematically proven correct. Building this proof library from scratch takes years." },
+              { title: "207 proof files", desc: "The formal core is backed by a proof corpus documented in the repo." },
               { title: "Self-compilation fixpoint", desc: "The compiler compiles itself to an identical hash. This is a property, not a feature \u2014 it\u2019s extremely difficult to achieve." },
-              { title: "Early mover in formal AI code verification with circuit-based approach", desc: "PCD is the first language designed for AI agents. As AI code generation accelerates, the need for formal verification becomes existential." },
+              { title: "Early architecture thesis in bounded AI code verification", desc: "PCD and policy workflows are positioned as a practical response to AI-generated code growth, with claims scoped to documented product behavior." },
               { title: "Academic backing", desc: "Theoretical foundations reviewed by Prof. Laszlo B. Kish (Texas A&M) — whose work on the entropy distinction informs the framework. The framework stands on Shannon, Brillouin, and Kish-Ferry." },
               { title: "Network effects", desc: "Every certified circuit in the registry reduces the need to write new code. The more circuits exist, the more valuable the platform." },
             ].map((m) => (
@@ -260,11 +253,11 @@ export default function InvestorsPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight md:text-3xl">
-            The product is built. The science is published. The market is ready.
+            Category thesis with explicit technical boundaries.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            We&rsquo;re building the infrastructure layer for a world where every line of code
-            carries mathematical proof of correctness.
+            BRIK64 is presented as an infrastructure thesis for bounded verification workflows.
+            Claims remain tied to repo-backed evidence and product routes.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

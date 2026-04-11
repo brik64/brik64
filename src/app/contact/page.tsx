@@ -95,19 +95,19 @@ export default function ContactPage() {
 
         <section className="border-t border-border px-6 py-16 lg:px-16">
           <PageSectionHeader
-            eyebrow="Contact Surface"
-            title="The contact page now declares scope before dropping the user into cards and form fields."
-            description="Email channels, community links, and support routes stay visible, but they now sit under one explicit service surface instead of feeling like disconnected boxes."
+            eyebrow="Contact Scope"
+            title="Route each request to the channel that can resolve it"
+            description="Email channels, community links, and support routes stay visible in one operational map."
           />
           <div className="mx-auto mt-10 max-w-5xl">
             <EvidenceSurface
-              eyebrow="Contact Scope"
-              title="Where each request should go"
+              eyebrow="Routing Guide"
+              title="Where each request goes"
               description="This block reduces ambiguity before the user reaches the individual cards."
               items={[
-                { label: "General inquiries", body: "Use the general route for product questions, architecture clarifications, and initial contact." },
+                { label: "General inquiries", body: "Use the general mailbox for product questions, architecture clarifications, and initial contact." },
                 { label: "Enterprise route", body: "Route deployment, compliance, and commercial conversations to the enterprise channel instead of mixing them with product support." },
-                { label: "Support + bugs", body: "Operational issues and bug reports should go through support or GitHub so they stay traceable." },
+                { label: "Support + bugs", body: "Route operational issues and bug reports through support or GitHub so they stay traceable." },
               ]}
             />
           </div>

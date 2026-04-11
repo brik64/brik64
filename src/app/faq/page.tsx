@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PhiC } from "@/components/PhiC";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 import dynamic from "next/dynamic";
@@ -18,11 +17,11 @@ const HeroWireframe = dynamic(
 const faqs = [
   {
     q: "What is BRIK64?",
-    a: "A compiler and platform that treats software like hardware. 128 verified operations (64 certified + 64 extended), composed through EVA algebra, certified by the TCE. The compiler compiles itself to an identical binary. Free CLI. Ready today.",
+    a: "A formal software stack centered on PCD blueprints, bounded verification, and platform workflows. Public references describe 128 operations (formal core plus contract-bounded extensions), EVA composition, and a compiler chain with self-hosting consistency checks.",
   },
   {
     q: "What is PCD?",
-    a: "The programming language designed for AI. 64 certified operations. 64 extended. 128 total. Learn it in one prompt. PCD describes WHAT your code computes, not HOW. Language-agnostic. An AI writes PCD directly. Humans use the Lifter to convert existing code.",
+    a: "PCD is the bounded blueprint format used by the compiler chain. It describes what a computation does at the circuit level, including domains and composition structure, so logic can be verified and then emitted across supported targets.",
   },
   {
     q: "Is BRIK64 a programming language?",
@@ -30,11 +29,11 @@ const faqs = [
   },
   {
     q: "What does \u03A6_c = 1 mean?",
-    a: "\u03A6_c (phi-c) is the coherence coefficient computed by the TCE. When \u03A6_c = 1, it means the \u201Ccircuit is closed\u201D: every input domain is bounded, every operation is verified, every output range is proven, and no execution path is undefined. It\u2019s the computational analog of a closed electrical circuit \u2014 current flows completely or not at all. \u03A6_c = 1 certifies structural completeness \u2014 every input maps deterministically to a verified output.",
+    a: "\u03A6_c (phi-c) is the closure signal for the modeled circuit in the BRIK64 verification flow. \u03A6_c = 1 means declared domains, composition paths, and output constraints satisfy that formal model. The claim applies to the bounded representation, not every external runtime condition.",
   },
   {
     q: "How is this different from testing?",
-    a: "Testing checks the cases you thought of. BRIK64 proves correctness for ALL inputs in the domain. 207 mathematical proofs back the core monomers. When \u03A6_c = 1, it's proven \u2014 not hoped. Not sampled. Proven.",
+    a: "Testing samples behavior for selected cases. The BRIK64 approach checks closure and domain completeness on a bounded circuit model before emission. Current repo evidence includes a 207-file proof corpus for the formal core; broader system behavior still depends on modeled scope and integration boundaries.",
   },
   {
     q: "Can I use BRIK64 with my existing code?",
@@ -42,7 +41,7 @@ const faqs = [
   },
   {
     q: "What languages does it support?",
-    a: "Lift from 10 languages: JavaScript, TypeScript, TSX/JSX, Python, Rust, C, C++, Go, COBOL, PHP, Java. Export to 14 targets: all of the above plus Swift, WebAssembly, BIR bytecode, and native x86-64. That\u2019s 140 certified transpilation paths.",
+    a: "Repo documentation presents lift coverage across 10 source languages and emission across 14 targets. The transpilation claim is tied to the extracted and normalized blueprint path, with explicit boundaries around unmanaged side effects.",
   },
   {
     q: "Is it open source?",
@@ -50,11 +49,11 @@ const faqs = [
   },
   {
     q: "What is the BPU?",
-    a: "The BRIK Processing Unit (BPU) is a hardware coprocessor that materializes Digital Circuitality in silicon. It sits on the PCIe bus between an AI accelerator and the host I/O subsystem. A BLOCK signal is non-maskable by design \u2014 no software can override it. The BPU is on the roadmap for 2027 prototype.",
+    a: "The BRIK Processing Unit (BPU) is presented as a policy-enforcement hardware roadmap. Current availability is software-phase enforcement and policy circuits; FPGA and silicon stages are roadmap targets with explicit phase boundaries.",
   },
   {
     q: "How much does it cost?",
-    a: "Free. The CLI, SDKs, full monomer catalog, all 14 export targets, 5 lifts/day \u2014 $0 forever. Pro adds unlimited lifts, private registry, GitHub integration. Enterprise adds SSO, compliance, on-premise. Start free. Scale when ready.",
+    a: "The public route starts with open CLI access and documentation. Team and enterprise options extend into collaboration, governance, and deployment posture. For current commercial scope, use pricing and enterprise routes.",
   },
 ];
 
@@ -79,7 +78,7 @@ export default function FAQPage() {
               Frequently asked <span className="text-teal">questions.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Straight answers. No jargon.
+              Straight answers with explicit scope, evidence posture, and next routes.
             </p>
           </div>
         </section>

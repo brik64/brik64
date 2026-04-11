@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PhiC } from "@/components/PhiC";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 import { EvidenceSurface, FeatureMatrixSurface, PageSectionHeader } from "@/components/PageArtifacts";
@@ -8,7 +7,7 @@ import { EvidenceSurface, FeatureMatrixSurface, PageSectionHeader } from "@/comp
 export const metadata = {
   title: "About — BRIK64",
   description:
-    "BRIK64 is the first programming language designed for AI. 128 verified operations. One composition algebra. A compiler that proves correctness. Built on information theory, validated by Texas A&M. Free. Ready today.",
+    "BRIK64 presents a bounded software stack built around PCD, compiler verification, and reusable platform workflows.",
 };
 
 const sections = [
@@ -22,31 +21,31 @@ const sections = [
     tag: "02",
     title: "The Idea",
     content:
-      "Software should work like hardware. A circuit either closes or it does not. There is no 'mostly correct.' A 747 does not have unit tests for its wiring — its circuits are designed so that dangerous states are physically impossible. We applied that same principle to software. We call it Digital Circuitality. 128 verified atomic operations — monomers — composed through three algebraic laws. A formal description language that reads like a schematic. And a compiler that does not check your code. It proves it correct. Φc = 1. The circuit is closed. Or it does not compile.",
+      "Software should behave like a bounded system, not an open-ended guess. A circuit either closes or it does not. We applied that discipline to software through Digital Circuitality: 128 reviewed atomic operations, EVA composition laws, and a formal blueprint language. The compiler verifies closure against the declared model before emission. Φc = 1 remains a model-level closure condition, not a blanket claim about every external environment.",
   },
   {
     tag: "03",
     title: "The Science",
     content:
-      "BRIK64 is grounded in Shannon information theory — the mathematics of deterministic systems — validated by Prof. Laszlo B. Kish at Texas A&M University. When a system's informational entropy reaches zero, every state is known, every path is determined, every output is certain. That is what Φc = 1 means in our framework. Not a score. Not a confidence level. A binary mathematical fact: the circuit is closed or it is not. 207 Coq proofs. All 10 historical admits resolved. The foundation is not theoretical. It is machine-checked.",
+      "BRIK64 is grounded in information-theoretic reasoning and proof-oriented compiler discipline. In this framework, Φc = 1 is treated as a binary closure condition on the modeled circuit. It is not a confidence score. Current repo evidence includes a 207-file proof corpus for the formal core. The science route keeps theorem, analogy, and product implication separate so claims remain supportable.",
   },
   {
     tag: "04",
     title: "What We Built",
     content:
-      "PCD: a formal programming language where incorrect programs cannot compile. 128 monomers — 64 mathematically certified core operations, 64 extended operations for the real world. EVA algebra: three composition laws (sequential, parallel, conditional) that govern how circuits combine. A Lifter that reads 10 existing languages and converts them to certified PCD. 14 compilation targets: Rust, JavaScript, Python, C, C++, Go, Swift, TypeScript, WASM, native x86-64, and more. A self-compiling fixpoint — the compiler compiles its own source and produces a byte-identical binary. Same SHA-256 hash. Every single time. No other compiler on earth does this.",
+      "PCD is the formal blueprint format. The operation catalog keeps 64 formal-core operations and 64 contract-bounded extensions. EVA defines sequential, parallel, and conditional composition. The Lifter reads 10 source languages into bounded blueprints, and the compiler emits 14 targets from the same normalized representation. A self-compiling fixpoint is documented as consistency evidence for the current compiler build chain.",
   },
   {
     tag: "05",
     title: "AI Native by Design",
     content:
-      "PCD has 128 operations. That is it. An LLM memorizes the entire language in a single context window. The AI writes PCD. The compiler verifies it. If Φc ≠ 1, the error message becomes the next prompt. The AI fixes it. Loop until certified. This works with any LLM — Claude, GPT-4, Gemini, Llama — because the verification is external to the model. The model does not need to be trustworthy. The compiler is. We built the language of AI-generated software before anyone realized that was what the world needed.",
+      "PCD stays compact enough for model-assisted authoring and human review. AI can propose candidate blueprints, but verification remains external to the model. If checks fail, diagnostics feed the repair loop until the bounded circuit passes policy and closure requirements. The key property is not model trust by default; it is an explicit external verification path.",
   },
   {
     tag: "06",
-    title: "Free. Ready Today.",
+    title: "Developer Access and Adoption",
     content:
-      "The CLI is free. The compiler is free. The monomer catalog is free. Install brikc, certify your first function, and ship code you never have to debug again. We believe verified software should not be a luxury reserved for aerospace programs and medical devices with $100M certification budgets. It should be the default. For every developer. For every AI agent. Starting today.",
+      "The CLI and core tooling provide a low-friction technical entrypoint. Teams can start locally, verify bounded logic, and move into platform workflows when they need shared review and reuse. The adoption claim is practical: stronger structural guarantees for the modeled software path, with explicit boundaries around what remains outside that model.",
   },
 ];
 
@@ -55,8 +54,8 @@ const facts = [
   { value: "14", label: "Compilation Targets" },
   { value: "10", label: "Input Languages" },
   { value: "207", label: "Coq Proofs" },
-  { value: "110K+", label: "Generated Tests" },
-  { value: "0", label: "Coq Admits" },
+  { value: "Fixpoint", label: "Self-Hosted Chain" },
+  { value: "Qualified", label: "Claim Posture" },
 ];
 
 export default function AboutPage() {
@@ -78,9 +77,9 @@ export default function AboutPage() {
                 <span className="text-teal">where incorrect programs cannot compile.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-                BRIK64 is the first programming language designed for AI. Not designed to work with AI.
-                Designed for it. 128 certified operations. One composition algebra. A compiler that proves
-                every program is correct. <PhiC /> = 1 — the circuit is closed. Free. Ready today.
+                BRIK64 combines formal blueprints, bounded verification, and reusable delivery workflows.
+                Teams can author or lift logic into PCD, verify closure and domains, and carry review-ready
+                outputs into platform and registry workflows with explicit claim boundaries.
               </p>
               <div className="mt-10 flex items-center justify-center gap-4">
                 <a
@@ -115,15 +114,15 @@ export default function AboutPage() {
 
           <section className="border-b border-border px-6 py-16 lg:px-16">
             <PageSectionHeader
-              eyebrow="Company Artifact"
-              title="About now opens with a bounded company object instead of going straight into a text wall."
-              description="The page still tells the full story, but the first useful block now states the operating thesis, proof posture, and why AI-native verification matters."
+              eyebrow="Company Overview"
+              title="Operating thesis, proof posture, and product handoff in one view"
+              description="This opening block keeps the stack and evidence posture explicit before the long-form company narrative."
             />
             <div className="mx-auto mt-10 grid max-w-6xl gap-6">
               <FeatureMatrixSurface
                 eyebrow="Company Matrix"
-                title="The BRIK64 operating thesis in one surface"
-                description="Numbers and positioning are compressed into a reusable page artifact."
+                title="The BRIK64 operating thesis in one technical matrix"
+                description="Core numbers and positioning are presented with explicit evidence boundaries."
                 metrics={[
                   { label: "Monomers", value: "128", detail: "Verified operations kept intentionally small enough for human and agent reasoning." },
                   { label: "Targets", value: "14", detail: "Multiple compilation targets still flow from one formal blueprint." },
@@ -169,11 +168,10 @@ export default function AboutPage() {
           {/* ── CTA ── */}
           <section className="bg-background px-6 py-24 text-center lg:px-16">
             <h2 className="mx-auto text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Start building &mdash; free
+              Start locally, then move into platform workflows
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-              Install the CLI. Certify your first function. Read the science behind it.
-              The future of verified software is already here.
+              Install the CLI for local bounded workflows, then continue into foundations, platform, and documentation for team adoption paths.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <a

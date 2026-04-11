@@ -49,7 +49,7 @@ describe("Design grammar — utility and company family", () => {
   it("utility page data keeps the route-specific grammar explicit", () => {
     expect(utilityPages.playground.secondarySurface?.kind).toBe("docs");
     expect(utilityPages.docs.secondarySurface?.kind).toBe("docs");
-    expect(utilityPages.login.sectionHeader.eyebrow).toBe("Auth Surface");
-    expect(utilityPages.signup.sectionHeader.eyebrow).toBe("Auth Surface");
+    expect(utilityPages.login.sectionHeader.eyebrow).toBe("Auth");
+    expect(utilityPages.signup.sectionHeader.eyebrow).toBe("Auth");
   });
 });

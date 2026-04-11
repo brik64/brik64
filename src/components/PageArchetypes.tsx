@@ -137,6 +137,9 @@ export type RiskPageSpec = {
     codeTitle?: string;
     code?: string;
     footer?: ReactNode;
+    statusLabel?: string;
+    statusTone?: "teal" | "success" | "warning" | "neutral";
+    showProofBadge?: boolean;
   };
   scenario: {
     eyebrow: string;
@@ -382,6 +385,9 @@ export function ConstraintEnvelopeSurface({
   codeTitle,
   code,
   footer,
+  statusLabel,
+  statusTone,
+  showProofBadge,
 }: {
   eyebrow: string;
   title: string;
@@ -391,6 +397,9 @@ export function ConstraintEnvelopeSurface({
   codeTitle?: string;
   code?: string;
   footer?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
+  showProofBadge?: boolean;
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -398,7 +407,13 @@ export function ConstraintEnvelopeSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={<ProofBadge />}
+        status={
+          showProofBadge ? (
+            <ProofBadge />
+          ) : statusLabel ? (
+            <StatusPill tone={statusTone ?? "neutral"}>{statusLabel}</StatusPill>
+          ) : undefined
+        }
       />
       <div className={cx("grid gap-4", code ? "xl:grid-cols-[0.95fr_1.05fr]" : undefined)}>
         <div className="grid gap-3">
@@ -745,6 +760,8 @@ export function LanguageExchangeSurface({
   codeTitle,
   code,
   footer,
+  statusLabel,
+  statusTone,
 }: {
   eyebrow: string;
   title: string;
@@ -754,6 +771,8 @@ export function LanguageExchangeSurface({
   codeTitle?: string;
   code?: string;
   footer?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -762,10 +781,12 @@ export function LanguageExchangeSurface({
         title={title}
         description={description}
         status={
-          <StatusPill tone="teal">
-            <ArrowRight className="h-3.5 w-3.5" />
-            language exchange
-          </StatusPill>
+          statusLabel ? (
+            <StatusPill tone={statusTone ?? "teal"}>
+              <ArrowRight className="h-3.5 w-3.5" />
+              {statusLabel}
+            </StatusPill>
+          ) : undefined
         }
       />
       <div className="grid gap-4 md:grid-cols-3">

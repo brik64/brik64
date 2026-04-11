@@ -64,8 +64,8 @@ export default function TranspilerPage() {
               Any language in. <span className="text-teal">Any language out. Certified.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              10 input languages. 14 output targets. Every path carries a mathematical certificate
-              that the output preserves the computation of the input. Not tested. Proven.
+              10 input languages. 14 output targets. Each route passes through a bounded intermediate
+              blueprint so equivalence is reviewed at the normalized circuit level before emission.
             </p>
             <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
               N frontends + M backends = <span className="font-bold text-teal">N&times;M transpilation paths</span> with N+M effort instead of N&times;M.
@@ -82,7 +82,7 @@ export default function TranspilerPage() {
             Every input &rarr; any output
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            Inputs and outputs do not connect directly. Every route passes through the same certified semantic hub.
+            Inputs and outputs do not connect directly. Every route passes through the same bounded semantic hub.
           </p>
 
           <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[1.9rem] border border-teal/15 bg-gradient-to-br from-teal/[0.05] via-background to-background p-5 shadow-[0_24px_70px_rgba(15,23,42,0.06)]">
@@ -100,7 +100,7 @@ export default function TranspilerPage() {
               <div className="rounded-2xl border border-border/70 bg-background/90 px-4 py-4 text-center">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Outputs</p>
                 <p className="mt-2 text-2xl font-semibold tracking-tight text-teal">14</p>
-                <p className="mt-1 text-xs text-muted-foreground">Backends from one proof</p>
+                <p className="mt-1 text-xs text-muted-foreground">Backends from one bounded blueprint</p>
               </div>
             </div>
 
@@ -151,7 +151,7 @@ export default function TranspilerPage() {
             </div>
 
             <p className="mt-5 text-center text-xs text-muted-foreground">
-              Every input-output combination is a verified transpilation path. Hover to inspect the surface.
+              Every input-output combination is a transpilation path through the same normalized hub.
             </p>
           </div>
         </section>
@@ -165,8 +165,8 @@ export default function TranspilerPage() {
             Source &rarr; PCD &rarr; Target
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            PCD captures the mathematical essence of computation &mdash; not syntax, not idioms, not runtime quirks.
-            The equivalence proof travels with the output.
+            PCD captures normalized computation &mdash; not syntax, idioms, or runtime quirks.
+            Equivalence evidence is attached to the blueprint stage and reviewed before output emission.
           </p>
           <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
             <span className="font-medium text-foreground">Domain preservation:</span> input constraints carry through from source to PCD to target &mdash; bounds verified at every stage.
@@ -202,10 +202,10 @@ export default function TranspilerPage() {
             [03] TRANSLATION VALIDATION
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Not just conversion. Certification.
+            Not just conversion. Bounded equivalence review.
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            These three surfaces separate what the transpiler preserves, what changes in the target, and what remains outside the certified scope.
+            These three views separate what the transpiler preserves, what changes in the target, and what remains outside the bounded scope.
           </p>
           <div className="mx-auto mt-8 max-w-5xl rounded-[1.9rem] border border-border/80 bg-gradient-to-br from-muted/30 via-background to-background p-5 shadow-[0_24px_70px_rgba(15,23,42,0.05)]">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -213,28 +213,28 @@ export default function TranspilerPage() {
                 <h3 className="text-sm font-medium text-foreground">Traditional transpilers</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 One-to-one: TypeScript &rarr; JavaScript. CoffeeScript &rarr; JS. Sass &rarr; CSS.
-                Each is purpose-built for a single language pair. No proof that the output is correct.
+                Each is purpose-built for a single language pair. Output behavior is validated downstream by tests and review.
                 </p>
               </div>
               <div className="rounded-2xl border border-teal/25 bg-teal/[0.06] p-6 text-center shadow-[0_18px_50px_rgba(13,148,136,0.08)]">
                 <h3 className="text-sm font-medium text-teal">BRIK64 transpiler</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                N-to-N through one verified intermediate representation. Every output carries a
-                cryptographic certificate proving equivalence to the source.
+                N-to-N through one bounded intermediate representation. Every output carries
+                equivalence evidence tied to the normalized source computation.
                 </p>
               </div>
               <div className="rounded-2xl border border-border/80 bg-background/90 p-6 text-center">
-                <h3 className="text-sm font-medium text-foreground">The guarantee</h3>
+                <h3 className="text-sm font-medium text-foreground">Claim boundary</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                <PhiC /> = 1 on both sides. The source and target are mathematically equivalent &mdash;
-                the computation is identical, only the syntax changes.
+                <PhiC /> = 1 on the normalized bounded circuit. Equivalence language is scoped to the extracted computation,
+                while unmanaged host APIs and side effects remain outside this boundary.
                 </p>
               </div>
             </div>
             <div className="mt-4 rounded-2xl border border-teal/15 bg-teal/[0.05] px-4 py-4 text-center">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">Formal reading</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                The certified hub preserves computation. The target changes syntax. Deployment-specific behavior remains outside this proof surface.
+                The certified hub preserves computation. The target changes syntax. Deployment-specific behavior remains outside this verification boundary.
               </p>
             </div>
           </div>
@@ -259,10 +259,10 @@ export default function TranspilerPage() {
             [04] DEMO
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            A migration run with proof attached
+            A migration run with explicit evidence attached
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            A migration run should end in a proof-carrying build record, not just a converted output folder.
+            A migration run should end in a reviewable build record, not just a converted output folder.
           </p>
           <div className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
             <span className="rounded-full border border-border bg-background px-3 py-1">5 source files</span>
@@ -334,11 +334,11 @@ export default function TranspilerPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Start building &mdash; free
+            Start with the bounded migration loop
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Not a 1-to-1 transpiler. An N-to-N certified migration engine.
-            COBOL &rarr; Go. Python &rarr; Rust. With mathematical proof. Free CLI.
+            Not a 1-to-1 transpiler: an N-to-N migration workflow anchored in bounded blueprints and explicit review boundaries.
+            COBOL &rarr; Go. Python &rarr; Rust. Same normalized core, different emitted targets.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

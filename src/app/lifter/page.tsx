@@ -255,7 +255,7 @@ export default function LifterPage() {
             <EvidenceSurface
               eyebrow="Lift Evidence"
               title="What the lifter preserves and what it scopes"
-              description="This surface separates certifiable logic from contract-bounded integration without blurring the proof boundary."
+              description="This section separates certifiable logic from contract-bounded integration without blurring the proof boundary."
               items={[
                 { label: "Pure logic", body: "Certified blueprints carry Φc = 1 through extraction and mapping." },
                 { label: "Side effects", body: "I/O, network and filesystem behavior remain explicit contract-tier bridges." },

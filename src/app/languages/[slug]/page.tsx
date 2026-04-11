@@ -13,7 +13,7 @@ import { getLanguageBySlug, languages } from "@/lib/language-data";
 const sdkExamples: Record<string, { description: string; code: string }> = {
   javascript: {
     description:
-      "Use verified monomer patterns inside a JavaScript or TypeScript workflow and keep the path back to PCD explicit when you need a bounded artifact.",
+      "Use verified monomer patterns inside a JavaScript or TypeScript workflow and keep the path back to PCD explicit when you need a bounded blueprint.",
     code: `import { mc, eva } from "@brik64/core";
 
 const safeAdd = mc.add8(200, 100);
@@ -82,11 +82,11 @@ export default async function LanguagePage(props: {
             label: "Compile target",
             value: language.canCompileTo ? "Supported" : "Not primary",
             detail: language.canCompileTo
-              ? `PCD can emit ${language.name} artifacts as part of the broader target story.`
+              ? `PCD can emit ${language.name} outputs as part of the broader target story.`
               : `Compilation into ${language.name} is not the emphasis of this route today.`,
           },
           {
-            label: "Host artifact",
+            label: "Host package",
             value: language.extension,
             detail: language.installCommand
               ? `This route can also point into the ${language.name} package path.`
@@ -112,7 +112,7 @@ export default async function LanguagePage(props: {
                 value: language.installCommand ? "Available" : "Indirect",
                 detail: language.installCommand
                   ? language.installCommand
-                  : "This route currently behaves more as a lift or target surface than as an installable SDK.",
+                  : "This route currently behaves more as a lift or target path than as an installable SDK.",
               },
               {
                 label: "Lift posture",
@@ -152,7 +152,7 @@ export default async function LanguagePage(props: {
             }
           />
           <DocsRailSurface
-            eyebrow="Reference Rails"
+            eyebrow="Reference Routes"
             title="Language pages terminate in concrete operator routes."
             description="A reader evaluating a language integration needs the next technical path immediately."
             links={[
@@ -163,7 +163,7 @@ export default async function LanguagePage(props: {
               },
               {
                 title: "PCD",
-                body: "The formal language surface behind the bounded blueprint story.",
+                body: "The formal language route behind the bounded blueprint story.",
                 href: "/pcd",
               },
               {
