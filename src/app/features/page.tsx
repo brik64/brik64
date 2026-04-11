@@ -259,8 +259,9 @@ export default function FeaturesPage() {
               title="Core and extended monomer matrices"
               description="The same interactive matrix used in the home hero is exposed here to inspect bounded core operations and contract-bounded extended operations in one surface."
             />
-            <div className="mt-10 flex justify-center">
-              <MonomerGrid variant="hero" />
+            <div className="mt-10 grid gap-6 xl:grid-cols-2 xl:items-start">
+              <MonomerGrid variant="hero" fixedTrack="core" />
+              <MonomerGrid variant="hero" fixedTrack="extended" />
             </div>
           </section>
 
