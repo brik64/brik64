@@ -90,7 +90,7 @@ describe("Secondary pages — previously thin routes now carry substantive conte
     expect(page).toContain("utilityPages.shop");
     expect(spec).toContain("shop: {");
     expect(spec).toContain("Brand support items");
-    expect(spec).toContain('highlight: "brand surface."');
+    expect(spec).toContain('highlight: "honest route."');
   });
 });
 

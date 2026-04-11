@@ -72,6 +72,8 @@ export type UtilityPageSpec = {
     rows: SurfaceRow[];
     footer?: ReactNode;
     thesis?: boolean;
+    statusLabel?: string;
+    statusTone?: "teal" | "success" | "warning" | "neutral";
   };
   secondarySurface?: {
     eyebrow: string;
@@ -88,6 +90,8 @@ export type UtilityPageSpec = {
     links?: Array<{ title: string; body: string; href: string; external?: boolean }>;
     footer?: ReactNode;
     kind?: "utility" | "action" | "docs";
+    statusLabel?: string;
+    statusTone?: "teal" | "success" | "warning" | "neutral";
   };
   cta?: {
     title: string;
@@ -276,25 +280,14 @@ export function CanonicalPageHero({
         {metrics?.length ? (
           <div className="mx-auto mt-12 max-w-5xl">
             <ArtifactFrame className="space-y-5">
-              <ArtifactHeader
-                eyebrow={proofStripEyebrow ?? "Proof strip"}
-                title={
-                  proofStripTitle ??
-                  "One bounded object summarises the page before the body expands it."
-                }
-                description={
-                  proofStripDescription ??
-                  "The hero keeps the hook, but the proof strip carries state, scope, and operator-readable consequences."
-                }
-                status={
-                  status ?? (
-                    <StatusPill tone="teal">
-                      <Gauge className="h-3.5 w-3.5" />
-                      page surface
-                    </StatusPill>
-                  )
-                }
-              />
+              {proofStripEyebrow || proofStripTitle || proofStripDescription || status ? (
+                <ArtifactHeader
+                  eyebrow={proofStripEyebrow ?? ""}
+                  title={proofStripTitle ?? ""}
+                  description={proofStripDescription ?? ""}
+                  status={status}
+                />
+              ) : null}
               <div className="grid gap-4 md:grid-cols-3">
                 {metrics.map((metric) => (
                   <MetricTile
@@ -336,12 +329,12 @@ export function RiskEvidenceSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={
+        status={statusLabel ? (
           <StatusPill tone={statusTone ?? "warning"}>
             <ShieldCheck className="h-3.5 w-3.5" />
-            {statusLabel ?? "risk evidence"}
+            {statusLabel}
           </StatusPill>
-        }
+        ) : undefined}
       />
       <div className="grid gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
@@ -470,12 +463,12 @@ export function ScenarioFlowSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={
+        status={statusLabel ? (
           <StatusPill tone={statusTone ?? "teal"}>
             <Link2 className="h-3.5 w-3.5" />
-            {statusLabel ?? "scenario flow"}
+            {statusLabel}
           </StatusPill>
-        }
+        ) : undefined}
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {steps.map((step) => (
@@ -504,12 +497,16 @@ export function UtilitySurface({
   description,
   rows,
   footer,
+  statusLabel,
+  statusTone,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   rows: Array<{ title: string; body: string; note?: string }>;
   footer?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -517,12 +514,12 @@ export function UtilitySurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={
-          <StatusPill tone="neutral">
+        status={statusLabel ? (
+          <StatusPill tone={statusTone ?? "neutral"}>
             <Gauge className="h-3.5 w-3.5" />
-            utility surface
+            {statusLabel}
           </StatusPill>
-        }
+        ) : undefined}
       />
       <div className="grid gap-3">
         {rows.map((row) => (
@@ -559,12 +556,18 @@ export function CompanyThesisSurface({
   description,
   metrics,
   statements,
+  status,
+  statusLabel,
+  statusTone,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   metrics: Array<{ label: string; value: string; detail: string }>;
   statements: Array<{ title: string; body: string }>;
+  status?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -572,7 +575,12 @@ export function CompanyThesisSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={<ProofBadge />}
+        status={
+          status ??
+          (statusLabel ? (
+            <StatusPill tone={statusTone ?? "teal"}>{statusLabel}</StatusPill>
+          ) : undefined)
+        }
       />
       <div className="grid gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
@@ -610,12 +618,16 @@ export function ActionSurface({
   description,
   channels,
   footer,
+  statusLabel,
+  statusTone,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   channels: Array<{ title: string; body: string; action: string; href: string; external?: boolean }>;
   footer?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -623,12 +635,12 @@ export function ActionSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={
-          <StatusPill tone="teal">
+        status={statusLabel ? (
+          <StatusPill tone={statusTone ?? "teal"}>
             <ArrowRight className="h-3.5 w-3.5" />
-            action rail
+            {statusLabel}
           </StatusPill>
-        }
+        ) : undefined}
       />
       <div className="grid gap-4 lg:grid-cols-3">
         {channels.map((channel) => (
@@ -668,12 +680,16 @@ export function DocsRailSurface({
   description,
   links,
   note,
+  statusLabel,
+  statusTone,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   links: Array<{ title: string; body: string; href: string; external?: boolean }>;
   note?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -681,12 +697,12 @@ export function DocsRailSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={
-          <StatusPill tone="neutral">
+        status={statusLabel ? (
+          <StatusPill tone={statusTone ?? "neutral"}>
             <ExternalLink className="h-3.5 w-3.5" />
-            docs rail
+            {statusLabel}
           </StatusPill>
-        }
+        ) : undefined}
       />
       <div className="grid gap-3">
         {links.map((link) => (
@@ -858,6 +874,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
                 title: row.title,
                 body: row.body,
               }))}
+              statusLabel={primarySurface.statusLabel}
+              statusTone={primarySurface.statusTone}
             />
           ) : (
             <UtilitySurface
@@ -866,6 +884,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
               description={primarySurface.description}
               rows={primarySurface.rows}
               footer={primarySurface.footer}
+              statusLabel={primarySurface.statusLabel}
+              statusTone={primarySurface.statusTone}
             />
           )}
 
@@ -876,6 +896,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
               description={secondarySurface.description}
               channels={secondarySurface.channels}
               footer={secondarySurface.footer}
+              statusLabel={secondarySurface.statusLabel}
+              statusTone={secondarySurface.statusTone}
             />
           ) : secondarySurface?.kind === "docs" && secondarySurface.links ? (
             <DocsRailSurface
@@ -884,6 +906,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
               description={secondarySurface.description}
               links={secondarySurface.links}
               note={secondarySurface.footer}
+              statusLabel={secondarySurface.statusLabel}
+              statusTone={secondarySurface.statusTone}
             />
           ) : secondarySurface?.rows ? (
             <UtilitySurface
@@ -892,6 +916,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
               description={secondarySurface.description}
               rows={secondarySurface.rows}
               footer={secondarySurface.footer}
+              statusLabel={secondarySurface.statusLabel}
+              statusTone={secondarySurface.statusTone}
             />
           ) : null}
         </div>

@@ -34,7 +34,7 @@ export default function BlogPage() {
           <EditorialHero
             eyebrow="Blog"
             title="Proof-first engineering, compiler rigor, and the operating model behind BRIK64."
-            description="The blog now behaves like an editorial surface: one featured artifact, compact metadata, paginated archives, and local covers that make every post scannable before you read a line."
+            description="Essays, product notes, engineering reports, and research writing about Digital Circuitality, PCD, platform workflows, and bounded verification."
             chips={["VISION", "ENGINEERING", "AI SAFETY", "PLATFORM"]}
           />
 

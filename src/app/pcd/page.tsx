@@ -134,7 +134,7 @@ const syntaxArtifacts = [
     code: `let x = 42;\nlet name = "hello";\nlet flag = true;`,
   },
   {
-    label: "Control surface",
+    label: "Control constructs",
     title: "Functions, loops, closures",
     body: "Higher-level constructs remain available, but they still lower into explicit composition paths.",
     code: `fn add(a, b) { return a + b; }\nloop(10) as i {\n    let count = count + 1;\n}\nlet double = fn(n) { n * 2 };`,
@@ -153,12 +153,12 @@ const evaExample = `PC policy_gate {\n    let normalized = SEQ(parse_input, vali
 /* ── Key properties ── */
 
 const keyProps = [
-  { icon: <FileCode className="h-5 w-5 text-teal" />, title: "AI-native language", desc: "128 operations total. An LLM memorizes the entire language in one prompt. No documentation rabbit holes. No ambiguity. No undocumented behavior." },
-  { icon: <Shield className="h-5 w-5 text-teal" />, title: "Verified operations", desc: "Every PCD program is built from formally verified operations. Core mathematically certified, plus contract-based extended set." },
-  { icon: <Zap className="h-5 w-5 text-teal" />, title: "Verified by design", desc: "If the blueprint doesn\u2019t close as a circuit (\u03a6_c \u2260 1), it simply won\u2019t compile. The math is the guarantee." },
-  { icon: <Layers className="h-5 w-5 text-teal" />, title: "Multi-target", desc: "Compile to Rust, JavaScript, Python, C, C++, Go, COBOL, and more." },
-  { icon: <Code className="h-5 w-5 text-teal" />, title: "Self-compiling", desc: "The brikc compiler compiles itself producing an identical hash. The fixpoint is the proof." },
-  { icon: <Terminal className="h-5 w-5 text-teal" />, title: "Designed for AI", desc: "128 total operations. An LLM can learn the entire language. Generate certified PCD in seconds." },
+  { icon: <FileCode className="h-5 w-5 text-teal" />, title: "Finite grammar", desc: "PCD stays intentionally small so humans, agents, and the compiler can reason about the same bounded format." },
+  { icon: <Shield className="h-5 w-5 text-teal" />, title: "Reviewed operations", desc: "Every PCD program is built from a formally reviewed core plus explicit contract-bounded extensions." },
+  { icon: <Zap className="h-5 w-5 text-teal" />, title: "Closure gate", desc: "If the blueprint does not close as a circuit (\u03a6_c \u2260 1), the compiler rejects it under the formal model." },
+  { icon: <Layers className="h-5 w-5 text-teal" />, title: "Multi-target compiler", desc: "One blueprint can emit multiple targets while keeping the intermediate circuit representation explicit." },
+  { icon: <Code className="h-5 w-5 text-teal" />, title: "Self-hosting consistency", desc: "The brikc compiler can compile itself and compare the resulting output for build-chain consistency." },
+  { icon: <Terminal className="h-5 w-5 text-teal" />, title: "Agent-readable format", desc: "The grammar is small enough for machine-assisted authoring, while verification remains external to the authoring model." },
 ];
 
 function SyntaxWorkbench({
@@ -205,7 +205,7 @@ function DomainSurface() {
   return (
     <ArtifactFrame className="mx-auto mt-8 max-w-5xl space-y-6">
       <ArtifactHeader
-        eyebrow="Domain Surface"
+        eyebrow="Declared domains"
         title="Domains define the legal input envelope before evaluation starts."
         description="Types alone are not enough. PCD binds values to declared ranges so the compiler can reason about the whole circuit, not only local types."
         status={<ProofBadge />}
@@ -251,7 +251,7 @@ function MonomerCatalogSurface() {
           <ArtifactHeader
             eyebrow="Core Monomers"
             title="64 certified operations remain inside the formal substrate."
-            description="Core monomers are the mathematically certified surface. They anchor closure, domains, and compiler proofs."
+            description="Core monomers form the formally reviewed substrate. They anchor closure, domains, and compiler proofs."
             status={<ProofBadge />}
           />
           <div className="grid gap-3">
@@ -270,9 +270,9 @@ function MonomerCatalogSurface() {
         <ArtifactFrame className="space-y-5">
           <ArtifactHeader
             eyebrow="Extended Monomers"
-            title="64 contract-bounded bridges expand the surface without faking certification."
+            title="64 contract-bounded bridges expand the language without faking certification."
             description="Extended monomers are explicit bridges to floating-point, network, filesystem, and other system-bound concerns."
-            status={<StatusPill tone="warning">contract surface</StatusPill>}
+            status={<StatusPill tone="warning">contract boundary</StatusPill>}
           />
           <div className="grid gap-3">
             {extendedFamilies.map((f) => (
@@ -302,7 +302,7 @@ function EvaAlgebraArtifact() {
           status={<ProofBadge />}
         />
         <div className="grid gap-4 md:grid-cols-3">
-          <MetricTile label="Operators" value="3" detail="Finite composition surface." />
+          <MetricTile label="Operators" value="3" detail="Finite composition grammar." />
           <MetricTile label="Guarantee" value={<><PhiC /> = 1</>} detail="Closure remains attached to composition." />
           <MetricTile label="Evaluation" value="explicit" detail="Order, branch and parallel fan-out are all named." />
         </div>
@@ -367,14 +367,13 @@ export default function PCDPage() {
               PCD &mdash; Printed Circuit Description
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              This is PCD. <span className="text-teal">The language designed for AI.</span>
+              Printed Circuit Description. <span className="text-teal">A bounded computational format.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              64 certified operations. 64 extended. Learn it in one prompt. An AI writes PCD directly.
-              Humans use the Lifter. <PhiC /> = 1 means every path is verified. 14 export targets. Free. Ready today.
+              PCD is the compiler-facing format for describing bounded computation, declared domains, and explicit composition. It is readable by humans and agents, but verification still happens outside the authoring model.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm italic text-muted-foreground">
-              &ldquo;Describe once. Build in any material.&rdquo;
+              &ldquo;Describe the computation once. Keep the boundary explicit across targets.&rdquo;
             </p>
           </div>
         </section>
@@ -384,12 +383,12 @@ export default function PCDPage() {
           <PageSectionHeader
             eyebrow="[01] NOT A LANGUAGE — A FORMAT"
             title="PCD is a bounded circuit format, not an open syntax playground."
-            description="The language surface stays finite so AI agents and human reviewers can reason about the same material system without ambiguity."
+            description="The grammar stays finite so AI agents and human reviewers can reason about the same bounded format without ambiguity."
           />
           <div className="mx-auto mt-8 grid max-w-6xl gap-6">
             <ArtifactFrame className="space-y-6">
               <ArtifactHeader
-                eyebrow="Format Surface"
+                eyebrow="Format"
                 title="The whole format fits inside one explicit operational envelope."
                 description="The value of PCD is not stylistic minimalism. It is that every program is assembled from a finite substrate, explicit domains, and a closed composition algebra."
                 status={<ProofBadge />}
@@ -477,11 +476,10 @@ export default function PCDPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Start building &mdash; free
+            Read the format, then install the toolchain.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            PCD describes WHAT your program computes &mdash; not HOW. Language-agnostic. Mathematically verifiable.
-            Compiles to any target.
+            PCD describes what a program computes and under which declared bounds. Follow the reference docs or install the CLI to work with the format directly.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

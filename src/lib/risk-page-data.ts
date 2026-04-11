@@ -203,35 +203,35 @@ function thesis(config: {
       metrics: config.heroMetrics,
     },
     sectionHeader: {
-      eyebrow: "Applied Thesis Surface",
-      title: "These pages should argue from constraints, not from spectacle.",
+      eyebrow: "Domain boundary",
+      title: "Problem, software boundary, and operator path",
       description:
-        "They remain persuasive, but the grammar must still be evidence-first and bounded.",
+        "Each thesis route should identify the domain risk, where BRIK-64 enters the workflow, and what remains outside the claim boundary.",
     },
     evidence: {
-      eyebrow: "Applied Evidence",
-      title: "The main object is the formal claim boundary",
+      eyebrow: "Domain evidence",
+      title: "What the domain risk looks like once the software boundary is explicit",
       description:
-        "The page should show what kind of system boundary BRIK-64 can make visible in this domain and what remains outside the page's truth set.",
+        "The point is to show the domain problem, the bounded software object, and the limit of the public claim.",
       metrics: config.heroMetrics,
       tracks: config.evidenceTracks,
     },
     constraint: {
       eyebrow: "Constraint Map",
-      title: "One inspectable proof object anchors the thesis",
+      title: "One inspectable bounded object anchors the claim",
       description:
-        "The point is not to prove the entire field. The point is to show how bounded software behavior becomes legible.",
+        "The route does not prove the entire field. It shows how a bounded software rule becomes legible before execution or handoff.",
       constraints: config.constraints,
       codeTitle: config.codeTitle,
       code: config.code,
       footer:
-        "Applied thesis pages should keep the line between domain aspiration and code-level evidence visible at all times.",
+        "Keep the line between domain aspiration and code-level evidence visible at all times.",
     },
     scenario: {
       eyebrow: "Operator Loop",
-      title: "How the thesis becomes an engineering loop",
+      title: "How the thesis becomes a repeatable engineering loop",
       description:
-        "The applied pages should connect the abstract story back to a concrete path through the product.",
+        "Start from the domain risk, encode the bounded rule, check it, then hand the result into the product workflow.",
       steps: [
         { label: "01", title: "Define the boundary", body: "Choose the constraint the page is really about.", state: "active" },
         { label: "02", title: "Represent it formally", body: "Use PCD or policy circuits to encode the bounded behavior.", state: "warning" },
@@ -1098,24 +1098,24 @@ jobs:
 
 export const thesisPages = {
   ai: thesis({
-    title: "The AI thesis should be constrained by external proof, not by",
-    highlight: "promissory copy.",
+    title: "AI-generated code becomes safer when review stays",
+    highlight: "outside the model.",
     description:
-      "Use this page to frame how AI-generated software interacts with bounded verification surfaces without claiming that models become trustworthy by default.",
+      "Generated output becomes dangerous when it reaches execution without a bounded review loop. BRIK-64 enters as an external verification path around the model, not as a claim that the model itself becomes trustworthy.",
     heroMetrics: [
-      { label: "Primary risk", value: "Unverified generation", detail: "The issue is generated output that lacks a bounded review surface." },
-      { label: "Control point", value: "External verification", detail: "The useful public message is the boundary around the model, not the model itself." },
-      { label: "Proof style", value: "Operator loop", detail: "The page should end in a repeatable engineering workflow." },
+      { label: "Primary risk", value: "Unreviewed generation", detail: "The problem is generated output that reaches execution without an external check." },
+      { label: "Where BRIK-64 enters", value: "External verification", detail: "The useful boundary sits around the model, not inside the weights." },
+      { label: "Workflow", value: "Discover → gate → diagnose", detail: "The route ends in a repeatable engineering loop." },
     ],
     evidenceTracks: [
-      { label: "Model boundary", title: "Keep trust outside the weights", body: "The page should show that verification sits around the model instead of inside a probabilistic training story.", emphasis: "proof" },
-      { label: "Generated code", title: "Bound what gets shipped", body: "The site should emphasize the path from generated code into explicit checks and readable diagnostics.", emphasis: "risk" },
-      { label: "Product fit", title: "Connect AI messaging back to CLI, PCD, platform, and registry", body: "The applied AI thesis should still terminate in actual product surfaces." },
+      { label: "Model boundary", title: "Keep trust outside the weights", body: "Verification surrounds the model and checks candidate code or actions before they move forward.", emphasis: "proof" },
+      { label: "Generated code", title: "Bound what gets shipped", body: "The workflow matters because generated code or actions stay attached to explicit checks and readable diagnostics.", emphasis: "risk" },
+      { label: "Product fit", title: "Connect AI workflows back to the stack", body: "The AI thesis still terminates in CLI, PCD, platform, and registry workflows rather than floating above them." },
     ],
     constraints: [
-      { title: "Externalized checks", body: "The page should show that the verification object exists outside the model and can be inspected independently.", outcome: "trust boundary" },
+      { title: "Externalized checks", body: "The verification object exists outside the model and can be inspected independently.", outcome: "trust boundary" },
       { title: "Feedback loop", body: "Diagnostics should feed back into the generation loop as structured signals, not only as generic failure.", outcome: "repairable workflow" },
-      { title: "Scoped promise", body: "Do not imply that the public site solves every AI safety problem. Keep the claim tied to bounded software verification.", outcome: "bounded claim" },
+      { title: "Claim boundary", body: "This route covers bounded software verification for generated code and agent actions. It does not solve general model alignment.", outcome: "bounded claim" },
     ],
     codeTitle: "agent_review_loop.pcd",
     code: `PC agent_review_loop {
@@ -1123,29 +1123,29 @@ export const thesisPages = {
   assert confidence >= 0.80
   output approved : Bool = true
 }`,
-    ctaTitle: "Keep the AI thesis page tied to external verification and operator loops.",
+    ctaTitle: "Inspect the AI workflow where the review loop stays explicit.",
     ctaDescription:
-      "The page should persuade by making the boundary visible, not by making the promise larger.",
+      "The route earns trust by making the boundary visible, not by making the promise larger.",
   }),
   blockchain: thesis({
     title: "Blockchain software still needs bounded logic and",
     highlight: "reviewable state.",
     description:
-      "This page should talk about constrained contract logic, explicit transaction state, and inspectable rules rather than generic Web3 spectacle.",
+      "Irreversible transaction logic creates a review problem long before chain branding matters. BRIK-64 enters by making contract rules, state transitions, and value boundaries inspectable before deployment or reuse.",
     heroMetrics: [
       { label: "Primary risk", value: "Irreversible bad logic", detail: "The issue is a state transition that cannot be taken back once executed." },
-      { label: "Control point", value: "Contract boundary", detail: "The useful public message is explicit, inspectable transaction logic." },
-      { label: "Proof style", value: "State transition trail", detail: "The page should frame evidence around bounded transitions." },
+      { label: "Where BRIK-64 enters", value: "Contract boundary", detail: "The useful public message is explicit, inspectable transaction logic." },
+      { label: "Workflow", value: "Rule → check → handoff", detail: "Evidence stays attached to bounded state transitions." },
     ],
     evidenceTracks: [
-      { label: "State boundary", title: "Focus on irreversible transitions", body: "The page should frame BRIK-64 as a way to bound and inspect critical contract logic.", emphasis: "risk" },
-      { label: "Review posture", title: "Keep transaction rules inspectable", body: "The strongest signal is a readable policy or circuit artifact, not chain theater.", emphasis: "proof" },
-      { label: "Product fit", title: "Connect the page to the wider platform story", body: "Even this thesis page should route back to platform and registry surfaces." },
+      { label: "State boundary", title: "Focus on irreversible transitions", body: "The route matters when critical contract logic and state updates stay bounded and inspectable.", emphasis: "risk" },
+      { label: "Review posture", title: "Keep transaction rules inspectable", body: "The strongest signal is a readable rule or circuit description, not chain theater.", emphasis: "proof" },
+      { label: "Product fit", title: "Connect the thesis back to the product", body: "The domain argument should still hand the reader back to platform and registry workflows." },
     ],
     constraints: [
       { title: "Explicit state transitions", body: "Make preconditions and postconditions visible before a transaction path is accepted.", outcome: "state gate" },
-      { title: "Bounded value movement", body: "The page should show how transaction amounts and roles remain within declared domains.", outcome: "asset boundary" },
-      { title: "Review output", body: "A reviewer should be able to inspect the rule set and emitted state without chain-specific theatrics.", outcome: "traceable contract" },
+      { title: "Bounded value movement", body: "Transaction amounts, roles, and related invariants should remain within declared domains.", outcome: "asset boundary" },
+      { title: "Claim boundary", body: "This route supports reviewable contract logic and bounded state transitions. It does not claim the surrounding protocol or ecosystem is secure by default.", outcome: "traceable contract" },
     ],
     codeTitle: "token_transfer_guard.pcd",
     code: `PC token_transfer_guard {
@@ -1155,29 +1155,29 @@ export const thesisPages = {
   assert amount <= supply
   output transfer_allowed : Bool = true
 }`,
-    ctaTitle: "Use the blockchain page to show bounded contract logic, not Web3 ornament.",
+    ctaTitle: "Inspect bounded contract logic before it turns into an irreversible state change.",
     ctaDescription:
-      "The page should keep the argument focused on explicit state transitions and readable review paths.",
+      "Keep the argument focused on explicit state transitions and readable review paths.",
   }),
   safetyCritical: thesis({
     title: "Safety-critical software needs bounded computation and a readable",
     highlight: "assurance path.",
     description:
-      "This page should foreground explicit boundaries, failure posture, and reviewable evidence without claiming complete domain certification.",
+      "High-consequence software needs an explicit operating envelope, predictable fallback behavior, and a reviewable assurance path. BRIK-64 enters as a bounded software layer, not as a blanket certification claim for the surrounding system.",
     heroMetrics: [
       { label: "Primary risk", value: "Unsafe path", detail: "The relevant problem is a software path that should never be reachable." },
-      { label: "Control point", value: "Declared envelope", detail: "The page should focus on bounded inputs, outputs, and fallback behavior." },
-      { label: "Proof style", value: "Assurance path", detail: "The useful public surface is a readable assurance object." },
+      { label: "Where BRIK-64 enters", value: "Declared envelope", detail: "The route focuses on bounded inputs, outputs, and fallback behavior." },
+      { label: "Workflow", value: "Envelope → check → handoff", detail: "The useful output is a readable assurance path." },
     ],
     evidenceTracks: [
-      { label: "Safety case", title: "Make the assurance path explicit", body: "The page should behave like a bounded argument for software behavior, not like a generic safety slogan.", emphasis: "proof" },
-      { label: "Failure posture", title: "Show what happens when the boundary is violated", body: "A page about safety-critical systems should make safe fallback and rejection logic visible.", emphasis: "risk" },
-      { label: "Product fit", title: "Keep the page tied to actual product surfaces", body: "The argument should resolve into CLI, PCD, platform, and enterprise review routes." },
+      { label: "Safety case", title: "Make the assurance path explicit", body: "The route is strongest when the operating envelope and the software boundary remain visible to the reviewer.", emphasis: "proof" },
+      { label: "Failure posture", title: "Show what happens when the boundary is violated", body: "Safe fallback and rejection logic should stay visible instead of being buried inside application flow.", emphasis: "risk" },
+      { label: "Product fit", title: "Connect the route back to the stack", body: "The argument resolves into CLI, PCD, platform, and enterprise review routes rather than remaining an abstract safety slogan." },
     ],
     constraints: [
       { title: "Bounded operating envelope", body: "Important states should be represented as explicit domains and not as comments or hope.", outcome: "safety boundary" },
       { title: "Predictable fallback", body: "Out-of-bound states should be rejected or moved into a known safe path.", outcome: "safe failure" },
-      { title: "Readable assurance", body: "The output should preserve enough structure for a reviewer to inspect what was checked.", outcome: "assurance trail" },
+      { title: "Claim boundary", body: "This route supports bounded software review and assurance preparation. It does not certify the wider safety program on its own.", outcome: "assurance trail" },
     ],
     codeTitle: "safety_guard.pcd",
     code: `PC safety_guard {
@@ -1187,8 +1187,8 @@ export const thesisPages = {
   assert load <= 100.0
   output safe_to_continue : Bool = state != 4
 }`,
-    ctaTitle: "Keep the safety-critical page anchored to a readable assurance path.",
+    ctaTitle: "Inspect the assurance path while the operating envelope is still explicit.",
     ctaDescription:
-      "The page builds trust when it shows the boundary and the fallback posture clearly.",
+      "Trust comes from showing the boundary and the fallback posture clearly.",
   }),
 } as const;

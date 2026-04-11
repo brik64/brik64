@@ -52,6 +52,10 @@ describe("Design grammar — product family", () => {
     const content = read("src/components/PageArchetypes.tsx");
     expect(content).toContain("/^(https?:|mailto:|tel:)/.test(action.href)");
     expect(content).toContain("<ExternalLink");
+    expect(content).not.toContain("Proof strip");
+    expect(content).not.toContain("utility surface");
+    expect(content).not.toContain("action rail");
+    expect(content).not.toContain("docs rail");
   });
 
   it("features keeps claim discipline and product-directed CTA routing", () => {

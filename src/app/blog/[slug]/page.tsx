@@ -76,7 +76,7 @@ export default async function BlogPostPage({
                     Reading context
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    Every post in this layer now ships with a cover, compact metadata, and a stable canonical route so the editorial system stays coherent as the archive grows.
+                    This article sits inside the BRIK64 archive of foundations essays, product notes, and engineering reports. Related posts continue the same themes from a different technical angle.
                   </p>
                 </div>
                 <div className="rounded-[1.6rem] border border-border/80 bg-background p-5">

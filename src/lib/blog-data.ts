@@ -22,9 +22,9 @@ interface BlogPostSeed {
 const blogPostSeeds: BlogPostSeed[] = [
   {
     slug: "what-is-digital-circuitality",
-    title: "64 Operations. Infinite Programs. Zero Bugs.",
+    title: "What Digital Circuitality Tries to Formalize",
     excerpt:
-      "Every language lets bugs ship. BRIK64 makes them impossible. 64 verified operations, algebraic composition, and a compiler that proves your code correct before it runs. If it compiles, it works. Free. Ready today.",
+      "A bounded programming model built from reviewed operations, explicit composition, and closure checks. This essay explains the formal claim, its limits, and why it differs from testing.",
     date: "JAN 15, 2026",
     tag: "VISION",
     category: "Foundations",
@@ -32,9 +32,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "first-pcd-circuit",
-    title: "From Zero to Certified in Five Minutes",
+    title: "First PCD Circuit: A Minimal Walkthrough",
     excerpt:
-      "Three commands. One certified program. No PhD, no annotations, no ceremony. Install BRIK64, write your first circuit, and watch the compiler prove it correct. Start building.",
+      "Install the CLI, write a small circuit, and inspect the bounded output path. A practical introduction to the format and the compile step.",
     date: "MAR 5, 2026",
     tag: "TUTORIAL",
     category: "Getting Started",
@@ -42,9 +42,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "eva-algebra-deep-dive",
-    title: "Three Operators. That's All You Need.",
+    title: "EVA Algebra: Sequence, Parallel, Conditional",
     excerpt:
-      "Sequential. Parallel. Conditional. Three algebraic operators that guarantee correctness composes. If the parts work, the whole works. Other languages hope. EVA algebra proves it.",
+      "How three composition operators carry sequencing, fan-out, and branching through the circuit model, and what that means for compiler readability and closure.",
     date: "MAR 1, 2026",
     tag: "DEEP DIVE",
     category: "Theory",
@@ -52,9 +52,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "universal-transpiler",
-    title: "10 Languages In. 14 Out. Every Path Certified.",
+    title: "One Blueprint Across Multiple Targets",
     excerpt:
-      "One command. 140 certified conversion paths. Your JavaScript becomes Rust. Your Python becomes Go. Every output is mathematically equivalent to the input. No other tool on Earth does this.",
+      "How the transpilation chain uses PCD as a bounded intermediate form, what 10 source languages and 14 targets mean in practice, and where the equivalence claim stops.",
     date: "MAR 23, 2026",
     tag: "PRODUCT",
     category: "Product",
@@ -62,9 +62,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "error-elimination",
-    title: "Your Tests Pass. Your Code Is Still Wrong.",
+    title: "Why Tests Passing Is Not the Same as Closure",
     excerpt:
-      "We took 15 functions. All tests green. All 15 had real bugs. BRIK64 caught every single one — because certification is not testing. It's proof. Start building.",
+      "A look at sampled testing versus bounded verification, with examples of logic that passed tests but still required stronger structural checks.",
     date: "MAR 24, 2026",
     tag: "VERIFICATION",
     category: "Engineering",
@@ -72,9 +72,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "cobol-migration-revolution",
-    title: "$3 Billion a Year on Dead Code. We Fixed That.",
+    title: "COBOL Migration Through Bounded Lift-and-Review",
     excerpt:
-      "220 billion lines of COBOL. A retiring workforce. A 60% failure rate. BRIK64 lifts COBOL one function at a time — verified, incremental, zero risk. The migration starts today.",
+      "Why legacy modernization benefits from lifting review-critical logic into a bounded blueprint before transpilation or replacement.",
     date: "MAR 21, 2026",
     tag: "MIGRATION",
     category: "Product",
@@ -82,9 +82,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "bpu-hardware-that-says-no",
-    title: "A $10 Chip That Makes AI Harm Impossible.",
+    title: "BPU: Policy Enforcement as a Hardware Roadmap",
     excerpt:
-      "ABS prevents wheels from locking. The BPU prevents AI from causing harm. Hardware-level verification of every action. No override. No bypass. No negotiation.",
+      "Why software-only guardrails share execution context with the model they constrain, and how the BPU roadmap moves policy enforcement toward FPGA and silicon.",
     date: "JAN 29, 2026",
     tag: "HARDWARE",
     category: "Hardware",
@@ -92,9 +92,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "why-your-ai-needs-blueprints",
-    title: "AI Writes the Code. AI Writes the Test. Nobody Catches the Bug.",
+    title: "Why AI-Generated Code Needs Blueprints and External Checks",
     excerpt:
-      "The test misses the bug for the same reason the code has the bug — they share the same blind spot. BRIK64 breaks the circle with independent mathematical verification.",
+      "Generated code and generated tests can fail together. This note explains why BRIK64 keeps verification outside the model loop.",
     date: "MAR 20, 2026",
     tag: "PRODUCT",
     category: "AI Safety",
@@ -102,9 +102,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "pcd-for-ai-agents",
-    title: "Your AI Agent Just Learned to Ship Certified Code.",
+    title: "PCD for AI Agents: A Small Format with an External Proof Loop",
     excerpt:
-      "128 operations. 14 targets. Automatic certification. PCD is the language where broken code cannot compile. Point your agent at it and let the compiler do the rest.",
+      "How a finite grammar helps agents author bounded logic while the compiler and policy checks stay outside the model.",
     date: "FEB 10, 2026",
     tag: "AI AGENTS",
     category: "AI",
@@ -112,9 +112,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "kish-ferry-distinction",
-    title: "The Physics Error That Fooled Computer Science for 60 Years",
+    title: "Informational Entropy Is Not Thermal Entropy",
     excerpt:
-      "Kish & Ferry (2018) proved information entropy and thermal entropy are entirely different quantities. BRIK64 is built on the correct foundation. Here's why that matters.",
+      "Why the distinction matters for the foundations story and how it sharpens the claim boundary around Digital Circuitality.",
     date: "MAR 12, 2026",
     tag: "RESEARCH",
     category: "Research",
@@ -122,9 +122,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "prof-kish-noise-logic",
-    title: "The Physicist Who Proved Noise Can Compute",
+    title: "Laszlo B. Kish and the Information-Theory Thread",
     excerpt:
-      "Prof. Laszlo B. Kish challenged a 60-year assumption, invented noise-based logic, and shaped the theoretical foundation of Digital Circuitality. This is his story.",
+      "A research profile on the ideas that influenced the information-theoretic framing behind Digital Circuitality.",
     date: "MAR 15, 2026",
     tag: "RESEARCH",
     category: "Research",
@@ -132,9 +132,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "ai-safety-policy-circuits",
-    title: "Your AI Guardrails Are Made of Paper. Ours Are Made of Math.",
+    title: "Policy Circuits for AI Safety Workflows",
     excerpt:
-      "RLHF, system prompts, software filters — all run on the same CPU as the AI they protect. Policy circuits are mathematically certified, deterministic, and unhackable. Deploy them today.",
+      "How external policy circuits can gate generated code and agent actions without claiming to solve general alignment.",
     date: "JAN 22, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
@@ -142,9 +142,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "ai-guardrails-for-robots",
-    title: "Stop Teaching Robots to Want Safety. Make Unsafe Actions Impossible.",
+    title: "From Preferences to Enforced Action Boundaries",
     excerpt:
-      "RLHF teaches preference. Policy circuits enforce physics. Hardware-level ALLOW/BLOCK for every robot arm, every autonomous vehicle, every AI agent. No override. No negotiation.",
+      "Why robotics and agent systems need explicit action gates, bounded state, and reviewable fallback paths.",
     date: "MAR 8, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
@@ -152,9 +152,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "reverse-compile-anything",
-    title: "Point It at Your Code. Get a Certified Blueprint.",
+    title: "Lifting Existing Code into a Reviewable Blueprint",
     excerpt:
-      "The Lifter reverse-compiles 12 languages into PCD blueprints. No rewriting. No new syntax to learn. Just point, lift, and certify what you already have. Free. Ready today.",
+      "What the Lifter preserves, where liftability evidence exists in the repo, and how bounded blueprints help before migration.",
     date: "MAR 21, 2026",
     tag: "TOOLING",
     category: "Product",
@@ -162,9 +162,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "javascript-to-rust-3-commands",
-    title: "JavaScript to Rust. Three Commands. Done.",
+    title: "A Bounded JavaScript-to-Rust Workflow",
     excerpt:
-      "Lift. Check. Build. Your JavaScript becomes certified Rust with auto-generated tests. Not AI translation — generation from a proven specification. Start building.",
+      "Lift the logic, review the bounded blueprint, then emit a target language while keeping the claim attached to the intermediate circuit.",
     date: "MAR 21, 2026",
     tag: "TUTORIAL",
     category: "Getting Started",
@@ -172,9 +172,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "verification-gap",
-    title: "Software Is 50 Years Behind Hardware. We Just Closed the Gap.",
+    title: "Why Software Verification Still Looks Different from Hardware",
     excerpt:
-      "Hardware engineers verify 100 billion transistors through compositional proof. Software engineers test 70% and hope. BRIK64 brings hardware-grade verification to every developer. Today.",
+      "A comparison between sampled software testing and the compositional review posture hardware teams expect.",
     date: "FEB 20, 2026",
     tag: "RESEARCH",
     category: "Research",
@@ -182,9 +182,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "clean-code-from-blueprints",
-    title: "Spaghetti In. Clean, Certified Code Out. Any Language.",
+    title: "Blueprints Before Refactors",
     excerpt:
-      "Extract the math from your worst codebase, verify it, and recompile into clean code with auto-generated tests — in any of 14 languages. The blueprint is the product.",
+      "How extracting bounded computation from an existing codebase can make rewrites and target changes easier to review.",
     date: "MAR 21, 2026",
     tag: "REVOLUTION",
     category: "Product",
@@ -192,9 +192,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "translation-validation",
-    title: "30 Functions. Two Languages. Zero Divergences.",
+    title: "Translation Validation Across Two Targets",
     excerpt:
-      "30 PCD programs compiled to JavaScript and Python. Outputs compared bit-for-bit across 50,000+ test runs. Not one difference. That's what 'equivalent' actually means.",
+      "A look at cross-target output comparison, what it can support, and what still depends on the bounded intermediate form.",
     date: "MAR 24, 2026",
     tag: "RESEARCH",
     category: "Research",
@@ -202,9 +202,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "building-with-sdks",
-    title: "Drop 64 Verified Operations Into Your Code. Today.",
+    title: "Working with the SDKs Without Leaving the Bounded Model",
     excerpt:
-      "BRIK64 SDKs bring 64 mathematically certified operations to Rust, JavaScript, and Python. No rewrite. Verify the critical parts. Ship the rest as-is. Free. Ready today.",
+      "How the Rust, JavaScript, and Python SDKs expose BRIK64 patterns while keeping the formal core distinct from host-language code.",
     date: "FEB 25, 2026",
     tag: "SDKS",
     category: "Getting Started",
@@ -212,9 +212,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "what-artificial-intuition-cant-verify",
-    title: "AI Has Intuition. It Doesn't Have Proof.",
+    title: "What AI Intuition Still Cannot Verify",
     excerpt:
-      "Carlos E. Perez is right: AI is intuition, not intelligence. But intuition without certification is a liability. BRIK64 provides the proof that AI's brain cannot.",
+      "Why intuition without an external proof path remains a risk, and where BRIK64 fits in that boundary.",
     date: "MAR 22, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",
@@ -222,9 +222,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "your-code-exists-now-verify",
-    title: "Which of Your Functions Are Provably Correct? Now You Know.",
+    title: "Which Parts of a Codebase Are Ready for Stronger Review?",
     excerpt:
-      "Point the Lifter at your codebase. In seconds, you know exactly which functions are mathematically certified and which are not. No annotations. No rewriting. Just truth.",
+      "Use lifting and bounded analysis to identify review-critical functions before migration or certification work.",
     date: "MAR 18, 2026",
     tag: "PRODUCT",
     category: "Product",
@@ -232,9 +232,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "full-spectrum-pcd",
-    title: "128 Operations. Banking to Game Engines. Measurable Certainty.",
+    title: "128 Operations and the Boundary Between Core and Bridges",
     excerpt:
-      "64 certified, 64 extended. Build anything from trading systems to real-time games. The compiler tells you exactly how much is proven. Other languages give you zero percent.",
+      "A tour of the reviewed core, the contract-bounded extensions, and what that split means for technical scope.",
     date: "FEB 15, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
@@ -242,9 +242,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "precision-as-domain",
-    title: "0.1 + 0.2 = 0.30000000000000004. We Fixed That.",
+    title: "Precision as a Declared Domain",
     excerpt:
-      "Every language lies about decimal math. BRIK64 does not. Declare your precision. The compiler enforces it. Exact arithmetic, certified, on every machine. Start building.",
+      "Why bounded numeric domains matter for floating behavior, decimal handling, and reviewable arithmetic.",
     date: "FEB 5, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
@@ -252,9 +252,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "adversarial-corpus",
-    title: "110,227 Tests. Zero Failures. We Tried to Break Our Own Compiler.",
+    title: "Adversarial Testing Against the Compiler Chain",
     excerpt:
-      "Seven levels of adversarial testing. Every monomer, every backend, every language, every edge case. 110,227 attempts to find a single failure. We found none.",
+      "How the team tries to break the compiler and what those tests can and cannot prove about the formal system.",
     date: "MAR 24, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
@@ -262,9 +262,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "api-and-mcp",
-    title: "Your AI Agent Now Speaks PCD. Ship Certified Code to a Global Registry.",
+    title: "API and MCP Access Around the Registry",
     excerpt:
-      "REST API. MCP server. Two tools: discover and execute. Your AI agent writes certified code and publishes it to a global registry. One integration. Infinite reach.",
+      "How discover-and-execute workflows expose registry and platform operations to humans and agents without enlarging the proof claim.",
     date: "MAR 21, 2026",
     tag: "PLATFORM",
     category: "Product",
@@ -272,9 +272,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "why-new-language",
-    title: "700 Languages. Zero Guarantees. That's Why We Built BRIK64.",
+    title: "Why a New Format Instead of Another General-Purpose Language",
     excerpt:
-      "Python does not prove correctness. Rust does not prove logic. Not one of 700+ languages guarantees your program works. BRIK64 does. If it compiles, it works. Free. Ready today.",
+      "Why BRIK64 introduces PCD as a bounded computational format rather than extending a conventional language with another annotation layer.",
     date: "MAR 30, 2026",
     tag: "VISION",
     category: "Foundations",
@@ -282,9 +282,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "formal-verification-without-phd",
-    title: "207 Proofs. Zero Admits. You Write None of Them.",
+    title: "What the Proof Material Means for Users",
     excerpt:
-      "207 mathematical proofs behind every compilation. You write code with domain constraints. The compiler does the rest. Verification as simple as hitting enter.",
+      "A practical note on the proof files behind the compiler and what remains invisible to a normal authoring workflow.",
     date: "MAR 30, 2026",
     tag: "VISION",
     category: "Foundations",
@@ -292,9 +292,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "blockchain-meets-circuitality",
-    title: "Smart Contracts Cannot Be Patched. So the Bugs Cannot Ship.",
+    title: "Bounded Contract Logic Before Deployment",
     excerpt:
-      "$3.8 billion lost to DeFi hacks in 2022. Every one caused by code that passed audits. BRIK64 makes those bugs impossible to compile. Deploy with a mathematical certificate.",
+      "Why smart contract workflows benefit from explicit state boundaries, value constraints, and reviewable rule sets before deployment.",
     date: "MAR 30, 2026",
     tag: "PRODUCT",
     category: "Product",
@@ -302,9 +302,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "safety-critical-software",
-    title: "DO-178C Costs $1M. BRIK64 Generates the Evidence at Compile Time.",
+    title: "Safety-Critical Software Needs a Readable Assurance Path",
     excerpt:
-      "Aerospace, medical devices, autonomous vehicles — when a bug kills, you need proof. BRIK64 generates formal verification evidence automatically. Same rigor. A fraction of the cost.",
+      "How bounded software evidence can support engineering review in high-consequence domains without replacing the broader safety program.",
     date: "MAR 30, 2026",
     tag: "PRODUCT",
     category: "Product",
@@ -312,9 +312,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "benchmarks-110k-tests",
-    title: "110K Tests. 14 Targets. 207 Proofs. The Hard Numbers.",
+    title: "Compiler Evidence: Targets, Proof Files, and Test Scope",
     excerpt:
-      "No marketing. Just data. Every monomer exhaustively tested, every backend verified, every proof machine-checked. Reproduce it yourself — everything is in the repo.",
+      "A summary of the public numbers that can be stated responsibly and the limits of what those numbers prove.",
     date: "MAR 30, 2026",
     tag: "ENGINEERING",
     category: "Engineering",
@@ -322,9 +322,9 @@ const blogPostSeeds: BlogPostSeed[] = [
   },
   {
     slug: "ai-governance-compliance-evidence",
-    title: "EU AI Act Is Here. Your Compiler Should Generate the Proof.",
+    title: "AI Governance Workflows Need Reviewable Technical Evidence",
     excerpt:
-      "€35 million fines. August 2026 deadline. Every enterprise needs technical evidence that their AI systems behave within declared limits. BRIK-64 generates that evidence automatically — as a byproduct of compilation.",
+      "How bounded software evidence can help teams carry AI governance reviews into compliance workflows without implying full legal coverage.",
     date: "APR 2, 2026",
     tag: "AI SAFETY",
     category: "AI Safety",

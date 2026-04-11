@@ -33,25 +33,24 @@ export default function FoundationsPage() {
               Foundations
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              The science is real. <span className="text-teal">The math is published.</span>
+              Digital Circuitality on an <span className="text-teal">information-theoretic footing.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A deterministic, verified system has zero informational entropy. Every state known. Every path verified.
-              That is a statement about information, not about heat. And it is what our compiler proves.
+              This route explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation. The claims here apply to the modeled circuit representation, not to every uncontrolled runtime or deployment environment around it.
             </p>
           </div>
         </section>
 
         <section className="border-t border-border px-6 py-16 lg:px-16">
           <PageSectionHeader
-            eyebrow="Foundational Artifacts"
-            title="The science page now opens with bounded explanatory objects before the long-form theory."
-            description="Foundations still carries the full argument, but the user now gets a compact comparison, metrics, and scope statement before reading the deeper formal sections."
+            eyebrow="Foundations"
+            title="From formal definition to product implication"
+            description="This route opens with the formal claim, the analogy boundary, and the product implication before moving into the longer scientific argument."
           />
           <div className="mx-auto mt-10 grid max-w-6xl gap-6">
             <ComparisonSurface
               eyebrow="Information Model"
-              title="What BRIK64 is claiming mathematically"
+              title="What BRIK64 is claiming at the level of the formal model"
               leftTitle="Testing reduces uncertainty"
               leftBody="Conventional software samples behavior and lowers uncertainty only for the cases explored by the test suite."
               rightTitle="Digital Circuitality removes uncertainty structurally"
@@ -59,23 +58,23 @@ export default function FoundationsPage() {
             />
             <FeatureMatrixSurface
               eyebrow="Foundations Matrix"
-              title="Three foundational handles for the reader"
-              description="The first useful block should tell the user what is being measured, what is preserved, and where the analogy stops."
+              title="Three handles for reading the theory"
+              description="Start with the measured quantity, the closure condition, and the composition model that carries through the compiler."
               metrics={[
                 { label: "Entropy", value: "H(X) = 0", detail: "Formal specification reaches zero informational uncertainty when all states are bounded and closed." },
                 { label: "Closure", value: "Φc = 1", detail: "Closure remains binary and compile-time enforced." },
                 { label: "Composition", value: "EVA", detail: "Sequential, parallel, and conditional composition preserve certified structure." },
               ]}
               rows={[
-                { title: "Analogy boundary", body: "The thermodynamic vocabulary is explanatory, not a claim about physical laws governing compilation.", state: "accent" },
-                { title: "Proof boundary", body: "The page describes formal guarantees attached to the circuit model, not operational guarantees outside the modeled system." },
-                { title: "Reader payoff", body: "A new visitor can now grasp the core thesis before dropping into the longer scientific exposition below." },
+                { title: "Analogy boundary", body: "Thermodynamic vocabulary is explanatory, not a claim about physical laws governing compilation.", state: "accent" },
+                { title: "Proof boundary", body: "The route describes guarantees attached to the circuit model, not blanket guarantees outside the modeled system." },
+                { title: "Product implication", body: "The formal model matters because it changes how the compiler, PCD, and review workflows are structured." },
               ]}
             />
             <EvidenceSurface
-              eyebrow="Scope"
-              title="What the foundations page must stay honest about"
-              description="The redesign improves structure, but the content still needs a sharp line between theorem, analogy, and positioning."
+              eyebrow="Claim Boundary"
+              title="Theorem, analogy, product implication, and claim boundary"
+              description="Each section below should keep those four layers separate enough that the scientific route stays supportable."
               items={[
                 { label: "Formal claim", body: "BRIK64 argues for deterministic specifications with bounded domains and closed circuits." },
                 { label: "Analogy claim", body: "Circuit and thermodynamic language is used as a mapping aid, not as a substitute for information-theoretic reasoning." },
@@ -113,13 +112,11 @@ export default function FoundationsPage() {
                 Full coherence means zero informational uncertainty
               </p>
               <p className="mt-2 text-xs text-muted-foreground">
-                When <PhiC /> certifies a system, every state is known and every path is verified
+                Within the modeled circuit, <PhiC /> marks the closure condition the compiler checks before emission
               </p>
             </div>
             <p>
-              <PhiC /> = 1 certifies that every input domain is bounded, every operation verified,
-              every output range proven, and no execution path is undefined. There is no
-              informational uncertainty because there is no unknown state.
+              Within the formal circuit model, <PhiC /> = 1 indicates that declared input domains are bounded, operations compose through explicit paths, and the represented output ranges remain inside the modeled envelope. The claim is about the circuit specification the compiler checks, not about every external environment around it.
             </p>
             <p>
               Conventional software operates with informational uncertainty &gt; 0. Unverified execution paths,
@@ -127,7 +124,7 @@ export default function FoundationsPage() {
               Dijkstra (1976): <em>&ldquo;Testing shows the presence of bugs, never their absence.&rdquo;</em>
             </p>
             <p className="font-medium text-foreground">
-              Digital Circuitality eliminates informational uncertainty by construction, not by sampling.
+              Digital Circuitality aims to remove informational uncertainty from the modeled computation by construction rather than by sampling.
             </p>
           </div>
         </section>
@@ -179,28 +176,23 @@ export default function FoundationsPage() {
           <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
             Composition operators
           </h2>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="border border-border bg-muted/10 p-6 text-center">
-              <div className="text-3xl font-bold text-teal">SEQ</div>
-              <h3 className="mt-3 text-sm font-bold">Sequential</h3>
-              <p className="mt-2 text-xs text-muted-foreground">Do A, then B. Output of A feeds input of B.</p>
-            </div>
-            <div className="border border-border bg-muted/10 p-6 text-center">
-              <div className="text-3xl font-bold text-teal">PAR</div>
-              <h3 className="mt-3 text-sm font-bold">Parallel</h3>
-              <p className="mt-2 text-xs text-muted-foreground">Do A and B independently. No data dependency.</p>
-            </div>
-            <div className="border border-border bg-muted/10 p-6 text-center">
-              <div className="text-3xl font-bold text-teal">COND</div>
-              <h3 className="mt-3 text-sm font-bold">Conditional</h3>
-              <p className="mt-2 text-xs text-muted-foreground">If X then A, else B. Both branches verified.</p>
-            </div>
+          <div className="mx-auto mt-10 max-w-5xl">
+            <FeatureMatrixSurface
+              eyebrow="EVA Algebra"
+              title="SEQ, PAR, and COND are the three composition moves the formal model needs"
+              description="These operators make sequencing, fan-out, and branching explicit before the compiler checks closure."
+              metrics={[
+                { label: "SEQ", value: "Sequential", detail: "Output of one stage becomes the input of the next stage." },
+                { label: "PAR", value: "Parallel", detail: "Independent branches evaluate on the same input and return a tuple." },
+                { label: "COND", value: "Conditional", detail: "Branch structure remains explicit in the circuit before selection." },
+              ]}
+              rows={[
+                { title: "Formal statement", body: "Composition is expressed through a finite algebra instead of hidden runtime conventions.", state: "accent" },
+                { title: "Product implication", body: "The same algebra appears in PCD and in the compiler pipeline, which is why composition remains inspectable." },
+                { title: "Claim boundary", body: "Closure and certification follow from the modeled composition rules, not from a blanket claim about every surrounding software concern." },
+              ]}
+            />
           </div>
-          <p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-sm leading-relaxed">
-            Each operator preserves the correctness of its operands. If Part A works and Part B works,
-            their composition is guaranteed to work. This is what hardware has always had &mdash; and
-            software never did.
-          </p>
         </section>
 
         {/* CMF */}
@@ -232,8 +224,8 @@ export default function FoundationsPage() {
               <div className="text-2xl font-bold text-teal">Coverage</div>
               <h3 className="mt-2 text-sm font-bold">Verification Completeness</h3>
               <p className="mt-2 text-xs text-muted-foreground">
-                All paths have been verified. No execution path has unknown behavior.
-                The analog of full connectivity in a circuit.
+                All modeled paths have been checked. No represented execution path is left undefined inside the circuit boundary.
+                The analog is full connectivity in the formal model.
               </p>
             </div>
           </div>
@@ -242,10 +234,10 @@ export default function FoundationsPage() {
               Certification Condition
             </p>
             <p className="text-sm font-bold text-foreground">
-              Certification is binary. All three conditions &mdash; closure, integrity, and coverage &mdash; must hold simultaneously. There is no partial certification.
+              Certification remains binary inside the model. Closure, integrity, and coverage must hold simultaneously for the circuit representation under review.
             </p>
             <p className="mt-2 text-xs text-muted-foreground">
-              If any condition fails, the program does not compile.
+              If any condition fails, the modeled circuit does not certify or compile under the current rules.
             </p>
           </div>
         </section>
@@ -266,7 +258,7 @@ export default function FoundationsPage() {
             <div className="space-y-3">
               <p>
                 <strong className="text-foreground">1. Input domains bound what enters the circuit.</strong>{" "}
-                Every input declares a numeric range. Values outside the range are rejected at compilation.
+                Every input declares a numeric range. Values outside the declared range are rejected before the circuit closes.
               </p>
               <p>
                 <strong className="text-foreground">2. Arithmetic on bounded inputs produces bounded outputs.</strong>{" "}
@@ -282,7 +274,7 @@ export default function FoundationsPage() {
               </p>
               <p>
                 <strong className="text-foreground">4. If any path can produce an unbounded result, compilation fails.</strong>{" "}
-                There is no runtime fallback. The circuit either closes at compile time or it does not exist.
+                The circuit either closes at compile time or it remains uncertified under the declared model.
               </p>
             </div>
             <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6">
@@ -353,12 +345,11 @@ export default function FoundationsPage() {
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
             <p>
-              A formally verified, deterministic system has zero informational uncertainty.
-              Every state is known, every path verified, every domain bounded, the circuit is closed.
+              Within the formal model, a deterministic verified circuit reaches zero informational uncertainty.
+              The claim is about the represented states, declared domains, and explicit paths inside the circuit boundary.
             </p>
             <p>
-              This is what <PhiC /> = 1 means in Digital Circuitality: the system&rsquo;s informational
-              entropy is zero &mdash; not by testing, but by mathematical construction.
+              This is what <PhiC /> = 1 means in Digital Circuitality: the modeled computation reaches a closed, reviewable state by construction rather than by sampling.
             </p>
           </div>
         </section>
@@ -380,8 +371,8 @@ export default function FoundationsPage() {
             </p>
             <p>
               The critical property: <strong className="text-foreground">if two programs in different languages
-              produce the same PCD circuit, they are functionally equivalent.</strong> PCD captures
-              the informational content of computation independent of syntactic vehicle.
+              reduce to the same bounded PCD circuit, they are equivalent with respect to that modeled computation.</strong> PCD captures
+              the informational content of the represented computation independent of syntactic vehicle.
             </p>
             <div className="border border-border bg-muted/10 p-6">
               <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-3">The arithmetic</p>
@@ -393,9 +384,7 @@ export default function FoundationsPage() {
               </ul>
             </div>
             <p>
-              The TCE certifies that the PCD circuit is closed (<PhiC /> = 1), guaranteeing the
-              computation is deterministic, total, and informationally preserving. The equivalence
-              is algebraic, not tested.
+              The TCE checks that the PCD circuit closes (<PhiC /> = 1) under the declared model. The equivalence claim is attached to the bounded circuit representation, not to unmanaged host I/O or external side effects.
             </p>
           </div>
         </section>
@@ -485,7 +474,7 @@ export default function FoundationsPage() {
                 Submitted to arXiv (ID 7419107) &mdash; cs.PL + cs.AI + cs.AR
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                128 monomers, 110,000+ tests, 14 compilation targets, mathematically certified
+                128 monomers, 14 compilation targets, and a formal framework described for public review
               </p>
             </div>
             <div className="border border-border bg-muted/10 p-5">
@@ -497,7 +486,7 @@ export default function FoundationsPage() {
                 DOI: 10.5281/zenodo.19313743 &mdash; Permanent academic archive
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                207 mathematical proof files, 0 admits, complete formal verification
+                207 proof files and archived mathematical material tied to the public foundations story
               </p>
             </div>
           </div>
@@ -511,9 +500,9 @@ export default function FoundationsPage() {
           <div className="mx-auto mt-8 max-w-3xl space-y-3 text-sm text-muted-foreground text-left">
             <p>1. Shannon (1948) establishes that deterministic systems have zero informational entropy</p>
             <p>2. Modern research confirms informational entropy is distinct from thermal entropy</p>
-            <p>3. A deterministic, verified computer has zero informational uncertainty</p>
-            <p>4. BRIK64 builds a compiler that certifies this property by mathematical construction</p>
-            <p>5. The BPU materializes this certification in silicon, where verification is physical and non-maskable</p>
+            <p>3. A deterministic verified circuit can be described as reaching zero informational uncertainty within the formal model</p>
+            <p>4. BRIK64 builds a compiler and language path around that bounded model</p>
+            <p>5. The BPU extends the same logic as a hardware roadmap concept rather than a shipped silicon fact</p>
           </div>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
@@ -525,10 +514,10 @@ export default function FoundationsPage() {
               <BookOpen className="h-4 w-4" /> Read the full theory
             </a>
             <a
-              href="/features"
+              href="/pcd"
               className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
             >
-              See all features <ArrowRight className="h-3.5 w-3.5" />
+              Explore PCD <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
         </section>

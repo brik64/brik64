@@ -146,7 +146,7 @@ function BpuRoadmapRail() {
       </div>
 
       <div className="mt-5 rounded-2xl border border-teal/15 bg-teal/[0.05] px-4 py-4 text-center">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">Roadmap surface</p>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-teal/80">Roadmap</p>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Software is available now. FPGA validates the execution model. Silicon turns the same policy boundary into a physical gate.
         </p>
@@ -174,15 +174,13 @@ export default function BPUPage() {
               </span>
             </div>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Hardware that <span className="text-teal">says no.</span>
+              Policy enforcement as a <span className="text-teal">hardware roadmap.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              A hardware coprocessor that evaluates policy circuits &mdash; ALLOW or BLOCK &mdash; before any AI action reaches the host.
-              No software can override it. The chip says no, and that&rsquo;s final.
+              The BPU is a hardware concept for evaluating policy circuits before an AI action reaches the host. Current availability is software-based; FPGA and silicon phases remain roadmap work.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground italic">
-              &ldquo;RLHF teaches an AI to prefer correct behavior. The BPU enforces boundaries in hardware.
-              Software policies can be circumvented. Hardware gates cannot.&rdquo;
+              &ldquo;Software guardrails share execution context with the model they constrain. The BPU roadmap moves that gate outside the model&rsquo;s execution context.&rdquo;
             </p>
           </div>
         </section>
@@ -196,7 +194,7 @@ export default function BPUPage() {
             The enforcement boundary at a glance.
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            The architecture surface separates fixed silicon gates, the routing layer, and the proof boundary without relying on a decorative diagram.
+            The architecture separates fixed hardware gates, the routing layer, and the proof boundary without pretending that the silicon phases are already shipped.
           </p>
 
           <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
@@ -214,11 +212,11 @@ export default function BPUPage() {
             <EvidenceSurface
               eyebrow="Hardware Evidence"
               title="The hardware map stays explicit about what is enforced in silicon and what remains a bridge."
-              description="The hardware surface distinguishes fixed silicon enforcement from contract-bounded bridges."
+              description="The hardware roadmap distinguishes fixed silicon enforcement from contract-bounded bridges."
               items={[
                 { label: "Certified core", body: "Core families map to the fixed teal substrate and preserve the proof boundary." },
                 { label: "Extended bridges", body: "Orange bridges remain contract-bounded and never masquerade as the silicon core." },
-                { label: "Threat model", body: "The non-maskable block and roadmap stay explicit about what the concept protects and what remains outside scope." },
+                { label: "Threat model", body: "The non-maskable gate and roadmap stay explicit about what the concept protects and what remains outside scope." },
               ]}
             />
             <div className="mx-auto max-w-4xl overflow-hidden rounded-[1.75rem] border border-border/80 bg-background shadow-[0_20px_60px_rgba(15,23,42,0.05)]">
@@ -242,10 +240,10 @@ export default function BPUPage() {
             [02] THE NON-MASKABLE BLOCK
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            No software can override hardware.
+            Why a hardware gate changes the threat model
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            The host can request an action, but the chip is the final gate on the transaction boundary.
+            The host can request an action, but a hardware gate changes where the final decision is enforced in the system architecture.
           </p>
           <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
             <div className="rounded-[1.5rem] border border-red-500/20 bg-red-500/[0.03] p-6 text-center">
@@ -263,7 +261,7 @@ export default function BPUPage() {
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 The BPU sits on the PCIe bus between the AI accelerator and the host I/O subsystem.
                 A BLOCK terminates the PCIe transaction at the hardware level. No interrupt handler,
-                no signal, no exception. The AI process never learns the block happened.
+                no signal, no exception. The roadmap goal is to enforce the policy before the host accepts the action.
               </p>
             </div>
             <div className="rounded-[1.5rem] border border-border bg-muted/20 p-6 text-center">
@@ -284,7 +282,7 @@ export default function BPUPage() {
             [03] POLICY CIRCUITS
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            AI safety by physics, not psychology.
+            Policy circuits as an execution boundary
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
             A Policy Circuit takes an action descriptor, evaluates it against certified constraints, and returns
@@ -345,7 +343,7 @@ export default function BPUPage() {
             Target envelope
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-            These are target constraints for the BPU surface. They define the envelope of the concept, not a claim that tape-out has already happened.
+            These are target constraints for the BPU roadmap. They define the concept envelope, not a claim that tape-out has already happened.
           </p>
           <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-[1.75rem] border border-border/80 bg-background shadow-[0_20px_60px_rgba(15,23,42,0.05)]">
             {specs.map((s) => (
@@ -363,8 +361,7 @@ export default function BPUPage() {
             Phase 1 is available now.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Policy circuits compile to Rust, JavaScript, and Python guardrails today. Free. Start writing policy circuits
-            now &mdash; the silicon will catch up.
+            Policy circuits compile to Rust, JavaScript, and Python guard modules today. FPGA and silicon remain roadmap phases that extend the same policy boundary into hardware.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
