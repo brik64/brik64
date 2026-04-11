@@ -28,9 +28,9 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(grid).toContain("onMouseOver={() => setActiveMonomerId(track, monomer.id)}");
     expect(grid).toContain("onMouseEnter={() => setActiveMonomerId(track, monomer.id)}");
     expect(grid).toContain("onFocus={() => setActiveMonomerId(track, monomer.id)}");
-    expect(grid).toContain("Show previous monomer matrix");
-    expect(grid).toContain("Show next monomer matrix");
     expect(grid).toContain('translateX(-${activeTrackIndex * 100}%)');
+    expect(grid).toContain("CORE CERTIFIED");
+    expect(grid).toContain("EXTENDED CONTRACT");
     expect(grid).not.toContain("Hover or focus any core monomer");
   });
 
