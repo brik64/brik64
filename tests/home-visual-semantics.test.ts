@@ -60,7 +60,7 @@ describe("Home narrative — master refactor alignment", () => {
     expect(content).toContain("Software generation got fast. BRIK64 makes it formal.");
     expect(content).toContain("bounded language, a canonical blueprint, and a compilation path");
     expect(content).toContain("setInterval");
-    expect(content).toContain("5000");
+    expect(content).toContain("10000");
     expect(content).toContain('<MonomerGrid variant="hero" />');
     expect(content).not.toContain("Live surface");
   });

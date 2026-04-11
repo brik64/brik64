@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { HeroWireframe } from "@/components/HeroWireframe";
 import { MonomerGrid } from "@/components/MonomerGrid";
@@ -39,11 +39,12 @@ const HERO_SLIDES: HeroSlide[] = [
 export function HeroSection() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const activeSlide = HERO_SLIDES[activeSlideIndex];
+  const headlineParts = activeSlide.headline.split("BRIK64");
 
   useEffect(() => {
     const rotation = window.setInterval(() => {
       setActiveSlideIndex((previous) => (previous + 1) % HERO_SLIDES.length);
-    }, 5000);
+    }, 10000);
 
     return () => window.clearInterval(rotation);
   }, []);
@@ -59,7 +60,12 @@ export function HeroSection() {
           </p>
 
           <h1 className="max-w-xl text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {activeSlide.headline}
+            {headlineParts.map((part, index) => (
+              <Fragment key={`${activeSlideIndex}-${index}`}>
+                {index > 0 ? <span className="text-teal">BRIK64</span> : null}
+                {part}
+              </Fragment>
+            ))}
           </h1>
 
           <p className="text-muted-foreground mt-5 max-w-lg text-base leading-relaxed md:text-lg">
