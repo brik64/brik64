@@ -3,16 +3,10 @@ import { HeroSection } from "@/components/HeroSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
 import { ProblemSection } from "@/components/ProblemSection";
 import { PCDSection } from "@/components/PCDSection";
-import { LanguagesSection } from "@/components/LanguagesSection";
 import { PlatformSection } from "@/components/PlatformSection";
-import { WorldModelsSection } from "@/components/WorldModelsSection";
 import { WorkflowSection } from "@/components/WorkflowSection";
-import { IntegrationsSection } from "@/components/IntegrationsSection";
-import { EditorsSection } from "@/components/EditorsSection";
-import { EnterpriseSection } from "@/components/EnterpriseSection";
 import { AINativeSection } from "@/components/AINativeSection";
-import { ComplianceSection } from "@/components/ComplianceSection";
-import { VerticalsSection } from "@/components/VerticalsSection";
+import { HomeClaimBoundariesSection } from "@/components/HomeClaimBoundariesSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 
@@ -27,16 +21,10 @@ export default function Home() {
           <div>
             <ProblemSection />
             <PCDSection />
-            <LanguagesSection />
-            <PlatformSection />
-            <WorldModelsSection />
             <WorkflowSection />
-            <IntegrationsSection />
-            <EditorsSection />
-            <EnterpriseSection />
+            <PlatformSection />
             <AINativeSection />
-            <ComplianceSection />
-            <VerticalsSection />
+            <HomeClaimBoundariesSection />
           </div>
           <CTASection />
         </div>

@@ -12,38 +12,38 @@ interface FeatureCard {
 const features: FeatureCard[] = [
   {
     icon: <FolderOpen className="h-5 w-5 text-teal" />,
-    title: "Personal Library",
+    title: "Reviewable registry rows",
     description:
-      "Reuse certified circuits by project without lifting proven work again.",
+      "Search bounded artifacts with closure, export posture, and package identity visible.",
   },
   {
     icon: <Globe className="h-5 w-5 text-teal" />,
-    title: "Public Registry",
+    title: "Traceable package state",
     description:
-      "Search certified circuits before rewriting solved logic.",
+      "Hashes, versions, and review metadata stay attached as the artifact moves.",
   },
   {
     icon: <GitBranch className="h-5 w-5 text-teal" />,
-    title: "Visual Composition",
+    title: "Delivery context",
     description:
-      "Compose with explicit EVA boundaries instead of loose diagrams.",
+      "Publication, PR comments, and registry updates stay aligned to the same blueprint.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
-    title: "Certification Badges",
+    title: "Reusable bounded assets",
     description:
-      "Live proof invalidates the moment the circuit drifts.",
+      "Teams reuse reviewed logic without losing provenance or state.",
   },
 ];
 
 export function PlatformSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section id="platform" className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[04] · THE PLATFORM"
-          title="CAD for software, built for teams that need proof."
-          description="The platform is not just a registry UI. It is the inspectable workbench where monomers, blueprints, packages, and proof metadata become one operational surface."
+          eyebrow="[04] · PLATFORM"
+          title="Proof state should stay attached to the artifact."
+          description="BRIK64 turns bounded blueprints into reusable software assets with visible closure state, hashes, versions, exports, and review context across platform, registry, and delivery workflows."
         />
 
         <div className="mt-10">
@@ -69,7 +69,7 @@ export function PlatformSection() {
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <span className="rounded-full border border-teal/30 bg-teal/10 px-3.5 py-1 text-xs font-medium text-teal">
-            REGISTRY LIVE &mdash; registry.brik64.dev
+            REGISTRY PATH &mdash; /registry
           </span>
           <a
             href="/registry"

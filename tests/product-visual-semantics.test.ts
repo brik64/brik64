@@ -3,7 +3,9 @@ import { describe, expect, it } from "vitest";
 import {
   productCorePages,
   productMigratedPages,
+  productRestoredPages,
   read,
+  utilityRestoredPages,
 } from "./site-grammar";
 
 describe("Product cluster — core routes keep their canonical artifacts", () => {
@@ -84,16 +86,6 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("CopyableCode");
   });
 
-  it("enterprise route delegates to the shared utility grammar with substantive dataset content", () => {
-    const content = read("src/app/enterprise/page.tsx");
-    const data = read("src/lib/utility-page-data.ts");
-    expect(content).toContain("UtilityPageView");
-    expect(content).toContain("utilityPages.enterprise");
-    expect(data).toContain("Private delivery, identity controls");
-    expect(data).toContain("SSO / SAML / OIDC + SCIM");
-    expect(data).toContain("supports audit and review workflows; it does not certify organizations by itself");
-  });
-
   it("compliance now uses the evidence dossier grammar", () => {
     const content = read("src/app/compliance/page.tsx");
     expect(content).toContain("RiskEvidenceSurface");
@@ -102,21 +94,58 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("full regulatory certification");
   });
 
-  it("ai-agents route is a direct technical reference with setup detail", () => {
-    const content = read("src/app/ai-agents/page.tsx");
-    expect(content).toContain("CanonicalPageLayout");
-    expect(content).toContain("FeatureMatrixSurface");
-    expect(content).toContain("ConstraintEnvelopeSurface");
-    expect(content).toContain("ScenarioFlowSurface");
-    expect(content).toContain("Agent setup matrix");
-    expect(content).toContain("No trust by default");
-    expect(content).not.toContain("UtilityPageView");
-  });
-
   it("utility dataset remains the content source of truth for migrated utility-product routes", () => {
     const data = read("src/lib/utility-page-data.ts");
     expect(data).toContain("enterprise:");
     expect(data).toContain("aiAgents:");
     expect(data.length).toBeGreaterThan(25000);
+  });
+});
+
+describe("Product and commercial routes — restored direct pages keep substantive structure", () => {
+  for (const file of [...productRestoredPages, ...utilityRestoredPages]) {
+    it(`${file} is a direct page instead of a wrapper shell`, () => {
+      const content = read(file);
+      expect(content).not.toContain("UtilityPageView");
+      expect(content).toContain("Navbar");
+      expect(content).toContain("Footer");
+    });
+  }
+
+  it("pricing restores detailed tiers, comparison, and FAQ", () => {
+    const content = read("src/app/pricing/page.tsx");
+    expect(content).toContain("Free");
+    expect(content).toContain("Pro");
+    expect(content).toContain("Team");
+    expect(content).toContain("Enterprise");
+    expect(content).toContain("FEATURE COMPARISON");
+    expect(content).toContain("COMMERCIAL FAQ");
+  });
+
+  it("enterprise restores capabilities, workflow, use cases, and compliance boundary", () => {
+    const content = read("src/app/enterprise/page.tsx");
+    expect(content).toContain("[01] CAPABILITIES");
+    expect(content).toContain("[02] WORKFLOW");
+    expect(content).toContain("[03] USE CASES");
+    expect(content).toContain("[04] COMPLIANCE");
+    expect(content).toContain("does not certify organizations by itself");
+  });
+
+  it("investors restores category thesis, system form, roadmap, and IP posture", () => {
+    const content = read("src/app/investors/page.tsx");
+    expect(content).toContain("[01] THE OPPORTUNITY");
+    expect(content).toContain("[02] THE PRODUCT");
+    expect(content).toContain("[04] BUSINESS MODEL");
+    expect(content).toContain("[06] ROADMAP");
+    expect(content).toContain("[07] INTELLECTUAL PROPERTY");
+  });
+
+  it("ai-agents restores the richer technical reference surface", () => {
+    const content = read("src/app/ai-agents/page.tsx");
+    expect(content).toContain("Agent setup matrix");
+    expect(content).toContain("Machine-readable reference");
+    expect(content).toContain("policy circuits");
+    expect(content).toContain("structured diagnostics");
+    expect(content).toContain("No trust by default");
   });
 });

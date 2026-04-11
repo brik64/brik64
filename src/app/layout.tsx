@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | BRIK64",
   },
   description:
-    "The AI-native synthetic language. 128 verified operations composed through EVA algebra. Write once, verify everywhere.",
+    "Bounded software infrastructure for AI-era engineering. Model logic once, review it as a blueprint, and emit it across supported targets.",
   metadataBase: new URL("https://brik64.com"),
   alternates: {
     canonical: "/",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "BRIK64",
     title: "BRIK64 — Digital Circuitality",
     description:
-      "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
+      "Bounded software infrastructure for AI-era engineering. Reviewable blueprints, explicit domains, and closure-aware workflows.",
     url: "https://brik64.com",
     locale: "en_US",
     images: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BRIK64 — Digital Circuitality",
     description:
-      "The AI-native synthetic language. 128 verified operations. Write once, verify everywhere.",
+      "Bounded software infrastructure for AI-era engineering. Reviewable blueprints, explicit domains, and closure-aware workflows.",
     creator: "@brik64dev",
     images: ["/seo/brik64-opengraph-stacked.png"],
   },

@@ -16,23 +16,24 @@ describe("Buyer persona fit — Staff / Principal Engineer", () => {
     expect(content).toContain("learns the entire language in one prompt");
     expect(content).toContain("Compile · Certify · Publish");
     expect(content).toContain("same explicit grammar your team reviews");
-    expect(content).toContain("Representative monomer families, proof state, and outputs stay visible.");
+    expect(content).toContain('<MonomerGrid variant="hero" />');
+    expect(content).not.toContain("Live surface");
   });
 
-  it("PCD speaks to teams and agents, not only to AI hype", () => {
+  it("PCD speaks to reviewability and source stability", () => {
     const content = read("src/components/PCDSection.tsx");
-    expect(content).toContain("Teach your agent PCD. Install the official skills now.");
-    expect(content).toContain("same PCD grammar, EVA composition, and BRIK64 operations");
-    expect(content).toContain("Shared grammar");
-    expect(content).toContain("Closure before shipping");
+    expect(content).toContain("PCD is the review anchor.");
+    expect(content).toContain("Source notation can change. The bounded blueprint stays legible.");
+    expect(content).toContain("One canonical blueprint");
+    expect(content).toContain("Closure before promotion");
   });
 
-  it("Platform frames the workbench around proof and reuse", () => {
+  it("Platform frames the workbench around artifact state and reuse", () => {
     const content = read("src/components/PlatformSection.tsx");
-    expect(content).toContain("CAD for software, built for teams that need proof.");
-    expect(content).toContain("inspectable workbench");
+    expect(content).toContain("Proof state should stay attached to the artifact.");
+    expect(content).toContain("Traceable package state");
     expect(content).toContain("Browse the registry");
-    expect(content).toContain("Reuse certified circuits by project");
+    expect(content).toContain("Reusable bounded assets");
   });
 
   it("TrustedBySection names technical audiences instead of broad consumer industries", () => {
@@ -43,12 +44,11 @@ describe("Buyer persona fit — Staff / Principal Engineer", () => {
     expect(content).toContain("Runtime Owners");
   });
 
-  it("Enterprise and verticals stay scoped and technical", () => {
-    const enterprise = read("src/components/EnterpriseSection.tsx");
-    const verticals = read("src/components/VerticalsSection.tsx");
-    expect(enterprise).toContain("Request architecture review");
-    expect(enterprise).toContain("Platform teams need explicit scope");
-    expect(verticals).toContain("High-assurance domains need explicit scope.");
-    expect(verticals).toContain("runtime bugs are not acceptable");
+  it("Home exposes explicit claim boundaries for technical evaluation", () => {
+    const boundaries = read("src/components/HomeClaimBoundariesSection.tsx");
+    expect(boundaries).toContain("What BRIK64 claims, and what it does not.");
+    expect(boundaries).toContain("Core operations");
+    expect(boundaries).toContain("Extended operations");
+    expect(boundaries).toContain("Runtime and external systems");
   });
 });

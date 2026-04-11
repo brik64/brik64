@@ -4,9 +4,11 @@ import path from "path";
 import {
   getAllPageFiles,
   productMigratedPages,
+  productRestoredPages,
   read,
   riskDirectPages,
   utilityDirectPages,
+  utilityRestoredPages,
   utilityWrapperPages,
 } from "./site-grammar";
 
@@ -54,6 +56,19 @@ describe("Alignment — migrated direct pages use the canonical layout primitive
       expect(content).toContain("CanonicalPageHero");
       expect(content).toContain("CanonicalSection");
       expect(content).toContain('className="mx-auto mt-10');
+    });
+  }
+});
+
+describe("Alignment — restored direct pages intentionally own their richer page structure", () => {
+  const restoredPages = [...productRestoredPages, ...utilityRestoredPages];
+
+  for (const file of restoredPages) {
+    it(`${file} keeps local Navbar/Footer instead of routing through canonical page wrappers`, () => {
+      const content = read(file);
+      expect(content).toContain("Navbar");
+      expect(content).toContain("Footer");
+      expect(content).not.toContain("UtilityPageView");
     });
   }
 });

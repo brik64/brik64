@@ -1,25 +1,24 @@
-import { ArrowRight, BookOpen, Globe } from "lucide-react";
-import { HomePrimaryButton } from "@/components/ui/pixel-perfect/home-buttons";
+import { ArrowRight, BookOpen, FileCode, Globe } from "lucide-react";
+import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
-/* eslint-disable @next/next/no-img-element */
 const resources = [
   {
-    title: "Docs",
-    href: "https://docs.brik64.dev",
+    title: "CLI",
+    href: "/cli",
     icon: <BookOpen className="h-5 w-5 text-teal" />,
-    description: "docs.brik64.dev",
+    description: "Install path and operator workflow",
   },
   {
-    title: "Registry",
-    href: "/registry",
+    title: "PCD",
+    href: "/pcd",
+    icon: <FileCode className="h-5 w-5 text-teal" />,
+    description: "Canonical blueprint and declared domains",
+  },
+  {
+    title: "Platform",
+    href: "/platform",
     icon: <Globe className="h-5 w-5 text-teal" />,
-    description: "registry.brik64.dev",
-  },
-  {
-    title: "GitHub",
-    href: "https://github.com/brik64",
-    icon: <img src="/brands/github.svg" alt="" aria-hidden="true" className="h-5 w-5" style={{ filter: "brightness(0) saturate(100%) invert(58%) sepia(78%) saturate(1640%) hue-rotate(152deg) brightness(101%) contrast(101%)" }} />,
-    description: "github.com/brik64",
+    description: "Registry state and delivery workflows",
   },
 ];
 
@@ -28,25 +27,22 @@ export function CTASection() {
     <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
       <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
-          Start building with
+          Start with one bounded workflow,
           <span className="text-teal"> BRIK64.</span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground md:text-base">
-          Read the spec, inspect the registry, and verify the proof chain before you change your workflow.
+          Open the CLI, inspect PCD, and evaluate the review chain on real logic
+          before expanding into registry and enterprise workflows.
         </p>
 
-        <div className="mx-auto mt-10 flex flex-col items-center gap-4">
-          <HomePrimaryButton href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer">
-            Read the docs
+        <div className="mx-auto mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <HomePrimaryButton href="/cli">
+            Open the CLI
           </HomePrimaryButton>
-          <a
-            href="https://digitalcircuitality.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal"
-          >
-            Learn the theory at Digital Circuitality
+          <HomeSecondaryButton href="/pcd">Read PCD</HomeSecondaryButton>
+          <a href="/platform" className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal">
+            View platform
             <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
