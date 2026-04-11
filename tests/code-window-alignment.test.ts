@@ -8,7 +8,7 @@ describe("Code surfaces — embedded proof panels replace standalone terminal wi
     expect(content).toContain("export function ConstraintEnvelopeSurface");
     expect(content).toContain("export function LanguageExchangeSurface");
     expect(content).toContain("<CodeProofPanel");
-    expect(content).toContain('eyebrow="Bounded example"');
+    expect(content).toContain('codeEyebrow ?? "Bounded example"');
     expect(content).toContain('eyebrow="Language example"');
   });
 

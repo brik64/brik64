@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  featureCta,
+  featureHero,
+  featureOverview,
+  featureSections,
+} from "../src/lib/features-page-data";
+import {
   productCorePages,
   productMigratedPages,
   read,
@@ -46,5 +52,22 @@ describe("Design grammar — product family", () => {
     const content = read("src/components/PageArchetypes.tsx");
     expect(content).toContain("/^(https?:|mailto:|tel:)/.test(action.href)");
     expect(content).toContain("<ExternalLink");
+  });
+
+  it("features keeps claim discipline and product-directed CTA routing", () => {
+    const page = read("src/app/features/page.tsx");
+    const visibleRuntimeText = JSON.stringify({
+      hero: featureHero,
+      overview: featureOverview,
+      sections: featureSections,
+      cta: featureCta,
+    });
+
+    expect(visibleRuntimeText).not.toContain("No other compiler on earth");
+    expect(visibleRuntimeText).not.toContain("100% liftability guarantee");
+    expect(visibleRuntimeText).not.toContain("What this page is promising");
+    expect(visibleRuntimeText).not.toContain("30 seconds");
+    expect(visibleRuntimeText).toContain('"href":"/platform"');
+    expect(page).not.toContain('href="/pricing"');
   });
 });

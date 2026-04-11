@@ -69,15 +69,25 @@ export function HomeSectionHeader({
 export function ComparisonSurface({
   eyebrow,
   title,
+  description,
+  statusLabel,
+  statusTone,
+  leftEyebrow,
   leftTitle,
   leftBody,
+  rightEyebrow,
   rightTitle,
   rightBody,
 }: {
   eyebrow: string;
   title: string;
+  description?: string;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
+  leftEyebrow?: string;
   leftTitle: string;
   leftBody: string;
+  rightEyebrow?: string;
   rightTitle: string;
   rightBody: string;
 }) {
@@ -86,17 +96,25 @@ export function ComparisonSurface({
       <ArtifactHeader
         eyebrow={eyebrow}
         title={title}
-        description="Two opposing operating models rendered as artifacts instead of generic feature bullets."
-        status={<StatusPill tone="teal"><Sparkles className="h-3.5 w-3.5" />Comparison Surface</StatusPill>}
+        description={
+          description ??
+          "Two opposing operating models rendered as artifacts instead of generic feature bullets."
+        }
+        status={
+          <StatusPill tone={statusTone ?? "teal"}>
+            <Sparkles className="h-3.5 w-3.5" />
+            {statusLabel ?? "Comparison Surface"}
+          </StatusPill>
+        }
       />
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="rounded-[1.5rem] border border-rose-500/20 bg-rose-500/[0.04] p-5">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-rose-700">Legacy pattern</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-rose-700">{leftEyebrow ?? "Legacy pattern"}</p>
           <h3 className="mt-3 text-lg font-semibold text-foreground">{leftTitle}</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{leftBody}</p>
         </div>
         <div className="rounded-[1.5rem] border border-teal/20 bg-teal/[0.05] p-5">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">BRIK64 pattern</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">{rightEyebrow ?? "BRIK64 pattern"}</p>
           <h3 className="mt-3 text-lg font-semibold text-foreground">{rightTitle}</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{rightBody}</p>
         </div>
@@ -150,12 +168,18 @@ export function EvidenceSurface({
   description,
   items,
   footer,
+  statusLabel,
+  statusTone,
+  itemStatusLabel,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   items: Array<{ label: string; body: string }>;
   footer?: ReactNode;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
+  itemStatusLabel?: string;
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -163,7 +187,12 @@ export function EvidenceSurface({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={<StatusPill tone="success"><ShieldCheck className="h-3.5 w-3.5" />Evidence Surface</StatusPill>}
+        status={
+          <StatusPill tone={statusTone ?? "success"}>
+            <ShieldCheck className="h-3.5 w-3.5" />
+            {statusLabel ?? "Evidence Surface"}
+          </StatusPill>
+        }
       />
       <div className="grid gap-3">
         {items.map((item) => (
@@ -171,7 +200,7 @@ export function EvidenceSurface({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm font-semibold text-foreground">{item.label}</p>
               <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                Evidence <ArrowRight className="h-3.5 w-3.5" />
+                {itemStatusLabel ?? "Evidence"} <ArrowRight className="h-3.5 w-3.5" />
               </span>
             </div>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>

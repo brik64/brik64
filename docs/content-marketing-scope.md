@@ -89,6 +89,17 @@ Research documents are useful context, but they are not self-validating proof.
 - If the change alters narrative boundaries, update this document in the same
   patch.
 
+## Section-Level Editorial Contracts
+
+Some routes carry stronger page-level editorial contracts in addition to this
+global scope file:
+
+- `features`: `docs/internal/features-editorial-spec.md`
+- `industries/*`: `docs/internal/industries-editorial-spec.md`
+
+When copy changes affect those surfaces, update the corresponding spec and
+associated tests in the same patch.
+
 ## Minimum Public Documentation Set
 
 The base documentation expected for this repo is:
