@@ -11,10 +11,11 @@ function read(relativePath: string): string {
 describe("Buyer persona fit — Staff / Principal Engineer", () => {
   it("Hero anchors the site on the formal-layer thesis", () => {
     const content = read("src/components/HeroSection.tsx");
-    expect(content).toContain("BRIK64 is the formal layer");
-    expect(content).toContain("for AI-era programming");
-    expect(content).toContain("formal language, a canonical blueprint, and a compilation path");
-    expect(content).toContain("What if software behaved more like hardware?");
+    expect(content).toContain("THE FORMAL LAYER FOR AI-ERA PROGRAMMING");
+    expect(content).toContain("BEYOND VIBE CODING");
+    expect(content).toContain("BRIK64 turns generated and existing software into formal, portable, testable blueprints.");
+    expect(content).toContain("Software generation got fast. BRIK64 makes it formal.");
+    expect(content).toContain("bounded language, a canonical blueprint, and a compilation path");
     expect(content).toContain('<MonomerGrid variant="hero" />');
     expect(content).not.toContain("Live surface");
   });

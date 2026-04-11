@@ -44,7 +44,8 @@ describe("Home editorial refactor guard", () => {
     const workflow = read("src/components/WorkflowSection.tsx");
     const boundaries = read("src/components/HomeClaimBoundariesSection.tsx");
 
-    expect(hero).toContain("BRIK64 is the formal layer");
+    expect(hero).toContain("BRIK64 turns generated and existing software into formal, portable, testable blueprints.");
+    expect(hero).toContain("Software generation got fast. BRIK64 makes it formal.");
     expect(workflow).toContain("Lift, model, check, emit, and publish in one visible chain.");
     expect(boundaries).toContain("What the formal layer proves, and where the boundary stops.");
   });

@@ -40,8 +40,10 @@ const contentAnchors: Record<string, readonly string[]> = {
     "No trust by default",
   ],
   "src/components/HeroSection.tsx": [
-    "BRIK64 is the formal layer",
-    "for AI-era programming",
+    "THE FORMAL LAYER FOR AI-ERA PROGRAMMING",
+    "BEYOND VIBE CODING",
+    "BRIK64 turns generated and existing software into formal, portable, testable blueprints.",
+    "Software generation got fast. BRIK64 makes it formal.",
   ],
   "src/components/MonomerGrid.tsx": [
     "onMouseOver",
