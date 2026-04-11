@@ -29,7 +29,7 @@ export default function CompliancePage() {
         ]}
         metrics={[
           { label: "Core claim", value: "Evidence generation", detail: "The route focuses on bounded logic, change-sensitive evidence, and readable review state." },
-          { label: "Claim posture", value: "Scope explicit", detail: "This route does not imply complete regulatory certification." },
+          { label: "Claim posture", value: "Scope explicit", detail: "This evidence model does not imply complete regulatory certification." },
           { label: "Review fit", value: "Engineering + audit", detail: "The useful output is evidence another team can inspect quickly." },
         ]}
       />
@@ -37,7 +37,7 @@ export default function CompliancePage() {
       <CanonicalSection>
         <ArchetypeSectionHeader
           eyebrow="Compliance"
-          title="What this route covers and what it does not"
+          title="What compliance evidence covers and what it does not"
           description="Readers should see what software evidence is produced, how it is scoped, and where it fits into wider audit or compliance workflows."
         />
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
@@ -48,7 +48,7 @@ export default function CompliancePage() {
             metrics={[
               { label: "Evidence type", value: "Change-sensitive review packet", detail: "The output stays tied to the exact code path or blueprint under review." },
               { label: "Review use", value: "Engineering + audit", detail: "Teams can inspect what was checked and what changed." },
-              { label: "Boundary", value: "Software logic", detail: "Organizational, process, and infrastructure controls still sit outside this route's claim set." },
+              { label: "Boundary", value: "Software logic", detail: "Organizational, process, and infrastructure controls still sit outside this claim set." },
             ]}
             tracks={[
               { label: "Software logic", title: "Bounded logic can be reviewed directly", body: "Explicit domains, closure state, and review metadata create a stronger evidence package than screenshots or code comments.", emphasis: "proof" },
@@ -59,7 +59,7 @@ export default function CompliancePage() {
           <ConstraintEnvelopeSurface
             eyebrow="Mapped Controls"
             title="Standards references only make sense when the software boundary stays explicit"
-            description="This route can mention regulatory or framework touchpoints when it keeps the software-evidence boundary explicit."
+            description="Regulatory or framework touchpoints are valid only when the software-evidence boundary stays explicit."
             constraints={[
               { title: "Processing integrity", body: "Show how bounded software logic supports the review of calculations, decision paths, and emitted outputs.", outcome: "evidence support" },
               { title: "Change visibility", body: "Tie the review packet to the exact logic under review so teams can tell when the underlying behavior changed.", outcome: "change trace" },
@@ -74,7 +74,7 @@ export default function CompliancePage() {
 
   output review_packet : String = review_hash
 }`}
-            footer="This route should read like a bounded dossier: what was checked, what evidence exists, and what still requires separate controls."
+            footer="The compliance dossier should stay bounded: what was checked, what evidence exists, and what still requires separate controls."
           />
           <ScenarioFlowSurface
             eyebrow="Review Flow"
@@ -89,7 +89,7 @@ export default function CompliancePage() {
           />
           <EvidenceSurface
             eyebrow="Public Claim Boundary"
-            title="What this route is allowed to claim"
+            title="What this compliance model is allowed to claim"
             description="Everything here must remain supportable by the repo and by the product routes visible elsewhere on the site."
             items={[
               { label: "Allowed", body: "Talk about bounded software evidence, explicit review state, and operator-readable review packets." },

@@ -14,10 +14,10 @@ const redesignedRoutes = [
   ["src/app/investors/page.tsx", "investors"],
   ["src/app/shop/page.tsx", "shop"],
   ["src/app/enterprise/page.tsx", "enterprise"],
-  ["src/app/ai-agents/page.tsx", "aiAgents"],
 ] as const;
 
 const bannedPlaceholderPhrases = [
+  "This route",
   "The page should",
   "This page should",
   "Use this page",

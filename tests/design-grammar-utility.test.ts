@@ -28,10 +28,10 @@ describe("Design grammar — utility and company family", () => {
   }
 
   it("utility wrappers now include core company/product utility routes", () => {
-    expect(utilityWrapperPages.length).toBeGreaterThanOrEqual(15);
+    expect(utilityWrapperPages.length).toBeGreaterThanOrEqual(14);
     expect(utilityWrapperPages).toContainEqual(["src/app/investors/page.tsx", "investors"]);
     expect(utilityWrapperPages).toContainEqual(["src/app/enterprise/page.tsx", "enterprise"]);
-    expect(utilityWrapperPages).toContainEqual(["src/app/ai-agents/page.tsx", "aiAgents"]);
+    expect(utilityWrapperPages).not.toContainEqual(["src/app/ai-agents/page.tsx", "aiAgents"]);
   });
 
   it("PageArchetypes exports the utility-specific surfaces", () => {

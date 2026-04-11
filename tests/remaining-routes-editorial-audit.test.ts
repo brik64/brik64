@@ -7,6 +7,7 @@ import { useCasePages } from "@/lib/risk-page-data";
 const bannedMetaCopy = [
   "The page should",
   "This page should",
+  "This route",
   "Use this page",
   "Use the CI/CD page",
   "Use the COBOL page",

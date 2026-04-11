@@ -17,6 +17,7 @@ const bannedPublicCopy = [
   "docs rail",
   "The page should",
   "This page should",
+  "This route",
   "Use this page",
   "promissory copy",
 ];

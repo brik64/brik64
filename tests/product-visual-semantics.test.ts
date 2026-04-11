@@ -102,14 +102,15 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("full regulatory certification");
   });
 
-  it("ai-agents route delegates to the shared utility grammar with explicit boundaries", () => {
+  it("ai-agents route is a direct technical reference with setup detail", () => {
     const content = read("src/app/ai-agents/page.tsx");
-    const data = read("src/lib/utility-page-data.ts");
-    expect(content).toContain("UtilityPageView");
-    expect(content).toContain("utilityPages.aiAgents");
-    expect(data).toContain("Use AI as a bounded producer with");
-    expect(data).toContain("discover → check → execute");
-    expect(data).toContain("No trust by default");
+    expect(content).toContain("CanonicalPageLayout");
+    expect(content).toContain("FeatureMatrixSurface");
+    expect(content).toContain("ConstraintEnvelopeSurface");
+    expect(content).toContain("ScenarioFlowSurface");
+    expect(content).toContain("Agent setup matrix");
+    expect(content).toContain("No trust by default");
+    expect(content).not.toContain("UtilityPageView");
   });
 
   it("utility dataset remains the content source of truth for migrated utility-product routes", () => {

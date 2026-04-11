@@ -15,6 +15,7 @@ const auditedWrapperKeys = [
 const bannedWrapperPhrases = [
   "The page should",
   "This page should",
+  "This route",
   "Use this page",
   "Use the",
   "Proof strip",

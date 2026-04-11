@@ -83,14 +83,14 @@ export default async function LanguagePage(props: {
             value: language.canCompileTo ? "Supported" : "Not primary",
             detail: language.canCompileTo
               ? `PCD can emit ${language.name} outputs as part of the broader target story.`
-              : `Compilation into ${language.name} is not the emphasis of this route today.`,
+              : `Compilation into ${language.name} is not the emphasis of this language entry today.`,
           },
           {
             label: "Host package",
             value: language.extension,
             detail: language.installCommand
-              ? `This route can also point into the ${language.name} package path.`
-              : `This route is presented as part of the target and interoperability story.`,
+              ? `This entry can also point into the ${language.name} package path.`
+              : `${language.name} is presented as part of the target and interoperability story.`,
           },
         ]}
       />
@@ -99,7 +99,7 @@ export default async function LanguagePage(props: {
         <ArchetypeSectionHeader
           eyebrow="Language"
           title="Each language route behaves like one bounded exchange workflow."
-          description="This route explains how the language enters the BRIK64 flow, what can be lifted or emitted, and where the operator goes next."
+          description="This language entry explains how the language enters the BRIK64 flow, what can be lifted or emitted, and where the operator goes next."
         />
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
           <LanguageExchangeSurface
@@ -112,7 +112,7 @@ export default async function LanguagePage(props: {
                 value: language.installCommand ? "Available" : "Indirect",
                 detail: language.installCommand
                   ? language.installCommand
-                  : "This route currently behaves more as a lift or target path than as an installable SDK.",
+                  : "This entry currently behaves more as a lift or target path than as an installable SDK.",
               },
               {
                 label: "Lift posture",
@@ -131,11 +131,11 @@ export default async function LanguagePage(props: {
               {
                 title: `How ${language.name} enters the workflow`,
                 body: language.canLiftFrom
-                  ? `This route can start from existing ${language.name} source and move into an explicit bounded blueprint before deeper verification or publication.`
-                  : `This route is presented primarily as a target emitted from a bounded intermediate form.`,
+                  ? `The workflow can start from existing ${language.name} source and move into an explicit bounded blueprint before deeper verification or publication.`
+                  : `${language.name} appears primarily as a target emitted from a bounded intermediate form.`,
               },
               {
-                title: "What this route makes explicit",
+                title: "What this language entry makes explicit",
                 body: "Make clear whether the language is a source bridge, a compile target, or an SDK host without mixing those stories loosely.",
               },
               {
