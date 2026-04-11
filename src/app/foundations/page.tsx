@@ -36,7 +36,7 @@ export default function FoundationsPage() {
               Digital Circuitality on an <span className="text-teal">information-theoretic footing.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              This route explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation. The claims here apply to the modeled circuit representation, not to every uncontrolled runtime or deployment environment around it.
+              This page explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation. The claims here apply to the modeled circuit representation, not to every uncontrolled runtime or deployment environment around it.
             </p>
           </div>
         </section>
@@ -45,7 +45,7 @@ export default function FoundationsPage() {
           <PageSectionHeader
             eyebrow="Foundations"
             title="From formal definition to product implication"
-            description="This route opens with the formal claim, the analogy boundary, and the product implication before moving into the longer scientific argument."
+            description="The opening sequence covers the formal claim, the analogy boundary, and the product implication before moving into the longer scientific argument."
           />
           <div className="mx-auto mt-10 grid max-w-6xl gap-6">
             <ComparisonSurface

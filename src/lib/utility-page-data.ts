@@ -19,7 +19,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "BRIK-64 builds formal software infrastructure for",
       highlight: "bounded computation.",
       description:
-        "BRIK-64 combines a formal language, a compiler path, platform workflows, and registry-oriented reuse around reviewable software. This route explains what exists publicly today and where to go next.",
+        "BRIK-64 combines a formal language, a compiler path, platform workflows, and registry-oriented reuse around reviewable software. It clarifies what exists publicly today and where technical teams should go next.",
       actions: [primary("Read foundations", "/foundations"), secondary("Open platform", "/platform")],
       metrics: [
         { label: "Formal layer", value: "PCD", detail: "The public story stays anchored to the bounded blueprint format." },
@@ -95,7 +95,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Routing Rules",
       title: "Each route exists for a different class of request",
       description:
-        "This route is not a generic inbox. It sends product, enterprise, and support questions into channels that preserve traceability.",
+        "This contact system is not a generic inbox. It sends product, enterprise, and support questions into channels that preserve traceability.",
       rows: [
         { title: "General inquiries", body: "Route product questions, public site clarifications, and initial conversations through the general mailbox." },
         { title: "Enterprise evaluation", body: "Architecture review, deployment posture, compliance discussion, and commercial scope belong in the enterprise route." },
@@ -133,7 +133,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "Install the documented toolchain from the",
       highlight: "real entrypoints.",
       description:
-        "This route explains what can be installed today, what remains documentation-led, and where each tool fits in the wider BRIK-64 workflow.",
+        "Install guidance states what can be installed today, what remains documentation-led, and where each tool fits in the wider BRIK-64 workflow.",
       actions: [primary("Install CLI", "https://docs.brik64.dev", true), secondary("SDKs", "/sdks")],
       metrics: [
         { label: "CLI posture", value: "Single entrypoint", detail: "The CLI remains the first operator path into the system." },
@@ -177,7 +177,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     cta: {
       title: "Start from the documented install path.",
       description:
-        "If a package is live, it should resolve to docs or product routes immediately. If it is not, this route should say so directly.",
+        "If a package is live, it should resolve to docs or product routes immediately. If it is not, the public copy should say so directly.",
       actions: [primary("Open docs", "https://docs.brik64.dev", true), link("View platform", "/platform")],
     },
   },
@@ -285,7 +285,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "Policy, privacy, and public communication",
       highlight: "boundaries.",
       description:
-        "Legal information should stay readable, explicit, and sober. This route covers policy boundaries without turning into a product pitch.",
+        "Legal information should stay readable, explicit, and sober. The legal section covers policy boundaries without turning into a product pitch.",
       actions: [primary("Contact legal", "mailto:hello@brik64.com"), link("Privacy questions", "/contact")],
     },
     sectionHeader: {
@@ -296,9 +296,9 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     },
     primarySurface: {
       eyebrow: "Policy Scope",
-      title: "What this route covers",
+      title: "What legal coverage includes",
       description:
-        "This route focuses on policy scope and communication boundaries rather than product marketing.",
+        "Legal content focuses on policy scope and communication boundaries rather than product marketing.",
       rows: [
         { title: "Terms and acceptable use", body: "Explain the public website and any operator expectations without inventing product commitments." },
         { title: "Privacy posture", body: "Describe how contact, support, or docs interactions are handled to the extent that the repo documents them." },
@@ -308,7 +308,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     secondarySurface: {
       eyebrow: "Reference material",
       title: "Policy questions should route to the right references and people.",
-      description: "This route stays sober without becoming isolated from the rest of the site's truth boundary.",
+      description: "Legal copy stays sober without becoming isolated from the rest of the site's truth boundary.",
       kind: "docs",
       links: [
         { title: "Content scope", body: "Truth-boundary and claim-class guidance for public messaging.", href: "/docs" },
@@ -323,12 +323,12 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "A category and architecture thesis with an explicit",
       highlight: "truth boundary.",
       description:
-        "This route can explain the category thesis, the system form, and the current public product logic. It should not invent traction numbers, customer references, or financial certainty.",
+        "Investor communication can explain the category thesis, the system form, and the current public product logic. It should not invent traction numbers, customer references, or financial certainty.",
       actions: [primary("Company overview", "/about"), secondary("Enterprise contact", "mailto:enterprise@brik64.com")],
       metrics: [
         { label: "Category thesis", value: "Verified software", detail: "The site frames BRIK-64 as infrastructure for bounded, reusable computation." },
         { label: "System form", value: "Registry + platform", detail: "The public story repeatedly reinforces reusable libraries and review workflows." },
-        { label: "Evidence posture", value: "Conservative", detail: "This route avoids unsupported traction or customer claims." },
+        { label: "Evidence posture", value: "Conservative", detail: "Investor copy avoids unsupported traction or customer claims." },
       ],
     },
     sectionHeader: {
@@ -358,7 +358,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Useful reading paths",
       title: "Resolve the thesis back to technical evidence",
       description:
-        "When this route makes a systems argument, it should point back to the relevant product and foundations pages.",
+        "When investor communication makes a systems argument, it should point back to the relevant product and foundations pages.",
       kind: "docs",
       links: [
         { title: "Foundations", body: "Formal and conceptual background.", href: "/foundations" },
@@ -391,7 +391,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Enterprise Operating Model",
       title: "From bounded software checks to organizational review handoff",
       description:
-        "This route explains what enterprise teams can operationalize today and where legal/compliance programs require separate controls.",
+        "Enterprise teams can operationalize identity, evidence, and deployment controls today, while legal and program certification controls remain separate.",
     },
     primarySurface: {
       eyebrow: "Capability Scope",
@@ -443,7 +443,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Agent Workflow",
       title: "Generated output enters a constrained review loop",
       description:
-        "This route explains how teams integrate AI agents without collapsing proof posture into model confidence.",
+        "Teams can integrate AI agents without collapsing proof posture into model confidence by keeping verification outside the model.",
     },
     primarySurface: {
       eyebrow: "Control Loop",
@@ -561,24 +561,24 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "Brand support, collateral, and limited merchandise in one",
       highlight: "honest route.",
       description:
-        "If the shop is not a full commerce experience, this route should say so directly. It exists to explain current brand-support scope and route questions to a human channel.",
+        "If the shop is not a full commerce experience, the copy should state that directly. It exists to explain current brand-support scope and route questions to a human channel.",
       actions: [primary("Brand assets", "/design-system"), secondary("Contact", "/contact")],
     },
     sectionHeader: {
       eyebrow: "Shop",
       title: "A simple brand-support route, not a fake storefront",
       description:
-        "This route can explain merchandise or collateral intent without pretending that a full checkout flow already exists.",
+        "Shop copy can explain merchandise or collateral intent without pretending that a full checkout flow already exists.",
     },
     primarySurface: {
       eyebrow: "Current scope",
-      title: "What this route can communicate today",
+      title: "Current public shop scope",
       description:
         "Treat the shop as a brand-support route unless and until it becomes a full commerce system.",
       rows: [
         { title: "Brand support items", body: "Merchandise, collateral, or limited-run assets can be described without pretending to be a full retail experience." },
         { title: "Canonical assets", body: "All brand usage should defer to the asset guidance already recorded in the repo." },
-        { title: "Commercial clarity", body: "If the shop is not live, the route should say so instead of imitating an active checkout flow." },
+        { title: "Commercial clarity", body: "If the shop is not live, the public copy should say so instead of imitating an active checkout flow." },
       ],
     },
     secondarySurface: {
@@ -606,7 +606,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "The docs route is a bridge into the",
       highlight: "reference system.",
       description:
-        "Instead of a hard redirect, this route explains where documentation lives and how it connects to product workflows.",
+        "Instead of a hard redirect, docs copy points to where documentation lives and how it connects to product workflows.",
       actions: [primary("Open documentation", "https://docs.brik64.dev", true), secondary("CLI", "/cli")],
     },
     sectionHeader: {
@@ -619,7 +619,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Documentation Scope",
       title: "What the reference system covers",
       description:
-        "This route helps users find the right part of the documentation stack without disconnecting it from the product narrative.",
+        "This documentation entry helps users find the right part of the stack without disconnecting it from the product narrative.",
       rows: [
         { title: "CLI and commands", body: "Use docs for install, command reference, and certification workflows." },
         { title: "Language guides", body: "SDKs, host language integrations, and examples belong in documentation references." },
@@ -691,7 +691,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Auth",
       title: "Signup remains an access step, not a separate landing page.",
       description:
-        "It communicates who this route is for and how to get help.",
+        "It communicates who this signup entry is for and how to get help.",
     },
     primarySurface: {
       eyebrow: "Access rules",

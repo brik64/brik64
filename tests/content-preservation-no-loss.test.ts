@@ -11,6 +11,7 @@ import { read } from "./site-grammar";
 const atomList = atoms as ContentAtom[];
 
 const routeToFile: Record<string, string> = {
+  "/ai-agents": "src/app/ai-agents/page.tsx",
   "/foundations": "src/app/foundations/page.tsx",
   "/bpu": "src/app/bpu/page.tsx",
   "/pcd": "src/app/pcd/page.tsx",
@@ -27,7 +28,6 @@ const routeToUtilityKey: Record<string, keyof typeof utilityPages> = {
   "/shop": "shop",
   "/investors": "investors",
   "/enterprise": "enterprise",
-  "/ai-agents": "aiAgents",
 };
 
 function readRouteContent(route: string): string {

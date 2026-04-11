@@ -41,6 +41,7 @@ export const productCorePages = [
 export const productMigratedPages = [
   "src/app/cli/page.tsx",
   "src/app/compliance/page.tsx",
+  "src/app/ai-agents/page.tsx",
 ] as const;
 
 export const productRestoredPages = [
@@ -64,7 +65,6 @@ export const utilityWrapperPages = [
   ["src/app/investors/page.tsx", "investors"],
   ["src/app/shop/page.tsx", "shop"],
   ["src/app/enterprise/page.tsx", "enterprise"],
-  ["src/app/ai-agents/page.tsx", "aiAgents"],
   ["src/app/playground/page.tsx", "playground"],
   ["src/app/changelog/page.tsx", "changelog"],
   ["src/app/docs/page.tsx", "docs"],
@@ -82,7 +82,6 @@ export const auditedUtilityWrapperPages = [
   ["src/app/investors/page.tsx", "investors"],
   ["src/app/shop/page.tsx", "shop"],
   ["src/app/enterprise/page.tsx", "enterprise"],
-  ["src/app/ai-agents/page.tsx", "aiAgents"],
   ["src/app/playground/page.tsx", "playground"],
   ["src/app/changelog/page.tsx", "changelog"],
   ["src/app/docs/page.tsx", "docs"],

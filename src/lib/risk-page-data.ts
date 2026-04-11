@@ -171,7 +171,7 @@ function buildUseCase(config: {
         { label: "04", title: "Reuse the result", body: "Feed the bounded result back into the platform, registry, or delivery flow.", state: "idle" },
       ],
       footer:
-        "Keep the workflow legible without implying every downstream organizational control is solved by this route.",
+        "Keep the workflow legible without implying every downstream organizational control is solved by this workflow.",
     },
     cta: {
       title: config.ctaTitle,
@@ -874,7 +874,7 @@ export const industryPages = {
     sectionEyebrow: "Reproducible computation",
     sectionTitle: "Scientific software is easier to reproduce when assumptions, transforms, and result lineage stay inside one bounded artifact.",
     sectionDescription:
-      "The science route explains a real integration path: declare ranges and calibration factors in PCD, preserve the transform chain, and publish the resulting artifact for review and reuse.",
+      "The science workflow follows a real integration path: declare ranges and calibration factors in PCD, preserve the transform chain, and publish the resulting artifact for review and reuse.",
     evidenceEyebrow: "Where BRIK-64 helps",
     evidenceTitle: "Treat the computational method as a shareable blueprint instead of a fragile local script.",
     evidenceDescription:
@@ -933,7 +933,7 @@ export const useCasePages = {
     title: "AI safety needs policy circuits and",
     highlight: "pre-execution checks.",
     description:
-      "This route covers external verification, bounded action rules, and traceable agent workflows rather than sweeping claims about solved alignment.",
+      "This use case covers external verification, bounded action rules, and traceable agent workflows rather than sweeping claims about solved alignment.",
     heroMetrics: [
       { label: "Primary object", value: "Policy circuit", detail: "The key control point is the explicit rule set that sits outside the model." },
       { label: "Verification point", value: "Before execution", detail: "The workflow checks the action before it reaches production." },
@@ -968,7 +968,7 @@ export const useCasePages = {
     title: "CI/CD integration needs a proof step, not just another",
     highlight: "pipeline badge.",
     description:
-      "This route shows how bounded verification enters a delivery pipeline without pretending it replaces the rest of release engineering.",
+      "This use case shows how bounded verification enters a delivery pipeline without pretending it replaces the rest of release engineering.",
     heroMetrics: [
       { label: "Primary object", value: "Pipeline gate", detail: "The critical control point is the bounded check inserted before release." },
       { label: "Verification point", value: "Build stage", detail: "The result is a gate and traceable evidence." },
@@ -1002,7 +1002,7 @@ jobs:
     title: "COBOL migration needs a bounded bridge, not a blind",
     highlight: "rewrite.",
     description:
-      "This route focuses on lifting legacy logic into explicit PCD or constrained bounded outputs before transpilation or modernization.",
+      "This use case focuses on lifting legacy logic into explicit PCD or constrained bounded outputs before transpilation or modernization.",
     heroMetrics: [
       { label: "Primary object", value: "Lifted blueprint", detail: "The key step is making legacy logic inspectable before replacing it." },
       { label: "Verification point", value: "Post-lift", detail: "The useful check happens on the extracted circuit boundary." },
@@ -1034,7 +1034,7 @@ jobs:
     title: "Formal verification becomes more usable when the proof path is",
     highlight: "operational.",
     description:
-      "This route connects theorem-backed thinking to a delivery path the reader can actually follow through the site.",
+      "This use case connects theorem-backed thinking to a delivery path the reader can actually follow through the site.",
     heroMetrics: [
       { label: "Primary object", value: "Proof workflow", detail: "The focus is the bridge from formal reasoning to operator-readable steps." },
       { label: "Verification point", value: "Structure + closure", detail: "Stay grounded in bounded circuit checks and explicit proof posture." },
@@ -1065,7 +1065,7 @@ jobs:
     title: "Universal transpilation only matters when the intermediate form is",
     highlight: "bounded and inspectable.",
     description:
-      "This route frames transpilation as a lift-check-build workflow rather than an unlimited source-to-source promise.",
+      "This use case frames transpilation as a lift-check-build workflow rather than an unlimited source-to-source promise.",
     heroMetrics: [
       { label: "Primary object", value: "Intermediate blueprint", detail: "Keep the PCD or circuit layer visible between source and target." },
       { label: "Verification point", value: "Between lift and emit", detail: "The useful check happens on the bounded representation, not only on the final target." },
@@ -1115,7 +1115,7 @@ export const thesisPages = {
     constraints: [
       { title: "Externalized checks", body: "The verification object exists outside the model and can be inspected independently.", outcome: "trust boundary" },
       { title: "Feedback loop", body: "Diagnostics should feed back into the generation loop as structured signals, not only as generic failure.", outcome: "repairable workflow" },
-      { title: "Claim boundary", body: "This route covers bounded software verification for generated code and agent actions. It does not solve general model alignment.", outcome: "bounded claim" },
+      { title: "Claim boundary", body: "This thesis covers bounded software verification for generated code and agent actions. It does not solve general model alignment.", outcome: "bounded claim" },
     ],
     codeTitle: "agent_review_loop.pcd",
     code: `PC agent_review_loop {
@@ -1145,7 +1145,7 @@ export const thesisPages = {
     constraints: [
       { title: "Explicit state transitions", body: "Make preconditions and postconditions visible before a transaction path is accepted.", outcome: "state gate" },
       { title: "Bounded value movement", body: "Transaction amounts, roles, and related invariants should remain within declared domains.", outcome: "asset boundary" },
-      { title: "Claim boundary", body: "This route supports reviewable contract logic and bounded state transitions. It does not claim the surrounding protocol or ecosystem is secure by default.", outcome: "traceable contract" },
+      { title: "Claim boundary", body: "This thesis supports reviewable contract logic and bounded state transitions. It does not claim the surrounding protocol or ecosystem is secure by default.", outcome: "traceable contract" },
     ],
     codeTitle: "token_transfer_guard.pcd",
     code: `PC token_transfer_guard {
@@ -1177,7 +1177,7 @@ export const thesisPages = {
     constraints: [
       { title: "Bounded operating envelope", body: "Important states should be represented as explicit domains and not as comments or hope.", outcome: "safety boundary" },
       { title: "Predictable fallback", body: "Out-of-bound states should be rejected or moved into a known safe path.", outcome: "safe failure" },
-      { title: "Claim boundary", body: "This route supports bounded software review and assurance preparation. It does not certify the wider safety program on its own.", outcome: "assurance trail" },
+      { title: "Claim boundary", body: "This thesis supports bounded software review and assurance preparation. It does not certify the wider safety program on its own.", outcome: "assurance trail" },
     ],
     codeTitle: "safety_guard.pcd",
     code: `PC safety_guard {
