@@ -84,23 +84,10 @@ describe("Page completeness — wrapper architecture is explicit", () => {
     expect(content).toContain("DocsRailSurface");
   });
 
-  for (const file of utilityRestoredPages) {
-    it(`${file} is restored as a direct content page (not a thin wrapper)`, () => {
-      const content = read(file);
-      expect(content).not.toContain("UtilityPageView");
-      expect(content).toContain("Navbar");
-      expect(content).toContain("Footer");
-    });
-  }
-
-  for (const file of productRestoredPages) {
-    it(`${file} is restored as a direct product page with substantial content`, () => {
-      const content = read(file);
-      expect(content).not.toContain("UtilityPageView");
-      expect(content).not.toContain("RiskPageView");
-      expect(content.length).toBeGreaterThan(2000);
-    });
-  }
+  it("legacy restored buckets are now migrated into wrapper architecture", () => {
+    expect(utilityRestoredPages.length).toBe(0);
+    expect(productRestoredPages.length).toBe(0);
+  });
 });
 
 describe("Page completeness — shared archetype data stays populated", () => {

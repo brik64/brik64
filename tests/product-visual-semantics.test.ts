@@ -3,7 +3,6 @@ import { describe, expect, it } from "vitest";
 import {
   productCorePages,
   productMigratedPages,
-  productRestoredPages,
   read,
 } from "./site-grammar";
 
@@ -85,13 +84,14 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("CopyableCode");
   });
 
-  it("enterprise route is restored as a substantive direct page", () => {
+  it("enterprise route delegates to the shared utility grammar with substantive dataset content", () => {
     const content = read("src/app/enterprise/page.tsx");
-    expect(content).toContain("Built for");
-    expect(content).toContain("Enterprise-grade verification");
-    expect(content).toContain("Compliance Reports");
-    expect(content).toContain("Request a demo");
-    expect(content).not.toContain("UtilityPageView");
+    const data = read("src/lib/utility-page-data.ts");
+    expect(content).toContain("UtilityPageView");
+    expect(content).toContain("utilityPages.enterprise");
+    expect(data).toContain("Private delivery, identity controls");
+    expect(data).toContain("SSO / SAML / OIDC + SCIM");
+    expect(data).toContain("supports audit and review workflows; it does not certify organizations by itself");
   });
 
   it("compliance now uses the evidence dossier grammar", () => {
@@ -102,21 +102,20 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("full regulatory certification");
   });
 
-  it("ai-agents route is restored with real integration setup content", () => {
+  it("ai-agents route delegates to the shared utility grammar with explicit boundaries", () => {
     const content = read("src/app/ai-agents/page.tsx");
-    expect(content).toContain("Your AI agent writes");
-    expect(content).toContain("Agent setup");
-    expect(content).toContain("Claude Code");
-    expect(content).toContain("community");
-    expect(content).not.toContain("UtilityPageView");
+    const data = read("src/lib/utility-page-data.ts");
+    expect(content).toContain("UtilityPageView");
+    expect(content).toContain("utilityPages.aiAgents");
+    expect(data).toContain("Use AI as a bounded producer with");
+    expect(data).toContain("discover → check → execute");
+    expect(data).toContain("No trust by default");
   });
 
-  it("restored product pages are direct and content-rich", () => {
-    for (const file of productRestoredPages) {
-      const content = read(file);
-      expect(content).toContain("Navbar");
-      expect(content).toContain("Footer");
-      expect(content.length).toBeGreaterThan(3000);
-    }
+  it("utility dataset remains the content source of truth for migrated utility-product routes", () => {
+    const data = read("src/lib/utility-page-data.ts");
+    expect(data).toContain("enterprise:");
+    expect(data).toContain("aiAgents:");
+    expect(data.length).toBeGreaterThan(25000);
   });
 });
