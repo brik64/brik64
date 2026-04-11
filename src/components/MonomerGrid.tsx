@@ -9,7 +9,7 @@ import {
 } from "@/lib/monomer-data";
 
 const HERO_CORE_MONOMERS = CORE_MONOMERS.slice(0, 64);
-const HERO_EXTENDED_MONOMERS = EXTENDED_MONOMERS.slice(0, 64);
+const HERO_EXTENDED_MONOMERS = EXTENDED_MONOMERS.slice(0, 60);
 
 const EXTENDED_FAMILIES: Record<string, string> = {
   Float64: "#4fd1c5",
@@ -41,14 +41,14 @@ const HERO_TRACKS: Record<
   }
 > = {
   core: {
-    label: "Core monomers",
+    label: "Core atomic operations",
     panelLabel: "Certified monomer",
     badge: "CORE CERTIFIED",
     prefix: "MC",
     monomers: HERO_CORE_MONOMERS,
   },
   extended: {
-    label: "Extended monomers",
+    label: "Extended atomic operations",
     panelLabel: "Contract monomer",
     badge: "EXTENDED CONTRACT",
     prefix: "MX",
@@ -83,6 +83,14 @@ function getTone(family: string) {
   return MONOMER_FAMILIES[family] ?? "#64748b";
 }
 
+function getOfficialNumber(track: HeroTrack, id: number) {
+  if (track === "extended") {
+    return id + 68;
+  }
+
+  return id;
+}
+
 export function MonomerGrid({ variant = "default" }: { variant?: "default" | "hero" }) {
   const [activeTrack, setActiveTrack] = useState<HeroTrack>("core");
   const [activeIds, setActiveIds] = useState<Record<HeroTrack, number>>({
@@ -94,6 +102,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
   const activeMonomer =
     activeMonomers.find((monomer) => monomer.id === activeIds[activeTrack]) ?? activeMonomers[0];
   const activeTone = getTone(activeMonomer.family);
+  const activeOfficialNumber = getOfficialNumber(activeTrack, activeMonomer.id);
 
   const activeTrackIndex = activeTrack === "core" ? 0 : 1;
   const badgeTone = activeTrack === "core" ? "#00b8d4" : "#f59e0b";
@@ -112,6 +121,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
         <div className="grid w-full max-w-[420px] grid-cols-8 gap-1.5 rounded-[1.5rem] border border-teal/20 bg-white/88 p-3 shadow-[0_18px_50px_rgba(0,0,0,0.12)] backdrop-blur-sm">
           {HERO_CORE_MONOMERS.map((monomer) => {
             const tone = getTone(monomer.family);
+            const officialNumber = getOfficialNumber("core", monomer.id);
             return (
               <div
                 key={monomer.id}
@@ -123,7 +133,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
               >
                 <span className="text-[7px] font-bold" style={{ color: tone }}>
                   {monomer.prefix}
-                  {String(monomer.id).padStart(2, "0")}
+                  {String(officialNumber).padStart(2, "0")}
                 </span>
                 <span className="mt-1 text-[8px] leading-none">{monomer.name}</span>
               </div>
@@ -161,7 +171,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
                 }}
               >
                 {HERO_TRACKS[activeTrack].prefix}
-                {String(activeMonomer.id).padStart(2, "0")}
+                {String(activeOfficialNumber).padStart(2, "0")}
               </span>
               <div>
                 <p className="text-base font-semibold text-foreground md:text-lg">{activeMonomer.name}</p>
@@ -237,6 +247,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
                   {HERO_TRACKS[track].monomers.map((monomer) => {
                     const tone = getTone(monomer.family);
                     const isActive = monomer.id === activeIds[track] && track === activeTrack;
+                    const officialNumber = getOfficialNumber(track, monomer.id);
 
                     return (
                       <button
@@ -249,7 +260,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
                           setActiveMonomerId(track, monomer.id);
                           selectTrack(track);
                         }}
-                        aria-label={`Inspect monomer ${HERO_TRACKS[track].prefix}${String(monomer.id).padStart(2, "0")} ${monomer.name}`}
+                        aria-label={`Inspect monomer ${HERO_TRACKS[track].prefix}${String(officialNumber).padStart(2, "0")} ${monomer.name}`}
                         className="flex aspect-square min-h-[42px] cursor-pointer flex-col items-center justify-center rounded-[0.85rem] border bg-background px-1 text-[9px] font-semibold uppercase tracking-[0.11em] text-muted-foreground transition-[transform,border-color,box-shadow,background-color,color] duration-150 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none"
                         style={{
                           borderColor: isActive ? withAlpha(tone, "55") : withAlpha(tone, "24"),
@@ -261,7 +272,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
                         }}
                       >
                         <span className="font-mono text-[8px] font-bold" style={{ color: tone }}>
-                          {String(monomer.id).padStart(2, "0")}
+                          {String(officialNumber).padStart(2, "0")}
                         </span>
                         <span className="mt-1 leading-none text-[8px] md:text-[9px]">{monomer.name}</span>
                       </button>
