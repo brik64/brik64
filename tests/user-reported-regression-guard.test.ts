@@ -47,7 +47,9 @@ const contentAnchors: Record<string, readonly string[]> = {
   ],
   "src/components/MonomerGrid.tsx": [
     "onMouseOver",
-    "Inspect monomer MC",
+    "Inspect monomer",
+    "Core monomers",
+    "Extended monomers",
   ],
 };
 
