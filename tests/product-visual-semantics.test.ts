@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   productCorePages,
   productMigratedPages,
+  productRestoredPages,
   read,
 } from "./site-grammar";
 
@@ -84,12 +85,13 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("CopyableCode");
   });
 
-  it("enterprise now behaves like an evidence-led operating model", () => {
+  it("enterprise route is restored as a substantive direct page", () => {
     const content = read("src/app/enterprise/page.tsx");
-    expect(content).toContain("ActionSurface");
-    expect(content).toContain("ScenarioFlowSurface");
-    expect(content).toContain("FeatureMatrixSurface");
-    expect(content).toContain("Private scope, review flow, and support posture in one view");
+    expect(content).toContain("Built for");
+    expect(content).toContain("Enterprise-grade verification");
+    expect(content).toContain("Compliance Reports");
+    expect(content).toContain("Request a demo");
+    expect(content).not.toContain("UtilityPageView");
   });
 
   it("compliance now uses the evidence dossier grammar", () => {
@@ -100,12 +102,21 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).not.toContain("full regulatory certification");
   });
 
-  it("ai-agents now centers the workflow object instead of demo snippets", () => {
+  it("ai-agents route is restored with real integration setup content", () => {
     const content = read("src/app/ai-agents/page.tsx");
-    expect(content).toContain("FeatureMatrixSurface");
-    expect(content).toContain("ConstraintEnvelopeSurface");
-    expect(content).toContain("ScenarioFlowSurface");
-    expect(content).toContain("bounded workflow");
-    expect(content).not.toContain("CopyableCode");
+    expect(content).toContain("Your AI agent writes");
+    expect(content).toContain("Agent setup");
+    expect(content).toContain("Claude Code");
+    expect(content).toContain("community");
+    expect(content).not.toContain("UtilityPageView");
+  });
+
+  it("restored product pages are direct and content-rich", () => {
+    for (const file of productRestoredPages) {
+      const content = read(file);
+      expect(content).toContain("Navbar");
+      expect(content).toContain("Footer");
+      expect(content.length).toBeGreaterThan(3000);
+    }
   });
 });

@@ -5,6 +5,7 @@ import { utilityPages } from "@/lib/utility-page-data";
 import {
   read,
   utilityDirectPages,
+  utilityRestoredPages,
   utilityWrapperPages,
 } from "./site-grammar";
 
@@ -27,6 +28,15 @@ describe("Design grammar — utility and company family", () => {
     });
   }
 
+  for (const file of utilityRestoredPages) {
+    it(`${file} is a restored direct page and not a wrapper`, () => {
+      const content = read(file);
+      expect(content).not.toContain("UtilityPageView");
+      expect(content).toContain("Navbar");
+      expect(content).toContain("Footer");
+    });
+  }
+
   it("PageArchetypes exports the utility-specific surfaces", () => {
     const content = read("src/components/PageArchetypes.tsx");
     expect(content).toContain("export function UtilitySurface");
@@ -37,10 +47,8 @@ describe("Design grammar — utility and company family", () => {
   });
 
   it("utility page data keeps the route-specific grammar explicit", () => {
-    expect(utilityPages.about.primarySurface.thesis).toBe(true);
-    expect(utilityPages.contact.secondarySurface?.kind).toBe("action");
+    expect(utilityPages.playground.secondarySurface?.kind).toBe("docs");
     expect(utilityPages.docs.secondarySurface?.kind).toBe("docs");
-    expect(utilityPages.shop.primarySurface.title).toContain("communicate today");
     expect(utilityPages.login.sectionHeader.eyebrow).toBe("Auth Surface");
     expect(utilityPages.signup.sectionHeader.eyebrow).toBe("Auth Surface");
   });
