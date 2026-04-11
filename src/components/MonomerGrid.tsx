@@ -34,6 +34,7 @@ const HERO_TRACKS: Record<
   HeroTrack,
   {
     label: string;
+    panelLabel: string;
     badge: string;
     prefix: "MC" | "MX";
     monomers: Monomer[];
@@ -41,13 +42,15 @@ const HERO_TRACKS: Record<
 > = {
   core: {
     label: "Core monomers",
+    panelLabel: "Certified monomer",
     badge: "Core certified",
     prefix: "MC",
     monomers: HERO_CORE_MONOMERS,
   },
   extended: {
     label: "Extended monomers",
-    badge: "Extended certified",
+    panelLabel: "Contract monomer",
+    badge: "Extended contract",
     prefix: "MX",
     monomers: HERO_EXTENDED_MONOMERS,
   },
@@ -150,7 +153,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-              Certified monomer
+              {HERO_TRACKS[activeTrack].panelLabel}
             </p>
             <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               {HERO_TRACKS[activeTrack].label}
