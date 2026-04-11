@@ -204,7 +204,7 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Role
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 overflow-hidden text-sm leading-relaxed text-muted-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
               {FAMILY_NOTES[activeMonomer.family]}
             </p>
           </div>
