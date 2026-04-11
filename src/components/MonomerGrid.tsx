@@ -43,14 +43,14 @@ const HERO_TRACKS: Record<
   core: {
     label: "Core monomers",
     panelLabel: "Certified monomer",
-    badge: "Core certified",
+    badge: "CORE CERTIFIED",
     prefix: "MC",
     monomers: HERO_CORE_MONOMERS,
   },
   extended: {
     label: "Extended monomers",
     panelLabel: "Contract monomer",
-    badge: "Extended contract",
+    badge: "EXTENDED CONTRACT",
     prefix: "MX",
     monomers: HERO_EXTENDED_MONOMERS,
   },
@@ -96,17 +96,10 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
   const activeTone = getTone(activeMonomer.family);
 
   const activeTrackIndex = activeTrack === "core" ? 0 : 1;
+  const badgeTone = activeTrack === "core" ? "#00b8d4" : "#f59e0b";
 
   function selectTrack(track: HeroTrack) {
     setActiveTrack(track);
-  }
-
-  function rotateTrack(direction: "prev" | "next") {
-    if (direction === "prev") {
-      setActiveTrack((current) => (current === "core" ? "extended" : "core"));
-      return;
-    }
-    setActiveTrack((current) => (current === "core" ? "extended" : "core"));
   }
 
   function setActiveMonomerId(track: HeroTrack, monomerId: number) {
@@ -180,9 +173,9 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
           <span
             className="rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em]"
             style={{
-              borderColor: withAlpha(activeTone, "2f"),
-              color: activeTone,
-              backgroundColor: withAlpha(activeTone, "12"),
+              borderColor: withAlpha(badgeTone, "45"),
+              color: badgeTone,
+              backgroundColor: withAlpha(badgeTone, "14"),
             }}
           >
             {HERO_TRACKS[activeTrack].badge}
@@ -210,17 +203,18 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
       </div>
 
       <div className="mt-4 rounded-[1.5rem] border border-border/80 bg-background/88 p-3 shadow-sm md:p-4">
-        <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="mb-3 flex items-center justify-start gap-3">
           <div className="inline-flex rounded-full border border-border/80 bg-muted/35 p-1">
             {(["core", "extended"] as const).map((track) => {
               const isActive = track === activeTrack;
+              const trackColor = track === "core" ? "text-teal" : "text-amber-600";
               return (
                 <button
                   key={track}
                   type="button"
                   onClick={() => selectTrack(track)}
                   className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors ${
-                    isActive ? "bg-teal/15 text-teal" : "text-muted-foreground hover:text-foreground"
+                    isActive ? `bg-muted/70 ${trackColor}` : "text-muted-foreground hover:text-foreground"
                   }`}
                   aria-label={`Show ${HERO_TRACKS[track].label}`}
                   aria-pressed={isActive}
@@ -229,25 +223,6 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
                 </button>
               );
             })}
-          </div>
-
-          <div className="inline-flex items-center gap-1">
-            <button
-              type="button"
-              onClick={() => rotateTrack("prev")}
-              className="rounded-full border border-border/80 bg-background px-2 py-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Show previous monomer matrix"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={() => rotateTrack("next")}
-              className="rounded-full border border-border/80 bg-background px-2 py-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Show next monomer matrix"
-            >
-              →
-            </button>
           </div>
         </div>
 
