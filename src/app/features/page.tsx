@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { MonomerGrid } from "@/components/MonomerGrid";
 import {
   ConstraintEnvelopeSurface,
   ScenarioFlowSurface,
@@ -249,6 +250,17 @@ export default function FeaturesPage() {
               {renderFeatureSurface(featureOverview.comparison, "overview-comparison")}
               {renderFeatureSurface(featureOverview.matrix, "overview-matrix")}
               {renderFeatureSurface(featureOverview.evidence, "overview-evidence")}
+            </div>
+          </section>
+
+          <section className="border-t border-border px-6 py-16 md:px-12 md:py-24 lg:px-16">
+            <PageSectionHeader
+              eyebrow="Atomic Catalog"
+              title="Core and extended monomer matrices"
+              description="The same interactive matrix used in the home hero is exposed here to inspect bounded core operations and contract-bounded extended operations in one surface."
+            />
+            <div className="mt-10 flex justify-center">
+              <MonomerGrid variant="hero" />
             </div>
           </section>
 
