@@ -12,6 +12,9 @@ const atomList = atoms as ContentAtom[];
 
 const routeToFile: Record<string, string> = {
   "/ai-agents": "src/app/ai-agents/page.tsx",
+  "/pricing": "src/app/pricing/page.tsx",
+  "/investors": "src/app/investors/page.tsx",
+  "/enterprise": "src/app/enterprise/page.tsx",
   "/foundations": "src/app/foundations/page.tsx",
   "/bpu": "src/app/bpu/page.tsx",
   "/pcd": "src/app/pcd/page.tsx",
@@ -22,12 +25,9 @@ const routeToFile: Record<string, string> = {
 
 const routeToUtilityKey: Record<string, keyof typeof utilityPages> = {
   "/about": "about",
-  "/pricing": "pricing",
   "/download": "download",
   "/faq": "faq",
   "/shop": "shop",
-  "/investors": "investors",
-  "/enterprise": "enterprise",
 };
 
 function readRouteContent(route: string): string {
@@ -40,9 +40,10 @@ function readRouteContent(route: string): string {
 
 const keywordAnchors: Array<{ route: string; checks: RegExp[] }> = [
   { route: "/about", checks: [/\bbounded\b/i, /\bPCD\b/, /compiler/i, /platform/i] },
-  { route: "/pricing", checks: [/\bCLI\b/, /\bTeam\b/, /Enterprise/i, /developer/i] },
+  { route: "/pricing", checks: [/\bFree\b/, /\bTeam\b/, /Enterprise/i, /comparison/i] },
   { route: "/download", checks: [/\bCLI\b/, /SDK/i, /platform/i] },
   { route: "/enterprise", checks: [/SSO|SAML|OIDC/i, /audit/i, /compliance/i, /does not certify organizations/i] },
+  { route: "/investors", checks: [/verified software infrastructure/i, /system form/i, /roadmap/i, /truth boundary/i] },
   { route: "/ai-agents", checks: [/policy/i, /workflow/i, /agent/i, /No trust by default/i] },
   { route: "/foundations", checks: [/formal/i, /analogy/i, /boundary/i] },
   { route: "/bpu", checks: [/roadmap/i, /software/i, /FPGA/i] },

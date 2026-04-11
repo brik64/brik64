@@ -24,10 +24,26 @@ const bannedPublicCopy = [
   "The CLI route shows the install path, command grammar, and verification loop in one consistent product cadence.",
   "One install and workflow route",
   "This route explains what enterprise teams can operationalize today and where legal/compliance programs require separate controls.",
+  "The AI-native synthetic language",
+  "Teach your agent PCD. Install the official skills now.",
+  "CAD for software",
+  "Tell your AI what to build. The compiler proves it's correct.",
+  "Start building with",
+  "Write once, verify everywhere.",
 ];
 
 const sourceFiles = [
+  "src/app/page.tsx",
   "src/components/PageArchetypes.tsx",
+  "src/app/layout.tsx",
+  "src/components/StructuredData.tsx",
+  "src/components/Navbar.tsx",
+  "src/components/HeroSection.tsx",
+  "src/components/PCDSection.tsx",
+  "src/components/PlatformSection.tsx",
+  "src/components/AINativeSection.tsx",
+  "src/components/HomeClaimBoundariesSection.tsx",
+  "src/components/CTASection.tsx",
   "src/lib/blog-data.ts",
   "src/app/blog/page.tsx",
   "src/app/blog/[slug]/page.tsx",
@@ -48,6 +64,7 @@ const auditedUtilityKeys = [
 const auditedRiskKeys = ["ai", "blockchain", "safetyCritical"] as const;
 
 const runtimeRoutes = [
+  "/",
   "/pricing",
   "/download",
   "/about",

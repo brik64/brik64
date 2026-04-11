@@ -7,62 +7,53 @@ import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-pe
 const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
-    title: "Shared grammar",
-    desc: "A finite syntax an LLM can learn end to end.",
+    title: "One canonical blueprint",
+    desc: "Source notation can change while the review anchor stays stable.",
   },
   {
     icon: <Shield className="h-5 w-5 text-teal" />,
-    title: "Verified operations",
-    desc: "Core ops are proven; extended ops stay contract-bounded.",
+    title: "Declared domains stay visible",
+    desc: "Inputs, ranges, and composition stay readable before emission.",
   },
   {
     icon: <ArrowRight className="h-5 w-5 text-teal" />,
-    title: "Closure before shipping",
+    title: "Closure before promotion",
     desc: (
       <>
-        If the blueprint stays open (<PhiC /> ≠ 1), it never ships.
+        If the blueprint stays open (<PhiC /> ≠ 1), it stops before promotion.
       </>
     ),
   },
   {
     icon: <Maximize2 className="h-5 w-5 text-teal" />,
-    title: "Domain Constraints",
-    desc: "Every input range is explicit and compiler-enforced.",
+    title: "Supported target emission",
+    desc: "One bounded review object emits across supported targets.",
   },
 ];
 
 export function PCDSection() {
   return (
-    <section className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+    <section id="blueprint" className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[02] · THE BLUEPRINT"
-          title="Teach your agent PCD. Install the official skills now."
-          description="BRIK64 ships official skills so your agent learns the same PCD grammar, EVA composition, and BRIK64 operations your team uses instead of guessing a looser approximation."
+          eyebrow="[02] · BLUEPRINT"
+          title="PCD is the review anchor."
+          description="Source notation can change. The bounded blueprint stays legible. BRIK64 lifts existing logic or authors new logic into PCD so teams can inspect domains, composition, and closure before target-specific code is emitted."
         />
 
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-          <HomePrimaryButton
-            href="https://github.com/brik64-admin/brik64-skills"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/brands/github.svg" alt="" aria-hidden="true" className="h-4 w-4" />
-            Install AI skills
+          <HomePrimaryButton href="/pcd">
+            Read PCD
           </HomePrimaryButton>
-          <HomeSecondaryButton
-            href="https://github.com/brik64-admin/brik64-skills"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="opacity-85"
-          >
-            Browse the skill repo
+          <HomeSecondaryButton href="/foundations" className="opacity-85">
+            Read the foundations
           </HomeSecondaryButton>
         </div>
 
         <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-          Give your agent the official BRIK64 skills and it can start learning PCD, EVA composition, and BRIK64 operations immediately.
+          PCD keeps the review object stable while teams lift from existing code,
+          inspect declared domains, and emit supported targets from the same
+          bounded chain.
         </p>
 
         <div className="mt-12">
@@ -86,8 +77,8 @@ export function PCDSection() {
           ))}
         </div>
 
-        <p className="mt-14 mx-auto max-w-3xl text-center text-sm italic leading-relaxed text-muted-foreground">
-          &ldquo;An AI doesn&apos;t need a better language. It needs a language where incorrect programs cannot compile.&rdquo;
+        <p className="mx-auto mt-14 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
+          Source syntax can change. The review anchor should not.
         </p>
       </div>
     </section>

@@ -1,29 +1,31 @@
 import Link from "next/link";
 import {
-  ArchetypeSectionHeader,
-  CanonicalPageHero,
-  CanonicalPageLayout,
-  CanonicalSection,
-  ConstraintEnvelopeSurface,
-  ScenarioFlowSurface,
-} from "@/components/PageArchetypes";
-import {
-  EvidenceSurface,
-  FeatureMatrixSurface,
-} from "@/components/PageArtifacts";
+  ArrowRight,
+  BookOpen,
+  GitBranch,
+  MessageCircle,
+  Newspaper,
+  Shield,
+  Workflow,
+} from "lucide-react";
+
+import { CopyableCode } from "@/components/CopyableCode";
+import { Footer } from "@/components/Footer";
+import { HeroWireframe } from "@/components/HeroWireframe";
+import { Navbar } from "@/components/Navbar";
+import { PhiC } from "@/components/PhiC";
 
 export const metadata = {
   title: "AI Agents — BRIK64",
   description:
-    "Agent integration reference for CTO and VP Engineering: setup paths, bounded verification loop, and explicit claim boundaries.",
+    "AI agent integration guide with setup matrix, policy circuits, diagnostics loop, and explicit non-trust-by-default boundaries.",
 };
 
-const agentSetups = [
+const agents = [
   {
     name: "Claude Code",
     company: "Anthropic",
-    command:
-      'claude "read the brik64-pcd-system skill and lift my auth.js to PCD"',
+    command: 'claude "read the brik64-pcd-system skill and lift my auth.js to PCD"',
     prompt: "Lift my authentication module to PCD and emit review-ready output.",
   },
   {
@@ -42,209 +44,318 @@ const agentSetups = [
     name: "Grok",
     company: "xAI",
     command: 'grok --context https://brik64.com/ai-agents "lift my code to PCD"',
-    prompt: "Use BRIK64 context to lift and check the computational core.",
+    prompt: "Use BRIK64 context to lift the computational core and keep the boundary explicit.",
   },
   {
     name: "OpenCode",
     company: "Open Source",
-    command:
-      'opencode --skill brik64-pcd-system "export my PCD to Rust and Python"',
+    command: 'opencode --skill brik64-pcd-system "export my PCD to Rust and Python"',
     prompt: "Emit target outputs from one normalized bounded blueprint.",
   },
 ] as const;
 
-const communityLinks = [
+const workflowSteps = [
   {
-    title: "Documentation",
-    body: "Reference material for CLI, PCD, and integration workflows.",
-    href: "https://docs.brik64.dev",
-    external: true,
+    step: "01",
+    title: "Discover",
+    description:
+      "Generate candidate PCD, policy logic, or bounded lift output from source or prompts.",
   },
   {
-    title: "GitHub",
-    body: "Source, issues, skills, and contribution paths.",
-    href: "https://github.com/brik64",
-    external: true,
+    step: "02",
+    title: "Check",
+    description:
+      "Run policy circuits and compiler validation outside the model before the branch can proceed.",
   },
   {
+    step: "03",
+    title: "Diagnose",
+    description:
+      "Use structured diagnostics to repair the branch instead of guessing which hidden assumption failed.",
+  },
+  {
+    step: "04",
+    title: "Execute / publish",
+    description:
+      "Only accepted branches move into CLI, platform, registry, or enterprise workflow.",
+  },
+] as const;
+
+const community = [
+  {
+    icon: MessageCircle,
     title: "Discord",
-    body: "Operator and community support for agent workflows.",
+    description: "Operator support, troubleshooting, and circuit-sharing discussions.",
     href: "https://discord.gg/brik64",
     external: true,
   },
   {
+    icon: GitBranch,
+    title: "GitHub",
+    description: "Source, issues, skills, and contribution paths.",
+    href: "https://github.com/brik64",
+    external: true,
+  },
+  {
+    icon: BookOpen,
+    title: "Docs",
+    description: "Reference material for CLI, PCD, and verification workflows.",
+    href: "https://docs.brik64.dev",
+    external: true,
+  },
+  {
+    icon: Newspaper,
     title: "AI safety use case",
-    body: "Detailed governance flow for agent-produced code and actions.",
+    description: "Long-form thesis on where external verification enters the AI workflow.",
     href: "/use-cases/ai-safety",
     external: false,
   },
 ] as const;
 
+const referencePoints = [
+  "PCD — Printed Circuit Description, the reviewable blueprint layer.",
+  "Monomers — bounded operations composed into explicit circuits.",
+  "EVA algebra — sequential, parallel, and conditional composition rules.",
+  "policy circuits — machine-readable gates that stay external to model weights.",
+  "structured diagnostics — explicit rejection reasons for repair loops.",
+] as const;
+
+const assessment = {
+  value: [
+    "Treat agent output as candidate logic, not as final truth.",
+    "Keep verification outside the model so the approval path remains inspectable.",
+    "Use the same CLI-to-platform path for accepted branches that human-authored work uses.",
+    "Carry policy, diagnostics, and publication state forward as review artifacts.",
+  ],
+  limitations: [
+    "No trust by default: the model is not the proof source.",
+    "Full closure applies only to the modeled circuit and declared domains.",
+    "Runtime, infrastructure, and organizational controls remain outside the proof object.",
+    "BPU hardware remains roadmap work, not current agent infrastructure.",
+  ],
+} as const;
+
 export default function AIAgentsPage() {
   return (
-    <CanonicalPageLayout>
-      <CanonicalPageHero
-        eyebrow="AI Agents"
-        title="Agent-assisted coding with"
-        highlight="external verification."
-        description="Agent output is treated as candidate logic. BRIK64 applies policy circuits and compiler checks before publication or execution."
-        actions={[
-          { label: "AI safety use case", href: "/use-cases/ai-safety", tone: "primary" },
-          { label: "Install CLI", href: "/cli", tone: "secondary" },
-        ]}
-        metrics={[
-          { label: "Workflow", value: "discover → check → execute", detail: "Generated output enters a constrained review loop before side effects are allowed." },
-          { label: "Agent examples", value: "5 CLI integrations", detail: "Claude Code, Codex, Gemini CLI, Grok, and OpenCode setup patterns are documented below." },
-          { label: "Boundary", value: "No trust by default", detail: "Verification stays outside the model and remains inspectable by engineering teams." },
-        ]}
-      />
+    <>
+      <Navbar />
+      <main className="relative z-10 bg-background">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
+          <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-teal/[0.10] via-background to-background">
+            <HeroWireframe />
+            <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+              <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
+                AI Agents
+              </span>
+              <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                Generated code enters a{" "}
+                <span className="text-teal">bounded external verification loop.</span>
+              </h1>
+              <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
+                BRIK-64 does not ask you to trust the model. It asks you to treat model output as candidate logic,
+                apply policy circuits and compiler checks, inspect diagnostics, and only then execute or publish.
+              </p>
+              <div className="mt-10 grid gap-4 md:grid-cols-3">
+                <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Workflow</p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">
+                    discover → check → execute
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Candidate output moves through a visible operator loop before it is allowed to act.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Control point</p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">policy circuits</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Approval logic remains machine-readable and external to the model weights.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Boundary</p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">No trust by default</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Verification stays external to the model and visible to the engineering team.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
 
-      <CanonicalSection>
-        <ArchetypeSectionHeader
-          eyebrow="Integration"
-          title="Agent setup and bounded review loop"
-          description="Use one of the documented agent paths, generate candidate circuits, then run policy and compiler checks before publication."
-        />
-        <div className="mx-auto mt-10 grid max-w-6xl gap-6">
-          <FeatureMatrixSurface
-            eyebrow="Operator Model"
-            title="How AI-generated output enters the product workflow"
-            description="The integration remains useful only when candidate generation, policy checks, diagnostics, and handoff stay explicit."
-            metrics={[
-              { label: "Source languages", value: "10 supported", detail: "Agent workflows can start from bounded lift paths across the documented source set." },
-              { label: "Verification output", value: "Diagnostics + hashes", detail: "Each accepted branch carries review signals into platform and registry handoff." },
-              { label: "Handoff", value: "CLI → platform", detail: "Accepted outputs move through the same operator flow used by non-agent work." },
-            ]}
-            rows={[
-              { title: "Candidate generation", body: "Agents produce PCD or policy-relevant candidate logic; they do not bypass review controls." },
-              { title: "Policy and compiler checks", body: "External checks gate unsafe branches and keep approval criteria explicit.", state: "accent" },
-              { title: "Repair loop", body: "Rejected branches return structured diagnostics that agents and operators can act on." },
-              { title: "Publication path", body: "Accepted branches can move to registry or enterprise review with traceable metadata." },
-            ]}
-          />
+          <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">How it works</h2>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {workflowSteps.map((item) => (
+                <article key={item.step} className="border border-border bg-muted/10 p-6 text-center">
+                  <div className="text-3xl font-bold text-teal">{item.step}</div>
+                  <h3 className="mt-3 text-sm font-bold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
 
-          <div className="rounded-[2rem] border border-border/80 bg-gradient-to-br from-muted/85 via-background to-background p-6 shadow-[0_24px_90px_rgba(0,0,0,0.12)]">
-            <h3 className="text-lg font-semibold tracking-tight text-foreground">
-              Agent setup matrix
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Each entry includes one representative command and one prompt pattern to start bounded generation quickly.
+          <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Agent setup matrix</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+              Recover the actual operator path: one command, one prompt shape, one explicit review loop.
             </p>
-            <div className="mt-6 space-y-4">
-              {agentSetups.map((agent) => (
-                <article
-                  key={agent.name}
-                  className="rounded-xl border border-border/80 bg-background/90 p-4"
-                >
+            <div className="mx-auto mt-10 max-w-4xl space-y-4">
+              {agents.map((agent) => (
+                <article key={agent.name} className="border border-border bg-muted/10 p-6">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="text-sm font-semibold text-foreground">
-                      {agent.name}
-                    </p>
-                    <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                      {agent.company}
-                    </p>
+                    <div>
+                      <h3 className="text-sm font-bold">{agent.name}</h3>
+                      <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{agent.company}</p>
+                    </div>
+                    <span className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-3 py-1 text-xs font-medium text-teal">
+                      <Workflow className="h-3.5 w-3.5" /> External checks required
+                    </span>
                   </div>
-                  <pre className="mt-3 overflow-x-auto rounded-md bg-[#0a0e14] px-3 py-2 text-xs text-gray-300">
+                  <pre className="mt-4 overflow-x-auto rounded-md bg-[#0a0e14] px-4 py-3 text-xs text-gray-300">
                     <code>{agent.command}</code>
                   </pre>
-                  <p className="mt-3 text-xs text-muted-foreground">
-                    Prompt example: {agent.prompt}
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                    Prompt example: “{agent.prompt}”
                   </p>
                 </article>
               ))}
             </div>
-          </div>
+          </section>
 
-          <ConstraintEnvelopeSurface
-            eyebrow="Policy example"
-            title="One bounded policy gate for agent actions"
-            description="Policies remain machine-readable and external to model weights so approval logic stays reviewable."
-            constraints={[
-              { title: "Risk-aware gating", body: "High-risk actions require stronger confidence before execution can proceed.", outcome: "policy decision" },
-              { title: "Token and scope boundaries", body: "Oversized or out-of-scope output fails before it becomes a production side effect.", outcome: "pre-execution block" },
-              { title: "Diagnostic payloads", body: "Rejected branches emit structured reasons to support operator review and agent repair loops.", outcome: "repair signal" },
-            ]}
-            codeTitle="agent_action_validator.pcd"
-            code={`PC agent_action_validator {
-  input confidence : Float64[0.0 .. 1.0]
-  input risk       : Int[0 .. 10]
-  input tokens     : Int[0 .. 4096]
-
-  assert risk <= 7 || confidence >= 0.90
-  assert tokens <= 4096
-
-  output approved : Bool = true
-}`}
-            footer="This policy pattern supports bounded action review. It does not make the underlying model trustworthy by itself."
-          />
-
-          <ScenarioFlowSurface
-            eyebrow="Operator loop"
-            title="Discover, gate, diagnose, then publish"
-            description="Teams can run the same loop locally or in CI and carry accepted outputs into platform workflows."
-            steps={[
-              { label: "01", title: "Discover", body: "Generate candidate PCD or policy logic from source or prompts.", state: "active" },
-              { label: "02", title: "Gate", body: "Apply policy circuits and compiler checks before execution.", state: "warning" },
-              { label: "03", title: "Diagnose", body: "Use structured diagnostics to repair rejected branches.", state: "success" },
-              { label: "04", title: "Publish", body: "Promote accepted outputs into platform and registry handoff.", state: "idle" },
-            ]}
-          />
-
-          <EvidenceSurface
-            eyebrow="Claim boundary"
-            title="What AI-agents integration can and cannot claim"
-            description="The page stays useful only when evidence and boundaries are explicit."
-            items={[
-              { label: "Supported", body: "External verification loop, bounded action gating, and structured diagnostics for agent-produced logic." },
-              { label: "Qualified", body: "Generated branches can be reviewed and published through CLI/platform workflows when they pass declared checks." },
-              { label: "Not claimed", body: "No blanket trust claim is made for model behavior, unmanaged runtime side effects, or organizational certification." },
-            ]}
-          />
-        </div>
-      </CanonicalSection>
-
-      <CanonicalSection className="text-center">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Community and reference paths
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Continue with docs, open issues, or the AI-safety use case depending on whether you need operator guidance, implementation support, or policy design depth.
-          </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {communityLinks.map((entry) => (
-              <a
-                key={entry.title}
-                href={entry.href}
-                target={entry.external ? "_blank" : undefined}
-                rel={entry.external ? "noopener noreferrer" : undefined}
-                className="rounded-xl border border-border/80 bg-background p-5 text-left shadow-sm transition hover:border-teal/40 hover:bg-teal/[0.03]"
-              >
-                <p className="text-sm font-semibold text-foreground">{entry.title}</p>
+          <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
+            <div className="mx-auto max-w-4xl rounded-3xl border border-teal/30 bg-teal/[0.04] p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-teal">Machine-readable reference</p>
+              <div className="mt-6">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Core concepts</h3>
+                <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
+                  {referencePoints.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-6">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">PCD syntax example</h3>
+                <div className="mt-2">
+                  <CopyableCode>{`circuit add_two(x: i64, y: i64) -> i64 {
+  result = ADD(x, y);
+  return result;
+}
+// Review state is checked externally under declared domains`}</CopyableCode>
+                </div>
+              </div>
+              <div className="mt-6">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">How to lift code</h3>
+                <ol className="mt-2 list-inside list-decimal space-y-1.5 text-xs text-muted-foreground">
+                  <li>Install the relevant skill for the agent.</li>
+                  <li>Point the agent at a file, directory, or repository.</li>
+                  <li>Generate bounded candidate blueprints or policy logic.</li>
+                  <li>Run compiler checks and inspect structured diagnostics.</li>
+                  <li>Publish accepted branches through CLI and platform workflow.</li>
+                </ol>
+              </div>
+              <div className="mt-6 rounded-2xl border border-border/70 bg-background/70 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">Boundary note</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {entry.body}
+                  <PhiC /> = 1 and related verification states apply to the modeled circuit under declared domains.
+                  They do not make the underlying model, runtime, or organization trustworthy by default.
                 </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
+            <div className="mx-auto max-w-4xl rounded-3xl border border-teal/30 bg-teal/[0.04] p-6 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-teal">Platform assessment brief</p>
+              <h3 className="mt-2 text-lg font-bold text-foreground">What this page can responsibly claim</h3>
+              <div className="mt-6">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Value propositions</h4>
+                <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
+                  {assessment.value.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-6">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Honest limitations</h4>
+                <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
+                  {assessment.limitations.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Community and reference paths</h2>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {community.map((item) => {
+                const body = (
+                  <>
+                    <item.icon className="mb-4 h-6 w-6 text-teal" />
+                    <h3 className="text-sm font-bold">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                  </>
+                );
+
+                return item.external ? (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border border-border bg-muted/10 p-6 transition-colors hover:border-teal/40 hover:bg-teal/[0.03]"
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="border border-border bg-muted/10 p-6 transition-colors hover:border-teal/40 hover:bg-teal/[0.03]"
+                  >
+                    {body}
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-20 text-center md:px-12 lg:px-18">
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Start with the operator loop, not with AI theater.
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Install the CLI, inspect the AI safety workflow, or open the docs that define the current integration boundary.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link
+                href="/use-cases/ai-safety"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
+              >
+                Review AI safety workflow
+              </Link>
+              <Link
+                href="/cli"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Install CLI <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <a
+                href="https://docs.brik64.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Open docs <Shield className="h-3.5 w-3.5" />
               </a>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/cli"
-              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-            >
-              Start with CLI
-            </Link>
-            <a
-              href="https://docs.brik64.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Open documentation
-            </a>
-          </div>
+            </div>
+          </section>
         </div>
-      </CanonicalSection>
-    </CanonicalPageLayout>
+      </main>
+      <Footer />
+    </>
   );
 }

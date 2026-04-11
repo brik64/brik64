@@ -17,7 +17,7 @@ export function StructuredData() {
       description: "Free tier — CLI + all SDKs forever",
     },
     description:
-      "The AI-native synthetic language. 128 verified operations composed through EVA algebra. Write once, verify everywhere.",
+      "Bounded software infrastructure for AI-era engineering. Review logic as a blueprint, keep domains explicit, and emit across supported targets.",
     url: "https://brik64.com",
     downloadUrl: "https://brik64.com/download",
     author: {
@@ -39,7 +39,7 @@ export function StructuredData() {
     url: "https://brik64.com",
     logo: canonicalLogo,
     description:
-      "Digital Circuitality — Software that works like hardware. Formally verified programming language and platform.",
+      "Bounded software infrastructure with reviewable blueprints, explicit domains, and closure-aware workflows.",
     sameAs: [
       "https://github.com/brik64",
       "https://discord.gg/brik64",

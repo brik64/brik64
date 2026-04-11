@@ -8,7 +8,7 @@ export function HeroSection() {
     <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x bg-background">
       <HeroWireframe />
 
-      <div className="pointer-events-none relative z-10 px-6 pt-20 pb-16 md:px-12 lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:px-16 lg:pt-28 lg:pb-20">
+      <div className="pointer-events-none relative z-10 px-6 pt-20 pb-16 md:px-12 lg:grid lg:grid-cols-[minmax(0,1.02fr)_minmax(28rem,0.98fr)] lg:items-center lg:gap-8 lg:px-16 lg:pt-28 lg:pb-20 xl:gap-12">
         <div className="relative z-20 max-w-2xl">
           <p className="text-muted-foreground mb-4 text-sm font-medium uppercase tracking-[3px]">
             THE AI-NATIVE SYNTHETIC LANGUAGE
@@ -61,22 +61,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="relative mt-12 min-h-[360px] lg:mt-0">
-          <div className="absolute inset-0 rounded-[2rem] border border-teal/15 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.08),transparent_40%),linear-gradient(180deg,rgba(0,229,255,0.04),rgba(255,255,255,0.02))] shadow-[0_24px_80px_rgba(0,0,0,0.10)]" />
-          <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
-            <MonomerGrid variant="hero" />
-          </div>
-          <div className="absolute inset-x-6 bottom-6 z-10 rounded-[1.5rem] border border-border/80 bg-background/92 p-4 shadow-sm backdrop-blur-sm">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Live surface</p>
-                <p className="mt-2 text-sm font-semibold text-foreground">Representative monomer families, proof state, and outputs stay visible.</p>
-              </div>
-              <div className="rounded-full border border-teal/20 bg-teal/[0.08] px-3 py-1 text-xs font-semibold text-teal">
-                Ready now
-              </div>
-            </div>
-          </div>
+        <div className="relative mt-12 flex min-h-[420px] items-center justify-center lg:mt-0 lg:min-h-[520px] lg:justify-end">
+          <MonomerGrid variant="hero" />
         </div>
       </div>
     </section>

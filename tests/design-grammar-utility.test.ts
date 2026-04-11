@@ -5,6 +5,7 @@ import { utilityPages } from "@/lib/utility-page-data";
 import {
   read,
   utilityDirectPages,
+  utilityRestoredPages,
   utilityWrapperPages,
 } from "./site-grammar";
 
@@ -27,10 +28,19 @@ describe("Design grammar — utility and company family", () => {
     });
   }
 
+  for (const file of utilityRestoredPages) {
+    it(`${file} owns its page structure directly`, () => {
+      const content = read(file);
+      expect(content).not.toContain("UtilityPageView");
+      expect(content).toContain("Navbar");
+      expect(content).toContain("Footer");
+    });
+  }
+
   it("utility wrappers now include core company/product utility routes", () => {
-    expect(utilityWrapperPages.length).toBeGreaterThanOrEqual(14);
-    expect(utilityWrapperPages).toContainEqual(["src/app/investors/page.tsx", "investors"]);
-    expect(utilityWrapperPages).toContainEqual(["src/app/enterprise/page.tsx", "enterprise"]);
+    expect(utilityWrapperPages.length).toBeGreaterThanOrEqual(10);
+    expect(utilityRestoredPages).toContain("src/app/investors/page.tsx");
+    expect(utilityRestoredPages).toContain("src/app/enterprise/page.tsx");
     expect(utilityWrapperPages).not.toContainEqual(["src/app/ai-agents/page.tsx", "aiAgents"]);
   });
 

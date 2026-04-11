@@ -18,13 +18,16 @@ describe("Home polish audit — section headers stay visually stable", () => {
 });
 
 describe("Home polish audit — hero density stays controlled", () => {
-  it("renders the reduced hero monomer grid variant instead of the full grid", () => {
+  it("renders a full 8x8 core monomer matrix with interactive inspection", () => {
     const hero = read("src/components/HeroSection.tsx");
     const grid = read("src/components/MonomerGrid.tsx");
     expect(hero).toContain('<MonomerGrid variant="hero" />');
-    expect(grid).toContain('variant = "default"');
-    expect(grid).toContain("const HERO_FAMILIES = [");
-    expect(grid).toContain('variant === "hero" ? "grid-cols-6" : "grid-cols-8"');
+    expect(grid).toContain('const HERO_MONOMERS = CORE_MONOMERS.slice(0, 64);');
+    expect(grid).toContain('className="grid grid-cols-8');
+    expect(grid).toContain("onMouseOver={() => setActiveId(monomer.id)}");
+    expect(grid).toContain("onMouseEnter={() => setActiveId(monomer.id)}");
+    expect(grid).toContain("onFocus={() => setActiveId(monomer.id)}");
+    expect(grid).not.toContain("Hover or focus any core monomer");
   });
 
   it("keeps the hero metrics precise and bounded", () => {
@@ -33,6 +36,13 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(hero).toContain("64 core and 64 extended, all named and bounded.");
     expect(hero).toContain("Closed circuits expose proof state instead of hidden runtime drift.");
     expect(hero).toContain("One blueprint emits across deterministic compilation targets.");
+  });
+
+  it("removes the old floating live-surface callout from the hero", () => {
+    const hero = read("src/components/HeroSection.tsx");
+    expect(hero).not.toContain("Live surface");
+    expect(hero).not.toContain("Ready now");
+    expect(hero).toContain("lg:justify-end");
   });
 });
 
@@ -44,13 +54,13 @@ describe("Home polish audit — closing CTA stays technical, not ornamental", ()
     expect(cta).not.toContain("bg-clip-text");
   });
 
-  it("routes the closing CTA toward docs, registry, and GitHub instead of community-first links", () => {
+  it("routes the closing CTA toward CLI, PCD, and platform instead of generic growth prompts", () => {
     const cta = read("src/components/CTASection.tsx");
-    expect(cta).toContain('title: "Docs"');
-    expect(cta).toContain('title: "Registry"');
-    expect(cta).toContain('title: "GitHub"');
-    expect(cta).toContain("Read the docs");
+    expect(cta).toContain('title: "CLI"');
+    expect(cta).toContain('title: "PCD"');
+    expect(cta).toContain('title: "Platform"');
+    expect(cta).toContain("Open the CLI");
     expect(cta).not.toContain('title: "Discord"');
-    expect(cta).toContain("inspect the registry, and verify the proof chain");
+    expect(cta).toContain("evaluate the review chain on real logic");
   });
 });

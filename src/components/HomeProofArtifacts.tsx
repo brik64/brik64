@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import {
   ArrowUpDown,
+  ArrowUpRight,
   ArrowRight,
   BadgeCheck,
   Bot,
@@ -242,9 +243,9 @@ export function RegistryWorkbenchArtifact() {
       <ArtifactHeader
         dark
         eyebrow="Registry Workbench"
-        title="Certified circuits behave like product packages."
-        description="Search, inspect closure, attach proof and publish without losing certification metadata."
-        status={<StatusPill tone="teal">registry live</StatusPill>}
+        title="Proof state stays attached to the artifact."
+        description="Search, inspect closure, keep hashes and exports attached, and publish without losing review context."
+        status={<StatusPill tone="teal">reviewable package</StatusPill>}
       />
 
       <div className="mt-6 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
@@ -303,22 +304,24 @@ export function RegistryWorkbenchArtifact() {
 
 export function WorkflowRailArtifact() {
   const stages = [
-    { label: "Push", title: "GitHub push", body: "Repo stays where the team already works.", icon: <GitBranch className="h-4 w-4" />, state: "active" as const },
-    { label: "Lift", title: "brikc lift", body: "Changed functions become canonical PCD.", icon: <Layers3 className="h-4 w-4" />, state: "active" as const },
-    { label: "Certify", title: "TCE proof", body: "Domains, paths and closure are checked.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
-    { label: "Ship", title: "PR + registry", body: "Proof comments and package metadata update.", icon: <Package className="h-4 w-4" />, state: "success" as const },
+    { label: "Source", title: "Repository or PCD", body: "The operator starts from live source or a bounded blueprint.", icon: <GitBranch className="h-4 w-4" />, state: "active" as const },
+    { label: "Lift / Author", title: "Canonical blueprint", body: "Lift changed logic or author fresh PCD with explicit domains.", icon: <Layers3 className="h-4 w-4" />, state: "active" as const },
+    { label: "Check", title: "Closure + domains", body: "The bounded circuit is checked before promotion.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
+    { label: "Certify", title: "Evidence state", body: "Proof state attaches to the artifact instead of a detached report.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
+    { label: "Emit", title: "Supported targets", body: "Target-specific outputs are generated from the same review anchor.", icon: <ArrowUpRight className="h-4 w-4" />, state: "success" as const },
+    { label: "Publish", title: "PR + registry", body: "Review comments and package metadata land where teams already work.", icon: <Package className="h-4 w-4" />, state: "success" as const },
   ];
 
   return (
     <ArtifactFrame>
       <ArtifactHeader
         eyebrow="Workflow Rail"
-        title="From push to proof, in one reviewable path."
-        description="A continuous certification trail is easier to understand than isolated workflow cards."
+        title="Source, checks, emission, and publication stay in one chain."
+        description="The workflow is legible because the same bounded artifact carries review, target, and publication state."
         status={<ProofBadge />}
       />
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-4">
+      <div className="mt-6 grid gap-4 lg:grid-cols-3 xl:grid-cols-6">
         {stages.map((stage, index) => (
           <div key={stage.label} className="relative">
             <FlowNode {...stage} />
@@ -333,9 +336,9 @@ export function WorkflowRailArtifact() {
 
       <div className="mt-6 rounded-3xl border border-border/80 bg-background/90 p-5 shadow-sm">
         <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr_auto] md:items-center">
-          <MetricTile label="PR comment" value="ready" detail="certification badge attached" />
-          <MetricTile label="Domains" value="checked" detail="declared ranges validated" />
-          <MetricTile label="Paths" value="exhaustive" detail="all branches accounted for" />
+          <MetricTile label="Source" value="repo + PCD" detail="live code and canonical blueprint stay connected" />
+          <MetricTile label="Review" value="checked" detail="declared domains and closure validated" />
+          <MetricTile label="Emission" value="14 targets" detail="supported outputs from the same bounded chain" />
           <div className="md:justify-self-end">
             <ProofBadge />
           </div>
@@ -351,9 +354,9 @@ export function AgentProofLoopArtifact() {
       <ArtifactFrame>
         <ArtifactHeader
           eyebrow="Agent Proof Loop"
-          title="The compiler rejection becomes the next prompt."
-          description="The point is not a pretty terminal. The point is a closed loop between intent, blueprint, rejection and proof."
-          status={<StatusPill tone="warning">2 repair loops</StatusPill>}
+          title="Generated logic enters an external verification loop."
+          description="The agent proposes bounded logic, the compiler rejects or certifies it, and diagnostics drive the next revision without moving trust into the model."
+          status={<StatusPill tone="warning">external loop</StatusPill>}
         />
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -369,7 +372,7 @@ export function AgentProofLoopArtifact() {
           dark
           eyebrow="Verification State"
           title="Drone speed controller"
-          status={<ProofBadge />}
+          status={<StatusPill tone="success">operator-visible state</StatusPill>}
         />
         <div className="mt-6 space-y-4">
           <MetricTile dark label="Closure proof" value={<><PhiC /> = 1</>} />

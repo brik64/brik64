@@ -7,17 +7,17 @@ import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBra
 /* ── Product Mega Menu data ── */
 
 const productEndpoints = [
-  { icon: Terminal, label: "CLI", desc: "One binary. Every guarantee.", href: "/cli" },
-  { icon: Globe, label: "Platform", desc: "CAD for software. Compose circuits visually.", href: "/platform" },
-  { icon: Layers, label: "Registry", desc: "Pre-certified components. Never rewrite proven code.", href: "/registry" },
-  { icon: ArrowUpDown, label: "Lifter", desc: "Already have code? Verify it without rewriting.", href: "/lifter" },
-  { icon: GitBranch, label: "Transpiler", desc: "Any language to any language. Same proof.", href: "/transpiler" },
+  { icon: Terminal, label: "CLI", desc: "Bounded operator path from source logic to evidence.", href: "/cli" },
+  { icon: Globe, label: "Platform", desc: "Reviewable blueprints, state, and delivery workflows.", href: "/platform" },
+  { icon: Layers, label: "Registry", desc: "Reusable bounded artifacts with visible closure state.", href: "/registry" },
+  { icon: ArrowUpDown, label: "Lifter", desc: "Lift existing logic into a reviewable blueprint.", href: "/lifter" },
+  { icon: GitBranch, label: "Transpiler", desc: "Emit supported targets from one bounded blueprint.", href: "/transpiler" },
   { icon: Box, label: "SDKs", desc: "Rust, JavaScript, Python libraries. Use BRIK64 in your stack.", href: "/sdks" },
 ];
 
 const productMore = [
-  { icon: Cpu, label: "BPU", desc: "Hardware that enforces correctness. The roadmap.", href: "/bpu" },
-  { icon: FileCode, label: "PCD Format", desc: "The AI-native synthetic language specification.", href: "/pcd" },
+  { icon: Cpu, label: "BPU", desc: "Hardware roadmap for bounded enforcement after software review loops.", href: "/bpu" },
+  { icon: FileCode, label: "PCD Format", desc: "Compiler-facing blueprint format for explicit computation.", href: "/pcd" },
 ];
 
 /* ── Industries Mega Menu data ── */
@@ -27,7 +27,7 @@ const industryItems = [
   { icon: HeartPulse, label: "Healthcare", desc: "IEC 62304 evidence, medical device software", href: "/industries/healthcare" },
   { icon: Landmark, label: "Banking & Finance", desc: "MiFID II, SOC2, SOX compliance evidence", href: "/industries/finance" },
   { icon: Car, label: "Automotive", desc: "ISO 26262 ASIL D, autonomous vehicle safety", href: "/industries/automotive" },
-  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, certified AI code", href: "/industries/ai" },
+  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, and external verification loops", href: "/industries/ai" },
   { icon: Cog, label: "Engineering", desc: "IEC 61508, structural analysis, control systems", href: "/industries/engineering" },
   { icon: FlaskConical, label: "Science & Research", desc: "Verified algorithms, domain constraints", href: "/industries/science" },
   { icon: Building2, label: "Government", desc: "FedRAMP evidence, classified system verification", href: "/industries/government" },
@@ -203,14 +203,14 @@ function ProductDropdown() {
       {/* Right — Featured */}
       <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
         <p className="text-[10px] font-bold uppercase tracking-widest text-amber-600">
-          Coming 2026
+          Registry path
         </p>
         <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
           The public registry for{" "}
-          <span className="text-teal">verified software</span>
+          <span className="text-teal">bounded software assets</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          Publish certified PCD circuits. Discover reusable components. Every one with a mathematical proof.
+          Publish bounded blueprints, inspect closure state, and discover reusable components with visible review metadata.
         </p>
         <a
           href="/platform"
@@ -288,7 +288,7 @@ function IndustriesDropdown() {
           <span className="text-teal">regulated industries</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          When &quot;tests pass&quot; isn&apos;t enough. CI/CD integration, compliance reports, certification badges, SSO, audit trail.
+          CI/CD integration, evidence artifacts, identity controls, and audit-ready review paths for regulated teams.
         </p>
         <a
           href="/enterprise"
@@ -353,11 +353,11 @@ function LanguagesDropdown() {
           Universal IR
         </p>
         <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          Every language.{" "}
-          <span className="text-teal">One blueprint.</span>
+          Many source notations.{" "}
+          <span className="text-teal">One review anchor.</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          PCD is the universal intermediate representation. Lift from any source, compile to any target — with verified structure at every step.
+          PCD holds domains, composition, and closure steady while supported targets emit from the same bounded chain.
         </p>
         <a
           href="/transpiler"
@@ -382,10 +382,10 @@ function FeaturesDropdown() {
         </p>
         <div className="space-y-0.5">
           {[
-            { icon: CheckCircle2, label: "Formal Verification", desc: "Mathematical proofs mathematically — not just tests", href: "/features" },
+            { icon: CheckCircle2, label: "Formal Verification", desc: "Core operations are proven under the public model", href: "/features" },
             { icon: Ruler, label: "Domain Constraints", desc: "Compiler-enforced numeric ranges on every input", href: "/features" },
-            { icon: CircuitBoard, label: "Circuit Closure", desc: "Every input produces a verified output or explicit rejection", href: "/features" },
-            { icon: Zap, label: "EVA Composition", desc: "Composing verified parts produces a verified whole", href: "/features" },
+            { icon: CircuitBoard, label: "Circuit Closure", desc: "Modeled logic must close before promotion", href: "/features" },
+            { icon: Zap, label: "EVA Composition", desc: "Composition keeps structure operator-visible and reviewable", href: "/features" },
           ].map((item) => {
             const Icon = item.icon;
             return (
@@ -413,9 +413,9 @@ function FeaturesDropdown() {
         <div className="space-y-0.5">
           {[
             { icon: Rocket, label: "Self-Compilation Fixpoint", desc: "Compiler compiles itself to a bit-identical binary", href: "/cli" },
-            { icon: Code2, label: "Multi-Target Compilation", desc: "One PCD blueprint, multiple language outputs", href: "/transpiler" },
-            { icon: ArrowUpDown, label: "Reverse Compilation", desc: "Lift existing code to verified PCD blueprints", href: "/lifter" },
-            { icon: Sparkles, label: "AI-Native Design", desc: "A language designed for AI agent workflows", href: "/ai-agents" },
+            { icon: Code2, label: "Multi-Target Compilation", desc: "One PCD blueprint, multiple supported outputs", href: "/transpiler" },
+            { icon: ArrowUpDown, label: "Reverse Compilation", desc: "Lift existing code to bounded PCD blueprints", href: "/lifter" },
+            { icon: Sparkles, label: "AI Workflows", desc: "Bound agent output with policy loops and compiler checks", href: "/ai-agents" },
           ].map((item) => {
             const Icon = item.icon;
             return (

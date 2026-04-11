@@ -16,11 +16,19 @@ const bannedClaims = [
 ];
 
 const auditedSourceFiles = [
+  "src/app/layout.tsx",
   "src/app/foundations/page.tsx",
   "src/app/bpu/page.tsx",
   "src/app/pcd/page.tsx",
   "src/app/lifter/page.tsx",
   "src/app/transpiler/page.tsx",
+  "src/components/StructuredData.tsx",
+  "src/components/Navbar.tsx",
+  "src/components/HeroSection.tsx",
+  "src/components/PCDSection.tsx",
+  "src/components/PlatformSection.tsx",
+  "src/components/AINativeSection.tsx",
+  "src/components/HomeClaimBoundariesSection.tsx",
   "src/lib/utility-page-data.ts",
   "src/lib/risk-page-data.ts",
   "src/lib/blog-data.ts",
@@ -31,6 +39,7 @@ const requiredBoundarySignals: Array<{ file: string; checks: RegExp[] }> = [
   { file: "src/lib/utility-page-data.ts", checks: [/No trust by default/i, /does not make underlying models trustworthy by default/i] },
   { file: "src/app/transpiler/page.tsx", checks: [/outside this boundary/i, /bounded intermediate/i] },
   { file: "src/app/lifter/page.tsx", checks: [/benchmark liftability/i, /universal guarantee/i] },
+  { file: "src/components/HomeClaimBoundariesSection.tsx", checks: [/Core operations/i, /Runtime and external systems/i] },
 ];
 
 describe("Public editorial qualified claims", () => {

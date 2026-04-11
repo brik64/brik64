@@ -84,9 +84,17 @@ describe("Page completeness — wrapper architecture is explicit", () => {
     expect(content).toContain("DocsRailSurface");
   });
 
-  it("legacy restored buckets are now migrated into wrapper architecture", () => {
-    expect(utilityRestoredPages.length).toBe(0);
-    expect(productRestoredPages.length).toBe(0);
+  it("restored route buckets stay populated where direct pages recovered richer content", () => {
+    expect(utilityRestoredPages).toEqual(
+      expect.arrayContaining([
+        "src/app/pricing/page.tsx",
+        "src/app/investors/page.tsx",
+        "src/app/enterprise/page.tsx",
+      ]),
+    );
+    expect(productRestoredPages).toEqual(
+      expect.arrayContaining(["src/app/ai-agents/page.tsx"]),
+    );
   });
 });
 

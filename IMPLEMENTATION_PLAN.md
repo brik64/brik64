@@ -1,19 +1,35 @@
-# Implementation Plan: Forge & Circuit Analyzer
+# Implementation Plan: Homepage Refactor Against Master Editorial Plan
 
 ## Objective
-Add PCD Forge (monomer composition table) and Circuit Analyzer (node graph) sections to brik64.com homepage after Platform [04], then deploy.
+Refactor the public homepage so it matches the master site plan for a `CTO / VP Engineering` buyer:
+
+- bounded-software thesis first
+- blueprint and workflow visible
+- AI framed as a producer, not a trust source
+- explicit claim boundaries
+- removal of legacy AI-hype and slogan-driven homepage copy
 
 ## Strategy
-1. Create ForgeSection component with 2x 8×8 periodic-table-style grids
-2. Create CircuitAnalyzerSection with SVG node graph + Manhattan routing
-3. Integrate both into homepage after PlatformSection
-4. Build, deploy to CF Pages
-5. (Future) Implement in brik64-platform dashboard
+1. Read the master refactor document and required repo truth-boundary docs.
+2. Replace the homepage hero and section narrative with the approved thesis/workflow/boundary order.
+3. Remove homepage sections that behaved like a feature catalog instead of a thesis map.
+4. Align home-adjacent metadata and navigation copy so the homepage shell does not reintroduce old framing.
+5. Add adversarial tests that fail if the legacy homepage language returns.
+6. Validate with targeted Vitest suites, lint, build, and runtime HTML inspection.
 
-## Design Decisions (Approved)
-- Forge: compact layout, periodic-table cells (aspect-ratio:1), badge pill top-right
-- Analyzer: SVG canvas with grid lines, Manhattan routing, light/dark compatible
-- Placement: after [04] THE PLATFORM as [04.1] and [04.2]
-- Cells: Jura number, MC_XX id, operation name, family label
-- Active state: dark bg, white text, teal name, glow
-- Idle state: light gray, muted text
+## Design Decisions
+- Preserve the existing visual system, wireframes, and artifact components where they still communicate the product clearly.
+- Reduce homepage scope to:
+  - Hero
+  - Buyer strip
+  - Problem
+  - PCD blueprint
+  - Workflow
+  - Platform
+  - AI verification loop
+  - Claim boundaries
+  - CTA
+- Keep proof language qualified:
+  - core operations may be presented as formally proven
+  - extended operations stay contract-bounded
+  - runtime and external systems stay outside the bounded claim

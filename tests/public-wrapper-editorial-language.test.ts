@@ -6,9 +6,7 @@ const auditedWrapperKeys = [
   "about",
   "contact",
   "download",
-  "pricing",
   "legal",
-  "investors",
   "shop",
 ] as const;
 
@@ -44,16 +42,6 @@ describe("Public wrapper editorial language", () => {
     expect(about.hero.description).toContain("formal language");
     expect(about.primarySurface.title).toContain("compiler path");
     expect(about.cta?.actions.map((action) => action.href)).toContain("/platform");
-  });
-
-  it("pricing distinguishes open, team, and enterprise routes", () => {
-    const pricing = utilityPages.pricing;
-    expect(pricing.primarySurface.rows.map((row) => row.title)).toEqual([
-      "Developer",
-      "Team",
-      "Enterprise",
-    ]);
-    expect(pricing.cta?.actions[0]?.href).toBe("mailto:enterprise@brik64.com");
   });
 
   it("shop says what it is today instead of faking a storefront", () => {

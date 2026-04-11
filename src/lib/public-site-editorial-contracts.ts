@@ -110,6 +110,21 @@ export const PUBLIC_ROUTE_EDITORIAL_SPECS: RouteEditorialSpec[] = [
     ctaTargets: ["/contact", "/platform"],
   },
   {
+    route: "/investors",
+    buyer: "cto_vp_eng",
+    objective:
+      "Explain the category thesis and system form for technical investors without drifting into unsupported market or traction claims.",
+    mustPreserveAtoms: [
+      "investors-category-thesis",
+      "investors-system-form",
+    ],
+    requiredBoundaries: [
+      "Investor messaging must stay tied to repo-backed product surfaces and staged hypotheses rather than adoption certainty.",
+    ],
+    blockedPhrases: [...PUBLIC_EDITORIAL_BLOCKLIST],
+    ctaTargets: ["/foundations", "/platform", "/about"],
+  },
+  {
     route: "/ai-agents",
     buyer: "cto_vp_eng",
     objective:
@@ -179,4 +194,3 @@ export const PUBLIC_ROUTE_EDITORIAL_SPECS: RouteEditorialSpec[] = [
     ctaTargets: ["/cli", "https://docs.brik64.dev"],
   },
 ];
-

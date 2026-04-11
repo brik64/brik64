@@ -16,13 +16,15 @@ const requiredAiAgentsSignals = [
   "Gemini CLI",
   "No trust by default",
   "policy circuits",
+  "Machine-readable reference",
+  "structured diagnostics",
 ];
 
 describe("AI agents and CLI regression guard", () => {
   it("source keeps AI agents technical depth and blocks known placeholder regressions", () => {
     const aiAgents = read("src/app/ai-agents/page.tsx");
     const cli = read("src/app/cli/page.tsx");
-    const enterprise = read("src/lib/utility-page-data.ts");
+    const enterprise = read("src/app/enterprise/page.tsx");
 
     for (const signal of requiredAiAgentsSignals) {
       expect(aiAgents).toContain(signal);
