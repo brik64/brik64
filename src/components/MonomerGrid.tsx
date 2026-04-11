@@ -41,7 +41,7 @@ const HERO_TRACKS: Record<
   }
 > = {
   core: {
-    label: "ATOMIC BOUNDED OPERATIONS · MATHEMATICALLY VERIFIED",
+    label: "ATOMIC BOUNDED OPERATIONS",
     panelLabel: "Certified monomer",
     badge: "CORE CERTIFIED",
     prefix: "MC",

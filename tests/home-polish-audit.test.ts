@@ -31,7 +31,7 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(grid).toContain('translateX(-${activeTrackIndex * 100}%)');
     expect(grid).toContain("CORE CERTIFIED");
     expect(grid).toContain("EXTENDED CONTRACT");
-    expect(grid).toContain("ATOMIC BOUNDED OPERATIONS · MATHEMATICALLY VERIFIED");
+    expect(grid).toContain("ATOMIC BOUNDED OPERATIONS");
     expect(grid).toContain("ATOMIC EXPANDED BY CONTRACT");
     expect(grid).toContain("return id + 68;");
     expect(grid).not.toContain("Hover or focus any core monomer");

@@ -48,7 +48,7 @@ const contentAnchors: Record<string, readonly string[]> = {
   "src/components/MonomerGrid.tsx": [
     "onMouseOver",
     "Inspect monomer",
-    "ATOMIC BOUNDED OPERATIONS · MATHEMATICALLY VERIFIED",
+    "ATOMIC BOUNDED OPERATIONS",
     "ATOMIC EXPANDED BY CONTRACT",
   ],
 };
