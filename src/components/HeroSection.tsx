@@ -1,9 +1,53 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { HeroWireframe } from "@/components/HeroWireframe";
 import { MonomerGrid } from "@/components/MonomerGrid";
 import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
+type HeroSlide = {
+  eyebrow: string;
+  headline: string;
+  lead: string;
+  ctas: Array<{ label: string; href: string }>;
+};
+
+const HERO_SLIDES: HeroSlide[] = [
+  {
+    eyebrow: "THE FORMAL LAYER FOR AI-ERA PROGRAMMING",
+    headline: "BRIK64 turns generated and existing software into formal, portable, testable blueprints.",
+    lead: "A bounded language, a canonical blueprint, and a compilation path for teams that need logic to be reviewable before it is trusted, reused, or exported.",
+    ctas: [
+      { label: "Inspect the workflow", href: "/platform" },
+      { label: "Open the CLI", href: "/cli" },
+      { label: "Read the blueprint", href: "/pcd" },
+    ],
+  },
+  {
+    eyebrow: "BEYOND VIBE CODING",
+    headline: "Software generation got fast. BRIK64 makes it formal.",
+    lead: "Give AI-generated and existing code a bounded language, a canonical blueprint, and a multilang path to software that can be reviewed, optimized, tested, and reused with explicit structure.",
+    ctas: [
+      { label: "Start with the CLI", href: "/cli" },
+      { label: "Explore the platform", href: "/platform" },
+      { label: "Learn the theory", href: "/foundations" },
+    ],
+  },
+];
+
 export function HeroSection() {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const activeSlide = HERO_SLIDES[activeSlideIndex];
+
+  useEffect(() => {
+    const rotation = window.setInterval(() => {
+      setActiveSlideIndex((previous) => (previous + 1) % HERO_SLIDES.length);
+    }, 5000);
+
+    return () => window.clearInterval(rotation);
+  }, []);
+
   return (
     <section className="border-border relative mx-auto w-full max-w-7xl overflow-hidden border-x bg-background">
       <HeroWireframe />
@@ -11,35 +55,50 @@ export function HeroSection() {
       <div className="pointer-events-none relative z-10 px-6 pt-20 pb-16 md:px-12 lg:grid lg:grid-cols-[minmax(0,1.02fr)_minmax(28rem,0.98fr)] lg:items-center lg:gap-8 lg:px-16 lg:pt-28 lg:pb-20 xl:gap-12">
         <div className="relative z-20 max-w-2xl">
           <p className="text-muted-foreground mb-4 text-sm font-medium uppercase tracking-[3px]">
-            THE FORMAL LAYER FOR AI-ERA PROGRAMMING
+            {activeSlide.eyebrow}
           </p>
 
           <h1 className="max-w-xl text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            BRIK64 is the formal layer
-            <span className="text-teal"> for AI-era programming.</span>
+            {activeSlide.headline}
           </h1>
 
           <p className="text-muted-foreground mt-5 max-w-lg text-base leading-relaxed md:text-lg">
-            BRIK64 gives generated and existing software a formal language, a canonical blueprint, and a compilation path that makes logic reviewable, portable, testable, and governable before teams trust, reuse, or export it.
-          </p>
-
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            What if software behaved more like hardware? Not literally. As a designed system with explicit parts, a blueprint before emission, and review before promotion.
+            {activeSlide.lead}
           </p>
 
           <div className="pointer-events-auto mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <HomePrimaryButton href="/cli">
-              Open the CLI
+            <HomePrimaryButton href={activeSlide.ctas[0]?.href ?? "/platform"}>
+              {activeSlide.ctas[0]?.label ?? "Inspect the workflow"}
             </HomePrimaryButton>
-            <HomeSecondaryButton href="/platform" className="opacity-90 hover:opacity-100">
-              Open platform
+            <HomeSecondaryButton
+              href={activeSlide.ctas[1]?.href ?? "/cli"}
+              className="opacity-90 hover:opacity-100"
+            >
+              {activeSlide.ctas[1]?.label ?? "Open the CLI"}
             </HomeSecondaryButton>
             <Link
-              href="/foundations"
+              href={activeSlide.ctas[2]?.href ?? "/foundations"}
               className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal"
             >
-              Read the foundations
+              {activeSlide.ctas[2]?.label ?? "Read the foundations"}
             </Link>
+          </div>
+
+          <div className="pointer-events-auto mt-4 flex items-center gap-2" aria-label="Hero option selector">
+            {HERO_SLIDES.map((slide, index) => (
+              <button
+                key={slide.eyebrow}
+                type="button"
+                onClick={() => setActiveSlideIndex(index)}
+                className={`h-2.5 w-7 rounded-full border transition-colors ${
+                  index === activeSlideIndex
+                    ? "border-teal/50 bg-teal/70"
+                    : "border-border bg-muted/40 hover:border-teal/30"
+                }`}
+                aria-label={`Show hero option ${index + 1}`}
+                aria-pressed={index === activeSlideIndex}
+              />
+            ))}
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">

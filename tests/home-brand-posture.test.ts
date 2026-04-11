@@ -27,9 +27,11 @@ const blockedFrames = [
 describe("Home brand posture", () => {
   it("anchors the site on the formal-layer thesis", () => {
     const hero = read("src/components/HeroSection.tsx");
-    expect(hero).toContain("BRIK64 is the formal layer");
-    expect(hero).toContain("for AI-era programming");
-    expect(hero).toContain("formal language, a canonical blueprint, and a compilation path");
+    expect(hero).toContain("THE FORMAL LAYER FOR AI-ERA PROGRAMMING");
+    expect(hero).toContain("BRIK64 turns generated and existing software into formal, portable, testable blueprints.");
+    expect(hero).toContain("BEYOND VIBE CODING");
+    expect(hero).toContain("Software generation got fast. BRIK64 makes it formal.");
+    expect(hero).toContain("bounded language, a canonical blueprint, and a compilation path");
   });
 
   it("answers the hardware-style discipline question explicitly", () => {
