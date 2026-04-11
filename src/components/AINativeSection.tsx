@@ -7,9 +7,9 @@ export function AINativeSection() {
     <section id="ai" className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[05] · AI"
-          title="Use AI as a producer. Keep trust outside the model."
-          description="Agents can propose bounded logic. BRIK64 constrains that output with explicit grammar, policy circuits, compiler checks, and structured diagnostics so the review object stays outside the model itself."
+          eyebrow="[06] · AI WORKFLOWS"
+          title="AI can produce candidate logic. The formal layer decides what can be trusted."
+          description="Agents can propose bounded logic. BRIK64 constrains that output with explicit grammar, policy circuits, compiler checks, and structured diagnostics so approval stays outside the model itself."
         />
 
         <div className="mt-8">
@@ -20,15 +20,15 @@ export function AINativeSection() {
           {[
             {
               title: "Candidate logic, not trusted truth",
-              body: "The model can draft bounded logic, but trust still depends on explicit checks and review.",
+              body: "The model can draft logic quickly, but the approval path still depends on explicit blueprints, checks, and review.",
             },
             {
               title: "External verification loop",
-              body: "Diagnostics, closure state, and policy circuits keep the validation path outside the model.",
+              body: "Diagnostics, closure state, and policy circuits keep validation outside the model and visible to the engineering team.",
             },
             {
               title: "Diagnostics drive repair",
-              body: "Compiler rejection becomes the next operator-visible revision loop instead of hidden guesswork.",
+              body: "Compiler rejection becomes the next operator-visible revision loop instead of hidden guesswork or optimistic retry.",
             },
           ].map((item) => (
             <div

@@ -6,19 +6,19 @@ const resources = [
     title: "CLI",
     href: "/cli",
     icon: <BookOpen className="h-5 w-5 text-teal" />,
-    description: "Install path and operator workflow",
-  },
-  {
-    title: "PCD",
-    href: "/pcd",
-    icon: <FileCode className="h-5 w-5 text-teal" />,
-    description: "Canonical blueprint and declared domains",
+    description: "Entry into the formal layer",
   },
   {
     title: "Platform",
     href: "/platform",
     icon: <Globe className="h-5 w-5 text-teal" />,
-    description: "Registry state and delivery workflows",
+    description: "Publication, registry, and review state",
+  },
+  {
+    title: "Foundations",
+    href: "/foundations",
+    icon: <FileCode className="h-5 w-5 text-teal" />,
+    description: "Why the system uses hardware-style discipline",
   },
 ];
 
@@ -27,12 +27,12 @@ export function CTASection() {
     <div className="px-6 pt-16 pb-20 md:pt-24 md:pb-28">
       <div className="mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-balance leading-tight md:text-5xl">
-          Start with one bounded workflow,
+          Start with the formal layer on
           <span className="text-teal"> BRIK64.</span>
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground md:text-base">
-          Open the CLI, inspect PCD, and evaluate the review chain on real logic
+          Open the CLI, inspect the platform, and evaluate the blueprint-to-publication chain on real logic
           before expanding into registry and enterprise workflows.
         </p>
 
@@ -40,9 +40,9 @@ export function CTASection() {
           <HomePrimaryButton href="/cli">
             Open the CLI
           </HomePrimaryButton>
-          <HomeSecondaryButton href="/pcd">Read PCD</HomeSecondaryButton>
-          <a href="/platform" className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal">
-            View platform
+          <HomeSecondaryButton href="/platform">Open platform</HomeSecondaryButton>
+          <a href="/foundations" className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-teal">
+            Read foundations
             <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>
@@ -52,8 +52,6 @@ export function CTASection() {
             <a
               key={resource.title}
               href={resource.href}
-              target="_blank"
-              rel="noopener noreferrer"
               className="rounded-xl border border-border bg-background p-6 transition-colors hover:border-teal/30 hover:shadow-sm"
             >
               <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center bg-teal/10">

@@ -79,11 +79,12 @@ export default function RegistryPage() {
               Registry
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              npm for <span className="text-teal">verified code.</span>
+              Reusable packages with{" "}
+              <span className="text-teal">visible blueprint state.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Every package carries a mathematical proof. Search, install, compose &mdash;
-              never rewrite what&apos;s already proven. If the code changes one byte, the badge turns red.
+              Registry is the reusable layer of the formal system: package identity, closure state,
+              boundary notes, hashes, and invalidation semantics stay visible when teams discover or publish logic.
             </p>
           </div>
         </section>
@@ -100,7 +101,7 @@ export default function RegistryPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search certified circuits... (e.g. validate, hash, parser)"
+                placeholder="Search reusable circuits... (e.g. validate, hash, parser)"
                 className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder-muted-foreground/60 outline-none"
               />
               <kbd className="hidden rounded border border-border bg-background px-2 py-0.5 text-[10px] text-muted-foreground sm:block">
@@ -116,7 +117,7 @@ export default function RegistryPage() {
             [02] FEATURED CIRCUITS
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Pre-certified. Ready to use.
+            Reviewable packages with explicit status
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {featured
@@ -161,7 +162,7 @@ export default function RegistryPage() {
             [03] PUBLISHING
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            From code to registry in minutes
+            From CLI checks to governed publication
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {publishSteps.map((s) => (
@@ -210,14 +211,13 @@ export default function RegistryPage() {
         {/* Badge system */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
           <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [04] BADGE SYSTEM
+            [04] STATUS SYSTEM
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Live proof. Not a static label.
+            Registry status is live and hash-sensitive.
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            The badge in your README is a live endpoint &mdash; it queries the registry with the program&apos;s hash on every page load.
-            If the deployed binary differs by a single byte, the badge immediately shows INVALID.
+            Status is derived from the package hash and the modeled circuit state. If the published code differs from the certified package by a single byte, the state must become INVALID immediately.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -233,13 +233,13 @@ export default function RegistryPage() {
           </div>
 
           <div className="mt-8 border border-border bg-muted/20 p-5">
-            <p className="text-sm font-medium">What no other certification standard can claim</p>
+            <p className="text-sm font-medium">What registry state does and does not mean</p>
             <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">ISO 26262, DO-178C, CC EAL7:</span> The process was followed / the tests were run.
+                <span className="font-medium text-foreground">Registry status means:</span> the current package hash and modeled circuit state still match the published review object.
               </div>
               <div className="text-xs text-muted-foreground">
-                <span className="font-medium text-teal">BRIK64 Certified:</span> Structurally incomplete programs cannot compile — every certified circuit handles all inputs within its domain.
+                <span className="font-medium text-teal">Registry status does not mean:</span> blanket proof for unmanaged runtime behavior, deployment infrastructure, or external systems outside the modeled boundary.
               </div>
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function RegistryPage() {
           <div className="mt-8 grid gap-6">
             <FeatureMatrixSurface
               eyebrow="Registry Surface"
-              title="Packages stay legible because proof lives on the package, not in a decorative badge."
+              title="Packages stay legible because state lives on the package, not in a decorative badge."
               description="Certified rows, contract-bound rows, and invalid rows now read as a single evidence system."
               metrics={[
                 { label: "Certified", value: "4", detail: "Rows marked CERTIFIED carry Φc = 1 through publication." },
@@ -265,7 +265,7 @@ export default function RegistryPage() {
               title="What the registry actually exposes"
               description="State, versioning, and proof remain explicit so every package can be inspected without ambiguity."
               items={[
-                { label: "Proof attachment", body: "Every published circuit retains a certification hash and a visible closure state." },
+                { label: "State attachment", body: "Every published circuit retains a certification hash and a visible closure state." },
                 { label: "Contract boundary", body: "Open packages stay explicit about the part of the system that is not fully certified." },
                 { label: "Invalidation", body: "A single-byte change must immediately break the trust surface so the registry never lies." },
               ]}
@@ -275,15 +275,11 @@ export default function RegistryPage() {
 
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
-            REGISTRY LAUNCHING 2026
-          </div>
           <h2 className="mx-auto text-center mt-6 text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Publish your first circuit
+            Follow the registry path from CLI to reusable package
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Install the CLI, certify a function, and publish to the registry. Every certified circuit is a building block
-            someone else never has to rewrite.
+            Install the CLI, check one bounded workflow, and publish to the registry with status, boundary notes, and package identity still visible.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a

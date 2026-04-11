@@ -125,7 +125,7 @@ const assessment = {
     "Treat agent output as candidate logic, not as final truth.",
     "Keep verification outside the model so the approval path remains inspectable.",
     "Use the same CLI-to-platform path for accepted branches that human-authored work uses.",
-    "Carry policy, diagnostics, and publication state forward as review artifacts.",
+    "Carry policy, diagnostics, and publication state forward as blueprint and package state.",
   ],
   limitations: [
     "No trust by default: the model is not the proof source.",
@@ -148,12 +148,12 @@ export default function AIAgentsPage() {
                 AI Agents
               </span>
               <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Generated code enters a{" "}
-                <span className="text-teal">bounded external verification loop.</span>
+                AI can produce candidate logic.{" "}
+                <span className="text-teal">The formal layer decides what can be trusted.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
-                BRIK-64 does not ask you to trust the model. It asks you to treat model output as candidate logic,
-                apply policy circuits and compiler checks, inspect diagnostics, and only then execute or publish.
+                BRIK-64 does not ask you to trust the model. It gives agent output a formal language, a canonical blueprint,
+                and an external verification loop before anything is executed or published.
               </p>
               <div className="mt-10 grid gap-4 md:grid-cols-3">
                 <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
@@ -199,7 +199,7 @@ export default function AIAgentsPage() {
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
             <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Agent setup matrix</h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-              Recover the actual operator path: one command, one prompt shape, one explicit review loop.
+              Recover the actual operator path: one command, one prompt shape, one explicit blueprint and review loop.
             </p>
             <div className="mx-auto mt-10 max-w-4xl space-y-4">
               {agents.map((agent) => (
@@ -325,7 +325,7 @@ export default function AIAgentsPage() {
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-20 text-center md:px-12 lg:px-18">
             <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-              Start with the operator loop, not with AI theater.
+              Start with the operator loop, not with model theater.
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
               Install the CLI, inspect the AI safety workflow, or open the docs that define the current integration boundary.

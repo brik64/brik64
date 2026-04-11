@@ -32,7 +32,7 @@ const opportunity = [
     icon: Bot,
     title: "AI increases volume faster than review depth",
     description:
-      "Generated code expands the surface area of change. That makes external verification and review-ready artifacts more valuable than another layer of optimistic automation.",
+      "Generated code expands the surface area of change. That makes external verification and review-ready blueprints more valuable than another layer of optimistic automation.",
   },
   {
     icon: Scale,
@@ -57,7 +57,7 @@ const traction = [
   },
   {
     value: "Repo-backed",
-    label: "The public thesis stays tied to artifacts that exist in the repository today.",
+    label: "The public thesis stays tied to routes, workflows, and product surfaces that exist in the repository today.",
   },
 ] as const;
 
@@ -108,7 +108,7 @@ const moat = [
   {
     title: "Bounded workflow discipline",
     description:
-      "The site, docs, and product routes keep returning to explicit domains, closure state, and reviewable artifacts rather than making trust claims by slogan.",
+      "The site, docs, and product routes keep returning to explicit domains, closure state, and reviewable blueprints rather than making trust claims by slogan.",
   },
   {
     title: "AI-era fit",
@@ -138,7 +138,7 @@ const roadmap = [
   {
     phase: "Evidence expansion",
     detail:
-      "Strengthen policy, compliance, and AI workflow surfaces so review artifacts remain legible across more buyer conversations.",
+      "Strengthen policy, compliance, and AI workflow surfaces so review packages remain legible across more buyer conversations.",
     state: "next",
   },
   {
@@ -181,11 +181,11 @@ export default function InvestorsPage() {
               Investors
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              A category thesis for{" "}
-              <span className="text-teal">verified software infrastructure.</span>
+              A category thesis for the{" "}
+              <span className="text-teal">formal layer behind verified software infrastructure.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
-              BRIK-64 is presented here as a system form: language, compiler, platform, registry, and evidence workflow.
+              BRIK-64 is presented here as a system form: language, canonical blueprint, compiler path, platform, registry, and enterprise handoff.
               This page explains why that form matters, what the public product already supports, and where the claims stop.
             </p>
             <div className="mx-auto mt-8 max-w-4xl rounded-3xl border border-teal/30 bg-teal/[0.04] p-6 text-left shadow-sm">
@@ -222,8 +222,8 @@ export default function InvestorsPage() {
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">System form</h2>
           <div className="mx-auto mt-8 max-w-4xl rounded-3xl border border-teal/30 bg-teal/[0.04] p-6 shadow-sm">
             <p className="text-sm leading-relaxed text-foreground">
-              BRIK-64 is not presented as a single compiler feature. Publicly, it is a bounded software stack: PCD as the
-              reviewable blueprint layer, the compiler path as the normalization and verification layer, platform and registry
+              BRIK-64 is not presented as a single compiler feature. Publicly, it is the formal layer for AI-era programming:
+              PCD as the canonical blueprint, the compiler path as the normalization and verification layer, platform and registry
               as the reuse and publication layer, and enterprise / compliance routes as the review handoff layer.
             </p>
           </div>
@@ -266,7 +266,7 @@ export default function InvestorsPage() {
             ))}
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-            The traction argument here is intentionally conservative: public routes, artifacts, and workflow depth that can
+            The traction argument here is intentionally conservative: public routes, workflows, and product depth that can
             be inspected in the repo and on the site right now.
           </p>
         </section>

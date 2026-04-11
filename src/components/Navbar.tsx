@@ -8,16 +8,16 @@ import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBra
 
 const productEndpoints = [
   { icon: Terminal, label: "CLI", desc: "Bounded operator path from source logic to evidence.", href: "/cli" },
-  { icon: Globe, label: "Platform", desc: "Reviewable blueprints, state, and delivery workflows.", href: "/platform" },
-  { icon: Layers, label: "Registry", desc: "Reusable bounded artifacts with visible closure state.", href: "/registry" },
+  { icon: Globe, label: "Platform", desc: "Where blueprints are published, reviewed, and governed.", href: "/platform" },
+  { icon: Layers, label: "Registry", desc: "Reusable packages with visible blueprint state and reuse context.", href: "/registry" },
   { icon: ArrowUpDown, label: "Lifter", desc: "Lift existing logic into a reviewable blueprint.", href: "/lifter" },
   { icon: GitBranch, label: "Transpiler", desc: "Emit supported targets from one bounded blueprint.", href: "/transpiler" },
   { icon: Box, label: "SDKs", desc: "Rust, JavaScript, Python libraries. Use BRIK64 in your stack.", href: "/sdks" },
 ];
 
 const productMore = [
+  { icon: FileCode, label: "PCD Blueprint", desc: "Canonical blueprint format for explicit computation and review.", href: "/pcd" },
   { icon: Cpu, label: "BPU", desc: "Hardware roadmap for bounded enforcement after software review loops.", href: "/bpu" },
-  { icon: FileCode, label: "PCD Format", desc: "Compiler-facing blueprint format for explicit computation.", href: "/pcd" },
 ];
 
 /* ── Industries Mega Menu data ── */
@@ -86,11 +86,11 @@ const resourcesDocs: { label: string; href: string; external?: boolean }[] = [
 ];
 
 const resourcesCompany: { label: string; href: string }[] = [
-  { label: "Blog", href: "/blog" },
-  { label: "News", href: "/news" },
   { label: "About", href: "/about" },
   { label: "Investors", href: "/investors" },
   { label: "AI Agents", href: "/ai-agents" },
+  { label: "Blog", href: "/blog" },
+  { label: "News", href: "/news" },
   { label: "Contact", href: "/contact" },
   { label: "Legal", href: "/legal" },
 ];
@@ -284,11 +284,11 @@ function IndustriesDropdown() {
           Enterprise
         </p>
         <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          Built for{" "}
-          <span className="text-teal">regulated industries</span>
+          Operating model for{" "}
+          <span className="text-teal">review-heavy engineering teams</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          CI/CD integration, evidence artifacts, identity controls, and audit-ready review paths for regulated teams.
+          CI/CD integration, review packages, identity controls, and audit-ready handoff for teams with explicit release and compliance boundaries.
         </p>
         <a
           href="/enterprise"
@@ -354,7 +354,7 @@ function LanguagesDropdown() {
         </p>
         <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
           Many source notations.{" "}
-          <span className="text-teal">One review anchor.</span>
+          <span className="text-teal">One canonical blueprint.</span>
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
           PCD holds domains, composition, and closure steady while supported targets emit from the same bounded chain.

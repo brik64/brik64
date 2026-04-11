@@ -8,7 +8,7 @@ const keyPoints = [
   {
     icon: <FileCode className="h-5 w-5 text-teal" />,
     title: "One canonical blueprint",
-    desc: "Source notation can change while the review anchor stays stable.",
+    desc: "Source notation can change while the canonical review object stays stable.",
   },
   {
     icon: <Shield className="h-5 w-5 text-teal" />,
@@ -17,7 +17,7 @@ const keyPoints = [
   },
   {
     icon: <ArrowRight className="h-5 w-5 text-teal" />,
-    title: "Closure before promotion",
+    title: "Model before emission",
     desc: (
       <>
         If the blueprint stays open (<PhiC /> ≠ 1), it stops before promotion.
@@ -36,9 +36,9 @@ export function PCDSection() {
     <section id="blueprint" className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[02] · BLUEPRINT"
-          title="PCD is the review anchor."
-          description="Source notation can change. The bounded blueprint stays legible. BRIK64 lifts existing logic or authors new logic into PCD so teams can inspect domains, composition, and closure before target-specific code is emitted."
+          eyebrow="[03] · CANONICAL BLUEPRINT"
+          title="PCD is the canonical blueprint."
+          description="BRIK64 lifts existing logic or authors new logic into PCD so teams can inspect domains, composition, and closure before supported targets are emitted. The syntax can change; the blueprint should stay stable."
         />
 
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
@@ -51,8 +51,8 @@ export function PCDSection() {
         </div>
 
         <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-          PCD keeps the review object stable while teams lift from existing code,
-          inspect declared domains, and emit supported targets from the same
+          PCD keeps the formal review object stable while teams lift from existing code,
+          model declared domains, and emit supported targets from the same
           bounded chain.
         </p>
 
@@ -78,7 +78,7 @@ export function PCDSection() {
         </div>
 
         <p className="mx-auto mt-14 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-          Source syntax can change. The review anchor should not.
+          Source syntax can change. The canonical blueprint should not.
         </p>
       </div>
     </section>

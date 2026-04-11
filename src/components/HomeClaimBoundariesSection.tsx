@@ -24,9 +24,9 @@ export function HomeClaimBoundariesSection() {
     <section id="boundaries" className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[06] · CLAIM BOUNDARIES"
-          title="What BRIK64 claims, and what it does not."
-          description="Core operations are formally proven under the public model. Extended operations remain contract-bounded. Blueprint checks apply to the modeled circuit and declared domains. Runtime, infrastructure, and external side effects require separate controls."
+          eyebrow="[07] · CLAIM BOUNDARIES"
+          title="What the formal layer proves, and where the boundary stops."
+          description="The strongest claims belong to the modeled circuit and declared domains. Extended operations remain contract-bounded, and runtime, infrastructure, and external side effects still require separate engineering controls."
         />
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -47,7 +47,7 @@ export function HomeClaimBoundariesSection() {
           </p>
           <p className="mt-3 max-w-4xl text-sm leading-relaxed text-muted-foreground">
             The boundary is operational, not decorative: BRIK64 can produce a
-            review-ready artifact for modeled logic, but deployment posture,
+            review-ready blueprint and package state for modeled logic, but deployment posture,
             runtime behavior, and unmanaged side effects still require separate
             engineering controls.
           </p>

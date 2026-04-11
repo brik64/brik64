@@ -243,9 +243,9 @@ export function RegistryWorkbenchArtifact() {
       <ArtifactHeader
         dark
         eyebrow="Registry Workbench"
-        title="Proof state stays attached to the artifact."
-        description="Search, inspect closure, keep hashes and exports attached, and publish without losing review context."
-        status={<StatusPill tone="teal">reviewable package</StatusPill>}
+        title="Registry rows keep blueprint state, hashes, and exports together."
+        description="Search reusable blueprints, inspect closure state, and publish packages without losing review context."
+        status={<StatusPill tone="teal">governed package</StatusPill>}
       />
 
       <div className="mt-6 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
@@ -286,7 +286,7 @@ export function RegistryWorkbenchArtifact() {
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-teal/70">Selected package</p>
               <h4 className="mt-2 text-xl font-semibold text-white">auth/oauth2-handler</h4>
               <p className="mt-2 text-sm leading-relaxed text-white/60">
-                Immutable proof hash, closure status and target exports stay attached to the registry package.
+                Hash, closure state, and supported outputs stay attached to the registry package identity.
               </p>
             </div>
           </div>
@@ -304,20 +304,20 @@ export function RegistryWorkbenchArtifact() {
 
 export function WorkflowRailArtifact() {
   const stages = [
-    { label: "Source", title: "Repository or PCD", body: "The operator starts from live source or a bounded blueprint.", icon: <GitBranch className="h-4 w-4" />, state: "active" as const },
-    { label: "Lift / Author", title: "Canonical blueprint", body: "Lift changed logic or author fresh PCD with explicit domains.", icon: <Layers3 className="h-4 w-4" />, state: "active" as const },
-    { label: "Check", title: "Closure + domains", body: "The bounded circuit is checked before promotion.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
-    { label: "Certify", title: "Evidence state", body: "Proof state attaches to the artifact instead of a detached report.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
-    { label: "Emit", title: "Supported targets", body: "Target-specific outputs are generated from the same review anchor.", icon: <ArrowUpRight className="h-4 w-4" />, state: "success" as const },
-    { label: "Publish", title: "PR + registry", body: "Review comments and package metadata land where teams already work.", icon: <Package className="h-4 w-4" />, state: "success" as const },
+    { label: "Source", title: "Repository or draft PCD", body: "The operator starts from live source or an existing blueprint.", icon: <GitBranch className="h-4 w-4" />, state: "active" as const },
+    { label: "Lift", title: "Recover the logic", body: "Lift changed code into the formal layer before migration or reuse hides the behavior.", icon: <Layers3 className="h-4 w-4" />, state: "active" as const },
+    { label: "Model", title: "Canonical blueprint", body: "PCD keeps domains and composition visible in one review object.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
+    { label: "Check", title: "Closure + domains", body: "The bounded circuit is checked before promotion or export.", icon: <ShieldCheck className="h-4 w-4" />, state: "success" as const },
+    { label: "Emit", title: "Supported targets", body: "Target outputs are generated from the same canonical blueprint.", icon: <ArrowUpRight className="h-4 w-4" />, state: "success" as const },
+    { label: "Publish", title: "Platform + registry", body: "Package state and review context land where engineering already works.", icon: <Package className="h-4 w-4" />, state: "success" as const },
   ];
 
   return (
     <ArtifactFrame>
       <ArtifactHeader
         eyebrow="Workflow Rail"
-        title="Source, checks, emission, and publication stay in one chain."
-        description="The workflow is legible because the same bounded artifact carries review, target, and publication state."
+        title="Lift, model, check, emit, and publish in one chain."
+        description="The workflow is legible because the same canonical blueprint carries modeling, target, and publication state."
         status={<ProofBadge />}
       />
 
@@ -337,8 +337,8 @@ export function WorkflowRailArtifact() {
       <div className="mt-6 rounded-3xl border border-border/80 bg-background/90 p-5 shadow-sm">
         <div className="grid gap-4 md:grid-cols-[1fr_1fr_1fr_auto] md:items-center">
           <MetricTile label="Source" value="repo + PCD" detail="live code and canonical blueprint stay connected" />
-          <MetricTile label="Review" value="checked" detail="declared domains and closure validated" />
-          <MetricTile label="Emission" value="14 targets" detail="supported outputs from the same bounded chain" />
+          <MetricTile label="Review" value="checked" detail="declared domains and closure remain explicit" />
+          <MetricTile label="Emission" value="supported targets" detail="outputs stay tied to the same canonical blueprint" />
           <div className="md:justify-self-end">
             <ProofBadge />
           </div>
@@ -355,13 +355,13 @@ export function AgentProofLoopArtifact() {
         <ArtifactHeader
           eyebrow="Agent Proof Loop"
           title="Generated logic enters an external verification loop."
-          description="The agent proposes bounded logic, the compiler rejects or certifies it, and diagnostics drive the next revision without moving trust into the model."
+          description="The agent proposes candidate logic, the formal layer constrains it, and diagnostics drive the next revision without moving trust into the model."
           status={<StatusPill tone="warning">external loop</StatusPill>}
         />
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           <FlowNode label="Intent" title="Prompt" body="Generate a drone speed controller with wind limits." icon={<Sparkles className="h-4 w-4" />} state="active" />
-          <FlowNode label="Draft" title="PCD blueprint" body="The agent emits a finite circuit instead of open-ended glue code." icon={<Bot className="h-4 w-4" />} state="active" />
+          <FlowNode label="Draft" title="Canonical blueprint" body="The agent emits bounded logic instead of open-ended glue code." icon={<Bot className="h-4 w-4" />} state="active" />
           <FlowNode label="Reject" title="Compiler diagnostic" body="Missing case: wind_speed > 120 km/h cannot close." icon={<CircleAlert className="h-4 w-4" />} state="warning" />
           <FlowNode label="Proof" title="Certified revision" body="The repaired circuit closes and all execution paths verify." icon={<CheckCircle2 className="h-4 w-4" />} state="success" />
         </div>

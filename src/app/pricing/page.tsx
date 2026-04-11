@@ -15,7 +15,7 @@ import { Navbar } from "@/components/Navbar";
 export const metadata = {
   title: "Pricing — BRIK64",
   description:
-    "Detailed pricing tiers, comparison matrix, and commercial FAQ for CLI, team workflows, and enterprise evaluation.",
+    "Detailed pricing tiers, comparison matrix, and commercial FAQ for adopting the BRIK64 formal layer from CLI entry to enterprise operating model.",
 };
 
 type Tier = {
@@ -102,7 +102,7 @@ const tiers: Tier[] = [
     price: "Custom",
     period: "evaluation",
     description:
-      "For organizations that need identity controls, deployment posture review, and evidence artifacts for audit workflows.",
+      "For organizations that need identity controls, deployment posture review, and evidence packages for audit workflows.",
     cta: "Talk to enterprise",
     ctaHref: "/enterprise",
     icon: Building2,
@@ -110,7 +110,7 @@ const tiers: Tier[] = [
       "Everything in Team",
       "SSO / SAML / OIDC",
       "SCIM provisioning",
-      "Evidence artifacts teams may map into standards workflows",
+      "Evidence packages teams may map into standards workflows",
       "Private registry and badge posture",
       "CI/CD gate plugins",
       "Deployment review including self-host posture",
@@ -156,7 +156,7 @@ const comparisonSections: Array<{ title: string; rows: ComparisonRow[] }> = [
     rows: [
       { feature: "SSO / SAML / OIDC", free: false, pro: false, team: false, enterprise: true },
       { feature: "SCIM provisioning", free: false, pro: false, team: false, enterprise: true },
-      { feature: "Evidence artifacts", free: false, pro: false, team: false, enterprise: true },
+      { feature: "Evidence packages", free: false, pro: false, team: false, enterprise: true },
       { feature: "Self-host / on-prem posture", free: false, pro: false, team: false, enterprise: true },
       { feature: "SLA review", free: false, pro: false, team: false, enterprise: "Available in enterprise evaluation" },
       { feature: "Dedicated support engineer", free: false, pro: false, team: false, enterprise: true },
@@ -202,7 +202,7 @@ const faqs = [
   {
     question: "Does BRIK-64 store my source code?",
     answer:
-      "The public CLI path is local-first. When teams publish or collaborate through platform workflows, the public site frames stored artifacts around blueprints, hashes, and review state rather than raw source as a default assumption.",
+      "The public CLI path is local-first. When teams publish or collaborate through platform workflows, the public site frames stored packages around blueprints, hashes, and review state rather than raw source as a default assumption.",
   },
   {
     question: "What happens after beta?",
@@ -232,11 +232,11 @@ export default function PricingPage() {
               Pricing
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Open developer path, shared team workflow, and{" "}
-              <span className="text-teal">enterprise evaluation.</span>
+              Adopt the formal layer through{" "}
+              <span className="text-teal">open entry, team workflow, and enterprise controls.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
-              The CLI path is public. Team features expand review and governance workflow. Enterprise scope adds identity,
+              The CLI path is public. Team features expand shared review and governance workflow. Enterprise scope adds identity,
               deployment, and audit posture when those controls need explicit design.
             </p>
             <div className="mt-10 grid gap-4 md:grid-cols-3">
