@@ -89,7 +89,7 @@ export default async function LanguagePage(props: {
             label: "Host artifact",
             value: language.extension,
             detail: language.installCommand
-              ? `The page can also route into the ${language.name} package path.`
+              ? `This route can also point into the ${language.name} package path.`
               : `This route is presented as part of the target and interoperability story.`,
           },
         ]}
@@ -97,9 +97,9 @@ export default async function LanguagePage(props: {
 
       <CanonicalSection>
         <ArchetypeSectionHeader
-          eyebrow="Language Surface"
-          title="Each language route now behaves like one bounded exchange surface."
-          description="The page explains how the language enters the BRIK64 flow, what can be lifted or emitted, and where the operator should go next."
+          eyebrow="Language"
+          title="Each language route behaves like one bounded exchange workflow."
+          description="This route explains how the language enters the BRIK64 flow, what can be lifted or emitted, and where the operator goes next."
         />
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
           <LanguageExchangeSurface
@@ -124,7 +124,7 @@ export default async function LanguagePage(props: {
               {
                 label: "Registry fit",
                 value: "Shared grammar",
-                detail: "Language-specific routes should still point back to the same CLI, PCD, platform, and registry flow.",
+                detail: "Language-specific routes should point back to the same CLI, PCD, platform, and registry flow.",
               },
             ]}
             exchanges={[
@@ -135,12 +135,12 @@ export default async function LanguagePage(props: {
                   : `This route is presented primarily as a target emitted from a bounded intermediate form.`,
               },
               {
-                title: "What the page should prove",
-                body: "The route should make clear whether the language is a source bridge, a compile target, or an SDK host without mixing those stories loosely.",
+                title: "What this route makes explicit",
+                body: "Make clear whether the language is a source bridge, a compile target, or an SDK host without mixing those stories loosely.",
               },
               {
                 title: "Where the operator goes next",
-                body: "Language pages should still hand off to CLI, PCD, docs, or SDK surfaces instead of behaving like isolated microsites.",
+                body: "Language pages should hand off to CLI, PCD, docs, or SDK references instead of behaving like isolated microsites.",
               },
             ]}
             codeTitle={`${language.name} example`}
@@ -148,12 +148,12 @@ export default async function LanguagePage(props: {
             footer={
               language.installCommand
                 ? `Install path: ${language.installCommand}`
-                : "No package install path is advertised here. The route remains valuable as a bounded source or target surface."
+                : "No package install path is advertised here. The route remains valuable as a bounded source or target workflow."
             }
           />
           <DocsRailSurface
             eyebrow="Reference Rails"
-            title="Language pages should always terminate in concrete operator routes."
+            title="Language pages terminate in concrete operator routes."
             description="A reader evaluating a language integration needs the next technical path immediately."
             links={[
               {

@@ -23,33 +23,33 @@ export default function CLIPage() {
       <CanonicalPageHero
         eyebrow="CLI"
         title="The operator path starts with one bounded"
-        highlight="command surface."
-        description="The CLI page should show the install path, the command grammar, and the proof loop in one consistent product cadence."
+        highlight="command workflow."
+        description="The CLI route shows the install path, command grammar, and verification loop in one consistent product cadence."
         actions={[
           { label: "Open docs", href: "https://docs.brik64.dev", tone: "primary", external: true },
           { label: "PCD", href: "/pcd", tone: "secondary" },
         ]}
         metrics={[
-          { label: "Entry surface", value: "brikc", detail: "The CLI remains the first operator path into the BRIK-64 system." },
-          { label: "Core loop", value: "lift → check → certify", detail: "The command surface should make the proof loop explicit." },
-          { label: "Operator fit", value: "local + CI + IDE", detail: "The CLI page should route into product and workflow surfaces instead of acting like a command dump." },
+          { label: "Entry route", value: "brikc", detail: "The CLI remains the first operator path into the BRIK-64 system." },
+          { label: "Core loop", value: "lift → check → certify", detail: "The command workflow makes the verification loop explicit." },
+          { label: "Operator fit", value: "local + CI + IDE", detail: "The CLI route connects to product and workflow paths instead of acting like a command dump." },
         ]}
       />
 
       <CanonicalSection>
         <ArchetypeSectionHeader
-          eyebrow="CLI Surface"
-          title="The page now behaves like a single install and workflow object."
-          description="The reader should understand what the CLI does, where certification fits, and what comes next without scanning stacks of disconnected terminal cards."
+          eyebrow="CLI"
+          title="One install and workflow route"
+          description="The reader should understand what the CLI does, where certification fits, and what comes next without scanning disconnected terminal cards."
         />
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
           <FeatureMatrixSurface
             eyebrow="CLI Matrix"
-            title="One command surface replaces the old command gallery"
+            title="One command workflow replaces the old command gallery"
             description="The matrix keeps the command families visible while presenting them as parts of one operator loop."
             metrics={[
               { label: "Install posture", value: "Docs-led", detail: "The canonical install path remains documented and explicit." },
-              { label: "Command families", value: "Lift, check, certify, publish", detail: "The page should group commands by workflow role, not by visual novelty." },
+              { label: "Command families", value: "Lift, check, certify, publish", detail: "Commands are grouped by workflow role, not by visual novelty." },
               { label: "Downstream fit", value: "IDE + platform", detail: "The CLI is the first step, not a disconnected product island." },
             ]}
             rows={[
@@ -61,19 +61,19 @@ export default function CLIPage() {
           />
           <ConstraintEnvelopeSurface
             eyebrow="Install + Quickstart"
-            title="The protagonist artifact is now a bounded install and proof workbench"
-            description="Terminal syntax remains visible, but it sits inside one artifact with explicit operator consequences."
+            title="Bounded install and proof workbench"
+            description="Terminal syntax remains visible and tied to explicit operator consequences."
             constraints={[
-              { title: "Install from docs", body: "The page should route installation to the documented path instead of pretending every binary or package route is equally primary.", outcome: "operator route" },
+              { title: "Install from docs", body: "Route installation to the documented path instead of pretending every binary or package route is equally primary.", outcome: "operator route" },
               { title: "Check before trust", body: "The useful public story is the check and certify loop, not the existence of many commands.", outcome: "proof gate" },
-              { title: "Hand off to product surfaces", body: "The CLI should route the user into PCD, platform, and registry pages once they understand the local workflow.", outcome: "system fit" },
+              { title: "Hand off to product routes", body: "Route users into PCD, platform, and registry pages once they understand the local workflow.", outcome: "system fit" },
             ]}
             codeTitle="brikc quickstart"
             code={`$ brikc lift src/ --to pcd
 $ brikc check dist/project.pcd
 $ brikc certify dist/project.pcd
 $ brikc registry publish dist/project.pcd`}
-            footer="The CLI page is strongest when it behaves like the first bounded product surface, not like a gallery of terminal snapshots."
+            footer="The CLI is strongest when it behaves like the first bounded product route, not a gallery of terminal snapshots."
           />
           <ScenarioFlowSurface
             eyebrow="Operator Loop"
@@ -88,8 +88,8 @@ $ brikc registry publish dist/project.pcd`}
           />
           <EvidenceSurface
             eyebrow="CLI Scope"
-            title="What the page should promise"
-            description="The CLI page can be technical and direct without overstating what the command layer alone proves."
+            title="What this route should promise"
+            description="The CLI can be technical and direct without overstating what the command layer alone proves."
             items={[
               { label: "Local operator path", body: "Use the CLI to move from source material into bounded blueprints and explicit review steps." },
               { label: "Shared grammar", body: "The same command story must line up with PCD, platform, and registry pages instead of inventing a parallel product." },

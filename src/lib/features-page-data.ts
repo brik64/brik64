@@ -562,7 +562,7 @@ export const featureSections: FeatureSectionSpec[] = [
       eyebrow: "Verification Boundary",
       title: "Keep sampled testing and bounded verification in their proper lanes",
       description:
-        "The page should compare review models directly and make the public claim boundary legible in the same block.",
+        "Compare review models directly and make the public claim boundary legible in the same block.",
       statusLabel: "Verification comparison",
       leftEyebrow: "Sampled review",
       leftTitle: "Tests explore cases after code exists",

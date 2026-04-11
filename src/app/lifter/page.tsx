@@ -146,9 +146,9 @@ export default function LifterPage() {
             </p>
             <div className="mt-6 flex items-center justify-center gap-3 text-sm">
               <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
-                100% liftability
+                211/211 benchmark liftability
               </span>
-              <span className="text-muted-foreground">on benchmark suite (211/211 files). Liftability rates vary by codebase — pure functional code lifts near 100%, side-effect-heavy code produces Contract-tier blueprints</span>
+              <span className="text-muted-foreground">on documented benchmark evidence (211/211 files). Liftability rates vary by codebase; side-effect-heavy code produces Contract-tier blueprints.</span>
             </div>
           </div>
         </section>
@@ -244,7 +244,7 @@ export default function LifterPage() {
             </div>
           </div>
           <p className="mt-4 text-xs italic text-muted-foreground">
-            Certified + Extended = 100% coverage. The Lifter automatically selects the appropriate monomers and reports the tier.
+            Core Certified + Contract Certified covers mapped functions in current Lifter scope. The Lifter selects the appropriate monomers and reports the tier.
           </p>
 
           <div className="mt-8">
@@ -259,7 +259,7 @@ export default function LifterPage() {
               items={[
                 { label: "Pure logic", body: "Certified blueprints carry Φc = 1 through extraction and mapping." },
                 { label: "Side effects", body: "I/O, network and filesystem behavior remain explicit contract-tier bridges." },
-                { label: "Liftability", body: "The page keeps the benchmark claim visible, but as evidence rather than decoration." },
+                { label: "Liftability", body: "Benchmark liftability is presented as documented evidence, not as a universal guarantee." },
               ]}
             />
           </div>
@@ -312,8 +312,7 @@ export default function LifterPage() {
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl text-sm leading-relaxed">
             $3 trillion per day in banking transactions still runs on COBOL. Lift legacy mainframe logic into verified
-            PCD blueprints, then export to modern Go microservices &mdash; with formal proof that the translation preserves
-            every computation.
+            PCD blueprints, then export to modern Go microservices with reviewable equivalence on the extracted computational core.
           </p>
 
           <div className="mt-8 border border-border bg-muted/20 p-6">
@@ -353,11 +352,11 @@ export default function LifterPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Start building &mdash; free
+            Start locally with the Lifter workflow
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
             Point the Lifter at any file, directory, or repository. Pure functions become verified PCD blueprints.
-            Impure functions get extended monomers. 100% coverage.
+            Impure functions get extended monomers with explicit contract boundaries.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link

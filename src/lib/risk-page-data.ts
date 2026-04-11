@@ -135,32 +135,32 @@ function buildUseCase(config: {
       metrics: config.heroMetrics,
     },
     sectionHeader: {
-      eyebrow: "Use-Case Surface",
-      title: "Use-case pages now show a bounded workflow instead of a code-heavy demo.",
+      eyebrow: "Use Case",
+      title: "Use-case routes show a bounded workflow instead of a code-heavy demo.",
       description:
-        "A use case should read like an operational scenario with proof stages, not like a hero plus a detached snippet.",
+        "A use case should read like an operational scenario with explicit verification stages, not like a detached snippet.",
     },
     evidence: {
       eyebrow: "Scenario Evidence",
-      title: "The protagonist object is the bounded workflow",
+      title: "The bounded workflow is the primary object",
       description:
-        "The page surfaces the operator decision points and proof obligations before it shows any code.",
+        "This route highlights operator decision points and verification obligations before showing code.",
       metrics: config.heroMetrics,
       tracks: config.evidenceTracks,
     },
     constraint: {
       eyebrow: "Constraint Example",
-      title: "The scenario remains attached to a real policy or circuit sketch",
+      title: "Keep the scenario attached to a real policy or circuit sketch",
       description:
-        "Code is still useful here, but only as evidence embedded in a stronger surface.",
+        "Code is useful here as supporting evidence inside a stronger domain narrative.",
       constraints: config.constraints,
       codeTitle: config.codeTitle,
       code: config.code,
       footer:
-        "Use-case pages should remain concrete, operator-readable, and careful not to oversell domain guarantees beyond the visible constraints.",
+        "Use-case routes should remain concrete, operator-readable, and careful not to oversell domain guarantees beyond visible constraints.",
     },
     scenario: {
-      eyebrow: "Workflow Rail",
+      eyebrow: "Workflow",
       title: "The flow of proof stays explicit",
       description:
         "Every use case should make clear how an engineer goes from source material to bounded output and published evidence.",
@@ -171,7 +171,7 @@ function buildUseCase(config: {
         { label: "04", title: "Reuse the result", body: "Feed the bounded result back into the platform, registry, or delivery flow.", state: "idle" },
       ],
       footer:
-        "The site should keep the workflow legible without pretending every downstream organizational control is solved inside the page.",
+        "Keep the workflow legible without implying every downstream organizational control is solved by this route.",
     },
     cta: {
       title: config.ctaTitle,
@@ -933,14 +933,14 @@ export const useCasePages = {
     title: "AI safety needs policy circuits and",
     highlight: "pre-execution checks.",
     description:
-      "This page should talk about external verification, bounded action rules, and traceable agent workflows rather than sweeping claims about solved alignment.",
+      "This route covers external verification, bounded action rules, and traceable agent workflows rather than sweeping claims about solved alignment.",
     heroMetrics: [
       { label: "Primary object", value: "Policy circuit", detail: "The key surface is the explicit rule set that sits outside the model." },
       { label: "Verification point", value: "Before execution", detail: "The workflow checks the action before it reaches production." },
       { label: "Proof style", value: "Structured diagnostics", detail: "Rejected outputs should produce a readable reason, not just a failure." },
     ],
     evidenceTracks: [
-      { label: "Guardrail boundary", title: "Keep the policy external to the model", body: "The page should show how explicit policy circuits bound action space without pretending to replace all AI safety work.", emphasis: "proof" },
+      { label: "Guardrail boundary", title: "Keep the policy external to the model", body: "Show how explicit policy circuits bound action space without pretending to replace all AI safety work.", emphasis: "proof" },
       { label: "Generated output", title: "Verify before the agent acts", body: "AI-generated code or actions become safer when a bounded review step sits in front of execution.", emphasis: "risk" },
       { label: "Workflow fit", title: "Tie the story back to product surfaces", body: "The use case should still resolve into CLI, PCD, platform, and registry flows." },
     ],
@@ -968,19 +968,19 @@ export const useCasePages = {
     title: "CI/CD integration needs a proof step, not just another",
     highlight: "pipeline badge.",
     description:
-      "The CI/CD page should show how bounded verification enters a delivery pipeline without pretending it replaces the rest of release engineering.",
+      "This route shows how bounded verification enters a delivery pipeline without pretending it replaces the rest of release engineering.",
     heroMetrics: [
       { label: "Primary object", value: "Pipeline gate", detail: "The critical surface is the bounded check inserted before release." },
       { label: "Verification point", value: "Build stage", detail: "The result is a gate and an evidence artifact." },
       { label: "Proof style", value: "Change-sensitive", detail: "The pipeline output changes when the code path changes." },
     ],
     evidenceTracks: [
-      { label: "Pipeline role", title: "Insert one explicit verification step", body: "The page should show the proof gate as a real operator step, not a vague CI benefit statement.", emphasis: "proof" },
+      { label: "Pipeline role", title: "Insert one explicit verification step", body: "Show the proof gate as a real operator step, not a vague CI benefit statement.", emphasis: "proof" },
       { label: "Artifact sensitivity", title: "Keep the output tied to the build input", body: "The useful part of the use case is that changed code produces changed evidence.", emphasis: "risk" },
-      { label: "Workflow handoff", title: "Connect the check to the registry or review flow", body: "The page should make it clear what happens after the gate passes." },
+      { label: "Workflow handoff", title: "Connect the check to the registry or review flow", body: "Make clear what happens after the gate passes." },
     ],
     constraints: [
-      { title: "Build-time verification", body: "The page should show a check that runs before merge or deploy, not only after release.", outcome: "release gate" },
+      { title: "Build-time verification", body: "Show a check that runs before merge or deploy, not only after release.", outcome: "release gate" },
       { title: "Evidence emission", body: "A successful run should produce a traceable result that can flow into docs, badges, or registry surfaces.", outcome: "artifact trail" },
       { title: "Scoped promise", body: "The use case should not imply that one check replaces all testing, security, or operations work.", outcome: "bounded claim" },
     ],
@@ -994,7 +994,7 @@ jobs:
       - run: brikc lift src/ --to pcd
       - run: brikc check dist/project.pcd
       - run: brikc certify dist/project.pcd`,
-    ctaTitle: "Use the CI/CD page to make the proof gate explicit.",
+    ctaTitle: "Make the CI/CD proof gate explicit.",
     ctaDescription:
       "The site should show where the verification step sits in the delivery flow and what evidence it emits.",
   }),
@@ -1002,19 +1002,19 @@ jobs:
     title: "COBOL migration needs a bounded bridge, not a blind",
     highlight: "rewrite.",
     description:
-      "This page should focus on lifting legacy logic into explicit PCD or constrained artifacts before transpilation or modernization.",
+      "This route focuses on lifting legacy logic into explicit PCD or constrained artifacts before transpilation or modernization.",
     heroMetrics: [
       { label: "Primary object", value: "Lifted blueprint", detail: "The key step is making legacy logic inspectable before replacing it." },
       { label: "Verification point", value: "Post-lift", detail: "The useful check happens on the extracted circuit boundary." },
       { label: "Proof style", value: "Migration dossier", detail: "The result should preserve enough structure for engineers to inspect the transformation." },
     ],
     evidenceTracks: [
-      { label: "Legacy extraction", title: "Lift the existing logic first", body: "The page should present PCD as a bridge that exposes what the legacy code actually computes.", emphasis: "proof" },
+      { label: "Legacy extraction", title: "Lift the existing logic first", body: "Present PCD as a bridge that exposes what the legacy code actually computes.", emphasis: "proof" },
       { label: "Migration risk", title: "Reduce translation ambiguity", body: "The value comes from bounding the logic before it is moved, not from a generic modernization promise.", emphasis: "risk" },
-      { label: "Reuse path", title: "Connect the lifted result to the wider product", body: "The page should end in certification, review, and reuse rather than a one-off rewrite narrative." },
+      { label: "Reuse path", title: "Connect the lifted result to the wider product", body: "End in certification, review, and reuse rather than a one-off rewrite narrative." },
     ],
     constraints: [
-      { title: "Liftable domain", body: "The page should show how legacy arithmetic or decision logic is extracted into explicit bounded objects.", outcome: "lift boundary" },
+      { title: "Liftable domain", body: "Show how legacy arithmetic or decision logic is extracted into explicit bounded objects.", outcome: "lift boundary" },
       { title: "Migration review", body: "Engineers should be able to compare source behavior and lifted behavior before any target code is emitted.", outcome: "side-by-side review" },
       { title: "Scoped claim", body: "The use case should not imply that every legacy system becomes instantly certified end to end.", outcome: "bounded modernization" },
     ],
@@ -1026,7 +1026,7 @@ jobs:
   assert gross >= tax
   output net : Float64 = gross - tax
 }`,
-    ctaTitle: "Use the COBOL page to show the bounded migration bridge.",
+    ctaTitle: "Show the bounded migration bridge.",
     ctaDescription:
       "The strongest signal is a lift-review-certify path that makes legacy logic inspectable before it is moved.",
   }),
@@ -1034,19 +1034,19 @@ jobs:
     title: "Formal verification becomes more usable when the proof path is",
     highlight: "operational.",
     description:
-      "This page should connect theorem-backed thinking to a delivery path the reader can actually follow through the site.",
+      "This route connects theorem-backed thinking to a delivery path the reader can actually follow through the site.",
     heroMetrics: [
       { label: "Primary object", value: "Proof workflow", detail: "The focus is the bridge from formal reasoning to operator-readable surfaces." },
-      { label: "Verification point", value: "Structure + closure", detail: "The page should stay grounded in bounded circuit checks and explicit proof posture." },
+      { label: "Verification point", value: "Structure + closure", detail: "Stay grounded in bounded circuit checks and explicit proof posture." },
       { label: "Proof style", value: "Delivery-aware", detail: "The public story should connect theory to how software is actually moved." },
     ],
     evidenceTracks: [
-      { label: "Formal bridge", title: "Make the proof path legible", body: "This page should show how formal reasoning maps to circuits, checks, and published evidence.", emphasis: "proof" },
+      { label: "Formal bridge", title: "Make the proof path legible", body: "Show how formal reasoning maps to circuits, checks, and published evidence.", emphasis: "proof" },
       { label: "Operational fit", title: "Keep the workflow usable", body: "The value comes from a usable engineering loop, not from abstract theorem language alone.", emphasis: "risk" },
-      { label: "Public product link", title: "Connect the proof path to CLI and platform", body: "The page should not become isolated from the rest of the product narrative." },
+      { label: "Public product link", title: "Connect the proof path to CLI and platform", body: "Do not isolate the route from the rest of the product narrative." },
     ],
     constraints: [
-      { title: "Explicit domain", body: "The page should show that verification begins with bounded domains and explicit composition rather than mystical black-box reasoning.", outcome: "formal boundary" },
+      { title: "Explicit domain", body: "Show that verification begins with bounded domains and explicit composition rather than mystical black-box reasoning.", outcome: "formal boundary" },
       { title: "Readable evidence", body: "Results should remain visible and inspectable to an engineer who is not reading proof assistants directly.", outcome: "public evidence" },
       { title: "Scoped promise", body: "The site should not imply that every aspect of program correctness is formally settled by one public page.", outcome: "bounded claim" },
     ],
@@ -1059,26 +1059,26 @@ jobs:
 }`,
     ctaTitle: "Keep the formal-verification page tied to an operator workflow.",
     ctaDescription:
-      "The page should help a reader see how bounded formal structure enters a product path they can actually use.",
+      "Help the reader see how bounded formal structure enters a product path they can actually use.",
   }),
   universalTranspilation: buildUseCase({
     title: "Universal transpilation only matters when the intermediate form is",
     highlight: "bounded and inspectable.",
     description:
-      "This page should frame transpilation as a lift-check-build workflow rather than a magic source-to-source promise.",
+      "This route frames transpilation as a lift-check-build workflow rather than a magic source-to-source promise.",
     heroMetrics: [
-      { label: "Primary object", value: "Intermediate blueprint", detail: "The page should keep the PCD or circuit layer visible between source and target." },
+      { label: "Primary object", value: "Intermediate blueprint", detail: "Keep the PCD or circuit layer visible between source and target." },
       { label: "Verification point", value: "Between lift and emit", detail: "The useful check happens on the bounded representation, not only on the final target." },
       { label: "Proof style", value: "Translation dossier", detail: "The result should preserve a readable transformation trail." },
     ],
     evidenceTracks: [
-      { label: "Translation chain", title: "Keep the intermediate layer visible", body: "This page should show that source and target are connected through an inspectable bounded form.", emphasis: "proof" },
+      { label: "Translation chain", title: "Keep the intermediate layer visible", body: "Show that source and target are connected through an inspectable bounded form.", emphasis: "proof" },
       { label: "Migration risk", title: "Avoid opaque source-to-source stories", body: "The value is in the constrained transformation path, not in the word 'universal'.", emphasis: "risk" },
-      { label: "Reuse path", title: "Connect the result to registry or platform surfaces", body: "The page should end in reuse and review, not just conversion." },
+      { label: "Reuse path", title: "Connect the result to registry or platform workflows", body: "End in reuse and review, not just conversion." },
     ],
     constraints: [
       { title: "Source extraction", body: "The use case should show where the source behavior is lifted into a bounded intermediate representation.", outcome: "lift path" },
-      { title: "Intermediate verification", body: "The page should make clear that the central check happens before target code is emitted.", outcome: "certification gate" },
+      { title: "Intermediate verification", body: "Make clear that the central check happens before target code is emitted.", outcome: "certification gate" },
       { title: "Target clarity", body: "The final emitted artifact should still point back to the bounded blueprint it came from.", outcome: "traceable output" },
     ],
     codeTitle: "normalize.pcd",
@@ -1090,7 +1090,7 @@ jobs:
   assert max > min
   output normalized : Float64 = (value - min) / (max - min)
 }`,
-    ctaTitle: "Use the transpilation page to show the bounded intermediate form.",
+    ctaTitle: "Show the bounded intermediate form.",
     ctaDescription:
       "The page is strongest when the lift-check-emit chain stays explicit and inspectable.",
   }),
