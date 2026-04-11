@@ -40,11 +40,10 @@ describe("Public wrapper visual grammar", () => {
   });
 
   it("audited wrappers keep route-specific shapes after the rewrite", () => {
-    expect(utilityPages.about.primarySurface.thesis).toBe(true);
-    expect(utilityPages.contact.secondarySurface?.kind).toBe("action");
-    expect(utilityPages.download.secondarySurface?.kind).toBe("docs");
-    expect(utilityPages.pricing.secondarySurface?.kind).toBe("action");
-    expect(utilityPages.investors.primarySurface.thesis).toBe(true);
-    expect(utilityPages.shop.cta?.actions[0]?.href).toBe("/contact");
+    expect(utilityPages.playground.secondarySurface?.kind).toBe("docs");
+    expect(utilityPages.changelog.secondarySurface?.kind).toBe("docs");
+    expect(utilityPages.docs.secondarySurface?.kind).toBe("docs");
+    expect(utilityPages.login.secondarySurface?.kind).toBe("action");
+    expect(utilityPages.signup.secondarySurface?.kind).toBe("action");
   });
 });

@@ -12,11 +12,10 @@ describe("Code surfaces — embedded proof panels replace standalone terminal wi
     expect(content).toContain('eyebrow="Language example"');
   });
 
-  it("cli, compliance, ai-agents, and language routes no longer depend on raw CopyableCode blocks", () => {
+  it("cli, compliance, and language routes no longer depend on raw CopyableCode blocks", () => {
     const files = [
       "src/app/cli/page.tsx",
       "src/app/compliance/page.tsx",
-      "src/app/ai-agents/page.tsx",
       "src/app/languages/[slug]/page.tsx",
     ] as const;
 

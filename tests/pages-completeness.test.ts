@@ -12,11 +12,13 @@ import {
   getAllPageFiles,
   productCorePages,
   productMigratedPages,
+  productRestoredPages,
   read,
   retiredPages,
   riskDirectPages,
   riskWrapperPages,
   utilityDirectPages,
+  utilityRestoredPages,
   utilityWrapperPages,
 } from "./site-grammar";
 
@@ -25,8 +27,10 @@ describe("Page completeness — recovered public tree remains intact", () => {
     "src/app/page.tsx",
     ...productCorePages,
     ...productMigratedPages,
+    ...productRestoredPages,
     ...editorialPages,
     ...utilityDirectPages,
+    ...utilityRestoredPages,
     ...utilityWrapperPages.map(([file]) => file),
     ...riskDirectPages,
     ...riskWrapperPages.map(([file]) => file),
@@ -79,12 +83,34 @@ describe("Page completeness — wrapper architecture is explicit", () => {
     expect(content).toContain("LanguageExchangeSurface");
     expect(content).toContain("DocsRailSurface");
   });
+
+  for (const file of utilityRestoredPages) {
+    it(`${file} is restored as a direct content page (not a thin wrapper)`, () => {
+      const content = read(file);
+      expect(content).not.toContain("UtilityPageView");
+      expect(content).toContain("Navbar");
+      expect(content).toContain("Footer");
+    });
+  }
+
+  for (const file of productRestoredPages) {
+    it(`${file} is restored as a direct product page with substantial content`, () => {
+      const content = read(file);
+      expect(content).not.toContain("UtilityPageView");
+      expect(content).not.toContain("RiskPageView");
+      expect(content.length).toBeGreaterThan(2000);
+    });
+  }
 });
 
 describe("Page completeness — shared archetype data stays populated", () => {
   it("utility page specs cover every utility wrapper route", () => {
     const expectedKeys = utilityWrapperPages.map(([, key]) => key);
-    expect(Object.keys(utilityPages).sort()).toEqual(expectedKeys.slice().sort());
+    const actualKeys = Object.keys(utilityPages);
+    for (const key of expectedKeys) {
+      expect(actualKeys).toContain(key);
+    }
+    expect(actualKeys.length).toBeGreaterThanOrEqual(expectedKeys.length);
   });
 
   it("industry page specs cover all industry routes", () => {

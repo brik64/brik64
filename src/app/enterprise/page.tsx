@@ -1,96 +1,272 @@
-import {
-  ActionSurface,
-  ArchetypeSectionHeader,
-  CanonicalPageHero,
-  CanonicalPageLayout,
-  CanonicalSection,
-  ScenarioFlowSurface,
-} from "@/components/PageArchetypes";
-import {
-  EvidenceSurface,
-  FeatureMatrixSurface,
-} from "@/components/PageArtifacts";
+"use client";
 
-export const metadata = {
-  title: "Enterprise — BRIK64",
-  description:
-    "Private scope, deployment posture, review workflows, and explicit enterprise claim boundaries.",
-};
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { PhiC } from "@/components/PhiC";
+import {
+  Shield,
+  GitBranch,
+  FileCheck,
+  BadgeCheck,
+  KeyRound,
+  ClipboardList,
+  Clock,
+  Building2,
+  HeartPulse,
+  Car,
+  Landmark,
+  ArrowRight,
+  Mail,
+} from "lucide-react";
+
+import dynamic from "next/dynamic";
+
+const HeroWireframe = dynamic(
+  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
+  { ssr: false }
+);
+
+/* ── Feature cards ── */
+
+const features = [
+  {
+    icon: GitBranch,
+    title: "CI/CD Integration",
+    description:
+      "GitHub Actions, GitLab CI, and Jenkins plugins. Add certification gates to your pipeline \u2014 code that doesn\u2019t reach \u03A6_c = 1 never reaches production.",
+  },
+  {
+    icon: FileCheck,
+    title: "Compliance Reports",
+    description:
+      "Processing logic and change control evidence mapped to SOC2 (PI1.x, CC8.1), PCI-DSS (Req 6, 10), HIPAA processing rules, and ISO 27001 change control. Certification hashes create an immutable audit trail tied to every deployment.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Certification Badges",
+    description:
+      "White-label embeddable badges that prove your code is certified. API-connected, real-time verification, subscription-locked for enterprise.",
+  },
+  {
+    icon: KeyRound,
+    title: "SSO / SAML / OIDC",
+    description:
+      "Single sign-on with your identity provider. SCIM provisioning for automated user lifecycle management. Zero friction for large teams.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Audit Trail",
+    description:
+      "Every certification, every deployment, every user action logged with tamper-proof timestamps. Exportable for regulatory review.",
+  },
+  {
+    icon: Clock,
+    title: "SLA & Dedicated Support",
+    description:
+      "99.9% uptime SLA. Dedicated support engineer. On-premise deployment option for air-gapped environments.",
+  },
+];
+
+/* ── Use cases ── */
+
+const useCases = [
+  {
+    icon: Landmark,
+    title: "Banking & Fintech",
+    description:
+      "Migrate COBOL mainframe logic to Go/Rust with mathematical proof of equivalence. $3T+ in daily transactions depend on legacy systems \u2014 modernize without risk.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Healthcare",
+    description:
+      "HIPAA processing logic evidence for medical software. Every function that processes patient data carries a formal proof of correctness. Infrastructure and access controls require separate evidence.",
+  },
+  {
+    icon: Car,
+    title: "Automotive & Aerospace",
+    description:
+      "ISO 26262 and DO-178C evidence generated automatically from certified PCD blueprints. Closure domains enforce physical safety bounds at compile time.",
+  },
+  {
+    icon: Building2,
+    title: "Government & Defense",
+    description:
+      "Air-gapped on-premise deployment. Audit trails exportable as processing logic evidence for NIST and FedRAMP assessments. Source code never leaves your network.",
+  },
+];
+
+/* ── Compliance standards ── */
+
+const standards = [
+  "SOC2 Processing Integrity (PI1.x, CC8.1)",
+  "HIPAA processing logic evidence",
+  "PCI-DSS Req 6, 10 (secure dev + audit trail)",
+  "ISO 27001 change control evidence",
+  "ISO 26262 / DO-178C processing evidence",
+  "MiFID II Art. 17 (algo trading controls)",
+  "SOX Sec 404 (internal controls on calculations)",
+];
+
+/* ── Page ── */
 
 export default function EnterprisePage() {
   return (
-    <CanonicalPageLayout>
-      <CanonicalPageHero
-        eyebrow="Enterprise"
-        title="Enterprise adoption needs explicit review, scope, and"
-        highlight="support posture."
-        description="Enterprise adoption depends on reviewable workflows, private scope, and a clear deployment conversation. This route ties those needs back to the same platform and registry logic used elsewhere on the site."
-        actions={[
-          { label: "Talk to enterprise", href: "mailto:enterprise@brik64.com", tone: "primary" },
-          { label: "Platform", href: "/platform", tone: "secondary" },
-        ]}
-        metrics={[
-          { label: "Review posture", value: "Private + auditable", detail: "Enterprise work keeps approval paths and change-sensitive evidence explicit." },
-          { label: "Product fit", value: "Platform-led", detail: "Enterprise scope still inherits the same platform and registry grammar." },
-          { label: "Support boundary", value: "Qualified", detail: "This route describes evaluation and support scope without inventing undocumented SLAs." },
-        ]}
-      />
+    <>
+      <Navbar />
+      <main className="relative z-10">
+        <div className="mx-auto max-w-7xl border-x border-border bg-background">
+        {/* Hero */}
+        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
+          <HeroWireframe />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
+            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
+              Enterprise
+            </span>
+            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Built for <span className="text-teal">regulated industries.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+              Fintech. Healthcare. Automotive. Government. &ldquo;Tests pass&rdquo; is not enough.
+              <PhiC /> = 1 is mathematical proof. Compliance evidence at compile time. Not after the audit.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-hover transition-colors"
+              >
+                Talk to Us
+              </a>
+              <a
+                href="/pricing"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
+              >
+                See pricing <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </section>
 
-      <CanonicalSection>
-        <ArchetypeSectionHeader
-          eyebrow="Enterprise"
-          title="Private scope, review flow, and deployment posture in one route"
-          description="This route should read as an operating model attached to the same product system, not as a separate sales microsite."
-        />
-        <div className="mx-auto mt-10 grid max-w-6xl gap-6">
-          <FeatureMatrixSurface
-            eyebrow="Enterprise Matrix"
-            title="Private scope, review flow, and support posture in one view"
-            description="Enterprise value comes from explicit scope, reviewable change, and a clear deployment conversation."
-            metrics={[
-              { label: "Private library", value: "Scoped", detail: "Team or organization logic can be handled without losing the shared grammar." },
-              { label: "Review flow", value: "Visible", detail: "Enterprise work needs explicit review, approval, and change-sensitive evidence." },
-              { label: "Deployment posture", value: "Qualified", detail: "Hosted, private, or guided routes should be described without overclaiming." },
-            ]}
-            rows={[
-              { title: "Private registry and libraries", body: "Enterprise work connects to the registry story while preserving private scope where required." },
-              { title: "Approval and audit trails", body: "Make clear who reviews the logic, what evidence is emitted, and how changes stay visible.", state: "accent" },
-              { title: "Deployment conversation", body: "Support posture, environment fit, and onboarding should remain a qualified evaluation conversation." },
-            ]}
-          />
-          <EvidenceSurface
-            eyebrow="Enterprise Evidence"
-            title="What this route can support publicly"
-            description="The site can describe workflow, scope, and review posture when those claims remain bounded."
-            items={[
-              { label: "Private scope", body: "Talk about organization libraries, private circuits, and controlled sharing without implying a fully documented product matrix the repo does not prove." },
-              { label: "Review path", body: "Show how logic moves through approval and audit workflows rather than advertising enterprise in the abstract." },
-              { label: "Support route", body: "Describe support and evaluation as explicit conversations, not as implied guarantees or contractual commitments." },
-            ]}
-          />
-          <ScenarioFlowSurface
-            eyebrow="Enterprise Loop"
-            title="Enterprise adoption still follows the same bounded delivery path"
-            description="The difference is scope and review depth, not a separate grammar."
-            steps={[
-              { label: "01", title: "Qualify the domain", body: "Start from the relevant product and risk routes instead of a generic sales conversation.", state: "active" },
-              { label: "02", title: "Define private scope", body: "Clarify what should remain private, reviewable, or organization-specific.", state: "warning" },
-              { label: "03", title: "Review the evidence path", body: "Attach certification state, audit posture, and approval steps to the review flow.", state: "success" },
-              { label: "04", title: "Choose the support route", body: "Move into enterprise evaluation or deployment planning with the scope already explicit.", state: "idle" },
-            ]}
-          />
-          <ActionSurface
-            eyebrow="Enterprise Routes"
-            title="Concrete paths into review and deployment conversations"
-            description="Enterprise readers need a direct path into contact, docs, and product routes."
-            channels={[
-              { title: "Enterprise evaluation", body: "Start the architecture or deployment conversation with an explicit human route.", action: "enterprise@brik64.com", href: "mailto:enterprise@brik64.com" },
-              { title: "Product inspection", body: "Review the current platform route before escalating into private-scope discussion.", action: "Open platform", href: "/platform" },
-              { title: "Reference material", body: "Use docs when the question is really about commands, formats, or operator flow.", action: "Documentation", href: "https://docs.brik64.dev", external: true },
-            ]}
-          />
-        </div>
-      </CanonicalSection>
-    </CanonicalPageLayout>
+        {/* Feature cards */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [01] CAPABILITIES
+          </p>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Enterprise-grade verification
+          </h2>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((f) => (
+              <div key={f.title} className="border border-border bg-muted/10 p-6">
+                <f.icon className="mb-4 h-6 w-6 text-teal" />
+                <h3 className="text-sm font-bold">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Use cases */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [02] USE CASES
+          </p>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Trusted across industries
+          </h2>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {useCases.map((uc) => (
+              <div key={uc.title} className="border border-border bg-muted/10 p-6">
+                <uc.icon className="mb-4 h-6 w-6 text-teal" />
+                <h3 className="text-sm font-bold">{uc.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{uc.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Compliance standards */}
+        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [03] COMPLIANCE
+          </p>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Standards we generate evidence for
+          </h2>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {standards.map((s) => (
+              <span
+                key={s}
+                className="border border-border bg-muted/20 px-4 py-2.5 text-sm font-medium"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+          <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed">
+            BRIK64 generates verification evidence for processing logic and change control.
+            Infrastructure, organizational, and procedural controls require separate evidence.
+            The math generates the processing integrity proof &mdash; reducing manual documentation to review and approval.
+          </p>
+        </section>
+
+        {/* Contact form placeholder */}
+        <section
+          id="contact"
+          className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18"
+        >
+          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
+            [04] GET IN TOUCH
+          </p>
+          <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Request a demo
+          </h2>
+          <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed">
+            Tell us about your team and we&rsquo;ll schedule a personalized walkthrough of
+            BRIK64 Enterprise.
+          </p>
+          <div className="mx-auto mt-10 max-w-lg space-y-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <input
+                type="text"
+                placeholder="Your name"
+                className="border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+              />
+              <input
+                type="email"
+                placeholder="Work email"
+                className="border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Company"
+              className="w-full rounded-md border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none"
+            />
+            <textarea
+              placeholder="Tell us about your use case"
+              rows={4}
+              className="w-full rounded-md border border-border bg-muted/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-teal focus:outline-none resize-none"
+            />
+            <button className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+              <Mail className="h-4 w-4" /> Request Demo
+            </button>
+          </div>
+          <p className="mx-auto mt-6 max-w-lg text-xs text-muted-foreground">
+            Or email us directly at{" "}
+            <a href="mailto:enterprise@brik64.com" className="text-teal hover:underline">
+              enterprise@brik64.com
+            </a>
+          </p>
+        </section>
+      </div>
+
+      </main>
+      <div className="relative z-10">
+
+        <Footer />
+
+      </div>
+    </>
   );
 }

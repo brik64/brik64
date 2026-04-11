@@ -83,14 +83,12 @@ describe("Design system — page and editorial artifacts are documented", () => 
 });
 
 describe("Secondary pages — previously thin routes now carry substantive content", () => {
-  it("shop page is intentionally a utility wrapper backed by the shared data spec", () => {
+  it("shop page is restored as a direct route with substantive content", () => {
     const page = read("src/app/shop/page.tsx");
-    const spec = read("src/lib/utility-page-data.ts");
-    expect(page).toContain("UtilityPageView");
-    expect(page).toContain("utilityPages.shop");
-    expect(spec).toContain("shop: {");
-    expect(spec).toContain("Brand support items");
-    expect(spec).toContain('highlight: "honest route."');
+    expect(page).toContain("ShopSection");
+    expect(page).toContain("Merch Launch Plan");
+    expect(page).toContain("storefront stays simple");
+    expect(page).not.toContain("UtilityPageView");
   });
 });
 

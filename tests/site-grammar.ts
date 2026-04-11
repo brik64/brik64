@@ -40,8 +40,11 @@ export const productCorePages = [
 
 export const productMigratedPages = [
   "src/app/cli/page.tsx",
-  "src/app/enterprise/page.tsx",
   "src/app/compliance/page.tsx",
+] as const;
+
+export const productRestoredPages = [
+  "src/app/enterprise/page.tsx",
   "src/app/ai-agents/page.tsx",
 ] as const;
 
@@ -54,33 +57,34 @@ export const editorialPages = [
 ] as const;
 
 export const utilityWrapperPages = [
-  ["src/app/about/page.tsx", "about"],
-  ["src/app/contact/page.tsx", "contact"],
-  ["src/app/download/page.tsx", "download"],
-  ["src/app/pricing/page.tsx", "pricing"],
-  ["src/app/faq/page.tsx", "faq"],
-  ["src/app/legal/page.tsx", "legal"],
-  ["src/app/investors/page.tsx", "investors"],
   ["src/app/playground/page.tsx", "playground"],
   ["src/app/changelog/page.tsx", "changelog"],
   ["src/app/docs/page.tsx", "docs"],
-  ["src/app/shop/page.tsx", "shop"],
   ["src/app/login/page.tsx", "login"],
   ["src/app/signup/page.tsx", "signup"],
 ] as const;
 
 export const auditedUtilityWrapperPages = [
-  ["src/app/about/page.tsx", "about"],
-  ["src/app/contact/page.tsx", "contact"],
-  ["src/app/download/page.tsx", "download"],
-  ["src/app/pricing/page.tsx", "pricing"],
-  ["src/app/legal/page.tsx", "legal"],
-  ["src/app/investors/page.tsx", "investors"],
-  ["src/app/shop/page.tsx", "shop"],
+  ["src/app/playground/page.tsx", "playground"],
+  ["src/app/changelog/page.tsx", "changelog"],
+  ["src/app/docs/page.tsx", "docs"],
+  ["src/app/login/page.tsx", "login"],
+  ["src/app/signup/page.tsx", "signup"],
 ] as const;
 
 export const utilityDirectPages = [
   "src/app/design-system/page.tsx",
+] as const;
+
+export const utilityRestoredPages = [
+  "src/app/about/page.tsx",
+  "src/app/contact/page.tsx",
+  "src/app/download/page.tsx",
+  "src/app/pricing/page.tsx",
+  "src/app/faq/page.tsx",
+  "src/app/legal/page.tsx",
+  "src/app/investors/page.tsx",
+  "src/app/shop/page.tsx",
 ] as const;
 
 export const riskWrapperPages = [
@@ -116,8 +120,6 @@ export const auditedDirectProductPages = [
 
 export const auditedMigratedProductPages = [
   "src/app/compliance/page.tsx",
-  "src/app/enterprise/page.tsx",
-  "src/app/ai-agents/page.tsx",
 ] as const;
 
 export const riskDirectPages = [
