@@ -104,6 +104,11 @@ export type RiskPageSpec = {
     description: string;
     actions?: PageAction[];
     metrics: SurfaceMetric[];
+    statusLabel?: string;
+    statusTone?: "teal" | "success" | "warning" | "neutral";
+    proofStripEyebrow?: string;
+    proofStripTitle?: string;
+    proofStripDescription?: string;
   };
   sectionHeader: {
     eyebrow: string;
@@ -116,12 +121,15 @@ export type RiskPageSpec = {
     description: string;
     metrics: SurfaceMetric[];
     tracks: RiskTrack[];
+    statusLabel?: string;
+    statusTone?: "teal" | "success" | "warning" | "neutral";
   };
   constraint: {
     eyebrow: string;
     title: string;
     description: string;
     constraints: ConstraintRow[];
+    codeEyebrow?: string;
     codeTitle?: string;
     code?: string;
     footer?: ReactNode;
@@ -131,6 +139,8 @@ export type RiskPageSpec = {
     title: string;
     description: string;
     steps: ScenarioStep[];
+    statusLabel?: string;
+    statusTone?: "teal" | "success" | "warning" | "neutral";
     footer?: ReactNode;
   };
   cta: {
@@ -224,6 +234,9 @@ export function CanonicalPageHero({
   actions,
   metrics,
   status,
+  proofStripEyebrow,
+  proofStripTitle,
+  proofStripDescription,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -232,6 +245,9 @@ export function CanonicalPageHero({
   actions?: PageAction[];
   metrics?: Array<{ label: string; value: string; detail?: string }>;
   status?: ReactNode;
+  proofStripEyebrow?: string;
+  proofStripTitle?: ReactNode;
+  proofStripDescription?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
@@ -261,9 +277,15 @@ export function CanonicalPageHero({
           <div className="mx-auto mt-12 max-w-5xl">
             <ArtifactFrame className="space-y-5">
               <ArtifactHeader
-                eyebrow="Proof strip"
-                title="One bounded object summarises the page before the body expands it."
-                description="The hero keeps the hook, but the proof strip carries state, scope, and operator-readable consequences."
+                eyebrow={proofStripEyebrow ?? "Proof strip"}
+                title={
+                  proofStripTitle ??
+                  "One bounded object summarises the page before the body expands it."
+                }
+                description={
+                  proofStripDescription ??
+                  "The hero keeps the hook, but the proof strip carries state, scope, and operator-readable consequences."
+                }
                 status={
                   status ?? (
                     <StatusPill tone="teal">
@@ -297,12 +319,16 @@ export function RiskEvidenceSurface({
   description,
   metrics,
   tracks,
+  statusLabel,
+  statusTone,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   metrics: Array<{ label: string; value: string; detail: string }>;
   tracks: Array<{ label: string; title: string; body: string; emphasis?: "risk" | "proof" }>;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
     <ArtifactFrame className="space-y-6">
@@ -311,9 +337,9 @@ export function RiskEvidenceSurface({
         title={title}
         description={description}
         status={
-          <StatusPill tone="warning">
+          <StatusPill tone={statusTone ?? "warning"}>
             <ShieldCheck className="h-3.5 w-3.5" />
-            risk evidence
+            {statusLabel ?? "risk evidence"}
           </StatusPill>
         }
       />
@@ -359,6 +385,7 @@ export function ConstraintEnvelopeSurface({
   title,
   description,
   constraints,
+  codeEyebrow,
   codeTitle,
   code,
   footer,
@@ -367,6 +394,7 @@ export function ConstraintEnvelopeSurface({
   title: string;
   description: string;
   constraints: Array<{ title: string; body: string; outcome: string }>;
+  codeEyebrow?: string;
   codeTitle?: string;
   code?: string;
   footer?: ReactNode;
@@ -403,7 +431,7 @@ export function ConstraintEnvelopeSurface({
         </div>
         {code && codeTitle ? (
           <CodeProofPanel
-            eyebrow="Bounded example"
+            eyebrow={codeEyebrow ?? "Bounded example"}
             title={codeTitle}
             badge={<ProofBadge />}
             code={code}
@@ -424,12 +452,16 @@ export function ScenarioFlowSurface({
   title,
   description,
   steps,
+  statusLabel,
+  statusTone,
   footer,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   steps: Array<{ label: string; title: string; body: string; state?: "idle" | "active" | "warning" | "success" }>;
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
   footer?: ReactNode;
 }) {
   return (
@@ -439,9 +471,9 @@ export function ScenarioFlowSurface({
         title={title}
         description={description}
         status={
-          <StatusPill tone="teal">
+          <StatusPill tone={statusTone ?? "teal"}>
             <Link2 className="h-3.5 w-3.5" />
-            scenario flow
+            {statusLabel ?? "scenario flow"}
           </StatusPill>
         }
       />
@@ -895,6 +927,17 @@ export function RiskPageView({ page }: { page: RiskPageSpec }) {
         description={page.hero.description}
         actions={page.hero.actions}
         metrics={page.hero.metrics}
+        status={
+          page.hero.statusLabel ? (
+            <StatusPill tone={page.hero.statusTone ?? "teal"}>
+              <Gauge className="h-3.5 w-3.5" />
+              {page.hero.statusLabel}
+            </StatusPill>
+          ) : undefined
+        }
+        proofStripEyebrow={page.hero.proofStripEyebrow}
+        proofStripTitle={page.hero.proofStripTitle}
+        proofStripDescription={page.hero.proofStripDescription}
       />
 
       <CanonicalSection>

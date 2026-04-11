@@ -4,7 +4,7 @@ import { industryPages } from "@/lib/risk-page-data";
 export const metadata = {
   title: "Government — BRIK64 Industries",
   description:
-    "Public-sector page for deterministic rules, bounded processing, and reviewable decision logic.",
+    "How BRIK-64 helps public-sector teams turn eligibility and routing rules into auditable software artifacts and bounded processing paths.",
 };
 
 export default function GovernmentIndustryPage() {

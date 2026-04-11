@@ -4,7 +4,7 @@ import { industryPages } from "@/lib/risk-page-data";
 export const metadata = {
   title: "Engineering — BRIK64 Industries",
   description:
-    "Engineering page for explicit assumptions, bounded calculations, and reusable verification surfaces.",
+    "How BRIK-64 helps engineering software teams preserve assumptions, bounded transforms, and reusable computational dossiers.",
 };
 
 export default function EngineeringIndustryPage() {

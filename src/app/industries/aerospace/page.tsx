@@ -4,7 +4,7 @@ import { industryPages } from "@/lib/risk-page-data";
 export const metadata = {
   title: "Aerospace — BRIK64 Industries",
   description:
-    "Aerospace-facing safety case page for explicit envelope constraints and reviewable software evidence.",
+    "How BRIK-64 helps avionics and control teams review envelope logic, degraded modes, and certification-support artifacts before the wider process absorbs the software.",
 };
 
 export default function AerospaceIndustryPage() {

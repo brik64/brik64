@@ -4,7 +4,7 @@ import { industryPages } from "@/lib/risk-page-data";
 export const metadata = {
   title: "Banking & Finance — BRIK64 Industries",
   description:
-    "Bounded transaction logic, explicit review paths, and audit-oriented evidence surfaces for finance software.",
+    "How BRIK-64 helps finance teams lift transaction, ledger, and approval logic into audit-ready artifacts before modernization or execution.",
 };
 
 export default function FinanceIndustryPage() {

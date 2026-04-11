@@ -51,6 +51,16 @@ describe("Product cluster — core routes keep their canonical artifacts", () =>
       ).toBe(true);
     }
   });
+
+  it("features now routes its clusters through bounded surfaces instead of legacy bullet clouds", () => {
+    const content = read("src/app/features/page.tsx");
+    expect(content).toContain("renderFeatureSurface");
+    expect(content).toContain("FeatureSectionBlock");
+    expect(content).toContain("ConstraintEnvelopeSurface");
+    expect(content).toContain("ScenarioFlowSurface");
+    expect(content).not.toContain("section.features.map(");
+    expect(content).not.toContain("Why this page changed");
+  });
 });
 
 describe("Product cluster — migrated pages adopt the shared cadence", () => {
