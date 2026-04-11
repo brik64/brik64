@@ -61,6 +61,9 @@ describe("Home narrative — master refactor alignment", () => {
     expect(content).toContain("bounded language, a canonical blueprint, and a compilation path");
     expect(content).toContain("setInterval");
     expect(content).toContain("10000");
+    expect(content).toContain("const HERO_SIGNAL_CARDS");
+    expect(content).toContain("cardIndexes: [0, 1]");
+    expect(content).toContain("cardIndexes: [2, 3]");
     expect(content).toContain('<MonomerGrid variant="hero" />');
     expect(content).not.toContain("Live surface");
   });

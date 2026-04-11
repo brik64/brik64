@@ -11,7 +11,38 @@ type HeroSlide = {
   headline: string;
   lead: string;
   ctas: Array<{ label: string; href: string }>;
+  signalTitle: string;
+  cardIndexes: [number, number];
 };
+
+type HeroSignalCard = {
+  label: string;
+  value: string;
+  detail: string;
+};
+
+const HERO_SIGNAL_CARDS: HeroSignalCard[] = [
+  {
+    label: "Formal layer",
+    value: "Generated + existing software",
+    detail: "The same layer can lift current code or author new bounded logic without changing the review posture.",
+  },
+  {
+    label: "Canonical blueprint",
+    value: "PCD",
+    detail: "One blueprint keeps domains, composition, closure, and target emission attached to the same review object.",
+  },
+  {
+    label: "Workflow entry",
+    value: "CLI + platform",
+    detail: "Start from operator workflow and carry the same bounded review chain into delivery.",
+  },
+  {
+    label: "Governed delivery",
+    value: "Registry + handoff",
+    detail: "Publication, reuse, and enterprise handoff stay aligned to the same reviewable blueprint state.",
+  },
+];
 
 const HERO_SLIDES: HeroSlide[] = [
   {
@@ -23,6 +54,8 @@ const HERO_SLIDES: HeroSlide[] = [
       { label: "Open the CLI", href: "/cli" },
       { label: "Read the blueprint", href: "/pcd" },
     ],
+    signalTitle: "Core model signals",
+    cardIndexes: [0, 1],
   },
   {
     eyebrow: "BEYOND VIBE CODING",
@@ -33,6 +66,8 @@ const HERO_SLIDES: HeroSlide[] = [
       { label: "Explore the platform", href: "/platform" },
       { label: "Learn the theory", href: "/foundations" },
     ],
+    signalTitle: "Adoption signals",
+    cardIndexes: [2, 3],
   },
 ];
 
@@ -40,6 +75,7 @@ export function HeroSection() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const activeSlide = HERO_SLIDES[activeSlideIndex];
   const headlineParts = activeSlide.headline.split("BRIK64");
+  const activeSignalCards = activeSlide.cardIndexes.map((index) => HERO_SIGNAL_CARDS[index]);
 
   useEffect(() => {
     const rotation = window.setInterval(() => {
@@ -107,21 +143,23 @@ export function HeroSection() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Formal layer</p>
-              <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Generated + existing software</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">The same layer can lift current code or author new bounded logic without changing the review posture.</p>
-            </div>
-            <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Canonical blueprint</p>
-              <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">PCD</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">One blueprint keeps domains, composition, closure, and target emission attached to the same review object.</p>
-            </div>
-            <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Governed delivery</p>
-              <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">CLI → platform → registry</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">The same chain can move from local review into publication, reuse, and enterprise handoff without hiding state.</p>
+          <div className="mt-10">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              {activeSlide.signalTitle}
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {activeSignalCards.map((card) => (
+                <div
+                  key={card.label}
+                  className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm"
+                >
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    {card.label}
+                  </p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">{card.value}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.detail}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

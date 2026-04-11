@@ -30,12 +30,18 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(grid).not.toContain("Hover or focus any core monomer");
   });
 
-  it("keeps the hero metrics precise and bounded", () => {
+  it("uses four hero cards and rotates two at a time in sync with the active title", () => {
     const hero = read("src/components/HeroSection.tsx");
-    expect(hero).toContain("md:grid-cols-3");
+    expect(hero).toContain("const HERO_SIGNAL_CARDS");
+    expect(hero).toContain("cardIndexes: [0, 1]");
+    expect(hero).toContain("cardIndexes: [2, 3]");
+    expect(hero).toContain("Core model signals");
+    expect(hero).toContain("Adoption signals");
+    expect(hero).toContain("md:grid-cols-2");
     expect(hero).toContain("Generated + existing software");
     expect(hero).toContain("PCD");
-    expect(hero).toContain("CLI → platform → registry");
+    expect(hero).toContain("CLI + platform");
+    expect(hero).toContain("Registry + handoff");
   });
 
   it("removes the old floating live-surface callout from the hero", () => {
