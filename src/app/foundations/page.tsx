@@ -36,7 +36,7 @@ export default function FoundationsPage() {
               Digital Circuitality on an <span className="text-teal">information-theoretic footing.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              This page explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation. The claims here apply to the modeled circuit representation, not to every uncontrolled runtime or deployment environment around it.
+              This foundations route explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation. The claims here apply to the modeled circuit representation, not to every uncontrolled runtime or deployment environment around it.
             </p>
           </div>
         </section>
