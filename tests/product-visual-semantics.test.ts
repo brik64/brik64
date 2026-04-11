@@ -89,15 +89,15 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).toContain("ActionSurface");
     expect(content).toContain("ScenarioFlowSurface");
     expect(content).toContain("FeatureMatrixSurface");
-    expect(content).toContain("Private scope, review flow, and support posture in one surface");
+    expect(content).toContain("Private scope, review flow, and support posture in one view");
   });
 
   it("compliance now uses the evidence dossier grammar", () => {
     const content = read("src/app/compliance/page.tsx");
     expect(content).toContain("RiskEvidenceSurface");
     expect(content).toContain("ConstraintEnvelopeSurface");
-    expect(content).toContain("Evidence Dossier");
-    expect(content).not.toContain("blanket regulatory certification");
+    expect(content).toContain("Evidence path");
+    expect(content).not.toContain("full regulatory certification");
   });
 
   it("ai-agents now centers the workflow object instead of demo snippets", () => {
@@ -105,7 +105,7 @@ describe("Product cluster — migrated pages adopt the shared cadence", () => {
     expect(content).toContain("FeatureMatrixSurface");
     expect(content).toContain("ConstraintEnvelopeSurface");
     expect(content).toContain("ScenarioFlowSurface");
-    expect(content).toContain("workflow object instead of a demo page");
+    expect(content).toContain("bounded workflow");
     expect(content).not.toContain("CopyableCode");
   });
 });

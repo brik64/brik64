@@ -40,7 +40,7 @@ describe("Design grammar — utility and company family", () => {
     expect(utilityPages.about.primarySurface.thesis).toBe(true);
     expect(utilityPages.contact.secondarySurface?.kind).toBe("action");
     expect(utilityPages.docs.secondarySurface?.kind).toBe("docs");
-    expect(utilityPages.shop.primarySurface.title).toContain("responsibly communicate");
+    expect(utilityPages.shop.primarySurface.title).toContain("communicate today");
     expect(utilityPages.login.sectionHeader.eyebrow).toBe("Auth Surface");
     expect(utilityPages.signup.sectionHeader.eyebrow).toBe("Auth Surface");
   });

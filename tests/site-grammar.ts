@@ -69,6 +69,16 @@ export const utilityWrapperPages = [
   ["src/app/signup/page.tsx", "signup"],
 ] as const;
 
+export const auditedUtilityWrapperPages = [
+  ["src/app/about/page.tsx", "about"],
+  ["src/app/contact/page.tsx", "contact"],
+  ["src/app/download/page.tsx", "download"],
+  ["src/app/pricing/page.tsx", "pricing"],
+  ["src/app/legal/page.tsx", "legal"],
+  ["src/app/investors/page.tsx", "investors"],
+  ["src/app/shop/page.tsx", "shop"],
+] as const;
+
 export const utilityDirectPages = [
   "src/app/design-system/page.tsx",
 ] as const;
@@ -90,6 +100,24 @@ export const riskWrapperPages = [
   ["src/app/use-cases/cobol-migration/page.tsx", "useCasePages.cobolMigration"],
   ["src/app/use-cases/formal-verification/page.tsx", "useCasePages.formalVerification"],
   ["src/app/use-cases/universal-transpilation/page.tsx", "useCasePages.universalTranspilation"],
+] as const;
+
+export const auditedRiskThesisPages = [
+  ["src/app/ai/page.tsx", "ai"],
+  ["src/app/blockchain/page.tsx", "blockchain"],
+  ["src/app/safety-critical/page.tsx", "safetyCritical"],
+] as const;
+
+export const auditedDirectProductPages = [
+  "src/app/foundations/page.tsx",
+  "src/app/bpu/page.tsx",
+  "src/app/pcd/page.tsx",
+] as const;
+
+export const auditedMigratedProductPages = [
+  "src/app/compliance/page.tsx",
+  "src/app/enterprise/page.tsx",
+  "src/app/ai-agents/page.tsx",
 ] as const;
 
 export const riskDirectPages = [

@@ -37,7 +37,7 @@ describe("Design grammar — risk and use-case family", () => {
     expect(content).toContain("export function ConstraintEnvelopeSurface");
     expect(content).toContain("export function ScenarioFlowSurface");
     expect(content).toContain("export function LanguageExchangeSurface");
-    expect(content).toContain("risk evidence");
+    expect(content).not.toContain("risk evidence");
     expect(content).toContain('codeEyebrow ?? "Bounded example"');
   });
 
@@ -55,7 +55,7 @@ describe("Design grammar — risk and use-case family", () => {
     ]);
     expect(aiUseCase.sectionHeader.title).toContain("bounded workflow");
     expect(aiUseCase.scenario.footer).toContain("organizational control");
-    expect(aiThesis.sectionHeader.title).toContain("constraints");
-    expect(aiThesis.constraint.footer).toContain("domain aspiration");
+    expect(aiThesis.sectionHeader.title).toContain("software boundary");
+    expect(aiThesis.constraint.footer).toContain("code-level evidence");
   });
 });
