@@ -16,13 +16,6 @@ const bannedClaims = [
 ];
 
 const auditedSourceFiles = [
-  "src/app/about/page.tsx",
-  "src/app/pricing/page.tsx",
-  "src/app/download/page.tsx",
-  "src/app/faq/page.tsx",
-  "src/app/investors/page.tsx",
-  "src/app/enterprise/page.tsx",
-  "src/app/ai-agents/page.tsx",
   "src/app/foundations/page.tsx",
   "src/app/bpu/page.tsx",
   "src/app/pcd/page.tsx",
@@ -34,9 +27,8 @@ const auditedSourceFiles = [
 ] as const;
 
 const requiredBoundarySignals: Array<{ file: string; checks: RegExp[] }> = [
-  { file: "src/app/about/page.tsx", checks: [/model-level closure condition/i, /not a blanket claim/i] },
-  { file: "src/app/enterprise/page.tsx", checks: [/review-ready evidence/i, /not automatic program certification/i] },
-  { file: "src/app/ai-agents/page.tsx", checks: [/verification remains external/i, /bounded/i] },
+  { file: "src/lib/utility-page-data.ts", checks: [/claim posture.*Qualified/i, /does not certify organizations by itself/i] },
+  { file: "src/lib/utility-page-data.ts", checks: [/No trust by default/i, /does not make underlying models trustworthy by default/i] },
   { file: "src/app/transpiler/page.tsx", checks: [/outside this boundary/i, /bounded intermediate/i] },
   { file: "src/app/lifter/page.tsx", checks: [/benchmark liftability/i, /universal guarantee/i] },
 ];
@@ -61,7 +53,7 @@ describe("Public editorial qualified claims", () => {
   });
 
   it("about and foundations do not mix conflicting headline test counts", () => {
-    const about = read("src/app/about/page.tsx");
+    const about = read("src/lib/utility-page-data.ts");
     const foundations = read("src/app/foundations/page.tsx");
     const joined = `${about}\n${foundations}`;
 

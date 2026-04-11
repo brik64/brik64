@@ -4,11 +4,10 @@ import path from "path";
 import {
   getAllPageFiles,
   productMigratedPages,
-  productRestoredPages,
   read,
   riskDirectPages,
   utilityDirectPages,
-  utilityRestoredPages,
+  utilityWrapperPages,
 } from "./site-grammar";
 
 const archetypesFile = "src/components/PageArchetypes.tsx";
@@ -80,13 +79,14 @@ describe("Alignment — wrapper pages point into the canonical views", () => {
   }
 });
 
-describe("Alignment — restored pages keep direct content shells", () => {
-  for (const file of [...utilityRestoredPages, ...productRestoredPages]) {
-    it(`${file} uses direct route content with local shell primitives`, () => {
+describe("Alignment — upgraded utility routes now use shared wrappers", () => {
+  for (const [file, key] of utilityWrapperPages) {
+    it(`${file} resolves through utilityPages.${key}`, () => {
       const content = read(file);
-      expect(content).toContain("Navbar");
-      expect(content).toContain("Footer");
-      expect(content).not.toContain("UtilityPageView");
+      expect(content).toContain("UtilityPageView");
+      expect(content).toContain(`utilityPages.${key}`);
+      expect(content.includes("<Navbar")).toBe(false);
+      expect(content.includes("<Footer")).toBe(false);
     });
   }
 });

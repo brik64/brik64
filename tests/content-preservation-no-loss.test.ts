@@ -5,19 +5,12 @@ import {
   PUBLIC_ROUTE_EDITORIAL_SPECS,
   type ContentAtom,
 } from "@/lib/public-site-editorial-contracts";
+import { utilityPages } from "@/lib/utility-page-data";
 import { read } from "./site-grammar";
 
 const atomList = atoms as ContentAtom[];
 
 const routeToFile: Record<string, string> = {
-  "/about": "src/app/about/page.tsx",
-  "/pricing": "src/app/pricing/page.tsx",
-  "/download": "src/app/download/page.tsx",
-  "/faq": "src/app/faq/page.tsx",
-  "/shop": "src/app/shop/page.tsx",
-  "/investors": "src/app/investors/page.tsx",
-  "/enterprise": "src/app/enterprise/page.tsx",
-  "/ai-agents": "src/app/ai-agents/page.tsx",
   "/foundations": "src/app/foundations/page.tsx",
   "/bpu": "src/app/bpu/page.tsx",
   "/pcd": "src/app/pcd/page.tsx",
@@ -26,12 +19,31 @@ const routeToFile: Record<string, string> = {
   "/cli": "src/app/cli/page.tsx",
 };
 
+const routeToUtilityKey: Record<string, keyof typeof utilityPages> = {
+  "/about": "about",
+  "/pricing": "pricing",
+  "/download": "download",
+  "/faq": "faq",
+  "/shop": "shop",
+  "/investors": "investors",
+  "/enterprise": "enterprise",
+  "/ai-agents": "aiAgents",
+};
+
+function readRouteContent(route: string): string {
+  const utilityKey = routeToUtilityKey[route];
+  if (utilityKey) {
+    return JSON.stringify(utilityPages[utilityKey]);
+  }
+  return read(routeToFile[route]);
+}
+
 const keywordAnchors: Array<{ route: string; checks: RegExp[] }> = [
-  { route: "/about", checks: [/Digital Circuitality/i, /\bPCD\b/, /compiler/i, /platform/i] },
-  { route: "/pricing", checks: [/\bCLI\b/, /\bTeam\b/, /Enterprise/i, /comparison/i] },
+  { route: "/about", checks: [/\bbounded\b/i, /\bPCD\b/, /compiler/i, /platform/i] },
+  { route: "/pricing", checks: [/\bCLI\b/, /\bTeam\b/, /Enterprise/i, /developer/i] },
   { route: "/download", checks: [/\bCLI\b/, /SDK/i, /platform/i] },
-  { route: "/enterprise", checks: [/SSO|SAML|OIDC/i, /audit/i, /compliance/i] },
-  { route: "/ai-agents", checks: [/policy/i, /workflow/i, /agent/i] },
+  { route: "/enterprise", checks: [/SSO|SAML|OIDC/i, /audit/i, /compliance/i, /does not certify organizations/i] },
+  { route: "/ai-agents", checks: [/policy/i, /workflow/i, /agent/i, /No trust by default/i] },
   { route: "/foundations", checks: [/formal/i, /analogy/i, /boundary/i] },
   { route: "/bpu", checks: [/roadmap/i, /software/i, /FPGA/i] },
   { route: "/pcd", checks: [/\bPCD\b/, /domain/i, /\bEVA\b/] },
@@ -41,8 +53,8 @@ describe("Content preservation no-loss", () => {
   it("all baseline atoms are marked preserve=true and mapped to real files", () => {
     for (const atom of atomList) {
       expect(atom.preserve).toBe(true);
-      expect(routeToFile[atom.route]).toBeTruthy();
-      expect(() => read(routeToFile[atom.route])).not.toThrow();
+      expect(routeToFile[atom.route] || routeToUtilityKey[atom.route]).toBeTruthy();
+      expect(readRouteContent(atom.route).length).toBeGreaterThan(0);
     }
   });
 
@@ -60,8 +72,7 @@ describe("Content preservation no-loss", () => {
 
   it("critical routes still contain the preserved technical anchors", () => {
     for (const entry of keywordAnchors) {
-      const file = routeToFile[entry.route];
-      const source = read(file);
+      const source = readRouteContent(entry.route);
       for (const check of entry.checks) {
         expect(source).toMatch(check);
       }

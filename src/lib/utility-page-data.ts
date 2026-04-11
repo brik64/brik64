@@ -373,6 +373,110 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       actions: [primary("Open platform", "/platform"), link("Read foundations", "/foundations")],
     },
   },
+  enterprise: {
+    hero: {
+      eyebrow: "Enterprise",
+      title: "Private delivery, identity controls, and",
+      highlight: "reviewable evidence workflows.",
+      description:
+        "Enterprise adoption focuses on identity integration, audit traceability, CI/CD status gates, and deployment posture under explicit claim boundaries.",
+      actions: [primary("Request architecture review", "mailto:enterprise@brik64.com"), secondary("Read compliance", "/compliance")],
+      metrics: [
+        { label: "Identity", value: "SSO / SAML / OIDC + SCIM", detail: "Access controls align with enterprise identity lifecycles." },
+        { label: "Evidence trail", value: "Compilation + review logs", detail: "Verification outputs carry traceable review artifacts into operating workflows." },
+        { label: "Claim boundary", value: "Support posture", detail: "BRIK-64 supports audit and review workflows; it does not certify organizations by itself." },
+      ],
+    },
+    sectionHeader: {
+      eyebrow: "Enterprise Operating Model",
+      title: "From bounded software checks to organizational review handoff",
+      description:
+        "This route explains what enterprise teams can operationalize today and where legal/compliance programs require separate controls.",
+    },
+    primarySurface: {
+      eyebrow: "Capability Scope",
+      title: "What enterprise teams can operationalize",
+      description:
+        "The enterprise route is about operating control points and review posture, not blanket compliance promises.",
+      rows: [
+        { title: "Identity and access", body: "SSO, SAML, OIDC, and SCIM integration for centralized user lifecycle and access policy." },
+        { title: "Audit and traceability", body: "Compilation trail, certification state, and status artifacts for review and change-control workflows." },
+        { title: "Delivery governance", body: "CI/CD gates, private registry controls, and deployment-boundary workflows for production adoption." },
+      ],
+      footer:
+        "Enterprise value comes from traceable workflows and explicit operating boundaries, not certification theater.",
+    },
+    secondarySurface: {
+      eyebrow: "Enterprise Handoff",
+      title: "Routes for compliance, deployment, and support",
+      description:
+        "Use the route that matches the workstream: technical controls, compliance mapping, or architecture review.",
+      kind: "action",
+      channels: [
+        { title: "Architecture review", body: "Technical scope, deployment options, and control-point design.", action: "enterprise@brik64.com", href: "mailto:enterprise@brik64.com" },
+        { title: "Compliance posture", body: "Evidence mapping and claim boundaries for standards-oriented programs.", action: "Open compliance", href: "/compliance" },
+        { title: "Platform integration", body: "Registry, review flows, and reusable component governance.", action: "Open platform", href: "/platform" },
+      ],
+    },
+    cta: {
+      title: "Start with architecture scope, then map controls.",
+      description:
+        "Begin with enterprise architecture review and move into compliance and platform routes with the same evidence posture.",
+      actions: [primary("Request architecture review", "mailto:enterprise@brik64.com"), link("Open platform", "/platform")],
+    },
+  },
+  aiAgents: {
+    hero: {
+      eyebrow: "AI Agents",
+      title: "Use AI as a bounded producer with",
+      highlight: "external verification.",
+      description:
+        "Agent output is treated as candidate logic. Policy circuits and compiler checks stay outside the model and gate what can be accepted or rejected.",
+      actions: [primary("Open AI safety use case", "/use-cases/ai-safety"), secondary("Install CLI", "/cli")],
+      metrics: [
+        { label: "Workflow", value: "discover → check → execute", detail: "Generated output is reviewed before it is allowed to trigger side effects." },
+        { label: "Control point", value: "Policy circuits", detail: "Action constraints remain explicit and machine-readable outside model weights." },
+        { label: "Boundary", value: "No trust by default", detail: "BRIK-64 constrains model output; it does not make underlying models trustworthy by default." },
+      ],
+    },
+    sectionHeader: {
+      eyebrow: "Agent Workflow",
+      title: "Generated output enters a constrained review loop",
+      description:
+        "This route explains how teams integrate AI agents without collapsing proof posture into model confidence.",
+    },
+    primarySurface: {
+      eyebrow: "Control Loop",
+      title: "How agent output is constrained",
+      description:
+        "The core loop remains external verification: inspect candidate output, apply policy gates, emit diagnostics, then publish accepted results.",
+      rows: [
+        { title: "Discover candidate logic", body: "Agents generate PCD or policy-relevant code as candidate output, not as trusted final software." },
+        { title: "Check and gate", body: "Policy circuits and compiler checks determine whether output can proceed to execution or publication." },
+        { title: "Diagnose and iterate", body: "Structured diagnostics feed a repair loop for rejected branches while preserving review traceability." },
+      ],
+      footer:
+        "The value is bounded agent integration with explicit controls, not AI hype language.",
+    },
+    secondarySurface: {
+      eyebrow: "Integration Routes",
+      title: "Where the constrained outputs go next",
+      description:
+        "Accepted outputs can move to CLI, platform, and registry flows while preserving policy and certification context.",
+      kind: "docs",
+      links: [
+        { title: "AI safety use case", body: "Detailed guardrail workflow with policy boundaries.", href: "/use-cases/ai-safety" },
+        { title: "CLI", body: "Local verification entrypoint for generated candidates.", href: "/cli" },
+        { title: "Platform", body: "Registry and workflow handoff for accepted bounded outputs.", href: "/platform" },
+      ],
+    },
+    cta: {
+      title: "Integrate agents through explicit gates.",
+      description:
+        "Start with constrained generation and policy checks, then route accepted outputs into platform workflows.",
+      actions: [primary("Open AI safety use case", "/use-cases/ai-safety"), link("Read platform", "/platform")],
+    },
+  },
   playground: {
     hero: {
       eyebrow: "Playground",
