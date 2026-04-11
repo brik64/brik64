@@ -91,8 +91,14 @@ function getOfficialNumber(track: HeroTrack, id: number) {
   return id;
 }
 
-export function MonomerGrid({ variant = "default" }: { variant?: "default" | "hero" }) {
-  const [activeTrack, setActiveTrack] = useState<HeroTrack>("core");
+export function MonomerGrid({
+  variant = "default",
+  fixedTrack,
+}: {
+  variant?: "default" | "hero";
+  fixedTrack?: HeroTrack;
+}) {
+  const [activeTrack, setActiveTrack] = useState<HeroTrack>(fixedTrack ?? "core");
   const [activeIds, setActiveIds] = useState<Record<HeroTrack, number>>({
     core: HERO_CORE_MONOMERS[0]?.id ?? 0,
     extended: HERO_EXTENDED_MONOMERS[0]?.id ?? 0,
@@ -106,8 +112,12 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
 
   const activeTrackIndex = activeTrack === "core" ? 0 : 1;
   const badgeTone = activeTrack === "core" ? "#00b8d4" : "#f59e0b";
+  const trackPanels = fixedTrack ? [fixedTrack] : (["core", "extended"] as const);
 
   function selectTrack(track: HeroTrack) {
+    if (fixedTrack) {
+      return;
+    }
     setActiveTrack(track);
   }
 
@@ -213,35 +223,37 @@ export function MonomerGrid({ variant = "default" }: { variant?: "default" | "he
       </div>
 
       <div className="mt-4 rounded-[1.5rem] border border-border/80 bg-background/88 p-3 shadow-sm md:p-4">
-        <div className="mb-3 flex items-center justify-start gap-3">
-          <div className="inline-flex rounded-full border border-border/80 bg-muted/35 p-1">
-            {(["core", "extended"] as const).map((track) => {
-              const isActive = track === activeTrack;
-              const trackColor = track === "core" ? "text-teal" : "text-amber-600";
-              return (
-                <button
-                  key={track}
-                  type="button"
-                  onClick={() => selectTrack(track)}
-                  className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors ${
-                    isActive ? `bg-muted/70 ${trackColor}` : "text-muted-foreground hover:text-foreground"
-                  }`}
-                  aria-label={`Show ${HERO_TRACKS[track].label}`}
-                  aria-pressed={isActive}
-                >
-                  {track === "core" ? "Core" : "Extended"}
-                </button>
-              );
-            })}
+        {!fixedTrack ? (
+          <div className="mb-3 flex items-center justify-start gap-3">
+            <div className="inline-flex rounded-full border border-border/80 bg-muted/35 p-1">
+              {(["core", "extended"] as const).map((track) => {
+                const isActive = track === activeTrack;
+                const trackColor = track === "core" ? "text-teal" : "text-amber-600";
+                return (
+                  <button
+                    key={track}
+                    type="button"
+                    onClick={() => selectTrack(track)}
+                    className={`rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+                      isActive ? `bg-muted/70 ${trackColor}` : "text-muted-foreground hover:text-foreground"
+                    }`}
+                    aria-label={`Show ${HERO_TRACKS[track].label}`}
+                    aria-pressed={isActive}
+                  >
+                    {track === "core" ? "Core" : "Extended"}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : null}
 
         <div className="overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${activeTrackIndex * 100}%)` }}
+            style={{ transform: fixedTrack ? "translateX(0%)" : `translateX(-${activeTrackIndex * 100}%)` }}
           >
-            {(["core", "extended"] as const).map((track) => (
+            {trackPanels.map((track) => (
               <div key={track} className="w-full shrink-0">
                 <div className="grid grid-cols-8 gap-1.5 md:gap-2">
                   {HERO_TRACKS[track].monomers.map((monomer) => {
