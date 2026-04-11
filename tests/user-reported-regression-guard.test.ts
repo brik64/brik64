@@ -49,7 +49,7 @@ const contentAnchors: Record<string, readonly string[]> = {
     "onMouseOver",
     "Inspect monomer",
     "ATOMIC BOUNDED OPERATIONS",
-    "ATOMIC EXPANDED BY CONTRACT",
+    "Atomic Contract Operations",
   ],
 };
 

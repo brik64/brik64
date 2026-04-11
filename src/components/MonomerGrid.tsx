@@ -48,8 +48,8 @@ const HERO_TRACKS: Record<
     monomers: HERO_CORE_MONOMERS,
   },
   extended: {
-    label: "ATOMIC EXPANDED BY CONTRACT",
-    panelLabel: "Contract monomer",
+    label: "Atomic Contract Operations",
+    panelLabel: "Extended monomer",
     badge: "EXTENDED CONTRACT",
     prefix: "MX",
     monomers: HERO_EXTENDED_MONOMERS,
