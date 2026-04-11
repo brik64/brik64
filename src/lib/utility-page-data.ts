@@ -237,14 +237,14 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     hero: {
       eyebrow: "FAQ",
       title: "Frequently asked questions should live in one",
-      highlight: "bounded surface.",
+      highlight: "clear route.",
       description:
-        "This page should answer high-frequency questions without dropping into legacy accordions and card grids.",
+        "Answer high-frequency questions quickly and route deeper technical or commercial topics to the right destination.",
       actions: [primary("Ask a question", "/contact"), secondary("Documentation", "https://docs.brik64.dev", true)],
     },
     sectionHeader: {
-      eyebrow: "Utility Surface",
-      title: "FAQ becomes a structured answer rail.",
+      eyebrow: "FAQ",
+      title: "Structured answers with direct follow-up routes",
       description:
         "The design priority is clarity and routing, not ornamental interaction.",
     },
@@ -252,11 +252,11 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Common Questions",
       title: "The questions that appear most often on the public site",
       description:
-        "A good FAQ narrows ambiguity and points back to the correct product surface.",
+        "A good FAQ narrows ambiguity and points users back to the correct product route.",
       rows: [
-        { title: "Is BRIK-64 a language, a compiler, or a platform?", body: "Publicly, it is presented as a formal language and compiler path wrapped by broader platform and registry surfaces." },
+        { title: "Is BRIK-64 a language, a compiler, or a platform?", body: "Publicly, it is presented as a formal language and compiler path wrapped by broader platform and registry workflows." },
         { title: "Do I need PCD to start?", body: "No. The public entry path can begin with CLI and SDK material, then move into PCD when formal structure matters." },
-        { title: "Does the site claim full compliance or certification?", body: "No. Compliance language must stay scoped to evidence posture, bounded logic, and operator support surfaces." },
+        { title: "Does the site claim full compliance or certification?", body: "No. Compliance language stays scoped to evidence posture, bounded logic, and operator review workflows." },
         { title: "Where should I go after this page?", body: "Docs, the platform page, or contact, depending on whether the question is technical, exploratory, or commercial." },
       ],
     },
@@ -264,18 +264,18 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Reference rails",
       title: "Useful routes when FAQ is not enough",
       description:
-        "A bounded utility page should still resolve to specific technical destinations.",
+        "The FAQ should still resolve to specific technical destinations.",
       kind: "docs",
       links: [
         { title: "Documentation", body: "Reference material and command help.", href: "https://docs.brik64.dev", external: true },
-        { title: "Platform", body: "The product surface that explains how the pieces combine.", href: "/platform" },
+        { title: "Platform", body: "The product route that explains how the pieces combine.", href: "/platform" },
         { title: "Contact", body: "Route unresolved questions into the correct support or enterprise channel.", href: "/contact" },
       ],
     },
     cta: {
-      title: "If the answer needs proof, move to the product surfaces.",
+      title: "If the answer needs proof, move to the product routes.",
       description:
-        "FAQ should clarify terminology and routing. Detailed evidence still belongs in the relevant product or risk pages.",
+        "FAQ should clarify terminology and routing. Detailed evidence belongs in the relevant product or risk routes.",
       actions: [primary("Open platform", "/platform"), link("Contact", "/contact")],
     },
   },
@@ -376,15 +376,15 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   playground: {
     hero: {
       eyebrow: "Playground",
-      title: "A technical utility surface for",
+      title: "A technical sandbox for",
       highlight: "experimentation.",
       description:
         "The playground should be framed as a bounded environment for trying commands, flows, and examples, not as a separate product brand.",
       actions: [primary("Open CLI docs", "https://docs.brik64.dev", true), secondary("CLI", "/cli")],
     },
     sectionHeader: {
-      eyebrow: "Utility Surface",
-      title: "The playground should behave like an operator sandbox.",
+      eyebrow: "Sandbox",
+      title: "Operator sandbox with explicit boundaries",
       description:
         "Keep the page technical and explicit about what it does and does not offer.",
     },
@@ -403,11 +403,11 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Operator rails",
       title: "Useful routes around the sandbox",
       description:
-        "A utility sandbox should still point outward to formal product surfaces.",
+        "A utility sandbox should still point outward to formal product routes.",
       kind: "docs",
       links: [
         { title: "CLI", body: "The canonical operator path for local work.", href: "/cli" },
-        { title: "PCD", body: "Formal language surface and syntax workbench.", href: "/pcd" },
+        { title: "PCD", body: "Formal language reference and syntax workbench.", href: "/pcd" },
         { title: "Documentation", body: "Reference material beyond the sandbox.", href: "https://docs.brik64.dev", external: true },
       ],
     },
@@ -440,9 +440,9 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     },
     secondarySurface: {
       eyebrow: "Reading rails",
-      title: "Release notes should connect to current public surfaces.",
+      title: "Release notes should connect to current public routes.",
       description:
-        "This page should route a reader from change history into the relevant surface immediately.",
+        "Route readers from change history into the relevant product or documentation route immediately.",
       kind: "docs",
       links: [
         { title: "News", body: "Editorial announcements and longer updates.", href: "/news" },
@@ -502,23 +502,23 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "The docs route should act as a bridge into the",
       highlight: "reference system.",
       description:
-        "Instead of a hard redirect, this page can explain where the documentation lives and how it connects to the public product surfaces.",
+        "Instead of a hard redirect, this route explains where documentation lives and how it connects to product workflows.",
       actions: [primary("Open documentation", "https://docs.brik64.dev", true), secondary("CLI", "/cli")],
     },
     sectionHeader: {
-      eyebrow: "Docs Rail",
-      title: "This route should bridge reference material back to the product surfaces.",
+      eyebrow: "Docs",
+      title: "Bridge reference material back to product workflows",
       description:
-        "The user should know where docs live, what they cover, and which public pages to use when they need more context.",
+        "The user should know where docs live, what they cover, and which public routes to use when they need more context.",
     },
     primarySurface: {
       eyebrow: "Documentation Scope",
       title: "What the reference system covers",
       description:
-        "This page helps route the user into the right part of the documentation stack without pretending the docs are separate from the product narrative.",
+        "This route helps users find the right part of the documentation stack without disconnecting it from the product narrative.",
       rows: [
         { title: "CLI and commands", body: "Use docs for install, command reference, and certification workflows." },
-        { title: "Language guides", body: "SDKs, host language integrations, and examples belong in the documentation rail." },
+        { title: "Language guides", body: "SDKs, host language integrations, and examples belong in documentation references." },
         { title: "Platform references", body: "When docs intersect with platform or registry behavior, route back to the relevant product pages as needed." },
       ],
     },
@@ -593,7 +593,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Access rules",
       title: "What signup should clarify",
       description:
-        "This page should make it clear how a user enters the product flow and where they go when they need a deeper deployment conversation.",
+        "Clarify how a user enters the product flow and where to go when they need a deeper deployment conversation.",
       rows: [
         { title: "Developer entry", body: "Self-serve users should still be able to inspect product and docs surfaces before account creation." },
         { title: "Enterprise path", body: "Private registry or deployment conversations still belong in the enterprise route, not in generic signup messaging." },

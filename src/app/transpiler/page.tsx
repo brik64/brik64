@@ -267,7 +267,7 @@ export default function TranspilerPage() {
           <div className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
             <span className="rounded-full border border-border bg-background px-3 py-1">5 source files</span>
             <span className="rounded-full border border-border bg-background px-3 py-1">5 certified circuits</span>
-            <span className="rounded-full border border-teal/20 bg-teal/[0.06] px-3 py-1 text-teal">100% migrated</span>
+            <span className="rounded-full border border-teal/20 bg-teal/[0.06] px-3 py-1 text-teal">sample run: all files migrated</span>
           </div>
           <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0a0e14] shadow-2xl">
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
@@ -295,10 +295,10 @@ export default function TranspilerPage() {
               <div className="font-mono text-sm text-emerald-400">&nbsp; &nbsp; &#10003; All circuits: <PhiC /> = 1</div>
               <div className="h-1" />
               <div className="font-mono text-sm text-zinc-400">&nbsp; &rarr; Step 4: BUILD &mdash; generating go output...</div>
-              <div className="font-mono text-sm text-emerald-400">&nbsp; &nbsp; &#10003; 5 files transpiled (100%)</div>
+              <div className="font-mono text-sm text-emerald-400">&nbsp; &nbsp; &#10003; 5 files transpiled in this run</div>
               <div className="h-2" />
               <div className="font-mono text-sm font-bold text-emerald-400">
-                &nbsp; Files: 5 scanned, 5 transpiled | Functions: 5 certified (100%)
+                &nbsp; Files: 5 scanned, 5 transpiled | Functions: 5 certified in this sample
               </div>
             </div>
           </div>
