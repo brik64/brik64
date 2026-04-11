@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: "CLI — BRIK64",
   description:
-    "The BRIK64 CLI page rendered as a bounded install and workflow surface instead of terminal stacks and detached command cards.",
+    "The BRIK64 CLI page presents bounded install and workflow guidance for technical operators.",
 };
 
 export default function CLIPage() {
@@ -40,7 +40,7 @@ export default function CLIPage() {
         <ArchetypeSectionHeader
           eyebrow="CLI"
           title="One install and workflow route"
-          description="The reader should understand what the CLI does, where certification fits, and what comes next without scanning disconnected terminal cards."
+          description="This route shows what the CLI does, where certification fits, and what comes next without disconnected command cards."
         />
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
           <FeatureMatrixSurface
@@ -61,7 +61,7 @@ export default function CLIPage() {
           />
           <ConstraintEnvelopeSurface
             eyebrow="Install + Quickstart"
-            title="Bounded install and proof workbench"
+            title="Bounded install and verification workbench"
             description="Terminal syntax remains visible and tied to explicit operator consequences."
             constraints={[
               { title: "Install from docs", body: "Route installation to the documented path instead of pretending every binary or package route is equally primary.", outcome: "operator route" },
@@ -77,8 +77,8 @@ $ brikc registry publish dist/project.pcd`}
           />
           <ScenarioFlowSurface
             eyebrow="Operator Loop"
-            title="The CLI story is a four-step proof loop"
-            description="Every command should reinforce the same delivery narrative already visible on home, platform, and registry."
+            title="The CLI story is a four-step verification loop"
+            description="Every command reinforces the same delivery narrative already visible on home, platform, and registry."
             steps={[
               { label: "01", title: "Start locally", body: "Install or open docs, then begin from real source or a fresh blueprint.", state: "active" },
               { label: "02", title: "Encode the bounded object", body: "Lift or write PCD so the computation becomes explicit and inspectable.", state: "warning" },
@@ -88,8 +88,8 @@ $ brikc registry publish dist/project.pcd`}
           />
           <EvidenceSurface
             eyebrow="CLI Scope"
-            title="What this route should promise"
-            description="The CLI can be technical and direct without overstating what the command layer alone proves."
+            title="What this route promises"
+            description="The CLI remains technical and direct without overstating what the command layer alone proves."
             items={[
               { label: "Local operator path", body: "Use the CLI to move from source material into bounded blueprints and explicit review steps." },
               { label: "Shared grammar", body: "The same command story must line up with PCD, platform, and registry pages instead of inventing a parallel product." },

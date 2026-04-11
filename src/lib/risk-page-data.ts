@@ -136,38 +136,38 @@ function buildUseCase(config: {
     },
     sectionHeader: {
       eyebrow: "Use Case",
-      title: "Use-case routes show a bounded workflow instead of a code-heavy demo.",
+      title: "Use cases stay operational: bounded workflow before implementation detail.",
       description:
-        "A use case should read like an operational scenario with explicit verification stages, not like a detached snippet.",
+        "Each use case explains a real operator flow with explicit verification stages and bounded claims.",
     },
     evidence: {
       eyebrow: "Scenario Evidence",
-      title: "The bounded workflow is the primary object",
+      title: "The bounded workflow remains the main reference",
       description:
-        "This route highlights operator decision points and verification obligations before showing code.",
+        "The route highlights operator decision points and verification obligations before code details.",
       metrics: config.heroMetrics,
       tracks: config.evidenceTracks,
     },
     constraint: {
       eyebrow: "Constraint Example",
-      title: "Keep the scenario attached to a real policy or circuit sketch",
+      title: "Anchor the scenario to a real policy or circuit sketch",
       description:
-        "Code is useful here as supporting evidence inside a stronger domain narrative.",
+        "Code is supporting evidence for the domain workflow and its boundaries.",
       constraints: config.constraints,
       codeTitle: config.codeTitle,
       code: config.code,
       footer:
-        "Use-case routes should remain concrete, operator-readable, and careful not to oversell domain guarantees beyond visible constraints.",
+        "Use cases stay concrete and operator-readable, and they avoid overclaiming beyond visible constraints.",
     },
     scenario: {
       eyebrow: "Workflow",
       title: "The flow of proof stays explicit",
       description:
-        "Every use case should make clear how an engineer goes from source material to bounded output and published evidence.",
+        "Every use case makes clear how an engineer goes from source material to bounded output and published evidence.",
       steps: [
         { label: "01", title: "Lift or express", body: "Start from source code or from an explicit PCD or policy sketch.", state: "active" },
         { label: "02", title: "Check boundaries", body: "Run domain checks and closure analysis before the result is trusted.", state: "warning" },
-        { label: "03", title: "Emit evidence", body: "Surface diagnostics, certification state, and a reusable artifact.", state: "success" },
+        { label: "03", title: "Emit evidence", body: "Emit diagnostics, certification state, and a reusable bounded output.", state: "success" },
         { label: "04", title: "Reuse the result", body: "Feed the bounded result back into the platform, registry, or delivery flow.", state: "idle" },
       ],
       footer:
@@ -206,7 +206,7 @@ function thesis(config: {
       eyebrow: "Domain boundary",
       title: "Problem, software boundary, and operator path",
       description:
-        "Each thesis route should identify the domain risk, where BRIK-64 enters the workflow, and what remains outside the claim boundary.",
+        "Each thesis route identifies domain risk, where BRIK-64 enters the workflow, and what remains outside the claim boundary.",
     },
     evidence: {
       eyebrow: "Domain evidence",
@@ -218,14 +218,14 @@ function thesis(config: {
     },
     constraint: {
       eyebrow: "Constraint Map",
-      title: "One inspectable bounded object anchors the claim",
+      title: "One inspectable bounded definition anchors the claim",
       description:
-        "The route does not prove the entire field. It shows how a bounded software rule becomes legible before execution or handoff.",
+        "The route does not prove an entire field. It shows how bounded software rules become legible before execution or handoff.",
       constraints: config.constraints,
       codeTitle: config.codeTitle,
       code: config.code,
       footer:
-        "Keep the line between domain aspiration and code-level evidence visible at all times.",
+        "Keep the line between domain aspiration and code-level evidence explicit.",
     },
     scenario: {
       eyebrow: "Operator Loop",
@@ -586,7 +586,7 @@ export const industryPages = {
     evidenceTracks: [
       { label: "Declared assumptions", title: "Capture materials, units, and ranges before the transform runs", body: "A structural, controls, or industrial computation becomes easier to review when load cases, material properties, tolerances, and units are explicit in the software artifact itself.", emphasis: "risk" },
       { label: "Reusable bounded algorithms", title: "Keep the transform readable enough to reuse across related engineering workflows", body: "A bounded algorithm can be reviewed once, reused across projects, and carried into other engineering surfaces without restating the same assumptions from scratch.", emphasis: "proof" },
-      { label: "Foundation handoff", title: "Route the resulting dossier into the product surfaces built for composition and reuse", body: "The engineering page should connect directly to PCD and Foundations so the artifact stays part of the real product workflow." },
+      { label: "Foundation handoff", title: "Route the resulting dossier into product routes built for composition and reuse", body: "The engineering route connects directly to PCD and Foundations so the artifact stays part of the real product workflow." },
     ],
     evidenceStatusLabel: "engineering dossier",
     evidenceStatusTone: "teal",
@@ -801,7 +801,7 @@ export const industryPages = {
     sectionEyebrow: "Dose and workflow review",
     sectionTitle: "Clinical software is easier to review when dose logic, escalation, and emitted state stay in one bounded artifact.",
     sectionDescription:
-      "The healthcare story should stay on software evidence: explicit dose boundaries, workflow state transitions, and readable engineering review output for device-adjacent or clinical workflow systems.",
+      "The healthcare story stays on software evidence: explicit dose boundaries, workflow state transitions, and readable engineering review output for device-adjacent or clinical workflow systems.",
     evidenceEyebrow: "Where BRIK-64 helps",
     evidenceTitle: "Keep the software boundary visible before a recommendation or workflow transition reaches a broader clinical process.",
     evidenceDescription:
@@ -874,7 +874,7 @@ export const industryPages = {
     sectionEyebrow: "Reproducible computation",
     sectionTitle: "Scientific software is easier to reproduce when assumptions, transforms, and result lineage stay inside one bounded artifact.",
     sectionDescription:
-      "The science page should explain a real integration path: declare ranges and calibration factors in PCD, preserve the transform chain, and publish the resulting artifact for review and reuse.",
+      "The science route explains a real integration path: declare ranges and calibration factors in PCD, preserve the transform chain, and publish the resulting artifact for review and reuse.",
     evidenceEyebrow: "Where BRIK-64 helps",
     evidenceTitle: "Treat the computational method as a shareable blueprint instead of a fragile local script.",
     evidenceDescription:
@@ -910,20 +910,20 @@ export const industryPages = {
     scenarioEyebrow: "Workflow example",
     scenarioTitle: "Run the reproducibility loop with the assumptions still attached to the published method.",
     scenarioDescription:
-      "The workflow remains technical and narrow: define the computational boundary, encode the transform, emit the reproducibility artifact, and publish the blueprint through registry-oriented surfaces.",
+      "The workflow remains technical and narrow: define the computational boundary, encode the transform, emit reproducibility evidence, and publish the blueprint through registry workflows.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the units, ranges, and calibration factors the computational method is allowed to accept.", state: "active" },
       { label: "02", title: "Encode the transform", body: "Represent the method as a bounded computation so another team can inspect the exact accepted path.", state: "warning" },
-      { label: "03", title: "Check and emit evidence", body: "Generate an artifact that preserves the transform chain and the emitted result lineage.", state: "success" },
-      { label: "04", title: "Publish and reuse", body: "Move the artifact into PCD and Registry workflows without losing the assumptions that gave the result meaning.", state: "idle" },
+      { label: "03", title: "Check and emit evidence", body: "Generate evidence that preserves the transform chain and emitted result lineage.", state: "success" },
+      { label: "04", title: "Publish and reuse", body: "Move results into PCD and Registry workflows without losing assumptions that gave the result meaning.", state: "idle" },
     ],
     scenarioStatusLabel: "registry handoff",
     scenarioStatusTone: "teal",
     scenarioFooter:
-      "This workflow supports reproducibility and shareable computational blueprints. It does not settle the scientific claim outside the software artifact.",
+      "This workflow supports reproducibility and shareable computational blueprints. It does not settle the scientific claim outside the bounded model.",
     ctaTitle: "Keep the computational method shareable, reproducible, and still tied to the assumptions that produced the result.",
     ctaDescription:
-      "Read the PCD surface for the blueprint layer, then publish the resulting artifact through Registry when the method is ready to be shared and reused.",
+      "Read the PCD reference for the blueprint layer, then publish the resulting method through Registry when it is ready to be shared and reused.",
     ctaActions: [primary("Read PCD", "/pcd"), secondary("Open registry", "/registry")],
   }),
 } as const;
@@ -935,14 +935,14 @@ export const useCasePages = {
     description:
       "This route covers external verification, bounded action rules, and traceable agent workflows rather than sweeping claims about solved alignment.",
     heroMetrics: [
-      { label: "Primary object", value: "Policy circuit", detail: "The key surface is the explicit rule set that sits outside the model." },
+      { label: "Primary object", value: "Policy circuit", detail: "The key control point is the explicit rule set that sits outside the model." },
       { label: "Verification point", value: "Before execution", detail: "The workflow checks the action before it reaches production." },
       { label: "Proof style", value: "Structured diagnostics", detail: "Rejected outputs should produce a readable reason, not just a failure." },
     ],
     evidenceTracks: [
       { label: "Guardrail boundary", title: "Keep the policy external to the model", body: "Show how explicit policy circuits bound action space without pretending to replace all AI safety work.", emphasis: "proof" },
       { label: "Generated output", title: "Verify before the agent acts", body: "AI-generated code or actions become safer when a bounded review step sits in front of execution.", emphasis: "risk" },
-      { label: "Workflow fit", title: "Tie the story back to product surfaces", body: "The use case should still resolve into CLI, PCD, platform, and registry flows." },
+      { label: "Workflow fit", title: "Tie the story back to product routes", body: "The use case resolves into CLI, PCD, platform, and registry workflows." },
     ],
     constraints: [
       { title: "Confidence vs risk", body: "High-risk actions should require stronger confidence or a distinct approval path.", outcome: "policy gate" },
@@ -960,7 +960,7 @@ export const useCasePages = {
 
   output approved : Bool = true
 }`,
-    ctaTitle: "Turn the AI safety page into a bounded workflow surface.",
+    ctaTitle: "Turn AI safety into a bounded workflow.",
     ctaDescription:
       "The strongest public message here is explicit pre-execution verification, not model mystique.",
   }),
@@ -970,19 +970,19 @@ export const useCasePages = {
     description:
       "This route shows how bounded verification enters a delivery pipeline without pretending it replaces the rest of release engineering.",
     heroMetrics: [
-      { label: "Primary object", value: "Pipeline gate", detail: "The critical surface is the bounded check inserted before release." },
-      { label: "Verification point", value: "Build stage", detail: "The result is a gate and an evidence artifact." },
+      { label: "Primary object", value: "Pipeline gate", detail: "The critical control point is the bounded check inserted before release." },
+      { label: "Verification point", value: "Build stage", detail: "The result is a gate and traceable evidence." },
       { label: "Proof style", value: "Change-sensitive", detail: "The pipeline output changes when the code path changes." },
     ],
     evidenceTracks: [
       { label: "Pipeline role", title: "Insert one explicit verification step", body: "Show the proof gate as a real operator step, not a vague CI benefit statement.", emphasis: "proof" },
-      { label: "Artifact sensitivity", title: "Keep the output tied to the build input", body: "The useful part of the use case is that changed code produces changed evidence.", emphasis: "risk" },
+      { label: "Evidence sensitivity", title: "Keep output tied to build input", body: "The useful part of the use case is that changed code produces changed evidence.", emphasis: "risk" },
       { label: "Workflow handoff", title: "Connect the check to the registry or review flow", body: "Make clear what happens after the gate passes." },
     ],
     constraints: [
       { title: "Build-time verification", body: "Show a check that runs before merge or deploy, not only after release.", outcome: "release gate" },
-      { title: "Evidence emission", body: "A successful run should produce a traceable result that can flow into docs, badges, or registry surfaces.", outcome: "artifact trail" },
-      { title: "Scoped promise", body: "The use case should not imply that one check replaces all testing, security, or operations work.", outcome: "bounded claim" },
+      { title: "Evidence emission", body: "A successful run should produce a traceable result that can flow into docs, badges, or registry workflows.", outcome: "evidence trail" },
+      { title: "Scoped promise", body: "The use case does not imply that one check replaces all testing, security, or operations work.", outcome: "bounded claim" },
     ],
     codeTitle: ".github/workflows/certify.yml",
     code: `name: certify
@@ -996,13 +996,13 @@ jobs:
       - run: brikc certify dist/project.pcd`,
     ctaTitle: "Make the CI/CD proof gate explicit.",
     ctaDescription:
-      "The site should show where the verification step sits in the delivery flow and what evidence it emits.",
+      "Show where the verification step sits in the delivery flow and what evidence it emits.",
   }),
   cobolMigration: buildUseCase({
     title: "COBOL migration needs a bounded bridge, not a blind",
     highlight: "rewrite.",
     description:
-      "This route focuses on lifting legacy logic into explicit PCD or constrained artifacts before transpilation or modernization.",
+      "This route focuses on lifting legacy logic into explicit PCD or constrained bounded outputs before transpilation or modernization.",
     heroMetrics: [
       { label: "Primary object", value: "Lifted blueprint", detail: "The key step is making legacy logic inspectable before replacing it." },
       { label: "Verification point", value: "Post-lift", detail: "The useful check happens on the extracted circuit boundary." },
@@ -1016,7 +1016,7 @@ jobs:
     constraints: [
       { title: "Liftable domain", body: "Show how legacy arithmetic or decision logic is extracted into explicit bounded objects.", outcome: "lift boundary" },
       { title: "Migration review", body: "Engineers should be able to compare source behavior and lifted behavior before any target code is emitted.", outcome: "side-by-side review" },
-      { title: "Scoped claim", body: "The use case should not imply that every legacy system becomes instantly certified end to end.", outcome: "bounded modernization" },
+      { title: "Scoped claim", body: "The use case does not imply that every legacy system becomes instantly certified end to end.", outcome: "bounded modernization" },
     ],
     codeTitle: "payroll.pcd",
     code: `PC compute_net_pay {
@@ -1036,9 +1036,9 @@ jobs:
     description:
       "This route connects theorem-backed thinking to a delivery path the reader can actually follow through the site.",
     heroMetrics: [
-      { label: "Primary object", value: "Proof workflow", detail: "The focus is the bridge from formal reasoning to operator-readable surfaces." },
+      { label: "Primary object", value: "Proof workflow", detail: "The focus is the bridge from formal reasoning to operator-readable steps." },
       { label: "Verification point", value: "Structure + closure", detail: "Stay grounded in bounded circuit checks and explicit proof posture." },
-      { label: "Proof style", value: "Delivery-aware", detail: "The public story should connect theory to how software is actually moved." },
+      { label: "Proof style", value: "Delivery-aware", detail: "The public story connects theory to how software is actually moved." },
     ],
     evidenceTracks: [
       { label: "Formal bridge", title: "Make the proof path legible", body: "Show how formal reasoning maps to circuits, checks, and published evidence.", emphasis: "proof" },
@@ -1048,7 +1048,7 @@ jobs:
     constraints: [
       { title: "Explicit domain", body: "Show that verification begins with bounded domains and explicit composition rather than mystical black-box reasoning.", outcome: "formal boundary" },
       { title: "Readable evidence", body: "Results should remain visible and inspectable to an engineer who is not reading proof assistants directly.", outcome: "public evidence" },
-      { title: "Scoped promise", body: "The site should not imply that every aspect of program correctness is formally settled by one public page.", outcome: "bounded claim" },
+      { title: "Scoped promise", body: "The site should not imply that every aspect of program correctness is formally settled by a single page.", outcome: "bounded claim" },
     ],
     codeTitle: "calculator.pcd",
     code: `PC calculator {
@@ -1065,7 +1065,7 @@ jobs:
     title: "Universal transpilation only matters when the intermediate form is",
     highlight: "bounded and inspectable.",
     description:
-      "This route frames transpilation as a lift-check-build workflow rather than a magic source-to-source promise.",
+      "This route frames transpilation as a lift-check-build workflow rather than an unlimited source-to-source promise.",
     heroMetrics: [
       { label: "Primary object", value: "Intermediate blueprint", detail: "Keep the PCD or circuit layer visible between source and target." },
       { label: "Verification point", value: "Between lift and emit", detail: "The useful check happens on the bounded representation, not only on the final target." },
@@ -1077,9 +1077,9 @@ jobs:
       { label: "Reuse path", title: "Connect the result to registry or platform workflows", body: "End in reuse and review, not just conversion." },
     ],
     constraints: [
-      { title: "Source extraction", body: "The use case should show where the source behavior is lifted into a bounded intermediate representation.", outcome: "lift path" },
+      { title: "Source extraction", body: "The use case shows where source behavior is lifted into a bounded intermediate representation.", outcome: "lift path" },
       { title: "Intermediate verification", body: "Make clear that the central check happens before target code is emitted.", outcome: "certification gate" },
-      { title: "Target clarity", body: "The final emitted artifact should still point back to the bounded blueprint it came from.", outcome: "traceable output" },
+      { title: "Target clarity", body: "The final emitted output should still point back to the bounded blueprint it came from.", outcome: "traceable output" },
     ],
     codeTitle: "normalize.pcd",
     code: `PC normalize {
@@ -1171,7 +1171,7 @@ export const thesisPages = {
     ],
     evidenceTracks: [
       { label: "Safety case", title: "Make the assurance path explicit", body: "The route is strongest when the operating envelope and the software boundary remain visible to the reviewer.", emphasis: "proof" },
-      { label: "Failure posture", title: "Show what happens when the boundary is violated", body: "Safe fallback and rejection logic should stay visible instead of being buried inside application flow.", emphasis: "risk" },
+      { label: "Failure posture", title: "Show what happens when the boundary is violated", body: "Safe fallback and rejection logic stays visible instead of being buried inside application flow.", emphasis: "risk" },
       { label: "Product fit", title: "Connect the route back to the stack", body: "The argument resolves into CLI, PCD, platform, and enterprise review routes rather than remaining an abstract safety slogan." },
     ],
     constraints: [

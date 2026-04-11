@@ -9,7 +9,6 @@ import { AnimatedCard } from "@/components/ui/pixel-perfect/animated-card";
 import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
 import {
   Terminal,
-  Cpu,
   Download,
   ExternalLink,
   CheckCircle2,
@@ -92,8 +91,8 @@ export default function DownloadPage() {
                 </TextGradient>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-                CLI, compiler, SDKs, and desktop app. Everything you need to
-                write, verify, and ship certified code.
+                CLI binaries, SDK packages, and platform delivery routes.
+                Start local, then move into documentation and platform workflows.
               </p>
             </div>
           </section>
@@ -113,8 +112,8 @@ export default function DownloadPage() {
                   <TextReveal>brikc — One binary. Zero dependencies.</TextReveal>
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  708 KB. Installs in 30 seconds. Compiles itself to an
-                  identical hash — that&apos;s the proof it works.
+                  708 KB standalone binary. Documented self-hosting fixpoint
+                  checks support compiler-chain consistency for the current build.
                 </p>
 
                 {/* Quick install */}
@@ -171,12 +170,13 @@ export default function DownloadPage() {
             </div>
 
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-              <TextReveal>The compiler that proves itself.</TextReveal>
+              <TextReveal>The compiler with documented self-hosting consistency.</TextReveal>
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              The BRIK64 compiler is bundled with the CLI. It verifies every
-              program, generates formal proofs, and emits certified binaries to
-              14 target languages. No separate install needed.
+              The BRIK64 compiler is bundled with the CLI. It verifies bounded
+              circuits under declared domains, emits review evidence for the
+              formal workflow, and can target 14 outputs from the same blueprint.
+              No separate compiler install is required.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -244,8 +244,9 @@ export default function DownloadPage() {
               <TextReveal>The platform, on your machine.</TextReveal>
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Forge, compose, and verify circuits locally. The desktop app
-              brings the full platform experience to macOS, Windows, and Linux.
+              Forge, compose, and review circuits locally. Desktop packaging for
+              macOS, Windows, and Linux is shown with explicit availability state
+              so teams can plan rollout without guessing.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -285,15 +286,15 @@ export default function DownloadPage() {
           {/* ── CTA ── */}
           <section className="px-6 py-20 text-center md:px-12 lg:px-18">
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-              Ready to build?
+              Ready to install?
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-              Start with the CLI — it&apos;s free forever. Upgrade to the
-              platform when your team needs more.
+              Start with the CLI through the public developer path, then move into
+              platform workflows when your team needs shared review and reuse.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <StripeButton className="h-12 px-8 text-base">
-                Install CLI — free
+                Install CLI
               </StripeButton>
               <a
                 href="/platform"

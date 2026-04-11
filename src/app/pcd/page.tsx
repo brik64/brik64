@@ -331,7 +331,7 @@ function EvaAlgebraArtifact() {
         </div>
         <EvidenceSurface
           eyebrow="Composition Reading"
-          title="EVA does not add magic syntax. It names the only three composition moves the compiler needs."
+          title="EVA does not add ornamental syntax. It names the three composition moves the compiler needs."
           description="That is why the algebra remains learnable and inspectable."
           items={[
             { label: "SEQ", body: "Output of one stage becomes the input of the next stage in a deterministic pipeline." },

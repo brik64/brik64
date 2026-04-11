@@ -261,7 +261,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       ],
     },
     secondarySurface: {
-      eyebrow: "Reference rails",
+      eyebrow: "Reference routes",
       title: "Useful routes when FAQ is not enough",
       description:
         "The FAQ should still resolve to specific technical destinations.",
@@ -379,7 +379,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       title: "A technical sandbox for",
       highlight: "experimentation.",
       description:
-        "The playground should be framed as a bounded environment for trying commands, flows, and examples, not as a separate product brand.",
+        "Use the playground as a bounded environment for trying commands, flows, and examples without leaving the main product narrative.",
       actions: [primary("Open CLI docs", "https://docs.brik64.dev", true), secondary("CLI", "/cli")],
     },
     sectionHeader: {
@@ -400,10 +400,10 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       ],
     },
     secondarySurface: {
-      eyebrow: "Operator rails",
+      eyebrow: "Reference routes",
       title: "Useful routes around the sandbox",
       description:
-        "A utility sandbox should still point outward to formal product routes.",
+        "The sandbox stays useful when it routes directly into formal product references.",
       kind: "docs",
       links: [
         { title: "CLI", body: "The canonical operator path for local work.", href: "/cli" },
@@ -415,38 +415,38 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   changelog: {
     hero: {
       eyebrow: "Changelog",
-      title: "Release notes should read as an editorial utility, not a",
+      title: "Release notes as an operational history, not a",
       highlight: "legacy feed.",
       description:
-        "The changelog stays public, but it should be tied back to current product surfaces and source references.",
+        "The changelog remains public and tied to current product routes, docs, and source references.",
       actions: [primary("Latest releases", "/news"), secondary("Documentation", "https://docs.brik64.dev", true)],
     },
     sectionHeader: {
       eyebrow: "Editorial Utility",
-      title: "The changelog is a release rail, not a disconnected archive.",
+      title: "The changelog is a release route, not a disconnected archive.",
       description:
-        "It should help the reader understand what changed and where to go next.",
+        "It helps the reader understand what changed and where to continue next.",
     },
     primarySurface: {
       eyebrow: "Release Scope",
-      title: "What the public changelog should communicate",
+      title: "What the public changelog communicates",
       description:
-        "Release notes should remain factual, scoped, and linked to product surfaces or docs.",
+        "Release notes stay factual, scoped, and linked to product routes or docs.",
       rows: [
         { title: "Current status", body: "Summarize meaningful public changes without creating a second design language for release notes." },
-        { title: "Source of truth", body: "Link changes back to product pages, docs, or repo-backed artifacts wherever possible." },
+        { title: "Source of truth", body: "Link changes back to product pages, docs, or repo-backed evidence wherever possible." },
         { title: "Historical framing", body: "Keep older milestones as history, but do not let them compete with the active product narrative." },
       ],
     },
     secondarySurface: {
-      eyebrow: "Reading rails",
-      title: "Release notes should connect to current public routes.",
+      eyebrow: "Reading routes",
+      title: "Release notes connect to current public routes.",
       description:
         "Route readers from change history into the relevant product or documentation route immediately.",
       kind: "docs",
       links: [
         { title: "News", body: "Editorial announcements and longer updates.", href: "/news" },
-        { title: "Platform", body: "The product surface most readers should inspect after a release note.", href: "/platform" },
+        { title: "Platform", body: "The product route most readers should inspect after a release note.", href: "/platform" },
         { title: "Documentation", body: "Command and API details for the current state.", href: "https://docs.brik64.dev", external: true },
       ],
     },
@@ -499,7 +499,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   docs: {
     hero: {
       eyebrow: "Docs",
-      title: "The docs route should act as a bridge into the",
+      title: "The docs route is a bridge into the",
       highlight: "reference system.",
       description:
         "Instead of a hard redirect, this route explains where documentation lives and how it connects to product workflows.",
@@ -509,7 +509,7 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Docs",
       title: "Bridge reference material back to product workflows",
       description:
-        "The user should know where docs live, what they cover, and which public routes to use when they need more context.",
+        "Users can see where docs live, what they cover, and which public routes to use for deeper context.",
     },
     primarySurface: {
       eyebrow: "Documentation Scope",
@@ -526,49 +526,49 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
       eyebrow: "Open these next",
       title: "Useful public routes around the docs",
       description:
-        "Readers should be able to move between docs and public product surfaces without a visual reset.",
+        "Readers can move between docs and public product routes without a visual reset.",
       kind: "docs",
       links: [
         { title: "Documentation", body: "Primary reference system.", href: "https://docs.brik64.dev", external: true },
         { title: "CLI", body: "The operator entrypoint that most docs readers will need.", href: "/cli" },
-        { title: "PCD", body: "The formal language surface behind the reference material.", href: "/pcd" },
+        { title: "PCD", body: "The formal language route behind the reference material.", href: "/pcd" },
       ],
     },
   },
   login: {
     hero: {
       eyebrow: "Login",
-      title: "Authentication pages should be minimal but still",
+      title: "Authentication pages stay minimal but still",
       highlight: "on-system.",
       description:
-        "The login surface should communicate the route into the platform without spinning up a separate design language.",
+        "Login communicates the route into the platform without introducing a separate design language.",
       actions: [primary("Platform", "/platform"), link("Contact support", "/contact")],
     },
     sectionHeader: {
-      eyebrow: "Auth Surface",
+      eyebrow: "Auth",
       title: "Login remains a bounded access page.",
       description:
-        "It can be visually quiet while still following the same header cadence and surface rules.",
+        "It can be visually quiet while still following the same header cadence and structure rules.",
     },
     primarySurface: {
       eyebrow: "Access model",
-      title: "What the login page should communicate",
+      title: "What the login route communicates",
       description:
         "This page is about access posture, support routing, and where the platform sits in the overall public flow.",
       rows: [
-        { title: "Platform access", body: "Use login only as the bridge into authenticated platform work, not as a standalone marketing surface." },
+        { title: "Platform access", body: "Use login only as the bridge into authenticated platform work, not as a standalone marketing page." },
         { title: "Support", body: "If the user cannot access the platform, route them into support or enterprise channels explicitly." },
-        { title: "Public fallback", body: "Unauthenticated users should still be able to return to product and docs surfaces immediately." },
+        { title: "Public fallback", body: "Unauthenticated users can immediately return to product and docs routes." },
       ],
     },
     secondarySurface: {
       eyebrow: "Useful routes",
       title: "Do not trap users in auth dead ends.",
       description:
-        "The login page should make recovery paths explicit.",
+        "Recovery paths remain explicit for platform access issues.",
       kind: "action",
       channels: [
-        { title: "Open platform narrative", body: "Return to the public product surface.", action: "Platform", href: "/platform" },
+        { title: "Open platform narrative", body: "Return to the public product route.", action: "Platform", href: "/platform" },
         { title: "Read docs", body: "Use docs if the user needs operator guidance before access.", action: "Docs", href: "https://docs.brik64.dev", external: true },
         { title: "Contact support", body: "Route login issues to the human channel.", action: "Support", href: "/contact" },
       ],
@@ -577,37 +577,37 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   signup: {
     hero: {
       eyebrow: "Signup",
-      title: "Account creation should be framed as a route into the",
+      title: "Account creation is framed as a route into the",
       highlight: "platform.",
       description:
         "The signup page stays minimal, but it still belongs to the same design system as the rest of the site.",
       actions: [primary("Platform", "/platform"), link("Enterprise contact", "mailto:enterprise@brik64.com")],
     },
     sectionHeader: {
-      eyebrow: "Auth Surface",
+      eyebrow: "Auth",
       title: "Signup remains an access step, not a separate landing page.",
       description:
-        "It should communicate who this route is for and how to get help.",
+        "It communicates who this route is for and how to get help.",
     },
     primarySurface: {
       eyebrow: "Access rules",
-      title: "What signup should clarify",
+      title: "What signup clarifies",
       description:
         "Clarify how a user enters the product flow and where to go when they need a deeper deployment conversation.",
       rows: [
-        { title: "Developer entry", body: "Self-serve users should still be able to inspect product and docs surfaces before account creation." },
+        { title: "Developer entry", body: "Self-serve users can inspect product and docs routes before account creation." },
         { title: "Enterprise path", body: "Private registry or deployment conversations still belong in the enterprise route, not in generic signup messaging." },
-        { title: "Support path", body: "Route access or account issues to the same contact and support surfaces used elsewhere." },
+        { title: "Support path", body: "Route access or account issues to the same contact and support routes used elsewhere." },
       ],
     },
     secondarySurface: {
       eyebrow: "Useful routes",
-      title: "Help the user move to the right next surface.",
+      title: "Help the user move to the right next route.",
       description:
-        "A signup page should terminate in clear product or support actions.",
+        "The signup route terminates in clear product or support actions.",
       kind: "action",
       channels: [
-        { title: "Read platform", body: "Go back to the public product surface before signing up.", action: "Platform", href: "/platform" },
+        { title: "Read platform", body: "Go back to the public product route before signing up.", action: "Platform", href: "/platform" },
         { title: "Open docs", body: "Reference material for users who are still evaluating the toolchain.", action: "Docs", href: "https://docs.brik64.dev", external: true },
         { title: "Enterprise evaluation", body: "Commercial or deployment questions belong in the enterprise route.", action: "enterprise@brik64.com", href: "mailto:enterprise@brik64.com" },
       ],

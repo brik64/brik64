@@ -22,18 +22,18 @@ export default function ShopPage() {
             <PageSectionHeader
               eyebrow="Merch Launch Plan"
               title="The storefront stays simple until the product layer is ready."
-              description="This page is no longer a thin wrapper. It now explains launch intent, scope, and what will appear here when physical BRIK64 artifacts are ready."
+              description="This route explains launch intent, scope, and what will appear here as physical BRIK64 merchandise is released."
             />
 
             <div className="mx-auto mt-10 max-w-5xl">
               <EvidenceSurface
                 eyebrow="Store Readiness"
                 title="Why the shop is intentionally staged"
-                description="The goal is to avoid an empty utility page and replace it with a bounded status surface that tells visitors what is coming and what is not live yet."
+                description="The goal is to provide an explicit launch status: what is coming, what is live, and what remains in preparation."
                 items={[
                   {
                     label: "Launch scope",
-                    body: "The first release will focus on a small set of official BRIK64 artifacts instead of a broad catalog with weak brand control.",
+                    body: "The first release will focus on a small set of official BRIK64 items instead of a broad catalog with weak brand control.",
                   },
                   {
                     label: "Fulfilment readiness",
@@ -41,10 +41,10 @@ export default function ShopPage() {
                   },
                   {
                     label: "Brand consistency",
-                    body: "Merch will use the same visual system as the marketing site: strong hero object, clear metadata, and no filler catalog placeholders.",
+                    body: "Merch will use the same visual system as the public site with clear metadata and no filler catalog placeholders.",
                   },
                 ]}
-                footer="This section also fixes the prior completeness gap in the route by replacing the thin wrapper with real, inspectable content."
+                footer="This route stays useful by keeping launch scope explicit and linking brand questions to real contact paths."
               />
             </div>
           </section>

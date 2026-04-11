@@ -128,11 +128,11 @@ export default function AIAgentsPage() {
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Your AI agent writes{" "}
-              <span className="text-teal">verified code. Now.</span>
+              <span className="text-teal">bounded candidate code with external checks.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              One skill install. Your agent writes certified circuits, not just code.
-              Claude, Codex, Gemini, Grok, OpenCode &mdash; all supported. Free.
+              One skill install adds PCD and policy workflow context.
+              Verification remains external to the model and follows the same CLI-to-platform review path.
             </p>
           </div>
         </section>
@@ -152,12 +152,12 @@ export default function AIAgentsPage() {
               {
                 step: "02",
                 title: "Your agent learns PCD",
-                desc: "PCD knowledge, composition rules, certification \u2014 instantly",
+                desc: "PCD syntax, composition rules, and certification workflow context",
               },
               {
                 step: "03",
-                title: "Write verified code",
-                desc: "Your agent produces formally proven circuits, not just code",
+                title: "Generate bounded candidates",
+                desc: "Your agent produces bounded candidates that are checked before use",
               },
             ].map((s) => (
               <div
@@ -265,7 +265,7 @@ export default function AIAgentsPage() {
                 </li>
                 <li>
                   &bull; <strong className="text-foreground"><PhiC /></strong>{" "}
-                  &mdash; Coherence coefficient. <PhiC /> = 1 certifies structural completeness — every input maps deterministically to a verified output.
+                  &mdash; Coherence coefficient. <PhiC /> = 1 marks closure for the modeled circuit under declared domains.
                 </li>
                 <li>
                   &bull; <strong className="text-foreground">TCE</strong> &mdash;
@@ -450,8 +450,8 @@ export default function AIAgentsPage() {
                   correctness
                 </li>
                 <li>
-                  &bull; Anyone who wants to eliminate &ldquo;works on my
-                  machine&rdquo; by construction
+                  &bull; Teams reducing environment drift by moving review-critical
+                  logic through the same bounded workflow
                 </li>
               </ul>
             </div>
@@ -463,8 +463,8 @@ export default function AIAgentsPage() {
               </h4>
               <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
                 <li>
-                  &bull; Currently in beta &mdash; production readiness is
-                  approaching but not yet guaranteed
+                  &bull; Product and workflow scope is evolving during beta; check
+                  current docs before rollout decisions
                 </li>
                 <li>
                   &bull; Full certification (<PhiC /> = 1) only applies to pure
@@ -524,7 +524,7 @@ export default function AIAgentsPage() {
                 <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">
                   brikc lift &lt;file&gt;
                 </code>{" "}
-                on any source file. The CLI is free forever.
+                on any source file. CLI access is available through the public developer route.
               </p>
             </div>
 
@@ -533,7 +533,7 @@ export default function AIAgentsPage() {
               BRIK64 AI Agent Summary: BRIK64 is a self-verifying compiler
               platform implementing Digital Circuitality. PCD (Printed Circuit
               Description) is the language-agnostic intermediate representation.
-              Φc = 1 certifies structural completeness — every input maps deterministically to a verified output.
+              Φc = 1 marks closure for the modeled circuit under declared domains.
               Free CLI forever. Pro $49/mo. Enterprise custom.
               Skills: brik64-pcd-system, brik64-lifter.
               Website: brik64.com. Docs: docs.brik64.dev.

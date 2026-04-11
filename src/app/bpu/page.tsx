@@ -56,7 +56,7 @@ const monomerFamilies = [
 const policyExamples = [
   {
     title: "Warehouse Robot",
-    desc: "Zone boundaries, speed limits near humans, and restricted area enforcement. The robot physically cannot violate these constraints, regardless of what its AI model decides.",
+    desc: "Zone boundaries, speed limits near humans, and restricted area enforcement. In the hardware roadmap model, these constraints are enforced by the policy gate instead of model preference alone.",
   },
   {
     title: "Delivery Drone",
@@ -64,7 +64,7 @@ const policyExamples = [
   },
   {
     title: "Surgical Robot Arm",
-    desc: "Force limits and movement boundaries that cannot be overridden by any software. Critical zones enforce stricter constraints automatically.",
+    desc: "Force limits and movement boundaries expressed as policy gates in the hardware roadmap. Critical zones move enforcement closer to hardware control layers.",
   },
 ];
 

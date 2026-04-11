@@ -107,9 +107,8 @@ export default function LegalPage() {
 
             <h3 className="text-sm font-bold text-foreground">Source Code</h3>
             <p>
-              <strong className="text-foreground">Your source code is never stored on our servers.</strong>{" "}
-              The CLI processes code locally on your machine. Only PCD blueprints and certification
-              hashes are stored on the platform if you explicitly choose to publish them.
+              <strong className="text-foreground">By default, source processing runs locally in the CLI workflow.</strong>{" "}
+              PCD blueprints and certification hashes are stored on the platform only when you explicitly choose to publish them.
             </p>
 
             <h3 className="text-sm font-bold text-foreground">Data Sharing</h3>

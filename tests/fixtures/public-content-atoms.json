@@ -1,0 +1,412 @@
+[
+  {
+    "id": "about-thesis-digital-circuitality",
+    "route": "/about",
+    "topic": "thesis",
+    "sourceText": "Digital Circuitality as a formal software architecture",
+    "targetIntent": "Explain why bounded computation and closure are central to the company thesis.",
+    "claimClass": "direct",
+    "evidenceSource": "docs/content-marketing-scope.md",
+    "preserve": true
+  },
+  {
+    "id": "about-stack-pcd-compiler-platform",
+    "route": "/about",
+    "topic": "capability",
+    "sourceText": "PCD + compiler chain + platform + registry",
+    "targetIntent": "Keep the system stack explicit instead of reducing About to brand narrative.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/about/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "about-science-basis",
+    "route": "/about",
+    "topic": "evidence",
+    "sourceText": "Information-theoretic and proof-oriented scientific basis",
+    "targetIntent": "Preserve the science framing without overclaiming universality.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/foundations/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "about-ai-workflow",
+    "route": "/about",
+    "topic": "workflow",
+    "sourceText": "AI-generated logic is checked by an external verification loop",
+    "targetIntent": "Keep AI-native workflow while avoiding trust-by-default model claims.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/ai-agents/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pricing-tier-map",
+    "route": "/pricing",
+    "topic": "capability",
+    "sourceText": "Developer, Pro/Team, Enterprise route segmentation",
+    "targetIntent": "Keep pricing segmentation and avoid flattening commercial paths.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/pricing/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pricing-comparison-matrix",
+    "route": "/pricing",
+    "topic": "evidence",
+    "sourceText": "Feature-by-tier comparison matrix",
+    "targetIntent": "Preserve practical plan differentiation for technical buyers.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/pricing/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pricing-enterprise-path",
+    "route": "/pricing",
+    "topic": "workflow",
+    "sourceText": "Enterprise as contact-led evaluation path",
+    "targetIntent": "Keep enterprise onboarding route explicit and operational.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/enterprise/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pricing-faq-commercial",
+    "route": "/pricing",
+    "topic": "boundary",
+    "sourceText": "FAQ for limits, support, and self-host posture",
+    "targetIntent": "Retain practical commercial clarifications and bounds.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/pricing/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "download-cli-binaries",
+    "route": "/download",
+    "topic": "capability",
+    "sourceText": "CLI binaries by OS/architecture",
+    "targetIntent": "Keep concrete download artifacts and install choices.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/download/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "download-sdk-packages",
+    "route": "/download",
+    "topic": "capability",
+    "sourceText": "SDK packages per ecosystem",
+    "targetIntent": "Preserve language-specific install paths.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/download/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "download-platform-posture",
+    "route": "/download",
+    "topic": "boundary",
+    "sourceText": "Platform app availability and release posture",
+    "targetIntent": "Retain availability signaling without pretending all installers are live.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/download/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "download-install-workflow",
+    "route": "/download",
+    "topic": "workflow",
+    "sourceText": "Install -> verify -> route to docs/platform",
+    "targetIntent": "Maintain operator flow from download to production workflow.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/download/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "faq-core-definition",
+    "route": "/faq",
+    "topic": "thesis",
+    "sourceText": "FAQ clarifies what BRIK-64 is and what PCD is",
+    "targetIntent": "Preserve high-signal onboarding answers in one place.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/faq/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "faq-verification-boundary",
+    "route": "/faq",
+    "topic": "boundary",
+    "sourceText": "Verification statements are scoped to bounded domains and model limits",
+    "targetIntent": "Prevent FAQ from making absolute blanket guarantees.",
+    "claimClass": "qualified",
+    "evidenceSource": "docs/content-marketing-scope.md",
+    "preserve": true
+  },
+  {
+    "id": "shop-launch-status",
+    "route": "/shop",
+    "topic": "workflow",
+    "sourceText": "Merch rollout status and launch scope",
+    "targetIntent": "Keep shop as honest status route until commerce is fully live.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/shop/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "shop-brand-guidance",
+    "route": "/shop",
+    "topic": "capability",
+    "sourceText": "Brand-support and collateral posture",
+    "targetIntent": "Preserve non-commerce value of the route for brand operations.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/shop/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "investors-category-thesis",
+    "route": "/investors",
+    "topic": "thesis",
+    "sourceText": "Category framing for verified software infrastructure",
+    "targetIntent": "Keep architecture thesis without unsupported traction claims.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/investors/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "investors-system-form",
+    "route": "/investors",
+    "topic": "capability",
+    "sourceText": "Language + compiler + platform + registry system form",
+    "targetIntent": "Preserve technical system rationale behind investor thesis.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/investors/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "enterprise-private-scope",
+    "route": "/enterprise",
+    "topic": "capability",
+    "sourceText": "Private workflows, identity controls, and deployment options",
+    "targetIntent": "Keep enterprise scope grounded in operational controls.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/enterprise/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "enterprise-identity-controls",
+    "route": "/enterprise",
+    "topic": "capability",
+    "sourceText": "Identity controls (SSO/SAML/OIDC + SCIM)",
+    "targetIntent": "Preserve enterprise identity and access posture in public copy.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/enterprise/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "enterprise-audit-posture",
+    "route": "/enterprise",
+    "topic": "evidence",
+    "sourceText": "Audit trail and review evidence posture",
+    "targetIntent": "Preserve governance value without implying automatic certification.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/enterprise/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "enterprise-operator-workflow",
+    "route": "/enterprise",
+    "topic": "workflow",
+    "sourceText": "Operator handoff from CI gates to audit and deployment review",
+    "targetIntent": "Keep enterprise workflow legible beyond capability bullet lists.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/enterprise/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "ai-agents-discover-check-execute",
+    "route": "/ai-agents",
+    "topic": "workflow",
+    "sourceText": "Discover -> check -> execute loop",
+    "targetIntent": "Retain operator loop as central AI workflow.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/ai-agents/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "ai-agents-policy-gates",
+    "route": "/ai-agents",
+    "topic": "capability",
+    "sourceText": "Policy circuits and constraint checks",
+    "targetIntent": "Preserve bounded control architecture for agent actions.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/ai-agents/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "ai-agents-diagnostics-loop",
+    "route": "/ai-agents",
+    "topic": "evidence",
+    "sourceText": "Structured diagnostics and retry loop",
+    "targetIntent": "Keep concrete error handling and review state visible.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/ai-agents/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "ai-agents-boundary-non-trust-default",
+    "route": "/ai-agents",
+    "topic": "boundary",
+    "sourceText": "Model output is not trusted by default; checks are external",
+    "targetIntent": "Keep explicit non-trust-by-default boundary in AI narrative.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/ai-agents/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "foundations-formal-definition",
+    "route": "/foundations",
+    "topic": "thesis",
+    "sourceText": "Formal definition and closure condition",
+    "targetIntent": "Preserve theorem-level claims tied to model semantics.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/foundations/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "foundations-thermodynamic-analogy",
+    "route": "/foundations",
+    "topic": "boundary",
+    "sourceText": "Thermodynamic analogy with explicit scope limits",
+    "targetIntent": "Preserve explanatory value without converting analogy into unrestricted truth.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/foundations/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "foundations-eva-framework",
+    "route": "/foundations",
+    "topic": "capability",
+    "sourceText": "EVA composition as structural backbone",
+    "targetIntent": "Retain compositional model and product implication.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/foundations/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "foundations-claim-boundary",
+    "route": "/foundations",
+    "topic": "boundary",
+    "sourceText": "Formal claims are scoped to the modeled circuit representation",
+    "targetIntent": "Preserve theorem/analogy/boundary separation in the long-form science route.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/foundations/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "bpu-policy-enforcement-concept",
+    "route": "/bpu",
+    "topic": "thesis",
+    "sourceText": "Policy enforcement hardware concept",
+    "targetIntent": "Preserve BPU concept while avoiding present-tense silicon claims.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/bpu/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "bpu-software-phase",
+    "route": "/bpu",
+    "topic": "workflow",
+    "sourceText": "Software phase available now",
+    "targetIntent": "Keep current availability explicit before roadmap stages.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/bpu/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "bpu-fpga-phase",
+    "route": "/bpu",
+    "topic": "workflow",
+    "sourceText": "FPGA validation phase",
+    "targetIntent": "Preserve intermediate roadmap stage as planned, not shipped.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/bpu/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "bpu-silicon-phase",
+    "route": "/bpu",
+    "topic": "workflow",
+    "sourceText": "Silicon phase as target roadmap milestone",
+    "targetIntent": "Preserve long-term architecture trajectory with explicit non-current status.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/bpu/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pcd-format-not-scripting-language",
+    "route": "/pcd",
+    "topic": "thesis",
+    "sourceText": "PCD is a formal blueprint format, not ad-hoc scripting syntax",
+    "targetIntent": "Preserve core identity of PCD for technical readers.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/pcd/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pcd-domain-declarations",
+    "route": "/pcd",
+    "topic": "capability",
+    "sourceText": "Declared domains and bounded ranges",
+    "targetIntent": "Keep domain-oriented validation as a first-class explanation.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/pcd/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pcd-monomer-core-and-bridges",
+    "route": "/pcd",
+    "topic": "capability",
+    "sourceText": "128 operations split between formal core and contract-bounded bridges",
+    "targetIntent": "Preserve operation catalog framing with explicit boundaries.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/pcd/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "pcd-eva-composition",
+    "route": "/pcd",
+    "topic": "workflow",
+    "sourceText": "EVA composition model for circuit assembly",
+    "targetIntent": "Keep composition mechanism visible for practitioner understanding.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/pcd/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "lifter-benchmark-evidence",
+    "route": "/lifter",
+    "topic": "evidence",
+    "sourceText": "211/211 liftability benchmark evidence in repo-backed runs",
+    "targetIntent": "Preserve benchmark signal while avoiding universal guarantees.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/lifter/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "transpiler-source-target-matrix",
+    "route": "/transpiler",
+    "topic": "capability",
+    "sourceText": "10 source languages and 14 output targets through bounded intermediate form",
+    "targetIntent": "Keep migration matrix value proposition with explicit equivalence boundary.",
+    "claimClass": "qualified",
+    "evidenceSource": "src/app/transpiler/page.tsx",
+    "preserve": true
+  },
+  {
+    "id": "cli-operator-entrypoint",
+    "route": "/cli",
+    "topic": "workflow",
+    "sourceText": "CLI as first operator entrypoint",
+    "targetIntent": "Preserve practical local-first onboarding path.",
+    "claimClass": "direct",
+    "evidenceSource": "src/app/cli/page.tsx",
+    "preserve": true
+  }
+]

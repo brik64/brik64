@@ -4,7 +4,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
 import {
-  Shield,
   GitBranch,
   FileCheck,
   BadgeCheck,
@@ -33,7 +32,7 @@ const features = [
     icon: GitBranch,
     title: "CI/CD Integration",
     description:
-      "GitHub Actions, GitLab CI, and Jenkins plugins. Add certification gates to your pipeline \u2014 code that doesn\u2019t reach \u03A6_c = 1 never reaches production.",
+      "GitHub Actions, GitLab CI, and Jenkins plugins. Add verification gates so bounded checks are visible before deployment decisions.",
   },
   {
     icon: FileCheck,
@@ -45,13 +44,13 @@ const features = [
     icon: BadgeCheck,
     title: "Certification Badges",
     description:
-      "White-label embeddable badges that prove your code is certified. API-connected, real-time verification, subscription-locked for enterprise.",
+      "White-label embeddable badges tied to verification status and review workflows. API-connected and enterprise-configurable.",
   },
   {
     icon: KeyRound,
     title: "SSO / SAML / OIDC",
     description:
-      "Single sign-on with your identity provider. SCIM provisioning for automated user lifecycle management. Zero friction for large teams.",
+      "Single sign-on with your identity provider and SCIM provisioning for automated user lifecycle management.",
   },
   {
     icon: ClipboardList,
@@ -63,7 +62,7 @@ const features = [
     icon: Clock,
     title: "SLA & Dedicated Support",
     description:
-      "99.9% uptime SLA. Dedicated support engineer. On-premise deployment option for air-gapped environments.",
+      "SLA options and dedicated support paths. Deployment options include on-premise posture for air-gapped environments.",
   },
 ];
 
@@ -74,25 +73,25 @@ const useCases = [
     icon: Landmark,
     title: "Banking & Fintech",
     description:
-      "Migrate COBOL mainframe logic to Go/Rust with mathematical proof of equivalence. $3T+ in daily transactions depend on legacy systems \u2014 modernize without risk.",
+      "Migrate COBOL mainframe logic to modern targets through lift-check-build workflows with explicit equivalence review boundaries.",
   },
   {
     icon: HeartPulse,
     title: "Healthcare",
     description:
-      "HIPAA processing logic evidence for medical software. Every function that processes patient data carries a formal proof of correctness. Infrastructure and access controls require separate evidence.",
+      "HIPAA-context processing logic evidence for medical software workflows. Infrastructure and access controls require separate evidence programs.",
   },
   {
     icon: Car,
     title: "Automotive & Aerospace",
     description:
-      "ISO 26262 and DO-178C evidence generated automatically from certified PCD blueprints. Closure domains enforce physical safety bounds at compile time.",
+      "ISO 26262 and DO-178C contexts supported through bounded software evidence and review-ready outputs from PCD workflows.",
   },
   {
     icon: Building2,
     title: "Government & Defense",
     description:
-      "Air-gapped on-premise deployment. Audit trails exportable as processing logic evidence for NIST and FedRAMP assessments. Source code never leaves your network.",
+      "Air-gapped on-premise deployment options and exportable audit trails for NIST and FedRAMP-oriented assessment workflows.",
   },
 ];
 
@@ -128,7 +127,7 @@ export default function EnterprisePage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Fintech. Healthcare. Automotive. Government. &ldquo;Tests pass&rdquo; is not enough.
-              <PhiC /> = 1 is mathematical proof. Compliance evidence at compile time. Not after the audit.
+              <PhiC /> = 1 indicates closure on the modeled circuit. Compliance posture is supported with review-ready evidence, not automatic program certification.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <a
@@ -206,7 +205,7 @@ export default function EnterprisePage() {
           <p className="text-muted-foreground mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed">
             BRIK64 generates verification evidence for processing logic and change control.
             Infrastructure, organizational, and procedural controls require separate evidence.
-            The math generates the processing integrity proof &mdash; reducing manual documentation to review and approval.
+            The verification flow supports processing-integrity review and reduces manual evidence collection overhead.
           </p>
         </section>
 

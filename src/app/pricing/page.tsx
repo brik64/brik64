@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { PhiC } from "@/components/PhiC";
 import {
   Check,
   X,
@@ -31,7 +30,7 @@ const tiers = [
     price: "$0",
     period: "forever",
     description: "Everything you need to certify code. Free forever.",
-    cta: "Start building \u2014 free",
+    cta: "Install CLI",
     ctaHref: "/login",
     highlight: false,
     features: [
@@ -101,7 +100,7 @@ const tiers = [
       "Compliance evidence reports (SOC2, PCI-DSS, HIPAA)",
       "Custom registry & white-label badges",
       "CI/CD gate plugins",
-      "Custom SLA (99.9% uptime)",
+      "Custom SLA options",
       "Dedicated support engineer",
       "On-premise / self-hosted option",
     ],
@@ -118,7 +117,7 @@ const comparisonSections = [
       { feature: "CLI access", free: true, pro: true, team: true, enterprise: true },
       { feature: "Full monomer catalog", free: true, pro: true, team: true, enterprise: true },
       { feature: "All export targets", free: true, pro: true, team: true, enterprise: true },
-      { feature: "mathematical proof suite", free: true, pro: true, team: true, enterprise: true },
+      { feature: "verification workflow", free: true, pro: true, team: true, enterprise: true },
       { feature: "Self-compilation fixpoint", free: true, pro: true, team: true, enterprise: true },
     ],
   },
@@ -151,7 +150,7 @@ const comparisonSections = [
       { feature: "SCIM provisioning", free: false, pro: false, team: false, enterprise: true },
       { feature: "Compliance evidence reports", free: false, pro: false, team: false, enterprise: true },
       { feature: "On-premise option", free: false, pro: false, team: false, enterprise: true },
-      { feature: "Custom SLA", free: false, pro: false, team: false, enterprise: "99.9%" },
+      { feature: "Custom SLA", free: false, pro: false, team: false, enterprise: "Negotiated" },
       { feature: "Dedicated support", free: false, pro: false, team: false, enterprise: true },
     ],
   },
@@ -179,7 +178,7 @@ const faqs = [
   },
   {
     q: "What does 'certified' mean?",
-    a: "A certified function has passed formal verification with \u03A6_c = 1 \u2014 mathematical proof that every input is consumed, every output is produced, and every execution path terminates correctly.",
+    a: "A certified function has passed BRIK64 bounded verification with \u03A6_c = 1 on the modeled circuit and declared domains. The claim is scoped to that formal representation, not every external runtime condition.",
   },
   {
     q: "Is there academic pricing?",
@@ -187,7 +186,7 @@ const faqs = [
   },
   {
     q: "Can I self-host?",
-    a: "Enterprise plans include an on-premise deployment option. The CLI always runs locally \u2014 your source code never leaves your machine.",
+    a: "Enterprise plans include an on-premise deployment option. In the default CLI workflow, source processing runs locally before you choose whether to publish bounded outputs.",
   },
   {
     q: "Does BRIK64 store my source code?",
@@ -225,11 +224,11 @@ export default function PricingPage() {
               Pricing
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Free. <span className="text-teal">Ready today.</span>
+              Start with CLI and docs. <span className="text-teal">Scale into team and enterprise routes.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              The CLI is free forever. 128 operations. 14 export targets. All monomers. Every language.
-              Start building now. Pay only when your team needs more.
+              The developer route is open through CLI and documentation. Team and enterprise routes add collaboration,
+              governance, and deployment posture based on evaluation scope.
             </p>
           </div>
         </section>
@@ -360,17 +359,17 @@ export default function PricingPage() {
         {/* CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Start building &mdash; free
+            Start locally, then move into team workflows
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            Install the CLI. Certify your first function. Every certified line is a line you never debug again.
+            Install the CLI, validate bounded workflows, and adopt team or enterprise routes when shared review and governance are required.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
               href="/login"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
-              Start building &mdash; free
+              Install the CLI
             </a>
             <a
               href="/enterprise"
