@@ -8,6 +8,7 @@ const homeFiles = [
   "src/components/StructuredData.tsx",
   "src/components/Navbar.tsx",
   "src/components/ProblemSection.tsx",
+  "src/components/HardwareDisciplineSection.tsx",
   "src/components/PCDSection.tsx",
   "src/components/WorkflowSection.tsx",
   "src/components/PlatformSection.tsx",
@@ -21,9 +22,11 @@ const bannedPhrases = [
   "Teach your agent PCD. Install the official skills now.",
   "CAD for software",
   "Tell your AI what to build. The compiler proves it's correct.",
-  "Start building with",
-  "Write once, verify everywhere.",
-  "Every one with a mathematical proof.",
+  "the first programming language",
+  "designed for AI",
+  "zero runtime surprises",
+  "if it compiles, it's correct",
+  "zero defects by design",
 ] as const;
 
 describe("Home editorial refactor guard", () => {
@@ -36,17 +39,20 @@ describe("Home editorial refactor guard", () => {
     }
   });
 
-  it("keeps the thesis, workflow, and boundary anchors visible", () => {
+  it("keeps the formal-layer thesis, workflow, and boundary anchors visible", () => {
+    const hero = read("src/components/HeroSection.tsx");
     const workflow = read("src/components/WorkflowSection.tsx");
     const boundaries = read("src/components/HomeClaimBoundariesSection.tsx");
 
-    expect(workflow).toContain("One reviewable path from source to evidence.");
-    expect(boundaries).toContain("What BRIK64 claims, and what it does not.");
+    expect(hero).toContain("BRIK64 is the formal layer");
+    expect(workflow).toContain("Lift, model, check, emit, and publish in one visible chain.");
+    expect(boundaries).toContain("What the formal layer proves, and where the boundary stops.");
   });
 
-  it("keeps home page composition focused on thesis, workflow, platform, AI, and boundaries", () => {
+  it("keeps home page composition focused on thesis, hardware-style discipline, workflow, platform, AI, and boundaries", () => {
     const page = read("src/app/page.tsx");
     expect(page).toContain("<ProblemSection />");
+    expect(page).toContain("<HardwareDisciplineSection />");
     expect(page).toContain("<PCDSection />");
     expect(page).toContain("<WorkflowSection />");
     expect(page).toContain("<PlatformSection />");

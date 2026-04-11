@@ -28,13 +28,13 @@ const capabilities = [
     icon: GitBranch,
     title: "CI/CD integration",
     description:
-      "Pipeline gates can use verification status and review artifacts to block or escalate changes. They do not replace release governance outside the software path.",
+      "Pipeline gates can use verification status and review packages to block or escalate changes. They do not replace release governance outside the software path.",
   },
   {
     icon: FileCheck,
-    title: "Evidence artifacts",
+    title: "Evidence packages",
     description:
-      "Processing logic and change-control artifacts can be mapped into SOC2, PCI-DSS, HIPAA, ISO 27001, or similar review programs. The product supports that mapping; it does not satisfy those programs on its own.",
+      "Processing logic and change-control packages can be mapped into SOC2, PCI-DSS, HIPAA, ISO 27001, or similar review programs. The product supports that mapping; it does not satisfy those programs on its own.",
   },
   {
     icon: BadgeCheck,
@@ -77,7 +77,7 @@ const workflow = [
   },
   {
     label: "03",
-    title: "Emit review artifacts",
+    title: "Emit review packages",
     description:
       "Carry verification state, hashes, and operator traceability into the program that needs to inspect them.",
   },
@@ -85,7 +85,7 @@ const workflow = [
     label: "04",
     title: "Hand off to program controls",
     description:
-      "Use the resulting artifact in audit, safety, or deployment review without pretending BRIK-64 certifies the whole organization.",
+      "Use the resulting package in audit, safety, or deployment review without pretending BRIK-64 certifies the whole organization.",
   },
 ] as const;
 
@@ -94,7 +94,7 @@ const useCases = [
     icon: Landmark,
     title: "Banking & fintech",
     description:
-      "Review transaction logic, pricing logic, and migration-critical behavior as bounded software artifacts before they are handed into broader operational control programs.",
+      "Review transaction logic, pricing logic, and migration-critical behavior as bounded software packages before they are handed into broader operational control programs.",
   },
   {
     icon: HeartPulse,
@@ -106,13 +106,13 @@ const useCases = [
     icon: Car,
     title: "Automotive & aerospace",
     description:
-      "Use bounded control artifacts to expose thresholds, fallback logic, and review state before wider safety and release programs take over.",
+      "Use bounded control packages to expose thresholds, fallback logic, and review state before wider safety and release programs take over.",
   },
   {
     icon: Building2,
     title: "Government & defense",
     description:
-      "Keep source and deployment posture explicit for teams that need air-gapped or controlled environments and review-ready evidence artifacts.",
+      "Keep source and deployment posture explicit for teams that need air-gapped or controlled environments and review-ready evidence packages.",
   },
 ] as const;
 
@@ -157,11 +157,11 @@ export default function EnterprisePage() {
               Enterprise
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Operating model for{" "}
-              <span className="text-teal">review-heavy engineering teams.</span>
+              The operating model for organizations that need the{" "}
+              <span className="text-teal">formal layer under real controls.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
-              Enterprise adoption is about identity controls, deployment posture, CI/CD gates, and evidence artifacts that
+              Enterprise adoption is about identity controls, deployment posture, CI/CD gates, and evidence packages that
               survive audit and release review. It is not a blanket compliance or certification claim.
             </p>
             <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -178,7 +178,7 @@ export default function EnterprisePage() {
                 <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                   Evidence
                 </p>
-                <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Traceable artifacts</p>
+                <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Traceable packages</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Verification state, hashes, and review decisions remain visible as they move through delivery workflow.
                 </p>
@@ -201,7 +201,7 @@ export default function EnterprisePage() {
             [01] CAPABILITIES
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            Enterprise-grade review controls
+            Enterprise review controls for the formal layer
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {capabilities.map((item) => (
@@ -219,7 +219,7 @@ export default function EnterprisePage() {
             [02] WORKFLOW
           </p>
           <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-            How enterprise rollout should move
+            Enterprise rollout sequence
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {workflow.map((step) => (
@@ -265,7 +265,7 @@ export default function EnterprisePage() {
             ))}
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
-            Enterprise language stays narrow on purpose. BRIK-64 can emit evidence artifacts for software logic and change
+            Enterprise language stays narrow on purpose. BRIK-64 can emit evidence packages for software logic and change
             review. Infrastructure, organizational, procedural, and legal controls require separate evidence and separate approval.
           </p>
         </section>

@@ -23,6 +23,53 @@ export type RouteEditorialSpec = {
   ctaTargets: string[];
 };
 
+export const PUBLIC_EDITORIAL_SOURCE_HIERARCHY = [
+  "current product reality and public routes",
+  "/Users/carlosjperez/Downloads/postura_de_marca_y_guia_de_voz_brik_64.md",
+  "docs/content-marketing-scope.md",
+  "docs/perspectives/03-CMO.md",
+  "historical research snapshots",
+] as const;
+
+export const PUBLIC_BRAND_PRIMARY_THESIS =
+  "BRIK64 is the formal layer for AI-era programming.";
+
+export const PUBLIC_BRAND_APPROVED_LONG_FORM =
+  "BRIK64 gives AI-generated and existing software a formal language, a canonical blueprint, and a compilation path that makes logic reviewable, portable, testable, and governable.";
+
+export const PUBLIC_BRAND_APPROVED_FRAMES = [
+  "formal layer for AI-era programming",
+  "canonical blueprint",
+  "bounded software infrastructure",
+  "reviewable, portable, testable, governable",
+  "AI generates; BRIK64 formalizes and constrains before trust",
+  "software with hardware-style discipline",
+] as const;
+
+export const PUBLIC_BRAND_BLOCKED_FRAMES = [
+  "The AI-native synthetic language",
+  "first programming language designed for AI",
+  "zero runtime surprises",
+  "if it compiles, it's correct",
+  "if it compiles, it’s correct",
+  "zero defects by design",
+  "CAD for software",
+  "npm for verified code",
+  "Every package carries a mathematical proof",
+] as const;
+
+export const HOME_NARRATIVE_ORDER = [
+  "hero",
+  "problem",
+  "hardware-discipline",
+  "blueprint",
+  "workflow",
+  "platform",
+  "ai",
+  "claim-boundaries",
+  "cta",
+] as const;
+
 export const PUBLIC_EDITORIAL_BLOCKLIST = [
   "The page should",
   "This page should",
@@ -37,6 +84,7 @@ export const PUBLIC_EDITORIAL_BLOCKLIST = [
   "Proven for ALL possible inputs",
   "never needs debugging",
   "unhackable",
+  ...PUBLIC_BRAND_BLOCKED_FRAMES,
 ] as const;
 
 export const PUBLIC_ROUTE_EDITORIAL_SPECS: RouteEditorialSpec[] = [

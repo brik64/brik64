@@ -9,35 +9,35 @@ function read(relativePath: string): string {
 }
 
 describe("Buyer persona fit — Staff / Principal Engineer", () => {
-  it("Hero keeps the marketing hook while anchoring the proof chain", () => {
+  it("Hero anchors the site on the formal-layer thesis", () => {
     const content = read("src/components/HeroSection.tsx");
-    expect(content).toContain("the first programming language");
-    expect(content).toContain("designed for AI");
-    expect(content).toContain("learns the entire language in one prompt");
-    expect(content).toContain("Compile · Certify · Publish");
-    expect(content).toContain("same explicit grammar your team reviews");
+    expect(content).toContain("BRIK64 is the formal layer");
+    expect(content).toContain("for AI-era programming");
+    expect(content).toContain("formal language, a canonical blueprint, and a compilation path");
+    expect(content).toContain("What if software behaved more like hardware?");
     expect(content).toContain('<MonomerGrid variant="hero" />');
     expect(content).not.toContain("Live surface");
   });
 
-  it("PCD speaks to reviewability and source stability", () => {
+  it("PCD speaks to canonical blueprints and source stability", () => {
     const content = read("src/components/PCDSection.tsx");
-    expect(content).toContain("PCD is the review anchor.");
-    expect(content).toContain("Source notation can change. The bounded blueprint stays legible.");
+    expect(content).toContain("PCD is the canonical blueprint.");
+    expect(content).toContain("The syntax can change; the blueprint should stay stable.");
     expect(content).toContain("One canonical blueprint");
-    expect(content).toContain("Closure before promotion");
+    expect(content).toContain("Model before emission");
   });
 
-  it("Platform frames the workbench around artifact state and reuse", () => {
+  it("Platform frames the workbench around publication, registry state, and reuse", () => {
     const content = read("src/components/PlatformSection.tsx");
-    expect(content).toContain("Proof state should stay attached to the artifact.");
-    expect(content).toContain("Traceable package state");
-    expect(content).toContain("Browse the registry");
-    expect(content).toContain("Reusable bounded assets");
+    expect(content).toContain("The platform is where blueprints are published, discovered, and governed.");
+    expect(content).toContain("Workspace library");
+    expect(content).toContain("Registry rows");
+    expect(content).toContain("Governed reuse");
   });
 
   it("TrustedBySection names technical audiences instead of broad consumer industries", () => {
     const content = read("src/components/TrustedBySection.tsx");
+    expect(content).toContain("DESIGNED FOR");
     expect(content).toContain("Platform Engineering");
     expect(content).toContain("AI Engineering");
     expect(content).toContain("Formal Methods");
@@ -46,7 +46,7 @@ describe("Buyer persona fit — Staff / Principal Engineer", () => {
 
   it("Home exposes explicit claim boundaries for technical evaluation", () => {
     const boundaries = read("src/components/HomeClaimBoundariesSection.tsx");
-    expect(boundaries).toContain("What BRIK64 claims, and what it does not.");
+    expect(boundaries).toContain("What the formal layer proves, and where the boundary stops.");
     expect(boundaries).toContain("Core operations");
     expect(boundaries).toContain("Extended operations");
     expect(boundaries).toContain("Runtime and external systems");

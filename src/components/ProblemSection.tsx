@@ -8,8 +8,8 @@ export function ProblemSection() {
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
           eyebrow="[01] · PROBLEM"
-          title="AI accelerates output. It also accelerates semantic drift."
-          description="Mainstream languages optimize expression. Engineering teams still need a bounded way to model, review, and reuse logic that must survive migration, handoff, and audit."
+          title="AI accelerates output. Teams still need a formal layer for review, reuse, and handoff."
+          description="Mainstream languages optimize expression. Technical leaders still need a bounded way to model generated and existing logic so migration, governance, audit, and reuse do not depend on hidden assumptions."
         />
 
         <div className="mt-10">
@@ -18,9 +18,9 @@ export function ProblemSection() {
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           {[
-            "Finite surface",
-            "Explicit domains",
-            "Closure before promotion",
+            "Review before trust",
+            "Explicit boundaries",
+            "Reuse without drift",
           ].map((point) => (
             <div
               key={point}

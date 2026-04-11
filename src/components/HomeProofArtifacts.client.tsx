@@ -160,8 +160,8 @@ export function BlueprintHubArtifact({ compact = false }: { compact?: boolean })
       <ArtifactFrame>
         <ArtifactHeader
           eyebrow="Blueprint Hub"
-          title="PCD is the review anchor between source logic and emitted targets."
-          description="Source notation changes. Domains, composition, and closure stay attached to the blueprint."
+          title="PCD is the canonical blueprint between source logic and emitted targets."
+          description="Source notation changes. Domains, composition, and closure stay attached to the same review object."
           status={<ProofBadge />}
         />
 

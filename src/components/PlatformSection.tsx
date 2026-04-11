@@ -12,27 +12,27 @@ interface FeatureCard {
 const features: FeatureCard[] = [
   {
     icon: <FolderOpen className="h-5 w-5 text-teal" />,
-    title: "Reviewable registry rows",
+    title: "Workspace library",
     description:
-      "Search bounded artifacts with closure, export posture, and package identity visible.",
+      "Teams keep private blueprints, versions, and review state visible instead of scattering them across tools.",
   },
   {
     icon: <Globe className="h-5 w-5 text-teal" />,
-    title: "Traceable package state",
+    title: "Registry rows",
     description:
-      "Hashes, versions, and review metadata stay attached as the artifact moves.",
+      "Public and shared packages keep hashes, versions, closure state, and target posture attached to the same package identity.",
   },
   {
     icon: <GitBranch className="h-5 w-5 text-teal" />,
-    title: "Delivery context",
+    title: "Publication path",
     description:
-      "Publication, PR comments, and registry updates stay aligned to the same blueprint.",
+      "Publication, PR review, and package updates stay aligned to the same canonical blueprint instead of creating parallel stories.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
-    title: "Reusable bounded assets",
+    title: "Governed reuse",
     description:
-      "Teams reuse reviewed logic without losing provenance or state.",
+      "Teams reuse reviewed logic without losing provenance, boundary notes, or package state.",
   },
 ];
 
@@ -41,9 +41,9 @@ export function PlatformSection() {
     <section id="platform" className="border-border border-t bg-background px-4 py-16 sm:px-6 md:py-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[04] · PLATFORM"
-          title="Proof state should stay attached to the artifact."
-          description="BRIK64 turns bounded blueprints into reusable software assets with visible closure state, hashes, versions, exports, and review context across platform, registry, and delivery workflows."
+          eyebrow="[05] · PLATFORM"
+          title="The platform is where blueprints are published, discovered, and governed."
+          description="Platform is the product layer where teams keep workspace state, package identity, registry discovery, and publication workflow aligned to the same canonical blueprint."
         />
 
         <div className="mt-10">
@@ -69,13 +69,13 @@ export function PlatformSection() {
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <span className="rounded-full border border-teal/30 bg-teal/10 px-3.5 py-1 text-xs font-medium text-teal">
-            REGISTRY PATH &mdash; /registry
+            PRODUCT LAYER &mdash; /platform + /registry
           </span>
           <a
             href="/registry"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-teal transition-colors hover:text-teal/80"
           >
-            Browse the registry
+            Browse registry rows
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>

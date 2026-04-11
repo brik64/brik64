@@ -14,7 +14,7 @@ import {
 export const metadata = {
   title: "CLI — BRIK64",
   description:
-    "The BRIK64 CLI page presents bounded install and workflow guidance for technical operators.",
+    "CLI entry point into the BRIK64 formal layer, from lift and blueprint checks to target emission and publication.",
 };
 
 export default function CLIPage() {
@@ -22,17 +22,17 @@ export default function CLIPage() {
     <CanonicalPageLayout>
       <CanonicalPageHero
         eyebrow="CLI"
-        title="Command-line workflow for"
-        highlight="bounded verification."
-        description="Use brikc to lift source logic into PCD, check closure and domains, certify outputs, and publish reusable circuits."
+        title="Entry point into the"
+        highlight="formal layer."
+        description="Use brikc to lift source logic into PCD, check closure and domains, emit supported targets, and publish reusable packages without losing review state."
         actions={[
           { label: "Open docs", href: "https://docs.brik64.dev", tone: "primary", external: true },
           { label: "PCD", href: "/pcd", tone: "secondary" },
         ]}
         metrics={[
-          { label: "Entry command", value: "brikc", detail: "The same binary drives local development, CI checks, and evidence generation." },
-          { label: "Core loop", value: "lift → check → certify", detail: "The sequence stays explicit from source extraction to certification output." },
-          { label: "Integration", value: "local + CI + IDE", detail: "CLI outputs can be handed to platform and registry workflows without changing semantics." },
+          { label: "Entry command", value: "brikc", detail: "The same binary drives local development, CI checks, and publication flow." },
+          { label: "Core loop", value: "lift → model → check", detail: "The sequence stays explicit from source extraction to blueprint validation." },
+          { label: "Integration", value: "local + CI + platform", detail: "CLI outputs can be handed to platform and registry workflows without changing semantics." },
         ]}
       />
 
@@ -45,18 +45,18 @@ export default function CLIPage() {
         <div className="mx-auto mt-10 grid max-w-6xl gap-6">
           <FeatureMatrixSurface
             eyebrow="Command Model"
-            title="From source code to reusable certified output"
-            description="Commands are grouped by lifecycle stage: lift, check, certify, and publish."
+            title="From source code to reusable package state"
+            description="Commands are grouped by lifecycle stage: lift, model, check, emit, and publish."
             metrics={[
               { label: "Install path", value: "Docs-led", detail: "Use the canonical install path to avoid drift across environments." },
-              { label: "Command set", value: "Lift, check, certify, publish", detail: "Each family has a clear role in the bounded verification lifecycle." },
-              { label: "Handoff", value: "IDE + platform", detail: "Certified outputs are ready for registry and team workflows." },
+              { label: "Command set", value: "Lift, check, emit, publish", detail: "Each family has a clear role in the bounded review lifecycle." },
+              { label: "Handoff", value: "CLI + platform", detail: "Checked outputs are ready for registry and team workflows." },
             ]}
             rows={[
               { title: "Lift", body: "Interpret existing source into a bounded blueprint before deeper review or emission." },
-              { title: "Check", body: "Run closure and domain analysis before the artifact is trusted or shared.", state: "accent" },
-              { title: "Certify", body: "Emit explicit evidence and immutable state when the bounded circuit closes." },
-              { title: "Publish", body: "Move the certified artifact into registry or wider platform workflows." },
+              { title: "Check", body: "Run closure and domain analysis before the blueprint is trusted or shared.", state: "accent" },
+              { title: "Emit", body: "Generate supported targets and review state from the same bounded blueprint." },
+              { title: "Publish", body: "Move the reviewed package into registry or wider platform workflows." },
             ]}
           />
           <ConstraintEnvelopeSurface
@@ -81,8 +81,8 @@ $ brikc registry publish dist/project.pcd`}
             description="This is the execution order used across CLI, platform, and registry handoff."
             steps={[
               { label: "01", title: "Start locally", body: "Install or open docs, then begin from real source or a fresh blueprint.", state: "active" },
-              { label: "02", title: "Encode the bounded object", body: "Lift or write PCD so the computation becomes explicit and inspectable.", state: "warning" },
-              { label: "03", title: "Check and certify", body: "Run closure and evidence steps before the artifact is shared.", state: "success" },
+              { label: "02", title: "Model the blueprint", body: "Lift or write PCD so the computation becomes explicit and inspectable.", state: "warning" },
+              { label: "03", title: "Check and emit", body: "Run closure and evidence steps before the package is shared.", state: "success" },
               { label: "04", title: "Publish or integrate", body: "Move the result into registry, IDE, CI, or enterprise review flows.", state: "idle" },
             ]}
           />
@@ -91,8 +91,8 @@ $ brikc registry publish dist/project.pcd`}
             title="What CLI evidence means"
             description="CLI checks apply to the modeled circuit and declared domains; external runtimes and side effects require separate controls."
             items={[
-              { label: "Covered by CLI checks", body: "Closure state, declared domains, and emitted certification artifacts for the bounded blueprint." },
-              { label: "Handoff output", body: "Blueprints, hashes, and evidence artifacts can move into platform and registry review workflows." },
+              { label: "Covered by CLI checks", body: "Closure state, declared domains, and emitted review packages for the bounded blueprint." },
+              { label: "Handoff output", body: "Blueprints, hashes, and package state can move into platform and registry review workflows." },
               { label: "Not claimed by CLI alone", body: "No blanket guarantee is made for unmanaged host runtime behavior, external APIs, or deployment infrastructure." },
             ]}
           />

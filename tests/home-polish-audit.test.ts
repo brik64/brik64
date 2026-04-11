@@ -33,9 +33,9 @@ describe("Home polish audit — hero density stays controlled", () => {
   it("keeps the hero metrics precise and bounded", () => {
     const hero = read("src/components/HeroSection.tsx");
     expect(hero).toContain("md:grid-cols-3");
-    expect(hero).toContain("64 core and 64 extended, all named and bounded.");
-    expect(hero).toContain("Closed circuits expose proof state instead of hidden runtime drift.");
-    expect(hero).toContain("One blueprint emits across deterministic compilation targets.");
+    expect(hero).toContain("Generated + existing software");
+    expect(hero).toContain("PCD");
+    expect(hero).toContain("CLI → platform → registry");
   });
 
   it("removes the old floating live-surface callout from the hero", () => {
@@ -57,10 +57,11 @@ describe("Home polish audit — closing CTA stays technical, not ornamental", ()
   it("routes the closing CTA toward CLI, PCD, and platform instead of generic growth prompts", () => {
     const cta = read("src/components/CTASection.tsx");
     expect(cta).toContain('title: "CLI"');
-    expect(cta).toContain('title: "PCD"');
     expect(cta).toContain('title: "Platform"');
+    expect(cta).toContain('title: "Foundations"');
     expect(cta).toContain("Open the CLI");
+    expect(cta).toContain("Open platform");
     expect(cta).not.toContain('title: "Discord"');
-    expect(cta).toContain("evaluate the review chain on real logic");
+    expect(cta).toContain("evaluate the blueprint-to-publication chain on real logic");
   });
 });

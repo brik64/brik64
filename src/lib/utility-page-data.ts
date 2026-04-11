@@ -16,10 +16,10 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   about: {
     hero: {
       eyebrow: "Company",
-      title: "BRIK-64 builds formal software infrastructure for",
-      highlight: "bounded computation.",
+      title: "BRIK-64 builds the formal layer for",
+      highlight: "AI-era programming.",
       description:
-        "BRIK-64 combines a formal language, a compiler path, platform workflows, and registry-oriented reuse around reviewable software. It clarifies what exists publicly today and where technical teams should go next.",
+        "BRIK-64 combines a formal language, a canonical blueprint, a compiler path, platform workflows, and registry-oriented reuse around reviewable software. It clarifies what exists publicly today and where technical teams should go next.",
       actions: [primary("Read foundations", "/foundations"), secondary("Open platform", "/platform")],
       metrics: [
         { label: "Formal layer", value: "PCD", detail: "The public story stays anchored to the bounded blueprint format." },
@@ -130,14 +130,14 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   download: {
     hero: {
       eyebrow: "Download",
-      title: "Install the documented toolchain from the",
+      title: "Install the formal layer from the",
       highlight: "real entrypoints.",
       description:
         "Install guidance states what can be installed today, what remains documentation-led, and where each tool fits in the wider BRIK-64 workflow.",
       actions: [primary("Install CLI", "https://docs.brik64.dev", true), secondary("SDKs", "/sdks")],
       metrics: [
-        { label: "CLI posture", value: "Single entrypoint", detail: "The CLI remains the first operator path into the system." },
-        { label: "Delivery modes", value: "CLI + SDK + platform", detail: "Each route has a different operational scope." },
+        { label: "CLI posture", value: "Primary entrypoint", detail: "The CLI remains the first operator path into the system." },
+        { label: "Delivery modes", value: "CLI + SDK + platform", detail: "Each route extends the same formal-layer workflow." },
         { label: "Availability", value: "Explicit", detail: "Anything not live should be marked as scoped work rather than implied as downloadable." },
       ],
     },
@@ -236,21 +236,21 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
   faq: {
     hero: {
       eyebrow: "FAQ",
-      title: "Frequently asked questions should live in one",
-      highlight: "clear route.",
+      title: "Questions technical teams ask before adopting the",
+      highlight: "formal layer.",
       description:
-        "Answer high-frequency questions quickly and route deeper technical or commercial topics to the right destination.",
+        "Answer the recurring questions quickly, then route deeper technical or commercial topics to the right product or contact path.",
       actions: [primary("Ask a question", "/contact"), secondary("Documentation", "https://docs.brik64.dev", true)],
     },
     sectionHeader: {
       eyebrow: "FAQ",
-      title: "Structured answers with direct follow-up routes",
+      title: "Clarify the system, then route to the right next step",
       description:
         "The design priority is clarity and routing, not ornamental interaction.",
     },
     primarySurface: {
       eyebrow: "Common Questions",
-      title: "The questions that appear most often on the public site",
+      title: "The questions that appear most often before technical adoption",
       description:
         "A good FAQ narrows ambiguity and points users back to the correct product route.",
       rows: [

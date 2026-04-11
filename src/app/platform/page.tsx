@@ -33,27 +33,27 @@ const HeroWireframe = dynamic(
 const pillars: { icon: ReactNode; title: string; description: string }[] = [
   {
     icon: <FolderOpen className="h-5 w-5 text-teal" />,
-    title: "Personal Library",
+    title: "Workspace library",
     description:
-      "Your circuits, organized by project. Build, test, and recompose with real-time certification status.",
+      "Keep private blueprints, versions, and review state organized by project instead of scattering them across tools.",
   },
   {
     icon: <Globe className="h-5 w-5 text-teal" />,
-    title: "Public Registry",
+    title: "Registry rows",
     description:
-      "A growing catalog of pre-certified circuits. Search, explore, and implement \u2014 never rewrite what\u2019s already proven.",
+      "Search reusable packages with closure state, hashes, and publication posture still attached.",
   },
   {
     icon: <GitBranch className="h-5 w-5 text-teal" />,
-    title: "Visual Composition",
+    title: "Publication path",
     description:
-      "Drag, connect, compose. Every connection verified through EVA composition rules — the algebra ensures that composing closed circuits produces a closed circuit.",
+      "Publication, PR review, and package identity stay aligned to the same canonical blueprint.",
   },
   {
     icon: <BadgeCheck className="h-5 w-5 text-teal" />,
-    title: "Certification Badges",
+    title: "Governed reuse",
     description:
-      "Live proof embedded in your README. If the code changes one byte, the badge invalidates instantly.",
+      "Teams reuse reviewed logic without losing provenance, boundary notes, or package state.",
   },
 ];
 
@@ -80,20 +80,21 @@ export default function PlatformPage() {
               Platform
             </span>
             <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              CAD for <span className="text-teal">software.</span>
+              The platform where blueprints are{" "}
+              <span className="text-teal">published, discovered, and governed.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              Build, verify, compose, and ship certified code. Your library, a public registry,
-              visual composition, certification badges &mdash; all in one place. Free to start.
+              BRIK64 Platform is the product layer where teams keep workspace state, registry rows,
+              publication flow, and package identity aligned to the same canonical blueprint.
             </p>
           </div>
         </section>
 
         <section className="border-t border-border px-6 py-16 lg:px-16">
           <PageSectionHeader
-            eyebrow="Platform Artifacts"
-            title="The platform now leads with workbenches and rails, not abstract capability cards."
-            description="Registry, certification flow, and evidence surfaces behave like product objects the user can inspect and operate."
+            eyebrow="Platform Workbench"
+            title="Platform is the operating surface for the formal layer."
+            description="Workspace state, registry discovery, and publication flow should read as one product system instead of a disconnected list of capabilities."
           />
           <div className="mx-auto mt-10 grid max-w-6xl gap-6">
             <RegistryWorkbenchArtifact />
@@ -101,12 +102,12 @@ export default function PlatformPage() {
             <WorkflowRailArtifact />
             <FeatureMatrixSurface
               eyebrow="Platform Matrix"
-              title="The four platform pillars are still here, but compressed into one inspectable matrix."
-              description="The matrix keeps the same platform pillars visible while making the surface easier to scan."
+              title="The four main platform jobs in one inspectable matrix."
+              description="The matrix keeps the core platform jobs visible without turning the page into feature-card theater."
               metrics={[
-                { label: "Registry", value: "Public + Private", detail: "Certified packages, hashes, and recomposition-ready metadata." },
-                { label: "Build flow", value: "Lift → Certify → Publish", detail: "One stable path from source artifact to reusable circuit." },
-                { label: "Access", value: "IDE + API + MCP", detail: "Human and agent workflows share the same platform surface." },
+                { label: "Registry", value: "Public + private", detail: "Package identity, hashes, and review state stay visible." },
+                { label: "Build flow", value: "Lift → model → publish", detail: "One stable path from source logic to reusable package." },
+                { label: "Access", value: "CLI + platform + registry", detail: "Human and agent workflows meet the same product surface." },
               ]}
               rows={pillars.map((pillar, index) => ({
                 title: pillar.title,
@@ -116,51 +117,48 @@ export default function PlatformPage() {
             />
             <ComparisonSurface
               eyebrow="Capability Scope"
-              title="Platform surfaces replace flat capability inventories."
-              leftTitle="Capability list"
-              leftBody="A grid of actions tells the user what exists, but not how those pieces combine into a coherent operating model."
-              rightTitle="Workbench narrative"
-              rightBody="Registry, workflow, and proof state appear together, so composition and certification become legible in one glance."
+              title="A platform page should explain the system form, not just enumerate features."
+              leftTitle="Loose capability inventory"
+              leftBody="A flat list can imply the platform is a bundle of tools instead of one governed operating layer."
+              rightTitle="Product operating model"
+              rightBody="Workspace state, registry rows, and publication flow appear together, so the platform reads as the product rather than as a utility collection."
             />
             <EvidenceSurface
               eyebrow="Operational Evidence"
               title="Representative platform rows"
-              description="The original dashboard table is preserved semantically but moved into a stronger evidence shell."
+              description="Representative rows show what the platform actually keeps visible at package level."
               items={circuits.map((circuit) => ({
                 label: `${circuit.name} · ${circuit.from} → ${circuit.to}`,
                 body:
                   circuit.phiC === "1"
-                    ? `${circuit.tier} artifact with Φc = 1 certification state carried through the registry row.`
-                    : `${circuit.tier} artifact explicitly marked as contract-bounded instead of pretending to be fully certified.`,
+                    ? `${circuit.tier} package with Φc = 1 state carried through the registry row.`
+                    : `${circuit.tier} package explicitly marked as contract-bounded instead of pretending to be fully certified.`,
               }))}
-              footer="The platform page now presents proof state, composition flow, and registry posture with fewer arbitrary card variants."
+              footer="The platform page keeps proof state, package identity, and publication flow legible in the same place."
             />
           </div>
         </section>
 
-        {/* Registry Launching */}
+        {/* Product CTA */}
         <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <div className="mx-auto inline-block rounded-full border border-teal/30 bg-teal/[0.06] px-5 py-2 text-sm font-bold tracking-wider text-teal">
-            REGISTRY LAUNCHING 2026
-          </div>
           <h2 className="text-center mx-auto mt-6 text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Start building &mdash; free
+            Follow the product layer into registry and operator workflows
           </h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-xl text-sm leading-relaxed">
-            GitHub integration, IDE plugins, visual composer, and certification dashboard &mdash; all coming to brik64.com.
+            Move from platform overview into registry rows, CLI entry, and the operator path that keeps the formal layer visible end to end.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/"
+              href="/registry"
               className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
             >
-              Start building &mdash; free
+              Open registry
             </Link>
             <Link
-              href="/registry"
+              href="/cli"
               className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
             >
-              Learn about the Registry <ArrowRight className="h-3.5 w-3.5" />
+              Open CLI path <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </section>

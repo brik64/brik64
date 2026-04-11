@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
 import { ProblemSection } from "@/components/ProblemSection";
+import { HardwareDisciplineSection } from "@/components/HardwareDisciplineSection";
 import { PCDSection } from "@/components/PCDSection";
 import { PlatformSection } from "@/components/PlatformSection";
 import { WorkflowSection } from "@/components/WorkflowSection";
@@ -20,6 +21,7 @@ export default function Home() {
           <TrustedBySection />
           <div>
             <ProblemSection />
+            <HardwareDisciplineSection />
             <PCDSection />
             <WorkflowSection />
             <PlatformSection />

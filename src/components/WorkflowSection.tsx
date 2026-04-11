@@ -6,9 +6,9 @@ export function WorkflowSection() {
     <section id="workflow" className="border-border border-t bg-background px-4 py-14 sm:px-6 md:py-18 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <HomeSectionHeader
-          eyebrow="[03] · WORKFLOW"
-          title="One reviewable path from source to evidence."
-          description="Connect a repo or start from a fresh blueprint. Lift or author the logic. Check closure and declared domains. Certify the bounded artifact. Emit supported targets. Publish the review object where engineering already works."
+          eyebrow="[04] · WORKFLOW"
+          title="Lift, model, check, emit, and publish in one visible chain."
+          description="Start from source or a draft blueprint. Recover the logic, model it in PCD, check closure and declared domains, emit supported targets, and publish the same review state where engineering already works."
         />
 
         <div className="mt-10">
