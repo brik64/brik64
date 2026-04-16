@@ -1,15 +1,25 @@
 "use client";
 
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import { PhiC } from "@/components/PhiC";
 import {
   BookOpen,
   GraduationCap,
   ArrowRight,
+  ExternalLink,
+  ShieldCheck,
+  Zap,
+  Activity,
+  Layers,
+  Search,
 } from "lucide-react";
-import { ComparisonSurface, EvidenceSurface, FeatureMatrixSurface, PageSectionHeader } from "@/components/PageArtifacts";
-
+import { 
+  PageHeaderVNext, 
+  SupportingSurface, 
+  ButtonVNext, 
+  BrandWordmark,
+  PillarCard
+} from "@/components/vnext/primitives";
+import { CanonicalPageLayout, ActionAnchor } from "@/components/PageArchetypes";
 import dynamic from "next/dynamic";
 
 const HeroWireframe = dynamic(
@@ -17,518 +27,189 @@ const HeroWireframe = dynamic(
   { ssr: false }
 );
 
-/* ── Page ── */
-
 export default function FoundationsPage() {
   return (
-    <>
-      <Navbar />
-      <main className="relative z-10">
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-        {/* Hero */}
-        <section className="bg-background border-b border-border bg-gradient-to-b from-[#f0fdff] to-white relative overflow-hidden">
-          <HeroWireframe />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-            <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
-              Foundations
-            </span>
-            <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Digital Circuitality on an <span className="text-teal">information-theoretic footing.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              This foundations route explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation. The claims here apply to the modeled circuit representation, not to every uncontrolled runtime or deployment environment around it.
-            </p>
-          </div>
-        </section>
-
-        <section className="border-t border-border px-6 py-16 lg:px-16">
-          <PageSectionHeader
-            eyebrow="Foundations"
-            title="From formal definition to product implication"
-            description="The opening sequence covers the formal claim, the analogy boundary, and the product implication before moving into the longer scientific argument."
+    <CanonicalPageLayout>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden border-b border-white/5 pb-24 pt-32 md:pb-32 md:pt-48 lg:pb-40">
+        <div className="absolute inset-0 blueprint-grid opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+        
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12">
+          <PageHeaderVNext
+            eyebrow="Technical Foundations"
+            title="Digital Circuitality on an information-theoretic footing."
+            description="This foundations route explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation."
+            centered
           />
-          <div className="mx-auto mt-10 grid max-w-6xl gap-6">
-            <ComparisonSurface
-              eyebrow="Information Model"
-              title="What BRIK64 is claiming at the level of the formal model"
-              leftTitle="Testing reduces uncertainty"
-              leftBody="Conventional software samples behavior and lowers uncertainty only for the cases explored by the test suite."
-              rightTitle="Digital Circuitality removes uncertainty structurally"
-              rightBody="Bounded domains, closed composition, and verification completeness push the specification to a deterministic state instead of hoping test coverage was enough."
-            />
-            <FeatureMatrixSurface
-              eyebrow="Foundations Matrix"
-              title="Three handles for reading the theory"
-              description="Start with the measured quantity, the closure condition, and the composition model that carries through the compiler."
-              metrics={[
-                { label: "Entropy", value: "H(X) = 0", detail: "Formal specification reaches zero informational uncertainty when all states are bounded and closed." },
-                { label: "Closure", value: "Φc = 1", detail: "Closure remains binary and compile-time enforced." },
-                { label: "Composition", value: "EVA", detail: "Sequential, parallel, and conditional composition preserve certified structure." },
-              ]}
-              rows={[
-                { title: "Analogy boundary", body: "Thermodynamic vocabulary is explanatory, not a claim about physical laws governing compilation.", state: "accent" },
-                { title: "Proof boundary", body: "The route describes guarantees attached to the circuit model, not blanket guarantees outside the modeled system." },
-                { title: "Product implication", body: "The formal model matters because it changes how the compiler, PCD, and review workflows are structured." },
-              ]}
-            />
-            <EvidenceSurface
-              eyebrow="Claim Boundary"
-              title="Theorem, analogy, product implication, and claim boundary"
-              description="Each section below should keep those four layers separate enough that the scientific route stays supportable."
-              items={[
-                { label: "Formal claim", body: "BRIK64 argues for deterministic specifications with bounded domains and closed circuits." },
-                { label: "Analogy claim", body: "Circuit and thermodynamic language is used as a mapping aid, not as a substitute for information-theoretic reasoning." },
-                { label: "Practical claim", body: "The compiler enforces closure and domain soundness on the formal representation, not on every uncontrolled environment surrounding deployment." },
-              ]}
-            />
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Digital Circuitality definition */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [01] FORMAL DEFINITION
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Digital Circuitality
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Shannon (1948) defined the entropy of a discrete source as{" "}
-              <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">
-                H(X) = -&Sigma; p(x_i) log_2 p(x_i)
-              </code>
-              . When a system is completely deterministic &mdash; every input produces exactly one
-              output through every path &mdash; the probability distribution collapses to a Dirac
-              delta on the correct result: <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">H(X) = 0</code>.
-              This applies to the circuit&rsquo;s formal specification. Runtime execution introduces
-              implementation-level variance that the specification abstracts away.
-            </p>
-            <p>
-              A system <em>S</em> exhibits Digital Circuitality if and only if:
-            </p>
-            <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6 text-center">
-              <p className="text-lg font-bold text-teal">
-                Full coherence means zero informational uncertainty
-              </p>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Within the modeled circuit, <PhiC /> marks the closure condition the compiler checks before emission
-              </p>
-            </div>
-            <p>
-              Within the formal circuit model, <PhiC /> = 1 indicates that declared input domains are bounded, operations compose through explicit paths, and the represented output ranges remain inside the modeled envelope. The claim is about the circuit specification the compiler checks, not about every external environment around it.
-            </p>
-            <p>
-              Conventional software operates with informational uncertainty &gt; 0. Unverified execution paths,
-              unexplored states, unbounded inputs. Testing reduces informational uncertainty but never eliminates it &mdash;
-              Dijkstra (1976): <em>&ldquo;Testing shows the presence of bugs, never their absence.&rdquo;</em>
-            </p>
-            <p className="font-medium text-foreground">
-              Digital Circuitality aims to remove informational uncertainty from the modeled computation by construction rather than by sampling.
-            </p>
-          </div>
-        </section>
+      {/* Matrix Section */}
+      <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
+        <div className="grid gap-8 md:grid-cols-3">
+          <PillarCard
+            icon={<Activity className="h-6 w-6" />}
+            title="Entropy"
+            description="Formal specification reaches zero informational uncertainty (H(X) = 0) when all states are bounded and closed."
+            actionLabel="H(X) = 0"
+          />
+          <PillarCard
+            icon={<ShieldCheck className="h-6 w-6" />}
+            title="Closure"
+            description="Closure remains binary and compile-time enforced. Within the modeled circuit, Φc marks the condition the compiler checks."
+            actionLabel="Φc = 1"
+          />
+          <PillarCard
+            icon={<Layers className="h-6 w-6" />}
+            title="Composition"
+            description="Sequential, parallel, and conditional composition (EVA) preserve certified structure throughout the stack."
+            actionLabel="EVA Algebra"
+          />
+        </div>
+      </section>
 
-        {/* Thermodynamic Analogy */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [02] THERMODYNAMIC ANALOGY
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            The analogy and its limits
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              The term &ldquo;thermodynamic&rdquo; in Digital Circuitality is an <strong className="text-foreground">analogy</strong>,
-              not a physical claim. A physical circuit is coherent when energy flows from source to
-              sink without leaks, all signal paths are closed, and the circuit reaches steady state.
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="pb-3 pr-4 font-medium text-foreground">Physical circuit property</th>
-                    <th className="pb-3 font-medium text-foreground">Computational metric</th>
-                  </tr>
-                </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Energy flow without leaks</td><td>Transfer efficiency</td></tr>
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Closed signal paths</td><td>Circuit closure (<PhiC />)</td></tr>
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Signal integrity</td><td>Signature verification</td></tr>
-                  <tr className="border-b border-border/40"><td className="py-2.5 pr-4">Full connectivity</td><td>Verification completeness</td></tr>
-                  <tr><td className="py-2.5 pr-4">Circuit complexity</td><td>Structural complexity metrics</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p>
-              <strong className="text-foreground">What the analogy does NOT claim:</strong> No
-              physical energy cost from <PhiC /> = 1. No equivalence between computational and
-              thermodynamic coherence. No claim that thermodynamic laws govern compilation.
-            </p>
-          </div>
-        </section>
-
-        {/* EVA Algebra */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [03] EVA ALGEBRA
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Composition operators
-          </h2>
-          <div className="mx-auto mt-10 max-w-5xl">
-            <FeatureMatrixSurface
-              eyebrow="EVA Algebra"
-              title="SEQ, PAR, and COND are the three composition moves the formal model needs"
-              description="These operators make sequencing, fan-out, and branching explicit before the compiler checks closure."
-              metrics={[
-                { label: "SEQ", value: "Sequential", detail: "Output of one stage becomes the input of the next stage." },
-                { label: "PAR", value: "Parallel", detail: "Independent branches evaluate on the same input and return a tuple." },
-                { label: "COND", value: "Conditional", detail: "Branch structure remains explicit in the circuit before selection." },
-              ]}
-              rows={[
-                { title: "Formal statement", body: "Composition is expressed through a finite algebra instead of hidden runtime conventions.", state: "accent" },
-                { title: "Product implication", body: "The same algebra appears in PCD and in the compiler pipeline, which is why composition remains inspectable." },
-                { title: "Claim boundary", body: "Closure and certification follow from the modeled composition rules, not from a blanket claim about every surrounding software concern." },
-              ]}
-            />
-          </div>
-        </section>
-
-        {/* CMF */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [04] COHERENCE METRICS FRAMEWORK
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            CMF: Three metrics, one condition
-          </h2>
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="border border-border bg-muted/10 p-6">
-              <div className="text-2xl font-bold text-teal"><PhiC /></div>
-              <h3 className="mt-2 text-sm font-bold">Circuit Closure</h3>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Certifies that every branch has a complete input-to-output path.
-                No dangling operations. The computational analog of a closed electrical loop.
-              </p>
-            </div>
-            <div className="border border-border bg-muted/10 p-6">
-              <div className="text-2xl font-bold text-teal">Integrity</div>
-              <h3 className="mt-2 text-sm font-bold">Signal Integrity</h3>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Verifies that observed behavior matches the expected specification exactly.
-                The analog of signal integrity &mdash; no distortion, no noise.
-              </p>
-            </div>
-            <div className="border border-border bg-muted/10 p-6">
-              <div className="text-2xl font-bold text-teal">Coverage</div>
-              <h3 className="mt-2 text-sm font-bold">Verification Completeness</h3>
-              <p className="mt-2 text-xs text-muted-foreground">
-                All modeled paths have been checked. No represented execution path is left undefined inside the circuit boundary.
-                The analog is full connectivity in the formal model.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto mt-8 rounded-md border border-teal/30 bg-teal/[0.04] p-6 text-center max-w-3xl">
-            <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">
-              Certification Condition
-            </p>
-            <p className="text-sm font-bold text-foreground">
-              Certification remains binary inside the model. Closure, integrity, and coverage must hold simultaneously for the circuit representation under review.
-            </p>
-            <p className="mt-2 text-xs text-muted-foreground">
-              If any condition fails, the modeled circuit does not certify or compile under the current rules.
-            </p>
-          </div>
-        </section>
-
-        {/* Closure Through Domains */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [04.5] CLOSURE THROUGH DOMAINS
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Closure through domains
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Circuit closure (<PhiC /> = 1) requires that every execution path produces a valid,
-              bounded result. Domain constraints are the mechanism that makes this possible.
-            </p>
-            <div className="space-y-3">
-              <p>
-                <strong className="text-foreground">1. Input domains bound what enters the circuit.</strong>{" "}
-                Every input declares a numeric range. Values outside the declared range are rejected before the circuit closes.
-              </p>
-              <p>
-                <strong className="text-foreground">2. Arithmetic on bounded inputs produces bounded outputs.</strong>{" "}
-                This is provable: if <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">a &isin; [0, 10]</code> and{" "}
-                <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">b &isin; [1, 5]</code>, then{" "}
-                <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">a + b &isin; [1, 15]</code> and{" "}
-                <code className="rounded bg-muted px-1.5 py-0.5 text-xs text-foreground">a / b &isin; [0, 10]</code>.
-              </p>
-              <p>
-                <strong className="text-foreground">3. The compiler traces bounds through every operation to verify closure.</strong>{" "}
-                Each intermediate result inherits a computed domain. If any operation could produce an unbounded
-                or undefined result, the compiler rejects the program.
-              </p>
-              <p>
-                <strong className="text-foreground">4. If any path can produce an unbounded result, compilation fails.</strong>{" "}
-                The circuit either closes at compile time or it remains uncertified under the declared model.
-              </p>
-            </div>
-            <div className="rounded-md border border-teal/30 bg-teal/[0.04] p-6">
-              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">
-                Hardware Analogy
-              </p>
-              <p className="text-sm text-muted-foreground">
-                This is analogous to how hardware engineers specify voltage ranges for every pin.
-                A logic gate rated for 0&ndash;5V does not accept 12V &mdash; the domain IS the specification.
-                In BRIK64, the same principle applies to every variable in every circuit.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Kish-Ferry */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [05] INFORMATION THEORY BASIS
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Informational entropy &ne; thermal entropy
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Recent research in information physics has demonstrated that informational entropy
-              and thermal entropy are fundamentally different quantities. Treating them as
-              interchangeable is a category error.
-            </p>
-            <p>
-              For Digital Circuitality, the consequence is direct: the coherence framework measures{" "}
-              <strong className="text-foreground">informational entropy</strong>, not thermal entropy.
-              No thermodynamic claims are needed for the framework to be rigorous. The verification
-              operates on purely informational foundations.
-            </p>
-          </div>
-        </section>
-
-        {/* Brillouin Connection */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [06] BRILLOUIN CONNECTION
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            From Landauer to Brillouin as inspiration
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Digital Circuitality draws conceptual inspiration from Brillouin&rsquo;s work on the
-              relationship between information and entropy, while operating on purely informational
-              foundations grounded in Shannon&rsquo;s framework.
-            </p>
-            <p>
-              The system does not depend on any physical thermodynamic claims. It acknowledges
-              the historical inspiration while maintaining rigorous separation between informational
-              and physical domains.
-            </p>
-          </div>
-        </section>
-
-        {/* Deterministic Systems */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [07] DETERMINISTIC VERIFICATION
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Zero informational uncertainty by construction
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Within the formal model, a deterministic verified circuit reaches zero informational uncertainty.
-              The claim is about the represented states, declared domains, and explicit paths inside the circuit boundary.
-            </p>
-            <p>
-              This is what <PhiC /> = 1 means in Digital Circuitality: the modeled computation reaches a closed, reviewable state by construction rather than by sampling.
-            </p>
-          </div>
-        </section>
-
-        {/* Universal Transpilation */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [08] UNIVERSAL TRANSPILATION
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Transpilation through informational closure
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-6 text-sm leading-relaxed text-muted-foreground">
-            <p>
-              Traditional transpilers operate at the <strong className="text-foreground">syntactic</strong> level:
-              parse an AST in one language, emit an AST in another. BRIK64 operates at the{" "}
-              <strong className="text-foreground">semantic</strong> level &mdash; extracting the computational
-              essence (what it computes, not how it&rsquo;s expressed) and encoding it as a PCD circuit.
-            </p>
-            <p>
-              The critical property: <strong className="text-foreground">if two programs in different languages
-              reduce to the same bounded PCD circuit, they are equivalent with respect to that modeled computation.</strong> PCD captures
-              the informational content of the represented computation independent of syntactic vehicle.
-            </p>
-            <div className="border border-border bg-muted/10 p-6">
-              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-3">The arithmetic</p>
-              <ul className="space-y-1.5 text-xs">
-                <li>&bull; 10 input languages &rarr; PCD &rarr; 14 output targets</li>
-                <li>&bull; 10 + 14 = 24 components for 10 &times; 14 = 140 transpilation paths</li>
-                <li>&bull; Same architectural idea as LLVM (frontends + IR + backends)</li>
-                <li>&bull; The addition LLVM doesn&rsquo;t have: <strong className="text-foreground">formal equivalence certification</strong></li>
-              </ul>
-            </div>
-            <p>
-              The TCE checks that the PCD circuit closes (<PhiC /> = 1) under the declared model. The equivalence claim is attached to the bounded circuit representation, not to unmanaged host I/O or external side effects.
-            </p>
-          </div>
-        </section>
-
-        {/* References */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            [09] REFERENCES
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Academic foundations
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-4">
-            {[
-              {
-                authors: "Shannon, C.E.",
-                year: "1948",
-                title: "A Mathematical Theory of Communication.",
-                journal: "Bell Syst. Tech. J. 27, 379\u2013423",
-                relevance: "Foundation: informational entropy, the framework in which the entire system operates.",
-              },
-              {
-                authors: "Brillouin, L.",
-                year: "1953",
-                title: "The Negentropy Principle of Information.",
-                journal: "J. Appl. Phys. 24, 1152\u20131163",
-                relevance: "Inspiration: conceptual information-entropy connection. Not foundation, inspiration.",
-              },
-              {
-                authors: "Dijkstra, E.W.",
-                year: "1976",
-                title: "A Discipline of Programming.",
-                journal: "Prentice-Hall",
-                relevance: "Motivation: \u201CTesting shows the presence of bugs, never their absence.\u201D",
-              },
-              {
-                authors: "Kish, L.B. et al.",
-                year: "2016\u20132018",
-                title: "Research on the distinction between informational and thermal entropy.",
-                journal: "Journal of Computational Electronics",
-                relevance: "Foundational: informational entropy and thermal entropy are distinct quantities.",
-              },
-            ].map((ref, i) => (
-              <div key={i} className="border border-border bg-muted/10 p-5">
-                <p className="text-sm font-medium text-foreground">
-                  {ref.authors} ({ref.year})
+      {/* Formal Definition */}
+      <SupportingSurface className="relative border-t border-white/10 bg-[#0b0b0f] blueprint-grid overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
+        
+        <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
+          <div className="flex flex-col lg:flex-row gap-16">
+            <div className="lg:w-1/2">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Section [01]</span>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Formal Definition</h2>
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/60">
+                <p>
+                  Shannon (1948) defined the entropy of a discrete source as a measure of uncertainty. When a system is completely deterministic — every input produces exactly one output through every path — informational uncertainty collapses to zero.
                 </p>
-                <p className="mt-1 text-sm italic text-muted-foreground">{ref.title}</p>
-                <p className="text-xs text-muted-foreground">{ref.journal}</p>
-                <p className="mt-2 text-xs text-teal">{ref.relevance}</p>
+                <p className="font-medium text-white">
+                  Digital Circuitality aims to remove informational uncertainty from the modeled computation by construction rather than by sampling.
+                </p>
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2 flex items-center justify-center">
+              <div className="w-full max-w-lg rounded-[2.5rem] border border-[color:var(--accent-soft)] bg-black/60 p-10 backdrop-blur-xl shadow-2xl shadow-[color:var(--accent-soft)]/20">
+                 <div className="text-center">
+                    <p className="text-lg font-bold text-[color:var(--accent)]">
+                      Full coherence means zero informational uncertainty
+                    </p>
+                    <div className="mt-8 flex justify-center">
+                      <div className="flex items-center gap-4 text-4xl font-black tracking-tighter text-white">
+                        <PhiC /> <span className="text-2xl opacity-40">=</span> 1
+                      </div>
+                    </div>
+                    <p className="mt-8 text-sm text-white/50 leading-relaxed italic">
+                      "Within the modeled circuit, Φc marks the closure condition the compiler checks before emission."
+                    </p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SupportingSurface>
+
+      {/* Comparison Section */}
+      <section className="mx-auto max-w-[1400px] px-6 py-32 md:px-8 lg:px-12">
+         <div className="grid gap-12 lg:grid-cols-2">
+            <div className="rounded-[2.5rem] border border-white/10 bg-black/40 p-10">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">Conventional Model</p>
+              <h3 className="mt-4 text-2xl font-bold text-white">Testing reduces uncertainty</h3>
+              <p className="mt-6 text-lg leading-relaxed text-white/60">
+                Conventional software samples behavior and lowers uncertainty only for the cases explored by the test suite. Uncertainty remains &gt; 0 due to unverified execution paths and unexplored states.
+              </p>
+            </div>
+            <div className="rounded-[2.5rem] border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)]/5 p-10 blueprint-grid relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-transparent pointer-events-none rounded-[2.5rem]" />
+              <div className="relative z-10">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--accent)]">Digital Circuitality</p>
+                <h3 className="mt-4 text-2xl font-bold text-white">Uncertainty removal by structure</h3>
+                <p className="mt-6 text-lg leading-relaxed text-white/80">
+                  Bounded domains, closed composition, and verification completeness (Φc = 1) push the specification to a deterministic state instead of hoping test coverage was enough.
+                </p>
+              </div>
+            </div>
+         </div>
+      </section>
+
+      {/* EVA Algebra Section */}
+      <SupportingSurface className="border-t border-white/5 bg-black">
+        <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
+          <div className="mb-16">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Section [03]</span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">EVA Algebra: Composition Operators</h2>
+            <p className="mt-6 text-lg text-white/60 max-w-2xl">
+              The SEQ, PAR, and COND operators make sequencing, fan-out, and branching explicit before the compiler checks closure.
+            </p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { name: "SEQ", full: "Sequential", desc: "Output of one stage becomes the input of the next stage.", icon: <ArrowRight className="h-5 w-5" /> },
+              { name: "PAR", full: "Parallel", desc: "Independent branches evaluate on the same input and return a tuple.", icon: <Zap className="h-5 w-5" /> },
+              { name: "COND", full: "Conditional", desc: "Branch structure remains explicit in the circuit before selection.", icon: <Activity className="h-5 w-5" /> },
+            ].map((op) => (
+              <div key={op.name} className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:bg-white/[0.05] transition-colors group">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-[color:var(--accent)] group-hover:scale-110 transition-transform">
+                  {op.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white">{op.name} <span className="font-medium opacity-40 ml-2">{op.full}</span></h3>
+                <p className="mt-4 text-sm leading-relaxed text-white/50">{op.desc}</p>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </SupportingSurface>
 
-        {/* Acknowledgment */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            ACKNOWLEDGMENT
-          </p>
-          <div className="mx-auto max-w-3xl rounded-md border border-teal/30 bg-teal/[0.04] p-6">
-            <GraduationCap className="mb-3 h-6 w-6 text-teal" />
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              <strong className="text-foreground">Prof. Laszlo B. Kish</strong> (Texas A&amp;M University)
-              reviewed the foundational theoretical framework of Digital Circuitality. His research on
-              the distinction between informational and thermal entropy informed the theoretical
-              foundations of the system.
+      {/* References */}
+      <section className="mx-auto max-w-[1400px] px-6 py-32 md:px-8 lg:px-12">
+        <div className="flex flex-col lg:flex-row gap-16">
+          <div className="lg:w-1/3">
+             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Bibliography</span>
+             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white">Academic Foundations</h2>
+             <p className="mt-6 text-white/50 text-sm leading-relaxed">
+               The framework draws conceptual inspiration from Brillouin and Dijkstra while operating on purely informational foundations grounded in Shannon’s framework.
+             </p>
+             <div className="mt-10">
+               <ActionAnchor action={{ label: "Visit digitalcircuitality.com", href: "https://digitalcircuitality.com", external: true, tone: "primary" }} />
+             </div>
+          </div>
+          
+          <div className="lg:w-2/3 grid gap-6">
+            {[
+              { authors: "Shannon, C.E.", year: "1948", title: "A Mathematical Theory of Communication.", Relevance: "Informational entropy foundations." },
+              { authors: "Dijkstra, E.W.", year: "1976", title: "A Discipline of Programming.", Relevance: "Software verification discipline." },
+              { authors: "Kish, L.B.", year: "2018", title: "Information vs Thermal Entropy.", Relevance: "Rigorous distinction of quantities." },
+            ].map((ref, i) => (
+              <div key={i} className="flex border-b border-white/5 pb-8 group last:border-0 hover:border-[color:var(--accent)] transition-colors">
+                <div className="mr-8 pt-1 text-sm font-black text-white/20 group-hover:text-[color:var(--accent)] transition-colors">0{i+1}</div>
+                <div>
+                  <h4 className="font-bold text-white">{ref.authors} ({ref.year})</h4>
+                  <p className="mt-1 text-sm italic text-white/60">{ref.title}</p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-widest text-[color:var(--accent)]">{ref.Relevance}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="relative px-6 py-32 text-center md:px-8 lg:px-12 border-t border-white/5 bg-[#0b0b0f] blueprint-grid">
+         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+         <div className="relative z-10 max-w-4xl mx-auto">
+            <h2 className="text-4xl font-black tracking-tighter text-white sm:text-5xl lg:text-7xl">
+              FORMALIZE THE STACK
+            </h2>
+            <p className="mt-8 text-xl text-white/60 mx-auto max-w-2xl leading-relaxed">
+              The Foundations route is just the beginning. Follow the logical chain from theory into PCD, CLI, and platform workflows.
             </p>
-          </div>
-        </section>
-
-        {/* Publications */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 lg:px-18">
-          <p className="text-center mb-3 text-xs font-medium tracking-[2px] text-muted-foreground">
-            PUBLICATIONS
-          </p>
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            Academic publications
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-4">
-            <div className="border border-border bg-muted/10 p-5">
-              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">arXiv preprint</p>
-              <p className="text-sm font-medium text-foreground">
-                Digital Circuitality: A Formal Framework for Verified Software Composition
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                Submitted to arXiv (ID 7419107) &mdash; cs.PL + cs.AI + cs.AR
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                128 monomers, 14 compilation targets, and a formal framework described for public review
-              </p>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+              <ActionAnchor action={{ label: "Explore PCD Language", href: "/pcd", tone: "primary" }} />
+              <ActionAnchor action={{ label: "Open Platform", href: "/platform", tone: "link" }} />
             </div>
-            <div className="border border-border bg-muted/10 p-5">
-              <p className="text-xs font-medium uppercase tracking-widest text-teal/60 mb-2">Zenodo Archive</p>
-              <p className="text-sm font-medium text-foreground">
-                BRIK64 Papers I-IV v3 + Mathematical Proofs
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                DOI: 10.5281/zenodo.19313743 &mdash; Permanent academic archive
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                207 proof files and archived mathematical material tied to the public foundations story
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Synthesis */}
-        <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 md:px-12 lg:px-18 text-center">
-          <h2 className="text-center mx-auto text-2xl font-bold tracking-tight text-teal md:text-3xl">
-            The logical chain
-          </h2>
-          <div className="mx-auto mt-8 max-w-3xl space-y-3 text-sm text-muted-foreground text-left">
-            <p>1. Shannon (1948) establishes that deterministic systems have zero informational entropy</p>
-            <p>2. Modern research confirms informational entropy is distinct from thermal entropy</p>
-            <p>3. A deterministic verified circuit can be described as reaching zero informational uncertainty within the formal model</p>
-            <p>4. BRIK64 builds a compiler and language path around that bounded model</p>
-            <p>5. The BPU extends the same logic as a hardware roadmap concept rather than a shipped silicon fact</p>
-          </div>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <a
-              href="https://digitalcircuitality.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
-            >
-              <BookOpen className="h-4 w-4" /> Read the full theory
-            </a>
-            <a
-              href="/pcd"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm font-medium transition-colors"
-            >
-              Explore PCD <ArrowRight className="h-3.5 w-3.5" />
-            </a>
-          </div>
-        </section>
-      </div>
-
-      </main>
-      <div className="relative z-10">
-
-        <Footer />
-
-      </div>
-    </>
+         </div>
+      </section>
+    </CanonicalPageLayout>
   );
 }

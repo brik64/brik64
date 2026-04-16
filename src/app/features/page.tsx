@@ -1,29 +1,30 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
 import dynamic from "next/dynamic";
-
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
 import { MonomerGrid } from "@/components/MonomerGrid";
 import {
-  ConstraintEnvelopeSurface,
-  ScenarioFlowSurface,
-} from "@/components/PageArchetypes";
+  PageHeaderVNext,
+  ProtagonistSurface,
+  SupportingSurface,
+  ButtonVNext,
+  SectionRail,
+} from "@/components/vnext/primitives";
 import {
   ComparisonSurface,
   EvidenceSurface,
   FeatureMatrixSurface,
-  PageSectionHeader,
 } from "@/components/PageArtifacts";
+import {
+  ConstraintEnvelopeSurface,
+  ScenarioFlowSurface,
+  CanonicalPageLayout,
+} from "@/components/PageArchetypes";
 import {
   featureCta,
   featureHero,
   featureOverview,
   featureSectionBlueprints,
   featureSections,
-  type FeaturePageAction,
   type FeatureSectionSpec,
   type FeatureSurfaceSpec,
 } from "@/lib/features-page-data";
@@ -32,43 +33,6 @@ const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
   { ssr: false },
 );
-
-function ActionLink({ action }: { action: FeaturePageAction }) {
-  const icon = action.external ? (
-    <ExternalLink className="h-4 w-4" />
-  ) : (
-    <ArrowRight className="h-4 w-4" />
-  );
-  const shared =
-    "inline-flex items-center gap-2 text-sm font-medium transition-colors";
-  const className =
-    action.tone === "primary"
-      ? `${shared} rounded-md bg-teal px-6 py-3 text-white hover:bg-teal-hover`
-      : action.tone === "link"
-        ? `${shared} text-muted-foreground hover:text-foreground`
-        : `${shared} rounded-md border border-border bg-background px-5 py-3 text-foreground hover:border-teal/30 hover:bg-teal/[0.04]`;
-
-  if (action.external) {
-    return (
-      <a
-        href={action.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={className}
-      >
-        {action.label}
-        {icon}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={action.href} className={className}>
-      {action.label}
-      {icon}
-    </Link>
-  );
-}
 
 function renderFeatureSurface(
   surface: FeatureSurfaceSpec,
@@ -79,6 +43,7 @@ function renderFeatureSurface(
       return (
         <ComparisonSurface
           key={key}
+          dark
           eyebrow={surface.eyebrow}
           title={surface.title}
           description={surface.description}
@@ -96,6 +61,7 @@ function renderFeatureSurface(
       return (
         <FeatureMatrixSurface
           key={key}
+          dark
           eyebrow={surface.eyebrow}
           title={surface.title}
           description={surface.description}
@@ -107,6 +73,7 @@ function renderFeatureSurface(
       return (
         <EvidenceSurface
           key={key}
+          dark
           eyebrow={surface.eyebrow}
           title={surface.title}
           description={surface.description}
@@ -129,6 +96,7 @@ function renderFeatureSurface(
           codeTitle={surface.codeTitle}
           code={surface.code}
           footer={surface.footer}
+          showProofBadge
         />
       );
     case "ScenarioFlowSurface":
@@ -151,142 +119,144 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
   const blueprint = featureSectionBlueprints[section.id];
 
   return (
-    <section
-      id={section.id}
-      className="border-border mx-auto max-w-7xl border-x border-t px-6 py-16 md:px-12 md:py-24 lg:px-16"
-    >
-      <PageSectionHeader
-        eyebrow={section.label}
-        title={section.title}
-        description={section.lead}
-      />
+    <SupportingSurface className="px-6 py-20 md:px-12 lg:px-16" id={section.id}>
+      <div className="mx-auto max-w-6xl">
+        <PageHeaderVNext
+          eyebrow={section.label}
+          title={section.title}
+          description={section.lead}
+        />
 
-      <div className="mx-auto mt-8 max-w-6xl rounded-[1.5rem] border border-border/80 bg-background/90 p-5 shadow-sm">
-        <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-4">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">
-                Workflow focus
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {section.workflowFocus}
-              </p>
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+          <SectionRail title="Engineering Narrative">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
+                  Workflow focus
+                </p>
+                <p className="text-sm leading-relaxed text-white/50">
+                  {section.workflowFocus}
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
+                  Integration point
+                </p>
+                <p className="text-sm leading-relaxed text-white/50">
+                  {section.integrationPoint}
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
+                  Technical buyer
+                </p>
+                <p className="text-sm leading-relaxed text-white/50">
+                  {blueprint.buyer}
+                </p>
+              </div>
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
+                  Evidence outputs
+                </p>
+                <p className="text-sm leading-relaxed text-white/50">
+                  {section.evidenceOutputs.join(" · ")}
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">
-                Where BRIK-64 enters
+          </SectionRail>
+
+          <div className="space-y-10">
+            {renderFeatureSurface(section.primarySurface, `${section.id}-primary`)}
+            {renderFeatureSurface(section.supportingSurface, `${section.id}-supporting`)}
+            
+            <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">
+                Claim boundary
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {section.integrationPoint}
-              </p>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">
-                Technical buyer
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {blueprint.buyer}
-              </p>
-            </div>
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">
-                Evidence outputs
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {section.evidenceOutputs.join(" · ")}
+              <p className="mt-3 text-sm leading-relaxed text-white/50">
+                {section.claimBoundary}
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="mx-auto mt-10 grid max-w-6xl gap-6">
-        {renderFeatureSurface(section.primarySurface, `${section.id}-primary`)}
-        {renderFeatureSurface(section.supportingSurface, `${section.id}-supporting`)}
-      </div>
-
-      <div className="mx-auto mt-6 max-w-6xl rounded-[1.4rem] border border-teal/15 bg-teal/[0.04] p-4">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-teal">
-          Claim boundary
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          {section.claimBoundary}
-        </p>
-      </div>
-    </section>
+    </SupportingSurface>
   );
 }
 
 export default function FeaturesPage() {
   return (
-    <>
-      <Navbar />
-      <main className="relative z-10">
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-          <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
-            <HeroWireframe />
-            <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
-              <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
-                {featureHero.eyebrow}
-              </span>
-              <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                {featureHero.title} <span className="text-teal">{featureHero.highlight}</span>
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-                {featureHero.description}
-              </p>
-            </div>
-          </section>
+    <CanonicalPageLayout>
+      <main>
+        <ProtagonistSurface className="flex flex-col items-center justify-center pt-32 pb-24 md:pt-48 md:pb-32">
+          <HeroWireframe />
+          <div className="relative z-10 px-6 text-center">
+            <PageHeaderVNext
+              centered
+              eyebrow={featureHero.eyebrow}
+              title={`${featureHero.title} ${featureHero.highlight}`}
+              description={featureHero.description}
+            />
+          </div>
+        </ProtagonistSurface>
 
-          <section className="border-t border-border px-6 py-16 md:px-12 md:py-24 lg:px-16">
-            <PageSectionHeader
+        <SupportingSurface className="px-6 py-20 md:px-12 lg:px-16">
+          <div className="mx-auto max-w-6xl">
+            <PageHeaderVNext
               eyebrow={featureOverview.header.eyebrow}
               title={featureOverview.header.title}
               description={featureOverview.header.description}
             />
-            <div className="mx-auto mt-10 grid max-w-6xl gap-6">
+            <div className="mt-16 grid gap-8">
               {renderFeatureSurface(featureOverview.comparison, "overview-comparison")}
               {renderFeatureSurface(featureOverview.matrix, "overview-matrix")}
               {renderFeatureSurface(featureOverview.evidence, "overview-evidence")}
             </div>
-          </section>
+          </div>
+        </SupportingSurface>
 
-          <section className="border-t border-border px-6 py-16 md:px-12 md:py-24 lg:px-16">
-            <PageSectionHeader
+        <SupportingSurface className="px-6 py-20 md:px-12 lg:px-16">
+          <div className="mx-auto max-w-6xl">
+            <PageHeaderVNext
               eyebrow="Atomic Catalog"
               title="Core and extended monomer matrices"
               description="The same interactive matrix used in the home hero is exposed here to inspect bounded core operations and contract-bounded extended operations in one surface."
             />
-            <div className="mt-10 grid gap-6 xl:grid-cols-2 xl:items-start">
+            <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:items-start">
               <MonomerGrid variant="hero" fixedTrack="core" />
               <MonomerGrid variant="hero" fixedTrack="extended" />
             </div>
-          </section>
+          </div>
+        </SupportingSurface>
 
-          {featureSections.map((section) => (
-            <FeatureSectionBlock key={section.id} section={section} />
-          ))}
+        {featureSections.map((section) => (
+          <FeatureSectionBlock key={section.id} section={section} />
+        ))}
 
-          <section className="bg-background border-border mx-auto max-w-7xl border-x border-t px-6 py-20 text-center md:px-12 lg:px-16">
-            <h2 className="mx-auto max-w-3xl text-balance text-2xl font-bold tracking-tight text-teal md:text-3xl">
+        <section className="border-t border-white/10 bg-black px-6 py-32 text-center md:px-12 lg:px-16">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-5xl">
               {featureCta.title}
             </h2>
-            <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-sm leading-relaxed">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/50">
               {featureCta.description}
             </p>
-            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
               {featureCta.actions.map((action) => (
-                <ActionLink key={`${action.label}-${action.href}`} action={action} />
+                <ButtonVNext
+                  key={`${action.label}-${action.href}`}
+                  href={action.href}
+                  tone={action.tone}
+                  external={action.external}
+                  className="px-10 h-14 text-base"
+                >
+                  {action.label}
+                </ButtonVNext>
               ))}
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
-    </>
+    </CanonicalPageLayout>
   );
 }

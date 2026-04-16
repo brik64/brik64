@@ -1,4 +1,4 @@
-# BRIK-64 Design System
+# BRIK64 Design System
 
 > Canonical site grammar for `brik64.com`. Historical notes from earlier visual
 > systems are retained only as archival context and must not override the rules
@@ -204,10 +204,5 @@ traceable to current repo evidence. This includes:
 If the evidence is not present in the repo, the claim must be qualified or
 removed.
 
-## Historical appendix
 
-Earlier versions of the site experimented with square-card grids, border-only
-separators, and a broader use of terminal windows. Those notes remain useful as
-implementation history, but they are not normative for the current site. When a
-historical rule conflicts with the sections above, the current canonical site
-grammar wins.
+This system is preserved only so existing documentation and historical tests remain interpretable.

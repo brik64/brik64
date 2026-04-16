@@ -10,27 +10,15 @@ function CodeBlock({ children }: { children: string }) {
 }
 
 function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="mt-10 mb-4 text-2xl font-bold text-[#1A1817]">
-      {children}
-    </h2>
-  );
+  return <h2>{children}</h2>;
 }
 
 function H3({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="mt-8 mb-3 text-xl font-semibold text-[#1A1817]">
-      {children}
-    </h3>
-  );
+  return <h3>{children}</h3>;
 }
 
 function P({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-4 text-base leading-relaxed text-[#322F2D]/80">
-      {children}
-    </p>
-  );
+  return <p>{children}</p>;
 }
 
 function InternalLink({
@@ -43,7 +31,7 @@ function InternalLink({
   return (
     <a
       href={href}
-      className="text-[#00b8d4] underline underline-offset-2 hover:text-[#00b8d4]/80"
+      className="text-[color:var(--accent)] underline underline-offset-4 hover:opacity-80 transition-opacity"
     >
       {children}
     </a>

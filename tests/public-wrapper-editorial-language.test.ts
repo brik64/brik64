@@ -7,7 +7,6 @@ const auditedWrapperKeys = [
   "contact",
   "download",
   "legal",
-  "shop",
 ] as const;
 
 const bannedWrapperPhrases = [
@@ -42,13 +41,5 @@ describe("Public wrapper editorial language", () => {
     expect(about.hero.description).toContain("formal language");
     expect(about.primarySurface.title).toContain("compiler path");
     expect(about.cta?.actions.map((action) => action.href)).toContain("/platform");
-  });
-
-  it("shop says what it is today instead of faking a storefront", () => {
-    const shop = utilityPages.shop;
-    expect(shop.hero.description).toContain("not a full commerce experience");
-    expect(shop.primarySurface.rows.some((row) => row.title === "Commercial clarity")).toBe(
-      true,
-    );
   });
 });

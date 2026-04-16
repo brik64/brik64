@@ -15,7 +15,8 @@ describe("Design grammar — utility and company family", () => {
       const content = read(file);
       expect(content).toContain("UtilityPageView");
       expect(content).toContain(`utilityPages.${key}`);
-      expect(content).not.toContain("CopyableCode");
+      expect(content).not.toContain("<Navbar");
+      expect(content).not.toContain("<Footer");
     });
   }
 
@@ -28,34 +29,18 @@ describe("Design grammar — utility and company family", () => {
     });
   }
 
-  for (const file of utilityRestoredPages) {
-    it(`${file} owns its page structure directly`, () => {
-      const content = read(file);
-      expect(content).not.toContain("UtilityPageView");
-      expect(content).toContain("Navbar");
-      expect(content).toContain("Footer");
-    });
-  }
-
-  it("utility wrappers now include core company/product utility routes", () => {
-    expect(utilityWrapperPages.length).toBeGreaterThanOrEqual(10);
-    expect(utilityRestoredPages).toContain("src/app/investors/page.tsx");
-    expect(utilityRestoredPages).toContain("src/app/enterprise/page.tsx");
-    expect(utilityWrapperPages).not.toContainEqual(["src/app/ai-agents/page.tsx", "aiAgents"]);
+  it("all restored commercial routes now sit on the shared wrapper", () => {
+    expect(utilityRestoredPages).toHaveLength(0);
+    expect(utilityWrapperPages).toContainEqual(["src/app/pricing/page.tsx", "pricing"]);
+    expect(utilityWrapperPages).toContainEqual(["src/app/investors/page.tsx", "investors"]);
+    expect(utilityWrapperPages).toContainEqual(["src/app/enterprise/page.tsx", "enterprise"]);
   });
 
-  it("PageArchetypes exports the utility-specific surfaces", () => {
-    const content = read("src/components/PageArchetypes.tsx");
-    expect(content).toContain("export function UtilitySurface");
-    expect(content).toContain("export function CompanyThesisSurface");
-    expect(content).toContain("export function ActionSurface");
-    expect(content).toContain("export function DocsRailSurface");
-    expect(content).toContain("export function UtilityPageView");
-  });
-
-  it("utility page data keeps the route-specific grammar explicit", () => {
-    expect(utilityPages.playground.secondarySurface?.kind).toBe("docs");
-    expect(utilityPages.docs.secondarySurface?.kind).toBe("docs");
+  it("utility page data includes the new footer routes", () => {
+    expect(utilityPages.contactSales.hero.eyebrow).toBe("Contact Sales");
+    expect(utilityPages.privacyPolicy.hero.eyebrow).toBe("Privacy Policy");
+    expect(utilityPages.startups.hero.eyebrow).toBe("Startups");
+    expect(utilityPages.communityGuides.secondarySurface?.kind).toBe("docs");
     expect(utilityPages.login.sectionHeader.eyebrow).toBe("Auth");
     expect(utilityPages.signup.sectionHeader.eyebrow).toBe("Auth");
   });

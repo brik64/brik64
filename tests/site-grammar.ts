@@ -61,37 +61,40 @@ export const utilityWrapperPages = [
   ["src/app/download/page.tsx", "download"],
   ["src/app/faq/page.tsx", "faq"],
   ["src/app/legal/page.tsx", "legal"],
-  ["src/app/shop/page.tsx", "shop"],
   ["src/app/playground/page.tsx", "playground"],
   ["src/app/changelog/page.tsx", "changelog"],
   ["src/app/docs/page.tsx", "docs"],
   ["src/app/login/page.tsx", "login"],
   ["src/app/signup/page.tsx", "signup"],
+  ["src/app/pricing/page.tsx", "pricing"],
+  ["src/app/investors/page.tsx", "investors"],
+  ["src/app/enterprise/page.tsx", "enterprise"],
+  ["src/app/careers/page.tsx", "careers"],
+  ["src/app/contact-sales/page.tsx", "contactSales"],
+  ["src/app/security/page.tsx", "security"],
+  ["src/app/privacy-policy/page.tsx", "privacyPolicy"],
+  ["src/app/terms-of-use/page.tsx", "termsOfUse"],
+  ["src/app/dpa/page.tsx", "dpa"],
+  ["src/app/subprocessors/page.tsx", "subprocessors"],
+  ["src/app/cookie-policy/page.tsx", "cookiePolicy"],
+  ["src/app/business-information/page.tsx", "businessInformation"],
+  ["src/app/support/page.tsx", "support"],
+  ["src/app/community-guides/page.tsx", "communityGuides"],
+  ["src/app/postgresql-tutorial/page.tsx", "postgresqlTutorial"],
+  ["src/app/startups/page.tsx", "startups"],
 ] as const;
 
-export const auditedUtilityWrapperPages = [
-  ["src/app/about/page.tsx", "about"],
-  ["src/app/contact/page.tsx", "contact"],
-  ["src/app/download/page.tsx", "download"],
-  ["src/app/faq/page.tsx", "faq"],
-  ["src/app/legal/page.tsx", "legal"],
-  ["src/app/shop/page.tsx", "shop"],
-  ["src/app/playground/page.tsx", "playground"],
-  ["src/app/changelog/page.tsx", "changelog"],
-  ["src/app/docs/page.tsx", "docs"],
-  ["src/app/login/page.tsx", "login"],
-  ["src/app/signup/page.tsx", "signup"],
-] as const;
+export const auditedUtilityWrapperPages = utilityWrapperPages;
 
 export const utilityDirectPages = [
   "src/app/design-system/page.tsx",
 ] as const;
 
-export const utilityRestoredPages = [
-  "src/app/pricing/page.tsx",
-  "src/app/investors/page.tsx",
-  "src/app/enterprise/page.tsx",
+export const commerceDirectPages = [
+  "src/app/shop/page.tsx",
 ] as const;
+
+export const utilityRestoredPages = [] as const;
 
 export const riskWrapperPages = [
   ["src/app/ai/page.tsx", "thesisPages.ai"],

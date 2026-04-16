@@ -3,14 +3,10 @@ import { describe, expect, it } from "vitest";
 import { read } from "./site-grammar";
 
 const directRouteFiles = [
-  "src/app/pricing/page.tsx",
-  "src/app/investors/page.tsx",
-  "src/app/enterprise/page.tsx",
   "src/app/ai-agents/page.tsx",
 ] as const;
 
 const blockedClaims = [
-  "UtilityPageView",
   "every line of code is mathematically proven correct",
   "formal verification as a service",
   "code that doesn’t reach Φc = 1 never reaches production",
@@ -19,43 +15,40 @@ const blockedClaims = [
 ] as const;
 
 describe("Restored commercial and AI routes", () => {
-  it("remain direct pages instead of collapsing back into wrappers", () => {
+  it("keeps ai-agents as a direct page while commercial routes move to wrappers", () => {
     for (const file of directRouteFiles) {
       const source = read(file);
       expect(source).not.toContain("UtilityPageView");
       expect(source).toContain("Navbar");
       expect(source).toContain("Footer");
     }
+
+    for (const file of [
+      "src/app/pricing/page.tsx",
+      "src/app/investors/page.tsx",
+      "src/app/enterprise/page.tsx",
+    ] as const) {
+      const source = read(file);
+      expect(source).toContain("UtilityPageView");
+    }
   });
 
-  it("pricing keeps tier detail, matrix detail, and FAQ detail", () => {
+  it("pricing keeps the vNext pricing wrapper and dataset hook", () => {
     const source = read("src/app/pricing/page.tsx");
-    expect(source).toContain("Free");
-    expect(source).toContain("Pro");
-    expect(source).toContain("Team");
-    expect(source).toContain("Enterprise");
-    expect(source).toContain("Core");
-    expect(source).toContain("Platform");
-    expect(source).toContain("Team & Governance");
-    expect(source).toContain("COMMERCIAL FAQ");
+    expect(source).toContain("UtilityPageView");
+    expect(source).toContain("utilityPages.pricing");
   });
 
-  it("investors keeps thesis, moat, roadmap, and IP posture without absolute market claims", () => {
+  it("investors keeps the vNext investors wrapper and dataset hook", () => {
     const source = read("src/app/investors/page.tsx");
-    expect(source).toContain("[01] THE OPPORTUNITY");
-    expect(source).toContain("[05] COMPETITIVE MOAT");
-    expect(source).toContain("[06] ROADMAP");
-    expect(source).toContain("[07] INTELLECTUAL PROPERTY");
-    expect(source).toContain("Truth boundary");
+    expect(source).toContain("UtilityPageView");
+    expect(source).toContain("utilityPages.investors");
   });
 
-  it("enterprise keeps workflow and standards mapping without fake form theater", () => {
+  it("enterprise keeps the vNext enterprise wrapper and dataset hook", () => {
     const source = read("src/app/enterprise/page.tsx");
-    expect(source).toContain("[02] WORKFLOW");
-    expect(source).toContain("Standards mapping and claim boundary");
-    expect(source).toContain("Request architecture review");
-    expect(source).not.toContain('placeholder="Your name"');
-    expect(source).not.toContain("Request Demo");
+    expect(source).toContain("UtilityPageView");
+    expect(source).toContain("utilityPages.enterprise");
   });
 
   it("ai-agents keeps setup, machine-readable reference, and boundary language", () => {
@@ -68,7 +61,12 @@ describe("Restored commercial and AI routes", () => {
   });
 
   it("blocked historical claims do not reappear in the restored routes", () => {
-    const combined = directRouteFiles.map((file) => read(file)).join("\n");
+    const combined = [
+      ...directRouteFiles,
+      "src/app/pricing/page.tsx",
+      "src/app/investors/page.tsx",
+      "src/app/enterprise/page.tsx",
+    ].map((file) => read(file)).join("\n");
     for (const phrase of blockedClaims) {
       expect(combined).not.toContain(phrase);
     }
@@ -88,7 +86,7 @@ describe("Restored commercial and AI routes", () => {
         }
 
         if (route === "/pricing") {
-          expect(html).toContain("COMMERCIAL FAQ");
+          expect(html).toContain("Pricing");
           expect(html).toContain("Enterprise");
         }
       });

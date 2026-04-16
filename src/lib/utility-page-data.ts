@@ -718,3 +718,372 @@ export const utilityPages: Record<string, UtilityPageSpec> = {
     },
   },
 };
+
+type SimpleUtilityKey =
+  | "careers"
+  | "contactSales"
+  | "security"
+  | "privacyPolicy"
+  | "termsOfUse"
+  | "dpa"
+  | "subprocessors"
+  | "cookiePolicy"
+  | "businessInformation"
+  | "support"
+  | "communityGuides"
+  | "postgresqlTutorial"
+  | "startups";
+
+function buildSimpleUtilityPage(config: {
+  eyebrow: string;
+  title: string;
+  highlight?: string;
+  description: string;
+  sectionTitle: string;
+  sectionDescription: string;
+  primaryTitle: string;
+  primaryDescription: string;
+  rows: Array<{ title: string; body: string }>;
+  secondaryTitle: string;
+  secondaryDescription: string;
+  links: Array<{ title: string; body: string; href: string; external?: boolean }>;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaActions?: ReturnType<typeof primary>[] | Array<ReturnType<typeof primary> | ReturnType<typeof secondary> | ReturnType<typeof link>>;
+}): UtilityPageSpec {
+  return {
+    hero: {
+      eyebrow: config.eyebrow,
+      title: config.title,
+      highlight: config.highlight,
+      description: config.description,
+      actions: config.ctaActions?.slice(0, 2),
+    },
+    sectionHeader: {
+      eyebrow: config.eyebrow,
+      title: config.sectionTitle,
+      description: config.sectionDescription,
+    },
+    primarySurface: {
+      eyebrow: config.eyebrow,
+      title: config.primaryTitle,
+      description: config.primaryDescription,
+      rows: config.rows,
+    },
+    secondarySurface: {
+      eyebrow: "Reference routes",
+      title: config.secondaryTitle,
+      description: config.secondaryDescription,
+      kind: "docs",
+      links: config.links,
+    },
+    cta: config.ctaTitle && config.ctaDescription && config.ctaActions
+      ? {
+          title: config.ctaTitle,
+          description: config.ctaDescription,
+          actions: config.ctaActions,
+        }
+      : undefined,
+  };
+}
+
+Object.assign(utilityPages, {
+  careers: buildSimpleUtilityPage({
+    eyebrow: "Careers",
+    title: "Build the formal layer with",
+    highlight: "discipline.",
+    description: "Careers stays explicit about the kind of engineering, product, and systems work BRIK64 is building.",
+    sectionTitle: "Careers should communicate the work, not generic startup theater.",
+    sectionDescription: "Explain the kind of problems, standards, and collaboration posture candidates should expect.",
+    primaryTitle: "What working here means",
+    primaryDescription: "The public careers route should state the technical bar and the operating model clearly.",
+    rows: [
+      { title: "Systems rigor", body: "Work spans formal language, compiler, platform, registry, and public product surfaces." },
+      { title: "Truth boundary", body: "Public messaging stays tied to supportable product and engineering reality." },
+      { title: "Execution style", body: "Teams work with explicit architecture, bounded claims, and reviewable artifacts." },
+    ],
+    secondaryTitle: "Useful company routes before any hiring conversation",
+    secondaryDescription: "Candidates should be able to inspect the company and product surfaces first.",
+    links: [
+      { title: "About", body: "Company overview and public product framing.", href: "/about" },
+      { title: "Foundations", body: "Longer technical framing for the architecture.", href: "/foundations" },
+      { title: "Contact", body: "General questions before a hiring conversation.", href: "/contact" },
+    ],
+    ctaTitle: "Need the human route?",
+    ctaDescription: "Use contact when the question is about the company, scope, or future openings.",
+    ctaActions: [primary("Contact", "/contact")],
+  }),
+  contactSales: buildSimpleUtilityPage({
+    eyebrow: "Contact Sales",
+    title: "Route deployment and commercial questions to the",
+    highlight: "right channel.",
+    description: "Contact Sales exists for architecture review, deployment posture, and commercial scoping.",
+    sectionTitle: "Sales should start from real scope, not from inflated packaging claims.",
+    sectionDescription: "Point enterprise buyers to the right surfaces before a commercial conversation starts.",
+    primaryTitle: "When to use Contact Sales",
+    primaryDescription: "Use this route when the question is deployment, governance, identity, or organizational adoption.",
+    rows: [
+      { title: "Architecture review", body: "Discuss deployment posture, self-host scope, and control-point design." },
+      { title: "Commercial scoping", body: "Use this route for enterprise packaging and support conversations." },
+      { title: "Identity and governance", body: "SSO, SCIM, and shared review flows belong here rather than in generic support." },
+    ],
+    secondaryTitle: "Routes that should be inspected alongside sales",
+    secondaryDescription: "The commercial conversation is stronger when it stays tied to existing product and risk routes.",
+    links: [
+      { title: "Enterprise", body: "Enterprise operating model and qualified scope.", href: "/enterprise" },
+      { title: "Pricing", body: "Open path, team workflow, and commercial packaging.", href: "/pricing" },
+      { title: "Contact", body: "Use general contact for non-commercial questions.", href: "/contact" },
+    ],
+    ctaTitle: "Open the enterprise route first.",
+    ctaDescription: "The best sales conversation starts after the buyer has seen the system and its boundaries.",
+    ctaActions: [primary("Enterprise", "/enterprise"), secondary("Email sales", "mailto:enterprise@brik64.com")],
+  }),
+  security: buildSimpleUtilityPage({
+    eyebrow: "Security",
+    title: "Security posture belongs to the",
+    highlight: "explicit boundary.",
+    description: "Security copy should distinguish product controls, deployment posture, and what remains outside the public claim boundary.",
+    sectionTitle: "Security pages should stay precise and bounded.",
+    sectionDescription: "Explain how public security language maps to the rest of the site without inventing unsupported assurances.",
+    primaryTitle: "What the public security route covers",
+    primaryDescription: "Security posture should describe the review and deployment surface honestly.",
+    rows: [
+      { title: "Product controls", body: "Public language can explain review, package state, and operator visibility." },
+      { title: "Deployment posture", body: "Identity and environment controls belong in enterprise scoping, not as universal guarantees." },
+      { title: "Disclosure path", body: "Security reporting should route to a clear human channel." },
+    ],
+    secondaryTitle: "Related reference routes",
+    secondaryDescription: "Security lives close to legal, enterprise, and contact surfaces.",
+    links: [
+      { title: "Enterprise", body: "Deployment and identity posture in enterprise context.", href: "/enterprise" },
+      { title: "Legal", body: "Policy and public communication boundaries.", href: "/legal" },
+      { title: "Contact", body: "Human route for security questions.", href: "/contact" },
+    ],
+    ctaTitle: "Need a security conversation?",
+    ctaDescription: "Use the contact route if the question requires a human response rather than more public copy.",
+    ctaActions: [primary("Contact", "/contact")],
+  }),
+  privacyPolicy: buildSimpleUtilityPage({
+    eyebrow: "Privacy Policy",
+    title: "Privacy language should stay",
+    highlight: "readable.",
+    description: "The privacy route clarifies how contact, support, and public site interactions are handled without turning into product marketing.",
+    sectionTitle: "Privacy copy should describe data handling in direct terms.",
+    sectionDescription: "Keep this policy route focused on scope, not feature promotion.",
+    primaryTitle: "What privacy policy covers",
+    primaryDescription: "The public privacy route should focus on contact and website interaction boundaries.",
+    rows: [
+      { title: "Contact and support", body: "Email and support interactions should be described as operational communication channels." },
+      { title: "Website analytics", body: "Cookie and analytics posture should stay explicit and minimal." },
+      { title: "Escalation path", body: "Privacy questions should route to a clear contact path." },
+    ],
+    secondaryTitle: "Related policy routes",
+    secondaryDescription: "Readers should be able to move from privacy to the surrounding policy surfaces.",
+    links: [
+      { title: "Cookie Policy", body: "Cookie and analytics-specific coverage.", href: "/cookie-policy" },
+      { title: "Terms of Use", body: "Usage terms for the public site and related services.", href: "/terms-of-use" },
+      { title: "Legal", body: "Parent policy and communication boundary route.", href: "/legal" },
+    ],
+  }),
+  termsOfUse: buildSimpleUtilityPage({
+    eyebrow: "Terms of Use",
+    title: "Terms should define the",
+    highlight: "public boundary.",
+    description: "The terms route explains usage expectations for the public site and the basic relationship to BRIK64 services.",
+    sectionTitle: "Terms of Use should stay plain, structured, and non-promissory.",
+    sectionDescription: "Explain expectations without quietly adding product guarantees.",
+    primaryTitle: "What Terms of Use establish",
+    primaryDescription: "The terms route is about usage boundaries, not about feature promises.",
+    rows: [
+      { title: "Public website use", body: "State the conditions for using the site and interacting with public routes." },
+      { title: "Service boundary", body: "Avoid implying enterprise commitments that belong in contract-led conversations." },
+      { title: "Policy linkage", body: "Terms should connect cleanly to privacy and legal routes." },
+    ],
+    secondaryTitle: "Policy routes around terms",
+    secondaryDescription: "Terms should live alongside privacy and general legal surfaces.",
+    links: [
+      { title: "Privacy Policy", body: "Privacy and contact handling posture.", href: "/privacy-policy" },
+      { title: "Legal", body: "Policy overview and public communication boundaries.", href: "/legal" },
+      { title: "Business Information", body: "Business entity and public business details.", href: "/business-information" },
+    ],
+  }),
+  dpa: buildSimpleUtilityPage({
+    eyebrow: "DPA",
+    title: "Data processing terms belong in",
+    highlight: "enterprise scope.",
+    description: "The DPA route should explain that data processing terms are resolved in commercial and enterprise context, not by decorative public copy.",
+    sectionTitle: "Public DPA copy should remain scoped and preparatory.",
+    sectionDescription: "The route should state what the DPA is for and where the actual discussion belongs.",
+    primaryTitle: "What the DPA route is for",
+    primaryDescription: "It should clarify that processing terms attach to enterprise or contract-led adoption.",
+    rows: [
+      { title: "Contract-led", body: "DPA discussion belongs to enterprise evaluation and contract review." },
+      { title: "Support surface", body: "The site can explain the route without pretending a universal DPA already exists for every scenario." },
+      { title: "Related posture", body: "Readers should be handed to enterprise and privacy routes where appropriate." },
+    ],
+    secondaryTitle: "Useful routes before a DPA conversation",
+    secondaryDescription: "The user should see the enterprise and policy context first.",
+    links: [
+      { title: "Enterprise", body: "Deployment, controls, and commercial context.", href: "/enterprise" },
+      { title: "Privacy Policy", body: "Public privacy posture.", href: "/privacy-policy" },
+      { title: "Contact Sales", body: "Commercial route for contract discussions.", href: "/contact-sales" },
+    ],
+  }),
+  subprocessors: buildSimpleUtilityPage({
+    eyebrow: "Subprocessors",
+    title: "Subprocessor information should stay",
+    highlight: "enumerable.",
+    description: "The public subprocessors route exists to make external processing dependencies legible when they matter.",
+    sectionTitle: "Subprocessor coverage should be explicit and updateable.",
+    sectionDescription: "The route should clarify what kind of third-party processing surfaces exist and where questions should go.",
+    primaryTitle: "What subprocessors list should communicate",
+    primaryDescription: "It should state the role of third-party providers without turning into a vague vendor cloud page.",
+    rows: [
+      { title: "Operational vendors", body: "List relevant third-party processors or point to the maintained record." },
+      { title: "Scope boundary", body: "Differentiate website operations from enterprise deployment-specific discussions." },
+      { title: "Contact route", body: "Complex questions should route to privacy or enterprise channels." },
+    ],
+    secondaryTitle: "Related policy routes",
+    secondaryDescription: "Subprocessors should stay connected to privacy and DPA surfaces.",
+    links: [
+      { title: "Privacy Policy", body: "Public privacy scope and contact posture.", href: "/privacy-policy" },
+      { title: "DPA", body: "Contract-led processing terms.", href: "/dpa" },
+      { title: "Contact Sales", body: "Enterprise route for detailed deployment questions.", href: "/contact-sales" },
+    ],
+  }),
+  cookiePolicy: buildSimpleUtilityPage({
+    eyebrow: "Cookie Policy",
+    title: "Cookie policy should stay",
+    highlight: "specific.",
+    description: "Cookie policy exists to explain essential site behavior and optional analytics or marketing posture in direct terms.",
+    sectionTitle: "Cookies should be explained without dragging marketing language into policy.",
+    sectionDescription: "The route should say what the site uses and what controls exist.",
+    primaryTitle: "What cookie policy covers",
+    primaryDescription: "Explain essential cookies, optional analytics, and the relationship to consent controls.",
+    rows: [
+      { title: "Essential cookies", body: "Explain what is required for the site to function." },
+      { title: "Optional analytics", body: "Clarify the role of optional usage measurement if present." },
+      { title: "Preferences", body: "Point users to the cookie banner or privacy route for preference context." },
+    ],
+    secondaryTitle: "Related routes",
+    secondaryDescription: "Cookie policy should connect to privacy and legal routes.",
+    links: [
+      { title: "Privacy Policy", body: "Broader privacy and contact posture.", href: "/privacy-policy" },
+      { title: "Legal", body: "Policy overview and public scope.", href: "/legal" },
+      { title: "Support", body: "Human route for site-operation questions.", href: "/support" },
+    ],
+  }),
+  businessInformation: buildSimpleUtilityPage({
+    eyebrow: "Business Information",
+    title: "Business information should be",
+    highlight: "direct.",
+    description: "This page covers company identity, public business details, and the administrative facts readers may need.",
+    sectionTitle: "Business information should not be buried in marketing copy.",
+    sectionDescription: "The route should be practical, minimal, and easy to scan.",
+    primaryTitle: "What belongs here",
+    primaryDescription: "Readers use this page for entity details and public business context.",
+    rows: [
+      { title: "Company identity", body: "State the public business identity and core public contact routes." },
+      { title: "Administrative details", body: "Keep statutory and administrative information easy to locate." },
+      { title: "Related policy surfaces", body: "Link clearly to terms, privacy, and legal routes." },
+    ],
+    secondaryTitle: "Related company routes",
+    secondaryDescription: "Business information should stay close to the rest of the company and legal structure.",
+    links: [
+      { title: "About", body: "Company and public product framing.", href: "/about" },
+      { title: "Legal", body: "Policy overview and public communication boundaries.", href: "/legal" },
+      { title: "Terms of Use", body: "Usage expectations for the public site.", href: "/terms-of-use" },
+    ],
+  }),
+  support: buildSimpleUtilityPage({
+    eyebrow: "Support",
+    title: "Support should reduce",
+    highlight: "ambiguity.",
+    description: "Support exists for technical issues, operator questions, and route clarification when docs or product pages are not enough.",
+    sectionTitle: "Support pages should map users to the correct help path.",
+    sectionDescription: "The route should distinguish support, docs, and enterprise escalation clearly.",
+    primaryTitle: "Where support fits",
+    primaryDescription: "Support is for operational questions and technical help, not for every commercial or policy conversation.",
+    rows: [
+      { title: "Operator help", body: "Route CLI, platform, or workflow questions to support or docs." },
+      { title: "Issue escalation", body: "Bug reports should preserve a traceable path through support or GitHub." },
+      { title: "Commercial boundaries", body: "Deployment and contract scope should move to enterprise or Contact Sales." },
+    ],
+    secondaryTitle: "Useful routes before opening support",
+    secondaryDescription: "Support works better when docs and product routes are still visible.",
+    links: [
+      { title: "Docs", body: "Operator guidance and reference material.", href: "https://docs.brik64.dev", external: true },
+      { title: "Contact", body: "General human route.", href: "/contact" },
+      { title: "GitHub", body: "Public issues and source repository.", href: "https://github.com/brik64/brik64/issues", external: true },
+    ],
+    ctaTitle: "Need the documentation route instead?",
+    ctaDescription: "Open docs first when the issue is best solved by command or workflow reference.",
+    ctaActions: [primary("Open docs", "https://docs.brik64.dev", true), secondary("Contact", "/contact")],
+  }),
+  communityGuides: buildSimpleUtilityPage({
+    eyebrow: "Community Guides",
+    title: "Community guidance should keep the",
+    highlight: "operator path clear.",
+    description: "Community Guides collect practical entrypoints without replacing the canonical docs or the product story.",
+    sectionTitle: "Community material should extend the system, not fork it.",
+    sectionDescription: "Explain how examples, guides, and public contributions connect back to the canonical workflow.",
+    primaryTitle: "What community guides are for",
+    primaryDescription: "Use the route for onboarding, examples, and public learning paths that remain aligned with the docs.",
+    rows: [
+      { title: "Practical examples", body: "Show applied workflows without inventing new semantics or new product surfaces." },
+      { title: "Canonical alignment", body: "Community material should still route back to docs, CLI, and product pages." },
+      { title: "Contribution posture", body: "Public contribution should preserve truth boundaries and naming discipline." },
+    ],
+    secondaryTitle: "Canonical routes behind community learning",
+    secondaryDescription: "Community guides should never displace the authoritative references.",
+    links: [
+      { title: "Docs", body: "Canonical reference material.", href: "https://docs.brik64.dev", external: true },
+      { title: "CLI", body: "The main operator path into the system.", href: "/cli" },
+      { title: "GitHub", body: "Repository and issue tracker for public work.", href: "https://github.com/brik64", external: true },
+    ],
+  }),
+  postgresqlTutorial: buildSimpleUtilityPage({
+    eyebrow: "PostgreSQL Tutorial",
+    title: "Database tutorials should still end in the",
+    highlight: "formal route.",
+    description: "The PostgreSQL tutorial route explains how database-oriented guidance fits into the bounded blueprint and migration story.",
+    sectionTitle: "Tutorial pages should teach the workflow, not just a stack keyword.",
+    sectionDescription: "The route should connect practical database work to the same review and migration model used elsewhere on the site.",
+    primaryTitle: "What this tutorial route should communicate",
+    primaryDescription: "Use it for operator guidance around database-facing workflows, migration, and bounded logic extraction.",
+    rows: [
+      { title: "Database-facing logic", body: "Tutorial material should show how database logic relates to the formal layer." },
+      { title: "Migration fit", body: "Database-heavy codebases often matter most when teams are modernizing legacy systems." },
+      { title: "Docs handoff", body: "Deep command and example material still belongs in canonical docs." },
+    ],
+    secondaryTitle: "Related routes",
+    secondaryDescription: "Readers should be able to move from the tutorial route into docs and migration pages.",
+    links: [
+      { title: "Docs", body: "Reference documentation and examples.", href: "https://docs.brik64.dev", external: true },
+      { title: "COBOL migration", body: "Legacy modernization and review workflows.", href: "/use-cases/cobol-migration" },
+      { title: "CLI", body: "Operator path for lift, check, and publication.", href: "/cli" },
+    ],
+  }),
+  startups: buildSimpleUtilityPage({
+    eyebrow: "Startups",
+    title: "Startups need a faster route into",
+    highlight: "reviewable software.",
+    description: "The startups route explains how small teams can enter BRIK64 without enterprise ceremony while staying aligned to the system.",
+    sectionTitle: "Startup positioning should stay practical and system-led.",
+    sectionDescription: "Show how smaller teams adopt the workflow without overselling scale they do not need yet.",
+    primaryTitle: "Why startups might care",
+    primaryDescription: "For smaller teams, the formal layer matters when velocity is high and review depth is limited.",
+    rows: [
+      { title: "Generated-code pressure", body: "Smaller teams feel AI-assisted coding speed before they can scale review discipline." },
+      { title: "Migration and reuse", body: "Startups often need to evolve fast without rewriting trust from scratch every sprint." },
+      { title: "Open entry path", body: "CLI and docs remain the cleanest way to adopt before deeper workflow expansion." },
+    ],
+    secondaryTitle: "Start here before deeper adoption",
+    secondaryDescription: "The startup route should still point back to product and docs, not to a fake venture microsite.",
+    links: [
+      { title: "Pricing", body: "Open entry, team workflow, and enterprise route.", href: "/pricing" },
+      { title: "CLI", body: "Start with the operator path.", href: "/cli" },
+      { title: "Docs", body: "Reference material for installation and workflow.", href: "https://docs.brik64.dev", external: true },
+    ],
+  }),
+} satisfies Partial<Record<SimpleUtilityKey, UtilityPageSpec>>);

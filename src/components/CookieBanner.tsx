@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 const CONSENT_KEY = "brik64-cookie-consent";
@@ -9,13 +9,14 @@ const CONSENT_KEY = "brik64-cookie-consent";
 type ConsentChoice = "all" | "essential" | null;
 
 export function CookieBanner() {
-  const [visible, setVisible] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !localStorage.getItem(CONSENT_KEY);
-  });
+  const [visible, setVisible] = useState(false);
   const [showPrefs, setShowPrefs] = useState(false);
   const [analytics, setAnalytics] = useState(true);
   const [marketing, setMarketing] = useState(false);
+
+  useEffect(() => {
+    setVisible(!localStorage.getItem(CONSENT_KEY));
+  }, []);
 
   function accept(choice: ConsentChoice) {
     const consent = {
@@ -32,7 +33,7 @@ export function CookieBanner() {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6">
-      <div className="mx-auto max-w-2xl rounded-xl border border-border bg-background p-5 shadow-lg">
+      <div className="mx-auto max-w-2xl rounded-[20px] border border-border bg-card p-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
         {/* Header */}
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -42,8 +43,8 @@ export function CookieBanner() {
               required for the site to function. Analytics and marketing cookies
               help us improve and reach you with relevant content.{" "}
               <Link
-                href="/legal"
-                className="text-teal underline-offset-2 hover:underline"
+                href="/privacy-policy"
+                className="text-[color:var(--accent)] underline-offset-2 hover:underline"
               >
                 Privacy Policy
               </Link>
@@ -84,7 +85,7 @@ export function CookieBanner() {
               <button
                 onClick={() => setAnalytics(!analytics)}
                 className={`relative h-5 w-9 rounded-full transition-colors ${
-                  analytics ? "bg-teal" : "bg-border"
+                  analytics ? "bg-primary" : "bg-border"
                 }`}
               >
                 <span
@@ -104,7 +105,7 @@ export function CookieBanner() {
               <button
                 onClick={() => setMarketing(!marketing)}
                 className={`relative h-5 w-9 rounded-full transition-colors ${
-                  marketing ? "bg-teal" : "bg-border"
+                  marketing ? "bg-primary" : "bg-border"
                 }`}
               >
                 <span
@@ -121,13 +122,13 @@ export function CookieBanner() {
         <div className="mt-4 flex items-center gap-3">
           <button
             onClick={() => accept("all")}
-            className="inline-flex h-8 items-center rounded-md bg-teal px-4 text-xs font-medium text-white transition-colors hover:bg-teal-hover"
+            className="inline-flex h-8 items-center rounded-[var(--radius-md)] bg-primary px-4 text-xs font-medium text-primary-foreground transition-colors hover:bg-[color:var(--accent-hover)]"
           >
             Accept All
           </button>
           <button
             onClick={() => accept("essential")}
-            className="inline-flex h-8 items-center rounded-md border border-border px-4 text-xs font-medium text-foreground transition-colors hover:bg-secondary"
+            className="inline-flex h-8 items-center rounded-[var(--radius-md)] border border-border px-4 text-xs font-medium text-foreground transition-colors hover:bg-secondary"
           >
             Essential Only
           </button>

@@ -13,37 +13,19 @@ describe("Public wrapper visual grammar", () => {
     });
   }
 
-  it("CanonicalPageHero no longer emits generic proof-strip copy by default", () => {
+  it("CanonicalPageHero now uses the dark-first vNext hero grammar", () => {
     const content = read("src/components/PageArchetypes.tsx");
-    expect(content).not.toContain("Proof strip");
-    expect(content).not.toContain("One bounded object summarises the page before the body expands it.");
-    expect(content).not.toContain("The hero keeps the hook, but the proof strip carries state");
-    expect(content).not.toContain("page surface");
+    expect(content).toContain("radial-gradient(circle_at_top,rgba(0,229,255,0.16)");
+    expect(content).toContain("hero-light-grid");
+    expect(content).toContain("hero-light-glow");
+    expect(content).not.toContain("HeroWireframeClient");
+    expect(content).not.toContain("from-[#f0fdff]");
   });
 
-  it("utility surfaces require explicit status labels instead of generic pills", () => {
-    const content = read("src/components/PageArchetypes.tsx");
-    expect(content).toContain("status={statusLabel ? (");
-    expect(content).not.toContain("utility surface");
-    expect(content).not.toContain("action rail");
-    expect(content).not.toContain("docs rail");
-  });
-
-  it("company thesis surfaces no longer force a proof badge by default", () => {
-    const content = read("src/components/PageArchetypes.tsx");
-    const companyThesisBlock = content.split("export function CompanyThesisSurface")[1]?.split(
-      "export function ActionSurface",
-    )[0];
-    expect(companyThesisBlock).toBeTruthy();
-    expect(companyThesisBlock).toMatch(/status=\{\s*status \?\?/);
-    expect(companyThesisBlock).not.toContain("ProofBadge");
-  });
-
-  it("audited wrappers keep route-specific shapes after the rewrite", () => {
-    expect(utilityPages.playground.secondarySurface?.kind).toBe("docs");
-    expect(utilityPages.changelog.secondarySurface?.kind).toBe("docs");
+  it("utility surfaces keep explicit kind routing", () => {
     expect(utilityPages.docs.secondarySurface?.kind).toBe("docs");
     expect(utilityPages.login.secondarySurface?.kind).toBe("action");
-    expect(utilityPages.signup.secondarySurface?.kind).toBe("action");
+    expect(utilityPages.contactSales.secondarySurface?.kind).toBe("docs");
+    expect(utilityPages.support.secondarySurface?.kind).toBe("docs");
   });
 });

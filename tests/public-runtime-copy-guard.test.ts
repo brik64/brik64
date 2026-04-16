@@ -65,7 +65,6 @@ const auditedUtilityKeys = [
   "pricing",
   "legal",
   "investors",
-  "shop",
 ] as const;
 
 const auditedRiskKeys = ["ai", "blockchain", "safetyCritical"] as const;

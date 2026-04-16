@@ -7,14 +7,7 @@ const homeFiles = [
   "src/app/layout.tsx",
   "src/components/StructuredData.tsx",
   "src/components/Navbar.tsx",
-  "src/components/ProblemSection.tsx",
-  "src/components/HardwareDisciplineSection.tsx",
-  "src/components/PCDSection.tsx",
-  "src/components/WorkflowSection.tsx",
-  "src/components/PlatformSection.tsx",
-  "src/components/AINativeSection.tsx",
-  "src/components/HomeClaimBoundariesSection.tsx",
-  "src/components/CTASection.tsx",
+  "src/components/vnext/home.tsx",
 ] as const;
 
 const bannedPhrases = [
@@ -39,27 +32,21 @@ describe("Home editorial refactor guard", () => {
     }
   });
 
-  it("keeps the formal-layer thesis, workflow, and boundary anchors visible", () => {
-    const hero = read("src/components/HeroSection.tsx");
-    const workflow = read("src/components/WorkflowSection.tsx");
-    const boundaries = read("src/components/HomeClaimBoundariesSection.tsx");
+  it("keeps the new proposition, product path, and bounded entry anchors visible", () => {
+    const home = read("src/components/vnext/home.tsx");
 
-    expect(hero).toContain("BRIK64 turns generated and existing software into formal, portable, testable blueprints.");
-    expect(hero).toContain("Software generation got fast. BRIK64 makes it formal.");
-    expect(workflow).toContain("Lift, model, check, emit, and publish in one visible chain.");
-    expect(boundaries).toContain("What the formal layer proves, and where the boundary stops.");
+    expect(home).toContain("Compile, certify, publish.");
+    expect(home).toContain("The front door shows the system before the theory.");
+    expect(home).toContain("Keep one canonical blueprint between source and targets.");
+    expect(home).toContain("Choose your path");
   });
 
-  it("keeps home page composition focused on thesis, hardware-style discipline, workflow, platform, AI, and boundaries", () => {
+  it("keeps home page composition focused on the vNext poster-first structure", () => {
     const page = read("src/app/page.tsx");
-    expect(page).toContain("<ProblemSection />");
-    expect(page).toContain("<HardwareDisciplineSection />");
-    expect(page).toContain("<PCDSection />");
-    expect(page).toContain("<WorkflowSection />");
-    expect(page).toContain("<PlatformSection />");
-    expect(page).toContain("<AINativeSection />");
-    expect(page).toContain("<HomeClaimBoundariesSection />");
-    expect(page).not.toContain("<LanguagesSection />");
-    expect(page).not.toContain("<ComplianceSection />");
+    expect(page).toContain("<VNextHome />");
+    expect(page).toContain("<Navbar />");
+    expect(page).toContain("<Footer />");
+    expect(page).not.toContain("<ProblemSection />");
+    expect(page).not.toContain("<PlatformSection />");
   });
 });

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock3 } from "lucide-react";
@@ -9,26 +7,26 @@ function cx(...classes: Array<string | false | null | undefined>) {
 }
 
 const tagColorMap: Record<string, string> = {
-  VISION: "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-700",
-  TUTORIAL: "border-emerald-500/20 bg-emerald-500/10 text-emerald-700",
-  "DEEP DIVE": "border-sky-500/20 bg-sky-500/10 text-sky-700",
-  PRODUCT: "border-cyan-500/20 bg-cyan-500/10 text-cyan-700",
-  VERIFICATION: "border-rose-500/20 bg-rose-500/10 text-rose-700",
-  MIGRATION: "border-orange-500/20 bg-orange-500/10 text-orange-700",
-  HARDWARE: "border-amber-500/20 bg-amber-500/10 text-amber-800",
-  "AI AGENTS": "border-indigo-500/20 bg-indigo-500/10 text-indigo-700",
-  RESEARCH: "border-teal/20 bg-teal/10 text-teal-700",
-  "AI SAFETY": "border-pink-500/20 bg-pink-500/10 text-pink-700",
-  TOOLING: "border-yellow-500/20 bg-yellow-500/10 text-yellow-700",
-  REVOLUTION: "border-violet-500/20 bg-violet-500/10 text-violet-700",
-  SDKS: "border-lime-500/20 bg-lime-500/10 text-lime-700",
-  ENGINEERING: "border-slate-500/20 bg-slate-500/10 text-slate-700",
-  PLATFORM: "border-sky-500/20 bg-sky-500/10 text-sky-700",
-  LAUNCH: "border-emerald-500/20 bg-emerald-500/10 text-emerald-700",
-  DOCS: "border-teal/20 bg-teal/10 text-teal-700",
-  TOOLS: "border-amber-500/20 bg-amber-500/10 text-amber-700",
-  "OPEN SOURCE": "border-purple-500/20 bg-purple-500/10 text-purple-700",
-  COMMUNITY: "border-rose-500/20 bg-rose-500/10 text-rose-700",
+  VISION: "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-400",
+  TUTORIAL: "border-emerald-500/20 bg-emerald-500/10 text-emerald-400",
+  "DEEP DIVE": "border-sky-500/20 bg-sky-500/10 text-sky-400",
+  PRODUCT: "border-cyan-500/20 bg-cyan-500/10 text-cyan-400",
+  VERIFICATION: "border-rose-500/20 bg-rose-500/10 text-rose-400",
+  MIGRATION: "border-orange-500/20 bg-orange-500/10 text-orange-400",
+  HARDWARE: "border-amber-500/20 bg-amber-500/10 text-amber-500",
+  "AI AGENTS": "border-indigo-500/20 bg-indigo-500/10 text-indigo-400",
+  RESEARCH: "border-[color:var(--accent-soft)]/20 bg-[color:var(--accent-soft)]/10 text-[color:var(--accent)]",
+  "AI SAFETY": "border-pink-500/20 bg-pink-500/10 text-pink-400",
+  TOOLING: "border-yellow-500/20 bg-yellow-500/10 text-yellow-400",
+  REVOLUTION: "border-violet-500/20 bg-violet-500/10 text-violet-400",
+  SDKS: "border-lime-500/20 bg-lime-500/10 text-lime-400",
+  ENGINEERING: "border-slate-500/20 bg-slate-500/10 text-slate-400",
+  PLATFORM: "border-sky-500/20 bg-sky-500/10 text-sky-400",
+  LAUNCH: "border-emerald-500/20 bg-emerald-500/10 text-emerald-400",
+  DOCS: "border-[color:var(--accent-soft)]/20 bg-[color:var(--accent-soft)]/10 text-[color:var(--accent)]",
+  TOOLS: "border-amber-500/20 bg-amber-500/10 text-amber-400",
+  "OPEN SOURCE": "border-purple-500/20 bg-purple-500/10 text-purple-400",
+  COMMUNITY: "border-rose-500/20 bg-rose-500/10 text-rose-400",
 };
 
 export function TopicPill({ label }: { label: string }) {
@@ -56,28 +54,28 @@ export function EditorialHero({
   chips: string[];
 }) {
   return (
-    <section className="border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,184,212,0.12),transparent_48%),linear-gradient(180deg,#fbfeff_0%,#ffffff_100%)] px-6 py-20 lg:px-16 lg:py-24">
+    <section className="border-b border-white/5 bg-black px-6 py-20 lg:px-16 lg:py-24">
       <div className="mx-auto max-w-6xl">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-teal">{eyebrow}</p>
-        <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:items-end">
+        <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[color:var(--accent)]">{eyebrow}</p>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:items-end">
           <div>
-            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/50">
               {description}
             </p>
           </div>
-          <div className="rounded-[1.75rem] border border-border/80 bg-white/90 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          <div className="rounded-[2.5rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
               Editorial system
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-5 flex flex-wrap gap-2">
               {chips.map((chip) => (
                 <TopicPill key={chip} label={chip} />
               ))}
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-5 text-sm leading-relaxed text-white/40">
               Featured artifact, compact metadata, clear hierarchy, and one protagonist surface per page.
             </p>
           </div>
@@ -108,40 +106,41 @@ export function FeaturedEditorialCard({
   return (
     <Link
       href={`${hrefBase}/${item.slug}`}
-      className="group grid overflow-hidden rounded-[2rem] border border-border/80 bg-background shadow-[0_24px_80px_rgba(0,0,0,0.08)] transition-transform hover:-translate-y-0.5 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]"
+      className="group grid overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.4)] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05] lg:grid-cols-[minmax(0,1.19fr)_minmax(18rem,0.81fr)]"
     >
-      <div className="relative min-h-[18rem] bg-slate-950">
+      <div className="relative min-h-[22rem] bg-black">
         <Image
           src={item.coverImage}
           alt={item.coverAlt}
           fill
           priority
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.03]"
+          sizes="(max-width: 1024px) 100vw, 55vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
       </div>
-      <div className="flex flex-col justify-between gap-6 p-7 lg:p-8">
-        <div>
+      <div className="flex flex-col justify-between gap-8 p-8 lg:p-10">
+        <div className="space-y-6">
           <div className="flex flex-wrap items-center gap-3">
             <TopicPill label={item.tag} />
             {item.category ? (
-              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-white/30">
                 {item.category}
               </span>
             ) : null}
           </div>
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-teal">
+          <h2 className="text-3xl font-bold tracking-tight text-white transition-colors group-hover:text-[color:var(--accent)] sm:text-4xl">
             {item.title}
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">{item.excerpt}</p>
+          <p className="max-w-xl text-lg leading-relaxed text-white/50">{item.excerpt}</p>
         </div>
-        <div className="flex items-center justify-between gap-4">
-          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center justify-between gap-4 pt-4">
+          <div className="inline-flex items-center gap-2.5 text-sm font-medium text-white/40">
             <Clock3 className="h-4 w-4" />
             {item.date}
           </div>
-          <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
-            Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#2BB6AC]">
+            Entry <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>
         </div>
       </div>
@@ -159,14 +158,14 @@ export function EditorialCard({
   return (
     <Link
       href={`${hrefBase}/${item.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-border/80 bg-background shadow-[0_18px_60px_rgba(0,0,0,0.06)] transition-transform hover:-translate-y-0.5"
+      className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]"
     >
-      <div className="relative aspect-[16/10] bg-slate-950">
+      <div className="relative aspect-[16/10] bg-black">
         <Image
           src={item.coverImage}
           alt={item.coverAlt}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          className="object-cover transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-[1.05]"
           sizes="(max-width: 1024px) 100vw, 33vw"
         />
       </div>
@@ -174,19 +173,19 @@ export function EditorialCard({
         <div className="flex flex-wrap items-center gap-2">
           <TopicPill label={item.tag} />
           {item.category ? (
-            <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-white/30">
               {item.category}
             </span>
           ) : null}
         </div>
-        <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-teal">
+        <h3 className="mt-5 text-xl font-bold tracking-tight text-white transition-colors group-hover:text-[color:var(--accent)]">
           {item.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{item.excerpt}</p>
-        <div className="mt-6 flex items-center justify-between gap-4 text-sm">
-          <span className="text-muted-foreground">{item.date}</span>
-          <span className="inline-flex items-center gap-1.5 font-medium text-foreground">
-            Open <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        <p className="mt-4 flex-1 text-[15px] leading-relaxed text-white/50">{item.excerpt}</p>
+        <div className="mt-8 flex items-center justify-between gap-4 pt-4 border-t border-white/5">
+          <span className="text-xs font-medium text-white/30">{item.date}</span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#2BB6AC]">
+            Open <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
           </span>
         </div>
       </div>
@@ -211,14 +210,14 @@ export function PaginationRail({
   return (
     <nav
       aria-label="Pagination"
-      className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-[1.4rem] border border-border/80 bg-muted/30 px-5 py-4"
+      className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-[1.4rem] border border-border/80 bg-card/65 px-5 py-4"
     >
       <Link
         href={page > 1 ? pageHref(page - 1) : "#"}
         aria-disabled={page === 1}
         className={cx(
           "inline-flex items-center gap-2 text-sm font-medium transition-colors",
-          page === 1 ? "pointer-events-none text-muted-foreground/40" : "text-foreground hover:text-teal",
+          page === 1 ? "pointer-events-none text-muted-foreground/40" : "text-foreground hover:text-[color:var(--accent)]",
         )}
       >
         <ArrowLeft className="h-4 w-4" />
@@ -233,8 +232,8 @@ export function PaginationRail({
             className={cx(
               "inline-flex h-10 min-w-10 items-center justify-center rounded-full border px-3 text-sm font-medium transition-colors",
               page === targetPage
-                ? "border-teal bg-teal text-white"
-                : "border-border bg-background text-muted-foreground hover:border-teal/30 hover:text-foreground",
+                ? "border-[color:var(--accent)] bg-[color:var(--accent)] text-white"
+                : "border-white/10 bg-black text-white/50 hover:border-white/20 hover:text-white",
             )}
           >
             {targetPage}
@@ -246,7 +245,7 @@ export function PaginationRail({
         aria-disabled={page === totalPages}
         className={cx(
           "inline-flex items-center gap-2 text-sm font-medium transition-colors",
-          page === totalPages ? "pointer-events-none text-muted-foreground/40" : "text-foreground hover:text-teal",
+          page === totalPages ? "pointer-events-none text-muted-foreground/40" : "text-foreground hover:text-[color:var(--accent)]",
         )}
       >
         Next
@@ -278,41 +277,41 @@ export function EditorialArticleHero({
   coverAlt: string;
 }) {
   return (
-    <div className="border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,184,212,0.12),transparent_50%),linear-gradient(180deg,#fbfeff_0%,#ffffff_100%)] px-6 py-10 lg:px-16 lg:py-14">
+    <div className="border-b border-white/5 bg-black px-6 py-10 lg:px-16 lg:py-14">
       <div className="mx-auto max-w-6xl">
-        <Link href={href} className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
+        <Link href={href} className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/40 transition-colors hover:text-[color:var(--accent)]">
           <ArrowLeft className="h-4 w-4" />
           Back
         </Link>
-        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.8fr)] lg:items-center">
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-teal">{eyebrow}</p>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.8fr)] lg:items-center">
+          <div className="space-y-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[color:var(--accent)]">{eyebrow}</p>
+            <div className="flex flex-wrap items-center gap-3">
               <TopicPill label={tag} />
               {category ? (
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-white/30">
                   {category}
                 </span>
               ) : null}
             </div>
-            <h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
               {title}
             </h1>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="max-w-3xl text-lg leading-relaxed text-white/50">
               {excerpt}
             </p>
-            <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="inline-flex items-center gap-2.5 text-sm font-medium text-white/40">
               <Clock3 className="h-4 w-4" />
               {date}
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.8rem] border border-white/10 bg-slate-950 shadow-[0_20px_80px_rgba(0,0,0,0.18)]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] border border-white/10 bg-black shadow-[0_20px_80px_rgba(0,0,0,0.4)]">
             <Image
               src={coverImage}
               alt={coverAlt}
               fill
               priority
-              className="object-cover"
+              className="object-cover grayscale"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
           </div>

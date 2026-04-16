@@ -7,11 +7,11 @@ import {
   Link2,
   MoveRight,
   ShieldCheck,
+  Layers,
 } from "lucide-react";
 
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import { HeroWireframeClient } from "@/components/HeroWireframeClient";
 import {
   ArtifactFrame,
   ArtifactHeader,
@@ -22,6 +22,26 @@ import {
   StatusPill,
 } from "@/components/HomeProofArtifacts";
 import { PageSectionHeader } from "@/components/PageArtifacts";
+import {
+  renderBrandText,
+  ButtonVNext,
+  ProtagonistSurface,
+  SupportingSurface,
+  PageHeaderVNext,
+} from "@/components/vnext/primitives";
+
+export type ActionSpec = {
+  label: string;
+  href: string;
+  tone?: "primary" | "secondary" | "link";
+  external?: boolean;
+};
+
+export type MetricSpec = {
+  label: string;
+  value: string;
+  detail: string;
+};
 
 function cx(...classes: Array<string | false | null | undefined>): string {
   return classes.filter(Boolean).join(" ");
@@ -157,60 +177,29 @@ export type RiskPageSpec = {
   };
 };
 
-function ActionAnchor({ action }: { action: PageAction }) {
-  const tone = action.tone ?? "secondary";
-  const isExternalHref =
-    action.external ?? /^(https?:|mailto:|tel:)/.test(action.href);
-  const shared =
-    "inline-flex items-center gap-2 text-sm font-medium transition-colors";
-  const classes =
-    tone === "primary"
-      ? `${shared} rounded-md bg-teal px-6 py-3 text-white hover:bg-teal-hover`
-      : tone === "secondary"
-        ? `${shared} rounded-md border border-border bg-background px-5 py-3 text-foreground hover:border-teal/30 hover:bg-teal/[0.04]`
-        : `${shared} text-muted-foreground hover:text-foreground`;
-
-  const icon = isExternalHref ? (
-    <ExternalLink className="h-4 w-4" />
-  ) : (
-    <ArrowRight className="h-4 w-4" />
-  );
-
-  if (isExternalHref) {
-    return (
-      <a
-        href={action.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classes}
-      >
-        {action.label}
-        {icon}
-      </a>
-    );
-  }
-
+export function ActionAnchor({ action }: { action: ActionSpec }) {
   return (
-    <Link href={action.href} className={classes}>
+    <ButtonVNext
+      href={action.href}
+      tone={action.tone as any}
+      external={action.external}
+      className={cx(
+        "h-12 px-8 text-sm",
+        action.tone === "secondary" && "bg-white/5 border-white/10 text-white hover:bg-white/10"
+      )}
+    >
       {action.label}
-      {icon}
-    </Link>
+    </ButtonVNext>
   );
 }
 
 export function CanonicalPageLayout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <div className="flex min-h-screen flex-col bg-black text-white selection:bg-[color:var(--accent)]/30">
       <Navbar />
-      <main className="relative z-10">
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-          {children}
-        </div>
-      </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
-    </>
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
   );
 }
 
@@ -222,13 +211,10 @@ export function CanonicalSection({
   className?: string;
 }) {
   return (
-    <section
-      className={cx(
-        "border-t border-border px-6 py-16 md:px-12 md:py-24 lg:px-16",
-        className,
-      )}
-    >
-      {children}
+    <section className={cx("relative border-t border-white/5", className)}>
+      <div className="mx-auto max-w-[1400px] px-6 py-20 md:py-24 md:px-8 lg:px-12">
+        {children}
+      </div>
     </section>
   );
 }
@@ -236,76 +222,73 @@ export function CanonicalSection({
 export function CanonicalPageHero({
   eyebrow,
   title,
-  highlight,
   description,
   actions,
   metrics,
   status,
-  proofStripEyebrow,
   proofStripTitle,
+  proofStripEyebrow,
   proofStripDescription,
 }: {
   eyebrow: string;
   title: ReactNode;
-  highlight?: string;
-  description: ReactNode;
-  actions?: PageAction[];
-  metrics?: Array<{ label: string; value: string; detail?: string }>;
+  description: string;
+  actions: ActionSpec[];
+  metrics?: MetricSpec[];
   status?: ReactNode;
   proofStripEyebrow?: string;
-  proofStripTitle?: ReactNode;
-  proofStripDescription?: ReactNode;
+  proofStripTitle?: string;
+  proofStripDescription?: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-[#f0fdff] to-white">
-      <HeroWireframeClient />
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 lg:py-32">
-        <div className="mx-auto max-w-5xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
-            {eyebrow}
-          </span>
-          <h1 className="mx-auto mt-5 max-w-4xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {title}
-            {highlight ? <span className="text-teal"> {highlight}</span> : null}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {description}
-          </p>
-          {actions?.length ? (
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              {actions.map((action) => (
-                <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
-              ))}
-            </div>
-          ) : null}
+    <ProtagonistSurface className="relative overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 lg:pb-40">
+      <div className="absolute inset-0 blueprint-grid opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+      
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12 text-center">
+        <PageHeaderVNext
+          centered
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
+          status={status}
+        />
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          {actions.map((action) => (
+            <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
+          ))}
         </div>
 
-        {metrics?.length ? (
-          <div className="mx-auto mt-12 max-w-5xl">
-            <ArtifactFrame className="space-y-5">
-              {proofStripEyebrow || proofStripTitle || proofStripDescription || status ? (
-                <ArtifactHeader
-                  eyebrow={proofStripEyebrow ?? ""}
-                  title={proofStripTitle ?? ""}
-                  description={proofStripDescription ?? ""}
-                  status={status}
-                />
-              ) : null}
-              <div className="grid gap-4 md:grid-cols-3">
-                {metrics.map((metric) => (
-                  <MetricTile
-                    key={metric.label}
-                    label={metric.label}
-                    value={metric.value}
-                    detail={metric.detail}
-                  />
-                ))}
-              </div>
-            </ArtifactFrame>
+        {metrics && (
+          <div className="mx-auto mt-20 grid max-w-5xl gap-4 sm:grid-cols-3">
+            {metrics.map((metric) => (
+              <MetricTile
+                dark
+                key={metric.label}
+                label={metric.label}
+                value={metric.value}
+                detail={metric.detail}
+              />
+            ))}
           </div>
-        ) : null}
+        )}
+
+        {proofStripTitle && (
+          <div className="mx-auto mt-24 max-w-4xl border-t border-white/10 pt-12">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">
+              {proofStripEyebrow ?? "Verification strip"}
+            </p>
+            <h3 className="mt-4 text-xl font-bold text-white tracking-tight">
+              {proofStripTitle}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/50 max-w-2xl mx-auto">
+              {proofStripDescription}
+            </p>
+          </div>
+        )}
       </div>
-    </section>
+    </ProtagonistSurface>
   );
 }
 
@@ -327,8 +310,9 @@ export function RiskEvidenceSurface({
   statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -342,6 +326,7 @@ export function RiskEvidenceSurface({
       <div className="grid gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
           <MetricTile
+            dark
             key={metric.label}
             label={metric.label}
             value={metric.value}
@@ -356,10 +341,10 @@ export function RiskEvidenceSurface({
             className={cx(
               "rounded-[1.5rem] border p-5 shadow-sm",
               track.emphasis === "proof"
-                ? "border-teal/25 bg-teal/[0.05]"
+                ? "border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)]"
                 : track.emphasis === "risk"
                   ? "border-amber-500/25 bg-amber-500/[0.08]"
-                  : "border-border/80 bg-background/90",
+                  : "border-white/10 bg-white/[0.04]",
             )}
           >
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
@@ -402,8 +387,9 @@ export function ConstraintEnvelopeSurface({
   showProofBadge?: boolean;
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -420,13 +406,13 @@ export function ConstraintEnvelopeSurface({
           {constraints.map((constraint) => (
             <div
               key={constraint.title}
-              className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4"
+              className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] px-5 py-4"
             >
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-semibold text-foreground">
                   {constraint.title}
                 </p>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-teal">
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--accent)]">
                   {constraint.outcome}
                   <MoveRight className="h-3.5 w-3.5" />
                 </span>
@@ -439,6 +425,7 @@ export function ConstraintEnvelopeSurface({
         </div>
         {code && codeTitle ? (
           <CodeProofPanel
+            dark
             eyebrow={codeEyebrow ?? "Bounded example"}
             title={codeTitle}
             badge={<ProofBadge />}
@@ -447,7 +434,7 @@ export function ConstraintEnvelopeSurface({
         ) : null}
       </div>
       {footer ? (
-        <div className="rounded-[1.4rem] border border-teal/15 bg-teal/[0.04] p-4 text-sm text-muted-foreground">
+        <div className="rounded-[1.4rem] border border-[color:var(--accent-soft)]/20 bg-[color:var(--accent-soft)]/10 p-4 text-sm text-muted-foreground">
           {footer}
         </div>
       ) : null}
@@ -473,8 +460,9 @@ export function ScenarioFlowSurface({
   footer?: ReactNode;
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -488,6 +476,7 @@ export function ScenarioFlowSurface({
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {steps.map((step) => (
           <FlowNode
+            dark
             key={step.label}
             label={step.label}
             title={step.title}
@@ -498,7 +487,7 @@ export function ScenarioFlowSurface({
         ))}
       </div>
       {footer ? (
-        <div className="rounded-[1.4rem] border border-border/80 bg-background/90 p-4 text-sm text-muted-foreground">
+        <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.04] p-4 text-sm text-muted-foreground">
           {footer}
         </div>
       ) : null}
@@ -514,6 +503,7 @@ export function UtilitySurface({
   footer,
   statusLabel,
   statusTone,
+  dark = true,
 }: {
   eyebrow: string;
   title: string;
@@ -522,42 +512,48 @@ export function UtilitySurface({
   footer?: ReactNode;
   statusLabel?: string;
   statusTone?: "teal" | "success" | "warning" | "neutral";
+  dark?: boolean;
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark={dark} className="space-y-6">
       <ArtifactHeader
+        dark={dark}
         eyebrow={eyebrow}
         title={title}
         description={description}
-        status={statusLabel ? (
-          <StatusPill tone={statusTone ?? "neutral"}>
-            <Gauge className="h-3.5 w-3.5" />
-            {statusLabel}
+        status={
+          <StatusPill tone={statusTone ?? "teal"}>
+            <Layers className="h-3.5 w-3.5" />
+            {statusLabel ?? "Utility surface"}
           </StatusPill>
-        ) : undefined}
+        }
       />
       <div className="grid gap-3">
         {rows.map((row) => (
           <div
             key={row.title}
-            className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4"
+            className={cx(
+              "rounded-[1.15rem] border px-5 py-4",
+              dark ? "border-white/10 bg-white/[0.04]" : "border-border bg-card/95"
+            )}
           >
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="text-sm font-semibold text-foreground">{row.title}</p>
-              {row.note ? (
-                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              <p className="text-sm font-bold text-white">{row.title}</p>
+              {row.note && (
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--accent)]">
                   {row.note}
                 </span>
-              ) : null}
+              )}
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {row.body}
-            </p>
+            <p className="mt-2 text-sm leading-6 text-white/40">{row.body}</p>
           </div>
         ))}
       </div>
       {footer ? (
-        <div className="rounded-[1.4rem] border border-border/80 bg-muted/40 p-4 text-sm text-muted-foreground">
+        <div className={cx(
+          "rounded-[1.15rem] border p-4 text-sm text-muted-foreground",
+          dark ? "border-[color:var(--accent-soft)]/20 bg-[color:var(--accent-soft)]/10" : "border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)]"
+        )}>
           {footer}
         </div>
       ) : null}
@@ -585,8 +581,9 @@ export function CompanyThesisSurface({
   statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -600,6 +597,7 @@ export function CompanyThesisSurface({
       <div className="grid gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
           <MetricTile
+            dark
             key={metric.label}
             label={metric.label}
             value={metric.value}
@@ -612,12 +610,14 @@ export function CompanyThesisSurface({
           <div
             key={statement.title}
             className={cx(
-              "rounded-[1.5rem] border p-5 shadow-sm",
-              index === 0 ? "border-teal/25 bg-teal/[0.05]" : "border-border/80 bg-background/90",
+              "rounded-[1.5rem] border p-5 shadow-sm transition-colors",
+              index === 0 
+                ? "border-[color:var(--accent-soft)]/40 bg-[color:var(--accent-soft)]/10" 
+                : "border-white/5 bg-white/[0.02] hover:bg-white/[0.04]",
             )}
           >
-            <p className="text-sm font-semibold text-foreground">{statement.title}</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <p className="text-sm font-bold text-white">{statement.title}</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/40">
               {statement.body}
             </p>
           </div>
@@ -645,8 +645,9 @@ export function ActionSurface({
   statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -661,10 +662,10 @@ export function ActionSurface({
         {channels.map((channel) => (
           <div
             key={channel.title}
-            className="rounded-[1.5rem] border border-border/80 bg-background/90 p-5 shadow-sm"
+            className="rounded-[1.5rem] border border-white/5 bg-white/[0.02] p-5 shadow-sm transition-colors hover:bg-white/[0.04]"
           >
-            <p className="text-sm font-semibold text-foreground">{channel.title}</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <p className="text-sm font-bold text-white">{channel.title}</p>
+            <p className="mt-3 text-sm leading-relaxed text-white/40">
               {channel.body}
             </p>
             <div className="mt-5">
@@ -681,7 +682,7 @@ export function ActionSurface({
         ))}
       </div>
       {footer ? (
-        <div className="rounded-[1.4rem] border border-teal/15 bg-teal/[0.04] p-4 text-sm text-muted-foreground">
+        <div className="rounded-[1.4rem] border border-[color:var(--accent-soft)]/20 bg-[color:var(--accent-soft)]/10 p-4 text-sm text-white/40">
           {footer}
         </div>
       ) : null}
@@ -707,8 +708,9 @@ export function DocsRailSurface({
   statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -723,10 +725,10 @@ export function DocsRailSurface({
         {links.map((link) => (
           <div
             key={link.title}
-            className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4"
+            className="rounded-[1.35rem] border border-white/5 bg-white/[0.02] px-5 py-4 transition-colors hover:bg-white/[0.04]"
           >
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="text-sm font-semibold text-foreground">{link.title}</p>
+              <p className="text-sm font-bold text-white">{link.title}</p>
               <ActionAnchor
                 action={{
                   label: "Open",
@@ -736,14 +738,14 @@ export function DocsRailSurface({
                 }}
               />
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-2 text-sm leading-relaxed text-white/40">
               {link.body}
             </p>
           </div>
         ))}
       </div>
       {note ? (
-        <div className="rounded-[1.4rem] border border-border/80 bg-muted/40 p-4 text-sm text-muted-foreground">
+        <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.04] p-4 text-sm text-white/40">
           {note}
         </div>
       ) : null}
@@ -775,8 +777,9 @@ export function LanguageExchangeSurface({
   statusTone?: "teal" | "success" | "warning" | "neutral";
 }) {
   return (
-    <ArtifactFrame className="space-y-6">
+    <ArtifactFrame dark className="space-y-6">
       <ArtifactHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -792,6 +795,7 @@ export function LanguageExchangeSurface({
       <div className="grid gap-4 md:grid-cols-3">
         {metrics.map((metric) => (
           <MetricTile
+            dark
             key={metric.label}
             label={metric.label}
             value={metric.value}
@@ -804,10 +808,10 @@ export function LanguageExchangeSurface({
           {exchanges.map((exchange) => (
             <div
               key={exchange.title}
-              className="rounded-[1.35rem] border border-border/80 bg-background/90 px-5 py-4"
+              className="rounded-[1.35rem] border border-white/5 bg-white/[0.02] px-5 py-4"
             >
-              <p className="text-sm font-semibold text-foreground">{exchange.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm font-semibold text-white">{exchange.title}</p>
+              <p className="mt-2 text-sm leading-relaxed text-white/40">
                 {exchange.body}
               </p>
             </div>
@@ -815,6 +819,7 @@ export function LanguageExchangeSurface({
         </div>
         {code && codeTitle ? (
           <CodeProofPanel
+            dark
             eyebrow="Language example"
             title={codeTitle}
             badge={<StatusPill tone="success">bridge pattern</StatusPill>}
@@ -823,7 +828,7 @@ export function LanguageExchangeSurface({
         ) : null}
       </div>
       {footer ? (
-        <div className="rounded-[1.4rem] border border-teal/15 bg-teal/[0.04] p-4 text-sm text-muted-foreground">
+        <div className="rounded-[1.4rem] border border-[color:var(--accent-soft)]/20 bg-[color:var(--accent-soft)]/10 p-4 text-sm text-white/40">
           {footer}
         </div>
       ) : null}
@@ -843,6 +848,7 @@ export function ArchetypeSectionHeader({
   return (
     <div className="mx-auto max-w-6xl">
       <PageSectionHeader
+        dark
         eyebrow={eyebrow}
         title={title}
         description={description}
@@ -864,7 +870,7 @@ function HeroTitle({
 
   return (
     <>
-      {title} <span className="text-teal">{highlight}</span>
+      {title} <span className="text-[color:var(--accent)]">{highlight}</span>
     </>
   );
 }
@@ -875,91 +881,95 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
   return (
     <CanonicalPageLayout>
       <CanonicalPageHero
+        dark
         eyebrow={hero.eyebrow}
         title={<HeroTitle title={hero.title} highlight={hero.highlight} />}
         description={hero.description}
-        actions={hero.actions}
+        actions={hero.actions || []}
         metrics={hero.metrics}
       />
 
-      <CanonicalSection>
-        <ArchetypeSectionHeader {...sectionHeader} />
-        <div className="mx-auto mt-10 grid max-w-6xl gap-6">
-          {primarySurface.thesis && primarySurface.metrics ? (
-            <CompanyThesisSurface
-              eyebrow={primarySurface.eyebrow}
-              title={primarySurface.title}
-              description={primarySurface.description}
-              metrics={primarySurface.metrics}
-              statements={primarySurface.rows.map((row) => ({
-                title: row.title,
-                body: row.body,
-              }))}
-              statusLabel={primarySurface.statusLabel}
-              statusTone={primarySurface.statusTone}
-            />
-          ) : (
-            <UtilitySurface
-              eyebrow={primarySurface.eyebrow}
-              title={primarySurface.title}
-              description={primarySurface.description}
-              rows={primarySurface.rows}
-              footer={primarySurface.footer}
-              statusLabel={primarySurface.statusLabel}
-              statusTone={primarySurface.statusTone}
-            />
-          )}
+      <section className="bg-black">
+        <CanonicalSection>
+          <ArchetypeSectionHeader {...sectionHeader} />
+          <div className="mx-auto mt-12 grid max-w-6xl gap-8">
+            {primarySurface.thesis && primarySurface.metrics ? (
+              <CompanyThesisSurface
+                eyebrow={primarySurface.eyebrow}
+                title={primarySurface.title}
+                description={primarySurface.description}
+                metrics={primarySurface.metrics}
+                statements={primarySurface.rows.map((row) => ({
+                  title: row.title,
+                  body: row.body,
+                }))}
+                statusLabel={primarySurface.statusLabel}
+                statusTone={primarySurface.statusTone}
+              />
+            ) : (
+              <UtilitySurface
+                eyebrow={primarySurface.eyebrow}
+                title={primarySurface.title}
+                description={primarySurface.description}
+                rows={primarySurface.rows}
+                footer={primarySurface.footer}
+                statusLabel={primarySurface.statusLabel}
+                statusTone={primarySurface.statusTone}
+              />
+            )}
 
-          {secondarySurface?.kind === "action" && secondarySurface.channels ? (
-            <ActionSurface
-              eyebrow={secondarySurface.eyebrow}
-              title={secondarySurface.title}
-              description={secondarySurface.description}
-              channels={secondarySurface.channels}
-              footer={secondarySurface.footer}
-              statusLabel={secondarySurface.statusLabel}
-              statusTone={secondarySurface.statusTone}
-            />
-          ) : secondarySurface?.kind === "docs" && secondarySurface.links ? (
-            <DocsRailSurface
-              eyebrow={secondarySurface.eyebrow}
-              title={secondarySurface.title}
-              description={secondarySurface.description}
-              links={secondarySurface.links}
-              note={secondarySurface.footer}
-              statusLabel={secondarySurface.statusLabel}
-              statusTone={secondarySurface.statusTone}
-            />
-          ) : secondarySurface?.rows ? (
-            <UtilitySurface
-              eyebrow={secondarySurface.eyebrow}
-              title={secondarySurface.title}
-              description={secondarySurface.description}
-              rows={secondarySurface.rows}
-              footer={secondarySurface.footer}
-              statusLabel={secondarySurface.statusLabel}
-              statusTone={secondarySurface.statusTone}
-            />
-          ) : null}
-        </div>
-      </CanonicalSection>
+            {secondarySurface?.kind === "action" && secondarySurface.channels ? (
+              <ActionSurface
+                eyebrow={secondarySurface.eyebrow}
+                title={secondarySurface.title}
+                description={secondarySurface.description}
+                channels={secondarySurface.channels}
+                footer={secondarySurface.footer}
+                statusLabel={secondarySurface.statusLabel}
+                statusTone={secondarySurface.statusTone}
+              />
+            ) : secondarySurface?.kind === "docs" && secondarySurface.links ? (
+              <DocsRailSurface
+                eyebrow={secondarySurface.eyebrow}
+                title={secondarySurface.title}
+                description={secondarySurface.description}
+                links={secondarySurface.links}
+                note={secondarySurface.footer}
+                statusLabel={secondarySurface.statusLabel}
+                statusTone={secondarySurface.statusTone}
+              />
+            ) : secondarySurface?.rows ? (
+              <UtilitySurface
+                eyebrow={secondarySurface.eyebrow}
+                title={secondarySurface.title}
+                description={secondarySurface.description}
+                rows={secondarySurface.rows}
+                footer={secondarySurface.footer}
+                statusLabel={secondarySurface.statusLabel}
+                statusTone={secondarySurface.statusTone}
+              />
+            ) : null}
+          </div>
+        </CanonicalSection>
+      </section>
 
       {cta ? (
-        <CanonicalSection className="text-center">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mx-auto text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <section className="relative px-6 py-32 text-center blueprint-grid overflow-hidden border-t border-white/5 bg-[#0b0b0f]">
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+          <div className="relative z-10 mx-auto max-w-4xl">
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl mb-8">
               {cta.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p className="text-lg text-white/40 mx-auto mt-3 max-w-2xl leading-relaxed mb-12">
               {cta.description}
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
               {cta.actions.map((action) => (
                 <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
               ))}
             </div>
           </div>
-        </CanonicalSection>
+        </section>
       ) : null}
     </CanonicalPageLayout>
   );
@@ -969,10 +979,11 @@ export function RiskPageView({ page }: { page: RiskPageSpec }) {
   return (
     <CanonicalPageLayout>
       <CanonicalPageHero
+        dark
         eyebrow={page.hero.eyebrow}
         title={<HeroTitle title={page.hero.title} highlight={page.hero.highlight} />}
         description={page.hero.description}
-        actions={page.hero.actions}
+        actions={page.hero.actions || []}
         metrics={page.hero.metrics}
         status={
           page.hero.statusLabel ? (
@@ -987,30 +998,33 @@ export function RiskPageView({ page }: { page: RiskPageSpec }) {
         proofStripDescription={page.hero.proofStripDescription}
       />
 
-      <CanonicalSection>
-        <ArchetypeSectionHeader {...page.sectionHeader} />
-        <div className="mx-auto mt-10 grid max-w-6xl gap-6">
-          <RiskEvidenceSurface {...page.evidence} />
-          <ConstraintEnvelopeSurface {...page.constraint} />
-          <ScenarioFlowSurface {...page.scenario} />
-        </div>
-      </CanonicalSection>
+      <section className="bg-black">
+        <CanonicalSection>
+          <ArchetypeSectionHeader {...page.sectionHeader} />
+          <div className="mx-auto mt-12 grid max-w-6xl gap-8">
+            <RiskEvidenceSurface {...page.evidence} />
+            <ConstraintEnvelopeSurface {...page.constraint} />
+            <ScenarioFlowSurface {...page.scenario} />
+          </div>
+        </CanonicalSection>
+      </section>
 
-      <CanonicalSection className="text-center">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mx-auto text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <section className="relative px-6 py-32 text-center blueprint-grid overflow-hidden border-t border-white/5 bg-[#0b0b0f]">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl mb-8">
             {page.cta.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="text-lg text-white/40 mx-auto mt-3 max-w-2xl leading-relaxed mb-12">
             {page.cta.description}
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row">
             {page.cta.actions.map((action) => (
               <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
             ))}
           </div>
         </div>
-      </CanonicalSection>
+      </section>
     </CanonicalPageLayout>
   );
 }

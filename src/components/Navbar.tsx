@@ -1,701 +1,471 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, ArrowRight, Terminal, Layers, ArrowUpDown, GitBranch, Box, Cpu, FileCode, Globe, ExternalLink, Brain, FlaskConical, Cog, Plane, Landmark, HeartPulse, Car, Building2, Shield, BookOpen, Zap, Ruler, CircuitBoard, CheckCircle2, Rocket, Code2, FileText, Sparkles } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  BadgeCheck,
+  Building2,
+  ChevronDown,
+  Cpu,
+  ArrowUpRight,
+  FileCode,
+  Layers3,
+  Menu,
+  Shield,
+  Sparkles,
+  TerminalSquare,
+  Workflow,
+  X,
+} from "lucide-react";
+import { useState } from "react";
 
-/* ── Product Mega Menu data ── */
+import {
+  DiscordMark,
+  GitHubStarBadge,
+  SocialIconLink,
+} from "@/components/vnext/primitives";
+import { githubStarsSnapshot } from "@/lib/github-stars-snapshot";
+import {
+  industryDropdownItems,
+  primaryNav,
+  productDropdownItems,
+  socialLinks,
+  type MenuCardIcon,
+  type MenuCardItem,
+} from "@/lib/site-config";
 
-const productEndpoints = [
-  { icon: Terminal, label: "CLI", desc: "Bounded operator path from source logic to evidence.", href: "/cli" },
-  { icon: Globe, label: "Platform", desc: "Where blueprints are published, reviewed, and governed.", href: "/platform" },
-  { icon: Layers, label: "Registry", desc: "Reusable packages with visible blueprint state and reuse context.", href: "/registry" },
-  { icon: ArrowUpDown, label: "Lifter", desc: "Lift existing logic into a reviewable blueprint.", href: "/lifter" },
-  { icon: GitBranch, label: "Transpiler", desc: "Emit supported targets from one bounded blueprint.", href: "/transpiler" },
-  { icon: Box, label: "SDKs", desc: "Rust, JavaScript, Python libraries. Use BRIK64 in your stack.", href: "/sdks" },
+type MenuGroup = {
+  title: string;
+  items: readonly MenuCardItem[];
+};
+
+type PrimaryLinkItem = Extract<(typeof primaryNav)[number], { kind: "link" }> & {
+  external?: boolean;
+};
+type DropdownKey = "product" | "industries";
+
+const productGroups: MenuGroup[] = [
+  {
+    title: "Core",
+    items: productDropdownItems.slice(0, 3),
+  },
+  {
+    title: "Tooling",
+    items: productDropdownItems.slice(3),
+  },
 ];
 
-const productMore = [
-  { icon: FileCode, label: "PCD Blueprint", desc: "Canonical blueprint format for explicit computation and review.", href: "/pcd" },
-  { icon: Cpu, label: "BPU", desc: "Hardware roadmap for bounded enforcement after software review loops.", href: "/bpu" },
+const industryGroups: MenuGroup[] = [
+  {
+    title: "Industries",
+    items: industryDropdownItems.slice(0, 4),
+  },
+  {
+    title: "Systems",
+    items: industryDropdownItems.slice(4),
+  },
 ];
 
-/* ── Industries Mega Menu data ── */
+function navIcon(icon: MenuCardIcon) {
+  const className = "h-5 w-5";
 
-const industryItems = [
-  { icon: Plane, label: "Aerospace & Defense", desc: "DO-178C evidence, mission-critical certification", href: "/industries/aerospace" },
-  { icon: HeartPulse, label: "Healthcare", desc: "IEC 62304 evidence, medical device software", href: "/industries/healthcare" },
-  { icon: Landmark, label: "Banking & Finance", desc: "MiFID II, SOC2, SOX compliance evidence", href: "/industries/finance" },
-  { icon: Car, label: "Automotive", desc: "ISO 26262 ASIL D, autonomous vehicle safety", href: "/industries/automotive" },
-  { icon: Brain, label: "AI & Machine Learning", desc: "Policy circuits, guardrails, and external verification loops", href: "/industries/ai" },
-  { icon: Cog, label: "Engineering", desc: "IEC 61508, structural analysis, control systems", href: "/industries/engineering" },
-  { icon: FlaskConical, label: "Science & Research", desc: "Verified algorithms, domain constraints", href: "/industries/science" },
-  { icon: Building2, label: "Government", desc: "FedRAMP evidence, classified system verification", href: "/industries/government" },
-];
-
-/* ── Languages Mega Menu data ── */
-
-const liftFromLanguages = [
-  { label: "JavaScript", href: "/languages/javascript" },
-  { label: "TypeScript", href: "/languages/typescript" },
-  { label: "Python", href: "/languages/python" },
-  { label: "Rust", href: "/languages/rust" },
-  { label: "C", href: "/languages/c" },
-  { label: "C++", href: "/languages/cpp" },
-  { label: "Go", href: "/languages/go" },
-  { label: "COBOL", href: "/languages/cobol" },
-  { label: "PHP", href: "/languages/php" },
-  { label: "Java", href: "/languages/java" },
-];
-
-const compileToLanguages = [
-  { label: "Rust", href: "/languages/rust" },
-  { label: "JavaScript", href: "/languages/javascript" },
-  { label: "TypeScript", href: "/languages/typescript" },
-  { label: "Python", href: "/languages/python" },
-  { label: "C", href: "/languages/c" },
-  { label: "C++", href: "/languages/cpp" },
-  { label: "Go", href: "/languages/go" },
-  { label: "COBOL", href: "/languages/cobol" },
-  { label: "PHP", href: "/languages/php" },
-  { label: "Java", href: "/languages/java" },
-  { label: "Swift", href: "/languages/swift" },
-  { label: "WASM", href: "/languages/wasm" },
-  { label: "Native", href: "/languages/native" },
-  { label: "BIR", href: "/languages/bir" },
-];
-
-/* ── Resources Mega Menu data ── */
-
-const resourcesUseCases = [
-  { label: "Compliance Evidence", href: "/compliance" },
-  { label: "Blockchain", href: "/blockchain" },
-  { label: "Safety-Critical", href: "/safety-critical" },
-  { label: "AI-Verified Code", href: "/ai" },
-  { label: "COBOL Migration", href: "/use-cases/cobol-migration" },
-  { label: "Formal Verification", href: "/use-cases/formal-verification" },
-];
-
-const resourcesDocs: { label: string; href: string; external?: boolean }[] = [
-  { label: "Foundations", href: "/foundations" },
-  { label: "Getting started", href: "https://docs.brik64.dev", external: true },
-  { label: "API Reference", href: "https://docs.brik64.dev/api", external: true },
-  { label: "PCD Language Spec", href: "https://docs.brik64.dev/pcd", external: true },
-  { label: "SDKs", href: "/sdks" },
-  { label: "Examples", href: "https://docs.brik64.dev/pcd/examples", external: true },
-];
-
-const resourcesCompany: { label: string; href: string }[] = [
-  { label: "About", href: "/about" },
-  { label: "Investors", href: "/investors" },
-  { label: "AI Agents", href: "/ai-agents" },
-  { label: "Blog", href: "/blog" },
-  { label: "News", href: "/news" },
-  { label: "Contact", href: "/contact" },
-  { label: "Legal", href: "/legal" },
-];
-
-/* ── Mega Dropdown Shell ── */
-
-function MegaDropdown({
-  open,
-  onClose,
-  children,
-}: {
-  open: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) onClose();
-    }
-    if (open) document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  return (
-    <div ref={ref} className="absolute left-0 right-0 top-full z-50 border-b border-border bg-background shadow-xl">
-      <div className="mx-auto max-w-7xl px-6 py-6">
-        {children}
-      </div>
-    </div>
-  );
+  switch (icon) {
+    case "sparkles":
+      return <Sparkles className={className} />;
+    case "workflow":
+      return <Workflow className={className} />;
+    case "layers":
+      return <Layers3 className={className} />;
+    case "terminal":
+      return <TerminalSquare className={className} />;
+    case "file":
+      return <FileCode className={className} />;
+    case "boxes":
+      return <Layers3 className={className} />;
+    case "cpu":
+      return <Cpu className={className} />;
+    case "shield":
+      return <Shield className={className} />;
+    case "building":
+      return <Building2 className={className} />;
+    case "badge":
+      return <BadgeCheck className={className} />;
+    default:
+      return <Sparkles className={className} />;
+  }
 }
 
-/* ── Product Dropdown Content ── */
-
-function ProductDropdown() {
-  return (
-    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
-      {/* Left — Core Products */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Core
-        </p>
-        <div className="space-y-0.5">
-          {productEndpoints.map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Center — More + Research */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Research & Hardware
-        </p>
-        <div className="space-y-0.5">
-          {productMore.map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 rounded-lg border border-border/60 bg-muted/20 p-4">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-            Foundations
-          </p>
-          <p className="mt-2 text-sm font-medium text-foreground">
-            Digital Circuitality
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">
-            The information-theoretic basis. Brillouin correction. Kish-Ferry distinction.
-          </p>
-          <a
-            href="/foundations"
-            className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
-          >
-            Read the theory <ArrowRight className="h-3 w-3" />
-          </a>
-        </div>
-      </div>
-
-      {/* Right — Featured */}
-      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-amber-600">
-          Registry path
-        </p>
-        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          The public registry for{" "}
-          <span className="text-teal">bounded software assets</span>
-        </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          Publish bounded blueprints, inspect closure state, and discover reusable components with visible review metadata.
-        </p>
-        <a
-          href="/platform"
-          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
-        >
-          Learn about the platform <ArrowRight className="h-3 w-3" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-/* ── Industries Dropdown Content ── */
-
-function IndustriesDropdown() {
-  return (
-    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
-      {/* Left column — first 4 */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Technology
-        </p>
-        <div className="space-y-0.5">
-          {industryItems.slice(0, 4).map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Center column — last 4 */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Regulated
-        </p>
-        <div className="space-y-0.5">
-          {industryItems.slice(4).map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Right — Enterprise CTA */}
-      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Enterprise
-        </p>
-        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          Operating model for{" "}
-          <span className="text-teal">review-heavy engineering teams</span>
-        </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          CI/CD integration, review packages, identity controls, and audit-ready handoff for teams with explicit release and compliance boundaries.
-        </p>
-        <a
-          href="/enterprise"
-          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
-        >
-          Enterprise solutions <ArrowRight className="h-3 w-3" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-/* ── Languages Dropdown Content ── */
-
-function LanguagesDropdown() {
-  return (
-    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
-      {/* Left — Lift From */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Lift From (10 languages)
-        </p>
-        <div className="space-y-0.5">
-          {liftFromLanguages.map((item) => (
-            <a
-              key={item.href + "-lift"}
-              href={item.href}
-              className="flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-muted/50"
-            >
-              <span className="text-sm font-medium text-foreground">{item.label}</span>
-              <span className="text-xs text-muted-foreground">Lift to PCD blueprint</span>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      {/* Center — Compile To */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Compile To (14 targets)
-        </p>
-        <div className="space-y-0.5">
-          {compileToLanguages.slice(0, 7).map((item) => (
-            <a
-              key={item.href + "-compile"}
-              href={item.href}
-              className="flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-muted/50"
-            >
-              <span className="text-sm font-medium text-foreground">{item.label}</span>
-              <span className="text-xs text-muted-foreground">Emit verified code</span>
-            </a>
-          ))}
-          <p className="px-3 pt-1 text-xs text-muted-foreground">
-            + {compileToLanguages.length - 7} more targets
-          </p>
-        </div>
-      </div>
-
-      {/* Right — Featured */}
-      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-teal">
-          Universal IR
-        </p>
-        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          Many source notations.{" "}
-          <span className="text-teal">One canonical blueprint.</span>
-        </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          PCD holds domains, composition, and closure steady while supported targets emit from the same bounded chain.
-        </p>
-        <a
-          href="/transpiler"
-          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
-        >
-          Explore the transpiler <ArrowRight className="h-3 w-3" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-/* ── Resources Dropdown Content ── */
-
-function FeaturesDropdown() {
-  return (
-    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
-      {/* Left — Core Capabilities */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Core Capabilities
-        </p>
-        <div className="space-y-0.5">
-          {[
-            { icon: CheckCircle2, label: "Formal Verification", desc: "Core operations are proven under the public model", href: "/features" },
-            { icon: Ruler, label: "Domain Constraints", desc: "Compiler-enforced numeric ranges on every input", href: "/features" },
-            { icon: CircuitBoard, label: "Circuit Closure", desc: "Modeled logic must close before promotion", href: "/features" },
-            { icon: Zap, label: "EVA Composition", desc: "Composition keeps structure operator-visible and reviewable", href: "/features" },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Center — Developer Tools */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Developer Tools
-        </p>
-        <div className="space-y-0.5">
-          {[
-            { icon: Rocket, label: "Self-Compilation Fixpoint", desc: "Compiler compiles itself to a bit-identical binary", href: "/cli" },
-            { icon: Code2, label: "Multi-Target Compilation", desc: "One PCD blueprint, multiple supported outputs", href: "/transpiler" },
-            { icon: ArrowUpDown, label: "Reverse Compilation", desc: "Lift existing code to bounded PCD blueprints", href: "/lifter" },
-            { icon: Sparkles, label: "AI Workflows", desc: "Bound agent output with policy loops and compiler checks", href: "/ai-agents" },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.label}</p>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Right — Featured card */}
-      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-teal">
-          Deep Dive
-        </p>
-        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          The complete{" "}
-          <span className="text-teal">feature overview</span>
-        </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          Verification, domains, composition, lifting, transpilation, certification — everything BRIK64 does, in one page.
-        </p>
-        <a
-          href="/features"
-          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
-        >
-          All features <ArrowRight className="h-3 w-3" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-function ResourcesDropdown() {
-  return (
-    <div className="grid grid-cols-[1fr_1fr_280px] gap-8">
-      {/* Left — Shop */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Shop
-        </p>
-        <div className="space-y-0.5">
-            <a
-              href="/shop"
-              className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-            >
-              <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-              <div>
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-foreground">Shop</p>
-                  <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
-                    Coming soon
-                  </span>
-                </div>
-                <p className="text-xs text-muted-foreground">Merch storefront preview</p>
-              </div>
-            </a>
-          </div>
-      </div>
-
-      {/* Center — Documentation */}
-      <div>
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Documentation
-        </p>
-        <div className="space-y-0.5">
-          {[
-            { icon: BookOpen, label: "Foundations", desc: "Information-theoretic basis of Digital Circuitality", href: "/foundations" },
-            { icon: Rocket, label: "Getting Started", desc: "Install brikc and write your first circuit", href: "https://docs.brik64.dev", external: true },
-            { icon: FileText, label: "API Reference", desc: "REST endpoints for the platform", href: "https://docs.brik64.dev/api", external: true },
-            { icon: Code2, label: "PCD Language Spec", desc: "Complete syntax and domain reference", href: "https://docs.brik64.dev/pcd", external: true },
-            { icon: Box, label: "SDK Guides", desc: "Rust, JavaScript, Python integration", href: "/sdks" },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                {...("external" in item && item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/50"
-              >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                <div>
-                  <div className="flex items-center gap-1">
-                    <p className="text-sm font-medium text-foreground">{item.label}</p>
-                    {"external" in item && item.external && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
-                  </div>
-                  <p className="text-xs text-muted-foreground">{item.desc}</p>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Right — Featured card */}
-      <div className="rounded-xl border border-border/60 bg-muted/10 p-5">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-          Coming soon
-        </p>
-        <p className="mt-3 text-lg font-semibold leading-snug text-foreground">
-          Shop preview{" "}
-          <span className="text-teal">for the community</span>
-        </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          Public placeholder for the future merch store.
-        </p>
-        <a
-          href="/shop"
-          className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-teal transition-colors hover:text-teal-hover"
-        >
-          Open Shop <ArrowRight className="h-3 w-3" />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-/* ── Nav trigger button ── */
-
-function NavTrigger({
-  label,
-  active,
+function MenuCard({
+  item,
+  mobile = false,
   onClick,
 }: {
-  label: string;
+  item: MenuCardItem;
+  mobile?: boolean;
+  onClick?: () => void;
+}) {
+  const shared =
+    "group flex items-start gap-4 transition-colors hover:bg-neutral-800/70";
+  const mobileCard = "rounded-[12px] border border-neutral-800 bg-neutral-900/70 p-3";
+  const desktopCard = "rounded-lg p-3";
+  const cardClassName = `${shared} ${mobile ? mobileCard : desktopCard}`;
+
+  const content = (
+    <>
+      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-700 text-neutral-400 transition-colors group-hover:bg-[color:var(--accent)] group-hover:text-black">
+        {navIcon(item.icon)}
+      </div>
+      <div className="min-w-0">
+        <p className="relative mb-0.5 inline-block text-sm font-medium text-white transition-all duration-200 group-hover:text-shadow-[0_0_8px_rgba(255,255,255,0.5)] after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-200 after:opacity-80 group-hover:after:w-full">
+          {item.label}
+        </p>
+        <p className="text-sm leading-6 text-neutral-400 transition-colors group-hover:text-neutral-200">
+          {item.description}
+        </p>
+      </div>
+    </>
+  );
+
+  return item.external ? (
+    <a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onClick}
+      className={cardClassName}
+    >
+      {content}
+    </a>
+  ) : (
+    <Link href={item.href} onClick={onClick} className={cardClassName}>
+      {content}
+    </Link>
+  );
+}
+
+function MenuGroupColumn({ group, mobile = false }: { group: MenuGroup; mobile?: boolean }) {
+  return (
+    <div className="space-y-4">
+      <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-neutral-400">
+        {group.title}
+      </p>
+      <div className={mobile ? "space-y-3" : "space-y-2.5"}>
+        {group.items.map((item) => (
+          <MenuCard key={item.label} item={item} mobile={mobile} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DropdownPanel({
+  groups,
+  active,
+}: {
+  groups: MenuGroup[];
   active: boolean;
-  onClick: () => void;
+}) {
+  return (
+    <div
+      className={`absolute left-0 top-full pt-3 transition-all duration-200 ${
+        active
+          ? "visible pointer-events-auto opacity-100 translate-y-0"
+          : "invisible pointer-events-none opacity-0 -translate-y-2"
+      }`}
+    >
+      <div className="overflow-hidden rounded-xl border border-neutral-700 bg-neutral-900 shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+        <div className="grid w-[calc(100vw-2rem)] max-w-[920px] grid-cols-1 bg-neutral-900 lg:grid-cols-2">
+          {groups.map((group) => (
+            <div key={group.title} className="border-neutral-800 p-5 lg:border-r lg:last:border-r-0">
+              <MenuGroupColumn group={group} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DropdownTrigger({
+  label,
+  active,
+  isOpen,
+}: {
+  label: string;
+  active?: boolean;
+  isOpen?: boolean;
 }) {
   return (
     <button
-      onClick={onClick}
-      className={`inline-flex cursor-pointer items-center gap-1 text-sm transition-colors ${
-        active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-      }`}
+      type="button"
+      className={`relative flex items-center gap-1 text-sm font-medium transition-all duration-200 select-none ${
+        active || isOpen
+          ? "text-white opacity-100"
+          : "text-white opacity-95 hover:opacity-100 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.5)]"
+      } after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-200 after:opacity-80 hover:after:w-full`}
+      aria-haspopup="menu"
     >
-      {label}
-      <ChevronDown
-        className={`h-3.5 w-3.5 transition-transform duration-150 ${active ? "rotate-180" : ""}`}
-      />
+      <span>{label}</span>
+      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
     </button>
   );
 }
 
-/* ── Navbar ── */
+function SimpleNavLink({
+  href,
+  label,
+  active,
+  onClick,
+  external,
+}: {
+  href: string;
+  label: string;
+  active?: boolean;
+  onClick?: () => void;
+  external?: boolean;
+}) {
+  const className = `text-sm font-medium transition-all duration-200 ${
+    active
+      ? "text-white opacity-100"
+      : "text-white opacity-95 hover:opacity-100 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.5)]"
+  } relative after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-200 after:opacity-80 hover:after:w-full`;
 
-export function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
-
-  const toggle = (name: string) =>
-    setOpenMenu((prev) => (prev === name ? null : name));
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        className={`${className} inline-flex items-center gap-1.5`}
+      >
+        {label}
+        <ArrowUpRight className="h-3.5 w-3.5 opacity-80" />
+      </a>
+    );
+  }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <img
-            src="/brand/brik64-logo-primary-horizontal-black.svg"
-            alt="BRIK64"
-            className="h-8 w-auto lg:h-10"
-          />
-        </Link>
+    <Link
+      href={href}
+      onClick={onClick}
+      className={className}
+    >
+      {label}
+    </Link>
+  );
+}
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 lg:flex">
-          <NavTrigger label="Product" active={openMenu === "product"} onClick={() => toggle("product")} />
-          <NavTrigger label="Industries" active={openMenu === "industries"} onClick={() => toggle("industries")} />
-          <NavTrigger label="Features" active={openMenu === "features"} onClick={() => toggle("features")} />
-          <Link href="/pricing" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Pricing
-          </Link>
-          <Link href="/download" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Download
-          </Link>
-          <Link href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Blog
-          </Link>
-          <NavTrigger label="Resources" active={openMenu === "resources"} onClick={() => toggle("resources")} />
-          <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
-            Docs <ExternalLink className="h-3 w-3" />
-          </a>
-        </nav>
+function MobileSection({
+  title,
+  items,
+  onItemClick,
+}: {
+  title: string;
+  items: readonly MenuCardItem[];
+  onItemClick?: () => void;
+}) {
+  return (
+    <details className="group rounded-xl border border-neutral-800 bg-neutral-900/70">
+      <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-medium text-white/92 [&::-webkit-details-marker]:hidden">
+        <span>{title}</span>
+        <ChevronDown className="h-4 w-4 transition-transform duration-200 group-open:rotate-180" />
+      </summary>
+      <div className="border-t border-neutral-800 p-4">
+        <div className="space-y-3">
+          {items.map((item) => (
+            <MenuCard key={item.label} item={item} mobile onClick={onItemClick} />
+          ))}
+        </div>
+      </div>
+    </details>
+  );
+}
 
-        {/* Right CTAs */}
-        <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href="https://github.com/brik64"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-border px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<DropdownKey | null>(null);
+  const pathname = usePathname();
+  const topLevelLinks = primaryNav.filter((item): item is PrimaryLinkItem => item.kind === "link");
+  const closeDropdowns = () => setActiveDropdown(null);
+
+  const isProductActive =
+    pathname === "/" ||
+    pathname === "/platform" ||
+    pathname === "/registry" ||
+    pathname === "/cli" ||
+    pathname === "/pcd" ||
+    pathname === "/sdks" ||
+    pathname === "/foundations";
+
+  const isIndustriesActive =
+    pathname === "/ai" ||
+    pathname === "/industries/engineering" ||
+    pathname === "/safety-critical" ||
+    pathname === "/compliance" ||
+    pathname === "/enterprise";
+
+  return (
+    <header className="sticky top-0 z-50 h-16 bg-[#0f0f0f]">
+      <div className="mx-auto flex h-full max-w-[1280px] items-center justify-between pl-4 pr-6 md:pl-2">
+        <div className="flex items-center gap-1">
+          <div className="p-1.5 md:p-0">
+            <Link href="/" className="flex shrink-0 items-center gap-2 no-underline">
+              <div className="relative inline-block h-[42px] w-[170px]">
+                <Image
+                  src="/brand/brik64-logo-primary-horizontal-white.svg"
+                  alt="BRIK64"
+                  fill
+                  priority
+                  className="object-contain object-left"
+                />
+              </div>
+            </Link>
+          </div>
+
+          <nav
+            className="ml-10 hidden items-center gap-12 lg:flex"
+            onMouseLeave={closeDropdowns}
+            onBlurCapture={(event) => {
+              const nextTarget = event.relatedTarget as Node | null;
+              if (!nextTarget || !event.currentTarget.contains(nextTarget)) {
+                closeDropdowns();
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                closeDropdowns();
+              }
+            }}
           >
-            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-            GitHub
-          </a>
-          <Link href="/login" className="rounded-md border border-teal px-5 py-1.5 text-sm font-medium text-teal transition-colors hover:bg-teal/5">
+            <div
+              className="group relative"
+              onMouseEnter={() => setActiveDropdown("product")}
+              onFocusCapture={() => setActiveDropdown("product")}
+            >
+              <DropdownTrigger 
+                label="Product" 
+                active={isProductActive} 
+                isOpen={activeDropdown === "product"}
+              />
+              <DropdownPanel
+                groups={productGroups}
+                active={activeDropdown === "product"}
+              />
+            </div>
+
+            <div
+              className="group relative"
+              onMouseEnter={() => setActiveDropdown("industries")}
+              onFocusCapture={() => setActiveDropdown("industries")}
+            >
+              <DropdownTrigger
+                label="Industries"
+                active={isIndustriesActive}
+                isOpen={activeDropdown === "industries"}
+              />
+              <DropdownPanel
+                groups={industryGroups}
+                active={activeDropdown === "industries"}
+              />
+            </div>
+
+            {topLevelLinks.map((item) => (
+              <SimpleNavLink
+                key={item.label}
+                href={item.href}
+                label={item.label}
+                active={pathname === item.href}
+                external={"external" in item && Boolean(item.external)}
+              />
+            ))}
+          </nav>
+        </div>
+
+        <div className="hidden items-center lg:flex">
+          <SocialIconLink
+            href={socialLinks.discord}
+            label="Discord"
+            variant="navbar"
+            icon={<DiscordMark className="h-5 w-5" />}
+          />
+          <GitHubStarBadge href={socialLinks.githubRepo} stars={githubStarsSnapshot.stars} />
+          <Link
+            href="/login"
+            className="ml-3 inline-flex h-8 items-center justify-center rounded px-4 text-sm font-semibold leading-5 text-[color:var(--accent-foreground)] bg-[color:var(--accent)] transition-colors hover:bg-[color:var(--accent-hover)] font-display"
+          >
             Login
           </Link>
-          <Link href="/signup" className="rounded-md bg-teal px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-teal-hover">
+          <Link
+            href="/signup"
+            className="ml-3 inline-flex h-8 items-center justify-center rounded border border-white bg-transparent px-4 text-sm font-semibold leading-5 text-white transition-colors hover:bg-white/[0.04] font-display"
+          >
             Sign Up
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button className="p-2 text-foreground lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((value) => !value)}
+          className="relative inline-flex h-6 w-6 items-center justify-center text-white transition-all duration-300 lg:hidden"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Desktop mega dropdowns */}
-      <MegaDropdown open={openMenu === "product"} onClose={() => setOpenMenu(null)}>
-        <ProductDropdown />
-      </MegaDropdown>
-      <MegaDropdown open={openMenu === "industries"} onClose={() => setOpenMenu(null)}>
-        <IndustriesDropdown />
-      </MegaDropdown>
-      <MegaDropdown open={openMenu === "features"} onClose={() => setOpenMenu(null)}>
-        <FeaturesDropdown />
-      </MegaDropdown>
-      <MegaDropdown open={openMenu === "resources"} onClose={() => setOpenMenu(null)}>
-        <ResourcesDropdown />
-      </MegaDropdown>
+      {open ? (
+        <div className="border-t border-white/8 bg-[#0f0f0f] lg:hidden">
+          <div className="mx-auto max-w-[1280px] space-y-5 px-6 py-6 md:px-8">
+            <div className="space-y-3">
+              <MobileSection title="Product" items={productDropdownItems} onItemClick={() => setOpen(false)} />
+              <MobileSection title="Industries" items={industryDropdownItems} onItemClick={() => setOpen(false)} />
+            </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="max-h-[80vh] overflow-y-auto border-b border-border bg-background lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Product</p>
-            {productEndpoints.concat(productMore).map((item) => (
-              <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
-                {item.label}
+            <div className="space-y-2 rounded-xl border border-neutral-800 bg-neutral-900/70 p-4">
+              {topLevelLinks.map((item) => (
+                <SimpleNavLink
+                  key={item.label}
+                  href={item.href}
+                  label={item.label}
+                  active={pathname === item.href}
+                  external={"external" in item && Boolean(item.external)}
+                  onClick={() => setOpen(false)}
+                />
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 border-t border-neutral-800 pt-5">
+              <SocialIconLink
+                href={socialLinks.discord}
+                label="Discord"
+                variant="navbar"
+                icon={<DiscordMark className="h-5 w-5" />}
+              />
+              <GitHubStarBadge href={socialLinks.githubRepo} stars={githubStarsSnapshot.stars} />
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Link
+                href="/login"
+                className="inline-flex h-10 items-center justify-center rounded-[6px] bg-[color:var(--accent)] px-4 text-[14px] font-semibold text-[color:var(--accent-foreground)] transition-colors hover:bg-[color:var(--accent-hover)]"
+                onClick={() => setOpen(false)}
+              >
+                Login
               </Link>
-            ))}
-            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Industries</p>
-            {industryItems.map((item) => (
-              <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
-                {item.label}
+              <Link
+                href="/signup"
+                className="inline-flex h-10 items-center justify-center rounded-[6px] border border-white/18 bg-transparent px-4 text-[14px] font-medium text-white/88 transition-colors hover:bg-white/[0.04]"
+                onClick={() => setOpen(false)}
+              >
+                Sign Up
               </Link>
-            ))}
-            <hr className="my-2 border-border" />
-            <Link href="/pricing" className="px-3 py-2 text-sm text-muted-foreground">Pricing</Link>
-            <Link href="/download" className="px-3 py-2 text-sm text-muted-foreground">Download</Link>
-            <Link href="/blog" className="px-3 py-2 text-sm text-muted-foreground">Blog</Link>
-            <p className="mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resources</p>
-            <Link href="/shop" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">
-              <span className="inline-flex items-center gap-2">
-                <span>Shop</span>
-                <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
-                  Coming soon
-                </span>
-              </span>
-            </Link>
-            <Link href="/playground" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Playground</Link>
-            <Link href="/pricing" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Pricing</Link>
-            <Link href="/changelog" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Changelog</Link>
-            <Link href="/news" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">News</Link>
-            <Link href="/about" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">About</Link>
-            <Link href="/investors" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Investors</Link>
-            <Link href="/contact" className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground">Contact</Link>
-            <a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-3 py-2 text-sm text-muted-foreground">
-              Docs <ExternalLink className="h-3 w-3" />
-            </a>
-            <hr className="my-2 border-border" />
-            <Link href="/login" className="px-3 py-2 text-sm text-foreground">Login</Link>
-            <Link href="/signup" className="mt-1 rounded-md bg-teal px-5 py-1.5 text-center text-sm font-medium text-white">Sign Up</Link>
-          </nav>
+            </div>
+          </div>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

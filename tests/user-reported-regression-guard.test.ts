@@ -12,26 +12,16 @@ const blockedReportedPhrases = [
 
 const contentAnchors: Record<string, readonly string[]> = {
   "src/app/pricing/page.tsx": [
-    "PACKAGING MODEL",
-    "FEATURE COMPARISON",
-    "COMMERCIAL FAQ",
-    "Free",
-    "Pro",
-    "Team",
-    "Enterprise",
+    "UtilityPageView",
+    "utilityPages.pricing",
   ],
   "src/app/investors/page.tsx": [
-    "[01] THE OPPORTUNITY",
-    "[04] BUSINESS MODEL",
-    "[05] COMPETITIVE MOAT",
-    "[06] ROADMAP",
-    "[07] INTELLECTUAL PROPERTY",
+    "UtilityPageView",
+    "utilityPages.investors",
   ],
   "src/app/enterprise/page.tsx": [
-    "[01] CAPABILITIES",
-    "[03] USE CASES",
-    "[04] COMPLIANCE",
-    "[05] ENTERPRISE HANDOFF",
+    "UtilityPageView",
+    "utilityPages.enterprise",
   ],
   "src/app/ai-agents/page.tsx": [
     "Agent setup matrix",
@@ -39,11 +29,11 @@ const contentAnchors: Record<string, readonly string[]> = {
     "policy circuits",
     "No trust by default",
   ],
-  "src/components/HeroSection.tsx": [
-    "THE FORMAL LAYER FOR AI-ERA PROGRAMMING",
-    "BEYOND VIBE CODING",
-    "BRIK64 turns generated and existing software into formal, portable, testable blueprints.",
-    "Software generation got fast. BRIK64 makes it formal.",
+  "src/components/vnext/home.tsx": [
+    "Compile, certify, publish.",
+    "The front door shows the system before the theory.",
+    "Four product objects. One operating model.",
+    "Choose your path",
   ],
   "src/components/MonomerGrid.tsx": [
     "onMouseOver",

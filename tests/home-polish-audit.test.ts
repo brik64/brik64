@@ -11,70 +11,65 @@ function read(relativePath: string): string {
 describe("Home polish audit — section headers stay visually stable", () => {
   it("uses a wider balanced header container across home and page sections", () => {
     const content = read("src/components/PageArtifacts.tsx");
-    expect(content).toContain("max-w-4xl text-center");
+    expect(content).toContain("max-w-3xl");
     expect(content).toContain("text-balance");
-    expect(content).toContain("max-w-2xl text-sm leading-relaxed");
+    expect(content).toContain("max-w-2xl text-base leading-7");
   });
 });
 
 describe("Home polish audit — hero density stays controlled", () => {
-  it("renders core + extended monomer matrices with interactive inspection", () => {
-    const hero = read("src/components/HeroSection.tsx");
-    const grid = read("src/components/MonomerGrid.tsx");
-    expect(hero).toContain('<MonomerGrid variant="hero" />');
-    expect(grid).toContain('const HERO_CORE_MONOMERS = CORE_MONOMERS.slice(0, 64);');
-    expect(grid).toContain('const HERO_EXTENDED_MONOMERS = EXTENDED_MONOMERS.slice(0, 60);');
-    expect(grid).toContain('className="grid grid-cols-8');
-    expect(grid).toContain("onMouseOver={() => setActiveMonomerId(track, monomer.id)}");
-    expect(grid).toContain("onMouseEnter={() => setActiveMonomerId(track, monomer.id)}");
-    expect(grid).toContain("onFocus={() => setActiveMonomerId(track, monomer.id)}");
-    expect(grid).toContain('translateX(-${activeTrackIndex * 100}%)');
-    expect(grid).toContain("CORE CERTIFIED");
-    expect(grid).toContain("EXTENDED CONTRACT");
-    expect(grid).toContain("ATOMIC BOUNDED OPERATIONS");
-    expect(grid).toContain("Atomic Contract Operations");
-    expect(grid).toContain("return id + 68;");
-    expect(grid).not.toContain("Hover or focus any core monomer");
+  it("uses the vNext hero instead of the rotating monomer hero system", () => {
+    const page = read("src/app/page.tsx");
+    const home = read("src/components/vnext/home.tsx");
+    expect(page).toContain("<VNextHome />");
+    expect(home).toContain("Compile, certify, publish.");
+    expect(home).toContain("ProductFrame");
+    expect(home).not.toContain("MonomerGrid");
   });
 
-  it("uses four hero cards and rotates two at a time in sync with the active title", () => {
-    const hero = read("src/components/HeroSection.tsx");
-    expect(hero).toContain("const HERO_SIGNAL_CARDS");
-    expect(hero).toContain("cardIndexes: [0, 1]");
-    expect(hero).toContain("cardIndexes: [2, 3]");
-    expect(hero).toContain("Core model signals");
-    expect(hero).toContain("Adoption signals");
-    expect(hero).toContain("md:grid-cols-2");
-    expect(hero).toContain("Generated + existing software");
-    expect(hero).toContain("PCD");
-    expect(hero).toContain("CLI + platform");
-    expect(hero).toContain("Registry + handoff");
+  it("keeps the first viewport free of rotating card stacks", () => {
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).not.toContain("HERO_SIGNAL_CARDS");
+    expect(home).not.toContain("cardIndexes:");
+    expect(home).not.toContain("TrustedBySection");
   });
 
-  it("removes the old floating live-surface callout from the hero", () => {
-    const hero = read("src/components/HeroSection.tsx");
-    expect(hero).not.toContain("Live surface");
-    expect(hero).not.toContain("Ready now");
-    expect(hero).toContain("lg:justify-end");
+  it("keeps the hero copy aligned to the poster-first direction", () => {
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain("The front door shows the system before the theory.");
+    expect(home).toContain("Four product objects. One operating model.");
+  });
+
+  it("keeps the hero announcement pill solid and free of decorative status markers", () => {
+    const primitives = read("src/components/vnext/primitives.tsx");
+    expect(primitives).toContain('bg-[#11161d]');
+    expect(primitives).toContain('hover:bg-[#141b24]');
+    expect(primitives).not.toContain('h-2 w-2 rounded-full bg-[color:var(--accent)]');
+    expect(primitives).not.toContain('<ArrowRight className="h-4 w-4 text-white/56" />');
+  });
+
+  it("adds a lit grid mesh that fades out before the black background takes over", () => {
+    const home = read("src/components/vnext/home.tsx");
+    const globals = read("src/app/globals.css");
+    expect(home).toContain("hero-light-grid");
+    expect(home).toContain("hero-light-glow");
+    expect(globals).toContain(".hero-light-grid");
+    expect(globals).toContain("repeating-linear-gradient(");
+    expect(globals).toContain("transparent 92%");
   });
 });
 
 describe("Home polish audit — closing CTA stays technical, not ornamental", () => {
-  it("removes the animated rainbow brand treatment from the closing CTA", () => {
-    const cta = read("src/components/CTASection.tsx");
-    expect(cta).not.toContain("animate-[rainbow_6s_linear_infinite]");
-    expect(cta).not.toContain("text-transparent");
-    expect(cta).not.toContain("bg-clip-text");
+  it("keeps the final CTA inside the vNext home shell", () => {
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain("Open platform");
+    expect(home).toContain("Explore docs");
   });
 
-  it("routes the closing CTA toward CLI, PCD, and platform instead of generic growth prompts", () => {
-    const cta = read("src/components/CTASection.tsx");
-    expect(cta).toContain('title: "CLI"');
-    expect(cta).toContain('title: "Platform"');
-    expect(cta).toContain('title: "Foundations"');
-    expect(cta).toContain("Open the CLI");
-    expect(cta).toContain("Open platform");
-    expect(cta).not.toContain('title: "Discord"');
-    expect(cta).toContain("evaluate the blueprint-to-publication chain on real logic");
+  it("routes the closing CTA toward product and docs instead of growth prompts", () => {
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain('href="/platform"');
+    expect(home).toContain('href="https://docs.brik64.dev"');
+    expect(home).not.toContain('title: "Discord"');
   });
 });

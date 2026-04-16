@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Jura } from "next/font/google";
+import { Inter, Jura, Manrope, Geist_Mono } from "next/font/google";
 import { CookieBanner } from "@/components/CookieBanner";
 import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const interSans = Inter({
+  variable: "--font-inter-sans",
+  subsets: ["latin"],
+});
+
+const manropeDisplay = Manrope({
+  variable: "--font-manrope-display",
+  subsets: ["latin"],
+});
+
+const juraBrand = Jura({
+  variable: "--font-jura-brand",
   subsets: ["latin"],
 });
 
@@ -14,19 +24,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const jura = Jura({
-  variable: "--font-jura",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
   title: {
-    default: "BRIK64 — Digital Circuitality",
+    default: "BRIK64 — Verified software platform",
     template: "%s | BRIK64",
   },
   description:
-    "Bounded software infrastructure for AI-era engineering. Model logic once, review it as a blueprint, and emit it across supported targets.",
+    "Compile, certify, and publish bounded blueprints across supported targets with visible package state.",
   metadataBase: new URL("https://brik64.com"),
   alternates: {
     canonical: "/",
@@ -34,9 +38,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "BRIK64",
-    title: "BRIK64 — Digital Circuitality",
+    title: "BRIK64 — Verified software platform",
     description:
-      "Bounded software infrastructure for AI-era engineering. Reviewable blueprints, explicit domains, and closure-aware workflows.",
+      "Compile, certify, and publish bounded blueprints across supported targets with visible package state.",
     url: "https://brik64.com",
     locale: "en_US",
     images: [
@@ -50,9 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BRIK64 — Digital Circuitality",
+    title: "BRIK64 — Verified software platform",
     description:
-      "Bounded software infrastructure for AI-era engineering. Reviewable blueprints, explicit domains, and closure-aware workflows.",
+      "Compile, certify, and publish bounded blueprints across supported targets with visible package state.",
     creator: "@brik64dev",
     images: ["/seo/brik64-opengraph-stacked.png"],
   },
@@ -80,7 +84,7 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "msapplication-TileColor": "#00e5ff",
+    "msapplication-TileColor": "#0a0d12",
   },
 };
 
@@ -92,15 +96,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${jura.variable} h-full antialiased`}
+      className={`${interSans.variable} ${manropeDisplay.variable} ${juraBrand.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <StructuredData />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <div className="relative z-10 flex min-h-full flex-col">
-          {children}
-        </div>
+      <body className="min-h-full bg-background font-sans text-foreground">
+        <div className="relative flex min-h-screen flex-col">{children}</div>
         <CookieBanner />
       </body>
     </html>

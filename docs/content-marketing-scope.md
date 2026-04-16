@@ -1,5 +1,16 @@
 # Content And Marketing Scope
 
+## Canonical Strategy Source
+
+The master strategy document for positioning, brand voice, buyer definition,
+product narrative, web narrative, and CMO alignment is:
+
+- `docs/brik_64_final_positioning_brand_web_cmo_system.md`
+
+If this scope file conflicts with that master document, update this file to
+match it unless engineering reality or verifiable product evidence requires a
+stricter boundary.
+
 This document defines what `brik64.com` is allowed to communicate, what must be
 qualified, and what must not be claimed without stronger evidence. It exists to
 keep the public website aligned with the actual state of BRIK-64.
@@ -74,12 +85,15 @@ Do not publish these without a supporting source added to the repo:
 When copy conflicts, prefer sources in this order:
 
 1. current engineering reality and verifiable product surfaces
-2. `docs/content-marketing-scope.md`
-3. `docs/BRAND-LOGO-ASSETS.md`
-4. `docs/perspectives/03-CMO.md`
-5. research snapshots and extracted historical content
+2. `docs/brik_64_final_positioning_brand_web_cmo_system.md`
+3. `docs/content-marketing-scope.md`
+4. `docs/BRAND-LOGO-ASSETS.md`
+5. `docs/perspectives/03-CMO.md`
+6. research snapshots and extracted historical content
 
 Research documents are useful context, but they are not self-validating proof.
+The master positioning document defines market translation; this scope file
+defines the truth boundary for publishing.
 
 ## Required Checks Before Publishing Messaging Changes
 

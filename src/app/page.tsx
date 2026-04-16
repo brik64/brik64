@@ -1,39 +1,15 @@
-import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/HeroSection";
-import { TrustedBySection } from "@/components/TrustedBySection";
-import { ProblemSection } from "@/components/ProblemSection";
-import { HardwareDisciplineSection } from "@/components/HardwareDisciplineSection";
-import { PCDSection } from "@/components/PCDSection";
-import { PlatformSection } from "@/components/PlatformSection";
-import { WorkflowSection } from "@/components/WorkflowSection";
-import { AINativeSection } from "@/components/AINativeSection";
-import { HomeClaimBoundariesSection } from "@/components/HomeClaimBoundariesSection";
-import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { VNextHome } from "@/components/vnext/home";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="relative z-10">
-        <HeroSection />
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-          <TrustedBySection />
-          <div>
-            <ProblemSection />
-            <HardwareDisciplineSection />
-            <PCDSection />
-            <WorkflowSection />
-            <PlatformSection />
-            <AINativeSection />
-            <HomeClaimBoundariesSection />
-          </div>
-          <CTASection />
-        </div>
+      <main className="flex-1">
+        <VNextHome />
       </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

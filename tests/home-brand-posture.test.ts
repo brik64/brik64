@@ -3,15 +3,10 @@ import { describe, expect, it } from "vitest";
 import { read } from "./site-grammar";
 
 const homeFiles = [
-  "src/components/HeroSection.tsx",
-  "src/components/ProblemSection.tsx",
-  "src/components/HardwareDisciplineSection.tsx",
-  "src/components/PCDSection.tsx",
-  "src/components/WorkflowSection.tsx",
-  "src/components/PlatformSection.tsx",
-  "src/components/AINativeSection.tsx",
-  "src/components/HomeClaimBoundariesSection.tsx",
-  "src/components/CTASection.tsx",
+  "src/app/page.tsx",
+  "src/components/vnext/home.tsx",
+  "src/components/Navbar.tsx",
+  "src/components/Footer.tsx",
 ] as const;
 
 const blockedFrames = [
@@ -26,20 +21,18 @@ const blockedFrames = [
 
 describe("Home brand posture", () => {
   it("anchors the site on the formal-layer thesis", () => {
-    const hero = read("src/components/HeroSection.tsx");
-    expect(hero).toContain("THE FORMAL LAYER FOR AI-ERA PROGRAMMING");
-    expect(hero).toContain("BRIK64 turns generated and existing software into formal, portable, testable blueprints.");
-    expect(hero).toContain("BEYOND VIBE CODING");
-    expect(hero).toContain("Software generation got fast. BRIK64 makes it formal.");
-    expect(hero).toContain("bounded language, a canonical blueprint, and a compilation path");
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain("Compile, certify, publish.");
+    expect(home).toContain("bounded blueprints teams can review");
+    expect(home).toContain("Keep one canonical blueprint between source and targets.");
+    expect(home).toContain("Open platform");
   });
 
-  it("answers the hardware-style discipline question explicitly", () => {
-    const hardware = read("src/components/HardwareDisciplineSection.tsx");
-    expect(hardware).toContain("What if software behaved more like hardware?");
-    expect(hardware).toContain("Not as a literal equivalence.");
-    expect(hardware).toContain("Blueprint before emission");
-    expect(hardware).toContain("Reuse with identity");
+  it("keeps the product-first posture explicit", () => {
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain("The front door shows the system before the theory.");
+    expect(home).toContain("Four product objects. One operating model.");
+    expect(home).toContain("Why teams use it");
   });
 
   it("removes blocked home frames from source", () => {
@@ -50,17 +43,12 @@ describe("Home brand posture", () => {
     }
   });
 
-  it("keeps the home order aligned to the formal-layer narrative", () => {
+  it("keeps the home order aligned to the vNext poster-first narrative", () => {
     const page = read("src/app/page.tsx");
     const expectedOrder = [
-      "<ProblemSection />",
-      "<HardwareDisciplineSection />",
-      "<PCDSection />",
-      "<WorkflowSection />",
-      "<PlatformSection />",
-      "<AINativeSection />",
-      "<HomeClaimBoundariesSection />",
-      "<CTASection />",
+      "<Navbar />",
+      "<VNextHome />",
+      "<Footer />",
     ];
 
     const positions = expectedOrder.map((token) => page.indexOf(token));

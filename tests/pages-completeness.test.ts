@@ -8,6 +8,7 @@ import { utilityPages } from "@/lib/utility-page-data";
 import {
   APP_DIR,
   ROOT,
+  commerceDirectPages,
   editorialPages,
   getAllPageFiles,
   productCorePages,
@@ -29,6 +30,7 @@ describe("Page completeness — recovered public tree remains intact", () => {
     ...productMigratedPages,
     ...productRestoredPages,
     ...editorialPages,
+    ...commerceDirectPages,
     ...utilityDirectPages,
     ...utilityRestoredPages,
     ...utilityWrapperPages.map(([file]) => file),
@@ -60,6 +62,12 @@ describe("Page completeness — wrapper architecture is explicit", () => {
     });
   }
 
+  for (const file of commerceDirectPages) {
+    it(`${file} exists as a direct storefront route`, () => {
+      expect(fs.existsSync(path.join(ROOT, file))).toBe(true);
+    });
+  }
+
   for (const [file, pageRef] of riskWrapperPages) {
     it(`${file} delegates to RiskPageView using ${pageRef}`, () => {
       const content = read(file);
@@ -84,13 +92,17 @@ describe("Page completeness — wrapper architecture is explicit", () => {
     expect(content).toContain("DocsRailSurface");
   });
 
-  it("restored route buckets stay populated where direct pages recovered richer content", () => {
-    expect(utilityRestoredPages).toEqual(
+  it("restored and wrapped route buckets reflect the vNext migration split", () => {
+    expect(utilityRestoredPages).toEqual([]);
+    expect(utilityWrapperPages).toEqual(
       expect.arrayContaining([
-        "src/app/pricing/page.tsx",
-        "src/app/investors/page.tsx",
-        "src/app/enterprise/page.tsx",
+        ["src/app/pricing/page.tsx", "pricing"],
+        ["src/app/investors/page.tsx", "investors"],
+        ["src/app/enterprise/page.tsx", "enterprise"],
       ]),
+    );
+    expect(commerceDirectPages).toEqual(
+      expect.arrayContaining(["src/app/shop/page.tsx"]),
     );
     expect(productRestoredPages).toEqual(
       expect.arrayContaining(["src/app/ai-agents/page.tsx"]),

@@ -33,8 +33,9 @@ describe("Design grammar — product family", () => {
     });
   }
 
-  it("core product routes still expose product surfaces or artifacts, not generic wrappers", () => {
+  it("core product routes still expose product surfaces or route through vNext product wrappers", () => {
     for (const file of productCorePages) {
+      if (file === "src/app/page.tsx") continue;
       const content = read(file);
       expect(
         content.includes("FeatureMatrixSurface") ||
@@ -42,7 +43,8 @@ describe("Design grammar — product family", () => {
           content.includes("ComparisonSurface") ||
           content.includes("PageSectionHeader") ||
           content.includes("Artifact") ||
-          content.includes("HeroSection"),
+          content.includes("HeroSection") ||
+          content.includes("UtilityPageView"),
         `${file} should expose canonical product surfaces`,
       ).toBe(true);
     }

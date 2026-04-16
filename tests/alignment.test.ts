@@ -21,13 +21,14 @@ describe("Alignment — canonical shell lives in the shared archetype layer", ()
     expect(content).toContain("export function CanonicalPageLayout");
     expect(content).toContain("<Navbar />");
     expect(content).toContain("<Footer />");
-    expect(content).toContain("mx-auto max-w-7xl border-x border-border bg-background");
+    expect(content).toContain("mx-auto max-w-[1440px] bg-background");
   });
 
-  it("CanonicalPageHero keeps centered title and subtitle rhythm", () => {
+  it("CanonicalPageHero keeps the new poster-style hero rhythm", () => {
     expect(content).toContain("export function CanonicalPageHero");
-    expect(content).toContain("mx-auto max-w-5xl text-center");
-    expect(content).toContain("mx-auto mt-6 max-w-2xl");
+    expect(content).toContain("max-w-4xl");
+    expect(content).toContain("text-balance text-4xl");
+    expect(content).toContain("mt-6 max-w-2xl");
   });
 
   it("ArchetypeSectionHeader routes through PageSectionHeader instead of local one-off h2 blocks", () => {

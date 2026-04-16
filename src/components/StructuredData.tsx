@@ -1,8 +1,5 @@
-// JSON-LD structured data for SEO rich snippets
-// All data is hardcoded constants — no user input, no XSS risk
-
 export function StructuredData() {
-  const canonicalLogo = "https://brik64.com/brand/brik64-logo-primary-horizontal-black.svg";
+  const canonicalLogo = "https://brik64.com/brand/brik64-logo-primary-horizontal-white.svg";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -14,12 +11,12 @@ export function StructuredData() {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: "Free tier — CLI + all SDKs forever",
+      description: "Open entry path through CLI and public documentation.",
     },
     description:
-      "Bounded software infrastructure for AI-era engineering. Review logic as a blueprint, keep domains explicit, and emit across supported targets.",
+      "Compile, certify, and publish bounded blueprints across supported targets with visible package state.",
     url: "https://brik64.com",
-    downloadUrl: "https://brik64.com/download",
+    downloadUrl: "https://brik64.com/cli",
     author: {
       "@type": "Organization",
       name: "BRIK64 Inc.",
@@ -28,6 +25,9 @@ export function StructuredData() {
       sameAs: [
         "https://github.com/brik64",
         "https://discord.gg/brik64",
+        "https://x.com/brik64com",
+        "https://www.linkedin.com/company/brik64/",
+        "https://www.youtube.com/@brik64",
       ],
     },
   };
@@ -39,10 +39,13 @@ export function StructuredData() {
     url: "https://brik64.com",
     logo: canonicalLogo,
     description:
-      "Bounded software infrastructure with reviewable blueprints, explicit domains, and closure-aware workflows.",
+      "Verified software platform for bounded blueprints, supported target emission, and registry-native reuse.",
     sameAs: [
       "https://github.com/brik64",
       "https://discord.gg/brik64",
+      "https://x.com/brik64com",
+      "https://www.linkedin.com/company/brik64/",
+      "https://www.youtube.com/@brik64",
       "https://digitalcircuitality.com",
     ],
     contactPoint: {
@@ -64,21 +67,11 @@ export function StructuredData() {
     },
   };
 
-  // Safe: all values are compile-time string constants, not user input
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
     </>
   );
 }

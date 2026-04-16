@@ -1,6 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { ReactNode, useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowUpDown,
   ArrowUpRight,
@@ -44,7 +45,7 @@ export function StatusPill({
   tone?: "teal" | "success" | "warning" | "neutral";
 }) {
   const tones = {
-    teal: "border-teal/25 bg-teal/[0.08] text-teal",
+    teal: "bg-[color:var(--accent-soft)] border-[color:var(--accent-soft)] text-[color:var(--accent)]",
     success: "border-emerald-500/25 bg-emerald-500/[0.09] text-emerald-600",
     warning: "border-amber-500/30 bg-amber-500/[0.1] text-amber-700",
     neutral: "border-border/80 bg-background/90 text-muted-foreground",
@@ -181,7 +182,7 @@ export function FlowNode({
 }) {
   const stateClass = {
     idle: "border-border/80 bg-background/90",
-    active: "border-teal/30 bg-teal/[0.06]",
+    active: "border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)]",
     warning: "border-amber-500/30 bg-amber-500/[0.07]",
     success: "border-emerald-500/30 bg-emerald-500/[0.07]",
   };
@@ -192,7 +193,7 @@ export function FlowNode({
         <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
           {label}
         </span>
-        <div className="text-teal">{icon}</div>
+        <div className="text-[color:var(--accent)]">{icon}</div>
       </div>
       <p className="mt-4 text-sm font-semibold text-foreground">{title}</p>
       <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{body}</p>
@@ -260,7 +261,7 @@ export function RegistryWorkbenchArtifact() {
               <div key={circuit.id} className="rounded-3xl border border-white/10 bg-black/25 p-4 shadow-sm">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-mono text-[10px] font-semibold tracking-[0.14em] text-teal">{circuit.id}</p>
+                    <p className="font-mono text-[10px] font-semibold tracking-[0.14em] text-[color:var(--accent)]">{circuit.id}</p>
                     <p className="mt-2 text-sm font-semibold text-white">{circuit.name}</p>
                   </div>
                   <StatusPill tone={circuit.status === "CERTIFIED" ? "success" : "warning"}>
@@ -277,13 +278,13 @@ export function RegistryWorkbenchArtifact() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-teal/20 bg-teal/[0.06] p-5">
+        <div className="rounded-3xl border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)] p-5">
           <div className="flex items-start gap-4">
-            <div className="rounded-2xl border border-teal/30 bg-teal/10 p-3 text-teal">
+            <div className="rounded-2xl border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)] p-3 text-[color:var(--accent)]">
               <Package className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-teal/70">Selected package</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[color:var(--accent)]/70">Selected package</p>
               <h4 className="mt-2 text-xl font-semibold text-white">auth/oauth2-handler</h4>
               <p className="mt-2 text-sm leading-relaxed text-white/60">
                 Hash, closure state, and supported outputs stay attached to the registry package identity.
@@ -444,14 +445,14 @@ export function RiskCaseBoardArtifact() {
       <div className="mt-6 grid gap-4 lg:grid-cols-3">
         {riskCases.map((riskCase) => (
           <div key={riskCase.name} className="rounded-3xl border border-border/80 bg-background/95 p-5 shadow-sm">
-            <div className="flex items-center gap-3 text-teal">
+            <div className="flex items-center gap-3 text-[color:var(--accent)]">
               {riskCase.icon}
               <div>
                 <p className="text-sm font-semibold text-foreground">{riskCase.name}</p>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{riskCase.standard}</p>
               </div>
             </div>
-            <div className="mt-5 rounded-2xl border border-teal/20 bg-teal/[0.06] p-4 font-mono text-xs text-teal">
+            <div className="mt-5 rounded-2xl border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)] p-4 font-mono text-xs text-[color:var(--accent)]">
               {riskCase.constraint}
             </div>
             <div className="mt-4 flex items-center justify-between gap-3">
@@ -529,66 +530,163 @@ export function ProblemFrameArtifact() {
 }
 
 export function LanguageExchangeArtifact() {
-  const sources = ["JavaScript", "TypeScript", "Python", "Rust", "C", "C++", "Go", "COBOL", "PHP", "Java"];
-  const targets = ["Rust", "JavaScript", "TypeScript", "Python", "C", "C++", "Go", "COBOL", "PHP", "Java", "Swift", "WASM", "Native", "BIR"];
+  const [hoveredSource, setHoveredSource] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const sources = [
+    { id: "javascript", name: "JavaScript" },
+    { id: "typescript", name: "TypeScript" },
+    { id: "python", name: "Python" },
+    { id: "rust", name: "Rust" },
+    { id: "c", name: "C" },
+    { id: "cplusplus", name: "C++" },
+    { id: "go", name: "Go" },
+    { id: "cobol", name: "COBOL" },
+    { id: "php", name: "PHP" },
+    { id: "java", name: "Java" },
+  ];
+
+  const targets = [
+    { id: "rust", name: "Rust" },
+    { id: "javascript", name: "JavaScript" },
+    { id: "typescript", name: "TypeScript" },
+    { id: "python", name: "Python" },
+    { id: "c", name: "C" },
+    { id: "cplusplus", name: "C++" },
+    { id: "go", name: "Go" },
+    { id: "cobol", name: "COBOL" },
+    { id: "php", name: "PHP" },
+    { id: "java", name: "Java" },
+    { id: "swift", name: "Swift" },
+    { id: "webassembly", name: "WASM" },
+    { id: "antigravity", name: "Native" },
+    { id: "codex", name: "BIR" },
+  ];
 
   return (
     <ArtifactFrame>
       <ArtifactHeader
         eyebrow="Language Exchange"
-        title="Many source materials. One canonical circuit. Fourteen emission targets."
-        description="PCD is the semantic choke point: lift heterogeneous code in, preserve proof in the middle, emit deterministic targets out."
-        status={<ProofBadge />}
+        title="Centric Transpilation Flow."
+        description="Lift from source, normalize in the PCD relay, and emit to any target. Mathematical equivalence guaranteed across every hop."
+        status={<StatusPill tone="teal">10 &rarr; 1 &rarr; 14</StatusPill>}
       />
 
-      <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_auto_0.78fr_auto_1fr] lg:items-center">
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-            Lift from
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
+      <div ref={containerRef} className="relative mt-8 grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] items-center gap-8 md:gap-4 lg:gap-12 min-h-[500px]">
+        
+        {/* Connection Layer (SVG Overlay) */}
+        <div className="absolute inset-0 pointer-events-none hidden md:block">
+          <svg className="h-full w-full overflow-visible">
+            <AnimatePresence>
+              {hoveredSource && (
+                <motion.g
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Lines from Source to Center */}
+                  {/* Since we are in a grid, we can estimate ports or use placeholders. 
+                      Simplest approach: lines from left-center to middle. */}
+                  <motion.path
+                    d="M 50 250 L 320 250"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  />
+                  
+
+                </motion.g>
+              )}
+            </AnimatePresence>
+            
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#2BB6AC" stopOpacity="0" />
+                <stop offset="50%" stopColor="#2BB6AC" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#2BB6AC" stopOpacity="1" />
+              </linearGradient>
+              <linearGradient id="lineGradientReverse" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#2BB6AC" stopOpacity="1" />
+                <stop offset="50%" stopColor="#2BB6AC" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#2BB6AC" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Sources Column (Left) */}
+        <div className="flex flex-col items-center gap-4 z-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-2">Sources</p>
+          <div className="grid grid-cols-2 lg:grid-cols-2 gap-4">
             {sources.map((lang) => (
-              <span key={lang} className="rounded-full border border-border/80 bg-background px-3 py-1.5 text-xs font-medium shadow-sm">
-                {lang}
-              </span>
+              <div
+                key={lang.id}
+                onMouseEnter={() => setHoveredSource(lang.id)}
+                onMouseLeave={() => setHoveredSource(null)}
+                className={cx(
+                  "group relative flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border transition-all duration-300",
+                  hoveredSource === lang.id
+                    ? "border-[#2BB6AC] bg-[#2BB6AC]/15 scale-110 shadow-[0_0_20px_rgba(43,182,172,0.4)]"
+                    : "border-white/5 bg-white/[0.03] grayscale opacity-40 hover:grayscale-0 hover:opacity-100"
+                )}
+                title={lang.name}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/brands/${lang.id}.svg`} alt={lang.name} className="h-7 w-7 md:h-8 md:w-8 object-contain" />
+              </div>
             ))}
           </div>
         </div>
 
-        <div className="hidden text-muted-foreground lg:block">
-          <ArrowRight className="h-5 w-5" />
-        </div>
-
-        <div className="rounded-[1.75rem] border border-teal/25 bg-teal/[0.08] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-teal/80">
-                Canonical relay
-              </p>
-              <p className="mt-2 text-lg font-semibold text-foreground">PCD Blueprint</p>
+        {/* Central PCD Relay (Center) */}
+        <div className="relative flex flex-col items-center justify-center py-12 z-20">
+          <div className={cx(
+            "relative w-full max-w-[280px] rounded-[2.5rem] border p-8 transition-all duration-500",
+            hoveredSource 
+              ? "border-[#2BB6AC] bg-[#2BB6AC]/20 shadow-[0_0_60px_rgba(43,182,172,0.3)] scale-105" 
+              : "border-white/10 bg-white/[0.03]"
+          )}>
+            <div className="flex flex-col items-center text-center">
+              <div 
+                className={cx(
+                  "mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border transition-colors duration-500",
+                  hoveredSource ? "border-[#2BB6AC] bg-[#2BB6AC]/20 text-[#2BB6AC]" : "border-white/10 text-white/20"
+                )}
+              >
+                <PhiC className="h-7 w-7" />
+              </div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-white/40">Canonical Relay</p>
+              <h4 className="mt-3 text-2xl font-bold text-white tracking-tight">PCD Blueprint</h4>
+              <div className="mt-8 flex gap-3 text-[13px] font-mono font-bold text-white/60">
+                 <div className="px-3 py-1.5 rounded-lg bg-black/40 border border-white/10 backdrop-blur-sm">Φc = 1.0</div>
+              </div>
             </div>
-            <ProofBadge />
-          </div>
-          <div className="mt-5 grid gap-3">
-            <MetricTile label="Inputs" value="10" />
-            <MetricTile label="Outputs" value="14" />
-            <MetricTile label="Closure" value={<><PhiC /> = 1</>} />
           </div>
         </div>
 
-        <div className="hidden text-muted-foreground lg:block">
-          <ArrowRight className="h-5 w-5" />
-        </div>
-
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-            Compile to
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {targets.map((lang) => (
-              <span key={lang} className="rounded-full border border-border/80 bg-background px-3 py-1.5 text-xs font-medium shadow-sm">
-                {lang}
-              </span>
+        {/* Targets Column (Right) */}
+        <div className="flex flex-col items-center gap-4 z-10">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-2">Targets</p>
+          <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 max-w-[140px]">
+            {targets.map((lang, idx) => (
+              <div
+                key={lang.id}
+                className={cx(
+                  "flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-700",
+                  hoveredSource
+                    ? "border-[#2BB6AC]/40 bg-[#2BB6AC]/10 opacity-100 scale-100 shadow-[0_0_15px_rgba(43,182,172,0.2)]"
+                    : "border-white/5 bg-white/[0.01] opacity-20 grayscale"
+                )}
+                style={{ transitionDelay: hoveredSource ? `${idx * 40}ms` : '0ms' }}
+                title={lang.name}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/brands/${lang.id}.svg`} alt={lang.name} className="h-5 w-5 object-contain" />
+              </div>
             ))}
           </div>
         </div>
@@ -749,7 +847,7 @@ export function EditorControlArtifact() {
 
         <div className="rounded-3xl border border-border/80 bg-background/95 p-5 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="rounded-2xl border border-teal/30 bg-teal/[0.08] p-3 text-teal">
+            <div className="rounded-2xl border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)] p-3 text-[color:var(--accent)]">
               <Monitor className="h-6 w-6" />
             </div>
             <div>

@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import {
-  EditorialCard,
-  EditorialHero,
-  FeaturedEditorialCard,
-  PaginationRail,
-} from "@/components/EditorialSystem";
 import { blogPosts } from "@/lib/blog-data";
 import { paginateItems } from "@/lib/editorial-utils";
+import { 
+  EditorialHeroVNext, 
+  FeaturedPostCard, 
+  PostCardVNext, 
+  ArchivePagination 
+} from "@/components/vnext/editorial";
+import { SupportingSurface } from "@/components/vnext/primitives";
+import { CanonicalPageLayout } from "@/components/PageArchetypes";
 
 const POSTS_PER_PAGE = 9;
 
@@ -27,49 +26,46 @@ export default function BlogPage() {
   const pagination = paginateItems(restPosts, 1, POSTS_PER_PAGE - 1);
 
   return (
-    <>
-      <Navbar />
-      <main className="relative z-10 flex-1">
-        <div className="mx-auto max-w-7xl border-x border-border bg-background">
-          <EditorialHero
-            eyebrow="Blog"
-            title="Proof-first engineering, compiler rigor, and the operating model behind BRIK64."
-            description="Essays, product notes, engineering reports, and research writing about Digital Circuitality, PCD, platform workflows, and bounded verification."
-            chips={["VISION", "ENGINEERING", "AI SAFETY", "PLATFORM"]}
-          />
+    <CanonicalPageLayout>
+      <EditorialHeroVNext 
+        eyebrow="Engineering Blog"
+        title="Technical writing, research, and proof-driven engineering."
+        description="Notes from the BRIK64 team regarding formal verification, systems architecture, and the future of certified software execution."
+        topics={["Verification", "Rust", "Systems", "Security"]}
+      />
 
-          <section className="px-6 py-12 lg:px-16">
-            <div className="mx-auto max-w-6xl">
-              <FeaturedEditorialCard item={featuredPost} hrefBase="/blog" />
+      <SupportingSurface className="relative bg-transparent py-24">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12">
+          <FeaturedPostCard item={featuredPost} hrefBase="/blog" />
 
-              <div className="mt-12 flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                    Archive
-                  </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
-                    Latest posts
-                  </h2>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  {pagination.totalItems + 1} posts total. Page 1 of {pagination.totalPages}.
+          <div className="mt-24">
+            <div className="flex flex-wrap items-center justify-between gap-6 pb-12">
+              <div className="space-y-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Archive</p>
+                <h2 className="text-3xl font-bold tracking-tight text-white">Latest posts</h2>
+              </div>
+              <div className="text-right">
+                 <p className="text-sm font-medium text-white/40">
+                  Showing {pagination.totalItems + 1} posts total
+                </p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--accent)] mt-1">
+                  Page 1 of {pagination.totalPages}
                 </p>
               </div>
-
-              <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                {pagination.items.map((post) => (
-                  <EditorialCard key={post.slug} item={post} hrefBase="/blog" />
-                ))}
-              </div>
-
-              <PaginationRail basePath="/blog" page={1} totalPages={pagination.totalPages} />
             </div>
-          </section>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {pagination.items.map((post) => (
+                <PostCardVNext key={post.slug} item={post} hrefBase="/blog" />
+              ))}
+            </div>
+
+            <div className="mt-20 border-t border-white/5 pt-12">
+              <ArchivePagination page={1} totalPages={pagination.totalPages} />
+            </div>
+          </div>
         </div>
-      </main>
-      <div className="relative z-10">
-        <Footer />
-      </div>
-    </>
+      </SupportingSurface>
+    </CanonicalPageLayout>
   );
 }

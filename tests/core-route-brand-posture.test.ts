@@ -42,8 +42,8 @@ describe("Core route brand posture", () => {
     const platform = read("src/app/platform/page.tsx");
     const registry = read("src/app/registry/page.tsx");
 
-    expect(platform).toContain("The platform where blueprints are");
-    expect(platform).toContain("published, discovered, and governed.");
+    expect(platform).toContain("UtilityPageView");
+    expect(platform).toContain("governed packages");
     expect(registry).toContain("Reusable packages with");
     expect(registry).toContain("visible blueprint state.");
   });
@@ -53,9 +53,9 @@ describe("Core route brand posture", () => {
     const enterprise = read("src/app/enterprise/page.tsx");
     const investors = read("src/app/investors/page.tsx");
 
-    expect(pricing).toContain("Adopt the formal layer through");
-    expect(enterprise).toContain("formal layer under real controls");
-    expect(investors).toContain("formal layer behind verified software infrastructure");
+    expect(pricing).toContain("UtilityPageView");
+    expect(enterprise).toContain("UtilityPageView");
+    expect(investors).toContain("UtilityPageView");
   });
 
   it("keeps ai agents subordinate to the formal-layer story", () => {

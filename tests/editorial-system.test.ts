@@ -78,18 +78,19 @@ describe("Design system — page and editorial artifacts are documented", () => 
     expect(content).toContain("FeatureMatrixSurface");
     expect(content).toContain("EvidenceSurface");
     expect(content).toContain("PageArtifactsShowcase");
-    expect(content).toContain('titleClassName="text-teal"');
+    expect(content).toContain("text-[color:var(--accent)]");
   });
 });
 
 describe("Secondary pages — previously thin routes now carry substantive content", () => {
-  it("shop route delegates to shared utility view with substantive dataset content", () => {
+  it("shop route is now a direct storefront backed by Printful catalog data", () => {
     const page = read("src/app/shop/page.tsx");
-    const data = read("src/lib/utility-page-data.ts");
-    expect(page).toContain("UtilityPageView");
-    expect(page).toContain("utilityPages.shop");
-    expect(data).toMatch(/if the shop is not a full commerce experience/i);
-    expect(data).toContain("A simple brand-support route, not a fake storefront");
+    const printful = read("src/lib/printful.ts");
+    expect(page).toContain("CanonicalPageLayout");
+    expect(page).toContain("getPrintfulStorefront");
+    expect(page).toContain("BrandWordmark");
+    expect(printful).toContain("PRINTFUL_API_TOKEN");
+    expect(printful).toContain("/store/products");
   });
 });
 

@@ -1,129 +1,136 @@
-import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
-function ExtIcon() {
-  return <ExternalLink className="ml-1 inline h-3 w-3 text-[#322F2D]/30" />;
+import {
+  BrandWordmark,
+  DiscordMark,
+  FooterColumn,
+  FooterLinkGroup,
+  GitHubMark,
+  renderBrandText,
+  SocialIconLink,
+} from "@/components/vnext/primitives";
+import { footerGroups, socialLinks } from "@/lib/site-config";
+
+function XMark() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M18.244 2H21l-6.02 6.88L22 22h-5.514l-4.32-5.655L7.214 22H4.457l6.44-7.36L2 2h5.654l3.905 5.146L18.244 2Zm-.967 18h1.528L6.824 3.895H5.184L17.277 20Z" />
+    </svg>
+  );
 }
 
-export function Footer() {
+function LinkedInMark() {
   return (
-    <footer className="border-t border-[#EEEEEE] bg-white px-6 pt-16 pb-8">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <img src="/brand/brik64-logo-primary-horizontal-black.svg" alt="BRIK64" className="h-8 w-auto" />
-            <p className="mt-1 text-xs text-[#322F2D]/40">Digital Circuitality</p>
-          </div>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.92 1.96 1.96 0 0 0 5.25 3ZM20.44 13.02c0-3.48-1.86-5.1-4.34-5.1-2 0-2.9 1.1-3.4 1.88V8.5H9.31c.04.86 0 11.5 0 11.5h3.39v-6.42c0-.34.02-.68.12-.93.27-.67.88-1.36 1.9-1.36 1.34 0 1.88 1.02 1.88 2.52V20H20v-6.98c0 .01.44 0 .44 0Z" />
+    </svg>
+  );
+}
 
-          {/* Product */}
-          <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#322F2D]/30">
-              Product
-            </h4>
-            <ul className="space-y-2">
-              <li><Link href="/cli" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">CLI</Link></li>
-              <li><Link href="/platform" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Platform</Link></li>
-              <li><Link href="/registry" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Registry</Link></li>
-              <li><Link href="/sdks" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">SDKs</Link></li>
-              <li><Link href="/lifter" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Lifter</Link></li>
-              <li><Link href="/transpiler" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Transpiler</Link></li>
-              <li><Link href="/pricing" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Pricing</Link></li>
-              <li><Link href="/download" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Download</Link></li>
-            </ul>
-          </div>
+function YouTubeMark() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M21.58 7.19a2.97 2.97 0 0 0-2.09-2.1C17.63 4.6 12 4.6 12 4.6s-5.63 0-7.49.5a2.97 2.97 0 0 0-2.09 2.1A31.4 31.4 0 0 0 2 12a31.4 31.4 0 0 0 .42 4.81 2.97 2.97 0 0 0 2.09 2.1c1.86.49 7.49.49 7.49.49s5.63 0 7.49-.5a2.97 2.97 0 0 0 2.09-2.09A31.4 31.4 0 0 0 22 12a31.4 31.4 0 0 0-.42-4.81ZM10.2 15.1V8.9l5.4 3.1-5.4 3.1Z" />
+    </svg>
+  );
+}
 
-          {/* Resources */}
-          <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#322F2D]/30">
-              Resources
-            </h4>
-            <ul className="space-y-2">
-              <li><a href="https://docs.brik64.dev" target="_blank" rel="noopener noreferrer" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Documentation <ExtIcon /></a></li>
-              <li><Link href="/blog" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blog</Link></li>
-              <li><Link href="/news" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">News</Link></li>
-              <li><Link href="/faq" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">FAQ</Link></li>
-              <li><Link href="/features" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Features</Link></li>
-              <li>
-                <Link href="/shop" className="inline-flex items-center gap-2 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">
-                  <span>Shop</span>
-                  <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-600">
-                    Coming soon
-                  </span>
-                </Link>
-              </li>
-            </ul>
-          </div>
+const socialIconMap = {
+  Discord: <DiscordMark className="h-4 w-4" />,
+  GitHub: <GitHubMark className="h-4 w-4" />,
+  "X.com": <XMark />,
+  LinkedIn: <LinkedInMark />,
+  YouTube: <YouTubeMark />,
+} as const;
 
-          {/* Theory */}
-          <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#322F2D]/30">
-              Theory
-            </h4>
-            <ul className="space-y-2">
-              <li><a href="https://digitalcircuitality.com" target="_blank" rel="noopener noreferrer" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Digital Circuitality <ExtIcon /></a></li>
-              <li><Link href="/foundations" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Foundations</Link></li>
-              <li><Link href="/bpu" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">BPU Unit</Link></li>
-              <li><Link href="/pcd" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">PCD Format</Link></li>
-              <li><Link href="/compliance" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Compliance Evidence</Link></li>
-              <li><Link href="/blockchain" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Blockchain</Link></li>
-              <li><Link href="/safety-critical" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Safety-Critical</Link></li>
-              <li><Link href="/ai" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI-Verified Code</Link></li>
-            </ul>
-          </div>
+export function Footer() {
+  const [productGroup, companyGroup, legalGroup, resourcesGroup] = footerGroups;
+  const isExternal = (item: unknown) =>
+    typeof item === "object" &&
+    item !== null &&
+    "external" in item &&
+    (item as { external?: boolean }).external === true;
 
-          {/* Company */}
-          <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#322F2D]/30">
-              Company
-            </h4>
-            <ul className="space-y-2">
-              <li><Link href="/about" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">About</Link></li>
-              <li><Link href="/investors" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Investors</Link></li>
-              <li><Link href="/enterprise" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Enterprise</Link></li>
-              <li><Link href="/ai-agents" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">AI Agents</Link></li>
-              <li><Link href="/contact" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Contact</Link></li>
-              <li><Link href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Legal</Link></li>
-            </ul>
+  return (
+    <footer className="border-t border-white/8 bg-[#04070b]">
+      <div className="mx-auto max-w-[1480px] px-6 py-24 md:px-8 lg:px-14">
+        <div className="flex flex-col gap-10 border-b border-white/8 pb-12 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-sm">
+            <Image
+              src="/brand/brik64-logo-primary-horizontal-white.svg"
+              alt="BRIK64"
+              width={184}
+              height={36}
+              className="h-10 w-auto"
+            />
+            <p className="mt-5 max-w-[32ch] text-[15px] leading-8 text-white/60">
+              Verified software platform for bounded blueprints, supported target emission,
+              and registry-native reuse.
+            </p>
           </div>
-
-          {/* Community */}
-          <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[#322F2D]/30">
-              Community
-            </h4>
-            <ul className="space-y-2">
-              <li><a href="https://github.com/brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/github.svg" alt="" className="h-4 w-4 opacity-50" />GitHub <ExtIcon /></a></li>
-              <li><a href="https://x.com/brik64com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/x-twitter.svg" alt="" className="h-4 w-4 opacity-50" />X / Twitter <ExtIcon /></a></li>
-              <li><a href="https://medium.com/@brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/medium.svg" alt="" className="h-4 w-4 opacity-50" />Medium <ExtIcon /></a></li>
-              <li><a href="https://discord.gg/brik64" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]"><img src="/brands/discord.svg" alt="" className="h-4 w-4 opacity-50" />Discord <ExtIcon /></a></li>
-            </ul>
+          <div className="space-y-4 lg:min-w-[320px]">
+            <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-white/36">
+              Follow <BrandWordmark>BRIK64</BrandWordmark>
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <SocialIconLink href={socialLinks.discord} label="Discord" icon={<DiscordMark className="h-5 w-5" />} compact />
+              <SocialIconLink href={socialLinks.githubOrg} label="GitHub" icon={<GitHubMark className="h-5 w-5" />} compact />
+              <SocialIconLink href={socialLinks.x} label="X.com" icon={<XMark />} compact />
+              <SocialIconLink href={socialLinks.linkedin} label="LinkedIn" icon={<LinkedInMark />} compact />
+              <SocialIconLink href={socialLinks.youtube} label="YouTube" icon={<YouTubeMark />} compact />
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-[#EEEEEE] pt-8 md:flex-row md:justify-between">
-          <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap">
-            <a
-              href="https://status.brik64.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-emerald-100 bg-emerald-50 px-2.5 py-1.5 transition-colors hover:bg-emerald-100"
-            >
-              <span className="text-emerald-500">&#9679;</span>
-              <span className="text-sm font-medium text-emerald-700">All systems normal</span>
-            </a>
-          </div>
-          <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap">
-            <p className="text-center text-sm text-[#322F2D]/20 md:text-left">
-              &copy; 2026 BRIK64. All rights reserved.
-            </p>
-            <div className="flex items-center gap-3">
-              <Link href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Privacy</Link>
-              <span className="text-sm text-[#322F2D]/20">&middot;</span>
-              <Link href="/legal" className="text-sm text-[#322F2D]/50 transition-colors hover:text-[#1A1817]">Terms</Link>
-            </div>
-          </div>
+        <div className="grid gap-x-12 gap-y-12 pt-12 md:grid-cols-2 xl:grid-cols-4">
+          <FooterColumn title={productGroup.title}>
+            {productGroup.links.map((item) => (
+              <FooterLinkGroup
+                key={`${productGroup.title}-${item.label}`}
+                href={item.href}
+                label={item.label}
+                external={isExternal(item)}
+              />
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title={companyGroup.title}>
+            {companyGroup.links.map((item) => (
+              <FooterLinkGroup
+                key={`${companyGroup.title}-${item.label}`}
+                href={item.href}
+                label={item.label}
+                external={isExternal(item)}
+              />
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title={resourcesGroup.title}>
+            {resourcesGroup.links.map((item) => (
+              <FooterLinkGroup
+                key={`${resourcesGroup.title}-${item.label}`}
+                href={item.href}
+                label={item.label}
+                external={isExternal(item)}
+              />
+            ))}
+          </FooterColumn>
+
+          <FooterColumn title={legalGroup.title}>
+            {legalGroup.links.map((item) => (
+              <FooterLinkGroup
+                key={`${legalGroup.title}-${item.label}`}
+                href={item.href}
+                label={item.label}
+                external={isExternal(item)}
+              />
+            ))}
+          </FooterColumn>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-4 border-t border-white/8 pt-8 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
+          <p>{renderBrandText("© 2026 BRIK64. All rights reserved.")}</p>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/30">verified software platform</p>
         </div>
       </div>
     </footer>

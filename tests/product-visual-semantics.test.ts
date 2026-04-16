@@ -9,15 +9,13 @@ import {
 } from "./site-grammar";
 
 describe("Product cluster — core routes keep their canonical artifacts", () => {
-  it("platform still exposes the workbench and monomer spotlight surfaces", () => {
+  it("platform now routes through a bounded vNext product wrapper", () => {
     const content = read("src/app/platform/page.tsx");
-    expect(content).toContain("<RegistryWorkbenchArtifact />");
-    expect(content).toContain("<WorkflowRailArtifact />");
-    expect(content).toContain("<MonomerSpotlightPair");
-    expect(content).toContain("FeatureMatrixSurface");
-    expect(content).toContain("EvidenceSurface");
-    expect(content).not.toContain("<ForgeSection");
-    expect(content).not.toContain("<CircuitAnalyzerSection");
+    expect(content).toContain("UtilityPageView");
+    expect(content).toContain("platformPage");
+    expect(content).toContain("Open registry");
+    expect(content).toContain("Read docs");
+    expect(content).not.toContain("HeroWireframe");
   });
 
   it("registry still uses canonical evidence surfaces instead of monomer noise", () => {
@@ -112,32 +110,22 @@ describe("Product and commercial routes — restored direct pages keep substanti
     });
   }
 
-  it("pricing restores detailed tiers, comparison, and FAQ", () => {
+  it("pricing now routes through the utility wrapper dataset", () => {
     const content = read("src/app/pricing/page.tsx");
-    expect(content).toContain("Free");
-    expect(content).toContain("Pro");
-    expect(content).toContain("Team");
-    expect(content).toContain("Enterprise");
-    expect(content).toContain("FEATURE COMPARISON");
-    expect(content).toContain("COMMERCIAL FAQ");
+    expect(content).toContain("UtilityPageView");
+    expect(content).toContain("utilityPages.pricing");
   });
 
-  it("enterprise restores capabilities, workflow, use cases, and compliance boundary", () => {
+  it("enterprise now routes through the utility wrapper dataset", () => {
     const content = read("src/app/enterprise/page.tsx");
-    expect(content).toContain("[01] CAPABILITIES");
-    expect(content).toContain("[02] WORKFLOW");
-    expect(content).toContain("[03] USE CASES");
-    expect(content).toContain("[04] COMPLIANCE");
-    expect(content).toContain("does not certify organizations by itself");
+    expect(content).toContain("UtilityPageView");
+    expect(content).toContain("utilityPages.enterprise");
   });
 
-  it("investors restores category thesis, system form, roadmap, and IP posture", () => {
+  it("investors now routes through the utility wrapper dataset", () => {
     const content = read("src/app/investors/page.tsx");
-    expect(content).toContain("[01] THE OPPORTUNITY");
-    expect(content).toContain("[02] THE PRODUCT");
-    expect(content).toContain("[04] BUSINESS MODEL");
-    expect(content).toContain("[06] ROADMAP");
-    expect(content).toContain("[07] INTELLECTUAL PROPERTY");
+    expect(content).toContain("UtilityPageView");
+    expect(content).toContain("utilityPages.investors");
   });
 
   it("ai-agents restores the richer technical reference surface", () => {
