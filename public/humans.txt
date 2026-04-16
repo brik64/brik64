@@ -1,0 +1,17 @@
+/* TEAM */
+Company: BRIK64 Inc.
+Site: https://brik64.com
+Contact: hello@brik64.com
+Twitter: @brik64dev
+Location: Global
+
+/* TECHNOLOGY */
+Framework: Next.js 16
+UI: shadcn/ui + Tailwind CSS v4
+Fonts: Jura, Geist Sans, Geist Mono
+Hosting: Cloudflare Pages
+Language: TypeScript
+
+/* THANKS */
+Digital Circuitality methodology
+EVA Algebra composition system

@@ -1,0 +1,8 @@
+# BRIK64 — brik64.com
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /login
+Disallow: /signup
+
+Sitemap: https://brik64.com/sitemap.xml
