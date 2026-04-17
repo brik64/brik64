@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import {
+  CanonicalPageLayout,
   PageHeaderVNext,
   SupportingSurface,
   ButtonVNext,
   GitHubMark,
   DiscordMark,
-} from "@/components/vnext/primitives";
+} from "@/components/PageArchetypes";
 import { Mail, MessageSquare, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -85,9 +84,7 @@ const routingRules = [
 
 export default function ContactPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
-      <Navbar />
-
+    <CanonicalPageLayout>
       <main className="flex-1">
         {/* Hero */}
         <section className="relative overflow-hidden border-b border-white/5 pb-24 pt-32 md:pb-32 md:pt-48">
@@ -196,8 +193,6 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </CanonicalPageLayout>
   );
 }

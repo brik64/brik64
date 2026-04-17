@@ -173,12 +173,14 @@ export function FlowNode({
   body,
   icon,
   state = "idle",
+  dark = false,
 }: {
   label: string;
   title: string;
   body: string;
   icon: ReactNode;
-  state?: "idle" | "active" | "warning" | "success";
+  state?: "active" | "success" | "warning" | "idle";
+  dark?: boolean;
 }) {
   const stateClass = {
     idle: "border-border/80 bg-background/90",
@@ -206,11 +208,13 @@ export function CodeProofPanel({
   title,
   badge,
   code,
+  dark = false,
 }: {
   eyebrow: string;
   title: string;
   badge?: ReactNode;
   code: string;
+  dark?: boolean;
 }) {
   return (
     <ArtifactFrame dark className="flex min-h-full flex-col p-0 md:p-0">

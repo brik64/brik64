@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 import {
+  CanonicalPageLayout,
   PageHeaderVNext,
   SupportingSurface,
   ButtonVNext,
   PillarCard,
-} from "@/components/vnext/primitives";
+} from "@/components/PageArchetypes";
 import { ShieldCheck, Key, GitBranch, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -63,8 +62,7 @@ const handoff = [
 
 export default function EnterprisePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
-      <Navbar />
+    <CanonicalPageLayout>
 
       <main className="flex-1">
         {/* Hero */}
@@ -181,7 +179,6 @@ export default function EnterprisePage() {
         </section>
       </main>
 
-      <Footer />
-    </div>
+    </CanonicalPageLayout>
   );
 }

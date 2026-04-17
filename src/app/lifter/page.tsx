@@ -16,13 +16,16 @@ import {
 import Image from "next/image";
 import { 
   CanonicalPageLayout, 
-  UtilityPageView, 
-  UtilitySurface,
-  ActionAnchor 
+  CanonicalPageHero,
+  CanonicalSection,
+  ArchetypeSectionHeader,
+  ActionAnchor,
+  cx
 } from "@/components/PageArchetypes";
 import { EvidenceSurface } from "@/components/PageArtifacts";
 import { PhiC } from "@/components/PhiC";
 import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
+import { ArtifactFrame, ArtifactHeader, StatusPill } from "@/components/HomeProofArtifacts";
 import dynamic from "next/dynamic";
 
 const HeroWireframe = dynamic(
@@ -39,7 +42,7 @@ const sourceLanguages = [
   { name: "Go", ext: ".go", logo: "/brands/go.svg", status: "Stable" },
   { name: "COBOL", ext: ".cob", logo: "/brands/cobol.svg", status: "Stable" },
   { name: "PHP", ext: ".php", logo: "/brands/php.svg", status: "Stable" },
-  { name: "Java", ext: ".java", logo: "/brands/java.svg", status: "Stable" },
+  { name: "Java", ext: ".java", logo: ".java", status: "Stable" },
   { name: "Kotlin", ext: ".kt", logo: "/brands/kotlin.svg", status: "Planned" },
 ];
 
@@ -90,21 +93,32 @@ export default function LifterPage() {
 
   return (
     <CanonicalPageLayout>
-      <UtilityPageView
+      <CanonicalPageHero
         eyebrow="Lifter"
         title="Already have code? Verify it."
         description="No rewrite needed. Point the Lifter at your existing code. It extracts, maps, and certifies. 10 languages in. Verified PCD out."
-        topics={["AST Extraction", "Domain Inference", "Legacy Migration"]}
-        statusLabel="Production Ready"
-        statusTone="teal"
-      >
+        actions={[
+          { label: "Install CLI", href: "/cli", tone: "primary" },
+          { label: "View Transpiler", href: "/transpiler", tone: "secondary" },
+        ]}
+      />
+
+      <CanonicalSection>
         <div className="space-y-24 py-12">
           {/* Visual Grid */}
-          <UtilitySurface
-            title="Source Languages"
-            description="10 languages. One blueprint."
-            icon={<Cpu className="h-4 w-4" />}
-          >
+          <ArtifactFrame dark className="space-y-6">
+            <ArtifactHeader
+              dark
+              eyebrow="Coverage"
+              title="Source Languages"
+              description="10 languages. One blueprint."
+              status={
+                <StatusPill tone="teal">
+                  <Layers className="h-3.5 w-3.5" />
+                  Production Ready
+                </StatusPill>
+              }
+            />
             <div className="mx-auto max-w-5xl px-4 py-8">
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
                 {sourceLanguages.map((lang) => (
@@ -116,7 +130,7 @@ export default function LifterPage() {
                         : "bg-white/5 hover:border-[color:var(--accent)]/50 hover:bg-white/[0.08]"
                     }`}
                   >
-                    <Image src={lang.logo} alt={lang.name} width={24} height={24} className="h-6 w-6 opacity-70 group-hover:opacity-100 transition-opacity" />
+                    {lang.logo.startsWith("/") && <Image src={lang.logo} alt={lang.name} width={24} height={24} className="h-6 w-6 opacity-70 group-hover:opacity-100 transition-opacity" />}
                     <div>
                       <p className="text-xs font-bold text-white/80">{lang.name}</p>
                       <p className="text-[9px] text-white/30 uppercase tracking-widest">{lang.status === "Planned" ? "Planned" : lang.ext}</p>
@@ -125,7 +139,7 @@ export default function LifterPage() {
                 ))}
               </div>
             </div>
-          </UtilitySurface>
+          </ArtifactFrame>
 
           {/* Pipeline */}
           <section className="mx-auto max-w-5xl">
@@ -146,11 +160,19 @@ export default function LifterPage() {
           </section>
 
           {/* Demos */}
-          <UtilitySurface
-            title="See it in Action"
-            description="Terminal-driven lifting with immediate certification feedback."
-            icon={<Zap className="h-4 w-4" />}
-          >
+          <ArtifactFrame dark className="space-y-6">
+            <ArtifactHeader
+              dark
+              eyebrow="Demonstration"
+              title="See it in Action"
+              description="Terminal-driven lifting with immediate certification feedback."
+              status={
+                <StatusPill tone="neutral">
+                  <Layers className="h-3.5 w-3.5" />
+                  Live terminal demo
+                </StatusPill>
+              }
+            />
             <div className="mx-auto max-w-3xl px-4 py-8">
               <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0a0e14] shadow-2xl">
                 <div className="flex border-b border-white/10 bg-white/[0.02]">
@@ -175,7 +197,7 @@ export default function LifterPage() {
                 </div>
               </div>
             </div>
-          </UtilitySurface>
+          </ArtifactFrame>
 
           {/* Evidence */}
           <div className="grid gap-8">
@@ -208,7 +230,7 @@ export default function LifterPage() {
              </div>
           </section>
         </div>
-      </UtilityPageView>
+      </CanonicalSection>
     </CanonicalPageLayout>
   );
 }

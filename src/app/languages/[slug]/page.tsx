@@ -70,6 +70,7 @@ export default async function LanguagePage(props: {
         eyebrow={`Language · ${language.name}`}
         title={`Work with ${language.name} through the`}
         description={language.description}
+        actions={[]}
         metrics={[
           {
             label: "Lift from source",

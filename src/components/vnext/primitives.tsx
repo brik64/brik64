@@ -410,15 +410,18 @@ export function PageHeaderVNext({
   eyebrow,
   title,
   description,
+  status,
   centered = false,
 }: {
   eyebrow: string;
-  title: string;
+  title: string | ReactNode;
   description: string | ReactNode;
+  status?: ReactNode;
   centered?: boolean;
 }) {
   return (
     <div className={cn("max-w-3xl space-y-4", centered && "mx-auto text-center")}>
+      {status && <div className={cn("flex", centered && "justify-center")}>{status}</div>}
       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{renderBrandText(eyebrow)}</p>
       <h2 className={cn("text-balance text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl", centered && "mx-auto")}>
         {renderBrandText(title)}
@@ -430,12 +433,12 @@ export function PageHeaderVNext({
   );
 }
 
-export function ProtagonistSurface({ children, className }: { children: ReactNode; className?: string }) {
-  return <section className={cn("relative isolate overflow-hidden", className)}>{children}</section>;
+export function ProtagonistSurface({ children, className, id }: { children: ReactNode; className?: string; id?: string }) {
+  return <section className={cn("relative isolate overflow-hidden", className)} id={id}>{children}</section>;
 }
 
-export function SupportingSurface({ children, className }: { children: ReactNode; className?: string }) {
-  return <section className={cn("border-t border-border bg-background", className)}>{children}</section>;
+export function SupportingSurface({ children, className, id }: { children: ReactNode; className?: string; id?: string }) {
+  return <section className={cn("border-t border-border bg-background", className)} id={id}>{children}</section>;
 }
 
 export function PillarCard({

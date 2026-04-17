@@ -11,25 +11,33 @@ function SectionHeaderBase({
   eyebrow,
   title,
   description,
+  dark = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  dark?: boolean;
 }) {
   return (
     <div className="max-w-3xl space-y-4">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{eyebrow}</p>
-      <h2 className="text-balance text-3xl font-medium tracking-[-0.04em] text-foreground sm:text-4xl">{title}</h2>
-      <p className="max-w-2xl text-base leading-7 text-muted-foreground">{description}</p>
+      <p className={cx("text-[11px] font-semibold uppercase tracking-[0.22em]", dark ? "text-white/40" : "text-muted-foreground")}>
+        {eyebrow}
+      </p>
+      <h2 className={cx("text-balance text-3xl font-medium tracking-[-0.04em] sm:text-4xl", dark ? "text-white" : "text-foreground")}>
+        {title}
+      </h2>
+      <p className={cx("max-w-2xl text-base leading-7", dark ? "text-white/50" : "text-muted-foreground")}>
+        {description}
+      </p>
     </div>
   );
 }
 
-export function PageSectionHeader(props: { eyebrow: string; title: string; description: string }) {
+export function PageSectionHeader(props: { eyebrow: string; title: string; description: string; dark?: boolean }) {
   return <SectionHeaderBase {...props} />;
 }
 
-export function HomeSectionHeader(props: { eyebrow: string; title: string; description: string }) {
+export function HomeSectionHeader(props: { eyebrow: string; title: string; description: string; dark?: boolean }) {
   return <SectionHeaderBase {...props} />;
 }
 

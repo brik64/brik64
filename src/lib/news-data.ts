@@ -6,6 +6,7 @@ export interface NewsArticle extends EditorialCoverMeta {
   excerpt: string;
   date: string;
   tag: string;
+  category?: string;
 }
 
 interface NewsArticleSeed {

@@ -9,6 +9,17 @@ export type Monomer = {
 
 export type FamilyName = keyof typeof FAMILIES;
 
+export const FAMILY_COLORS: Record<string, string> = {
+  Arithmetic: "#00e5ff",
+  Logic: "#00e5ff",
+  Memory: "#e0b020",
+  Control: "#6b8c40",
+  "I/O": "#e0b020",
+  String: "#e0b020",
+  Crypto: "#00e5ff",
+  System: "#6b8c40",
+};
+
 export const FAMILIES = {
   Arithmetic: ["ADD", "SUB", "MUL", "DIV", "MOD", "POW", "NEG", "ABS"],
   Logic: ["AND", "OR", "XOR", "NOT", "SHL", "SHR", "ROL", "ROR"],
@@ -147,11 +158,11 @@ export const EXTENDED_MONOMERS: Monomer[] = [
   { id: 56, prefix: "MX", name: "REGEX", family: "String", signature: "str, pattern → bool", description: "Regular expression matching." },
   { id: 57, prefix: "MX", name: "REPL", family: "String", signature: "str, pat, rep → str", description: "String pattern replacement." },
   { id: 58, prefix: "MX", name: "FMT", family: "String", signature: "str, args → str", description: "Formatted string interpolation." },
-  { id: 59, prefix: "MX", name: "PARSE", family: "String", signature: "str → i64", description: "Parses string to 64-bit integer." },
-  { id: 60, prefix: "MX", name: "B64E", family: "String", signature: "bytes → str", description: "Base64 encoding." },
-  { id: 61, prefix: "MX", name: "B64D", family: "str → bytes", description: "Base64 decoding." },
-  { id: 62, prefix: "MX", name: "UTF8", family: "String", signature: "bytes → str", description: "UTF-8 byte-to-string conversion." },
-  { id: 63, prefix: "MX", name: "HEXE", family: "String", signature: "bytes → str", description: "Hexadecimal encoding." },
+  { id: 59, prefix: "MX", name: "PARSE", family: "String", signature: "str -> i64", description: "Safe integer parsing." },
+  { id: 60, prefix: "MX", name: "B64E", family: "String", signature: "bytes -> str", description: "Base64 encoding." },
+  { id: 61, prefix: "MX", name: "B64D", family: "String", signature: "str -> bytes", description: "Base64 decoding." },
+  { id: 62, prefix: "MX", name: "UTF8", family: "String", signature: "bytes -> str", description: "UTF-8 encoding." },
+  { id: 63, prefix: "MX", name: "HEXE", family: "String", signature: "bytes -> str", description: "Hexadecimal encoding." },
 ];
 
 /** Demo polymer: OAuth2 Handler */

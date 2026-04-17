@@ -4,14 +4,15 @@ import { useState } from "react";
 import {
   CORE_MONOMERS,
   EXTENDED_MONOMERS,
-  FAMILIES as CORE_FAMILIES,
+  FAMILIES as CORE_FAMILIES_OPS,
+  FAMILY_COLORS as CORE_FAMILY_COLORS,
   type Monomer,
 } from "@/lib/monomer-data";
 
 const HERO_CORE_MONOMERS = CORE_MONOMERS.slice(0, 64);
 const HERO_EXTENDED_MONOMERS = EXTENDED_MONOMERS.slice(0, 60);
 
-const EXTENDED_FAMILIES: Record<string, string> = {
+const ADDITIONAL_FAMILY_COLORS: Record<string, string> = {
   Float64: "#4fd1c5",
   Math: "#33d6ff",
   Network: "#14b8a6",
@@ -20,12 +21,11 @@ const EXTENDED_FAMILIES: Record<string, string> = {
   Filesystem: "#f59e0b",
   Concurrency: "#22c55e",
   Interop: "#64748b",
-  String: "#8b7ec8",
 };
 
-const MONOMER_FAMILIES: Record<string, string> = {
-  ...CORE_FAMILIES,
-  ...EXTENDED_FAMILIES,
+const MONOMER_FAMILIES_COLORS: Record<string, string> = {
+  ...CORE_FAMILY_COLORS,
+  ...ADDITIONAL_FAMILY_COLORS,
 };
 
 type HeroTrack = "core" | "extended";
@@ -80,7 +80,7 @@ function withAlpha(hex: string, alpha: string) {
 }
 
 function getTone(family: string) {
-  return MONOMER_FAMILIES[family] ?? "#64748b";
+  return MONOMER_FAMILIES_COLORS[family] ?? "#64748b";
 }
 
 function getOfficialNumber(track: HeroTrack, id: number) {

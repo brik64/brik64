@@ -7,14 +7,18 @@ import {
   BookOpen,
   Shuffle,
   Activity,
-  Zap
+  Zap,
+  Layers
 } from "lucide-react";
 import { 
   CanonicalPageLayout, 
-  UtilityPageView, 
-  UtilitySurface,
-  ActionAnchor 
+  CanonicalPageHero,
+  CanonicalSection,
+  ArchetypeSectionHeader,
+  ActionAnchor,
+  cx
 } from "@/components/PageArchetypes";
+import { ArtifactFrame, ArtifactHeader, StatusPill } from "@/components/HomeProofArtifacts";
 import { EvidenceSurface } from "@/components/PageArtifacts";
 import { PhiC } from "@/components/PhiC";
 import dynamic from "next/dynamic";
@@ -50,21 +54,32 @@ export default function TranspilerPage() {
 
   return (
     <CanonicalPageLayout>
-      <UtilityPageView
+      <CanonicalPageHero
         eyebrow="Universal Transpiler"
         title="Any language in. Any language out. Certified."
         description="10 input languages. 14 output targets. Each route passes through a bounded intermediate blueprint so equivalence is reviewed at the normalized circuit level before emission."
-        topics={["Polyglot Migration", "PCD Semantics", "N-to-N Translation"]}
-        statusLabel="Production Ready"
-        statusTone="teal"
-      >
+        actions={[
+          { label: "Try brikc transpile", href: "/cli", tone: "primary" },
+          { label: "Read Documentation", href: "https://docs.brik64.dev", external: true, tone: "secondary" },
+        ]}
+      />
+
+      <CanonicalSection>
         <div className="space-y-24 py-12">
           {/* Visual Matrix */}
-          <UtilitySurface
-            title="Language Matrix"
-            description="Every input-output combination is a transpilation path through the same normalized hub."
-            icon={<Shuffle className="h-4 w-4" />}
-          >
+          <ArtifactFrame dark className="space-y-6">
+            <ArtifactHeader
+              dark
+              eyebrow="Demonstration"
+              title="Language Matrix"
+              description="Every input-output combination is a transpilation path through the same normalized hub."
+              status={
+                <StatusPill tone="teal">
+                  <Layers className="h-3.5 w-3.5" />
+                  Production Ready
+                </StatusPill>
+              }
+            />
             <div className="mx-auto max-w-5xl px-4 py-8">
               <div className="grid gap-3 border-b border-white/5 pb-8 sm:grid-cols-3">
                 <div className="rounded-2xl border border-white/5 bg-white/[0.02] px-4 py-4 text-center">
@@ -130,14 +145,22 @@ export default function TranspilerPage() {
                 </div>
               </div>
             </div>
-          </UtilitySurface>
+          </ArtifactFrame>
 
           {/* vs LLVM */}
-          <UtilitySurface
-            title="BRIK64 vs LLVM"
-            description="LLVM optimizes machine code; PCD preserves semantic structure for polyglot systems."
-            icon={<Activity className="h-4 w-4" />}
-          >
+          <ArtifactFrame dark className="space-y-6">
+            <ArtifactHeader
+              dark
+              eyebrow="Evaluation"
+              title="BRIK64 vs LLVM"
+              description="LLVM optimizes machine code; PCD preserves semantic structure for polyglot systems."
+              status={
+                <StatusPill tone="neutral">
+                  <Activity className="h-3.5 w-3.5" />
+                  Comparative analysis
+                </StatusPill>
+              }
+            />
             <div className="mx-auto max-w-5xl px-4 py-8">
               <div className="overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02]">
                 <div className="grid grid-cols-3 gap-0 border-b border-white/5 bg-white/[0.04] px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white/40">
@@ -154,7 +177,7 @@ export default function TranspilerPage() {
                 ))}
               </div>
             </div>
-          </UtilitySurface>
+          </ArtifactFrame>
 
           {/* Evidence */}
           <div className="grid gap-8">
@@ -185,8 +208,7 @@ export default function TranspilerPage() {
              </div>
           </section>
         </div>
-      </UtilityPageView>
+      </CanonicalSection>
     </CanonicalPageLayout>
   );
 }
-

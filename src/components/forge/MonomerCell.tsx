@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { FAMILIES, type FamilyName } from "@/lib/monomer-data";
+import { FAMILIES, FAMILY_COLORS, type FamilyName } from "@/lib/monomer-data";
 
 interface MonomerCellProps {
   id: number;
@@ -20,7 +20,7 @@ export function MonomerCell({
   active = false,
   count = 0,
 }: MonomerCellProps) {
-  const familyColor = FAMILIES[family as FamilyName] ?? "#64748b";
+  const familyColor = FAMILY_COLORS[family] ?? "#64748b";
 
   return (
     <div

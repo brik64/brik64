@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Check, X, Sparkles, Zap, Users, Building2 } from "lucide-react";
 import {
+  CanonicalPageLayout,
   PageHeaderVNext,
   SupportingSurface,
   ButtonVNext,
-} from "@/components/vnext/primitives";
-import { CanonicalPageLayout } from "@/components/PageArchetypes";
+  ProtagonistSurface,
+} from "@/components/PageArchetypes";
 import { cn } from "@/lib/utils";
 import React from "react";
 

@@ -1,0 +1,261 @@
+
+ RUN  v4.1.2 /Users/carlosjperez/Documents/GitHub/brik64.com
+
+stdout | tests/vnext-exhaustive-audit.test.ts > VNext Exhaustive Integrity Audit > Utility Layer Integrity > all utility wrapper pages use UtilityPageView and pass a page spec
+FAIL: src/app/enterprise/page.tsx - hasArchetype: false, hasPageSpec: false (expected utilityPages.enterprise)
+
+ ❯ tests/vnext-exhaustive-audit.test.ts (8 tests | 2 failed) 35ms
+       ✓ all product pages use VNext container archetypes 8ms
+       × product pages use ActionAnchor from Centralized Archetypes 11ms
+       × all utility wrapper pages use UtilityPageView and pass a page spec 5ms
+       ✓ utility pages do not have unescaped '>' in text nodes 3ms
+       ✓ all risk/industry pages use RiskPageView with correct kind 5ms
+       ✓ editorial pages use NewsArticle interface from news-data 1ms
+       ✓ MonomerGrid uses centralized FAMILY_COLORS 0ms
+       ✓ MonomerCell uses centralized FAMILY_COLORS 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/vnext-exhaustive-audit.test.ts > VNext Exhaustive Integrity Audit > Product Layer Integrity > product pages use ActionAnchor from Centralized Archetypes
+AssertionError: expected 'import type { Metadata } from "next";…' to contain 'from "@/components/PageArchetypes"'
+
+- Expected
++ Received
+
+- from "@/components/PageArchetypes"
++ import type { Metadata } from "next";
++ import { Navbar } from "@/components/Navbar";
++ import { Footer } from "@/components/Footer";
++ import {
++   PageHeaderVNext,
++   SupportingSurface,
++   ButtonVNext,
++   GitHubMark,
++   DiscordMark,
++ } from "@/components/vnext/primitives";
++ import { Mail, MessageSquare, ExternalLink } from "lucide-react";
++
++ export const metadata: Metadata = {
++   title: "Contact — BRIK64",
++   description:
++     "General questions, enterprise evaluation, and support requests. Route the request to the right channel.",
++   alternates: { canonical: "/contact" },
++ };
++
++ const channels = [
++   {
++     title: "General inquiries",
++     body: "Questions about BRIK-64, PCD, or Digital Circuitality.",
++     action: "hello@brik64.com",
++     href: "mailto:hello@brik64.com",
++     icon: <Mail className="h-5 w-5" />,
++   },
++   {
++     title: "Enterprise",
++     body: "SSO, deployment posture, private registry, and evaluation calls.",
++     action: "enterprise@brik64.com",
++     href: "mailto:enterprise@brik64.com",
++     icon: <Mail className="h-5 w-5" />,
++   },
++   {
++     title: "Support",
++     body: "Technical issues, bug reports, and platform help.",
++     action: "support@brik64.com",
++     href: "mailto:support@brik64.com",
++     icon: <Mail className="h-5 w-5" />,
++   },
++   {
++     title: "GitHub",
++     body: "Source code, issues, and contribution entrypoint.",
++     action: "github.com/brik64",
++     href: "https://github.com/brik64",
++     external: true,
++     icon: <GitHubMark className="h-5 w-5" />,
++   },
++   {
++     title: "Discord",
++     body: "Community support and announcements.",
++     action: "discord.gg/brik64",
++     href: "https://discord.gg/brik64",
++     external: true,
++     icon: <DiscordMark className="h-5 w-5" />,
++   },
++   {
++     title: "Issue tracker",
++     body: "Open traceable bug reports in the public repository.",
++     action: "Open issue",
++     href: "https://github.com/brik64/brik64/issues",
++     external: true,
++     icon: <MessageSquare className="h-5 w-5" />,
++   },
++ ];
++
++ const routingRules = [
++   {
++     title: "General inquiries",
++     body: "Route product questions, public site clarifications, and initial conversations through the general mailbox.",
++     metric: "hello@brik64.com",
++   },
++   {
++     title: "Enterprise evaluation",
++     body: "Architecture review, deployment posture, compliance discussion, and commercial scope belong in the enterprise route.",
++     metric: "enterprise@brik64.com",
++   },
++   {
++     title: "Support and bugs",
++     body: "Operational issues should go through support or GitHub so the evidence trail is preserved.",
++     metric: "support@brik64.com",
++   },
++ ];
++
++ export default function ContactPage() {
++   return (
++     <CanonicalPageLayout>
++       <main className="flex-1">
++         {/* Hero */}
++         <section className="relative overflow-hidden border-b border-white/5 pb-24 pt-32 md:pb-32 md:pt-48">
++           <div className="absolute inset-0 blueprint-grid opacity-20" />
++           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
++           <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12">
++             <PageHeaderVNext
++               eyebrow="Contact"
++               title="Route the request to the right channel."
++               description="General questions, enterprise evaluation, and support requests move faster when each route is explicit. The contact route maps each request to the correct mailbox or public channel."
++             />
++
++             <div className="mt-16 grid gap-6 sm:grid-cols-3">
++               {[
++                 { label: "General route", value: "hello@brik64.com", detail: "Product questions and initial contact." },
++                 { label: "Enterprise route", value: "enterprise@brik64.com", detail: "Deployment, compliance, and commercial evaluation." },
++                 { label: "Support route", value: "support@brik64.com", detail: "Operational issues and platform help." },
++               ].map((m) => (
++                 <div key={m.label} className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
++                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">{m.label}</p>
++                   <p className="mt-3 font-black text-white font-mono text-sm">{m.value}</p>
++                   <p className="mt-2 text-sm leading-relaxed text-white/40">{m.detail}</p>
++                 </div>
++               ))}
++             </div>
++           </div>
++         </section>
++
++         {/* Routing rules */}
++         <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
++           <div className="mb-16 max-w-2xl">
++             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Contact</p>
++             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
++               Choose the route that matches the request
++             </h2>
++             <p className="mt-6 text-lg leading-relaxed text-white/50">
++               The point of contact is to reduce ambiguity before someone writes to the wrong place or opens the wrong ticket.
++             </p>
++           </div>
++
++           <div className="grid gap-8 lg:grid-cols-3">
++             {routingRules.map((rule) => (
++               <div key={rule.title} className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
++                 <p className="font-mono text-sm font-bold text-[color:var(--accent)]">{rule.metric}</p>
++                 <h3 className="mt-4 text-xl font-bold text-white">{rule.title}</h3>
++                 <p className="mt-4 text-[15px] leading-relaxed text-white/50">{rule.body}</p>
++               </div>
++             ))}
++           </div>
++         </section>
++
++         {/* Direct channels */}
++         <SupportingSurface className="relative border-t border-white/5 bg-[#0b0b0f] blueprint-grid overflow-hidden">
++           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
++           <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
++             <div className="mb-12">
++               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Channels</p>
++               <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Direct actions</h2>
++               <p className="mt-4 max-w-xl text-lg text-white/50">
++                 Each channel below exists for a different type of request and leads to a real operational path.
++               </p>
++             </div>
++
++             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
++               {channels.map((ch) => (
++                 <a
++                   key={ch.title}
++                   href={ch.href}
++                   target={ch.external ? "_blank" : undefined}
++                   rel={ch.external ? "noopener noreferrer" : undefined}
++                   className="group flex flex-col rounded-[2rem] border border-white/5 bg-black/40 p-8 backdrop-blur-md transition-all hover:border-[color:var(--accent-soft)]/30 hover:bg-[#071019]"
++                 >
++                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-[color:var(--accent)] group-hover:scale-110 transition-transform">
++                     {ch.icon}
++                   </div>
++                   <h3 className="text-lg font-bold text-white">{ch.title}</h3>
++                   <p className="mt-3 flex-1 text-[15px] leading-relaxed text-white/40">{ch.body}</p>
++                   <div className="mt-6 flex items-center gap-2 font-mono text-sm font-bold text-[color:var(--accent)]">
++                     <span>{ch.action}</span>
++                     {ch.external && <ExternalLink className="h-3 w-3" />}
++                   </div>
++                 </a>
++               ))}
++             </div>
++           </div>
++         </SupportingSurface>
++
++         {/* CTA */}
++         <section className="relative px-6 py-32 text-center blueprint-grid md:px-8 lg:px-12">
++           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
++           <div className="relative z-10 mx-auto max-w-3xl">
++             <h2 className="text-4xl font-black tracking-tighter text-white sm:text-5xl">
++               Need a deeper technical route?
++             </h2>
++             <p className="mx-auto mt-6 max-w-xl text-xl text-white/50">
++               Route the request to enterprise or documentation when the question is really about architecture, deployment posture, or operator flow.
++             </p>
++             <div className="mt-12 flex flex-wrap justify-center gap-4">
++               <ButtonVNext href="mailto:enterprise@brik64.com" external tone="primary" className="h-14 rounded-2xl px-10 text-base font-black">
++                 Architecture Review
++               </ButtonVNext>
++               <ButtonVNext href="https://docs.brik64.dev" external tone="secondary" className="h-14 rounded-2xl px-10 text-base font-black">
++                 Documentation
++               </ButtonVNext>
++             </div>
++           </div>
++         </section>
++       </main>
++     </CanonicalPageLayout>
++   );
++ }
++
+
+ ❯ tests/vnext-exhaustive-audit.test.ts:41:30
+     39|           if (content.includes("ButtonVNext") || content.includes("Act…
+     40|              // Verification that it's from the central source
+     41|              expect(content).toContain('from "@/components/PageArchety…
+       |                              ^
+     42|           }
+     43|         }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/vnext-exhaustive-audit.test.ts > VNext Exhaustive Integrity Audit > Utility Layer Integrity > all utility wrapper pages use UtilityPageView and pass a page spec
+AssertionError: src/app/enterprise/page.tsx missing UtilityPageView: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/vnext-exhaustive-audit.test.ts:59:69
+     57|         }
+     58|
+     59|         expect(hasArchetype, `${pagePath} missing UtilityPageView`).to…
+       |                                                                     ^
+     60|         expect(hasPageSpec, `${pagePath} missing page={utilityPages.${…
+     61|       }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 6 passed (8)
+   Start at  21:42:21
+   Duration  277ms (transform 52ms, setup 0ms, import 72ms, tests 35ms, environment 0ms)
+

@@ -30,6 +30,17 @@ import {
   PageHeaderVNext,
 } from "@/components/vnext/primitives";
 
+export {
+  ButtonVNext,
+  ProtagonistSurface,
+  SupportingSurface,
+  PageHeaderVNext,
+  PillarCard,
+  GitHubMark,
+  DiscordMark,
+  BrandWordmark,
+} from "@/components/vnext/primitives";
+
 export type ActionSpec = {
   label: string;
   href: string;
@@ -43,7 +54,7 @@ export type MetricSpec = {
   detail: string;
 };
 
-function cx(...classes: Array<string | false | null | undefined>): string {
+export function cx(...classes: Array<string | false | null | undefined>): string {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -226,9 +237,10 @@ export function CanonicalPageHero({
   actions,
   metrics,
   status,
-  proofStripTitle,
   proofStripEyebrow,
+  proofStripTitle,
   proofStripDescription,
+  dark = false,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -239,6 +251,7 @@ export function CanonicalPageHero({
   proofStripEyebrow?: string;
   proofStripTitle?: string;
   proofStripDescription?: string;
+  dark?: boolean;
 }) {
   return (
     <ProtagonistSurface className="relative overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 lg:pb-40">
@@ -881,7 +894,6 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
   return (
     <CanonicalPageLayout>
       <CanonicalPageHero
-        dark
         eyebrow={hero.eyebrow}
         title={<HeroTitle title={hero.title} highlight={hero.highlight} />}
         description={hero.description}

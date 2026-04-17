@@ -1099,7 +1099,11 @@ output net_per_part : Float64 =
   },
 ];
 
-export const featureCta = {
+export const featureCta: {
+  title: string;
+  description: string;
+  actions: FeaturePageAction[];
+} = {
   title: "Start locally, then move into platform workflows",
   description:
     "Install the CLI to begin from a bounded local workflow, then move the resulting blueprint into platform and registry review paths when the computation is ready to travel.",
@@ -1107,4 +1111,4 @@ export const featureCta = {
     { label: "Install the CLI", href: "/cli", tone: "primary" },
     { label: "Explore the platform", href: "/platform", tone: "secondary" },
   ],
-} as const;
+};

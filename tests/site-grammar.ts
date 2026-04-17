@@ -41,6 +41,11 @@ export const productCorePages = [
 export const productMigratedPages = [
   "src/app/cli/page.tsx",
   "src/app/compliance/page.tsx",
+  "src/app/about/page.tsx",
+  "src/app/pricing/page.tsx",
+  "src/app/contact/page.tsx",
+  "src/app/faq/page.tsx",
+  "src/app/enterprise/page.tsx",
 ] as const;
 
 export const productRestoredPages = [
@@ -56,19 +61,14 @@ export const editorialPages = [
 ] as const;
 
 export const utilityWrapperPages = [
-  ["src/app/about/page.tsx", "about"],
-  ["src/app/contact/page.tsx", "contact"],
   ["src/app/download/page.tsx", "download"],
-  ["src/app/faq/page.tsx", "faq"],
   ["src/app/legal/page.tsx", "legal"],
   ["src/app/playground/page.tsx", "playground"],
   ["src/app/changelog/page.tsx", "changelog"],
   ["src/app/docs/page.tsx", "docs"],
   ["src/app/login/page.tsx", "login"],
   ["src/app/signup/page.tsx", "signup"],
-  ["src/app/pricing/page.tsx", "pricing"],
   ["src/app/investors/page.tsx", "investors"],
-  ["src/app/enterprise/page.tsx", "enterprise"],
   ["src/app/careers/page.tsx", "careers"],
   ["src/app/contact-sales/page.tsx", "contactSales"],
   ["src/app/security/page.tsx", "security"],

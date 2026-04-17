@@ -2,7 +2,7 @@
 
 import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
 import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
-import { FAMILIES, type FamilyName } from "@/lib/monomer-data";
+import { FAMILIES, FAMILY_COLORS, type FamilyName } from "@/lib/monomer-data";
 
 interface GraphNode {
   id: string;
@@ -45,7 +45,7 @@ const CONNECTIONS: Connection[] = [
 ];
 
 function NodeBox({ node }: { node: GraphNode }) {
-  const color = FAMILIES[node.family as FamilyName] ?? "#64748b";
+  const color = FAMILY_COLORS[node.family] ?? "#64748b";
   return (
     <g transform={`translate(${node.x}, ${node.y})`}>
       {/* Cell background */}
