@@ -1,0 +1,152 @@
+<h2>Badge de conteo — 3 opciones</h2>
+<p class="subtitle">Cada opción muestra una celda activa con conteo ×3 y otra con ×15 para ver cómo escala</p>
+
+<style>
+  .demo-grid { display:flex;gap:24px;justify-content:center;align-items:flex-end;padding:20px 0; }
+  .demo-cell { width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:6px;position:relative;background:#1A1817;box-shadow:0 0 10px rgba(0,229,255,0.2); }
+  .demo-cell .id { color:#ffffff;font-size:9px;font-family:monospace;font-weight:700;line-height:1; }
+  .demo-cell .name { color:#00e5ff;font-size:7px;font-weight:600;margin-top:1px; }
+  .demo-idle { width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:6px;background:#f5f5f5;border:1px solid #e8e8e8; }
+  .demo-idle .id { color:#ccc;font-size:9px;font-family:monospace;font-weight:500; }
+  .demo-label { font-size:9px;color:#888;text-align:center;margin-top:6px; }
+</style>
+
+<div class="cards">
+  <!-- Option A: bottom-right corner -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;padding:24px;border-radius:8px">
+        <div class="demo-grid">
+          <div>
+            <div class="demo-cell">
+              <span class="id">02</span>
+              <span class="name">MUL</span>
+              <div style="position:absolute;bottom:-5px;right:-5px;background:#cc3333;color:white;font-size:8px;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;border:2px solid white;font-family:monospace;padding:0 3px">3</div>
+            </div>
+            <div class="demo-label">×3</div>
+          </div>
+          <div>
+            <div class="demo-cell">
+              <span class="id">35</span>
+              <span class="name">WRT</span>
+              <div style="position:absolute;bottom:-5px;right:-5px;background:#cc3333;color:white;font-size:7px;min-width:18px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;border:2px solid white;font-family:monospace;padding:0 3px">15</div>
+            </div>
+            <div class="demo-label">×15</div>
+          </div>
+          <div>
+            <div class="demo-cell">
+              <span class="id">10</span>
+              <span class="name">XOR</span>
+              <div style="position:absolute;bottom:-5px;right:-5px;background:#cc3333;color:white;font-size:6px;min-width:20px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;border:2px solid white;font-family:monospace;padding:0 3px">128</div>
+            </div>
+            <div class="demo-label">×128</div>
+          </div>
+          <div>
+            <div class="demo-idle"><span class="id">04</span></div>
+            <div class="demo-label">idle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Esquina inferior derecha</h3>
+      <p>Badge pill rojo abajo-derecha. No tapa el ID (arriba). Se expande horizontalmente para 2-3 dígitos. Limpio pero sigue siendo un badge flotante.</p>
+    </div>
+  </div>
+
+  <!-- Option B: side bar -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;padding:24px;border-radius:8px">
+        <div class="demo-grid">
+          <div>
+            <div class="demo-cell" style="padding-right:0;flex-direction:row;gap:0">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+                <span class="id">02</span>
+                <span class="name">MUL</span>
+              </div>
+              <div style="width:14px;background:#cc3333;border-radius:0 6px 6px 0;display:flex;align-items:center;justify-content:center;margin:-1px -1px -1px 0">
+                <span style="color:white;font-size:8px;font-weight:700;font-family:monospace">3</span>
+              </div>
+            </div>
+            <div class="demo-label">×3</div>
+          </div>
+          <div>
+            <div class="demo-cell" style="padding-right:0;flex-direction:row;gap:0">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+                <span class="id">35</span>
+                <span class="name">WRT</span>
+              </div>
+              <div style="width:14px;background:#cc3333;border-radius:0 6px 6px 0;display:flex;align-items:center;justify-content:center;margin:-1px -1px -1px 0">
+                <span style="color:white;font-size:7px;font-weight:700;font-family:monospace">15</span>
+              </div>
+            </div>
+            <div class="demo-label">×15</div>
+          </div>
+          <div>
+            <div class="demo-cell" style="padding-right:0;flex-direction:row;gap:0">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+                <span class="id">10</span>
+                <span class="name">XOR</span>
+              </div>
+              <div style="width:16px;background:#cc3333;border-radius:0 6px 6px 0;display:flex;align-items:center;justify-content:center;margin:-1px -1px -1px 0">
+                <span style="color:white;font-size:6px;font-weight:700;font-family:monospace;writing-mode:vertical-lr;letter-spacing:-1px">128</span>
+              </div>
+            </div>
+            <div class="demo-label">×128</div>
+          </div>
+          <div>
+            <div class="demo-idle"><span class="id">04</span></div>
+            <div class="demo-label">idle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Barra lateral derecha</h3>
+      <p>Franja roja integrada en el borde derecho de la celda. Parte de la celda, no flotante. Contenido centrado. Números grandes van en vertical.</p>
+    </div>
+  </div>
+
+  <!-- Option C: inline text -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;padding:24px;border-radius:8px">
+        <div class="demo-grid">
+          <div>
+            <div class="demo-cell" style="justify-content:space-between;padding:5px 0 4px">
+              <span class="id">02</span>
+              <span class="name">MUL</span>
+              <span style="color:#ff6b6b;font-size:8px;font-weight:700;font-family:monospace">×3</span>
+            </div>
+            <div class="demo-label">×3</div>
+          </div>
+          <div>
+            <div class="demo-cell" style="justify-content:space-between;padding:5px 0 4px">
+              <span class="id">35</span>
+              <span class="name">WRT</span>
+              <span style="color:#ff6b6b;font-size:8px;font-weight:700;font-family:monospace">×15</span>
+            </div>
+            <div class="demo-label">×15</div>
+          </div>
+          <div>
+            <div class="demo-cell" style="justify-content:space-between;padding:5px 0 4px">
+              <span class="id">10</span>
+              <span class="name">XOR</span>
+              <span style="color:#ff6b6b;font-size:8px;font-weight:700;font-family:monospace">×128</span>
+            </div>
+            <div class="demo-label">×128</div>
+          </div>
+          <div>
+            <div class="demo-idle"><span class="id">04</span></div>
+            <div class="demo-label">idle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Texto inline ×N</h3>
+      <p>Sin badge. Texto "×3" en rojo claro debajo del nombre. Parte del contenido de la celda. Escala naturalmente a cualquier número. Minimalista.</p>
+    </div>
+  </div>
+</div>

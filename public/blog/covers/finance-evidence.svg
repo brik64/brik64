@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#09111A"/>
+  <rect width="1600" height="900" fill="url(#paint0_radial)"/>
+  <rect x="166" y="150" width="1268" height="600" rx="42" fill="#0F1823" stroke="#1F3444"/>
+  <rect x="248" y="226" width="468" height="448" rx="28" fill="#102430" stroke="#1F3444"/>
+  <rect x="786" y="226" width="566" height="136" rx="28" fill="#102430" stroke="#1F3444"/>
+  <rect x="786" y="390" width="566" height="284" rx="28" fill="#102430" stroke="#1F3444"/>
+  <path d="M304 308H658" stroke="#D9FBFF" stroke-opacity="0.7" stroke-width="16" stroke-linecap="round"/>
+  <path d="M304 364H612" stroke="#D9FBFF" stroke-opacity="0.4" stroke-width="12" stroke-linecap="round"/>
+  <path d="M840 286H1244" stroke="#3AD3EA" stroke-width="18" stroke-linecap="round"/>
+  <path d="M840 474H1298" stroke="#1F3444" stroke-width="2"/>
+  <path d="M840 548H1298" stroke="#1F3444" stroke-width="2"/>
+  <path d="M840 622H1298" stroke="#1F3444" stroke-width="2"/>
+  <circle cx="886" cy="511" r="18" fill="#3AD3EA"/>
+  <circle cx="886" cy="585" r="18" fill="#72E5C5"/>
+  <circle cx="886" cy="659" r="18" fill="#3AD3EA" opacity="0.5"/>
+  <text x="120" y="104" fill="#F6FEFF" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Financial Evidence</text>
+  <text x="120" y="822" fill="#A5E7F3" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="6">CALCULATION SCOPE · AUDIT REPORT · CONTROL MAP</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1132 164) rotate(147.56) scale(977.658 992.653)">
+      <stop stop-color="#0E98B1" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#09111A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

@@ -1,0 +1,97 @@
+<h2>Forge Demo — Mockup Visual</h2>
+<p class="subtitle">¿Cómo debe verse la sección Forge en la homepage? Es una demo estática/interactiva que muestra la mesa de forja.</p>
+
+<div class="cards">
+  <div class="card" data-choice="compact" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fafafa;padding:24px;border-radius:8px;font-family:system-ui">
+        <!-- Header -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <div>
+            <span style="font-size:10px;letter-spacing:2px;color:#888">✦ [04.1] · THE FORGE</span>
+            <h3 style="font-size:20px;margin:8px 0 4px;font-family:'Jura',sans-serif">Compose polymers visually.</h3>
+            <p style="font-size:12px;color:#666;max-width:300px">Select a polymer and see which monomers it uses. The forge shows the recipe.</p>
+          </div>
+          <div style="background:#1A1817;color:white;padding:6px 12px;border-radius:6px;font-size:11px;font-family:monospace">
+            Φ_c = 1 ✓
+          </div>
+        </div>
+        <!-- Two grids side by side -->
+        <div style="display:flex;gap:16px">
+          <!-- Core Grid -->
+          <div style="flex:1">
+            <div style="font-size:9px;letter-spacing:1px;color:#00b8d4;margin-bottom:8px;font-weight:600">CORE · CERTIFIED</div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:2px">
+              ${Array.from({length:64}).map((_,i) => {
+                const active = [0,2,10,12,24,35].includes(i);
+                const count = i===2?3:i===12?2:i===35?5:active?1:0;
+                return `<div style="aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-family:monospace;border-radius:3px;position:relative;${active?'background:#1A1817;color:white;':'background:white;color:#999;border:1px solid #eee;opacity:0.4;'}">${active&&count>1?`<div style="position:absolute;top:-3px;right:-3px;background:#cc3333;color:white;font-size:6px;width:12px;height:12px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;border:1.5px solid white">${count}</div>`:''}<span style="font-size:8px;font-weight:600">${String(i).padStart(2,'0')}</span></div>`;
+              }).join('')}
+            </div>
+          </div>
+          <!-- Extended Grid -->
+          <div style="flex:1">
+            <div style="font-size:9px;letter-spacing:1px;color:#888;margin-bottom:8px;font-weight:600">EXTENDED · CONTRACT</div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:2px">
+              ${Array.from({length:64}).map((_,i) => {
+                const active = [1,15,39].includes(i);
+                return `<div style="aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:7px;font-family:monospace;border-radius:3px;${active?'background:#1A1817;color:white;':'background:white;color:#999;border:1px solid #eee;opacity:0.4;'}"><span style="font-size:8px;font-weight:600">${String(i).padStart(2,'0')}</span></div>`;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Compacto (Recomendado)</h3>
+      <p>Texto a la izquierda del header, dos grids 8×8 juntos. Celdas pequeñas ~30px. Cabe en una sección sin scroll. Badges rojos visibles.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="full" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fafafa;padding:24px;border-radius:8px;font-family:system-ui">
+        <!-- Header centered -->
+        <div style="text-align:center;margin-bottom:24px">
+          <span style="font-size:10px;letter-spacing:2px;color:#888">✦ [04.1] · THE FORGE</span>
+          <h3 style="font-size:24px;margin:8px 0;font-family:'Jura',sans-serif">Compose polymers visually.</h3>
+          <p style="font-size:12px;color:#666">Every polymer is a recipe. The forge shows the ingredients.</p>
+          <!-- Polymer selector -->
+          <div style="display:inline-flex;gap:8px;margin-top:12px;background:#f0efeb;padding:4px;border-radius:20px">
+            <span style="background:white;padding:4px 12px;border-radius:16px;font-size:11px;font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,0.1)">OAuth2 Handler</span>
+            <span style="padding:4px 12px;border-radius:16px;font-size:11px;color:#666">HTTP Parser</span>
+            <span style="padding:4px 12px;border-radius:16px;font-size:11px;color:#666">AES Encrypt</span>
+          </div>
+        </div>
+        <!-- Larger grids -->
+        <div style="display:flex;gap:24px;justify-content:center">
+          <div>
+            <div style="font-size:9px;letter-spacing:1px;color:#00b8d4;margin-bottom:6px;font-weight:600;text-align:center">CORE · CERTIFIED</div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:3px;padding:8px;border:1px solid rgba(0,229,255,0.2);border-radius:8px;background:rgba(0,229,255,0.02)">
+              ${Array.from({length:64}).map((_,i) => {
+                const active = [0,2,10,12,24,35].includes(i);
+                const names = {0:'ADD',2:'MUL',10:'XOR',12:'SAL',24:'IF',35:'WRT'};
+                const count = i===2?3:i===12?2:i===35?5:active?1:0;
+                return `<div style="width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;border-radius:4px;position:relative;${active?'background:#1A1817;color:white;':'background:white;color:#bbb;border:1px solid #eee;'}">${active&&count>1?`<div style="position:absolute;top:-4px;right:-4px;background:#cc3333;color:white;font-size:7px;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;border:2px solid white">${count}</div>`:''}<span style="font-size:7px;opacity:0.7">MC</span><span style="font-size:10px;font-weight:700">${String(i).padStart(2,'0')}</span>${active&&names[i]?`<span style="font-size:6px;margin-top:-1px">${names[i]}</span>`:''}</div>`;
+              }).join('')}
+            </div>
+          </div>
+          <div>
+            <div style="font-size:9px;letter-spacing:1px;color:#888;margin-bottom:6px;font-weight:600;text-align:center">EXTENDED · CONTRACT</div>
+            <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:3px;padding:8px;border:1px solid #eee;border-radius:8px">
+              ${Array.from({length:64}).map((_,i) => {
+                const active = [1,15,39].includes(i);
+                const names = {1:'HTTP',15:'DNS',39:'STDO'};
+                return `<div style="width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace;border-radius:4px;position:relative;${active?'background:#1A1817;color:white;':'background:white;color:#ddd;border:1px solid #eee;'}">${active?'':'<span style="font-size:7px;opacity:0.5">MX</span>'}<span style="font-size:10px;font-weight:${active?700:400}">${String(i).padStart(2,'0')}</span>${active&&names[i]?`<span style="font-size:6px;margin-top:-1px">${names[i]}</span>`:''}</div>`;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Full con selector de polímero</h3>
+      <p>Header centrado, selector de polímero con tabs animados, grids más grandes (~40px celdas) con nombres de monomero visibles. Más interactivo, más alto.</p>
+    </div>
+  </div>
+</div>
