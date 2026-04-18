@@ -13,6 +13,7 @@ describe("vNext shell", () => {
       "Industries",
       "Pricing",
       "Blog",
+      "Shop",
       "Docs",
     ]);
     expect(productDropdownItems.map((item) => item.label)).toEqual([
@@ -44,11 +45,13 @@ describe("vNext shell", () => {
     expect(navbar).toContain("DropdownPanel");
     expect(navbar).toContain("MobileSection");
     expect(navbar).toContain("ArrowUpRight");
-    expect(navbar).toContain("max-w-[920px]");
+    expect(navbar).toContain("w-[min(920px,calc(100vw-2rem))]");
     expect(navbar).toContain("lg:grid-cols-2");
     expect(navbar).toContain("text-sm font-medium transition-all duration-200 select-none");
-    expect(navbar).toContain("h-6 w-[100px]");
-    expect(navbar).toContain("bg-[color:var(--accent)]");
+    expect(navbar).toContain("/brand/brik64-logo-white-sticker.png");
+    expect(navbar).toContain("rounded-[24px] border border-white/10 bg-[rgba(8,14,22,0.78)]");
+    expect(navbar).toContain("absolute left-0 right-0 top-full hidden pt-2 xl:block");
+    expect(navbar).toContain("h-11 items-center justify-center rounded-[16px] bg-white");
     expect(navbar).toContain('target="_blank"');
     expect(navbar).not.toContain("Use cases");
     expect(siteConfig).toContain('label: "Docs"');
@@ -56,12 +59,16 @@ describe("vNext shell", () => {
   });
 
   it("keeps the footer groups and exact requested coverage", () => {
-    expect(footerGroups.map((group) => group.title)).toEqual(["Company", "Resources", "Community"]);
+    expect(footerGroups.map((group) => group.title)).toEqual([
+      "Product",
+      "Company",
+      "Legal & Trust",
+      "Resources",
+    ]);
     expect(footerGroups[1].links.map((item) => item.label)).toContain("Shop");
-    expect(footerGroups[0].links.map((item) => item.label)).toContain("Privacy Policy");
-    expect(footerGroups[0].links.map((item) => item.label)).toContain("Terms of Use");
-    expect(footerGroups[1].links.map((item) => item.label)).toContain("PostgreSQL Tutorial");
-    expect(footerGroups[2].links.map((item) => item.label)).toContain("YouTube");
+    expect(footerGroups[2].links.map((item) => item.label)).toContain("Privacy Policy");
+    expect(footerGroups[2].links.map((item) => item.label)).toContain("Terms of Use");
+    expect(footerGroups[3].links.map((item) => item.label)).toContain("PostgreSQL Tutorial");
   });
 
   it("uses a snapshot for GitHub stars instead of client-side runtime fetch", () => {
@@ -85,18 +92,24 @@ describe("vNext shell", () => {
     const globals = read("src/app/globals.css");
     const primitives = read("src/components/vnext/primitives.tsx");
 
-    expect(navbar).toContain("h-12 bg-[#0f0f0f]");
-    expect(navbar).toContain("ml-10 hidden items-center gap-12");
+    expect(navbar).toContain("sticky top-0 z-50 px-4 pt-4");
+    expect(navbar).toContain('className="relative mx-auto max-w-[1520px]"');
+    expect(navbar).toContain("relative z-20 rounded-[24px] border border-white/10 bg-[rgba(8,14,22,0.78)]");
+    expect(navbar).toContain("grid min-h-[68px] grid-cols-[1fr_auto] items-center");
+    expect(navbar).toContain("py-1.5 sm:px-6 lg:px-8");
+    expect(navbar).toContain("xl:grid-cols-[220px_minmax(0,1fr)_320px]");
+    expect(navbar).toContain("hidden items-center justify-center gap-9 justify-self-center xl:flex");
     expect(navbar).toContain("ChevronDown");
-    expect(navbar).toContain("h-6 w-[100px]");
-    expect(navbar).toContain("w-[calc(100vw-2rem)] max-w-[920px]");
-    expect(navbar).toContain("h-8 items-center justify-center rounded px-4 text-sm font-semibold leading-5");
-    expect(navbar).toContain("border border-white bg-transparent px-4 text-sm font-semibold leading-5");
+    expect(navbar).toContain("h-6 w-[120px]");
+    expect(navbar).toContain("w-[min(920px,calc(100vw-2rem))]");
+    expect(navbar).toContain("bg-[rgba(8,14,22,0.72)]");
+    expect(navbar).toContain("h-11 items-center justify-center rounded-[16px] border border-white/10 bg-white/6");
+    expect(navbar).toContain("h-11 items-center justify-center rounded-[16px] bg-white px-4");
     expect(primitives).toContain("h-9 w-9 p-2 text-[#b4b4b4]");
     expect(primitives).toContain("min-w-[70px]");
     expect(primitives).toContain("viewBox=\"0 0 20 20\"");
-    expect(navbar).not.toContain("backdrop-blur-xl");
-    expect(navbar).not.toContain("text-[18px] font-bold");
+    expect(navbar).toContain("backdrop-blur-md");
+    expect(navbar).toContain("absolute left-0 right-0 top-full hidden pt-2 xl:block");
     expect(navbar).not.toContain("2xl:flex-row");
     expect(layout).toContain("Inter");
     expect(layout).toContain("Jura");
@@ -111,7 +124,7 @@ describe("vNext shell", () => {
 
   it("renders the footer with a separate legal column and branded community icons", () => {
     const footer = read("src/components/Footer.tsx");
-    expect(footer).toContain("<FooterColumn title=\"Legal\">");
+    expect(footer).toContain("<FooterColumn title={legalGroup.title}>");
     expect(footer).toContain("socialIconMap");
     expect(footer).toContain("DiscordMark");
     expect(footer).toContain("GitHubMark");
@@ -127,7 +140,7 @@ describe("vNext shell", () => {
 
     expect(home).toContain("renderBrandText(");
     expect(footer).toContain("renderBrandText(\"© 2026 BRIK64. All rights reserved.\")");
-    expect(archetypes).toContain('typeof title === "string" ? renderBrandText(title) : title');
-    expect(archetypes).toContain('typeof description === "string" ? renderBrandText(description) : description');
+    expect(archetypes).toContain("renderBrandText,");
+    expect(archetypes).toContain("BrandWordmark,");
   });
 });

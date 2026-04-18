@@ -168,20 +168,19 @@ function DropdownPanel({
 }) {
   return (
     <div
-      className={`absolute left-0 top-full pt-3 transition-all duration-200 ${
+      className={`overflow-hidden rounded-[20px] border border-white/10 bg-[rgba(8,14,22,0.72)] shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all duration-200 ${
         active
-          ? "visible pointer-events-auto opacity-100 translate-y-0"
-          : "invisible pointer-events-none opacity-0 -translate-y-2"
+          ? "max-h-[560px] opacity-100 translate-y-0"
+          : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"
       }`}
+      aria-hidden={!active}
     >
-      <div className="overflow-hidden rounded-xl border border-neutral-700 bg-neutral-900 shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
-        <div className="grid w-[calc(100vw-2rem)] max-w-[920px] grid-cols-1 bg-neutral-900 lg:grid-cols-2">
-          {groups.map((group) => (
-            <div key={group.title} className="border-neutral-800 p-5 lg:border-r lg:last:border-r-0">
-              <MenuGroupColumn group={group} />
-            </div>
-          ))}
-        </div>
+      <div className="grid w-[min(920px,calc(100vw-2rem))] grid-cols-1 bg-transparent lg:grid-cols-2">
+        {groups.map((group) => (
+          <div key={group.title} className="border-neutral-800/80 p-5 lg:border-r lg:last:border-r-0">
+            <MenuGroupColumn group={group} />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -289,6 +288,8 @@ export function Navbar() {
   const pathname = usePathname();
   const topLevelLinks = primaryNav.filter((item): item is PrimaryLinkItem => item.kind === "link");
   const closeDropdowns = () => setActiveDropdown(null);
+  const activeGroups =
+    activeDropdown === "product" ? productGroups : activeDropdown === "industries" ? industryGroups : null;
 
   const isProductActive =
     pathname === "/" ||
@@ -307,14 +308,29 @@ export function Navbar() {
     pathname === "/enterprise";
 
   return (
-    <header className="sticky top-0 z-50 h-16 bg-[#0f0f0f]">
-      <div className="mx-auto flex h-full max-w-[1280px] items-center justify-between pl-4 pr-6 md:pl-2">
-        <div className="flex items-center gap-1">
-          <div className="p-1.5 md:p-0">
-            <Link href="/" className="flex shrink-0 items-center gap-2 no-underline">
-              <div className="relative inline-block h-[42px] w-[170px]">
+    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+      <div
+        className="relative mx-auto max-w-[1520px]"
+        onMouseLeave={closeDropdowns}
+        onBlurCapture={(event) => {
+          const nextTarget = event.relatedTarget as Node | null;
+          if (!nextTarget || !event.currentTarget.contains(nextTarget)) {
+            closeDropdowns();
+          }
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            closeDropdowns();
+          }
+        }}
+      >
+        <div className="relative z-20 rounded-[24px] border border-white/10 bg-[rgba(8,14,22,0.78)] shadow-[0_18px_64px_rgba(0,0,0,0.28)] backdrop-blur-md">
+          <div className="grid min-h-[68px] grid-cols-[1fr_auto] items-center px-5 py-1.5 sm:px-6 lg:px-8 xl:grid-cols-[220px_minmax(0,1fr)_320px]">
+          <div className="flex items-center">
+            <Link href="/" className="flex shrink-0 items-center gap-3 no-underline">
+              <div className="relative h-6 w-[120px] overflow-hidden">
                 <Image
-                  src="/brand/brik64-logo-primary-horizontal-white.svg"
+                  src="/brand/brik64-logo-white-sticker.png"
                   alt="BRIK64"
                   fill
                   priority
@@ -325,33 +341,17 @@ export function Navbar() {
           </div>
 
           <nav
-            className="ml-10 hidden items-center gap-12 lg:flex"
-            onMouseLeave={closeDropdowns}
-            onBlurCapture={(event) => {
-              const nextTarget = event.relatedTarget as Node | null;
-              if (!nextTarget || !event.currentTarget.contains(nextTarget)) {
-                closeDropdowns();
-              }
-            }}
-            onKeyDown={(event) => {
-              if (event.key === "Escape") {
-                closeDropdowns();
-              }
-            }}
+            className="hidden items-center justify-center gap-9 justify-self-center xl:flex"
           >
             <div
               className="group relative"
               onMouseEnter={() => setActiveDropdown("product")}
               onFocusCapture={() => setActiveDropdown("product")}
             >
-              <DropdownTrigger 
-                label="Product" 
-                active={isProductActive} 
+              <DropdownTrigger
+                label="Product"
+                active={isProductActive}
                 isOpen={activeDropdown === "product"}
-              />
-              <DropdownPanel
-                groups={productGroups}
-                active={activeDropdown === "product"}
               />
             </div>
 
@@ -365,10 +365,6 @@ export function Navbar() {
                 active={isIndustriesActive}
                 isOpen={activeDropdown === "industries"}
               />
-              <DropdownPanel
-                groups={industryGroups}
-                active={activeDropdown === "industries"}
-              />
             </div>
 
             {topLevelLinks.map((item) => (
@@ -381,44 +377,58 @@ export function Navbar() {
               />
             ))}
           </nav>
+          <div className="hidden items-center justify-self-end xl:flex">
+            <SocialIconLink
+              href={socialLinks.discord}
+              label="Discord"
+              variant="navbar"
+              icon={<DiscordMark className="h-5 w-5" />}
+            />
+            <GitHubStarBadge href={socialLinks.githubRepo} stars={githubStarsSnapshot.stars} />
+            <Link
+              href="/login"
+              className="ml-3 inline-flex h-11 items-center justify-center rounded-[16px] border border-white/10 bg-white/6 px-4 text-[15px] font-semibold leading-5 text-white transition-colors hover:bg-white/10 font-display"
+            >
+              Login
+            </Link>
+            <Link
+              href="/signup"
+              className="ml-3 inline-flex h-11 items-center justify-center rounded-[16px] bg-white px-4 text-[15px] font-semibold leading-5 text-[#0b1118] transition-colors hover:bg-white/92 font-display"
+            >
+              Sign Up
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((value) => !value)}
+            className="relative inline-flex h-10 w-10 items-center justify-center rounded-[14px] border border-white/10 bg-white/5 text-white transition-all duration-300 xl:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
         </div>
 
-        <div className="hidden items-center lg:flex">
-          <SocialIconLink
-            href={socialLinks.discord}
-            label="Discord"
-            variant="navbar"
-            icon={<DiscordMark className="h-5 w-5" />}
-          />
-          <GitHubStarBadge href={socialLinks.githubRepo} stars={githubStarsSnapshot.stars} />
-          <Link
-            href="/login"
-            className="ml-3 inline-flex h-8 items-center justify-center rounded px-4 text-sm font-semibold leading-5 text-[color:var(--accent-foreground)] bg-[color:var(--accent)] transition-colors hover:bg-[color:var(--accent-hover)] font-display"
-          >
-            Login
-          </Link>
-          <Link
-            href="/signup"
-            className="ml-3 inline-flex h-8 items-center justify-center rounded border border-white bg-transparent px-4 text-sm font-semibold leading-5 text-white transition-colors hover:bg-white/[0.04] font-display"
-          >
-            Sign Up
-          </Link>
-        </div>
-
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((value) => !value)}
-          className="relative inline-flex h-6 w-6 items-center justify-center text-white transition-all duration-300 lg:hidden"
+        <div
+          className={`absolute left-0 right-0 top-full hidden pt-2 xl:block ${
+            activeGroups ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+          }`}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <div className="relative z-10 mx-auto max-w-[1520px]">
+            <div className="flex justify-center">
+              <div className="w-[min(920px,calc(100vw-2rem))]">
+                <DropdownPanel groups={activeGroups ?? productGroups} active={Boolean(activeGroups)} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {open ? (
-        <div className="border-t border-white/8 bg-[#0f0f0f] lg:hidden">
-          <div className="mx-auto max-w-[1280px] space-y-5 px-6 py-6 md:px-8">
+        <div className="mx-auto mt-3 max-w-[1520px] rounded-[24px] border border-white/10 bg-[rgba(8,14,22,0.9)] shadow-[0_18px_64px_rgba(0,0,0,0.28)] backdrop-blur-md xl:hidden">
+          <div className="space-y-5 px-6 py-6 md:px-8">
             <div className="space-y-3">
               <MobileSection title="Product" items={productDropdownItems} onItemClick={() => setOpen(false)} />
               <MobileSection title="Industries" items={industryDropdownItems} onItemClick={() => setOpen(false)} />
@@ -450,14 +460,14 @@ export function Navbar() {
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/login"
-                className="inline-flex h-10 items-center justify-center rounded-[6px] bg-[color:var(--accent)] px-4 text-[14px] font-semibold text-[color:var(--accent-foreground)] transition-colors hover:bg-[color:var(--accent-hover)]"
+                className="inline-flex h-11 items-center justify-center rounded-[16px] border border-white/10 bg-white/6 px-4 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
                 onClick={() => setOpen(false)}
               >
                 Login
               </Link>
               <Link
                 href="/signup"
-                className="inline-flex h-10 items-center justify-center rounded-[6px] border border-white/18 bg-transparent px-4 text-[14px] font-medium text-white/88 transition-colors hover:bg-white/[0.04]"
+                className="inline-flex h-11 items-center justify-center rounded-[16px] bg-white px-4 text-[15px] font-semibold text-[#0b1118] transition-colors hover:bg-white/92"
                 onClick={() => setOpen(false)}
               >
                 Sign Up

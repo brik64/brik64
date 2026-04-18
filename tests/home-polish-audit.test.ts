@@ -22,8 +22,8 @@ describe("Home polish audit — hero density stays controlled", () => {
     const page = read("src/app/page.tsx");
     const home = read("src/components/vnext/home.tsx");
     expect(page).toContain("<VNextHome />");
-    expect(home).toContain("Compile, certify, publish.");
-    expect(home).toContain("ProductFrame");
+    expect(home).toContain("Trust infrastructure for software.");
+    expect(home).toContain("INSTALL THE BRIK64 ECOSYSTEM");
     expect(home).not.toContain("MonomerGrid");
   });
 
@@ -36,8 +36,8 @@ describe("Home polish audit — hero density stays controlled", () => {
 
   it("keeps the hero copy aligned to the poster-first direction", () => {
     const home = read("src/components/vnext/home.tsx");
-    expect(home).toContain("The front door shows the system before the theory.");
-    expect(home).toContain("Four product objects. One operating model.");
+    expect(home).toContain("Formalizes software as an information circuit");
+    expect(home).toContain("Grab the {renderBrandText(\"BRIK64\")} CLI and get the Skills for your agent");
   });
 
   it("keeps the hero announcement pill solid and free of decorative status markers", () => {
@@ -57,19 +57,28 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(globals).toContain("repeating-linear-gradient(");
     expect(globals).toContain("transparent 92%");
   });
+
+  it("keeps the install command inside a compact command pill instead of oversized headline text", () => {
+    const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain("min-h-[64px] items-center gap-3 rounded-[22px]");
+    expect(home).toContain("font-mono text-[15px] font-semibold");
+    expect(home).toContain("h-12 w-12 items-center justify-center rounded-[16px]");
+    expect(home).not.toContain("lg:text-7xl");
+    expect(home).not.toContain("h-16 w-16");
+  });
 });
 
 describe("Home polish audit — closing CTA stays technical, not ornamental", () => {
   it("keeps the final CTA inside the vNext home shell", () => {
     const home = read("src/components/vnext/home.tsx");
-    expect(home).toContain("Open platform");
-    expect(home).toContain("Explore docs");
+    expect(home).toContain("VISIT DIGITALCIRCUITALITY.COM");
+    expect(home).toContain("digitalcircuitality.com");
   });
 
   it("routes the closing CTA toward product and docs instead of growth prompts", () => {
     const home = read("src/components/vnext/home.tsx");
+    expect(home).toContain('href="https://digitalcircuitality.com"');
     expect(home).toContain('href="/platform"');
-    expect(home).toContain('href="https://docs.brik64.dev"');
     expect(home).not.toContain('title: "Discord"');
   });
 });

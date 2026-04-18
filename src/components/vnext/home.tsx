@@ -65,44 +65,49 @@ export function VNextHome() {
 
             <div className="mt-12 max-w-[850px]">
               <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-4">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-white/40 ml-1">DOWNLOAD THE CLI</span>
-                  <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
-                    <div className="group relative flex flex-1 items-center gap-5 rounded-2xl border border-white/20 bg-black/40 px-6 py-5 backdrop-blur-xl transition-all hover:border-white/40 hover:bg-white/[0.02] focus-within:border-[color:var(--accent)]">
-                      <div className="flex flex-1 items-center gap-4 font-mono text-sm sm:text-lg text-white/95">
-                        <span className="text-[color:var(--accent)] font-bold opacity-80 shrink-0">$</span>
-                        <code className="select-all tracking-tight truncate">curl -sL https://brik64.sh | sh</code>
+                <div className="flex flex-col gap-6">
+                  <span className="ml-1 text-[11px] font-black uppercase tracking-[0.4em] text-[color:var(--accent)]">INSTALL THE BRIK64 ECOSYSTEM</span>
+                  <div className="flex flex-col gap-10">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <div className="inline-flex min-h-[64px] items-center gap-3 rounded-[22px] border border-white/10 bg-[#0c1520] px-5 py-3 shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
+                        <span className="select-none font-mono text-lg font-bold text-[color:var(--accent)] opacity-90 sm:text-xl">$</span>
+                        <code className="select-all font-mono text-[15px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-lg">
+                          curl -sL https://brik64.sh | sh
+                        </code>
                       </div>
-                      <button 
+                      <button
                         onClick={() => {
                           navigator.clipboard.writeText("curl -sL https://brik64.sh | sh");
                         }}
-                        className="ml-2 shrink-0 rounded-xl p-3 text-white/40 hover:bg-white/10 hover:text-[color:var(--accent)] transition-all active:scale-90"
+                        className="group relative flex h-12 w-12 items-center justify-center rounded-[16px] border border-white/10 bg-white/5 text-white/40 transition-all hover:border-[color:var(--accent)]/40 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] active:scale-90"
                         title="Copy to clipboard"
                       >
-                        <Copy className="h-6 w-6" />
+                        <Copy className="h-5 w-5" />
                       </button>
                     </div>
 
-                    <ButtonVNext 
-                      href="https://github.com/brik64-org/skills" 
-                      tone="primary" 
-                      className="h-[74px] px-12 text-base font-black tracking-[0.2em] rounded-2xl flex items-center justify-center shrink-0 whitespace-nowrap shadow-[0_0_30px_rgba(var(--accent-rgb),0.2)] hover:shadow-[0_0_45px_rgba(var(--accent-rgb),0.4)] hover:scale-[1.03] active:scale-[0.97] transition-all"
-                      external
-                    >
-                      <div className="flex items-center gap-4">
-                        <GitHubMark className="h-8 w-8" />
-                        <span className="uppercase font-black">SKILL</span>
-                        <ExternalLink className="h-5 w-5 opacity-80" />
-                      </div>
-                    </ButtonVNext>
+                    <div className="flex flex-wrap items-center gap-6">
+                      <ButtonVNext 
+                        href="https://github.com/brik64-org/skills" 
+                        tone="primary" 
+                        className="h-16 px-10 text-xs font-black tracking-[0.3em] rounded-xl flex items-center justify-center shadow-[0_0_40px_rgba(var(--accent-rgb),0.2)] hover:shadow-[0_0_60px_rgba(var(--accent-rgb),0.4)] transition-all"
+                        external
+                      >
+                        <div className="flex items-center gap-4">
+                          <GitHubMark className="h-6 w-6" />
+                          <span className="uppercase">GET SKILLS</span>
+                          <ExternalLink className="h-4 w-4 opacity-80" />
+                        </div>
+                      </ButtonVNext>
+                      
+                      <div className="hidden sm:block h-px w-12 bg-white/20" />
+                      
+                      <p className="text-[11px] font-bold text-white/50 uppercase tracking-[0.2em] max-w-[300px] leading-relaxed">
+                        Grab the {renderBrandText("BRIK64")} CLI and get the Skills for your agent
+                      </p>
+                    </div>
                   </div>
                 </div>
-
-                <p className="text-[11px] font-bold text-white uppercase tracking-[0.2em] flex flex-wrap items-center gap-x-3 gap-y-1 opacity-80">
-                  <span className="h-px w-6 bg-white/20 hidden sm:block" />
-                  <span>Grab the {renderBrandText("BRIK64")} CLI and get the Skills for your agent</span>
-                </p>
               </div>
             </div>
           </div>
@@ -375,7 +380,8 @@ export function VNextHome() {
                 tone="primary"
                 className="bg-[#f5f7fa] text-[#0b0b0f] hover:bg-[#f5f7fa]/90 h-16 px-12 text-lg rounded-full shadow-[0_0_40px_rgba(57,210,255,0.15)] hover:shadow-[0_0_60px_rgba(57,210,255,0.25)] transition-all font-black tracking-tight"
               >
-                VISIT DIGITALCIRCUITALITY.COM
+                 <span>VISIT DIGITALCIRCUITALITY.COM</span>
+                 <ExternalLink className="h-5 w-5" />
               </ButtonVNext>
             </div>
           </div>
