@@ -328,15 +328,15 @@ export function Navbar() {
           <div className="grid min-h-[68px] grid-cols-[1fr_auto] items-center px-5 py-1.5 sm:px-6 lg:px-8 xl:grid-cols-[220px_minmax(0,1fr)_320px]">
           <div className="flex items-center">
             <Link href="/" className="flex shrink-0 items-center gap-3 no-underline">
-              <div className="relative h-6 w-[120px] overflow-hidden">
-                <Image
-                  src="/brand/brik64-logo-white-sticker.png"
-                  alt="BRIK64"
-                  fill
-                  priority
-                  className="object-contain object-left"
-                />
-              </div>
+              <Image
+                src="/brand/brik64-logo-primary-horizontal-white.svg"
+                alt="BRIK64"
+                width={184}
+                height={36}
+                priority
+                unoptimized
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
 

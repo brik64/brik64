@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 
 import { ArrowRight, CheckCircle2, GitBranch, Layers3, TerminalSquare, FileCode2, Package, LayoutTemplate, Copy, ExternalLink } from "lucide-react";
@@ -8,6 +9,7 @@ import { MonomerTile } from "./monomer-tile";
 import { MonomerMatrix } from "./monomer-matrix";
 import { CertificatePreview } from "./certificate-preview";
 import { AgenticArchitecture } from "./agentic-architecture";
+import { RegulatedIndustriesSection } from "./regulated-industries-section";
 import { LanguageExchangeArtifact } from "@/components/HomeProofArtifacts";
 
 import {
@@ -63,48 +65,66 @@ export function VNextHome() {
               {renderBrandText("Formalizes software as an information circuit, providing verified and hash-locked logic certification.")}
             </p>
 
-            <div className="mt-12 max-w-[850px]">
-              <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-6">
+            <div className="mt-10 max-w-[690px]">
+              <div className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,28,0.88),rgba(9,16,24,0.78))] px-5 py-5 shadow-[0_24px_64px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:px-6 sm:py-6">
+                <div className="flex flex-col gap-5">
                   <span className="ml-1 text-[11px] font-black uppercase tracking-[0.4em] text-[color:var(--accent)]">INSTALL THE BRIK64 ECOSYSTEM</span>
-                  <div className="flex flex-col gap-10">
-                    <div className="flex flex-wrap items-center gap-4">
-                      <div className="inline-flex min-h-[64px] items-center gap-3 rounded-[22px] border border-white/10 bg-[#0c1520] px-5 py-3 shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
-                        <span className="select-none font-mono text-lg font-bold text-[color:var(--accent)] opacity-90 sm:text-xl">$</span>
-                        <code className="select-all font-mono text-[15px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-lg">
-                          curl -sL https://brik64.sh | sh
-                        </code>
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-2.5">
+                      <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/58">1. Download the CLI</span>
+                      <div className="flex flex-nowrap items-center gap-4">
+                        <div className="inline-flex min-h-[64px] w-fit items-center gap-2.5 rounded-[22px] border border-white/10 bg-[#0c1520] px-4 py-3 shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
+                          <span className="select-none font-mono text-lg font-bold text-[color:var(--accent)] opacity-90 sm:text-xl">$</span>
+                          <code className="select-all font-mono text-[14px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-[16px]">
+                            curl -sL https://brik64.sh | sh
+                          </code>
+                        </div>
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText("curl -sL https://brik64.sh | sh");
+                          }}
+                          className="group relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] border border-white/10 bg-white/5 text-white/40 transition-all hover:border-[color:var(--accent)]/40 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] active:scale-90"
+                          title="Copy to clipboard"
+                        >
+                          <Copy className="h-5 w-5" />
+                        </button>
                       </div>
-                      <button
-                        onClick={() => {
-                          navigator.clipboard.writeText("curl -sL https://brik64.sh | sh");
-                        }}
-                        className="group relative flex h-12 w-12 items-center justify-center rounded-[16px] border border-white/10 bg-white/5 text-white/40 transition-all hover:border-[color:var(--accent)]/40 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] active:scale-90"
-                        title="Copy to clipboard"
-                      >
-                        <Copy className="h-5 w-5" />
-                      </button>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-6">
+                    <div className="flex flex-col gap-2.5">
+                      <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/58">2. Add the skill to your AI agent</span>
                       <ButtonVNext 
                         href="https://github.com/brik64-org/skills" 
-                        tone="primary" 
-                        className="h-16 px-10 text-xs font-black tracking-[0.3em] rounded-xl flex items-center justify-center shadow-[0_0_40px_rgba(var(--accent-rgb),0.2)] hover:shadow-[0_0_60px_rgba(var(--accent-rgb),0.4)] transition-all"
+                        tone="secondary" 
+                        className="min-h-[60px] w-fit justify-start rounded-[22px] border-white/12 bg-[#1b2940] px-6 py-3 text-[14px] font-black uppercase tracking-[0.22em] text-white shadow-[0_18px_48px_rgba(0,0,0,0.22)] hover:border-[color:var(--accent-soft)] hover:bg-[#22324d]"
                         external
                       >
                         <div className="flex items-center gap-4">
-                          <GitHubMark className="h-6 w-6" />
-                          <span className="uppercase">GET SKILLS</span>
-                          <ExternalLink className="h-4 w-4 opacity-80" />
+                          <GitHubMark className="h-5 w-5" />
+                          <span>Grab Skill</span>
                         </div>
                       </ButtonVNext>
-                      
-                      <div className="hidden sm:block h-px w-12 bg-white/20" />
-                      
-                      <p className="text-[11px] font-bold text-white/50 uppercase tracking-[0.2em] max-w-[300px] leading-relaxed">
-                        Grab the {renderBrandText("BRIK64")} CLI and get the Skills for your agent
-                      </p>
+                    </div>
+
+                    <div className="flex flex-col gap-2.5">
+                      <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/58">3. Register in the platform</span>
+                      <ButtonVNext
+                        href="/signup"
+                        tone="secondary"
+                        className="min-h-[60px] w-fit justify-start rounded-[22px] border-white/12 bg-[#1b2940] px-6 py-3 text-[14px] font-black uppercase tracking-[0.22em] text-white shadow-[0_18px_48px_rgba(0,0,0,0.22)] hover:border-[color:var(--accent-soft)] hover:bg-[#22324d]"
+                      >
+                        <div className="flex items-center gap-4">
+                          <Image
+                            src="/brand/b64-icon-alpha.png"
+                            alt="B64 icon"
+                            width={20}
+                            height={20}
+                            unoptimized
+                            className="h-5 w-5 object-contain"
+                          />
+                          <span>Sign Up</span>
+                        </div>
+                      </ButtonVNext>
                     </div>
                   </div>
                 </div>
@@ -155,7 +175,6 @@ export function VNextHome() {
           </div>
         </div>
       </SupportingSurface>
-
 
       {/* Section 4: PCD: FORMAL LANGUAGE AI OPTIMIZED */}
       <SupportingSurface className="border-t border-border">
@@ -227,49 +246,44 @@ export function VNextHome() {
       {/* Section 6: Monomers & EVA */}
       <SupportingSurface className="border-t border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
-          
-          <div className="flex flex-col space-y-16">
-            <PageHeaderVNext
-              eyebrow="The Atomic Logic"
-              title="Monomers & EVA Algebra."
-              description="A core vocabulary of 64 bounded operations capable of constructing every strictly calculable software domain."
-            />
+          <div className="grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-center xl:gap-20">
+            <div className="flex min-w-0 flex-col items-center lg:items-start">
+              <PageHeaderVNext
+                eyebrow="The Atomic Logic"
+                title="Monomers & EVA Algebra."
+                description="A core vocabulary of 64 bounded operations for strictly calculable domains, plus 64 extended monomers for open interaction surfaces."
+              />
 
-            <div className="grid lg:grid-cols-[1fr_auto] gap-12 xl:gap-24 items-center">
-              {/* Left Column: Centered Matrices */}
-              <div className="flex justify-center w-full">
-                <MonomerMatrix 
-                  hoveredId={hoveredMonomer.id} 
-                  onHover={setHoveredMonomer} 
+              <div className="mt-14 flex w-full justify-center lg:justify-center">
+                <MonomerMatrix
+                  hoveredId={hoveredMonomer.id}
+                  onHover={setHoveredMonomer}
                 />
               </div>
 
-              {/* Right Column: Detail Tile (Fixed height alignment) */}
-              <div className="hidden lg:block shrink-0">
-                <div className="scale-110 xl:scale-[1.2] transform-gpu">
-                  <MonomerTile 
-                    id={hoveredMonomer.id}
-                    title={hoveredMonomer.title}
-                    type={hoveredMonomer.type}
-                    domain={hoveredMonomer.domain}
-                    property={hoveredMonomer.property}
-                    description={hoveredMonomer.description}
-                  />
-                </div>
+              <div className="mt-10 flex w-full flex-wrap justify-center gap-4 lg:justify-start">
+                <ButtonVNext href="https://docs.brik64.com" tone="primary" className="text-xs font-bold uppercase tracking-widest">
+                  Learn PCD Language
+                </ButtonVNext>
+                <ButtonVNext href="https://github.com/brik64" tone="secondary" external className="text-xs font-bold uppercase tracking-widest">
+                  <GitHubMark className="h-4 w-4" />
+                  Add Skills to your AI Agent
+                </ButtonVNext>
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <ButtonVNext href="https://docs.brik64.com" tone="primary" className="text-xs font-bold uppercase tracking-widest">
-                Learn PCD Language
-              </ButtonVNext>
-              <ButtonVNext href="https://github.com/brik64" tone="secondary" external className="text-xs font-bold uppercase tracking-widest">
-                <GitHubMark className="h-4 w-4" />
-                Add Skills to your AI Agent
-              </ButtonVNext>
+            <div className="flex w-full justify-center lg:justify-center">
+              <MonomerTile
+                id={hoveredMonomer.id}
+                title={hoveredMonomer.title}
+                type={hoveredMonomer.type}
+                domain={hoveredMonomer.domain}
+                property={hoveredMonomer.property}
+                description={hoveredMonomer.description}
+                className="mx-auto"
+              />
             </div>
           </div>
-
         </div>
       </SupportingSurface>
 
@@ -322,7 +336,7 @@ export function VNextHome() {
             <PageHeaderVNext
               eyebrow="Agentic Capability"
               title="Perfectly bounded for AI agents."
-              description="A finite, 64-monomer vocabulary mathematically optimized for rule-based reasoning and Agentic code authoring."
+              description="A finite 64-monomer bounded vocabulary, plus 64 extended monomers for controlled open interaction, mathematically optimized for rule-based reasoning and agentic code authoring."
             />
           </div>
           <AgenticArchitecture />
@@ -416,6 +430,8 @@ export function VNextHome() {
           </div>
         </div>
       </SupportingSurface>
+
+      <RegulatedIndustriesSection />
     </div>
   );
 }

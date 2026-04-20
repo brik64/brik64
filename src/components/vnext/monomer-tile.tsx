@@ -16,7 +16,7 @@ export function MonomerTile({ id, title, type, className, property, domain, desc
   return (
     <div 
       className={cn(
-        "relative flex w-[340px] h-[340px] shrink-0 flex-col justify-between overflow-hidden rounded-[28px] p-6 shadow-xl",
+        "relative flex w-full max-w-[360px] min-h-[340px] shrink-0 flex-col justify-between overflow-hidden rounded-[28px] p-6 shadow-xl",
         isCore 
           ? "bg-[#0A1016] border-[2px] border-[#2BB6AC]/20" 
           : "bg-[#140D0A] border-[2px] border-[#FF8A22]/20",

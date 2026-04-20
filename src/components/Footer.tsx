@@ -61,6 +61,7 @@ export function Footer() {
               alt="BRIK64"
               width={184}
               height={36}
+              unoptimized
               className="h-10 w-auto"
             />
             <p className="mt-5 max-w-[32ch] text-[15px] leading-8 text-white/60">

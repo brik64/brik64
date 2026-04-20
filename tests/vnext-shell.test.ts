@@ -48,7 +48,7 @@ describe("vNext shell", () => {
     expect(navbar).toContain("w-[min(920px,calc(100vw-2rem))]");
     expect(navbar).toContain("lg:grid-cols-2");
     expect(navbar).toContain("text-sm font-medium transition-all duration-200 select-none");
-    expect(navbar).toContain("/brand/brik64-logo-white-sticker.png");
+    expect(navbar).toContain("/brand/brik64-logo-primary-horizontal-white.svg");
     expect(navbar).toContain("rounded-[24px] border border-white/10 bg-[rgba(8,14,22,0.78)]");
     expect(navbar).toContain("absolute left-0 right-0 top-full hidden pt-2 xl:block");
     expect(navbar).toContain("h-11 items-center justify-center rounded-[16px] bg-white");
@@ -100,7 +100,7 @@ describe("vNext shell", () => {
     expect(navbar).toContain("xl:grid-cols-[220px_minmax(0,1fr)_320px]");
     expect(navbar).toContain("hidden items-center justify-center gap-9 justify-self-center xl:flex");
     expect(navbar).toContain("ChevronDown");
-    expect(navbar).toContain("h-6 w-[120px]");
+    expect(navbar).toContain("h-10 w-auto");
     expect(navbar).toContain("w-[min(920px,calc(100vw-2rem))]");
     expect(navbar).toContain("bg-[rgba(8,14,22,0.72)]");
     expect(navbar).toContain("h-11 items-center justify-center rounded-[16px] border border-white/10 bg-white/6");

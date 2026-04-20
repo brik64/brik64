@@ -147,23 +147,65 @@
 
 @layer utilities {
   .hero-light-grid {
+    --hero-grid-minor: 24px;
+    --hero-grid-major: 120px;
+    --hero-grid-minor-line: rgba(var(--accent-rgb), 0.095);
+    --hero-grid-major-line: rgba(var(--accent-rgb), 0.2);
+    --hero-grid-cross: rgba(214, 246, 255, 0.52);
     background-image:
       repeating-linear-gradient(
         to right,
-        rgba(var(--accent-rgb), 0.11) 0,
-        rgba(var(--accent-rgb), 0.11) 1px,
+        var(--hero-grid-minor-line) 0,
+        var(--hero-grid-minor-line) 1px,
         transparent 1px,
-        transparent 44px
+        transparent var(--hero-grid-minor)
       ),
       repeating-linear-gradient(
         to bottom,
-        rgba(var(--accent-rgb), 0.09) 0,
-        rgba(var(--accent-rgb), 0.09) 1px,
+        var(--hero-grid-minor-line) 0,
+        var(--hero-grid-minor-line) 1px,
         transparent 1px,
-        transparent 44px
+        transparent var(--hero-grid-minor)
+      ),
+      repeating-linear-gradient(
+        to right,
+        var(--hero-grid-major-line) 0,
+        var(--hero-grid-major-line) 1px,
+        transparent 1px,
+        transparent var(--hero-grid-major)
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--hero-grid-major-line) 0,
+        var(--hero-grid-major-line) 1px,
+        transparent 1px,
+        transparent var(--hero-grid-major)
+      ),
+      radial-gradient(
+        ellipse 9px 1px at 50% 50%,
+        var(--hero-grid-cross) 0 72%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 1px 9px at 50% 50%,
+        var(--hero-grid-cross) 0 72%,
+        transparent 78%
       );
-    background-position: center top;
-    opacity: 0.48;
+    background-size:
+      var(--hero-grid-minor) var(--hero-grid-minor),
+      var(--hero-grid-minor) var(--hero-grid-minor),
+      var(--hero-grid-major) var(--hero-grid-major),
+      var(--hero-grid-major) var(--hero-grid-major),
+      var(--hero-grid-major) var(--hero-grid-major),
+      var(--hero-grid-major) var(--hero-grid-major);
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      calc(var(--hero-grid-major) / -2) calc(var(--hero-grid-major) / -2),
+      calc(var(--hero-grid-major) / -2) calc(var(--hero-grid-major) / -2);
+    opacity: 0.54;
     clip-path: ellipse(94% 72% at 50% 0%);
     mask-image: linear-gradient(
       180deg,
@@ -251,22 +293,64 @@
   }
 
   .blueprint-grid {
+    --blueprint-grid-minor: 24px;
+    --blueprint-grid-major: 120px;
+    --blueprint-grid-minor-line: rgba(211, 244, 255, 0.11);
+    --blueprint-grid-major-line: rgba(227, 249, 255, 0.2);
+    --blueprint-grid-cross: rgba(233, 251, 255, 0.36);
     background-image:
       repeating-linear-gradient(
         to right,
-        rgba(255, 255, 255, 0.05) 0,
-        rgba(255, 255, 255, 0.05) 1px,
+        var(--blueprint-grid-minor-line) 0,
+        var(--blueprint-grid-minor-line) 1px,
         transparent 1px,
-        transparent 24px
+        transparent var(--blueprint-grid-minor)
       ),
       repeating-linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.05) 0,
-        rgba(255, 255, 255, 0.05) 1px,
+        var(--blueprint-grid-minor-line) 0,
+        var(--blueprint-grid-minor-line) 1px,
         transparent 1px,
-        transparent 24px
+        transparent var(--blueprint-grid-minor)
+      ),
+      repeating-linear-gradient(
+        to right,
+        var(--blueprint-grid-major-line) 0,
+        var(--blueprint-grid-major-line) 1px,
+        transparent 1px,
+        transparent var(--blueprint-grid-major)
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--blueprint-grid-major-line) 0,
+        var(--blueprint-grid-major-line) 1px,
+        transparent 1px,
+        transparent var(--blueprint-grid-major)
+      ),
+      radial-gradient(
+        ellipse 7px 1px at 50% 50%,
+        var(--blueprint-grid-cross) 0 72%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 1px 7px at 50% 50%,
+        var(--blueprint-grid-cross) 0 72%,
+        transparent 78%
       );
-    background-position: center;
+    background-size:
+      var(--blueprint-grid-minor) var(--blueprint-grid-minor),
+      var(--blueprint-grid-minor) var(--blueprint-grid-minor),
+      var(--blueprint-grid-major) var(--blueprint-grid-major),
+      var(--blueprint-grid-major) var(--blueprint-grid-major),
+      var(--blueprint-grid-major) var(--blueprint-grid-major),
+      var(--blueprint-grid-major) var(--blueprint-grid-major);
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      calc(var(--blueprint-grid-major) / -2) calc(var(--blueprint-grid-major) / -2),
+      calc(var(--blueprint-grid-major) / -2) calc(var(--blueprint-grid-major) / -2);
   }
 
   .backdrop-blur-ultra {

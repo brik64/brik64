@@ -1,0 +1,11 @@
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="78" cy="60" r="28" fill="#24D6FF" fill-opacity="0.08" stroke="#24D6FF" stroke-width="3"/>
+  <path d="M78 32V88" stroke="#F5F7FA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 60H106" stroke="#F5F7FA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M58 40L98 80" stroke="#24D6FF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M98 40L58 80" stroke="#24D6FF" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="182" y="28" width="116" height="28" rx="14" fill="#0E1621" stroke="#24D6FF" stroke-opacity="0.4"/>
+  <text x="193" y="47" fill="#24D6FF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" letter-spacing="2">IEC 61508</text>
+  <text x="182" y="82" fill="#F5F7FA" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">ENGINEERING</text>
+  <text x="182" y="102" fill="#9AA6B2" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="2">TRACEABLE CALCULATIONS</text>
+</svg>
