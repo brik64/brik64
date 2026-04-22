@@ -40,11 +40,15 @@ BRIK-64 is the first **Digital Circuitality** architecture: software that works 
 
 ```bash
 curl -fsSL https://brik64.dev/install | bash
-brikc                     # Interactive banner
-brikc build hello.pcd     # Compile PCD
-brikc lift app.js         # Reverse-compile to PCD
-brikc check program.pcd   # Verify Phi_c = 1
+brik64                    # Interactive banner
+brik64 build hello.pcd    # Compile PCD
+brik64 lift app.js        # Reverse-compile to PCD
+brik64 check program.pcd  # Verify Phi_c = 1
 ```
+
+> Public command: `brik64`.
+> Internal compiler/tooling id: `brikc` remains for bootstrap and engineering
+> internals only.
 
 ---
 
@@ -60,13 +64,13 @@ JS, TS, TSX, Python, Rust, C, C++, Go, COBOL, PHP, Java
 
 ```bash
 # Reverse-compile legacy COBOL to PCD, then emit Rust
-brikc lift legacy.cob && brikc build lifted.pcd --target rust
+brik64 lift legacy.cob && brik64 build lifted.pcd --target rust
 
 # Lift a Python module
-brikc lift analytics.py
+brik64 lift analytics.py
 
 # Lift and cross-compile in one step
-brikc lift app.ts --target python
+brik64 lift app.ts --target python
 ```
 
 ---
@@ -76,11 +80,11 @@ brikc lift app.ts --target python
 | Service | Endpoint |
 |---------|----------|
 | Registry | `registry.brik64.dev/v1` |
-| MCP Server | `brikc mcp-server` (2 tools) |
+| MCP Server | `brik64 mcp-server` (2 tools) |
 
 ```bash
 # Start the MCP server for AI agent integration
-brikc mcp-server
+brik64 mcp-server
 ```
 
 ---
