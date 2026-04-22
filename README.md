@@ -104,7 +104,7 @@ cargo add brik64-core       # Rust
 | Resource | URL |
 |----------|-----|
 | Website | [digitalcircuitality.com](https://digitalcircuitality.com) |
-| Documentation | [docs.brik64.dev](https://docs.brik64.dev) |
+| Documentation | [docs.brik64.com](https://docs.brik64.com) |
 | API | [registry.brik64.dev](https://registry.brik64.dev) |
 | Install | [brik64.dev/install](https://brik64.dev/install) |
 | Blog | [digitalcircuitality.com/blog](https://digitalcircuitality.com/blog) |
