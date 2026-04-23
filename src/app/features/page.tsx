@@ -189,6 +189,17 @@ export default function FeaturesPage() {
     <CanonicalPageLayout>
       <main>
         <ProtagonistSurface className="flex flex-col items-center justify-center pt-32 pb-24 md:pt-48 md:pb-32">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.84] [filter:saturate(1.16)_contrast(1.08)_brightness(1.16)]"
+            style={{ backgroundImage: "url(/generated/features-hero-bg.png)" }}
+          />
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.26] [filter:saturate(1.28)_contrast(1.08)_brightness(1.3)]"
+            style={{ backgroundImage: "url(/generated/features-hero-bg.png)" }}
+          />
+          <div className="absolute inset-0 blueprint-grid opacity-[0.08]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,10,0.42)_0%,rgba(4,10,16,0.18)_28%,rgba(4,10,16,0.14)_56%,rgba(1,4,8,0.62)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.05)_0%,rgba(8,18,28,0.04)_34%,rgba(2,6,10,0.18)_70%,rgba(1,3,6,0.52)_100%)]" />
           <HeroWireframe />
           <div className="relative z-10 px-6 text-center">
             <PageHeaderVNext

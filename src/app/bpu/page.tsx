@@ -7,6 +7,7 @@ const bpuPage: UtilityPageSpec = {
     eyebrow: "BPU — Processing Unit",
     title: "Policy enforcement as a",
     highlight: "hardware roadmap.",
+    backgroundImageSrc: "/generated/bpu-hero-bg.png",
     description: 
       "The BPU is a hardware concept for evaluating policy circuits before an AI action reaches the host. Current availability is software-based; FPGA and silicon phases remain roadmap work.",
     actions: [

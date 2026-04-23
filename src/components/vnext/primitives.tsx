@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Command } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -256,7 +256,7 @@ export function ToolRail({
 }: {
   label: string;
 }) {
-  const logos = [
+  const logos: Array<{ id: string; name: string; ext?: string }> = [
     { id: "rust", name: "Rust", ext: "png" },
     { id: "swift", name: "Swift" },
     { id: "cplusplus", name: "C++" },
@@ -274,9 +274,9 @@ export function ToolRail({
   const carouselItems = [...logos, ...logos, ...logos, ...logos];
 
   return (
-    <div className="border-t border-white/8 bg-[#070b11]/92 overflow-hidden py-8">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12 flex flex-col lg:flex-row lg:items-center gap-10 lg:justify-between">
-        <p className="text-sm font-bold uppercase tracking-widest text-white/30 shrink-0 whitespace-nowrap">
+    <div className="relative z-10 border-t border-white/8 bg-[#070b11]/92 overflow-hidden py-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12 flex flex-col lg:flex-row lg:items-center gap-10 lg:justify-between">
+        <p className="text-sm font-bold uppercase tracking-widest text-white shrink-0 whitespace-nowrap">
            {label}
         </p>
         
@@ -293,7 +293,7 @@ export function ToolRail({
             {carouselItems.map((logo, i) => (
               <div key={i} className="flex items-center transition-transform hover:scale-110 shrink-0">
                 <img 
-                  src={`/brands/${logo.id}.${(logo as any).ext || 'svg'}`} 
+                  src={`/brands/${logo.id}.${logo.ext ?? "svg"}`} 
                   alt={logo.name} 
                   className="h-10 w-10 object-contain"
                   loading="eager"
@@ -413,7 +413,7 @@ export function PageHeaderVNext({
   status,
   centered = false,
 }: {
-  eyebrow: string;
+  eyebrow: string | ReactNode;
   title: string | ReactNode;
   description: string | ReactNode;
   status?: ReactNode;
@@ -422,7 +422,9 @@ export function PageHeaderVNext({
   return (
     <div className={cn("max-w-3xl space-y-4", centered && "mx-auto text-center")}>
       {status && <div className={cn("flex", centered && "justify-center")}>{status}</div>}
-      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{renderBrandText(eyebrow)}</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+        {typeof eyebrow === "string" ? renderBrandText(eyebrow) : eyebrow}
+      </p>
       <h2 className={cn("text-balance text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl", centered && "mx-auto")}>
         {renderBrandText(title)}
       </h2>

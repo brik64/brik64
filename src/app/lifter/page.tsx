@@ -97,6 +97,7 @@ export default function LifterPage() {
         eyebrow="Lifter"
         title="Already have code? Verify it."
         description="No rewrite needed. Point the Lifter at your existing code. It extracts, maps, and certifies. 10 languages in. Verified PCD out."
+        backgroundImageSrc="/generated/lifter-hero-bg.png"
         actions={[
           { label: "Install CLI", href: "/cli", tone: "primary" },
           { label: "View Transpiler", href: "/transpiler", tone: "secondary" },

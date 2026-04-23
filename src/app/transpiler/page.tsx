@@ -58,6 +58,7 @@ export default function TranspilerPage() {
         eyebrow="Universal Transpiler"
         title="Any language in. Any language out. Certified."
         description="10 input languages. 14 output targets. Each route passes through a bounded intermediate blueprint so equivalence is reviewed at the normalized circuit level before emission."
+        backgroundImageSrc="/generated/transpiler-hero-bg.png"
         actions={[
           { label: "Try brikc transpile", href: "/cli", tone: "primary" },
           { label: "Read Documentation", href: "https://docs.brik64.dev", external: true, tone: "secondary" },

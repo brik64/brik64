@@ -17,6 +17,7 @@ interface BlogPostSeed {
   tag: string;
   category: string;
   coverTheme: EditorialCoverTheme;
+  coverAlt?: string;
 }
 
 const blogPostSeeds: BlogPostSeed[] = [
@@ -334,7 +335,11 @@ const blogPostSeeds: BlogPostSeed[] = [
 
 export const blogPosts: BlogPost[] = blogPostSeeds.map((post) => ({
   ...post,
-  ...getEditorialCover(post.coverTheme, `Editorial cover for ${post.title}`),
+  ...getEditorialCover(
+    post.coverTheme,
+    post.coverAlt ?? `Editorial cover for ${post.title}`,
+    `/blog/covers/posts/${post.slug}.png`,
+  ),
 }));
 
 export function getBlogPost(slug: string): BlogPost | undefined {

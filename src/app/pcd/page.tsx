@@ -7,6 +7,7 @@ const pcdPage: UtilityPageSpec = {
     eyebrow: "Format Guide",
     title: "Printed Circuit Description. A",
     highlight: "bounded computational format.",
+    backgroundImageSrc: "/generated/pcd-hero-bg.png",
     description:
       "PCD is the compiler-facing format for describing bounded computation, declared domains, and explicit composition. It is readable by humans and agents, but verification still happens outside the authoring model.",
     actions: [

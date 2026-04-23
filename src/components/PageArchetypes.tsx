@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   ArrowRight,
@@ -26,11 +25,11 @@ import {
   renderBrandText,
   ButtonVNext,
   ProtagonistSurface,
-  SupportingSurface,
   PageHeaderVNext,
 } from "@/components/vnext/primitives";
 
 export {
+  renderBrandText,
   ButtonVNext,
   ProtagonistSurface,
   SupportingSurface,
@@ -87,6 +86,7 @@ export type UtilityPageSpec = {
     title: string;
     highlight?: string;
     description: string;
+    backgroundImageSrc?: string;
     actions?: PageAction[];
     metrics?: SurfaceMetric[];
   };
@@ -137,6 +137,7 @@ export type RiskPageSpec = {
     title: string;
     highlight?: string;
     description: string;
+    backgroundImageSrc?: string;
     actions?: PageAction[];
     metrics: SurfaceMetric[];
     statusLabel?: string;
@@ -192,7 +193,7 @@ export function ActionAnchor({ action }: { action: ActionSpec }) {
   return (
     <ButtonVNext
       href={action.href}
-      tone={action.tone as any}
+      tone={action.tone}
       external={action.external}
       className={cx(
         "h-12 px-8 text-sm",
@@ -234,29 +235,42 @@ export function CanonicalPageHero({
   eyebrow,
   title,
   description,
+  backgroundImageSrc,
   actions,
   metrics,
   status,
   proofStripEyebrow,
   proofStripTitle,
   proofStripDescription,
-  dark = false,
 }: {
   eyebrow: string;
   title: ReactNode;
   description: string;
+  backgroundImageSrc?: string;
   actions: ActionSpec[];
   metrics?: MetricSpec[];
   status?: ReactNode;
   proofStripEyebrow?: string;
   proofStripTitle?: string;
   proofStripDescription?: string;
-  dark?: boolean;
 }) {
   return (
-    <ProtagonistSurface className="relative overflow-hidden pt-32 pb-24 md:pt-48 md:pb-32 lg:pb-40">
-      <div className="absolute inset-0 blueprint-grid opacity-20" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+    <ProtagonistSurface className="relative overflow-hidden pt-20 pb-24 md:pt-32 md:pb-32 lg:pt-36 lg:pb-40">
+      {backgroundImageSrc ? (
+        <>
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.84] [filter:saturate(1.16)_contrast(1.08)_brightness(1.16)]"
+            style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+          />
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.26] [filter:saturate(1.28)_contrast(1.08)_brightness(1.3)]"
+            style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+          />
+        </>
+      ) : null}
+      <div className="absolute inset-0 blueprint-grid opacity-[0.08]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,10,0.42)_0%,rgba(4,10,16,0.18)_28%,rgba(4,10,16,0.14)_56%,rgba(1,4,8,0.62)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.05)_0%,rgba(8,18,28,0.04)_34%,rgba(2,6,10,0.18)_70%,rgba(1,3,6,0.52)_100%)]" />
       
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12 text-center">
         <PageHeaderVNext
@@ -267,14 +281,14 @@ export function CanonicalPageHero({
           status={status}
         />
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           {actions.map((action) => (
             <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
           ))}
         </div>
 
         {metrics && (
-          <div className="mx-auto mt-20 grid max-w-5xl gap-4 sm:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-5xl gap-4 sm:grid-cols-3">
             {metrics.map((metric) => (
               <MetricTile
                 dark
@@ -282,13 +296,14 @@ export function CanonicalPageHero({
                 label={metric.label}
                 value={metric.value}
                 detail={metric.detail}
+                className="border-white/14 bg-[#0f1a28] shadow-[0_18px_44px_rgba(0,0,0,0.28)]"
               />
             ))}
           </div>
         )}
 
         {proofStripTitle && (
-          <div className="mx-auto mt-24 max-w-4xl border-t border-white/10 pt-12">
+          <div className="mx-auto mt-16 max-w-4xl border-t border-white/10 pt-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">
               {proofStripEyebrow ?? "Verification strip"}
             </p>
@@ -897,6 +912,7 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
         eyebrow={hero.eyebrow}
         title={<HeroTitle title={hero.title} highlight={hero.highlight} />}
         description={hero.description}
+        backgroundImageSrc={hero.backgroundImageSrc}
         actions={hero.actions || []}
         metrics={hero.metrics}
       />
@@ -991,10 +1007,10 @@ export function RiskPageView({ page }: { page: RiskPageSpec }) {
   return (
     <CanonicalPageLayout>
       <CanonicalPageHero
-        dark
         eyebrow={page.hero.eyebrow}
         title={<HeroTitle title={page.hero.title} highlight={page.hero.highlight} />}
         description={page.hero.description}
+        backgroundImageSrc={page.hero.backgroundImageSrc}
         actions={page.hero.actions || []}
         metrics={page.hero.metrics}
         status={

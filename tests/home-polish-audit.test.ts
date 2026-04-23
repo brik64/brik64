@@ -22,8 +22,9 @@ describe("Home polish audit — hero density stays controlled", () => {
     const page = read("src/app/page.tsx");
     const home = read("src/components/vnext/home.tsx");
     expect(page).toContain("<VNextHome />");
-    expect(home).toContain("Trust infrastructure for software.");
-    expect(home).toContain("INSTALL THE BRIK64 ECOSYSTEM");
+    expect(home).toContain("BRIK64 turns generated and existing software into canonical, reviewable blueprints.");
+    expect(home).toContain("Download the CLI");
+    expect(home).not.toContain("INSTALL THE BRIK64 ECOSYSTEM");
     expect(home).not.toContain("MonomerGrid");
   });
 
@@ -37,9 +38,9 @@ describe("Home polish audit — hero density stays controlled", () => {
   it("keeps the hero copy aligned to the poster-first direction", () => {
     const home = read("src/components/vnext/home.tsx");
     expect(home).toContain("Formalizes software as an information circuit");
-    expect(home).toContain("1. Download the CLI");
-    expect(home).toContain("2. Add the skill to your AI agent");
-    expect(home).toContain("3. Register in the platform");
+    expect(home).toContain("Download the CLI");
+    expect(home).not.toContain("2. Add the skill to your AI agent");
+    expect(home).not.toContain("3. Register in the platform");
   });
 
   it("keeps the hero announcement pill solid and free of decorative status markers", () => {
@@ -57,12 +58,12 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(home).toContain("hero-light-glow");
     expect(globals).toContain(".hero-light-grid");
     expect(globals).toContain("repeating-linear-gradient(");
-    expect(globals).toContain("transparent 92%");
+    expect(globals).toContain("transparent 88%");
   });
 
   it("keeps the install command inside a compact command pill instead of oversized headline text", () => {
     const home = read("src/components/vnext/home.tsx");
-    expect(home).toContain("flex flex-nowrap items-center gap-4");
+    expect(home).toContain("flex flex-wrap items-center gap-4");
     expect(home).toContain("min-h-[64px] w-fit items-center gap-2.5 rounded-[22px]");
     expect(home).toContain('font-mono text-[14px] font-semibold');
     expect(home).toContain("h-12 w-12 shrink-0 items-center justify-center rounded-[16px]");
@@ -81,24 +82,22 @@ describe("Home polish audit — hero density stays controlled", () => {
     expect(home).not.toContain(">GET SKILLS<");
   });
 
-  it("keeps a third hero action for platform registration", () => {
+  it("keeps a second hero action for platform onboarding", () => {
     const home = read("src/components/vnext/home.tsx");
 
-    expect(home).toContain("Sign Up");
+    expect(home).toContain("Get Started");
     expect(home).toContain('href="/signup"');
-    expect(home).toContain("tone=\"secondary\"");
-    expect(home).toContain('src="/brand/b64-icon-alpha.png"');
+    expect(home).toContain("tone=\"primary\"");
   });
 
-  it("keeps Grab Skill and Sign Up with matching CTA footprint", () => {
+  it("keeps Grab Skill and Get Started with matching CTA footprint", () => {
     const home = read("src/components/vnext/home.tsx");
 
     const sharedWidthClassMatches = home.match(/w-fit/g) ?? [];
     expect(sharedWidthClassMatches.length).toBeGreaterThanOrEqual(2);
     expect(home).not.toContain("w-[272px]");
     expect(home).toContain("Grab Skill");
-    expect(home).toContain("Sign Up");
-    expect(home).toContain("alt=\"B64 icon\"");
+    expect(home).toContain("Get Started");
   });
 });
 
@@ -120,14 +119,28 @@ describe("Home polish audit — closing CTA stays technical, not ornamental", ()
 describe("Home polish audit — monomer section stays balanced", () => {
   it("splits monomer matrices and the data tile into two responsive columns", () => {
     const home = read("src/components/vnext/home.tsx");
+    const matrix = read("src/components/vnext/monomer-matrix.tsx");
     const tile = read("src/components/vnext/monomer-tile.tsx");
 
     expect(home).toContain("grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-center");
     expect(home).toContain("mt-14 flex w-full justify-center");
-    expect(home).toContain("mt-10 flex w-full flex-wrap justify-center gap-4 lg:justify-start");
     expect(home).toContain('className="mx-auto"');
     expect(home).not.toContain("hidden lg:block shrink-0");
+    expect(matrix).toContain("coreAction ? <div className=\"flex justify-center pt-3\">");
+    expect(matrix).toContain("extendedAction ? <div className=\"flex justify-center pt-3\">");
     expect(tile).toContain("w-full max-w-[360px] min-h-[340px]");
+  });
+});
+
+describe("Home polish audit — compiler loop stays legible", () => {
+  it("keeps a central PCD node so the compiler feedback loop reads as a loop instead of four isolated cards", () => {
+    const home = read("src/components/vnext/home.tsx");
+
+    expect(home).toContain("absolute left-1/2 top-1/2 hidden h-28 w-28");
+    expect(home).toContain("tracking-[0.34em] text-[color:var(--accent)]");
+    expect(home).toContain("PCD");
+    expect(home).not.toContain(">Loop<");
+    expect(home).toContain("RefreshCw className=\"absolute h-14 w-14 text-white/10\"");
   });
 });
 
@@ -179,18 +192,31 @@ describe("Home polish audit — regulated industries section stays credible", ()
   it("uses the smaller technical badge as a secondary marker below the copy block", () => {
     const regulated = read("src/components/vnext/regulated-industries-section.tsx");
 
-    expect(regulated).toContain("mt-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between");
-    expect(regulated).toContain("sm:max-w-[60%]");
-    expect(regulated).toContain("max-w-[188px] shrink-0");
+    expect(regulated).toContain("mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_160px] lg:items-end");
+    expect(regulated).toContain("flex min-w-0 flex-col gap-2.5");
+    expect(regulated).toContain("lg:max-w-[160px] lg:justify-self-end");
     expect(regulated).toContain("text-[18px] font-black uppercase");
   });
 
   it("keeps all industry badges as single-line standardized chips", () => {
     const regulated = read("src/components/vnext/regulated-industries-section.tsx");
 
-    expect(regulated).toContain("flex flex-col gap-2.5 sm:max-w-[60%]");
-    expect(regulated).toContain("h-9 w-[214px] items-center justify-center whitespace-nowrap");
+    expect(regulated).toContain("flex min-w-0 flex-col gap-2.5");
+    expect(regulated).toContain("h-9 w-full min-w-0 items-center justify-center");
+    expect(regulated).toContain("text-center");
     expect(regulated).toContain("text-[10px] font-semibold uppercase tracking-[0.12em]");
+  });
+
+  it("keeps the industry descriptions compressed for a one-line desktop layout", () => {
+    const regulated = read("src/components/vnext/regulated-industries-section.tsx");
+
+    expect(regulated).toContain("Review-ready logic for flight-critical decisions.");
+    expect(regulated).toContain("Clinical review support for regulated software logic.");
+    expect(regulated).toContain("Safety review flows for fallback and control logic.");
+    expect(regulated).toContain("Audit-ready controls for approvals and transaction logic.");
+    expect(regulated).toContain("Structured review for security-sensitive deployments.");
+    expect(regulated).toContain("Verifiable review for assumptions and calculations.");
+    expect(regulated).toContain("xl:whitespace-nowrap");
   });
 });
 
@@ -220,5 +246,19 @@ describe("Home polish audit — engineering grid pattern stays layered", () => {
     expect(globals).toContain("ellipse 1px 7px at 50% 50%");
     expect(globals).toContain("calc(var(--hero-grid-major) / -2) calc(var(--hero-grid-major) / -2)");
     expect(globals).toContain("calc(var(--blueprint-grid-major) / -2) calc(var(--blueprint-grid-major) / -2)");
+  });
+
+  it("uses a darker edge vignette in the Digital Circuitality blueprint section", () => {
+    const home = read("src/components/vnext/home.tsx");
+
+    expect(home).toContain("bg-[linear-gradient(180deg,rgba(1,4,8,0.9)_0%,rgba(2,6,10,0.74)_26%,rgba(3,8,13,0.54)_52%,rgba(1,4,8,0.92)_100%)]");
+    expect(home).toContain("bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.04)_0%,rgba(14,32,52,0.08)_34%,rgba(5,12,20,0.42)_70%,rgba(1,4,8,0.88)_100%)]");
+  });
+
+  it("uses a darker edge vignette in the Incremental Adoption blueprint section", () => {
+    const home = read("src/components/vnext/home.tsx");
+
+    expect(home).toContain("bg-[linear-gradient(180deg,rgba(1,4,8,0.9)_0%,rgba(2,7,12,0.76)_24%,rgba(4,8,13,0.5)_52%,rgba(1,4,8,0.92)_100%)]");
+    expect(home).toContain("bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.04)_0%,rgba(9,25,39,0.08)_34%,rgba(4,10,16,0.4)_72%,rgba(1,4,8,0.9)_100%)]");
   });
 });

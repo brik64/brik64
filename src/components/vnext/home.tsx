@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 
-import { ArrowRight, CheckCircle2, GitBranch, Layers3, TerminalSquare, FileCode2, Package, LayoutTemplate, Copy, ExternalLink } from "lucide-react";
+import { ArrowRight, Bot, CheckCircle2, CircleAlert, GitBranch, RefreshCw, TerminalSquare, FileCode2, Package, LayoutTemplate, Copy, ExternalLink } from "lucide-react";
 import { MonomerTile } from "./monomer-tile";
 import { MonomerMatrix } from "./monomer-matrix";
 import { CertificatePreview } from "./certificate-preview";
@@ -21,12 +20,9 @@ import {
   renderBrandText,
   SupportingSurface,
   ToolRail,
-  SurfaceCard,
   GitHubMark,
 } from "@/components/vnext/primitives";
 import { MultiLanguageCodeArtifact } from "./code-artifact";
-
-const toolRail = ["TypeScript", "Python", "Rust", "Go", "PostgreSQL", "AI agents"];
 
 export function VNextHome() {
   const [hoveredMonomer, setHoveredMonomer] = useState<{
@@ -48,86 +44,68 @@ export function VNextHome() {
   return (
     <div className="bg-background text-foreground">
       {/* Section 1: Hero */}
-      <ProtagonistSurface className="relative border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.16),transparent_40%),linear-gradient(180deg,#0a0d12_0%,#0b1016_58%,#0a0d12_100%)] overflow-hidden">
+      <ProtagonistSurface className="relative border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.11),transparent_36%),linear-gradient(180deg,#091019_0%,#0a1016_46%,#06090e_100%)] overflow-hidden">
         <div className="hero-light-glow pointer-events-none absolute inset-0" />
-        <div className="hero-light-grid pointer-events-none absolute inset-0 opacity-20" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.03),transparent_32%,transparent_68%,rgba(0,229,255,0.08))]" />
+        <div className="hero-light-grid pointer-events-none absolute inset-0 opacity-[0.14]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,13,20,0.06)_0%,rgba(7,13,20,0.12)_24%,rgba(7,13,20,0.34)_52%,rgba(7,13,20,0.7)_78%,#06090e_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.02),transparent_34%,transparent_68%,rgba(0,229,255,0.04))]" />
         
         <div className="relative mx-auto flex min-h-[calc(100vh-4.25rem)] max-w-[1400px] flex-col justify-center px-6 py-20 md:px-8 lg:px-12">
           <div className="max-w-[720px]">
             <AnnouncementPill href="/foundations">
               THE FORMAL LAYER FOR AI-ERA SOFTWARE
             </AnnouncementPill>
-            <h1 className="mt-8 max-w-[15ch] text-balance text-4xl font-medium tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
-              {renderBrandText("Trust infrastructure for software.")}
+            <h1 className="mt-8 max-w-[17ch] text-balance text-4xl font-medium tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
+              {renderBrandText("BRIK64 turns generated and existing software into canonical, reviewable blueprints.")}
             </h1>
-            <p className="mt-6 max-w-[50ch] text-xl leading-relaxed text-white/60">
+            <p className="mt-6 max-w-[55ch] text-xl leading-relaxed text-white/60">
               {renderBrandText("Formalizes software as an information circuit, providing verified and hash-locked logic certification.")}
             </p>
 
-            <div className="mt-10 max-w-[690px]">
-              <div className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,28,0.88),rgba(9,16,24,0.78))] px-5 py-5 shadow-[0_24px_64px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:px-6 sm:py-6">
-                <div className="flex flex-col gap-5">
-                  <span className="ml-1 text-[11px] font-black uppercase tracking-[0.4em] text-[color:var(--accent)]">INSTALL THE BRIK64 ECOSYSTEM</span>
-                  <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-2.5">
-                      <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/58">1. Download the CLI</span>
-                      <div className="flex flex-nowrap items-center gap-4">
-                        <div className="inline-flex min-h-[64px] w-fit items-center gap-2.5 rounded-[22px] border border-white/10 bg-[#0c1520] px-4 py-3 shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
-                          <span className="select-none font-mono text-lg font-bold text-[color:var(--accent)] opacity-90 sm:text-xl">$</span>
-                          <code className="select-all font-mono text-[14px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-[16px]">
-                            curl -sL https://brik64.sh | sh
-                          </code>
-                        </div>
-                        <button
-                          onClick={() => {
-                            navigator.clipboard.writeText("curl -sL https://brik64.sh | sh");
-                          }}
-                          className="group relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] border border-white/10 bg-white/5 text-white/40 transition-all hover:border-[color:var(--accent)]/40 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] active:scale-90"
-                          title="Copy to clipboard"
-                        >
-                          <Copy className="h-5 w-5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2.5">
-                      <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/58">2. Add the skill to your AI agent</span>
-                      <ButtonVNext 
-                        href="https://github.com/brik64-org/skills" 
-                        tone="secondary" 
-                        className="min-h-[60px] w-fit justify-start rounded-[22px] border-white/12 bg-[#1b2940] px-6 py-3 text-[14px] font-black uppercase tracking-[0.22em] text-white shadow-[0_18px_48px_rgba(0,0,0,0.22)] hover:border-[color:var(--accent-soft)] hover:bg-[#22324d]"
-                        external
-                      >
-                        <div className="flex items-center gap-4">
-                          <GitHubMark className="h-5 w-5" />
-                          <span>Grab Skill</span>
-                        </div>
-                      </ButtonVNext>
-                    </div>
-
-                    <div className="flex flex-col gap-2.5">
-                      <span className="text-[11px] font-black uppercase tracking-[0.28em] text-white/58">3. Register in the platform</span>
-                      <ButtonVNext
-                        href="/signup"
-                        tone="secondary"
-                        className="min-h-[60px] w-fit justify-start rounded-[22px] border-white/12 bg-[#1b2940] px-6 py-3 text-[14px] font-black uppercase tracking-[0.22em] text-white shadow-[0_18px_48px_rgba(0,0,0,0.22)] hover:border-[color:var(--accent-soft)] hover:bg-[#22324d]"
-                      >
-                        <div className="flex items-center gap-4">
-                          <Image
-                            src="/brand/b64-icon-alpha.png"
-                            alt="B64 icon"
-                            width={20}
-                            height={20}
-                            unoptimized
-                            className="h-5 w-5 object-contain"
-                          />
-                          <span>Sign Up</span>
-                        </div>
-                      </ButtonVNext>
-                    </div>
+            <div className="mt-10 max-w-[740px]">
+              <div className="flex flex-col gap-3">
+                <span className="ml-1 text-[11px] font-black uppercase tracking-[0.28em] text-white/58">Download the CLI</span>
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="inline-flex min-h-[64px] w-fit items-center gap-2.5 rounded-[22px] border border-white/10 bg-[#0c1520] px-4 py-3 shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
+                    <span className="select-none font-mono text-lg font-bold text-[color:var(--accent)] opacity-90 sm:text-xl">$</span>
+                    <code className="select-all font-mono text-[14px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-[16px]">
+                      curl -sL https://brik64.sh | sh
+                    </code>
                   </div>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("curl -sL https://brik64.sh | sh");
+                    }}
+                    className="group relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] border border-white/10 bg-white/5 text-white/40 transition-all hover:border-[color:var(--accent)]/40 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent)] active:scale-90"
+                    title="Copy to clipboard"
+                  >
+                    <Copy className="h-5 w-5" />
+                  </button>
                 </div>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-4">
+                <ButtonVNext 
+                  href="https://github.com/brik64-org/skills" 
+                  tone="secondary" 
+                  className="min-h-[60px] w-fit justify-start rounded-[22px] border-white/12 bg-[#1b2940] px-6 py-3 text-[14px] font-black uppercase tracking-[0.22em] text-white shadow-[0_18px_48px_rgba(0,0,0,0.22)] hover:border-[color:var(--accent-soft)] hover:bg-[#22324d]"
+                  external
+                >
+                  <div className="flex items-center gap-4">
+                    <GitHubMark className="h-5 w-5" />
+                    <span>Grab Skill</span>
+                  </div>
+                </ButtonVNext>
+
+                <ButtonVNext
+                  href="/signup"
+                  tone="primary"
+                  className="min-h-[60px] w-fit justify-start rounded-[22px] px-6 py-3 text-[14px] font-black uppercase tracking-[0.22em] shadow-[0_18px_48px_rgba(0,0,0,0.22)]"
+                >
+                  <div className="flex items-center gap-4">
+                    <span>Get Started</span>
+                  </div>
+                </ButtonVNext>
               </div>
             </div>
           </div>
@@ -139,7 +117,15 @@ export function VNextHome() {
       <SupportingSurface>
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
           <PageHeaderVNext
-            eyebrow="What is BRIK64?"
+            eyebrow={
+              <>
+                What is{" "}
+                <span className="text-[0.98em] font-semibold normal-case tracking-[-0.04em] text-foreground">
+                  BRIK64
+                </span>
+                ?
+              </>
+            }
             title="Software that functions as hardware."
             description="A trust infrastructure treating code as a formal circuit to be mathematically verified, certified, and published."
           />
@@ -236,10 +222,65 @@ export function VNextHome() {
           <div className="mt-16 max-w-[1100px] mx-auto">
             <LanguageExchangeArtifact />
           </div>
-          <div className="mt-16 max-w-3xl">
-            <p className="text-lg text-white/60">
-              <strong className="text-white font-medium">Compilation as optimization:</strong> The compiler refuses to compile a circuit if its domains and closure conditions are ambiguous. If Φc ≠ 1, the compiler rejects it. The system guides you to iteratively optimize your own code until bounds are strictly defined.
-            </p>
+          <div className="mt-16 rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(9,16,24,0.96),rgba(7,12,18,0.92))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] lg:p-8">
+            <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">Compiler AI Agents Feedback Loops</p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white">Compilation becomes a positive feedback loop for the AI agent.</h3>
+                <p className="mt-4 text-sm leading-7 text-white/58">
+                  When domains or closure are ambiguous, the compiler rejects the circuit. The agent reads that error, narrows the next attempt, and re-enters the loop with better constraints until the blueprint closes cleanly.
+                </p>
+              </div>
+
+              <div className="rounded-[26px] border border-white/8 bg-black/20 p-4">
+                <div className="relative grid gap-3 md:grid-cols-2">
+                  <div className="rounded-[20px] border border-[color:var(--accent-soft)]/30 bg-[color:var(--accent-soft)]/10 p-3.5 md:pr-10">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">01</span>
+                      <Bot className="h-4 w-4 text-[color:var(--accent)]" />
+                    </div>
+                    <p className="mt-3 text-[13px] font-semibold text-white">Agent drafts the next circuit attempt</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">The current blueprint, domains, and last compiler note become the next prompt context.</p>
+                  </div>
+
+                  <div className="rounded-[20px] border border-white/10 bg-white/[0.03] p-3.5 md:pl-10">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">02</span>
+                      <TerminalSquare className="h-4 w-4 text-white/65" />
+                    </div>
+                    <p className="mt-3 text-[13px] font-semibold text-white">Compiler checks domains and closure</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">If the bounds are explicit, the loop converges. If not, the compiler emits an actionable rejection.</p>
+                  </div>
+
+                  <div className="rounded-[20px] border border-amber-500/20 bg-amber-500/[0.08] p-3.5 md:pr-10">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-amber-400">03</span>
+                      <CircleAlert className="h-4 w-4 text-amber-400" />
+                    </div>
+                    <p className="mt-3 text-[13px] font-semibold text-white">Error feeds the next refinement pass</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">The rejection explains what is still open: undefined domain, ambiguous path, or missing contract boundary.</p>
+                  </div>
+
+                  <div className="rounded-[20px] border border-emerald-500/20 bg-emerald-500/[0.08] p-3.5 md:pl-10">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-400">04</span>
+                      <RefreshCw className="h-4 w-4 text-emerald-400" />
+                    </div>
+                    <p className="mt-3 text-[13px] font-semibold text-white">Loop until the circuit becomes bounded</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">Each pass gives the agent a tighter target, so compilation pressure becomes guidance instead of dead-end failure.</p>
+                  </div>
+
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[radial-gradient(circle_at_center,rgba(16,38,62,0.98),rgba(8,14,22,0.96))] shadow-[0_20px_56px_rgba(0,0,0,0.46)] md:flex">
+                    <div className="absolute inset-2 rounded-full border border-white/6" />
+                    <div className="absolute inset-4 rounded-full border border-white/5" />
+                    <RefreshCw className="absolute h-14 w-14 text-white/10" />
+                    <span className="relative z-10 font-mono text-[13px] font-bold uppercase tracking-[0.34em] text-[color:var(--accent)]">
+                      PCD
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </SupportingSurface>
@@ -258,17 +299,18 @@ export function VNextHome() {
                 <MonomerMatrix
                   hoveredId={hoveredMonomer.id}
                   onHover={setHoveredMonomer}
+                  coreAction={
+                    <ButtonVNext href="https://docs.brik64.com" tone="primary" className="text-xs font-bold uppercase tracking-widest">
+                      Learn PCD Language
+                    </ButtonVNext>
+                  }
+                  extendedAction={
+                    <ButtonVNext href="https://github.com/brik64" tone="secondary" external className="text-xs font-bold uppercase tracking-widest">
+                      <GitHubMark className="h-4 w-4" />
+                      Add Skills to your AI Agent
+                    </ButtonVNext>
+                  }
                 />
-              </div>
-
-              <div className="mt-10 flex w-full flex-wrap justify-center gap-4 lg:justify-start">
-                <ButtonVNext href="https://docs.brik64.com" tone="primary" className="text-xs font-bold uppercase tracking-widest">
-                  Learn PCD Language
-                </ButtonVNext>
-                <ButtonVNext href="https://github.com/brik64" tone="secondary" external className="text-xs font-bold uppercase tracking-widest">
-                  <GitHubMark className="h-4 w-4" />
-                  Add Skills to your AI Agent
-                </ButtonVNext>
               </div>
             </div>
 
@@ -344,8 +386,9 @@ export function VNextHome() {
       </SupportingSurface>
 
       {/* Section 9: Incremental Adoption */}
-      <SupportingSurface className="relative border-t border-border bg-[#001f28] blueprint-grid overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />
+      <SupportingSurface className="relative border-t border-border bg-[#0a1520] blueprint-grid overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.9)_0%,rgba(2,7,12,0.76)_24%,rgba(4,8,13,0.5)_52%,rgba(1,4,8,0.92)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.04)_0%,rgba(9,25,39,0.08)_34%,rgba(4,10,16,0.4)_72%,rgba(1,4,8,0.9)_100%)] pointer-events-none" />
         <div className="relative mx-auto grid max-w-[1400px] gap-10 px-6 py-24 md:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-12">
           <PageHeaderVNext
             eyebrow="Incremental Adoption"
@@ -374,10 +417,10 @@ export function VNextHome() {
       </SupportingSurface>
 
       {/* Section 9: Digital Circuitality */}
-      <SupportingSurface className="relative border-t border-[#242a31] bg-[#0b0b0f] blueprint-grid overflow-hidden">
+      <SupportingSurface className="relative border-t border-[#242a31] bg-[#09111a] blueprint-grid overflow-hidden">
         {/* Technical Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(57,210,255,0.06),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.9)_0%,rgba(2,6,10,0.74)_26%,rgba(3,8,13,0.54)_52%,rgba(1,4,8,0.92)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.04)_0%,rgba(14,32,52,0.08)_34%,rgba(5,12,20,0.42)_70%,rgba(1,4,8,0.88)_100%)] pointer-events-none" />
         
         <div className="relative mx-auto max-w-[1400px] px-6 py-40 md:px-8 lg:px-12">
           <div className="flex flex-col items-center">

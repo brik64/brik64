@@ -395,7 +395,7 @@ export function Navbar() {
               href="/signup"
               className="ml-3 inline-flex h-11 items-center justify-center rounded-[16px] bg-white px-4 text-[15px] font-semibold leading-5 text-[#0b1118] transition-colors hover:bg-white/92 font-display"
             >
-              Sign Up
+              Get Started
             </Link>
           </div>
 
@@ -470,7 +470,7 @@ export function Navbar() {
                 className="inline-flex h-11 items-center justify-center rounded-[16px] bg-white px-4 text-[15px] font-semibold text-[#0b1118] transition-colors hover:bg-white/92"
                 onClick={() => setOpen(false)}
               >
-                Sign Up
+                Get Started
               </Link>
             </div>
           </div>

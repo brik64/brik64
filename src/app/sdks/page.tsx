@@ -7,6 +7,7 @@ const sdksPage: UtilityPageSpec = {
     eyebrow: "Tooling & SDKs",
     title: "Native bindings for",
     highlight: "high-integrity modules.",
+    backgroundImageSrc: "/generated/sdks-hero-bg.png",
     description: 
       "Brik-64 is not a sandbox. It is a system bridge. Our SDKs provide the native glue to execute policy circuits in Rust, Go, Python, and TypeScript with zero-copy safety.",
     actions: [

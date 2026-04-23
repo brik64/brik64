@@ -5,6 +5,7 @@ const compliancePage: UtilityPageSpec = {
     eyebrow: "Compliance",
     title: "Compliance review starts with bounded software evidence, not blanket",
     highlight: "certification claims.",
+    backgroundImageSrc: "/generated/compliance-hero-bg.png",
     description: "BRIK64 generates reviewable software evidence that teams can carry into audit and governance workflows. That evidence supports engineering and compliance review; it does not satisfy regulatory or organizational programs on its own.",
     actions: [
       { label: "Request evaluation", href: "mailto:enterprise@brik64.com", tone: "primary" },

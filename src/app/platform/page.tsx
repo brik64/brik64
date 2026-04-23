@@ -5,6 +5,7 @@ const platformPage: UtilityPageSpec = {
     eyebrow: "Product",
     title: "Platform is where bounded blueprints become",
     highlight: "governed packages.",
+    backgroundImageSrc: "/generated/platform-hero-bg.png",
     description:
       "Workspace state, registry rows, publication flow, and package identity stay attached to the same canonical blueprint instead of fragmenting across tools.",
     actions: [

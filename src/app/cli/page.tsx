@@ -7,6 +7,7 @@ const cliPage: UtilityPageSpec = {
     eyebrow: "CLI",
     title: "Entry point into the",
     highlight: "formal layer.",
+    backgroundImageSrc: "/generated/cli-hero-bg.png",
     description: "Use brikc to lift source logic into PCD, check closure and domains, emit supported targets, and publish reusable packages without losing review state.",
     actions: [
       { label: "Open docs", href: "https://docs.brik64.dev", tone: "primary", external: true },

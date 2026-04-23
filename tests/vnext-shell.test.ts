@@ -38,7 +38,7 @@ describe("vNext shell", () => {
     const navbar = read("src/components/Navbar.tsx");
     expect(navbar).toContain("GitHubStarBadge");
     expect(navbar).toContain("Login");
-    expect(navbar).toContain("Sign Up");
+    expect(navbar).toContain("Get Started");
     expect(navbar).toContain("socialLinks.discord");
     expect(navbar).toContain("Product");
     expect(navbar).toContain("Industries");

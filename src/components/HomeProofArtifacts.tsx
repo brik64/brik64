@@ -138,16 +138,19 @@ export function MetricTile({
   value,
   detail,
   dark = false,
+  className,
 }: {
   label: string;
   value: ReactNode;
   detail?: string;
   dark?: boolean;
+  className?: string;
 }) {
   return (
     <div className={cx(
       "rounded-2xl border p-4 shadow-sm",
-      dark ? "border-white/10 bg-white/[0.04]" : "border-border/80 bg-background/90",
+      dark ? "border-white/12 bg-[#0f1a28]" : "border-border/80 bg-background/90",
+      className,
     )}>
       <p className={cx(
         "text-[10px] font-semibold uppercase tracking-[0.16em]",

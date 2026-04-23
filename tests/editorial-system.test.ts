@@ -37,6 +37,7 @@ describe("Editorial system — pagination and covers", () => {
     expect(content).toContain("EditorialCoverMeta");
     expect(content).toContain("coverTheme");
     expect(content).toContain("getEditorialCover");
+    expect(content).toContain("/blog/covers/posts/");
   });
 
   it("news data also carries editorial covers", () => {
@@ -48,14 +49,14 @@ describe("Editorial system — pagination and covers", () => {
 
   it("blog listing renders featured artifact plus pagination rail", () => {
     const content = read("src/app/blog/page.tsx");
-    expect(content).toContain("FeaturedEditorialCard");
-    expect(content).toContain("PaginationRail");
-    expect(content).toContain("EditorialHero");
+    expect(content).toContain("FeaturedPostCard");
+    expect(content).toContain("ArchivePagination");
+    expect(content).toContain("EditorialHeroVNext");
   });
 
   it("blog detail renders the editorial hero with cover metadata", () => {
     const content = read("src/app/blog/[slug]/page.tsx");
-    expect(content).toContain("EditorialArticleHero");
+    expect(content).toContain("EditorialArticleHeroVNext");
     expect(content).toContain("coverImage");
     expect(content).toContain("coverAlt");
     expect(content).toContain("openGraph");

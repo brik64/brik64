@@ -24,6 +24,7 @@ function industry(config: {
   title: string;
   highlight: string;
   description: string;
+  heroBackgroundImageSrc?: string;
   heroMetrics: RiskPageSpec["hero"]["metrics"];
   heroStatusLabel: string;
   heroStatusTone?: RiskPageSpec["hero"]["statusTone"];
@@ -64,6 +65,7 @@ function industry(config: {
       title: config.title,
       highlight: config.highlight,
       description: config.description,
+      backgroundImageSrc: config.heroBackgroundImageSrc,
       actions: config.ctaActions,
       metrics: config.heroMetrics,
       statusLabel: config.heroStatusLabel,
@@ -345,6 +347,7 @@ export const industryPages = {
     highlight: "certification work begins.",
     description:
       "Avionics and control teams need a software artifact that makes envelope limits, mode transitions, and degraded behavior readable before the wider certification process absorbs the code. BRIK-64 helps express that logic as bounded control circuits and emitted review artifacts.",
+    heroBackgroundImageSrc: "/generated/aerospace-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "PCD control review", detail: "Capture flight-envelope limits and transition rules in a bounded representation before downstream review packages expand." },
       { label: "Artifact emitted", value: "Control review dossier", detail: "Keep envelope checks, fallback posture, and emitted state together so another engineer can inspect the exact software boundary." },
@@ -418,6 +421,7 @@ export const industryPages = {
     highlight: "agent actions.",
     description:
       "Production AI systems fail when model outputs move into execution without a readable policy boundary. BRIK-64 helps teams keep action gating, generated-code review, and operator diagnostics outside the model so they remain inspectable and changeable.",
+    heroBackgroundImageSrc: "/generated/ai-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "AI Agents gate", detail: "Insert a bounded policy circuit between the model output and the tool or execution path it would otherwise trigger." },
       { label: "Artifact emitted", value: "Operator diagnostics", detail: "Return structured reasons when an action or generated code path is rejected so the loop can repair itself." },
@@ -491,6 +495,7 @@ export const industryPages = {
     highlight: "change-sensitive review.",
     description:
       "Vehicle platform teams need a software artifact that exposes actuation thresholds, sensor assumptions, and fallback behavior across revisions. BRIK-64 helps turn that control logic into a bounded artifact that survives safety and enterprise handoff.",
+    heroBackgroundImageSrc: "/generated/automotive-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Platform control review", detail: "Use the platform workflow to inspect actuation logic, bounded thresholds, and fallback posture before the control component moves deeper into the release path." },
       { label: "Artifact emitted", value: "Safety review dossier", detail: "Emit an artifact that keeps threshold logic, sensor assumptions, and decision state coupled instead of scattering them across comments and hidden branches." },
@@ -564,6 +569,7 @@ export const industryPages = {
     highlight: "calculation trails.",
     description:
       "Simulation, controls, and industrial calculation pipelines break when materials, units, ranges, and accepted transforms remain implicit. BRIK-64 helps teams express those assumptions in PCD and emit a computational dossier another engineer can inspect and reuse.",
+    heroBackgroundImageSrc: "/generated/engineering-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "PCD computation blueprint", detail: "Start by declaring units, materials, and bounds in a formal representation before the calculation path disappears into a larger toolchain." },
       { label: "Artifact emitted", value: "Computational dossier", detail: "Preserve the assumptions, the bounded transform, and the emitted engineering state in one inspectable object." },
@@ -638,6 +644,7 @@ export const industryPages = {
     highlight: "legacy behavior is rewritten.",
     description:
       "Payment flows, ledger transitions, approval gates, and risk calculations all live under audit pressure. BRIK-64 helps teams lift that logic into a reviewable artifact before refactoring, transpilation, or modernization hides the behavior they still need to preserve.",
+    heroBackgroundImageSrc: "/generated/finance-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Lifter review path", detail: "Lift legacy payment, ledger, and business-rule logic into a bounded artifact before it is migrated or replaced." },
       { label: "Artifact emitted", value: "Audit-ready rule dossier", detail: "Keep transaction bounds, approval gates, and emitted decision state together so risk and compliance engineers can inspect the same object." },
@@ -714,6 +721,7 @@ export const industryPages = {
     highlight: "auditable processing.",
     description:
       "Eligibility engines, routing rules, and case-processing logic all sit under oversight pressure. BRIK-64 helps public-sector teams turn those decision paths into readable software artifacts that preserve accepted inputs, emitted state, and audit context.",
+    heroBackgroundImageSrc: "/generated/government-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Compliance rule review", detail: "Start where deterministic policy logic still needs inspection before it is buried inside a broader operational workflow." },
       { label: "Artifact emitted", value: "Oversight-ready rule artifact", detail: "Preserve the rule set, bounded inputs, and emitted decision state in a form an engineering or oversight reviewer can inspect." },
@@ -787,6 +795,7 @@ export const industryPages = {
     highlight: "reviewable artifacts.",
     description:
       "Dose calculators, device-adjacent workflows, and clinical state transitions all need a readable software boundary long before broader clinical processes take over. BRIK-64 helps teams express that logic as bounded review artifacts without making efficacy or compliance claims.",
+    heroBackgroundImageSrc: "/generated/healthcare-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Safety-Critical review", detail: "Start where dose or workflow logic still needs explicit engineering review before it enters broader clinical or device processes." },
       { label: "Artifact emitted", value: "Clinical logic dossier", detail: "Preserve dose boundaries, escalation paths, and emitted review state in a software artifact another engineer can inspect." },
@@ -860,6 +869,7 @@ export const industryPages = {
     highlight: "shareable computational blueprints.",
     description:
       "Research software becomes brittle when units, calibration factors, and transform steps remain implicit in notebooks or scripts. BRIK-64 helps teams express those assumptions as bounded computational artifacts that preserve how a result was produced and how another team can reproduce it.",
+    heroBackgroundImageSrc: "/generated/science-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "PCD reproducibility blueprint", detail: "Start by declaring ranges, units, and calibration factors in a formal representation before the computational path fragments across tools." },
       { label: "Artifact emitted", value: "Publication-ready trace", detail: "Preserve the transform chain and result lineage so another technical reader can inspect what the software actually computed." },

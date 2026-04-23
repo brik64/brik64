@@ -15,8 +15,7 @@ const regulatedIndustries: IndustryCard[] = [
   {
     id: "AER-01",
     title: "Aerospace",
-    description:
-      "Formal evidence workflows for flight-critical logic, mode transitions, and certification-oriented review.",
+    description: "Review-ready logic for flight-critical decisions.",
     badges: ["DO-178C Evidence Support", "Review-Ready", "Traceable Logic"],
     frameworkLabel: "DO-178C",
     shortLabel: "AEROSPC",
@@ -26,8 +25,7 @@ const regulatedIndustries: IndustryCard[] = [
   {
     id: "MED-02",
     title: "Healthcare",
-    description:
-      "Structured review support for software lifecycle controls, clinical logic, and regulated engineering environments.",
+    description: "Clinical review support for regulated software logic.",
     badges: ["IEC 62304 Aligned", "Audit-Ready Evidence", "Controlled Changes"],
     frameworkLabel: "HIPAA",
     shortLabel: "HEALTH",
@@ -37,8 +35,7 @@ const regulatedIndustries: IndustryCard[] = [
   {
     id: "AUT-03",
     title: "Automotive",
-    description:
-      "Verification-oriented workflows for safety-critical logic, fallback behavior, and system review.",
+    description: "Safety review flows for fallback and control logic.",
     badges: ["ISO 26262 Support", "ASIL-Oriented Review", "Safety Logic Trace"],
     frameworkLabel: "ISO 26262",
     shortLabel: "AUTOMTV",
@@ -48,8 +45,7 @@ const regulatedIndustries: IndustryCard[] = [
   {
     id: "FIN-04",
     title: "Finance",
-    description:
-      "Evidence-ready control workflows for transaction logic, approvals, and audit-sensitive operational systems.",
+    description: "Audit-ready controls for approvals and transaction logic.",
     badges: ["PCI DSS Evidence", "SOX-Oriented Controls", "Audit Trail Ready"],
     frameworkLabel: "PCI DSS",
     shortLabel: "FINANCE",
@@ -59,8 +55,7 @@ const regulatedIndustries: IndustryCard[] = [
   {
     id: "GOV-05",
     title: "Government",
-    description:
-      "Documentation and review posture for security-sensitive deployments and formal assurance environments.",
+    description: "Structured review for security-sensitive deployments.",
     badges: ["FedRAMP Readiness", "NIST-Oriented Controls", "Review Support"],
     frameworkLabel: "FedRAMP",
     shortLabel: "GOVRNMT",
@@ -70,8 +65,7 @@ const regulatedIndustries: IndustryCard[] = [
   {
     id: "ENG-06",
     title: "Engineering",
-    description:
-      "Technical review support for assumptions, thresholds, calculations, and verifiable decision logic.",
+    description: "Verifiable review for assumptions and calculations.",
     badges: ["IEC 61508-Oriented", "Verification Support", "Calculation Trace"],
     frameworkLabel: "IEC 61508",
     shortLabel: "ENGINRG",
@@ -107,24 +101,24 @@ export function RegulatedIndustriesSection() {
                   <h3 className="text-[22px] font-semibold tracking-[-0.03em] text-white">
                     {industry.title}
                   </h3>
-                  <p className="mt-3 max-w-[38ch] text-sm leading-7 text-white/58">
+                  <p className="mt-3 text-sm leading-7 text-white/58 xl:whitespace-nowrap">
                     {industry.description}
                   </p>
                 </div>
 
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                  <div className="flex flex-col gap-2.5 sm:max-w-[60%]">
+                <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_160px] lg:items-end">
+                  <div className="flex min-w-0 flex-col gap-2.5">
                     {industry.badges.map((badge) => (
                       <span
                         key={badge}
-                        className="inline-flex h-9 w-[214px] items-center justify-center whitespace-nowrap rounded-[12px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                        className="inline-flex h-9 w-full min-w-0 items-center justify-center rounded-[12px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                       >
                         {badge}
                       </span>
                     ))}
                   </div>
 
-                  <div className={`flex w-full max-w-[188px] shrink-0 flex-col items-center justify-center rounded-[16px] border border-white/10 bg-gradient-to-br ${industry.tint} px-3 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:ml-auto`}>
+                  <div className={`flex w-full min-w-0 flex-col items-center justify-center rounded-[16px] border border-white/10 bg-gradient-to-br ${industry.tint} px-3 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] lg:max-w-[160px] lg:justify-self-end`}>
                     <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
                       {industry.frameworkLabel}
                     </span>

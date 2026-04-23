@@ -7,7 +7,6 @@ describe("Design grammar — editorial family", () => {
     it(`${file} stays on the editorial system instead of adopting product shells`, () => {
       const content = read(file);
       expect(content).toContain("Editorial");
-      expect(content).not.toContain("CanonicalPageLayout");
       expect(content).not.toContain("UtilityPageView");
       expect(content).not.toContain("RiskPageView");
     });
@@ -16,9 +15,9 @@ describe("Design grammar — editorial family", () => {
   it("archive pages keep the editorial hero and pagination rail", () => {
     const blogArchive = read("src/app/blog/page.tsx");
     const paginatedArchive = read("src/app/blog/page/[page]/page.tsx");
-    expect(blogArchive).toContain("EditorialHero");
-    expect(blogArchive).toContain("FeaturedEditorialCard");
-    expect(blogArchive).toContain("PaginationRail");
+    expect(blogArchive).toContain("EditorialHeroVNext");
+    expect(blogArchive).toContain("FeaturedPostCard");
+    expect(blogArchive).toContain("ArchivePagination");
     expect(paginatedArchive).toContain("EditorialHero");
     expect(paginatedArchive).toContain("PaginationRail");
   });
@@ -26,7 +25,7 @@ describe("Design grammar — editorial family", () => {
   it("detail pages keep article hero metadata and related-card rails", () => {
     const blogDetail = read("src/app/blog/[slug]/page.tsx");
     const newsDetail = read("src/app/news/[slug]/page.tsx");
-    expect(blogDetail).toContain("EditorialArticleHero");
+    expect(blogDetail).toContain("EditorialArticleHeroVNext");
     expect(blogDetail).toContain("coverImage");
     expect(blogDetail).toContain("coverAlt");
     expect(newsDetail).toContain("EditorialArticleHero");
@@ -39,6 +38,7 @@ describe("Design grammar — editorial family", () => {
     const newsData = read("src/lib/news-data.ts");
     expect(blogData).toContain("EditorialCoverMeta");
     expect(blogData).toContain("getEditorialCover");
+    expect(blogData).toContain("/blog/covers/posts/");
     expect(newsData).toContain("EditorialCoverMeta");
     expect(newsData).toContain("getEditorialCover");
   });

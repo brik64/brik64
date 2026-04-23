@@ -1,7 +1,9 @@
 "use client";
 
+import type { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
-import { CORE_MONOMERS, EXTENDED_MONOMERS, Monomer } from "@/lib/monomer-data";
+import { CORE_MONOMERS, EXTENDED_MONOMERS } from "@/lib/monomer-data";
 
 interface MonomerMatrixProps {
   hoveredId: string;
@@ -13,9 +15,11 @@ interface MonomerMatrixProps {
     property: string;
     description: string;
   }) => void;
+  coreAction?: ReactNode;
+  extendedAction?: ReactNode;
 }
 
-export function MonomerMatrix({ hoveredId, onHover }: MonomerMatrixProps) {
+export function MonomerMatrix({ hoveredId, onHover, coreAction, extendedAction }: MonomerMatrixProps) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-8 xl:gap-12">
       {/* Core Matrix 8x8 */}
@@ -48,6 +52,7 @@ export function MonomerMatrix({ hoveredId, onHover }: MonomerMatrixProps) {
             );
           })}
         </div>
+        {coreAction ? <div className="flex justify-center pt-3">{coreAction}</div> : null}
       </div>
 
       {/* Extended Matrix 8x8 */}
@@ -80,6 +85,7 @@ export function MonomerMatrix({ hoveredId, onHover }: MonomerMatrixProps) {
             );
           })}
         </div>
+        {extendedAction ? <div className="flex justify-center pt-3">{extendedAction}</div> : null}
       </div>
     </div>
   );

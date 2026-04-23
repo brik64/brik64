@@ -7,6 +7,7 @@ const registryPage: UtilityPageSpec = {
     eyebrow: "Component Registry",
     title: "Reusable packages with",
     highlight: "visible blueprint state.",
+    backgroundImageSrc: "/generated/registry-hero-bg.png",
     description: "Registry is the reusable layer of the formal system: package identity, closure state, boundary notes, hashes, and invalidation semantics stay visible when teams discover or publish logic.",
     actions: [
       { label: "Search Registry", href: "https://registry.brik64.com", external: true, tone: "primary" },

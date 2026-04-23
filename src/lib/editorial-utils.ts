@@ -18,10 +18,11 @@ export interface EditorialCoverMeta {
 export function getEditorialCover(
   theme: EditorialCoverTheme,
   alt: string,
+  imagePath?: string,
 ): EditorialCoverMeta {
   return {
     coverTheme: theme,
-    coverImage: `/blog/covers/${theme}.svg`,
+    coverImage: imagePath ?? `/blog/covers/${theme}.svg`,
     coverAlt: alt,
   };
 }

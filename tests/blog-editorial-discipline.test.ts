@@ -1,8 +1,12 @@
+import fs from "fs";
+import path from "path";
 import { describe, expect, it } from "vitest";
 
 import { blogPosts } from "@/lib/blog-data";
 
 import { read } from "./site-grammar";
+
+const ROOT = path.resolve(__dirname, "..");
 
 const bannedBlogPhrases = [
   "Zero Bugs",
@@ -17,7 +21,7 @@ describe("Blog editorial discipline", () => {
   it("blog index no longer describes the editorial system itself", () => {
     const content = read("src/app/blog/page.tsx");
     expect(content).toContain(
-      "Essays, product notes, engineering reports, and research writing",
+      "Technical writing, product notes, research, and proof-driven engineering articles",
     );
     expect(content).not.toContain("editorial surface");
     expect(content).not.toContain("featured artifact");
@@ -42,5 +46,22 @@ describe("Blog editorial discipline", () => {
     expect(titles).toContain("What Digital Circuitality Tries to Formalize");
     expect(titles).toContain("One Blueprint Across Multiple Targets");
     expect(titles).toContain("BPU: Policy Enforcement as a Hardware Roadmap");
+  });
+
+  it("blog posts use dedicated raster covers instead of shared stock SVGs", () => {
+    const coverImages = blogPosts.map((post) => post.coverImage);
+    expect(new Set(coverImages).size).toBe(blogPosts.length);
+
+    for (const post of blogPosts) {
+      expect(post.coverImage).toBe(`/blog/covers/posts/${post.slug}.png`);
+      expect(post.coverImage.endsWith(".svg")).toBe(false);
+    }
+  });
+
+  it("every blog post cover asset exists in the public tree", () => {
+    for (const post of blogPosts) {
+      const assetPath = path.join(ROOT, "public", post.coverImage.replace(/^\//, ""));
+      expect(fs.existsSync(assetPath), `Missing blog cover asset for ${post.slug}`).toBe(true);
+    }
   });
 });
