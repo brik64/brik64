@@ -324,7 +324,11 @@ export function CanonicalPageHero({
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           {actions.map((action) => (
-            <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
+            <ActionAnchor
+              key={`${action.label}-${action.href}`}
+              action={action}
+              forceOpaqueSecondary
+            />
           ))}
         </div>
 

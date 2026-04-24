@@ -1,12 +1,11 @@
-import { UtilityPageView } from "@/components/PageArchetypes";
-import { utilityPages } from "@/lib/utility-page-data";
+import { AuthMockView } from "@/components/auth/AuthMockView";
 
 export const metadata = {
   title: "Signup — BRIK64",
   description:
-    "A minimal, on-system signup page for entering the BRIK64 platform flow.",
+    "Mock signup shell for future BRIK64 platform authentication.",
 };
 
 export default function SignupPage() {
-  return <UtilityPageView page={utilityPages.signup} />;
+  return <AuthMockView mode="signup" />;
 }

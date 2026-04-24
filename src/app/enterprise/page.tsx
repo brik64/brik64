@@ -91,7 +91,7 @@ export default function EnterprisePage() {
               <ButtonVNext href="mailto:enterprise@brik64.com" external tone="primary" className="h-14 rounded-2xl px-10 font-black">
                 Request Architecture Review
               </ButtonVNext>
-              <ButtonVNext href="/compliance" tone="secondary" className="h-14 rounded-2xl px-10 font-black">
+              <ButtonVNext href="/compliance" tone="secondary" className="h-14 rounded-2xl px-10 font-black !bg-[#0f1c2e] !border-white/55 !text-white hover:!bg-[#162a43] shadow-[0_14px_32px_rgba(0,0,0,0.42)]">
                 Read Compliance
               </ButtonVNext>
             </div>
