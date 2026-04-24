@@ -6,7 +6,8 @@ import {
   PillarCard,
   BrandWordmark,
   CanonicalPageLayout,
-  ProtagonistSurface
+  ProtagonistSurface,
+  DigitalCircuitalityBackdrop,
 } from "@/components/PageArchetypes";
 import { Layers, Terminal, ShieldCheck, BookOpen, ExternalLink } from "lucide-react";
 
@@ -88,8 +89,8 @@ export default function AboutPage() {
         </section>
 
         {/* Mission surface */}
-        <SupportingSurface className="relative border-t border-white/5 bg-[#0b0b0f] overflow-hidden blueprint-grid">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
+        <SupportingSurface className="relative border-t border-[#242a31] bg-[#09111a] overflow-hidden blueprint-grid">
+          <DigitalCircuitalityBackdrop />
           <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
             <div className="grid gap-16 lg:grid-cols-2">
               <div>

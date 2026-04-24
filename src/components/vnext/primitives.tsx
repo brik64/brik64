@@ -201,6 +201,23 @@ export function SurfaceCard({
   );
 }
 
+export function DigitalCircuitalityBackdrop() {
+  return (
+    <>
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.34] [filter:saturate(1.03)_contrast(1.02)_brightness(0.74)]"
+        style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.08] [filter:saturate(1.08)_contrast(1.02)_brightness(1.03)]"
+        style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.94)_0%,rgba(2,6,10,0.82)_26%,rgba(3,8,13,0.68)_52%,rgba(1,4,8,0.96)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.02)_0%,rgba(14,32,52,0.14)_34%,rgba(5,12,20,0.56)_70%,rgba(1,4,8,0.92)_100%)]" />
+    </>
+  );
+}
+
 export function ProductFrame({
   children,
   className,

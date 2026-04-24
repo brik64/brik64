@@ -233,16 +233,17 @@ export default function FeaturesPage() {
       <main>
         <ProtagonistSurface className="flex flex-col items-center justify-center pt-32 pb-24 md:pt-48 md:pb-32">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.64] [filter:saturate(1.08)_contrast(1.01)_brightness(1.08)]"
             style={{ backgroundImage: "url(/generated/features-hero-bg.png)" }}
           />
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.2] [filter:saturate(1.08)_contrast(1.0)_brightness(1.08)]"
             style={{ backgroundImage: "url(/generated/features-hero-bg.png)" }}
           />
-          <div className="absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.02)_0%,rgba(7,16,26,0.32)_36%,rgba(2,6,10,0.46)_72%,rgba(1,3,6,0.72)_100%)]" />
+          <div className="absolute inset-0 bg-[rgba(1,4,8,0.04)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.34)_0%,rgba(2,6,10,0.26)_24%,rgba(2,6,10,0.22)_54%,rgba(1,3,6,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.06)_0%,rgba(23,69,109,0.2)_34%,rgba(4,12,20,0.34)_68%,rgba(1,3,6,0.58)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,223,255,0.16),transparent_42%)]" />
           <HeroWireframe />
           <div className="relative z-10 px-6 text-center">
             <PageHeaderVNext

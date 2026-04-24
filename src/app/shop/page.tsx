@@ -1,7 +1,5 @@
 import Link from "next/link";
 import {
-  BrandWordmark,
-  ChipVNext,
   SupportingSurface,
   ProductFrame,
   ButtonVNext
@@ -13,7 +11,7 @@ import { getPrintfulStorefront } from "@/lib/printful";
 export const metadata = {
   title: "Shop — BRIK64",
   description:
-    "BRIK64 merchandise storefront and support path.",
+    "BRIK64 merchandise storefront and team-order support.",
 };
 
 function formatPrice(minPrice: number, maxPrice: number, currency: string): string {
@@ -38,7 +36,7 @@ export default async function ShopPage() {
       <EditorialHeroVNext 
         eyebrow="Merch storefront"
         title="BRIK64 Core Gear"
-        description="Merchandise, product details, and support for team orders."
+        description="Merchandise, product details, and team-order support."
         topics={["Stickers", "Apparel", "Hardware Essentials"]}
       />
       
@@ -51,7 +49,7 @@ export default async function ShopPage() {
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/30">Store status</p>
                 <h2 className="mt-6 text-3xl font-bold text-white max-w-xl mx-auto">The current product drop is not available in this build.</h2>
                 <p className="mt-6 text-lg text-white/50 mx-auto max-w-lg">
-                   Use merch support for current availability.
+                   Check support for current availability.
                 </p>
               </div>
             ) : (
@@ -109,7 +107,7 @@ export default async function ShopPage() {
            <div className="max-w-2xl mx-auto space-y-8">
               <h2 className="text-3xl font-bold text-white">Need custom team gear?</h2>
               <p className="text-lg text-white/50 leading-relaxed">
-                For bulk or custom team orders, contact sales.
+                For bulk or custom orders, contact sales.
               </p>
               <div className="flex justify-center gap-6 pt-4">
                 <ButtonVNext href="/support" tone="secondary" className="rounded-xl px-10">

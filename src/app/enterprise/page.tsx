@@ -5,6 +5,7 @@ import {
   SupportingSurface,
   ButtonVNext,
   PillarCard,
+  DigitalCircuitalityBackdrop,
 } from "@/components/PageArchetypes";
 import { ShieldCheck, Key, GitBranch, ExternalLink } from "lucide-react";
 
@@ -126,8 +127,8 @@ export default function EnterprisePage() {
         </section>
 
         {/* Handoff routes */}
-        <SupportingSurface className="relative border-t border-white/5 bg-[#0b0b0f] blueprint-grid overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
+        <SupportingSurface className="relative border-t border-[#242a31] bg-[#09111a] blueprint-grid overflow-hidden">
+          <DigitalCircuitalityBackdrop />
           <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
             <div className="mb-12">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Enterprise Handoff</p>

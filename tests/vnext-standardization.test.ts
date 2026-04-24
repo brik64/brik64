@@ -34,8 +34,8 @@ describe("UI Standardization — Global Navigation & Brand", () => {
 describe("Homepage Narrative — High Impact & Authority", () => {
   it("Hero subtitle uses the concise, high-velocity version and larger font", () => {
     const content = read("src/components/vnext/home.tsx");
-    expect(content).toContain("BRIK64 turns generated and existing software into canonical, reviewable blueprints.");
-    expect(content).toContain("Turn generated and existing code into canonical blueprints that teams can review, certify, and govern.");
+    expect(content).toContain("AI writes code. BRIK64 makes it trustworthy.");
+    expect(content).toContain("Convert generated and existing software into canonical blueprints that can be reviewed, certified, and compiled.");
     expect(content).toContain('text-xl leading-relaxed text-white/60');
   });
 

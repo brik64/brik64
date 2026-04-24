@@ -129,8 +129,16 @@ export function RegulatedIndustriesSection() {
                     {industry.badges.map((badge) => (
                       <span
                         key={badge}
-                        className="inline-flex h-9 w-full min-w-0 items-center justify-center rounded-[12px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                        className="inline-flex h-9 w-full min-w-0 items-center justify-center gap-2 rounded-[12px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-3 text-center text-[10px] font-semibold uppercase tracking-[0.12em] text-white/72 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                       >
+                        <Image
+                          src={industry.markSrc}
+                          alt=""
+                          width={12}
+                          height={12}
+                          className="h-3 w-3 object-contain opacity-85"
+                          unoptimized
+                        />
                         {badge}
                       </span>
                     ))}

@@ -2,30 +2,19 @@
 
 import { PhiC } from "@/components/PhiC";
 import {
-  BookOpen,
-  GraduationCap,
   ArrowRight,
-  ExternalLink,
   ShieldCheck,
   Zap,
   Activity,
   Layers,
-  Search,
 } from "lucide-react";
 import { 
   PageHeaderVNext, 
   SupportingSurface, 
-  ButtonVNext, 
-  BrandWordmark,
-  PillarCard
+  PillarCard,
+  DigitalCircuitalityBackdrop,
 } from "@/components/vnext/primitives";
 import { CanonicalPageLayout, ActionAnchor } from "@/components/PageArchetypes";
-import dynamic from "next/dynamic";
-
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
 
 export default function FoundationsPage() {
   return (
@@ -33,22 +22,23 @@ export default function FoundationsPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-white/5 pb-24 pt-32 md:pb-32 md:pt-48 lg:pb-40">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.64] [filter:saturate(1.08)_contrast(1.01)_brightness(1.08)]"
           style={{ backgroundImage: "url(/generated/foundations-hero-bg.png)" }}
         />
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.2] [filter:saturate(1.08)_contrast(1.0)_brightness(1.08)]"
           style={{ backgroundImage: "url(/generated/foundations-hero-bg.png)" }}
         />
-        <div className="absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.02)_0%,rgba(7,16,26,0.32)_36%,rgba(2,6,10,0.46)_72%,rgba(1,3,6,0.72)_100%)]" />
+        <div className="absolute inset-0 bg-[rgba(1,4,8,0.04)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.34)_0%,rgba(2,6,10,0.26)_24%,rgba(2,6,10,0.22)_54%,rgba(1,3,6,0.52)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.06)_0%,rgba(23,69,109,0.2)_34%,rgba(4,12,20,0.34)_68%,rgba(1,3,6,0.58)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,223,255,0.16),transparent_42%)]" />
         
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12">
           <PageHeaderVNext
             eyebrow="Technical Foundations"
             title="Digital Circuitality on an information-theoretic footing."
-            description="The formal model behind bounded computation, closure, and product discipline."
+            description="The model behind bounded computation, closure, and compositional control."
             centered
           />
         </div>
@@ -79,8 +69,8 @@ export default function FoundationsPage() {
       </section>
 
       {/* Formal Definition */}
-      <SupportingSurface className="relative border-t border-white/10 bg-[#0b0b0f] blueprint-grid overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none" />
+      <SupportingSurface className="relative border-t border-[#242a31] bg-[#09111a] blueprint-grid overflow-hidden">
+        <DigitalCircuitalityBackdrop />
         
         <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-16">
@@ -89,7 +79,7 @@ export default function FoundationsPage() {
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Formal Definition</h2>
               <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/60">
                 <p>
-                  Shannon frames entropy as uncertainty. Bounded computation reduces uncertainty by constraining every modeled state.
+                  Entropy is uncertainty. Bounded computation reduces it by constraining modeled states.
                 </p>
                 <p className="font-medium text-white">
                   Digital Circuitality reduces uncertainty by structure, not sampling.
@@ -109,7 +99,7 @@ export default function FoundationsPage() {
                       </div>
                     </div>
                     <p className="mt-8 text-sm text-white/50 leading-relaxed italic">
-                      "Within the modeled circuit, Φc marks the closure condition checked before emission."
+                      &ldquo;Φc marks the closure condition checked before emission.&rdquo;
                     </p>
                  </div>
               </div>
@@ -125,7 +115,7 @@ export default function FoundationsPage() {
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">Conventional Model</p>
               <h3 className="mt-4 text-2xl font-bold text-white">Testing reduces uncertainty</h3>
               <p className="mt-6 text-lg leading-relaxed text-white/60">
-                Conventional software samples behavior. Unchecked paths keep uncertainty open.
+                Conventional workflows sample behavior. Unchecked paths stay open.
               </p>
             </div>
             <div className="rounded-[2.5rem] border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)]/5 p-10 blueprint-grid relative">
@@ -134,7 +124,7 @@ export default function FoundationsPage() {
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--accent)]">Digital Circuitality</p>
                 <h3 className="mt-4 text-2xl font-bold text-white">Uncertainty removal by structure</h3>
                 <p className="mt-6 text-lg leading-relaxed text-white/80">
-                  Bounded domains and closed composition make the modeled state deterministic.
+                  Bounded domains plus closed composition make modeled state deterministic.
                 </p>
               </div>
             </div>
@@ -148,15 +138,15 @@ export default function FoundationsPage() {
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Section [03]</span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">EVA Algebra: Composition Operators</h2>
             <p className="mt-6 text-lg text-white/60 max-w-2xl">
-              SEQ, PAR, and COND make flow explicit before closure checks.
+              SEQ, PAR, and COND keep flow explicit before closure checks.
             </p>
           </div>
           
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { name: "SEQ", full: "Sequential", desc: "Output of one stage becomes the input of the next stage.", icon: <ArrowRight className="h-5 w-5" /> },
-              { name: "PAR", full: "Parallel", desc: "Independent branches evaluate on the same input and return a tuple.", icon: <Zap className="h-5 w-5" /> },
-              { name: "COND", full: "Conditional", desc: "Branch structure remains explicit in the circuit before selection.", icon: <Activity className="h-5 w-5" /> },
+              { name: "SEQ", full: "Sequential", desc: "One stage feeds the next stage.", icon: <ArrowRight className="h-5 w-5" /> },
+              { name: "PAR", full: "Parallel", desc: "Branches evaluate on the same input.", icon: <Zap className="h-5 w-5" /> },
+              { name: "COND", full: "Conditional", desc: "Branch structure stays explicit before selection.", icon: <Activity className="h-5 w-5" /> },
             ].map((op) => (
               <div key={op.name} className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-8 hover:bg-white/[0.05] transition-colors group">
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-[color:var(--accent)] group-hover:scale-110 transition-transform">
@@ -177,7 +167,7 @@ export default function FoundationsPage() {
              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Bibliography</span>
              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white">Academic Foundations</h2>
              <p className="mt-6 text-white/50 text-sm leading-relaxed">
-               Conceptual references for uncertainty, discipline, and information boundaries.
+               References for uncertainty, discipline, and information boundaries.
              </p>
              <div className="mt-10">
                <ActionAnchor action={{ label: "Visit digitalcircuitality.com", href: "https://digitalcircuitality.com", external: true, tone: "primary" }} />
@@ -204,20 +194,33 @@ export default function FoundationsPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="relative px-6 py-32 text-center md:px-8 lg:px-12 border-t border-white/5 bg-[#0b0b0f] blueprint-grid">
-         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
-         <div className="relative z-10 max-w-4xl mx-auto">
-            <h2 className="text-4xl font-black tracking-tighter text-white sm:text-5xl lg:text-7xl">
-              FORMALIZE THE STACK
-            </h2>
-            <p className="mt-8 text-xl text-white/60 mx-auto max-w-2xl leading-relaxed">
-              Follow the chain from theory into PCD, CLI, and platform workflows.
-            </p>
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-              <ActionAnchor action={{ label: "Explore PCD Language", href: "/pcd", tone: "primary" }} />
-              <ActionAnchor action={{ label: "Open Platform", href: "/platform", tone: "link" }} />
-            </div>
-         </div>
+      <section className="relative border-t border-[#242a31] bg-[#09111a] blueprint-grid overflow-hidden px-6 py-40 text-center md:px-8 lg:px-12">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.34] [filter:saturate(1.03)_contrast(1.02)_brightness(0.74)]"
+          style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.08] [filter:saturate(1.08)_contrast(1.02)_brightness(1.03)]"
+          style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.94)_0%,rgba(2,6,10,0.82)_26%,rgba(3,8,13,0.68)_52%,rgba(1,4,8,0.96)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.02)_0%,rgba(14,32,52,0.14)_34%,rgba(5,12,20,0.56)_70%,rgba(1,4,8,0.92)_100%)] pointer-events-none" />
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <PageHeaderVNext
+            centered
+            eyebrow="The Engineering Philosophy"
+            title={<span style={{ color: "#f5f7fa" }}>Digital Circuitality.</span>}
+            description={
+              <span style={{ color: "#a7b0ba" }}>
+                The theory behind BRIK64: software logic treated as bounded, composable circuits.
+              </span>
+            }
+          />
+          <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <ActionAnchor action={{ label: "Explore PCD Language", href: "/pcd", tone: "primary" }} />
+            <ActionAnchor action={{ label: "Open Platform", href: "/platform", tone: "link" }} />
+          </div>
+        </div>
       </section>
     </CanonicalPageLayout>
   );

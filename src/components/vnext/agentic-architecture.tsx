@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Copy, TerminalSquare, BrainCircuit, ShieldCheck, Box } from "lucide-react";
@@ -71,6 +72,29 @@ export function AgenticArchitecture() {
         <p className="mt-6 text-sm leading-6 text-white/70">
           Write structured software in your preferred language before compilation.
         </p>
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          {[
+            { name: "Rust", src: "/brands/rust.svg" },
+            { name: "JavaScript", src: "/brands/javascript.svg" },
+            { name: "TypeScript", src: "/brands/typescript.svg" },
+            { name: "Python", src: "/brands/python.svg" },
+          ].map((logo) => (
+            <span
+              key={logo.name}
+              className="inline-flex items-center gap-2 rounded-[10px] border border-white/10 bg-[#0f1a28] px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75"
+            >
+              <Image
+                src={logo.src}
+                alt=""
+                width={14}
+                height={14}
+                className="h-3.5 w-3.5 object-contain"
+                unoptimized
+              />
+              {logo.name}
+            </span>
+          ))}
+        </div>
         
         <div className="mt-8">
           <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4">

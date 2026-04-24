@@ -5,7 +5,6 @@ import {
   PageHeaderVNext,
   SupportingSurface,
   ButtonVNext,
-  ProtagonistSurface,
 } from "@/components/PageArchetypes";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -13,7 +12,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Pricing — BRIK64",
   description:
-    "Pricing routes for CLI entry, team workflow, and enterprise review.",
+    "Pricing routes for CLI entry, team workflow, and enterprise review posture.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -50,12 +49,12 @@ const tiers = [
     cta: "Start with CLI",
     href: "/cli",
     features: [
-      "CLI + SDK routes",
+      "CLI and SDK access",
       "Core and extended monomer catalog",
       "Supported export targets",
       "Public documentation",
-      "Public registry browsing",
-      "Local lift/check workflow",
+      "Public registry read",
+      "Local lift and check",
       "Community support",
     ],
   },
@@ -70,12 +69,12 @@ const tiers = [
     href: "/contact",
     features: [
       "Everything in Free",
-      "Private circuits and registry paths",
+      "Private circuits and rows",
       "GitHub integration",
       "PR verification status",
       "Certification dashboard",
       "Priority support path",
-      "Expanded team collaboration",
+      "Shared team collaboration",
     ],
   },
   {
@@ -93,7 +92,7 @@ const tiers = [
       "Role-based access control",
       "Organization integration",
       "Slack / webhook notifications",
-      "Governance-ready review loops",
+      "Governed review loops",
     ],
   },
   {
@@ -109,10 +108,10 @@ const tiers = [
       "SSO / SAML / OIDC",
       "SCIM provisioning",
       "Evidence packages for audit",
-      "Private registry badge posture",
+      "Private registry posture",
       "CI/CD gate plugins",
       "Self-host posture review",
-      "Dedicated support path",
+      "Dedicated support",
     ],
   },
 ];
@@ -250,7 +249,7 @@ export default function PricingPage() {
         <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
           <div className="mb-16">
              <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Packaging Model</p>
-             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Four routes, different workflow depth</h2>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Four routes, different workflow depth</h2>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -285,7 +284,7 @@ export default function PricingPage() {
                   {tier.features.map((f) => (
                     <li key={f} className="flex items-start gap-3">
                       <Check className="h-4 w-4 shrink-0 text-[color:var(--accent)] mt-0.5" />
-                      <span className="text-[13px] leading-relaxed text-white/70">{f}</span>
+                      <span className="text-[13px] leading-6 text-white/70">{f}</span>
                     </li>
                   ))}
                 </ul>

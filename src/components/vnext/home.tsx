@@ -46,16 +46,18 @@ export function VNextHome() {
       {/* Section 1: Hero */}
       <ProtagonistSurface className="relative -mt-[104px] border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.05),transparent_30%),linear-gradient(180deg,#050a10_0%,#060b12_44%,#04070c_100%)] pt-[104px] overflow-hidden">
         <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.64] [filter:saturate(1.08)_contrast(1.01)_brightness(1.08)]"
           style={{ backgroundImage: "url(/generated/home-hero-bg.png)" }}
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.2] [filter:saturate(1.08)_contrast(1.0)_brightness(1.08)]"
           style={{ backgroundImage: "url(/generated/home-hero-bg.png)" }}
         />
         <div className="hero-light-glow pointer-events-none absolute inset-0" />
-        <div className="pointer-events-none absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[rgba(1,4,8,0.04)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.34)_0%,rgba(2,6,10,0.26)_24%,rgba(2,6,10,0.22)_54%,rgba(1,3,6,0.52)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.06)_0%,rgba(23,69,109,0.2)_34%,rgba(4,12,20,0.34)_68%,rgba(1,3,6,0.58)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,223,255,0.16),transparent_42%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.008),transparent_34%,transparent_68%,rgba(0,229,255,0.018))]" />
         
         <div className="relative mx-auto flex min-h-[calc(100vh-4.25rem)] max-w-[1400px] flex-col justify-center px-6 py-20 md:px-8 lg:px-12">
@@ -64,10 +66,10 @@ export function VNextHome() {
               THE FORMAL LAYER FOR AI-ERA SOFTWARE
             </AnnouncementPill>
             <h1 className="mt-8 max-w-[17ch] text-balance text-4xl font-medium tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl lg:leading-[1.1]">
-              {renderBrandText("BRIK64 turns generated and existing software into canonical, reviewable blueprints.")}
+              {renderBrandText("AI writes code. BRIK64 makes it trustworthy.")}
             </h1>
             <p className="mt-6 max-w-[55ch] text-xl leading-relaxed text-white/60">
-              {renderBrandText("Turn generated and existing code into canonical blueprints that teams can review, certify, and govern.")}
+              {renderBrandText("Convert generated and existing software into canonical blueprints that can be reviewed, certified, and compiled.")}
             </p>
 
             <div className="mt-10 max-w-[740px]">

@@ -26,6 +26,7 @@ import {
   ButtonVNext,
   ProtagonistSurface,
   PageHeaderVNext,
+  DigitalCircuitalityBackdrop,
 } from "@/components/vnext/primitives";
 
 export {
@@ -34,6 +35,7 @@ export {
   ProtagonistSurface,
   SupportingSurface,
   PageHeaderVNext,
+  DigitalCircuitalityBackdrop,
   PillarCard,
   GitHubMark,
   DiscordMark,
@@ -297,18 +299,19 @@ export function CanonicalPageHero({
       {backgroundImageSrc ? (
         <>
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.64] [filter:saturate(1.08)_contrast(1.01)_brightness(1.08)]"
             style={{ backgroundImage: `url(${backgroundImageSrc})` }}
           />
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.2] [filter:saturate(1.08)_contrast(1.0)_brightness(1.08)]"
             style={{ backgroundImage: `url(${backgroundImageSrc})` }}
           />
         </>
       ) : null}
-      <div className="absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.02)_0%,rgba(7,16,26,0.32)_36%,rgba(2,6,10,0.46)_72%,rgba(1,3,6,0.72)_100%)]" />
+      <div className="absolute inset-0 bg-[rgba(1,4,8,0.04)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.34)_0%,rgba(2,6,10,0.26)_24%,rgba(2,6,10,0.22)_54%,rgba(1,3,6,0.52)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.06)_0%,rgba(23,69,109,0.2)_34%,rgba(4,12,20,0.34)_68%,rgba(1,3,6,0.58)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,223,255,0.16),transparent_42%)]" />
       
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12 text-center">
         <PageHeaderVNext
@@ -1152,8 +1155,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
       </section>
 
       {cta ? (
-        <section className="relative px-6 py-32 text-center blueprint-grid overflow-hidden border-t border-white/5 bg-[#0b0b0f]">
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+        <section className="relative px-6 py-32 text-center blueprint-grid overflow-hidden border-t border-[#242a31] bg-[#09111a]">
+          <DigitalCircuitalityBackdrop />
           <div className="relative z-10 mx-auto max-w-4xl">
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl mb-8">
               {cta.title}

@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   CORE_MONOMERS,
   EXTENDED_MONOMERS,
-  FAMILIES as CORE_FAMILIES_OPS,
   FAMILY_COLORS as CORE_FAMILY_COLORS,
   type Monomer,
 } from "@/lib/monomer-data";
@@ -129,14 +128,14 @@ export function MonomerGrid({
   if (variant !== "hero") {
     return (
       <div className="pointer-events-auto flex items-center justify-center p-6">
-        <div className="grid w-full max-w-[420px] grid-cols-8 gap-1.5 rounded-[1.5rem] border border-teal/20 bg-white/88 p-3 shadow-[0_18px_50px_rgba(0,0,0,0.12)] backdrop-blur-sm">
+        <div className="grid w-full max-w-[420px] grid-cols-8 gap-1.5 rounded-[1.5rem] border border-teal/20 bg-[#0b1725] p-3 shadow-[0_18px_50px_rgba(0,0,0,0.24)] backdrop-blur-sm">
           {HERO_CORE_MONOMERS.map((monomer) => {
             const tone = getTone(monomer.family);
             const officialNumber = getOfficialNumber("core", monomer.id);
             return (
               <div
                 key={monomer.id}
-                className="flex aspect-square min-h-[48px] flex-col items-center justify-center rounded-md border bg-background/95 px-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground"
+                className="flex aspect-square min-h-[48px] flex-col items-center justify-center rounded-md border bg-[#14263a] px-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/65"
                 style={{
                   borderColor: withAlpha(tone, "33"),
                   boxShadow: `inset 0 0 0 1px ${withAlpha(tone, "55")}`,

@@ -22,7 +22,7 @@ describe("Home polish audit — hero density stays controlled", () => {
     const page = read("src/app/page.tsx");
     const home = read("src/components/vnext/home.tsx");
     expect(page).toContain("<VNextHome />");
-    expect(home).toContain("BRIK64 turns generated and existing software into canonical, reviewable blueprints.");
+    expect(home).toContain("AI writes code. BRIK64 makes it trustworthy.");
     expect(home).toContain("Download the CLI");
     expect(home).not.toContain("INSTALL THE BRIK64 ECOSYSTEM");
     expect(home).not.toContain("MonomerGrid");
@@ -37,7 +37,7 @@ describe("Home polish audit — hero density stays controlled", () => {
 
   it("keeps the hero copy aligned to the poster-first direction", () => {
     const home = read("src/components/vnext/home.tsx");
-    expect(home).toContain("Turn generated and existing code into canonical blueprints that teams can review, certify, and govern.");
+    expect(home).toContain("Convert generated and existing software into canonical blueprints that can be reviewed, certified, and compiled.");
     expect(home).toContain("Download the CLI");
     expect(home).not.toContain("2. Add the skill to your AI agent");
     expect(home).not.toContain("3. Register in the platform");
