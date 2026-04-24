@@ -84,7 +84,7 @@ export const primaryNav = [
 export const productDropdownItems = [
   {
     label: "Overview",
-    href: "/",
+    href: "/features",
     description: "What BRIK64 is, why the formal layer matters, and how the system reads like hardware.",
     icon: "sparkles",
   },

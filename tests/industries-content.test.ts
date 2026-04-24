@@ -42,6 +42,43 @@ describe("Industries content audit", () => {
     }
   });
 
+  it("enforces the image-backed visual contract on every industry page", () => {
+    const heroImages = new Set<string>();
+    const bannerImages = new Set<string>();
+    const ctaImages = new Set<string>();
+
+    for (const [industryKey, page] of industryEntries as Array<
+      [IndustryKey, (typeof industryPages)[IndustryKey]]
+    >) {
+      expect(
+        page.hero.backgroundImageSrc,
+        `${industryKey} hero background image missing`,
+      ).toMatch(/^\/generated\/.+\.png$/);
+      heroImages.add(page.hero.backgroundImageSrc ?? "");
+
+      expect(page.realWorldBanner, `${industryKey} real-world banner missing`).toBeTruthy();
+      expect(
+        page.realWorldBanner?.imageSrc,
+        `${industryKey} real-world banner image missing`,
+      ).toMatch(/^\/generated\/.+\.png$/);
+      expect(
+        page.realWorldBanner?.description,
+        `${industryKey} real-world banner should not render lower subtitle strip`,
+      ).toBeFalsy();
+      bannerImages.add(page.realWorldBanner?.imageSrc ?? "");
+
+      expect(
+        page.cta.backgroundImageSrc,
+        `${industryKey} CTA background image missing`,
+      ).toMatch(/^\/generated\/.+\.png$/);
+      ctaImages.add(page.cta.backgroundImageSrc ?? "");
+    }
+
+    expect(heroImages.size).toBe(industryEntries.length);
+    expect(bannerImages.size).toBe(industryEntries.length);
+    expect(ctaImages.size).toBe(industryEntries.length);
+  });
+
   it("keeps an explicit editorial blueprint for every industry", () => {
     const blueprintKeys = Object.keys(industryEditorialBlueprints).sort();
     const pageKeys = Object.keys(industryPages).sort();

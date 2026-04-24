@@ -22,7 +22,7 @@ describe("Industry hero imagery", () => {
       expect(
         industryPages[key].hero.backgroundImageSrc,
         `Missing hero background for ${key}`,
-      ).toMatch(/^\/generated\/.+-hero-bg\.png$/);
+      ).toMatch(/^\/generated\/.+\.png$/);
     }
   });
 
@@ -40,8 +40,8 @@ describe("Industry hero imagery", () => {
   it("the shared risk hero contract keeps visible background support enabled", () => {
     const content = read("src/components/PageArchetypes.tsx");
     expect(content).toContain("backgroundImageSrc={page.hero.backgroundImageSrc}");
-    expect(content).toContain("opacity-[0.84]");
-    expect(content).toContain("mix-blend-screen opacity-[0.26]");
+    expect(content).toContain("opacity-[0.56]");
+    expect(content).toContain("mix-blend-screen opacity-[0.16]");
     expect(content).toContain("blueprint-grid opacity-[0.08]");
   });
 });

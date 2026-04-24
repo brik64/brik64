@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Copy, TerminalSquare, BrainCircuit, ShieldCheck, Box } from "lucide-react";
+import { JavaScriptIcon, PythonIcon, RustIcon } from "@/components/icons/lang-icons";
 
 const skills = [
   { name: "PCD Authoring", icon: <FileCode2 className="h-4 w-4" /> },
@@ -12,9 +13,9 @@ const skills = [
 ];
 
 const sdks = [
-  { id: "rust", name: "Rust", command: "cargo add brik64-core", code: "use brik64_core::Circuit;\n\nlet circuit = Circuit::new().with_bounds();" },
-  { id: "ts", name: "Node/TS", command: "npm install @brik64/sdk", code: "import { Circuit } from '@brik64/sdk';\n\nconst circuit = new Circuit().withBounds();" },
-  { id: "python", name: "Python", command: "pip install brik64", code: "from brik64 import Circuit\n\ncircuit = Circuit().with_bounds()" },
+  { id: "rust", name: "Rust", icon: <RustIcon className="h-4 w-4" />, command: "cargo add brik64-core", code: "use brik64_core::Circuit;\n\nlet circuit = Circuit::new().with_bounds();" },
+  { id: "ts", name: "Node/TS", icon: <JavaScriptIcon className="h-4 w-4" />, command: "npm install @brik64/sdk", code: "import { Circuit } from '@brik64/sdk';\n\nconst circuit = new Circuit().withBounds();" },
+  { id: "python", name: "Python", icon: <PythonIcon className="h-4 w-4" />, command: "pip install brik64", code: "from brik64 import Circuit\n\ncircuit = Circuit().with_bounds()" },
 ];
 
 // Re-using FileCode2 from lucide, importing it directly here
@@ -40,11 +41,11 @@ export function AgenticArchitecture() {
           </div>
           <div>
             <h3 className="text-xl font-semibold text-white">Agent Skills (MCP)</h3>
-            <p className="text-sm text-white/50">Native formal circuit design for AIs</p>
+            <p className="text-sm text-white/50">Formal circuit skills for agents</p>
           </div>
         </div>
         <p className="mt-6 text-sm leading-6 text-white/70">
-          Ingest MCP-compatible skills into your AI architecture. Instead of generating strings of plausible text, your agents can natively orchestrate PCD circuits using the 64 mathematical monomers.
+          Add MCP-compatible skills so agents work with PCD circuits instead of loose text.
         </p>
         <div className="mt-8 grid grid-cols-2 gap-3">
           {skills.map((skill) => (
@@ -64,26 +65,27 @@ export function AgenticArchitecture() {
           </div>
           <div>
             <h3 className="text-xl font-semibold text-white">Native SDKs</h3>
-            <p className="text-sm text-white/50">Formal boundaries in host languages</p>
+            <p className="text-sm text-white/50">Boundaries in host languages</p>
           </div>
         </div>
         <p className="mt-6 text-sm leading-6 text-white/70">
-          Don't want to author PCD raw? Use our SDK libraries to write mathematically structured software directly in your preferred language before compilation.
+          Write structured software in your preferred language before compilation.
         </p>
         
         <div className="mt-8">
-          <div className="flex gap-2 border-b border-white/10 pb-4">
+          <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4">
             {sdks.map((sdk) => (
               <button
                 key={sdk.id}
                 onClick={() => setActiveSdk(sdk)}
                 className={cn(
-                  "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-colors text-center w-24",
+                  "inline-flex w-28 items-center justify-center gap-2 rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
                   activeSdk.id === sdk.id 
                     ? "bg-[#4ade80]/10 text-[#4ade80] border border-[#4ade80]/20" 
                     : "text-white/40 hover:text-white"
                 )}
               >
+                {sdk.icon}
                 {sdk.name}
               </button>
             ))}

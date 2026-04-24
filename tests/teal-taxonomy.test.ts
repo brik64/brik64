@@ -28,7 +28,8 @@ describe("Teal taxonomy", () => {
     expect(proofArtifacts).toContain("export function StatusPill");
     expect(proofArtifacts).toContain("uppercase tracking-[0.14em]");
     expect(proofArtifacts).toContain("export function ProofBadge");
-    expect(pageArtifacts).toContain("text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground");
+    expect(pageArtifacts).toContain("text-[11px] font-semibold uppercase tracking-[0.22em]");
+    expect(pageArtifacts).toContain('dark ? "text-white/40" : "text-muted-foreground"');
     expect(pageArtifacts).not.toContain("rounded-full border");
   });
 });

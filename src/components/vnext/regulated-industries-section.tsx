@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PageHeaderVNext, SurfaceCard } from "@/components/vnext/primitives";
 
 type IndustryCard = {
@@ -9,6 +10,7 @@ type IndustryCard = {
   shortLabel: string;
   panelLabel: string;
   tint: string;
+  markSrc: string;
 };
 
 const regulatedIndustries: IndustryCard[] = [
@@ -21,6 +23,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "AEROSPC",
     panelLabel: "Flight Review",
     tint: "from-[#0b1a24] to-[#0f2737]",
+    markSrc: "/industry-marks/aerospace-do178c.svg",
   },
   {
     id: "MED-02",
@@ -31,6 +34,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "HEALTH",
     panelLabel: "Clinical Review",
     tint: "from-[#111824] to-[#1b2435]",
+    markSrc: "/industry-marks/healthcare-hipaa.svg",
   },
   {
     id: "AUT-03",
@@ -41,6 +45,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "AUTOMTV",
     panelLabel: "Safety Logic",
     tint: "from-[#161616] to-[#232323]",
+    markSrc: "/industry-marks/automotive-iso26262.svg",
   },
   {
     id: "FIN-04",
@@ -51,6 +56,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "FINANCE",
     panelLabel: "Audit Controls",
     tint: "from-[#111825] to-[#1b2435]",
+    markSrc: "/industry-marks/finance-pcidss.svg",
   },
   {
     id: "GOV-05",
@@ -61,6 +67,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "GOVRNMT",
     panelLabel: "Security Review",
     tint: "from-[#131923] to-[#1c2532]",
+    markSrc: "/industry-marks/government-fedramp.svg",
   },
   {
     id: "ENG-06",
@@ -71,6 +78,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "ENGINRG",
     panelLabel: "Calculation Trace",
     tint: "from-[#151515] to-[#20242d]",
+    markSrc: "/industry-marks/engineering-iec61508.svg",
   },
 ];
 
@@ -81,7 +89,7 @@ export function RegulatedIndustriesSection() {
         <PageHeaderVNext
           eyebrow="Regulated Environments"
           title="Built for review-critical industry surfaces."
-          description="BRIK64 is designed for teams that need traceable logic, evidence-ready workflows, and structured review posture across regulated and high-assurance software environments."
+          description="Traceable logic, evidence workflows, and review posture for high-assurance teams."
         />
 
         <div className="mt-16 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -91,7 +99,17 @@ export function RegulatedIndustriesSection() {
                 key={industry.id}
                 className="group flex h-full flex-col rounded-[26px] border-white/8 bg-[linear-gradient(180deg,rgba(7,12,18,0.96),rgba(10,16,23,0.9))] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[color:var(--accent-soft)]/60 hover:shadow-[0_28px_90px_rgba(0,0,0,0.38)]"
               >
-                <div className="flex items-start justify-end gap-4">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-[14px] border border-white/10 bg-[#0f1a28] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                    <Image
+                      src={industry.markSrc}
+                      alt={`${industry.frameworkLabel} reference marker`}
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 object-contain"
+                      unoptimized
+                    />
+                  </div>
                   <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-white/42">
                     {industry.id}
                   </div>

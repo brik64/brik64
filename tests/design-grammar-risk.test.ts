@@ -39,6 +39,8 @@ describe("Design grammar — risk and use-case family", () => {
     expect(content).toContain("export function LanguageExchangeSurface");
     expect(content).not.toContain("risk evidence");
     expect(content).toContain('codeEyebrow ?? "Bounded example"');
+    expect(content).toContain("description?.trim()");
+    expect(content).toContain("forceOpaqueSecondary={Boolean(ctaBackgroundImageSrc)}");
   });
 
   it("risk page data stays populated with bounded domain language", () => {
@@ -57,5 +59,22 @@ describe("Design grammar — risk and use-case family", () => {
     expect(aiUseCase.scenario.footer).toContain("organizational control");
     expect(aiThesis.sectionHeader.title).toContain("software boundary");
     expect(aiThesis.constraint.footer).toContain("code-level evidence");
+  });
+
+  it("industry visuals keep the shared hero + banner + CTA image contract", () => {
+    for (const [industryKey, page] of Object.entries(industryPages)) {
+      expect(
+        page.hero.backgroundImageSrc,
+        `${industryKey} hero background is required`,
+      ).toMatch(/^\/generated\/.+\.png$/);
+      expect(
+        page.realWorldBanner?.imageSrc,
+        `${industryKey} real-world banner image is required`,
+      ).toMatch(/^\/generated\/.+\.png$/);
+      expect(
+        page.cta.backgroundImageSrc,
+        `${industryKey} CTA background image is required`,
+      ).toMatch(/^\/generated\/.+\.png$/);
+    }
   });
 });

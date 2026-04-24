@@ -111,7 +111,8 @@ export function MonomerGrid({
   const activeOfficialNumber = getOfficialNumber(activeTrack, activeMonomer.id);
 
   const activeTrackIndex = activeTrack === "core" ? 0 : 1;
-  const badgeTone = activeTrack === "core" ? "#00b8d4" : "#f59e0b";
+  const trackTone = activeTrack === "core" ? "#00e5ff" : "#f59e0b";
+  const badgeTone = trackTone;
   const trackPanels = fixedTrack ? [fixedTrack] : (["core", "extended"] as const);
 
   function selectTrack(track: HeroTrack) {
@@ -155,12 +156,12 @@ export function MonomerGrid({
   }
 
   return (
-    <div className="pointer-events-auto w-full max-w-[35rem] rounded-[2rem] border border-teal/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,252,253,0.92))] p-4 shadow-[0_24px_90px_rgba(0,0,0,0.14)] backdrop-blur-sm md:p-5">
+    <div className="pointer-events-auto w-full max-w-[35rem] rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,#07111c,#0a1725)] p-4 shadow-[0_24px_90px_rgba(0,0,0,0.28)] backdrop-blur-sm md:p-5">
       <div
-        className="rounded-[1.5rem] border bg-background/94 p-4 shadow-sm"
+        className="rounded-[1.5rem] border bg-[#102338] p-4 shadow-sm"
         style={{
-          borderColor: withAlpha(activeTone, "33"),
-          boxShadow: `0 18px 45px rgba(0,0,0,0.08), inset 0 0 0 1px ${withAlpha(activeTone, "1f")}`,
+          borderColor: withAlpha(trackTone, "33"),
+          boxShadow: `0 18px 45px rgba(0,0,0,0.18), inset 0 0 0 1px ${withAlpha(trackTone, "1f")}`,
         }}
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -184,8 +185,8 @@ export function MonomerGrid({
                 {String(activeOfficialNumber).padStart(2, "0")}
               </span>
               <div>
-                <p className="text-base font-semibold text-foreground md:text-lg">{activeMonomer.name}</p>
-                <p className="text-xs text-muted-foreground">{activeMonomer.family}</p>
+                <p className="text-base font-semibold text-white md:text-lg">{activeMonomer.name}</p>
+                <p className="text-xs text-white/55">{activeMonomer.family}</p>
               </div>
             </div>
           </div>
@@ -203,14 +204,14 @@ export function MonomerGrid({
         </div>
 
         <div className="mt-4 grid gap-3 md:grid-cols-[1.05fr_1.15fr]">
-          <div className="rounded-[1.25rem] border border-border/80 bg-muted/25 p-4">
+          <div className="rounded-[1.25rem] border border-white/10 bg-[#0b1a2b] p-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Signature
             </p>
-            <p className="mt-2 font-mono text-sm text-foreground">{activeMonomer.signature}</p>
+            <p className="mt-2 font-mono text-sm text-white">{activeMonomer.signature}</p>
           </div>
 
-          <div className="rounded-[1.25rem] border border-border/80 bg-muted/25 p-4">
+          <div className="rounded-[1.25rem] border border-white/10 bg-[#0b1a2b] p-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Role
             </p>
@@ -222,10 +223,10 @@ export function MonomerGrid({
 
       </div>
 
-      <div className="mt-4 rounded-[1.5rem] border border-border/80 bg-background/88 p-3 shadow-sm md:p-4">
+      <div className="mt-4 rounded-[1.5rem] border border-white/10 bg-[#102338] p-3 shadow-sm md:p-4">
         {!fixedTrack ? (
           <div className="mb-3 flex items-center justify-start gap-3">
-            <div className="inline-flex rounded-full border border-border/80 bg-muted/35 p-1">
+            <div className="inline-flex rounded-full border border-white/10 bg-[#0b1a2b] p-1">
               {(["core", "extended"] as const).map((track) => {
                 const isActive = track === activeTrack;
                 const trackColor = track === "core" ? "text-teal" : "text-amber-600";
@@ -273,14 +274,14 @@ export function MonomerGrid({
                           selectTrack(track);
                         }}
                         aria-label={`Inspect monomer ${HERO_TRACKS[track].prefix}${String(officialNumber).padStart(2, "0")} ${monomer.name}`}
-                        className="flex aspect-square min-h-[42px] cursor-pointer flex-col items-center justify-center rounded-[0.85rem] border bg-background px-1 text-[9px] font-semibold uppercase tracking-[0.11em] text-muted-foreground transition-[transform,border-color,box-shadow,background-color,color] duration-150 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none"
+                        className="flex aspect-square min-h-[42px] cursor-pointer flex-col items-center justify-center rounded-[0.85rem] border px-1 text-[9px] font-semibold uppercase tracking-[0.11em] text-white/46 transition-[transform,border-color,box-shadow,background-color,color] duration-150 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none"
                         style={{
-                          borderColor: isActive ? withAlpha(tone, "55") : withAlpha(tone, "24"),
-                          backgroundColor: isActive ? withAlpha(tone, "12") : "rgba(255,255,255,0.94)",
-                          color: isActive ? "var(--foreground)" : undefined,
+                          borderColor: isActive ? withAlpha(track === "core" ? "#00e5ff" : "#f59e0b", "66") : "rgba(255,255,255,0.08)",
+                          backgroundColor: isActive ? withAlpha(track === "core" ? "#00e5ff" : "#f59e0b", "1c") : "#0b1a2b",
+                          color: isActive ? "#ffffff" : undefined,
                           boxShadow: isActive
-                            ? `0 10px 24px ${withAlpha(tone, "1f")}, inset 0 0 0 1px ${withAlpha(tone, "4a")}`
-                            : `inset 0 0 0 1px ${withAlpha(tone, "18")}`,
+                            ? `0 10px 24px ${withAlpha(track === "core" ? "#00e5ff" : "#f59e0b", "1f")}, inset 0 0 0 1px ${withAlpha(track === "core" ? "#00e5ff" : "#f59e0b", "4a")}`
+                            : "inset 0 0 0 1px rgba(255,255,255,0.04)",
                         }}
                       >
                         <span className="font-mono text-[8px] font-bold" style={{ color: tone }}>

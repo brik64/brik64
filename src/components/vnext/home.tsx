@@ -44,11 +44,19 @@ export function VNextHome() {
   return (
     <div className="bg-background text-foreground">
       {/* Section 1: Hero */}
-      <ProtagonistSurface className="relative border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.11),transparent_36%),linear-gradient(180deg,#091019_0%,#0a1016_46%,#06090e_100%)] overflow-hidden">
+      <ProtagonistSurface className="relative -mt-[104px] border-b border-border bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.05),transparent_30%),linear-gradient(180deg,#050a10_0%,#060b12_44%,#04070c_100%)] pt-[104px] overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
+          style={{ backgroundImage: "url(/generated/home-hero-bg.png)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
+          style={{ backgroundImage: "url(/generated/home-hero-bg.png)" }}
+        />
         <div className="hero-light-glow pointer-events-none absolute inset-0" />
-        <div className="hero-light-grid pointer-events-none absolute inset-0 opacity-[0.14]" />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,13,20,0.06)_0%,rgba(7,13,20,0.12)_24%,rgba(7,13,20,0.34)_52%,rgba(7,13,20,0.7)_78%,#06090e_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.02),transparent_34%,transparent_68%,rgba(0,229,255,0.04))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.008),transparent_34%,transparent_68%,rgba(0,229,255,0.018))]" />
         
         <div className="relative mx-auto flex min-h-[calc(100vh-4.25rem)] max-w-[1400px] flex-col justify-center px-6 py-20 md:px-8 lg:px-12">
           <div className="max-w-[720px]">
@@ -59,7 +67,7 @@ export function VNextHome() {
               {renderBrandText("BRIK64 turns generated and existing software into canonical, reviewable blueprints.")}
             </h1>
             <p className="mt-6 max-w-[55ch] text-xl leading-relaxed text-white/60">
-              {renderBrandText("Formalizes software as an information circuit, providing verified and hash-locked logic certification.")}
+              {renderBrandText("Turn generated and existing code into canonical blueprints that teams can review, certify, and govern.")}
             </p>
 
             <div className="mt-10 max-w-[740px]">
@@ -68,7 +76,7 @@ export function VNextHome() {
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="inline-flex min-h-[64px] w-fit items-center gap-2.5 rounded-[22px] border border-white/10 bg-[#0c1520] px-4 py-3 shadow-[0_18px_48px_rgba(0,0,0,0.22)]">
                     <span className="select-none font-mono text-lg font-bold text-[color:var(--accent)] opacity-90 sm:text-xl">$</span>
-                    <code className="select-all font-mono text-[14px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-[16px]">
+                    <code className="select-all font-mono text-[15px] font-semibold tracking-[-0.03em] text-white transition-colors duration-300 hover:text-[color:var(--accent)] sm:text-[18px]">
                       curl -sL https://brik64.sh | sh
                     </code>
                   </div>
@@ -127,34 +135,34 @@ export function VNextHome() {
               </>
             }
             title="Software that functions as hardware."
-            description="A trust infrastructure treating code as a formal circuit to be mathematically verified, certified, and published."
+            description="Code becomes a formal circuit: reviewable, certifiable, and reusable."
           />
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <PillarCard
               icon={<FileCode2 className="h-5 w-5" />}
               title="PCD Blueprint"
-              description="A structural format for describing software logic as a formal circuit. Semantic-agnostic and verifiable."
+              description="Canonical structure for software logic."
               href="https://docs.brik64.dev"
               actionLabel="Learn PCD"
             />
             <PillarCard
               icon={<TerminalSquare className="h-5 w-5" />}
               title="BRIK64 CLI"
-              description="The sovereign compiler (brikc) for lifting code, bounding logic, and emitting certified bundles."
+              description="Lift code, bound logic, emit bundles."
               href="/cli"
               actionLabel="Download CLI"
             />
             <PillarCard
               icon={<LayoutTemplate className="h-5 w-5" />}
               title="Platform"
-              description="Design, certify, and audit circuits collaboratively in a governed environment."
+              description="Team review, policy, audit, publication."
               href="/platform"
               actionLabel="Register"
             />
             <PillarCard
               icon={<Package className="h-5 w-5" />}
               title="Public Registry"
-              description="A library of pre-certified circuits for governed and traceable reuse."
+              description="Discover and reuse reviewed circuits."
               href="/registry"
               actionLabel="Visit"
             />
@@ -170,16 +178,16 @@ export function VNextHome() {
               <PageHeaderVNext
                 eyebrow="FORMAL LANGUAGE AI OPTIMIZED"
                 title="PCD: CAD for Software."
-                description="A formal intermediate representation built for strict trust, certification, and exact cross-target portability."
+                description="Canonical software blueprints for review, certification, and portable emission."
               />
               
               <div className="mt-16 relative">
                 <div className="absolute left-[27px] top-4 bottom-4 w-px bg-border sm:left-[39px]"></div>
                 <div className="space-y-12">
                   {[
-                    { step: "01", title: "Write Directly", desc: "Author logic in the pure BRIK64 language using 64 mathematically bounded operations.", icon: <FileCode2 className="h-4 w-4" /> },
-                    { step: "02", title: "Lift Existing Code", desc: "Import any codebase. The lifter extracts the structural logic into a pristine PCD blueprint.", icon: <GitBranch className="h-4 w-4" /> },
-                    { step: "03", title: "Depurate Logic", desc: "Analyze the blueprint to isolate which parts are bounded (Φc=1) and which require open contracts.", icon: <TerminalSquare className="h-4 w-4" /> }
+                    { step: "01", title: "Write Directly", desc: "Author bounded logic in PCD.", icon: <FileCode2 className="h-4 w-4" /> },
+                    { step: "02", title: "Lift Existing Code", desc: "Extract structure from an existing repo.", icon: <GitBranch className="h-4 w-4" /> },
+                    { step: "03", title: "Depurate Logic", desc: "Separate bounded logic from open contracts.", icon: <TerminalSquare className="h-4 w-4" /> }
                   ].map((item, i) => (
                     <div key={i} className="relative flex items-start gap-6 sm:gap-8">
                       <div className="relative z-10 flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-2xl border border-[color:var(--accent-soft)] bg-[#071019] text-[color:var(--accent)] sm:h-20 sm:w-20">
@@ -200,10 +208,10 @@ export function VNextHome() {
               <div className="mt-8 rounded-2xl border border-[color:var(--accent-soft)]/10 bg-[color:var(--accent-soft)]/5 p-6 backdrop-blur-sm">
                 <p className="text-[12px] font-bold uppercase tracking-widest text-[color:var(--accent)] flex items-center gap-2 mb-3">
                   <CheckCircle2 className="h-4 w-4" />
-                  Proof Guaranteed
+                  Review Object
                 </p>
                 <p className="text-sm text-white/50 leading-relaxed">
-                  The PCD blueprint serves as the single source of truth. Any logic expressed in PCD can be formally verified before emitting a single line of target code.
+                  PCD is the review object before code is emitted.
                 </p>
               </div>
             </div>
@@ -217,7 +225,7 @@ export function VNextHome() {
           <PageHeaderVNext
             eyebrow="The Engine"
             title="Transpilation & Optimization."
-            description="PCD acts as a canonical semantic pivot for mathematical transpilation and clean logic re-compilation across targets."
+            description="PCD is the canonical pivot for reviewable cross-target emission."
           />
           <div className="mt-16 max-w-[1100px] mx-auto">
             <LanguageExchangeArtifact />
@@ -226,9 +234,9 @@ export function VNextHome() {
             <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--accent)]">Compiler AI Agents Feedback Loops</p>
-                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white">Compilation becomes a positive feedback loop for the AI agent.</h3>
+                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-white">Compiler errors become repair targets for AI agents.</h3>
                 <p className="mt-4 text-sm leading-7 text-white/58">
-                  When domains or closure are ambiguous, the compiler rejects the circuit. The agent reads that error, narrows the next attempt, and re-enters the loop with better constraints until the blueprint closes cleanly.
+                  Each rejection gives the agent a narrower target until the blueprint closes.
                 </p>
               </div>
 
@@ -240,7 +248,7 @@ export function VNextHome() {
                       <Bot className="h-4 w-4 text-[color:var(--accent)]" />
                     </div>
                     <p className="mt-3 text-[13px] font-semibold text-white">Agent drafts the next circuit attempt</p>
-                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">The current blueprint, domains, and last compiler note become the next prompt context.</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">Blueprint plus compiler note becomes prompt context.</p>
                   </div>
 
                   <div className="rounded-[20px] border border-white/10 bg-white/[0.03] p-3.5 md:pl-10">
@@ -249,7 +257,7 @@ export function VNextHome() {
                       <TerminalSquare className="h-4 w-4 text-white/65" />
                     </div>
                     <p className="mt-3 text-[13px] font-semibold text-white">Compiler checks domains and closure</p>
-                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">If the bounds are explicit, the loop converges. If not, the compiler emits an actionable rejection.</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">Explicit bounds pass. Ambiguity returns a rejection.</p>
                   </div>
 
                   <div className="rounded-[20px] border border-amber-500/20 bg-amber-500/[0.08] p-3.5 md:pr-10">
@@ -258,7 +266,7 @@ export function VNextHome() {
                       <CircleAlert className="h-4 w-4 text-amber-400" />
                     </div>
                     <p className="mt-3 text-[13px] font-semibold text-white">Error feeds the next refinement pass</p>
-                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">The rejection explains what is still open: undefined domain, ambiguous path, or missing contract boundary.</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">The note names the open boundary.</p>
                   </div>
 
                   <div className="rounded-[20px] border border-emerald-500/20 bg-emerald-500/[0.08] p-3.5 md:pl-10">
@@ -267,7 +275,7 @@ export function VNextHome() {
                       <RefreshCw className="h-4 w-4 text-emerald-400" />
                     </div>
                     <p className="mt-3 text-[13px] font-semibold text-white">Loop until the circuit becomes bounded</p>
-                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">Each pass gives the agent a tighter target, so compilation pressure becomes guidance instead of dead-end failure.</p>
+                    <p className="mt-1.5 text-[11px] leading-5 text-white/55">Each pass tightens the circuit target.</p>
                   </div>
 
                   <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[radial-gradient(circle_at_center,rgba(16,38,62,0.98),rgba(8,14,22,0.96))] shadow-[0_20px_56px_rgba(0,0,0,0.46)] md:flex">
@@ -292,7 +300,7 @@ export function VNextHome() {
               <PageHeaderVNext
                 eyebrow="The Atomic Logic"
                 title="Monomers & EVA Algebra."
-                description="A core vocabulary of 64 bounded operations for strictly calculable domains, plus 64 extended monomers for open interaction surfaces."
+                description="64 bounded operations. 64 contract-bounded extensions."
               />
 
               <div className="mt-14 flex w-full justify-center lg:justify-center">
@@ -337,7 +345,7 @@ export function VNextHome() {
               <PageHeaderVNext
                 eyebrow="The Trust Artifact"
                 title="Strict certification."
-                description="Compiles code into hash-locked bundles containing source, automated proofs, and mathematical guarantee states."
+                description="Source, proof state, and bundle identity stay together."
               />
               
               <div className="mt-12 space-y-8">
@@ -347,8 +355,8 @@ export function VNextHome() {
                   </h3>
                   <div className="mt-4 grid gap-3 text-sm text-white/60">
                     <div className="flex justify-between border-b border-white/10 pb-2"><span className="font-medium text-white/40">Monomers</span> <span className="font-mono text-white/90">MC_00 - MC_63 only</span></div>
-                    <div className="flex justify-between border-b border-white/10 pb-2"><span className="font-medium text-white/40">Tests</span> <span className="text-[#2BB6AC]">Math IS the proof (None needed)</span></div>
-                    <div className="flex justify-between"><span className="font-medium text-white/40">Guarantee</span> <span className="text-white">Formally strict for all inputs</span></div>
+                    <div className="flex justify-between border-b border-white/10 pb-2"><span className="font-medium text-white/40">Checks</span> <span className="text-[#2BB6AC]">Bounded proof state</span></div>
+                    <div className="flex justify-between"><span className="font-medium text-white/40">Posture</span> <span className="text-white">Closed modeled domain</span></div>
                   </div>
                 </div>
 
@@ -376,9 +384,9 @@ export function VNextHome() {
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
           <div className="mb-16">
             <PageHeaderVNext
-              eyebrow="Agentic Capability"
-              title="Perfectly bounded for AI agents."
-              description="A finite 64-monomer bounded vocabulary, plus 64 extended monomers for controlled open interaction, mathematically optimized for rule-based reasoning and agentic code authoring."
+                eyebrow="Agentic Capability"
+                title="Bounded for AI agents."
+              description="Agents work against bounded operations, not loose generated text."
             />
           </div>
           <AgenticArchitecture />
@@ -393,14 +401,14 @@ export function VNextHome() {
           <PageHeaderVNext
             eyebrow="Incremental Adoption"
             title="Adopt without a rewrite."
-            description="Start formalizing critical logic incrementally without requiring a monorepo rewrite or system overhaul."
+            description="Start with one workflow. Expand after the first artifact is governed."
           />
           <div className="space-y-4">
             {[
-              { step: 1, title: "Start with one workflow", desc: "Isolate a single critical API payload or AI-generated function." },
-              { step: 2, title: "Generate a blueprint", desc: "Use the lifter to parse it into a canonical PCD structure." },
-              { step: 3, title: "Add policy enforcement", desc: "Apply organizational constraints and compilation boundaries." },
-              { step: 4, title: "Expand horizontally", desc: "Once the first artifact is governed, scale it across the team." },
+              { step: 1, title: "Start with one workflow", desc: "Pick one critical payload or generated function." },
+              { step: 2, title: "Generate a blueprint", desc: "Lift it into canonical PCD." },
+              { step: 3, title: "Add policy enforcement", desc: "Apply team constraints and boundaries." },
+              { step: 4, title: "Expand horizontally", desc: "Scale after governance is visible." },
             ].map((s) => (
               <div key={s.step} className="flex gap-4 rounded-[20px] border border-white/10 bg-[#0a0d12] p-5 shadow-xl">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent-soft)] text-sm font-semibold text-[color:var(--accent)]">
@@ -418,9 +426,17 @@ export function VNextHome() {
 
       {/* Section 9: Digital Circuitality */}
       <SupportingSurface className="relative border-t border-[#242a31] bg-[#09111a] blueprint-grid overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.34] [filter:saturate(1.03)_contrast(1.02)_brightness(0.74)]"
+          style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.08] [filter:saturate(1.08)_contrast(1.02)_brightness(1.03)]"
+          style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+        />
         {/* Technical Vignette */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.9)_0%,rgba(2,6,10,0.74)_26%,rgba(3,8,13,0.54)_52%,rgba(1,4,8,0.92)_100%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.04)_0%,rgba(14,32,52,0.08)_34%,rgba(5,12,20,0.42)_70%,rgba(1,4,8,0.88)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.94)_0%,rgba(2,6,10,0.82)_26%,rgba(3,8,13,0.68)_52%,rgba(1,4,8,0.96)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.02)_0%,rgba(14,32,52,0.14)_34%,rgba(5,12,20,0.56)_70%,rgba(1,4,8,0.92)_100%)] pointer-events-none" />
         
         <div className="relative mx-auto max-w-[1400px] px-6 py-40 md:px-8 lg:px-12">
           <div className="flex flex-col items-center">
@@ -428,7 +444,7 @@ export function VNextHome() {
               centered
               eyebrow="The Engineering Philosophy"
               title={<span style={{ color: '#f5f7fa' }}>Digital Circuitality.</span>}
-              description={<span style={{ color: '#a7b0ba' }}>Digital Circuitality is the discipline of treating software as a formal physical circuit. By bounding logic within mathematical constraints, we eliminate the guesswork of traditional coding, achieving hardware-level reliability in a digital world.</span>}
+              description={<span style={{ color: '#a7b0ba' }}>The theory behind BRIK64: software logic treated as bounded, composable circuits.</span>}
             />
             <div className="mt-16 group">
               <ButtonVNext 
@@ -452,14 +468,14 @@ export function VNextHome() {
             <PageHeaderVNext
               eyebrow="Route Chooser"
               title="Where to go next."
-              description="From safe AI payload routing to legacy system modernization, choose the path for your engineering needs."
+              description="Pick the entry point: CLI, Platform, monomers, or theory."
             />
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { title: "BRIK64 CLI (brikc)", href: "/cli", desc: "Install the compiler and lift your first repository." },
-                { title: "Platform & Registry", href: "/platform", desc: "Inspect the collaborative circuit design environment." },
-                { title: "The 64 Monomers", href: "/docs/monomers", desc: "Browse the complete vocabulary of bonded operations." },
-                { title: "Theoretical Foundations", href: "/foundations", desc: "Read the mathematical proofs behind Digital Circuitality." }
+                { title: "BRIK64 CLI (brikc)", href: "/cli", desc: "Install and lift your first repository." },
+                { title: "Platform & Registry", href: "/platform", desc: "Review, govern, and publish circuits." },
+                { title: "The 64 Monomers", href: "/docs/monomers", desc: "Browse bounded operation vocabulary." },
+                { title: "Theoretical Foundations", href: "/foundations", desc: "Read the formal model." }
               ].map((link, i) => (
                 <a key={i} href={link.href} className="group rounded-[20px] border border-border bg-[#0A0D12] p-5 transition-colors hover:border-[color:var(--accent-soft)]">
                   <p className="text-sm font-medium text-white">{link.title}</p>

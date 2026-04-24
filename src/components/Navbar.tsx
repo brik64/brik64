@@ -217,18 +217,23 @@ function SimpleNavLink({
   active,
   onClick,
   external,
+  mobile = false,
 }: {
   href: string;
   label: string;
   active?: boolean;
   onClick?: () => void;
   external?: boolean;
+  mobile?: boolean;
 }) {
-  const className = `text-sm font-medium transition-all duration-200 ${
+  const baseClassName = `text-sm font-medium transition-all duration-200 ${
     active
       ? "text-white opacity-100"
       : "text-white opacity-95 hover:opacity-100 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.5)]"
   } relative after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:h-px after:w-0 after:bg-white after:transition-all after:duration-200 after:opacity-80 hover:after:w-full`;
+  const className = mobile
+    ? `${baseClassName} flex w-full items-center justify-between rounded-lg px-3 py-3`
+    : baseClassName;
 
   if (external) {
     return (
@@ -237,7 +242,7 @@ function SimpleNavLink({
         target="_blank"
         rel="noopener noreferrer"
         onClick={onClick}
-        className={`${className} inline-flex items-center gap-1.5`}
+        className={`${className} ${mobile ? "" : "inline-flex items-center gap-1.5"}`}
       >
         {label}
         <ArrowUpRight className="h-3.5 w-3.5 opacity-80" />
@@ -434,7 +439,7 @@ export function Navbar() {
               <MobileSection title="Industries" items={industryDropdownItems} onItemClick={() => setOpen(false)} />
             </div>
 
-            <div className="space-y-2 rounded-xl border border-neutral-800 bg-neutral-900/70 p-4">
+            <div className="grid gap-2 rounded-xl border border-neutral-800 bg-neutral-900/70 p-4">
               {topLevelLinks.map((item) => (
                 <SimpleNavLink
                   key={item.label}
@@ -443,6 +448,7 @@ export function Navbar() {
                   active={pathname === item.href}
                   external={"external" in item && Boolean(item.external)}
                   onClick={() => setOpen(false)}
+                  mobile
                 />
               ))}
             </div>

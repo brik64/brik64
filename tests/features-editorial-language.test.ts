@@ -43,10 +43,9 @@ describe("Features editorial language", () => {
 
   it("keeps the hero anchored to the product flow rather than to test counts or speed claims", () => {
     expect(featureHero.description).toContain("PCD");
-    expect(featureHero.description).toContain("closure");
-    expect(featureHero.description).toContain("domains");
-    expect(featureHero.description).toContain("Compile across supported targets");
-    expect(featureHero.description).toContain("platform and enterprise workflows");
+    expect(featureHero.description).toContain("check bounds");
+    expect(featureHero.description).toContain("emit targets");
+    expect(featureHero.description).toContain("review evidence");
     expect(featureHero.description).not.toContain("15,424");
     expect(featureHero.description).not.toContain("110K");
   });
@@ -66,7 +65,7 @@ describe("Features editorial language", () => {
   it("tracks approved claims and explicitly documents removed ones", () => {
     expect(featureClaimMatrix.approvedClaims.map((claim) => claim.id)).toEqual([
       "operations-128",
-      "targets-14",
+      "targets-10",
       "source-languages-10",
       "proof-files-207",
       "fixpoint-consistency",

@@ -31,6 +31,10 @@ function industry(config: {
   heroProofStripEyebrow: string;
   heroProofStripTitle: string;
   heroProofStripDescription: string;
+  realWorldBanner?: RiskPageSpec["realWorldBanner"];
+  certificationBadges?: RiskPageSpec["certificationBadges"];
+  riskSolutionBlock?: RiskPageSpec["riskSolutionBlock"];
+  ctaBackgroundImageSrc?: string;
   sectionEyebrow: string;
   sectionTitle: string;
   sectionDescription: string;
@@ -74,6 +78,9 @@ function industry(config: {
       proofStripTitle: config.heroProofStripTitle,
       proofStripDescription: config.heroProofStripDescription,
     },
+    realWorldBanner: config.realWorldBanner,
+    certificationBadges: config.certificationBadges,
+    riskSolutionBlock: config.riskSolutionBlock,
     sectionHeader: {
       eyebrow: config.sectionEyebrow,
       title: config.sectionTitle,
@@ -111,6 +118,7 @@ function industry(config: {
       title: config.ctaTitle,
       description: config.ctaDescription,
       actions: config.ctaActions,
+      backgroundImageSrc: config.ctaBackgroundImageSrc,
     },
   };
 }
@@ -346,7 +354,7 @@ export const industryPages = {
     title: "Aerospace software needs explicit control envelopes before",
     highlight: "certification work begins.",
     description:
-      "Avionics and control teams need a software artifact that makes envelope limits, mode transitions, and degraded behavior readable before the wider certification process absorbs the code. BRIK-64 helps express that logic as bounded control circuits and emitted review artifacts.",
+      "Express envelope limits, mode transitions, and degraded behavior as bounded control artifacts before certification packaging.",
     heroBackgroundImageSrc: "/generated/aerospace-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "PCD control review", detail: "Capture flight-envelope limits and transition rules in a bounded representation before downstream review packages expand." },
@@ -356,17 +364,43 @@ export const industryPages = {
     heroStatusLabel: "avionics workflow",
     heroStatusTone: "warning",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters before the certification package closes, at the point where control logic still needs a readable software boundary.",
+    heroProofStripTitle: "BRIK64 enters before certification packaging hides the software boundary.",
     heroProofStripDescription:
-      "Represent operating envelopes and degraded behavior in PCD, check the bounded control path, and emit a review artifact that can move into compliance and certification-support work.",
+      "Represent the envelope in PCD, check the control path, and emit review evidence.",
+    realWorldBanner: {
+      eyebrow: "Real-world aerospace surface",
+      title: "Flight hardware is a live environment, so the software view should sit beside the launch and assembly reality.",
+      imageSrc: "/generated/aerospace-day-banner.png",
+      imageAlt:
+        "Bright aerospace launch and satellite integration scene with blueprint overlays and blue sky lighting.",
+    },
+    certificationBadges: [
+      { label: "DO-178C", context: "Certification review posture", tone: "warning" },
+      { label: "FAA context", context: "Engineering evidence handoff", tone: "neutral" },
+      { label: "Traceable logic", context: "Envelope and fallback trail", tone: "teal" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Behavior gets inspected too late.",
+      riskBullets: [
+        "Envelope transitions hide inside implementation branches.",
+        "Degraded modes become hard to reconstruct.",
+        "Certification packages absorb software boundaries.",
+      ],
+      solutionTitle: "Make the control envelope reviewable.",
+      solutionSteps: [
+        "Express envelope logic in PCD.",
+        "Verify closure before handoff.",
+        "Emit a control review artifact.",
+      ],
+    },
     sectionEyebrow: "Control software review",
-    sectionTitle: "Flight-control software is easier to review when envelope limits, mode transitions, and degraded behavior live in one explicit artifact.",
+    sectionTitle: "Review flight-control software through one explicit control artifact.",
     sectionDescription:
-      "The strongest integration story is not generic aerospace language. It is a concrete engineering path: encode the control boundary in PCD, verify the constrained behavior, and hand the emitted artifact into a compliance-facing review flow.",
+      "Encode the control boundary in PCD, check constrained behavior, and hand off the artifact.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Flight software review starts with one bounded artifact another avionics engineer can inspect quickly.",
+    evidenceTitle: "One bounded artifact makes avionics review faster.",
     evidenceDescription:
-      "These tracks describe where the stack adds value in aerospace: control logic that stays explicit, subcircuits that remain reusable, and emitted review state that survives handoff into certification-support workflows.",
+      "Control logic, reusable subcircuits, and review state survive handoff.",
     evidenceTracks: [
       { label: "Envelope and modes", title: "Represent the approved operating envelope as code instead of narrative", body: "Speed, altitude, configuration, and transition rules can be declared in bounded domains so the control path is reviewable before it becomes a document chase.", emphasis: "risk" },
       { label: "Reusable subcircuits", title: "Keep verified fallback and transition logic reusable across related control components", body: "Teams can isolate control subcircuits that preserve the same envelope assumptions and degraded-mode behavior across multiple avionics modules.", emphasis: "proof" },
@@ -375,9 +409,9 @@ export const industryPages = {
     evidenceStatusLabel: "flight software review",
     evidenceStatusTone: "warning",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Review an envelope transition artifact before it is buried inside a larger avionics package.",
+    constraintTitle: "Review envelope transitions before package handoff.",
     constraintDescription:
-      "Aerospace teams usually need to inspect how the software enters and exits an approved operating mode, what fallback path is taken, and what review state is emitted. That workflow is where BRIK-64 fits.",
+      "Inspect mode entry, fallback behavior, and emitted state in one artifact.",
     constraints: [
       { title: "Declare the operating envelope", body: "Express airspeed, altitude, mode, and related control limits as explicit domains so the approved operating region is visible in the software artifact itself.", outcome: "bounded control envelope" },
       { title: "Encode transition and fallback logic", body: "Make degraded-mode and rejection behavior part of the same artifact so an engineer can inspect how the system behaves when it leaves the envelope.", outcome: "mode transition artifact" },
@@ -397,9 +431,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports bounded avionics review artifacts and certification preparation. It does not certify the aerospace system by itself.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the avionics review loop the way an engineering team actually works.",
+    scenarioTitle: "Run the avionics review loop.",
     scenarioDescription:
-      "The workflow stays concrete: define the envelope, encode the logic in PCD, emit the review artifact, and pass it into a compliance-facing handoff instead of leaving the reasoning implicit.",
+      "Define the envelope, encode PCD logic, emit evidence, and hand it off.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the operating envelope and degraded states the control component is allowed to enter.", state: "active" },
       { label: "02", title: "Encode the control logic", body: "Represent mode changes, fallback paths, and envelope checks as bounded control logic rather than opaque branches.", state: "warning" },
@@ -410,17 +444,21 @@ export const industryPages = {
     scenarioStatusTone: "warning",
     scenarioFooter:
       "This workflow supports avionics software review and certification preparation. It does not claim blanket aerospace certification or mission assurance.",
-    ctaTitle: "Bring avionics control logic into a review workflow before certification packaging hides the software boundary.",
+    ctaTitle: "Review avionics control logic before packaging hides the boundary.",
     ctaDescription:
-      "Start with PCD to express the control envelope, then move the emitted artifact into compliance review with the same bounded logic still visible.",
-    ctaActions: [primary("Request architecture review", "mailto:enterprise@brik64.com"), secondary("Read compliance", "/compliance")],
+      "Start with PCD, emit the artifact, and keep bounded logic visible.",
+    ctaBackgroundImageSrc: "/generated/aerospace-commercial-banner.png",
+    ctaActions: [
+      primary("Request architecture review", "mailto:enterprise@brik64.com"),
+      { label: "Read compliance", href: "/compliance", tone: "secondary", opaque: true },
+    ],
   }),
   ai: industry({
     heroEyebrow: "AI Systems",
     title: "AI systems need external verification around generated code and",
     highlight: "agent actions.",
     description:
-      "Production AI systems fail when model outputs move into execution without a readable policy boundary. BRIK-64 helps teams keep action gating, generated-code review, and operator diagnostics outside the model so they remain inspectable and changeable.",
+      "Keep action gates, generated-code review, and diagnostics outside the model.",
     heroBackgroundImageSrc: "/generated/ai-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "AI Agents gate", detail: "Insert a bounded policy circuit between the model output and the tool or execution path it would otherwise trigger." },
@@ -430,17 +468,44 @@ export const industryPages = {
     heroStatusLabel: "agent governance",
     heroStatusTone: "warning",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters between model output and execution, where policy circuits can still stop an unsafe action.",
+    heroProofStripTitle: "BRIK64 enters between model output and execution.",
     heroProofStripDescription:
-      "Use AI Agents as the operating surface, define the action gate outside the model, and feed diagnostics back into the workflow before the result reaches tools, builds, or production.",
+      "Define the gate outside the model and feed diagnostics back before execution.",
+    realWorldBanner: {
+      eyebrow: "Real-world AI operations",
+      title:
+        "AI control rooms are live operational systems, so policy gates and diagnostics should stay visible beside production infrastructure.",
+      imageSrc: "/generated/ai-day-banner.png",
+      imageAlt:
+        "Daylit AI operations center with observability dashboards and subtle blueprint overlays.",
+    },
+    certificationBadges: [
+      { label: "Action gate", context: "Policy outside the model", tone: "warning" },
+      { label: "Diagnostics", context: "Repairable rejection reasons", tone: "teal" },
+      { label: "Operator review", context: "Generated output boundary", tone: "neutral" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Generated output reaches tools too quickly.",
+      riskBullets: [
+        "Prompts hide policy boundaries.",
+        "Tool actions lack pre-execution gates.",
+        "Rejected output loses repair context.",
+      ],
+      solutionTitle: "Put a bounded gate before execution.",
+      solutionSteps: [
+        "Define allowed actions outside the model.",
+        "Check generated paths before tools run.",
+        "Return diagnostics into the repair loop.",
+      ],
+    },
     sectionEyebrow: "Generated output review",
-    sectionTitle: "AI workflows become easier to govern when generated actions and generated code are treated as bounded software objects.",
+    sectionTitle: "Govern generated actions as bounded software objects.",
     sectionDescription:
-      "Teams operating AI systems in production need to see exactly where BRIK-64 adds control: policy circuits, generated-code review, and diagnostics that remain readable to platform and operations teams.",
+      "Policy circuits, code review, and diagnostics stay readable to operators.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Generated output, action gating, and emitted diagnostics should all stay outside the model.",
+    evidenceTitle: "Keep output, gates, and diagnostics outside the model.",
     evidenceDescription:
-      "The integration story is practical: protect code generation and agent actions with a readable gate, keep the diagnostic surface explicit, and route approved results into platform or registry workflows.",
+      "Gate agent actions, emit diagnostics, and route approved artifacts forward.",
     evidenceTracks: [
       { label: "Generated code review", title: "Check code before it reaches a build or delivery surface", body: "AI-written code is most useful when scope, confidence, and allowed domains are checked before the artifact moves into build, registry, or deployment workflows.", emphasis: "risk" },
       { label: "Action gating", title: "Keep action rules inspectable instead of burying them in prompts", body: "Policy circuits make it clear what an agent may do, when it must stop, and what approval path exists for higher-risk actions.", emphasis: "proof" },
@@ -449,9 +514,9 @@ export const industryPages = {
     evidenceStatusLabel: "action gate",
     evidenceStatusTone: "warning",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Gate an agent action and return a diagnostic artifact instead of letting the model fail silently.",
+    constraintTitle: "Gate agent actions with explicit diagnostics.",
     constraintDescription:
-      "The strongest technical example is a real action gate: define the allowed action boundary, encode the rejection rule, and emit structured diagnostics an operator or agent loop can use.",
+      "Define the action boundary, encode rejection, and emit repairable diagnostics.",
     constraints: [
       { title: "Define the allowed action boundary", body: "Specify what the agent may touch, how much risk is tolerated, and what conditions trigger a narrower execution path or an explicit stop.", outcome: "policy circuit" },
       { title: "Check before execution", body: "Run the policy check before the model output reaches tools, deployment flows, or any other side-effecting surface.", outcome: "pre-execution diagnostics" },
@@ -471,9 +536,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports explicit action gating and generated-code review. It does not solve general model alignment or replace organizational controls.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the production AI loop with a hard gate between generation and execution.",
+    scenarioTitle: "Run AI generation through a hard gate.",
     scenarioDescription:
-      "The flow stays simple and technical: define the boundary, encode the gate, emit diagnostics, and route the accepted artifact into the next product surface.",
+      "Define the boundary, encode the gate, emit diagnostics, then route output.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the tool actions, risk thresholds, and generated-code scopes the model may attempt.", state: "active" },
       { label: "02", title: "Encode the gate", body: "Express the action rule as a policy circuit or bounded policy artifact outside the model.", state: "warning" },
@@ -484,9 +549,10 @@ export const industryPages = {
     scenarioStatusTone: "warning",
     scenarioFooter:
       "This workflow supports production AI governance and generated-output review. It does not claim that BRIK-64 makes an AI system universally safe.",
-    ctaTitle: "Use AI Agents as the operating surface for explicit action gating and generated-code review.",
+    ctaTitle: "Use AI Agents for action gating and generated-code review.",
     ctaDescription:
-      "Open the AI Agents workflow to see where the gate lives, then follow the AI safety use case for a scenario-level view of the same discipline.",
+      "See where the gate lives, then inspect the AI safety scenario.",
+    ctaBackgroundImageSrc: "/generated/ai-cta-banner.png",
     ctaActions: [primary("Open AI agents", "/ai-agents"), secondary("Read AI safety use case", "/use-cases/ai-safety")],
   }),
   automotive: industry({
@@ -494,7 +560,7 @@ export const industryPages = {
     title: "Automotive software needs explicit thresholds, safe fallback, and",
     highlight: "change-sensitive review.",
     description:
-      "Vehicle platform teams need a software artifact that exposes actuation thresholds, sensor assumptions, and fallback behavior across revisions. BRIK-64 helps turn that control logic into a bounded artifact that survives safety and enterprise handoff.",
+      "Expose actuation thresholds, sensor assumptions, and fallback behavior across revisions.",
     heroBackgroundImageSrc: "/generated/automotive-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Platform control review", detail: "Use the platform workflow to inspect actuation logic, bounded thresholds, and fallback posture before the control component moves deeper into the release path." },
@@ -504,17 +570,44 @@ export const industryPages = {
     heroStatusLabel: "control software review",
     heroStatusTone: "warning",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters at the threshold-sensitive control component, where actuation rules and fallback behavior still need a readable software boundary.",
+    heroProofStripTitle: "BRIK64 enters at threshold-sensitive control components.",
     heroProofStripDescription:
-      "Inspect the bounded control artifact in Platform, then hand the result into enterprise review with the same threshold and fallback logic still visible.",
+      "Inspect thresholds and fallback logic before enterprise review.",
+    realWorldBanner: {
+      eyebrow: "Real-world vehicle operations",
+      title:
+        "Safety logic belongs next to real test tracks and fleet operations, not buried behind post-incident analysis.",
+      imageSrc: "/generated/automotive-day-banner.png",
+      imageAlt:
+        "Bright automotive proving-ground environment with telemetry and control overlays.",
+    },
+    certificationBadges: [
+      { label: "ISO 26262", context: "Safety review posture", tone: "warning" },
+      { label: "ASIL-oriented", context: "Threshold and fallback trace", tone: "neutral" },
+      { label: "Sensor assumptions", context: "Bounded input handling", tone: "teal" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Fallback behavior spreads across modules.",
+      riskBullets: [
+        "Actuation thresholds drift between revisions.",
+        "Sensor assumptions become implicit.",
+        "Fallback paths are hard to compare.",
+      ],
+      solutionTitle: "Keep control decisions traceable.",
+      solutionSteps: [
+        "Model thresholds as bounded circuits.",
+        "Attach fallback behavior to the artifact.",
+        "Carry review state across revisions.",
+      ],
+    },
     sectionEyebrow: "Control component review",
-    sectionTitle: "Vehicle control software is easier to review when threshold logic, sensor assumptions, and fallback behavior stay inside one artifact.",
+    sectionTitle: "Review vehicle control logic through one artifact.",
     sectionDescription:
-      "The integration story here is not a generic autonomy demo. It is a practical engineering path for teams reviewing brake, steering, torque, or similar control logic under update pressure.",
+      "Focus on brake, steering, torque, and fallback logic under update pressure.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Make the actuation boundary readable before the control path disappears into a wider vehicle stack.",
+    evidenceTitle: "Make the actuation boundary readable before release.",
     evidenceDescription:
-      "These tracks focus on the review problem that matters in automotive software: which conditions authorize an action, which states force a fallback, and what evidence survives the next revision.",
+      "Show what authorizes action, forces fallback, and survives revision.",
     evidenceTracks: [
       { label: "Threshold logic", title: "Expose the conditions that actually authorize an actuation", body: "Bounded speed, distance, torque, or sensor thresholds make it possible to inspect why the software would command an action instead of discovering the rule after a failure.", emphasis: "risk" },
       { label: "Sensor and fallback assumptions", title: "Keep rejection and degraded behavior tied to the same control artifact", body: "The control artifact should show where a signal is trusted, where it is rejected, and what the software does when it cannot justify the actuation path.", emphasis: "proof" },
@@ -523,9 +616,9 @@ export const industryPages = {
     evidenceStatusLabel: "actuation review",
     evidenceStatusTone: "warning",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Validate an actuation and fallback component before the next safety review starts from scratch.",
+    constraintTitle: "Validate actuation and fallback before safety review.",
     constraintDescription:
-      "A concrete automotive workflow is to review one control component at a time: declare the threshold envelope, encode fallback behavior, and emit evidence that stays valid across revisions until the logic itself changes.",
+      "Declare thresholds, encode fallback, and emit revision-sensitive evidence.",
     constraints: [
       { title: "Declare thresholds and assumptions", body: "Capture speed, distance, torque, or similar actuation gates alongside the sensor assumptions that justify the path.", outcome: "bounded actuation logic" },
       { title: "Encode safe fallback", body: "Show how the component behaves when the required signal, threshold, or correlation is missing so the degraded route is reviewable.", outcome: "fallback artifact" },
@@ -545,9 +638,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports readable control review artifacts and safety-case preparation. It does not claim ISO 26262 compliance or end-to-end vehicle assurance by itself.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the control-review loop the way a vehicle software team actually ships it.",
+    scenarioTitle: "Run the vehicle control-review loop.",
     scenarioDescription:
-      "Define the control boundary, encode the actuation logic, emit the review artifact, and carry it into platform and enterprise review instead of leaving the safety argument implicit.",
+      "Define the boundary, encode actuation logic, emit evidence, and hand off.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the threshold, sensor, and fallback conditions that govern the control component.", state: "active" },
       { label: "02", title: "Encode the control logic", body: "Represent the actuation rule and rejection path as bounded logic that another engineer can inspect.", state: "warning" },
@@ -558,9 +651,10 @@ export const industryPages = {
     scenarioStatusTone: "warning",
     scenarioFooter:
       "This workflow supports automotive control review and safety-case preparation. It does not claim that BRIK-64 certifies the vehicle stack on its own.",
-    ctaTitle: "Review threshold-sensitive control logic before it becomes another opaque branch in the vehicle stack.",
+    ctaTitle: "Review threshold logic before it becomes opaque.",
     ctaDescription:
-      "Inspect the bounded control artifact in Platform, then continue into enterprise review with the same actuation and fallback logic still visible.",
+      "Inspect actuation and fallback logic before enterprise review.",
+    ctaBackgroundImageSrc: "/generated/automotive-cta-banner.png",
     ctaActions: [primary("Talk to enterprise", "mailto:enterprise@brik64.com"), secondary("Read platform", "/platform")],
   }),
   engineering: industry({
@@ -568,7 +662,7 @@ export const industryPages = {
     title: "Engineering software needs explicit assumptions and preserved",
     highlight: "calculation trails.",
     description:
-      "Simulation, controls, and industrial calculation pipelines break when materials, units, ranges, and accepted transforms remain implicit. BRIK-64 helps teams express those assumptions in PCD and emit a computational dossier another engineer can inspect and reuse.",
+      "Express simulation materials, units, ranges, and transforms as inspectable computational dossiers.",
     heroBackgroundImageSrc: "/generated/engineering-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "PCD computation blueprint", detail: "Start by declaring units, materials, and bounds in a formal representation before the calculation path disappears into a larger toolchain." },
@@ -578,17 +672,44 @@ export const industryPages = {
     heroStatusLabel: "computation review",
     heroStatusTone: "teal",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters at the point where assumptions should still be visible instead of scattered across scripts, notebooks, and tool settings.",
+    heroProofStripTitle: "BRIK64 enters while assumptions are still visible.",
     heroProofStripDescription:
-      "Use PCD to declare the calculation boundary, emit a dossier that preserves the transform path, and reuse the same bounded component through foundations-oriented engineering workflows.",
+      "Declare the boundary, preserve the transform path, and reuse the component.",
+    realWorldBanner: {
+      eyebrow: "Real-world engineering surface",
+      title:
+        "Engineering decisions are physical, so units, assumptions, and transforms should stay visible beside hardware context.",
+      imageSrc: "/generated/engineering-day-banner.png",
+      imageAlt:
+        "Sunlit industrial engineering environment with structural blueprint overlays.",
+    },
+    certificationBadges: [
+      { label: "IEC 61508", context: "Engineering review posture", tone: "neutral" },
+      { label: "Units", context: "Assumptions remain explicit", tone: "teal" },
+      { label: "Calculation trace", context: "Reusable transform dossier", tone: "warning" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Assumptions disappear across tools.",
+      riskBullets: [
+        "Units and materials live outside code.",
+        "Transforms lose their input boundary.",
+        "Reusable calculations become undocumented copies.",
+      ],
+      solutionTitle: "Keep the transform as a dossier.",
+      solutionSteps: [
+        "Declare units, materials, and ranges.",
+        "Verify the bounded calculation path.",
+        "Emit a reusable computational dossier.",
+      ],
+    },
     sectionEyebrow: "Computation review",
-    sectionTitle: "Engineering calculations become easier to trust when assumptions, transforms, and emitted state stay in one bounded artifact.",
+    sectionTitle: "Keep assumptions and transforms inside one artifact.",
     sectionDescription:
-      "A technical buyer should be able to see exactly where the methodology fits: not as generic consulting, but as a disciplined way to preserve units, ranges, materials, and reusable algorithms in software form.",
+      "Preserve units, ranges, materials, and reusable algorithms in software form.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Treat the engineering transform as a shareable blueprint instead of a brittle script.",
+    evidenceTitle: "Treat the transform as a shareable blueprint.",
     evidenceDescription:
-      "The integration path is concrete: express the boundary in PCD, preserve the transform as an inspectable artifact, and route it into foundations and reuse workflows.",
+      "Express the boundary in PCD and route the artifact into reuse.",
     evidenceTracks: [
       { label: "Declared assumptions", title: "Capture materials, units, and ranges before the transform runs", body: "A structural, controls, or industrial computation becomes easier to review when load cases, material properties, tolerances, and units are explicit in the software artifact itself.", emphasis: "risk" },
       { label: "Reusable bounded algorithms", title: "Keep the transform readable enough to reuse across related engineering workflows", body: "A bounded algorithm can be reviewed once, reused across projects, and carried into other engineering surfaces without restating the same assumptions from scratch.", emphasis: "proof" },
@@ -597,9 +718,9 @@ export const industryPages = {
     evidenceStatusLabel: "engineering dossier",
     evidenceStatusTone: "teal",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Publish a bounded calculation artifact before the result is detached from the assumptions that produced it.",
+    constraintTitle: "Publish calculations with assumptions still attached.",
     constraintDescription:
-      "A useful engineering workflow keeps the assumptions and the emitted value coupled: define the ranges, encode the transform, and preserve enough structure for another engineer to review the result.",
+      "Define ranges, encode the transform, and preserve review structure.",
     constraints: [
       { title: "Declare material and range bounds", body: "Capture units, geometry, materials, loads, or similar engineering limits as explicit domains instead of leaving them to comments or tool defaults.", outcome: "assumption boundary" },
       { title: "Encode the bounded transform", body: "Represent the calculation as a bounded computational object so the accepted path is clear before the result is used elsewhere.", outcome: "reusable transform artifact" },
@@ -620,9 +741,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports inspectable computational dossiers and reusable bounded algorithms. It does not replace expert sign-off or broader sector certification.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the engineering calculation loop with the assumptions still attached to the result.",
+    scenarioTitle: "Run calculations with assumptions attached.",
     scenarioDescription:
-      "The workflow is simple: define the boundary, encode the transform in PCD, emit the dossier, and reuse the resulting artifact through foundations-oriented product surfaces.",
+      "Define the boundary, encode the transform, emit the dossier, and reuse.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the units, ranges, and engineering assumptions the computation is allowed to accept.", state: "active" },
       { label: "02", title: "Encode the transform", body: "Represent the bounded computation so the accepted path is visible instead of hidden inside a tool chain.", state: "warning" },
@@ -633,9 +754,10 @@ export const industryPages = {
     scenarioStatusTone: "teal",
     scenarioFooter:
       "This workflow supports bounded engineering review and reusable software artifacts. It does not claim domain certification or expert approval on its own.",
-    ctaTitle: "Keep engineering assumptions attached to the software artifact instead of losing them in the tool chain.",
+    ctaTitle: "Keep engineering assumptions attached to the artifact.",
     ctaDescription:
-      "Open PCD to see the blueprint layer, then follow the foundations surface for how these bounded computational objects compose across the system.",
+      "Open PCD, then follow the foundations surface.",
+    ctaBackgroundImageSrc: "/generated/engineering-cta-banner.png",
     ctaActions: [primary("Open PCD", "/pcd"), secondary("Read foundations", "/foundations")],
   }),
   finance: industry({
@@ -643,8 +765,8 @@ export const industryPages = {
     title: "Financial software needs bounded transaction logic before money moves or",
     highlight: "legacy behavior is rewritten.",
     description:
-      "Payment flows, ledger transitions, approval gates, and risk calculations all live under audit pressure. BRIK-64 helps teams lift that logic into a reviewable artifact before refactoring, transpilation, or modernization hides the behavior they still need to preserve.",
-    heroBackgroundImageSrc: "/generated/finance-hero-bg.png",
+      "Lift payment rules, ledger transitions, approvals, and risk logic before modernization.",
+    heroBackgroundImageSrc: "/generated/finance-cta-banner.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Lifter review path", detail: "Lift legacy payment, ledger, and business-rule logic into a bounded artifact before it is migrated or replaced." },
       { label: "Artifact emitted", value: "Audit-ready rule dossier", detail: "Keep transaction bounds, approval gates, and emitted decision state together so risk and compliance engineers can inspect the same object." },
@@ -653,17 +775,44 @@ export const industryPages = {
     heroStatusLabel: "financial logic review",
     heroStatusTone: "warning",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters before modernization or execution, where payment rules and approval logic still need a readable software boundary.",
+    heroProofStripTitle: "BRIK64 enters before modernization hides payment rules.",
     heroProofStripDescription:
-      "Lift review-critical financial logic into a bounded artifact, emit an audit-ready dossier, and hand it into enterprise review before the next migration step hides the behavior again.",
+      "Lift financial logic, emit a dossier, and hand it into review.",
+    realWorldBanner: {
+      eyebrow: "Real-world financial operations",
+      title:
+        "Transaction software runs in live markets, so rule boundaries should stay visible beside payment and ledger operations.",
+      imageSrc: "/generated/finance-day-banner.png",
+      imageAlt:
+        "Daylit financial operations environment with transaction-lane and audit overlays.",
+    },
+    certificationBadges: [
+      { label: "PCI DSS", context: "Payment evidence posture", tone: "warning" },
+      { label: "SOX-oriented", context: "Control review support", tone: "neutral" },
+      { label: "Audit trail", context: "Ledger decision trace", tone: "teal" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Legacy rewrites lose rule boundaries.",
+      riskBullets: [
+        "Payment rules fragment across services.",
+        "Ledger conditions become hard to trace.",
+        "Audit evidence arrives after migration risk.",
+      ],
+      solutionTitle: "Preserve money-moving logic as an artifact.",
+      solutionSteps: [
+        "Lift transaction rules into PCD.",
+        "Verify approval and rejection boundaries.",
+        "Carry audit trace into review.",
+      ],
+    },
     sectionEyebrow: "Transaction and ledger review",
-    sectionTitle: "Transaction software is easier to audit when payment rules, approval gates, and state transitions stay in one artifact.",
+    sectionTitle: "Audit Transaction logic through one artifact.",
     sectionDescription:
-      "The integration path for finance teams is direct: use Lifter to expose review-critical logic, preserve the business-rule boundary, and move the emitted artifact into enterprise and compliance review instead of relying on retrospective incident analysis.",
+      "Use Lifter to expose rules, preserve boundaries, and support review.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Put money-moving logic under review before execution or modernization splits it across systems.",
+    evidenceTitle: "Review money-moving logic before it splits across systems.",
     evidenceDescription:
-      "The finance story is strongest when it stays close to operational software: payment rails, settlement rules, ledger transitions, and model thresholds that have to remain inspectable under audit pressure.",
+      "Keep payment rails, settlement rules, ledger transitions, and thresholds inspectable.",
     evidenceTracks: [
       { label: "Payments and settlement", title: "Bound the paths that actually authorize value movement", body: "Payment approval, refund, settlement, and transfer logic become easier to review when the accepted amount domains, approval branches, and rejection rules are all visible in one bounded artifact.", emphasis: "risk" },
       { label: "Risk and pricing logic", title: "Expose the threshold assumptions behind a financial decision", body: "Fee bands, exposure limits, volatility windows, and approval thresholds can be kept in explicit domains so reviewers see where the software accepts, escalates, or rejects a path.", emphasis: "proof" },
@@ -672,9 +821,9 @@ export const industryPages = {
     evidenceStatusLabel: "audit workflow",
     evidenceStatusTone: "warning",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Lift a financial rule set into an artifact auditors and engineers can inspect before the next migration step.",
+    constraintTitle: "Lift financial rules before migration.",
     constraintDescription:
-      "A useful finance workflow is to isolate the money-moving logic, make approval and escalation rules explicit, and preserve the emitted state in a dossier that survives modernization work.",
+      "Isolate money-moving logic and preserve approval state for review.",
     constraints: [
       { title: "Declare transaction and approval bounds", body: "Capture amount ranges, sufficient-balance checks, fee logic, approval thresholds, and similar constraints inside explicit domains before the execution path is trusted.", outcome: "transaction rule boundary" },
       { title: "Encode the review-critical logic", body: "Lift the payment, ledger, or risk rule into a bounded artifact so the team can compare the preserved behavior before rewriting or transpiling it.", outcome: "lifted audit dossier" },
@@ -697,9 +846,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports reviewable transaction artifacts and migration evidence. It does not satisfy PCI-DSS, SOX, MiFID II, or any full regulatory program on its own.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the financial review loop before execution or modernization makes the rule path harder to inspect.",
+    scenarioTitle: "Run financial review before modernization.",
     scenarioDescription:
-      "The loop is operational and concrete: define the rule boundary, lift the business logic, emit the audit artifact, and move that artifact into enterprise review before the code changes again.",
+      "Define the rule boundary, lift logic, emit evidence, and review.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the payment, ledger, or risk rule set that must remain inspectable under audit pressure.", state: "active" },
       { label: "02", title: "Lift or encode the logic", body: "Bring the review-critical behavior into a bounded artifact so the accepted and rejected branches are visible.", state: "warning" },
@@ -709,10 +858,11 @@ export const industryPages = {
     scenarioStatusLabel: "enterprise handoff",
     scenarioStatusTone: "warning",
     scenarioFooter:
-      "This workflow supports audit-ready financial software review and legacy migration preparation. It does not claim blanket compliance or complete financial-system certification.",
-    ctaTitle: "Lift the financial rule set before the next migration step makes the original logic harder to audit.",
+      "This workflow supports audit-ready financial software review and legacy migration preparation. It does not claim full compliance coverage or complete financial-system certification.",
+    ctaTitle: "Lift financial rules before auditability degrades.",
     ctaDescription:
-      "Open Lifter to inspect the bounded transaction artifact, then move into enterprise review with the same approval and ledger logic still visible.",
+      "Inspect the bounded transaction artifact, then move into enterprise review.",
+    ctaBackgroundImageSrc: "/generated/finance-cta-banner.png",
     ctaActions: [primary("Open lifter", "/lifter"), secondary("Request enterprise review", "mailto:enterprise@brik64.com")],
   }),
   government: industry({
@@ -720,7 +870,7 @@ export const industryPages = {
     title: "Public-sector systems need deterministic rule logic and",
     highlight: "auditable processing.",
     description:
-      "Eligibility engines, routing rules, and case-processing logic all sit under oversight pressure. BRIK-64 helps public-sector teams turn those decision paths into readable software artifacts that preserve accepted inputs, emitted state, and audit context.",
+      "Turn eligibility, routing, and case-processing rules into readable review artifacts.",
     heroBackgroundImageSrc: "/generated/government-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Compliance rule review", detail: "Start where deterministic policy logic still needs inspection before it is buried inside a broader operational workflow." },
@@ -730,17 +880,44 @@ export const industryPages = {
     heroStatusLabel: "public-sector rule review",
     heroStatusTone: "neutral",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters where rules and eligibility logic still need a readable software boundary before oversight review begins.",
+    heroProofStripTitle: "BRIK64 enters before oversight review reconstructs the rule path.",
     heroProofStripDescription:
-      "Use Compliance to encode the decision rule, emit an oversight-ready artifact, and carry that artifact into enterprise review without losing the link between policy conditions and software behavior.",
+      "Encode the rule, emit the artifact, and preserve policy-to-software links.",
+    realWorldBanner: {
+      eyebrow: "Real-world public operations",
+      title:
+        "Public decisions affect people in real time, so eligibility and routing logic should remain visible beside service operations.",
+      imageSrc: "/generated/government-day-banner.png",
+      imageAlt:
+        "Bright public-service operations setting with deterministic rule-flow overlays.",
+    },
+    certificationBadges: [
+      { label: "FedRAMP", context: "Deployment review posture", tone: "neutral" },
+      { label: "NIST-oriented", context: "Control mapping support", tone: "teal" },
+      { label: "Oversight trace", context: "Rule-path inspection", tone: "warning" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Oversight teams reconstruct rules late.",
+      riskBullets: [
+        "Eligibility paths hide inside application flow.",
+        "Case inputs lack explicit boundaries.",
+        "Audit reviews depend on reverse engineering.",
+      ],
+      solutionTitle: "Make rule paths deterministic.",
+      solutionSteps: [
+        "Encode eligibility as bounded logic.",
+        "Verify accepted and rejected inputs.",
+        "Emit an oversight-ready trail.",
+      ],
+    },
     sectionEyebrow: "Eligibility and rules review",
-    sectionTitle: "Rule-heavy public software is easier to audit when policy logic, bounded inputs, and emitted state stay in one artifact.",
+    sectionTitle: "Audit public-sector rules through one artifact.",
     sectionDescription:
-      "The useful government story is about explicit software behavior: eligibility decisions, routing conditions, and accepted input ranges that stay readable to engineering, compliance, and oversight teams.",
+      "Keep eligibility, routing, and accepted inputs readable to reviewers.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Keep deterministic policy logic visible instead of reconstructing it after an audit request arrives.",
+    evidenceTitle: "Keep deterministic policy logic visible.",
     evidenceDescription:
-      "The integration path is straightforward: use Compliance to express the rule set, preserve the processing boundary, and emit an artifact that survives handoff into enterprise and oversight workflows.",
+      "Express the rule set, preserve the boundary, and emit review evidence.",
     evidenceTracks: [
       { label: "Eligibility and routing rules", title: "Make decision logic inspectable instead of burying it behind opaque application flow", body: "Benefit eligibility, document routing, and related rule-heavy workflows become easier to inspect when the actual conditions and accepted inputs stay visible in one bounded artifact.", emphasis: "risk" },
       { label: "Bounded input handling", title: "Show which public inputs are accepted, rejected, or escalated", body: "The software artifact should make it obvious where the system stays within its approved decision boundary and where it routes a case into a different path.", emphasis: "proof" },
@@ -749,9 +926,9 @@ export const industryPages = {
     evidenceStatusLabel: "oversight review",
     evidenceStatusTone: "neutral",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Encode an eligibility or routing rule set before the processing path disappears into operational complexity.",
+    constraintTitle: "Encode eligibility rules before operational handoff.",
     constraintDescription:
-      "A practical public-sector workflow is to isolate the rules that govern a case decision, define the accepted inputs, and preserve the emitted review state in an oversight-ready artifact.",
+      "Isolate rules, define inputs, and preserve emitted review state.",
     constraints: [
       { title: "Declare the rule boundary", body: "Capture eligibility conditions, routing gates, or similar policy logic as explicit rule branches instead of scattering them across hidden application flow.", outcome: "deterministic rule artifact" },
       { title: "Bound the accepted input set", body: "Specify what input ranges, document states, or case attributes are valid so unexpected processing does not remain implicit.", outcome: "auditable input boundary" },
@@ -771,9 +948,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports auditable rule artifacts and bounded public-sector processing. It does not claim automatic authorization, policy correctness in every context, or broader governance closure.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the rule-review loop before oversight work has to reconstruct the logic from application behavior.",
+    scenarioTitle: "Run rule review before oversight reconstruction.",
     scenarioDescription:
-      "The engineering flow is simple: define the policy boundary, encode the rule set, emit the review artifact, and hand it into compliance and enterprise review with the software logic still intact.",
+      "Define the policy boundary, encode rules, emit evidence, and hand off.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the eligibility or routing rule set that needs deterministic review.", state: "active" },
       { label: "02", title: "Encode the rule logic", body: "Represent the accepted inputs and decision branches as bounded software logic instead of opaque application behavior.", state: "warning" },
@@ -784,9 +961,10 @@ export const industryPages = {
     scenarioStatusTone: "neutral",
     scenarioFooter:
       "This workflow supports deterministic rule review and auditable processing. It does not claim that one artifact settles broader governance or authorization obligations.",
-    ctaTitle: "Keep rule-heavy public software inspectable before the audit or oversight request arrives.",
+    ctaTitle: "Keep public-sector rules inspectable before audit.",
     ctaDescription:
-      "Read the compliance surface for the rule-review posture, then continue into enterprise review if the workflow needs team and organizational controls around the same artifact.",
+      "Read the compliance surface, then continue into enterprise review.",
+    ctaBackgroundImageSrc: "/generated/government-cta-banner.png",
     ctaActions: [primary("Read compliance", "/compliance"), secondary("Talk to enterprise", "mailto:enterprise@brik64.com")],
   }),
   healthcare: industry({
@@ -794,7 +972,7 @@ export const industryPages = {
     title: "Clinical software needs explicit dose boundaries, escalation paths, and",
     highlight: "reviewable artifacts.",
     description:
-      "Dose calculators, device-adjacent workflows, and clinical state transitions all need a readable software boundary long before broader clinical processes take over. BRIK-64 helps teams express that logic as bounded review artifacts without making efficacy or compliance claims.",
+      "Keep dose logic, workflow transitions, and escalation paths readable before clinical handoff.",
     heroBackgroundImageSrc: "/generated/healthcare-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "Safety-Critical review", detail: "Start where dose or workflow logic still needs explicit engineering review before it enters broader clinical or device processes." },
@@ -804,17 +982,44 @@ export const industryPages = {
     heroStatusLabel: "clinical logic review",
     heroStatusTone: "warning",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters where dose and workflow logic still need an explicit software boundary before broader clinical processes take over.",
+    heroProofStripTitle: "BRIK64 enters before clinical workflows hide dose logic.",
     heroProofStripDescription:
-      "Use Safety-Critical to review bounded dose or workflow logic, emit an engineering artifact, and hand that artifact into evaluation or enterprise review with the escalation path still visible.",
+      "Review bounded dose logic, emit evidence, and preserve escalation paths.",
+    realWorldBanner: {
+      eyebrow: "Real-world clinical operations",
+      title:
+        "Clinical workflows are live care environments, so dose and escalation logic should stay visible beside care operations.",
+      imageSrc: "/generated/healthcare-day-banner.png",
+      imageAlt:
+        "Daylit clinical operations environment with safety and workflow overlays.",
+    },
+    certificationBadges: [
+      { label: "IEC 62304", context: "Lifecycle review posture", tone: "warning" },
+      { label: "HIPAA context", context: "Workflow evidence boundary", tone: "neutral" },
+      { label: "Escalation", context: "Dose-path review trace", tone: "teal" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Dose assumptions hide inside workflow code.",
+      riskBullets: [
+        "Dose bands become implicit.",
+        "Escalation paths drift between states.",
+        "Clinical handoff loses software context.",
+      ],
+      solutionTitle: "Keep clinical logic inspectable.",
+      solutionSteps: [
+        "Bound dose and workflow states.",
+        "Verify escalation conditions.",
+        "Emit review-ready engineering state.",
+      ],
+    },
     sectionEyebrow: "Dose and workflow review",
-    sectionTitle: "Clinical software is easier to review when dose logic, escalation, and emitted state stay in one bounded artifact.",
+    sectionTitle: "Review clinical logic through one bounded artifact.",
     sectionDescription:
-      "The healthcare story stays on software evidence: explicit dose boundaries, workflow state transitions, and readable engineering review output for device-adjacent or clinical workflow systems.",
+      "Focus on dose boundaries, workflow transitions, and engineering review output.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Keep the software boundary visible before a recommendation or workflow transition reaches a broader clinical process.",
+    evidenceTitle: "Keep the software boundary visible before clinical handoff.",
     evidenceDescription:
-      "The value is not a vague safety claim. It is a practical engineering path for teams that need dose logic, escalation behavior, and review evidence to remain readable.",
+      "Dose logic, escalation behavior, and evidence remain readable.",
     evidenceTracks: [
       { label: "Dose and state boundaries", title: "Declare what the software may recommend or transition between", body: "Dose bands, patient-state thresholds, and workflow transitions become easier to inspect when the allowed ranges and rejection paths are part of the same bounded artifact.", emphasis: "risk" },
       { label: "Escalation logic", title: "Make the review and escalation path explicit instead of relying on hidden fallback", body: "A bounded artifact should show where the software stops, escalates, or routes to human review when the input falls outside the approved boundary.", emphasis: "proof" },
@@ -823,9 +1028,9 @@ export const industryPages = {
     evidenceStatusLabel: "clinical workflow",
     evidenceStatusTone: "warning",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Validate a dose or workflow rule set before the recommendation path leaves engineering review.",
+    constraintTitle: "Validate dose rules before engineering handoff.",
     constraintDescription:
-      "A concrete healthcare workflow is to declare the dose or escalation boundary, encode the clinical logic, and preserve the emitted software state in a dossier another engineer can inspect.",
+      "Declare boundaries, encode clinical logic, and preserve emitted state.",
     constraints: [
       { title: "Declare dose and workflow boundaries", body: "Capture safe dose ranges, accepted workflow states, and similar software limits before a recommendation or transition is emitted.", outcome: "bounded clinical logic" },
       { title: "Encode escalation behavior", body: "Make the review gate explicit so out-of-range states route into escalation rather than silent fallback or opaque branching.", outcome: "escalation artifact" },
@@ -845,9 +1050,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports bounded clinical software review artifacts. It does not claim medical efficacy, replace clinical judgment, or satisfy IEC 62304 by itself.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the clinical software review loop before the workflow or recommendation leaves engineering control.",
+    scenarioTitle: "Run clinical software review before handoff.",
     scenarioDescription:
-      "The loop stays narrow and technical: define the software boundary, encode the dose or workflow logic, emit the review artifact, and hand it into evaluation with the same evidence still attached.",
+      "Define the boundary, encode logic, emit evidence, and hand off.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the dose or workflow states that must remain inside the approved software envelope.", state: "active" },
       { label: "02", title: "Encode the logic", body: "Represent the dose rule, workflow transition, and escalation path as bounded software logic.", state: "warning" },
@@ -858,9 +1063,10 @@ export const industryPages = {
     scenarioStatusTone: "warning",
     scenarioFooter:
       "This workflow supports bounded clinical software review and readable escalation. It does not claim clinical correctness in every context or automatic compliance.",
-    ctaTitle: "Keep dose and workflow logic inside a readable engineering artifact before broader clinical processes take over.",
+    ctaTitle: "Keep dose and workflow logic readable before handoff.",
     ctaDescription:
-      "Read the Safety-Critical surface for the bounded review posture, then request evaluation when the same artifact needs an enterprise or regulated-program handoff.",
+      "Read the safety-critical surface, then request evaluation.",
+    ctaBackgroundImageSrc: "/generated/healthcare-cta-banner.png",
     ctaActions: [primary("Read safety-critical", "/safety-critical"), secondary("Request evaluation", "mailto:enterprise@brik64.com")],
   }),
   science: industry({
@@ -868,7 +1074,7 @@ export const industryPages = {
     title: "Scientific software needs explicit assumptions, reproducibility, and",
     highlight: "shareable computational blueprints.",
     description:
-      "Research software becomes brittle when units, calibration factors, and transform steps remain implicit in notebooks or scripts. BRIK-64 helps teams express those assumptions as bounded computational artifacts that preserve how a result was produced and how another team can reproduce it.",
+      "Make units, calibration factors, and transforms explicit for reproducible review.",
     heroBackgroundImageSrc: "/generated/science-hero-bg.png",
     heroMetrics: [
       { label: "Workflow focus", value: "PCD reproducibility blueprint", detail: "Start by declaring ranges, units, and calibration factors in a formal representation before the computational path fragments across tools." },
@@ -878,17 +1084,44 @@ export const industryPages = {
     heroStatusLabel: "scientific computation review",
     heroStatusTone: "teal",
     heroProofStripEyebrow: "Where BRIK-64 enters",
-    heroProofStripTitle: "BRIK-64 enters where scientific assumptions should still be explicit instead of disappearing into notebooks, scripts, and local conventions.",
+    heroProofStripTitle: "BRIK64 enters before assumptions disappear into local tooling.",
     heroProofStripDescription:
-      "Use PCD to declare the computational boundary, emit a reproducibility artifact, and publish the bounded blueprint through registry workflows with the transform path still intact.",
+      "Declare the boundary, emit reproducibility evidence, and publish the blueprint.",
+    realWorldBanner: {
+      eyebrow: "Real-world research operations",
+      title:
+        "Research outcomes move into real programs, so calibration and reproducibility logic should stay visible beside lab operations.",
+      imageSrc: "/generated/science-day-banner.png",
+      imageAlt:
+        "Sunlit research facility with instrumentation and reproducibility overlays.",
+    },
+    certificationBadges: [
+      { label: "Calibration", context: "Assumptions remain visible", tone: "teal" },
+      { label: "Reproducibility", context: "Transform path preserved", tone: "neutral" },
+      { label: "Publication", context: "Shareable computation trace", tone: "warning" },
+    ],
+    riskSolutionBlock: {
+      riskTitle: "Local tooling hides method assumptions.",
+      riskBullets: [
+        "Calibration factors stay in notebooks.",
+        "Transforms are hard to rerun elsewhere.",
+        "Published results lose computation lineage.",
+      ],
+      solutionTitle: "Publish the method as a blueprint.",
+      solutionSteps: [
+        "Declare units, ranges, and calibration factors.",
+        "Verify the bounded transform.",
+        "Emit a reusable computation trace.",
+      ],
+    },
     sectionEyebrow: "Reproducible computation",
-    sectionTitle: "Scientific software is easier to reproduce when assumptions, transforms, and result lineage stay inside one bounded artifact.",
+    sectionTitle: "Reproduce scientific software through one bounded artifact.",
     sectionDescription:
-      "The science workflow follows a real integration path: declare ranges and calibration factors in PCD, preserve the transform chain, and publish the resulting artifact for review and reuse.",
+      "Declare ranges, preserve transforms, and publish for review and reuse.",
     evidenceEyebrow: "Where BRIK-64 helps",
-    evidenceTitle: "Treat the computational method as a shareable blueprint instead of a fragile local script.",
+    evidenceTitle: "Treat the method as a shareable blueprint.",
     evidenceDescription:
-      "The value is a bounded computational artifact that another research or engineering team can inspect, rerun, and connect to the same product surfaces used elsewhere in the stack.",
+      "A bounded artifact can be inspected, rerun, and reused.",
     evidenceTracks: [
       { label: "Declared assumptions", title: "Make units, ranges, and calibration factors explicit before the transform runs", body: "A scientific result is easier to review when the computational envelope is represented directly in the artifact instead of being implied by notebook context or local practice.", emphasis: "risk" },
       { label: "Repeatable transforms", title: "Keep the transform path readable enough for another team to reproduce", body: "A bounded computational blueprint preserves the exact transforms and accepted inputs that produced the result, making reuse and review more reliable.", emphasis: "proof" },
@@ -897,9 +1130,9 @@ export const industryPages = {
     evidenceStatusLabel: "reproducibility workflow",
     evidenceStatusTone: "teal",
     constraintEyebrow: "Primary workflow example",
-    constraintTitle: "Publish a reproducible transform before its assumptions disappear into local tooling.",
+    constraintTitle: "Publish transforms before assumptions disappear.",
     constraintDescription:
-      "A concrete science workflow is to declare the experimental bounds, encode the transform in PCD, and preserve enough result lineage for another technical reader to inspect and reuse the method.",
+      "Declare bounds, encode transforms, and preserve result lineage.",
     constraints: [
       { title: "Declare ranges and calibration factors", body: "Capture measurement bounds, units, tolerances, and calibration inputs as explicit domains before the transform is trusted.", outcome: "assumption blueprint" },
       { title: "Encode the repeatable transform", body: "Represent the computational method so the accepted path and emitted value are tied to the same bounded artifact.", outcome: "reproducible transform" },
@@ -918,9 +1151,9 @@ export const industryPages = {
     constraintFooter:
       "BRIK-64 supports reproducible computational artifacts and result lineage. It does not prove the surrounding scientific claim or replace peer review.",
     scenarioEyebrow: "Workflow example",
-    scenarioTitle: "Run the reproducibility loop with the assumptions still attached to the published method.",
+    scenarioTitle: "Run reproducibility with assumptions attached.",
     scenarioDescription:
-      "The workflow remains technical and narrow: define the computational boundary, encode the transform, emit reproducibility evidence, and publish the blueprint through registry workflows.",
+      "Define the boundary, encode the transform, emit evidence, and publish.",
     scenarioSteps: [
       { label: "01", title: "Define the boundary", body: "Select the units, ranges, and calibration factors the computational method is allowed to accept.", state: "active" },
       { label: "02", title: "Encode the transform", body: "Represent the method as a bounded computation so another team can inspect the exact accepted path.", state: "warning" },
@@ -931,9 +1164,10 @@ export const industryPages = {
     scenarioStatusTone: "teal",
     scenarioFooter:
       "This workflow supports reproducibility and shareable computational blueprints. It does not settle the scientific claim outside the bounded model.",
-    ctaTitle: "Keep the computational method shareable, reproducible, and still tied to the assumptions that produced the result.",
+    ctaTitle: "Keep methods shareable and tied to assumptions.",
     ctaDescription:
-      "Read the PCD reference for the blueprint layer, then publish the resulting method through Registry when it is ready to be shared and reused.",
+      "Read PCD, then publish reusable methods through Registry.",
+    ctaBackgroundImageSrc: "/generated/science-cta-banner.png",
     ctaActions: [primary("Read PCD", "/pcd"), secondary("Open registry", "/registry")],
   }),
 } as const;

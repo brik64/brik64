@@ -23,8 +23,8 @@ describe("Product hero imagery", () => {
     const content = read("src/components/PageArchetypes.tsx");
     expect(content).toContain("backgroundImageSrc?: string;");
     expect(content).toContain("backgroundImageSrc={hero.backgroundImageSrc}");
-    expect(content).toContain("opacity-[0.84]");
-    expect(content).toContain("mix-blend-screen opacity-[0.26]");
+    expect(content).toContain("opacity-[0.56]");
+    expect(content).toContain("mix-blend-screen opacity-[0.16]");
     expect(content).toContain("blueprint-grid opacity-[0.08]");
   });
 

@@ -45,6 +45,7 @@ export type ActionSpec = {
   href: string;
   tone?: "primary" | "secondary" | "link";
   external?: boolean;
+  opaque?: boolean;
 };
 
 export type MetricSpec = {
@@ -62,6 +63,7 @@ export type PageAction = {
   href: string;
   tone?: "primary" | "secondary" | "link";
   external?: boolean;
+  opaque?: boolean;
 };
 
 export type SurfaceMetric = { label: string; value: string; detail: string };
@@ -78,6 +80,27 @@ export type ScenarioStep = {
   title: string;
   body: string;
   state?: "idle" | "active" | "warning" | "success";
+};
+
+export type RealWorldBannerSpec = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  imageSrc: string;
+  imageAlt: string;
+};
+
+export type CertificationBadgeSpec = {
+  label: string;
+  context: string;
+  tone?: "neutral" | "teal" | "warning";
+};
+
+export type RiskSolutionBlockSpec = {
+  riskTitle: string;
+  riskBullets: string[];
+  solutionTitle: string;
+  solutionSteps: string[];
 };
 
 export type UtilityPageSpec = {
@@ -128,6 +151,7 @@ export type UtilityPageSpec = {
     title: string;
     description: string;
     actions: PageAction[];
+    backgroundImageSrc?: string;
   };
 };
 
@@ -146,6 +170,9 @@ export type RiskPageSpec = {
     proofStripTitle?: string;
     proofStripDescription?: string;
   };
+  realWorldBanner?: RealWorldBannerSpec;
+  certificationBadges?: CertificationBadgeSpec[];
+  riskSolutionBlock?: RiskSolutionBlockSpec;
   sectionHeader: {
     eyebrow: string;
     title: string;
@@ -186,10 +213,19 @@ export type RiskPageSpec = {
     title: string;
     description: string;
     actions: PageAction[];
+    backgroundImageSrc?: string;
   };
 };
 
-export function ActionAnchor({ action }: { action: ActionSpec }) {
+export function ActionAnchor({
+  action,
+  forceOpaqueSecondary = false,
+}: {
+  action: ActionSpec;
+  forceOpaqueSecondary?: boolean;
+}) {
+  const shouldForceOpaqueSecondary = forceOpaqueSecondary || Boolean(action.opaque);
+
   return (
     <ButtonVNext
       href={action.href}
@@ -197,7 +233,10 @@ export function ActionAnchor({ action }: { action: ActionSpec }) {
       external={action.external}
       className={cx(
         "h-12 px-8 text-sm",
-        action.tone === "secondary" && "bg-white/5 border-white/10 text-white hover:bg-white/10"
+        action.tone === "secondary" &&
+          (shouldForceOpaqueSecondary
+            ? "!bg-[#0f1c2e] !border-white/55 !text-white hover:!bg-[#162a43] shadow-[0_14px_32px_rgba(0,0,0,0.42)]"
+            : "bg-white/5 border-white/10 text-white hover:bg-white/10")
       )}
     >
       {action.label}
@@ -237,7 +276,6 @@ export function CanonicalPageHero({
   description,
   backgroundImageSrc,
   actions,
-  metrics,
   status,
   proofStripEyebrow,
   proofStripTitle,
@@ -259,18 +297,18 @@ export function CanonicalPageHero({
       {backgroundImageSrc ? (
         <>
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.84] [filter:saturate(1.16)_contrast(1.08)_brightness(1.16)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
             style={{ backgroundImage: `url(${backgroundImageSrc})` }}
           />
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.26] [filter:saturate(1.28)_contrast(1.08)_brightness(1.3)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
             style={{ backgroundImage: `url(${backgroundImageSrc})` }}
           />
         </>
       ) : null}
-      <div className="absolute inset-0 blueprint-grid opacity-[0.08]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,10,0.42)_0%,rgba(4,10,16,0.18)_28%,rgba(4,10,16,0.14)_56%,rgba(1,4,8,0.62)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.05)_0%,rgba(8,18,28,0.04)_34%,rgba(2,6,10,0.18)_70%,rgba(1,3,6,0.52)_100%)]" />
+      <div className="absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.02)_0%,rgba(7,16,26,0.32)_36%,rgba(2,6,10,0.46)_72%,rgba(1,3,6,0.72)_100%)]" />
       
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12 text-center">
         <PageHeaderVNext
@@ -287,21 +325,6 @@ export function CanonicalPageHero({
           ))}
         </div>
 
-        {metrics && (
-          <div className="mx-auto mt-14 grid max-w-5xl gap-4 sm:grid-cols-3">
-            {metrics.map((metric) => (
-              <MetricTile
-                dark
-                key={metric.label}
-                label={metric.label}
-                value={metric.value}
-                detail={metric.detail}
-                className="border-white/14 bg-[#0f1a28] shadow-[0_18px_44px_rgba(0,0,0,0.28)]"
-              />
-            ))}
-          </div>
-        )}
-
         {proofStripTitle && (
           <div className="mx-auto mt-16 max-w-4xl border-t border-white/10 pt-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">
@@ -310,7 +333,7 @@ export function CanonicalPageHero({
             <h3 className="mt-4 text-xl font-bold text-white tracking-tight">
               {proofStripTitle}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/50 max-w-2xl mx-auto">
+            <p className="mt-4 text-sm leading-relaxed text-white/68 max-w-2xl mx-auto">
               {proofStripDescription}
             </p>
           </div>
@@ -903,6 +926,153 @@ function HeroTitle({
   );
 }
 
+export function IndustryRealWorldBanner({
+  eyebrow,
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+}: RealWorldBannerSpec) {
+  return (
+    <section className="relative border-t border-white/5 bg-[#070d14]">
+      <div className="mx-auto max-w-[1400px] px-6 py-14 md:px-8 md:py-16 lg:px-12 lg:py-20">
+        <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-[#0c1520] shadow-[0_26px_80px_rgba(0,0,0,0.35)]">
+          <div
+            className="relative h-[250px] sm:h-[300px] md:h-[360px] lg:h-[420px]"
+            role="img"
+            aria-label={imageAlt}
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${imageSrc})` }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,14,24,0.08)_0%,rgba(8,16,26,0.22)_46%,rgba(7,13,22,0.42)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,173,240,0.16)_0%,rgba(14,30,48,0.1)_36%,rgba(7,13,22,0.24)_72%,rgba(6,11,18,0.44)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 z-10 p-4 md:p-8 lg:p-10">
+              <div className="max-w-4xl rounded-2xl border border-white/18 bg-[rgba(7,16,28,0.72)] p-4 backdrop-blur-sm md:p-6">
+                <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[color:var(--accent)]">
+                  {eyebrow}
+                </p>
+                <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-white md:text-3xl">
+                  {title}
+                </h3>
+              </div>
+            </div>
+          </div>
+          {description?.trim() ? (
+            <div className="border-t border-white/12 bg-[linear-gradient(180deg,rgba(11,20,32,0.96)_0%,rgba(8,15,24,0.98)_100%)] p-6 md:p-8">
+              <p className="mx-auto max-w-4xl text-sm leading-relaxed text-white/78 md:text-base">
+                {description}
+              </p>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CertificationBadgeStrip({
+  items,
+  layout = "grid",
+}: {
+  items: CertificationBadgeSpec[];
+  layout?: "row" | "grid";
+}) {
+  const gridClass =
+    layout === "row"
+      ? "flex flex-wrap"
+      : "grid sm:grid-cols-2 lg:grid-cols-3";
+
+  return (
+    <div className={cx("gap-3", gridClass)}>
+      {items.map((item) => {
+        const toneClass =
+          item.tone === "warning"
+            ? "border-amber-400/24 bg-amber-400/[0.08] text-amber-100"
+            : item.tone === "teal"
+              ? "border-[color:var(--accent)]/24 bg-[color:var(--accent)]/[0.08] text-cyan-100"
+              : "border-white/10 bg-[#101a27] text-white/82";
+
+        return (
+          <div
+            key={`${item.label}-${item.context}`}
+            className={cx("rounded-[16px] border px-4 py-3", toneClass)}
+          >
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em]">
+              {item.label}
+            </p>
+            <p className="mt-2 text-sm leading-5 text-white/62">{item.context}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export function RiskSolutionSplitBlock({
+  block,
+  badges,
+}: {
+  block: RiskSolutionBlockSpec;
+  badges?: CertificationBadgeSpec[];
+}) {
+  return (
+    <section className="border-t border-white/5 bg-[#05080c]">
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-8 lg:px-12">
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="rounded-[24px] border border-amber-400/14 bg-[#101018] p-6">
+            <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-amber-300/80">
+              Risk
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-white">
+              {block.riskTitle}
+            </h3>
+            <div className="mt-6 grid gap-3">
+              {block.riskBullets.map((bullet) => (
+                <div
+                  key={bullet}
+                  className="rounded-[14px] border border-white/8 bg-[#0a111b] px-4 py-3 text-sm leading-6 text-white/68"
+                >
+                  {bullet}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[24px] border border-[color:var(--accent)]/18 bg-[#081622] p-6">
+            <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-[color:var(--accent)]">
+              How BRIK64 helps
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-white">
+              {block.solutionTitle}
+            </h3>
+            <div className="mt-6 grid gap-3">
+              {block.solutionSteps.map((step, index) => (
+                <div
+                  key={step}
+                  className="flex gap-3 rounded-[14px] border border-white/8 bg-[#07111c] px-4 py-3"
+                >
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/12 font-mono text-[11px] font-bold text-[color:var(--accent)]">
+                    {index + 1}
+                  </span>
+                  <p className="text-sm leading-6 text-white/68">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {badges?.length ? (
+          <div className="mt-6 rounded-[24px] border border-white/8 bg-[#07111c] p-5">
+            <CertificationBadgeStrip items={badges} />
+          </div>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
 export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
   const { hero, sectionHeader, primarySurface, secondarySurface, cta } = page;
 
@@ -1004,6 +1174,8 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
 }
 
 export function RiskPageView({ page }: { page: RiskPageSpec }) {
+  const ctaBackgroundImageSrc = page.cta.backgroundImageSrc;
+
   return (
     <CanonicalPageLayout>
       <CanonicalPageHero
@@ -1026,6 +1198,23 @@ export function RiskPageView({ page }: { page: RiskPageSpec }) {
         proofStripDescription={page.hero.proofStripDescription}
       />
 
+      {page.realWorldBanner ? (
+        <IndustryRealWorldBanner {...page.realWorldBanner} />
+      ) : null}
+
+      {page.riskSolutionBlock ? (
+        <RiskSolutionSplitBlock
+          block={page.riskSolutionBlock}
+          badges={page.certificationBadges}
+        />
+      ) : page.certificationBadges?.length ? (
+        <section className="border-t border-white/5 bg-[#05080c]">
+          <div className="mx-auto max-w-[1400px] px-6 py-14 md:px-8 lg:px-12">
+            <CertificationBadgeStrip items={page.certificationBadges} />
+          </div>
+        </section>
+      ) : null}
+
       <section className="bg-black">
         <CanonicalSection>
           <ArchetypeSectionHeader {...page.sectionHeader} />
@@ -1037,18 +1226,38 @@ export function RiskPageView({ page }: { page: RiskPageSpec }) {
         </CanonicalSection>
       </section>
 
-      <section className="relative px-6 py-32 text-center blueprint-grid overflow-hidden border-t border-white/5 bg-[#0b0b0f]">
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+      <section className="relative overflow-hidden border-t border-white/5 bg-[#0b0b0f] px-6 py-32 text-center">
+        {ctaBackgroundImageSrc ? (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${ctaBackgroundImageSrc})` }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,10,17,0.62)_0%,rgba(5,12,20,0.48)_42%,rgba(6,12,18,0.72)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,173,240,0.1)_0%,rgba(8,14,22,0.2)_52%,rgba(0,0,0,0.42)_100%)]" />
+          </>
+        ) : (
+          <div className="absolute inset-0 blueprint-grid opacity-[0.08]" />
+        )}
         <div className="relative z-10 mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl mb-8">
             {page.cta.title}
           </h2>
-          <p className="text-lg text-white/40 mx-auto mt-3 max-w-2xl leading-relaxed mb-12">
+          <p
+            className={cx(
+              "mx-auto mt-3 mb-12 max-w-2xl text-lg leading-relaxed",
+              ctaBackgroundImageSrc ? "text-white/90" : "text-white/40"
+            )}
+          >
             {page.cta.description}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row">
             {page.cta.actions.map((action) => (
-              <ActionAnchor key={`${action.label}-${action.href}`} action={action} />
+              <ActionAnchor
+                key={`${action.label}-${action.href}`}
+                action={action}
+                forceOpaqueSecondary={Boolean(ctaBackgroundImageSrc)}
+              />
             ))}
           </div>
         </div>

@@ -13,7 +13,7 @@ import { getPrintfulStorefront } from "@/lib/printful";
 export const metadata = {
   title: "Shop — BRIK64",
   description:
-    "BRIK64 merchandise storefront with a focused product grid and a simple support path.",
+    "BRIK64 merchandise storefront and support path.",
 };
 
 function formatPrice(minPrice: number, maxPrice: number, currency: string): string {
@@ -38,7 +38,7 @@ export default async function ShopPage() {
       <EditorialHeroVNext 
         eyebrow="Merch storefront"
         title="BRIK64 Core Gear"
-        description="Core pieces with simple product pages and direct order details. Every item carries the structural identity of the system."
+        description="Merchandise, product details, and support for team orders."
         topics={["Stickers", "Apparel", "Hardware Essentials"]}
       />
       
@@ -51,7 +51,7 @@ export default async function ShopPage() {
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/30">Store status</p>
                 <h2 className="mt-6 text-3xl font-bold text-white max-w-xl mx-auto">The current product drop is not available in this build.</h2>
                 <p className="mt-6 text-lg text-white/50 mx-auto max-w-lg">
-                   We are currently re-stocking the inventory with new VNext designs. Use merch support if you need the current availability list.
+                   Use merch support for current availability.
                 </p>
               </div>
             ) : (
@@ -109,7 +109,7 @@ export default async function ShopPage() {
            <div className="max-w-2xl mx-auto space-y-8">
               <h2 className="text-3xl font-bold text-white">Need custom team gear?</h2>
               <p className="text-lg text-white/50 leading-relaxed">
-                For bulk orders or custom branded gear for your engineering team, contact our sales department for priority procurement.
+                For bulk or custom team orders, contact sales.
               </p>
               <div className="flex justify-center gap-6 pt-4">
                 <ButtonVNext href="/support" tone="secondary" className="rounded-xl px-10">

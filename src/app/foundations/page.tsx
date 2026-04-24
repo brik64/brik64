@@ -33,22 +33,22 @@ export default function FoundationsPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-white/5 pb-24 pt-32 md:pb-32 md:pt-48 lg:pb-40">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.84] [filter:saturate(1.16)_contrast(1.08)_brightness(1.16)]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
           style={{ backgroundImage: "url(/generated/foundations-hero-bg.png)" }}
         />
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.26] [filter:saturate(1.28)_contrast(1.08)_brightness(1.3)]"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
           style={{ backgroundImage: "url(/generated/foundations-hero-bg.png)" }}
         />
-        <div className="absolute inset-0 blueprint-grid opacity-[0.08]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,10,0.42)_0%,rgba(4,10,16,0.18)_28%,rgba(4,10,16,0.14)_56%,rgba(1,4,8,0.62)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.05)_0%,rgba(8,18,28,0.04)_34%,rgba(2,6,10,0.18)_70%,rgba(1,3,6,0.52)_100%)]" />
+        <div className="absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.02)_0%,rgba(7,16,26,0.32)_36%,rgba(2,6,10,0.46)_72%,rgba(1,3,6,0.72)_100%)]" />
         
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12">
           <PageHeaderVNext
             eyebrow="Technical Foundations"
             title="Digital Circuitality on an information-theoretic footing."
-            description="This foundations route explains the formal model behind Digital Circuitality, the limits of its thermodynamic analogy, and the product implications that follow from bounded computation."
+            description="The formal model behind bounded computation, closure, and product discipline."
             centered
           />
         </div>
@@ -60,19 +60,19 @@ export default function FoundationsPage() {
           <PillarCard
             icon={<Activity className="h-6 w-6" />}
             title="Entropy"
-            description="Formal specification reaches zero informational uncertainty (H(X) = 0) when all states are bounded and closed."
+            description="Bounded states reduce informational uncertainty."
             actionLabel="H(X) = 0"
           />
           <PillarCard
             icon={<ShieldCheck className="h-6 w-6" />}
             title="Closure"
-            description="Closure remains binary and compile-time enforced. Within the modeled circuit, Φc marks the condition the compiler checks."
+            description="Φc marks the closure condition the compiler checks."
             actionLabel="Φc = 1"
           />
           <PillarCard
             icon={<Layers className="h-6 w-6" />}
             title="Composition"
-            description="Sequential, parallel, and conditional composition (EVA) preserve certified structure throughout the stack."
+            description="EVA makes sequence, parallel, and conditional flow explicit."
             actionLabel="EVA Algebra"
           />
         </div>
@@ -89,10 +89,10 @@ export default function FoundationsPage() {
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">Formal Definition</h2>
               <div className="mt-8 space-y-6 text-lg leading-relaxed text-white/60">
                 <p>
-                  Shannon (1948) defined the entropy of a discrete source as a measure of uncertainty. When a system is completely deterministic — every input produces exactly one output through every path — informational uncertainty collapses to zero.
+                  Shannon frames entropy as uncertainty. Bounded computation reduces uncertainty by constraining every modeled state.
                 </p>
                 <p className="font-medium text-white">
-                  Digital Circuitality aims to remove informational uncertainty from the modeled computation by construction rather than by sampling.
+                  Digital Circuitality reduces uncertainty by structure, not sampling.
                 </p>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function FoundationsPage() {
                       </div>
                     </div>
                     <p className="mt-8 text-sm text-white/50 leading-relaxed italic">
-                      "Within the modeled circuit, Φc marks the closure condition the compiler checks before emission."
+                      "Within the modeled circuit, Φc marks the closure condition checked before emission."
                     </p>
                  </div>
               </div>
@@ -125,7 +125,7 @@ export default function FoundationsPage() {
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">Conventional Model</p>
               <h3 className="mt-4 text-2xl font-bold text-white">Testing reduces uncertainty</h3>
               <p className="mt-6 text-lg leading-relaxed text-white/60">
-                Conventional software samples behavior and lowers uncertainty only for the cases explored by the test suite. Uncertainty remains &gt; 0 due to unverified execution paths and unexplored states.
+                Conventional software samples behavior. Unchecked paths keep uncertainty open.
               </p>
             </div>
             <div className="rounded-[2.5rem] border border-[color:var(--accent-soft)] bg-[color:var(--accent-soft)]/5 p-10 blueprint-grid relative">
@@ -134,7 +134,7 @@ export default function FoundationsPage() {
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[color:var(--accent)]">Digital Circuitality</p>
                 <h3 className="mt-4 text-2xl font-bold text-white">Uncertainty removal by structure</h3>
                 <p className="mt-6 text-lg leading-relaxed text-white/80">
-                  Bounded domains, closed composition, and verification completeness (Φc = 1) push the specification to a deterministic state instead of hoping test coverage was enough.
+                  Bounded domains and closed composition make the modeled state deterministic.
                 </p>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function FoundationsPage() {
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Section [03]</span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">EVA Algebra: Composition Operators</h2>
             <p className="mt-6 text-lg text-white/60 max-w-2xl">
-              The SEQ, PAR, and COND operators make sequencing, fan-out, and branching explicit before the compiler checks closure.
+              SEQ, PAR, and COND make flow explicit before closure checks.
             </p>
           </div>
           
@@ -177,7 +177,7 @@ export default function FoundationsPage() {
              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Bibliography</span>
              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white">Academic Foundations</h2>
              <p className="mt-6 text-white/50 text-sm leading-relaxed">
-               The framework draws conceptual inspiration from Brillouin and Dijkstra while operating on purely informational foundations grounded in Shannon’s framework.
+               Conceptual references for uncertainty, discipline, and information boundaries.
              </p>
              <div className="mt-10">
                <ActionAnchor action={{ label: "Visit digitalcircuitality.com", href: "https://digitalcircuitality.com", external: true, tone: "primary" }} />
@@ -211,7 +211,7 @@ export default function FoundationsPage() {
               FORMALIZE THE STACK
             </h2>
             <p className="mt-8 text-xl text-white/60 mx-auto max-w-2xl leading-relaxed">
-              The Foundations route is just the beginning. Follow the logical chain from theory into PCD, CLI, and platform workflows.
+              Follow the chain from theory into PCD, CLI, and platform workflows.
             </p>
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
               <ActionAnchor action={{ label: "Explore PCD Language", href: "/pcd", tone: "primary" }} />

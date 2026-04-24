@@ -13,7 +13,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Pricing — BRIK64",
   description:
-    "Detailed pricing tiers, comparison matrix, and commercial FAQ for adopting the BRIK64 formal layer from CLI entry to enterprise operating model.",
+    "Pricing routes for CLI entry, team workflow, and enterprise review.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -23,19 +23,19 @@ const heroMetrics = [
   {
     label: "Open route",
     value: "CLI + docs",
-    detail: "Individual developers can start locally without waiting on commercial setup.",
+    detail: "Start locally without commercial setup.",
     note: "Free",
   },
   {
     label: "Team route",
     value: "Shared review",
-    detail: "Dashboard, audit, and collaboration features support multi-operator workflow.",
+    detail: "Shared dashboard, audit, and collaboration.",
     note: "Beta",
   },
   {
     label: "Enterprise route",
     value: "Evaluation",
-    detail: "Deployment, identity, and evidence posture are scoped during architecture review.",
+    detail: "Deployment and identity are scoped in review.",
     note: "Custom",
   },
 ];
@@ -46,7 +46,7 @@ const tiers = [
     price: "$0",
     period: "forever",
     icon: Sparkles,
-    description: "For individual developers exploring CLI, SDKs, and the bounded verification workflow.",
+    description: "For developers exploring CLI, SDKs, and local review.",
     cta: "Start with CLI",
     href: "/cli",
     features: [
@@ -55,7 +55,7 @@ const tiers = [
       "Supported export targets",
       "Public documentation",
       "Public registry browsing",
-      "Local lift and check workflow",
+      "Local lift/check workflow",
       "Community support",
     ],
   },
@@ -65,7 +65,7 @@ const tiers = [
     period: "evaluation",
     icon: Zap,
     highlight: true,
-    description: "For smaller teams that need private workflow surfaces without jumping straight into enterprise scope.",
+    description: "For teams testing private workflow surfaces.",
     cta: "Discuss Pro access",
     href: "/contact",
     features: [
@@ -83,7 +83,7 @@ const tiers = [
     price: "Beta",
     period: "evaluation",
     icon: Users,
-    description: "For engineering groups that need shared review state, governance, and operator visibility.",
+    description: "For groups needing shared review and governance.",
     cta: "Plan team rollout",
     href: "/contact",
     features: [
@@ -101,7 +101,7 @@ const tiers = [
     price: "Custom",
     period: "evaluation",
     icon: Building2,
-    description: "For organizations that need identity controls, deployment posture review, and evidence packages.",
+    description: "For scoped identity, deployment, and evidence review.",
     cta: "Talk to enterprise",
     href: "mailto:enterprise@brik64.com",
     features: [
@@ -174,31 +174,31 @@ const comparisonSections = [
 const faqs = [
   {
     q: "Can I use BRIK64 without the platform?",
-    a: "Yes. The CLI and public docs are the open entry path. Platform and registry workflows become relevant when you need shared review state, publication, or private collaboration.",
+    a: "Yes. CLI and docs are the open entry path. Platform matters when teams need shared review, publication, or private collaboration.",
   },
   {
     q: "What languages are supported?",
-    a: "BRIK64 documents multiple lift-from and export targets. The practical source of truth is the current CLI and SDK documentation, because supported paths can evolve during beta.",
+    a: "Use the current CLI and SDK docs as source of truth. Supported paths can evolve during beta.",
   },
   {
     q: "What does 'certified' mean here?",
-    a: "It means the modeled circuit has passed the declared checks under bounded domains and supported workflows. It is not a blanket promise about unmanaged infrastructure, runtime side effects, or organizational compliance.",
+    a: "It means the modeled circuit passed declared checks under bounded domains. It is not a blanket infrastructure or compliance claim.",
   },
   {
     q: "Is there academic pricing?",
-    a: "Academic evaluation is handled directly rather than through a public self-serve checkout. Use hello@brik64.com with institutional context so scope can be routed correctly.",
+    a: "Academic evaluation is handled directly. Send institutional context to hello@brik64.com.",
   },
   {
     q: "Can I self-host?",
-    a: "Self-host and on-prem posture are enterprise evaluation topics. They depend on deployment requirements, identity controls, and the exact review workflow the team needs to preserve.",
+    a: "Self-host posture is scoped during enterprise evaluation. It depends on deployment, identity, and review workflow.",
   },
   {
     q: "Does BRIK64 store my source code?",
-    a: "The public CLI path is local-first. When teams publish or collaborate through platform workflows, the system frames stored packages around blueprints, hashes, and review state rather than raw source as a default assumption.",
+    a: "The public CLI path is local-first. Platform workflows center on blueprints, hashes, and review state.",
   },
   {
     q: "What happens after beta?",
-    a: "The open CLI path stays public. Paid team and enterprise packaging will be published only when the commercial scope is stable enough to document without inventing guarantees.",
+    a: "The CLI path stays public. Paid packaging will be published when scope is stable enough to document.",
   },
 ];
 
@@ -221,7 +221,7 @@ export default function PricingPage() {
             <PageHeaderVNext
               eyebrow="Packaging & Tiers"
               title="Adopt the formal layer through open entry, team workflow, and enterprise controls."
-              description="The CLI path is public. Team features expand shared review and governance workflow. Enterprise scope adds identity, deployment, and audit posture when those controls need explicit design."
+              description="CLI is public. Team and enterprise routes add shared review, identity, deployment, and audit posture."
             />
 
             <div className="mt-16 grid gap-4 sm:grid-cols-3">
@@ -250,7 +250,7 @@ export default function PricingPage() {
         <section className="mx-auto max-w-[1400px] px-6 py-24 md:px-8 lg:px-12">
           <div className="mb-16">
              <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Packaging Model</p>
-             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Four tiers with different workflow depth</h2>
+             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Four routes, different workflow depth</h2>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -303,7 +303,7 @@ export default function PricingPage() {
             ))}
           </div>
           <p className="mt-12 text-center text-sm italic text-white/20">
-            This page preserves the detailed tier map, but keeps the claim boundary explicit: platform, compliance, and support scope depend on the route you enter.
+            Platform, compliance, and support scope depend on the route you enter.
           </p>
         </section>
 
@@ -313,6 +313,7 @@ export default function PricingPage() {
             <div className="mb-16">
               <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[color:var(--accent)]">Feature Comparison</p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Detailed comparison by workflow area</h2>
+              
             </div>
 
             <div className="overflow-x-auto">

@@ -1,59 +1,87 @@
 "use client";
 
+import Image from "next/image";
 import { UtilityPageView, type UtilityPageSpec, ActionAnchor } from "@/components/PageArchetypes";
+
+const sdkLogos = [
+  { name: "Rust", src: "/brands/rust.svg" },
+  { name: "Node", src: "/brands/javascript.svg" },
+  { name: "TypeScript", src: "/brands/typescript.svg" },
+  { name: "Python", src: "/brands/python.svg" },
+];
 
 const sdksPage: UtilityPageSpec = {
   hero: {
     eyebrow: "Tooling & SDKs",
     title: "Native bindings for",
-    highlight: "high-integrity modules.",
+    highlight: "bounded host languages.",
     backgroundImageSrc: "/generated/sdks-hero-bg.png",
     description: 
-      "Brik-64 is not a sandbox. It is a system bridge. Our SDKs provide the native glue to execute policy circuits in Rust, Go, Python, and TypeScript with zero-copy safety.",
+      "Author bounded logic in Rust, Node/TS, and Python before certification.",
     actions: [
       { label: "View SDK Docs", href: "https://docs.brik64.dev", external: true, tone: "primary" },
       { label: "Download CLI", href: "/cli", tone: "secondary" },
     ],
     metrics: [
-      { label: "Rust / Go", value: "Level 1", detail: "Formal bindings available." },
-      { label: "Python/JS", value: "Level 1", detail: "WASM-backed execution." },
-      { label: "Latency", value: "< 2ms", detail: "Target overhead for policy evaluation." },
+      { label: "Rust", value: "Native", detail: "Core authoring path." },
+      { label: "Node/TS", value: "SDK", detail: "Web and edge path." },
+      { label: "Python", value: "SDK", detail: "AI workflow path." },
     ],
   },
   sectionHeader: {
     eyebrow: "Execution Layers",
     title: "Bind directly to proof state.",
-    description: "Our SDKs don't just wrap APIs; they expose the proof boundary to your application logic."
+    description: "SDKs expose boundaries inside host-language workflows."
   },
   primarySurface: {
     eyebrow: "Rust & Native Core",
-    title: "Performance without boundary compromise.",
-    description: "The Rust SDK is the canonical implementation of the Brik-64 executor, providing the fastest path to verified action.",
+    title: "Native authoring without boundary drift.",
+    description: "Each runtime gets one statement, one command, one action.",
     rows: [
-      { title: "Zero-copy verification", body: "Pass large context buffers to the policy engine without memory overhead." },
-      { title: "Static proof checks", body: "Verify circuit integrity at initialization time, not just runtime." },
-      { title: "Native lifters", body: "Direct bindings to C-level system calls for low-latency enforcement." },
+      { title: "Rust", body: "Author core circuits near the executor." },
+      { title: "Node/TS", body: "Gate web, edge, and agent workflows." },
+      { title: "Python", body: "Connect AI pipelines to bounded review." },
     ],
     statusLabel: "native performance",
     statusTone: "teal",
+    footer: (
+      <div className="flex flex-wrap gap-3">
+        {sdkLogos.map((logo) => (
+          <span
+            key={logo.name}
+            className="inline-flex items-center gap-2 rounded-[12px] border border-white/8 bg-[#0f1a28] px-3 py-2 text-xs font-semibold text-white/76"
+          >
+            <Image
+              src={logo.src}
+              alt=""
+              width={18}
+              height={18}
+              className="h-[18px] w-[18px] object-contain"
+              unoptimized
+            />
+            {logo.name}
+          </span>
+        ))}
+      </div>
+    ),
   },
   secondarySurface: {
     eyebrow: "Unified API",
     title: "Consistent logic across the fleet.",
-    description: "Write your policy circuit once in PCD; execute it anywhere with identical behavior guaranteed by EVA.",
+    description: "Keep policy logic aligned across host languages.",
     kind: "action",
     channels: [
-      { title: "Python SDK", body: "Integrated circuit execution for AI workflows and agent monitoring.", action: "View Python Docs", href: "https://docs.brik64.dev" },
-      { title: "TypeScript SDK", body: "Verified guardrails for web horizons and edge functions.", action: "View JS Docs", href: "https://docs.brik64.dev" },
-      { title: "Go SDK", body: "High-concurrency policy gates for distributed system infrastructure.", action: "View Go Docs", href: "https://docs.brik64.dev" },
+      { title: "Python SDK", body: "AI workflow review.", action: "View Python Docs", href: "https://docs.brik64.dev" },
+      { title: "TypeScript SDK", body: "Web and edge policy gates.", action: "View JS Docs", href: "https://docs.brik64.dev" },
+      { title: "Rust SDK", body: "Native circuit authoring.", action: "View Rust Docs", href: "https://docs.brik64.dev" },
     ],
-    footer: "All SDKs maintain 100% parity with the EVA formal composition model.",
+    footer: "SDKs model boundaries; compiler and Platform carry certification state.",
     statusLabel: "omni-channel safety",
     statusTone: "neutral",
   },
   cta: {
     title: "Start building the boundary.",
-    description: "Policy circuits compile to Rust, JavaScript, and Python guard modules today. Choose your stack and formalize the logic.",
+    description: "Choose a stack and formalize the boundary.",
     actions: [
       { label: "Get Started", href: "https://docs.brik64.dev", external: true, tone: "primary" },
       { label: "Explore PCD", href: "/pcd", tone: "link" },

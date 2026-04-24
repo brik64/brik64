@@ -37,7 +37,7 @@ describe("Home polish audit — hero density stays controlled", () => {
 
   it("keeps the hero copy aligned to the poster-first direction", () => {
     const home = read("src/components/vnext/home.tsx");
-    expect(home).toContain("Formalizes software as an information circuit");
+    expect(home).toContain("Turn generated and existing code into canonical blueprints that teams can review, certify, and govern.");
     expect(home).toContain("Download the CLI");
     expect(home).not.toContain("2. Add the skill to your AI agent");
     expect(home).not.toContain("3. Register in the platform");
@@ -54,9 +54,11 @@ describe("Home polish audit — hero density stays controlled", () => {
   it("adds a lit grid mesh that fades out before the black background takes over", () => {
     const home = read("src/components/vnext/home.tsx");
     const globals = read("src/app/globals.css");
-    expect(home).toContain("hero-light-grid");
     expect(home).toContain("hero-light-glow");
-    expect(globals).toContain(".hero-light-grid");
+    expect(home).toContain("-mt-[104px]");
+    expect(home).toContain("pt-[104px]");
+    expect(home).toContain("opacity-[0.56]");
+    expect(home).toContain("bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]");
     expect(globals).toContain("repeating-linear-gradient(");
     expect(globals).toContain("transparent 88%");
   });
@@ -65,7 +67,7 @@ describe("Home polish audit — hero density stays controlled", () => {
     const home = read("src/components/vnext/home.tsx");
     expect(home).toContain("flex flex-wrap items-center gap-4");
     expect(home).toContain("min-h-[64px] w-fit items-center gap-2.5 rounded-[22px]");
-    expect(home).toContain('font-mono text-[14px] font-semibold');
+    expect(home).toContain('font-mono text-[15px] font-semibold');
     expect(home).toContain("h-12 w-12 shrink-0 items-center justify-center rounded-[16px]");
     expect(home).not.toContain("lg:text-7xl");
     expect(home).not.toContain("h-16 w-16");
@@ -224,8 +226,8 @@ describe("Home polish audit — bounded and extended monomer language stays alig
   it("mentions the 64 extended monomers in the atomic logic and agentic capability sections", () => {
     const home = read("src/components/vnext/home.tsx");
 
-    expect(home).toContain("plus 64 extended monomers for open interaction surfaces");
-    expect(home).toContain("plus 64 extended monomers for controlled open interaction");
+    expect(home).toContain("64 bounded operations. 64 contract-bounded extensions.");
+    expect(home).toContain("Agents work against bounded operations, not loose generated text.");
   });
 });
 
@@ -251,8 +253,8 @@ describe("Home polish audit — engineering grid pattern stays layered", () => {
   it("uses a darker edge vignette in the Digital Circuitality blueprint section", () => {
     const home = read("src/components/vnext/home.tsx");
 
-    expect(home).toContain("bg-[linear-gradient(180deg,rgba(1,4,8,0.9)_0%,rgba(2,6,10,0.74)_26%,rgba(3,8,13,0.54)_52%,rgba(1,4,8,0.92)_100%)]");
-    expect(home).toContain("bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.04)_0%,rgba(14,32,52,0.08)_34%,rgba(5,12,20,0.42)_70%,rgba(1,4,8,0.88)_100%)]");
+    expect(home).toContain("bg-[linear-gradient(180deg,rgba(1,4,8,0.94)_0%,rgba(2,6,10,0.82)_26%,rgba(3,8,13,0.68)_52%,rgba(1,4,8,0.96)_100%)]");
+    expect(home).toContain("bg-[radial-gradient(ellipse_at_center,rgba(57,210,255,0.02)_0%,rgba(14,32,52,0.14)_34%,rgba(5,12,20,0.56)_70%,rgba(1,4,8,0.92)_100%)]");
   });
 
   it("uses a darker edge vignette in the Incremental Adoption blueprint section", () => {

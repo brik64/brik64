@@ -154,7 +154,7 @@ export const featureHero = {
   title: "Software that works like",
   highlight: "hardware.",
   description:
-    "Author new logic or lift existing code into PCD, then verify closure and bounded domains before emission. Compile across supported targets, publish reusable circuits, and carry review-ready evidence into platform and enterprise workflows.",
+    "Author or lift code into PCD, check bounds, emit targets, and carry review evidence forward.",
 } as const;
 
 export const featureOverview = {
@@ -162,66 +162,66 @@ export const featureOverview = {
     eyebrow: "Operating Model",
     title: "From bounded blueprint to reusable certified software",
     description:
-      "The product chain is easier to trust when it stays explicit: author or lift into PCD, check closure and domains, emit across targets, then carry the resulting review object into platform, registry, and audit workflows.",
+      "Author or lift into PCD, check bounds, emit targets, and route the review object forward.",
   },
   comparison: {
     kind: "ComparisonSurface",
     eyebrow: "Workflow Readout",
     title: "Keep the engineering chain inspectable from the first blueprint to the final review step",
     description:
-      "The overview should show the product as one bounded operating chain rather than a list of unrelated capabilities.",
+      "The product is one bounded operating chain, not unrelated features.",
     statusLabel: "Workflow comparison",
     leftEyebrow: "Typical workflow",
     leftTitle: "Fragmented software workflow",
     leftBody:
-      "Source code, tests, migration scripts, and audit artifacts usually live in separate tools, so review happens after the fact and with incomplete state.",
+      "Code, tests, migration scripts, and audit artifacts often split across tools.",
     rightEyebrow: "BRIK-64 workflow",
     rightTitle: "Bounded blueprint and review chain",
     rightBody:
-      "BRIK-64 keeps the blueprint, closure check, target emission, and review evidence on one path so teams can see what was modeled and what was emitted.",
+      "BRIK64 keeps blueprint, checks, emission, and evidence on one path.",
   } as const satisfies ComparisonSurfaceSpec,
   matrix: {
     kind: "FeatureMatrixSurface",
     eyebrow: "System Handles",
     title: "Three fixed handles explain the product without turning the page into a catalog",
     description:
-      "The overview keeps only the counts that are stable in repo evidence and ties them to the workflow that follows.",
+      "Stable counts stay tied to the workflow that follows.",
     metrics: [
       {
         label: "Formal operations",
         value: "128",
         detail:
-          "The current public product story is built around the 128-operation PCD language.",
+          "Public PCD story centers on 128 operations.",
       },
       {
         label: "Compilation targets",
-        value: "14",
+        value: "10",
         detail:
-          "One normalized blueprint can be emitted across the supported target set documented in the repo.",
+          "One blueprint can emit across documented targets.",
       },
       {
         label: "Proof files",
         value: "207",
         detail:
-          "The formal proof layer remains a core public handle, but it must stay tied to the documented proof chain.",
+          "Proof claims stay tied to documented evidence.",
       },
     ],
     rows: [
       {
         title: "Compiler chain",
         body:
-          "CLI and PCD authoring feed a bounded compiler pipeline that normalizes computation before target emission.",
+          "CLI and PCD feed a bounded compiler pipeline.",
         state: "accent",
       },
       {
         title: "Migration workflow",
         body:
-          "Lifting and transpilation stay on the same path so teams can review what was preserved before modernization or target changes.",
+          "Lifting and transpilation share one review path.",
       },
       {
         title: "Registry and enterprise handoff",
         body:
-          "Platform, registry, and enterprise workflows consume review-ready outputs instead of disconnected screenshots or prose claims.",
+          "Platform and registry consume review-ready outputs.",
       },
     ],
   } as const satisfies FeatureMatrixSurfaceSpec,
@@ -230,24 +230,24 @@ export const featureOverview = {
     eyebrow: "Coverage",
     title: "What the overview covers",
     description:
-      "The overview is only responsible for the compiler chain, the migration path, and the review posture surrounding emitted blueprints.",
+      "The overview covers compiler chain, migration path, and review posture.",
     statusLabel: "Scope readout",
     itemStatusLabel: "Coverage",
     items: [
       {
         label: "Compilation and closure",
         body:
-          "The overview explains how bounded blueprints move through normalization, closure checks, and target emission.",
+          "Bounded blueprints move through normalization, checks, and emission.",
       },
       {
         label: "Migration and transpilation",
         body:
-          "The overview covers how existing logic is lifted, reviewed, and moved across targets through the same intermediate form.",
+          "Existing logic is lifted, reviewed, and moved across targets.",
       },
       {
         label: "Platform and audit posture",
         body:
-          "The overview shows how review-ready outputs feed registry, platform, and enterprise workflows without claiming that the whole environment becomes formally verified.",
+          "Review outputs feed platform and registry without blanket verification claims.",
       },
     ],
   } as const satisfies EvidenceSurfaceSpec,
@@ -263,8 +263,8 @@ export const featureClaimMatrix: FeatureClaimMatrix = {
         "Use as a product handle, not as a standalone claim of complete software coverage.",
     },
     {
-      id: "targets-14",
-      wording: "The current product narrative may state 14 supported compilation targets.",
+      id: "targets-10",
+      wording: "The current product narrative may state 10 supported compilation targets.",
       source: "docs/perspectives/02-CTO.md",
     },
     {
@@ -448,7 +448,7 @@ export const featureSections: FeatureSectionSpec[] = [
   {
     id: "compilation",
     label: "[01] COMPILATION",
-    title: "One compiler chain from PCD to 14 targets",
+    title: "One compiler chain from PCD to 10 targets",
     lead:
       "The compilation story should explain how one bounded blueprint moves through parsing, normalization, and target emission without turning the page into a catalog of backends.",
     workflowFocus:
@@ -486,7 +486,7 @@ export const featureSections: FeatureSectionSpec[] = [
         },
         {
           label: "Emission set",
-          value: "14 targets",
+          value: "10 targets",
           detail:
             "The normalized blueprint remains the anchor while backends emit the supported target outputs.",
         },

@@ -24,11 +24,14 @@ Each industry spec must include explicit content for:
 - sector thesis
 - dominant software risk
 - where BRIK-64 enters the workflow
+- hero background artwork (infra + real-world blend)
+- real-world banner artwork (domain-specific operational scene)
 - concrete workflow example
 - evidence outputs
 - standards context (support posture)
 - claim boundary
 - contextual CTA pair
+- CTA background artwork when the page uses image-backed CTA treatment
 
 ## Language Guardrails
 
@@ -62,4 +65,3 @@ Primary test:
 Supporting guards:
 
 - [`tests/design-grammar-risk.test.ts`](/Users/carlosjperez/Documents/GitHub/brik64.com/tests/design-grammar-risk.test.ts)
-

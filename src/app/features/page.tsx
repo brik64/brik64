@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { MonomerGrid } from "@/components/MonomerGrid";
 import {
   PageHeaderVNext,
@@ -33,6 +34,47 @@ const HeroWireframe = dynamic(
   () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
   { ssr: false },
 );
+
+const compilationTargets = [
+  { name: "Rust", logo: "/brands/rust.svg" },
+  { name: "JavaScript", logo: "/brands/javascript.svg" },
+  { name: "TypeScript", logo: "/brands/typescript.svg" },
+  { name: "Python", logo: "/brands/python.svg" },
+  { name: "C", logo: "/brands/c.svg" },
+  { name: "C++", logo: "/brands/cplusplus.svg" },
+  { name: "Go", logo: "/brands/go.svg" },
+  { name: "COBOL", logo: "/brands/cobol.svg" },
+  { name: "PHP", logo: "/brands/php.svg" },
+  { name: "Java", logo: "/brands/java.svg" },
+];
+
+function CompilationTargetRail() {
+  return (
+    <div className="mt-8 rounded-[18px] border border-white/8 bg-[#0f1a28] p-4">
+      <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/42">
+        Explicit target set
+      </p>
+      <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
+        {compilationTargets.map((target) => (
+          <div
+            key={target.name}
+            className="flex min-h-12 items-center gap-2 rounded-[12px] border border-white/8 bg-[#07111c] px-3 text-sm font-semibold text-white/78"
+          >
+            <Image
+              src={target.logo}
+              alt=""
+              width={20}
+              height={20}
+              className="h-5 w-5 object-contain"
+              unoptimized
+            />
+            <span>{target.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function renderFeatureSurface(
   surface: FeatureSurfaceSpec,
@@ -119,17 +161,18 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
   const blueprint = featureSectionBlueprints[section.id];
 
   return (
-    <SupportingSurface className="px-6 py-20 md:px-12 lg:px-16" id={section.id}>
+    <SupportingSurface className="px-6 py-14 md:px-12 md:py-16 lg:px-16" id={section.id}>
       <div className="mx-auto max-w-6xl">
         <PageHeaderVNext
           eyebrow={section.label}
           title={section.title}
           description={section.lead}
         />
+        {section.id === "compilation" ? <CompilationTargetRail /> : null}
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+        <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
           <SectionRail title="Engineering Narrative">
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
                   Workflow focus
@@ -165,7 +208,7 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
             </div>
           </SectionRail>
 
-          <div className="space-y-10">
+          <div className="space-y-5">
             {renderFeatureSurface(section.primarySurface, `${section.id}-primary`)}
             {renderFeatureSurface(section.supportingSurface, `${section.id}-supporting`)}
             
@@ -190,16 +233,16 @@ export default function FeaturesPage() {
       <main>
         <ProtagonistSurface className="flex flex-col items-center justify-center pt-32 pb-24 md:pt-48 md:pb-32">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.84] [filter:saturate(1.16)_contrast(1.08)_brightness(1.16)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.56] [filter:saturate(1.06)_contrast(1.02)_brightness(1.0)]"
             style={{ backgroundImage: "url(/generated/features-hero-bg.png)" }}
           />
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.26] [filter:saturate(1.28)_contrast(1.08)_brightness(1.3)]"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.16] [filter:saturate(1.05)_contrast(1.0)_brightness(1.0)]"
             style={{ backgroundImage: "url(/generated/features-hero-bg.png)" }}
           />
-          <div className="absolute inset-0 blueprint-grid opacity-[0.08]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,10,0.42)_0%,rgba(4,10,16,0.18)_28%,rgba(4,10,16,0.14)_56%,rgba(1,4,8,0.62)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.05)_0%,rgba(8,18,28,0.04)_34%,rgba(2,6,10,0.18)_70%,rgba(1,3,6,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[rgba(1,4,8,0.1)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,4,8,0.5)_0%,rgba(2,6,10,0.4)_24%,rgba(2,6,10,0.36)_54%,rgba(1,3,6,0.66)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(44,182,172,0.02)_0%,rgba(7,16,26,0.32)_36%,rgba(2,6,10,0.46)_72%,rgba(1,3,6,0.72)_100%)]" />
           <HeroWireframe />
           <div className="relative z-10 px-6 text-center">
             <PageHeaderVNext
