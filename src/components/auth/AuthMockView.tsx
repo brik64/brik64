@@ -95,8 +95,12 @@ function Field({
   );
 }
 
-function DigitalCircuitalityPanel() {
+function DigitalCircuitalityPanel({ mode }: { mode: AuthMode }) {
   const [activeUseCase, setActiveUseCase] = useState(0);
+  const wallpaper =
+    mode === "signup"
+      ? "/generated/auth-signup-wallpaper.png"
+      : "/generated/auth-login-wallpaper.png";
 
   useEffect(() => {
     const rotation = window.setInterval(() => {
@@ -110,11 +114,11 @@ function DigitalCircuitalityPanel() {
     <section className="relative hidden h-dvh min-h-[720px] overflow-hidden border-l border-white/10 bg-[#09111a] lg:block">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.72] [filter:saturate(1.08)_brightness(0.98)]"
-        style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+        style={{ backgroundImage: `url(${wallpaper})` }}
       />
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.34] mix-blend-screen [filter:blur(18px)_saturate(1.12)]"
-        style={{ backgroundImage: "url(/generated/home-digital-circuitality-bg.png)" }}
+        style={{ backgroundImage: `url(${wallpaper})` }}
       />
       <div className="absolute inset-0 blueprint-grid opacity-[0.16]" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,8,13,0.68)_0%,rgba(4,10,16,0.46)_44%,rgba(1,4,8,0.8)_100%)]" />
@@ -269,7 +273,7 @@ export function AuthMockView({ mode }: { mode: AuthMode }) {
           </div>
         </section>
 
-        <DigitalCircuitalityPanel />
+        <DigitalCircuitalityPanel mode={mode} />
       </div>
     </main>
   );
