@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   ExternalLink,
@@ -76,6 +77,8 @@ export type ComplianceFrameworkSpec = {
   logoSrc?: string;
   logoAlt: string;
   fallback: string;
+  logoTone?: "brand" | "light";
+  logoSize?: "wide" | "mark";
   sourceUrl: string;
 };
 export type RiskTrack = {
@@ -675,17 +678,18 @@ export function ComplianceMappingSurface({
               <div className="flex h-full flex-col">
                 <div className="flex h-16 items-center">
                   {item.logoSrc ? (
-                    <span className="inline-flex h-14 w-[168px] items-center justify-center rounded-lg border border-white/10 bg-white p-2.5 shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)] transition duration-300 group-hover:border-[color:var(--accent)]/35">
-                      <object
-                        data={item.logoSrc}
-                        aria-label={item.logoAlt}
-                        className="h-full max-h-9 w-full object-contain"
-                      >
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-50 font-mono text-[10px] font-bold text-slate-700">
-                          {item.fallback}
-                        </span>
-                      </object>
-                    </span>
+                    <Image
+                      src={item.logoSrc}
+                      alt={item.logoAlt}
+                      width={168}
+                      height={56}
+                      className={cx(
+                        "w-auto object-contain opacity-90 transition duration-300 group-hover:opacity-100",
+                        item.logoSize === "mark" ? "h-16 max-w-[92px]" : "h-14 max-w-[168px]",
+                        item.logoTone === "light" && "brightness-0 invert"
+                      )}
+                      unoptimized
+                    />
                   ) : (
                     <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] font-mono text-[11px] font-bold text-white/70">
                       {item.fallback}

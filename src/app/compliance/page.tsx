@@ -50,6 +50,7 @@ const compliancePage: UtilityPageSpec = {
         logoSrc: "/compliance-logos/eu-ai-act.png",
         logoAlt: "EU AI Act logo",
         fallback: "EU",
+        logoTone: "light",
         sourceUrl: "https://commons.wikimedia.org/wiki/File:The_EU_Artificial_Intelligence_Act_Main_Logo.png",
       },
       {
@@ -58,6 +59,7 @@ const compliancePage: UtilityPageSpec = {
         logoSrc: "/compliance-logos/nist.svg",
         logoAlt: "National Institute of Standards and Technology logo",
         fallback: "NIST",
+        logoTone: "light",
         sourceUrl: "https://www.nist.gov/itl/ai-risk-management-framework",
       },
       {
@@ -66,6 +68,7 @@ const compliancePage: UtilityPageSpec = {
         logoSrc: "/compliance-logos/hipaa.svg",
         logoAlt: "HIPAA logo",
         fallback: "HIPAA",
+        logoTone: "brand",
         sourceUrl: "https://seeklogo.com/free-vector-logos/hipaa",
       },
       {
@@ -74,14 +77,16 @@ const compliancePage: UtilityPageSpec = {
         logoSrc: "/compliance-logos/soc2.svg",
         logoAlt: "SOC 2 logo",
         fallback: "SOC",
+        logoTone: "brand",
         sourceUrl: "https://www.aicpa-cima.com/resources/download/soc-for-service-organizations-logo-guidelines-for-service-organization",
       },
       {
         name: "GDPR",
         description: "Data privacy compliance",
-        logoSrc: "/compliance-logos/gdpr.svg",
-        logoAlt: "GDPR regulation document emblem",
+        logoSrc: "/compliance-logos/gdpr-act.png",
+        logoAlt: "GDPR EU lock emblem",
         fallback: "GDPR",
+        logoSize: "mark",
         sourceUrl: "https://commons.wikimedia.org/wiki/File:GDPR_p1.svg",
       },
       {
@@ -90,6 +95,7 @@ const compliancePage: UtilityPageSpec = {
         logoSrc: "/compliance-logos/iso-42001.svg",
         logoAlt: "ISO 42001 badge",
         fallback: "ISO",
+        logoTone: "brand",
         sourceUrl: "https://www.figma.com/community/file/1458082992679071182/iso-security-logos-and-badges",
       },
     ],
