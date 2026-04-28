@@ -70,6 +70,14 @@ export type PageAction = {
 
 export type SurfaceMetric = { label: string; value: string; detail: string };
 export type SurfaceRow = { title: string; body: string; note?: string };
+export type ComplianceFrameworkSpec = {
+  name: string;
+  description: string;
+  logoSrc?: string;
+  logoAlt: string;
+  fallback: string;
+  sourceUrl: string;
+};
 export type RiskTrack = {
   label: string;
   title: string;
@@ -144,8 +152,9 @@ export type UtilityPageSpec = {
       external?: boolean;
     }>;
     links?: Array<{ title: string; body: string; href: string; external?: boolean }>;
+    complianceItems?: ComplianceFrameworkSpec[];
     footer?: ReactNode;
-    kind?: "utility" | "action" | "docs";
+    kind?: "utility" | "action" | "docs" | "compliance";
     statusLabel?: string;
     statusTone?: "teal" | "success" | "warning" | "neutral";
   };
@@ -597,11 +606,11 @@ export function UtilitySurface({
           >
             <div className="flex flex-wrap items-center justify-between gap-3">
               <p className="text-sm font-bold text-white">{row.title}</p>
-              {row.note && (
+              {row.note ? (
                 <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--accent)]">
                   {row.note}
                 </span>
-              )}
+              ) : null}
             </div>
             <p className="mt-2 text-sm leading-6 text-white/40">{row.body}</p>
           </div>
@@ -615,6 +624,83 @@ export function UtilitySurface({
           {footer}
         </div>
       ) : null}
+    </ArtifactFrame>
+  );
+}
+
+export function ComplianceMappingSurface({
+  eyebrow,
+  title,
+  description,
+  items,
+  statusLabel,
+  statusTone,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: ComplianceFrameworkSpec[];
+  statusLabel?: string;
+  statusTone?: "teal" | "success" | "warning" | "neutral";
+}) {
+  return (
+    <ArtifactFrame dark className="overflow-hidden border-white/10 bg-[#07090d] p-0">
+      <div className="border-b border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.018))] px-6 py-7 md:px-8">
+        <ArtifactHeader
+          dark
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
+          status={
+            <StatusPill tone={statusTone ?? "neutral"}>
+              <Layers className="h-3.5 w-3.5" />
+              {statusLabel ?? "Framework mapping"}
+            </StatusPill>
+          }
+        />
+      </div>
+      <div className="grid gap-px bg-white/10 md:grid-cols-2 xl:grid-cols-3">
+        {items.map((item) => (
+          <article
+            key={item.name}
+            className="group min-h-[220px] bg-[#090c11] p-6 transition duration-300 hover:-translate-y-0.5 hover:bg-[#0c1118] hover:shadow-[0_24px_70px_rgba(0,0,0,0.34)] md:p-7"
+          >
+            <a
+              href={item.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#090c11]"
+              aria-label={`${item.name} reference source`}
+            >
+              <div className="flex h-full flex-col">
+                <div className="flex h-16 items-center">
+                  {item.logoSrc ? (
+                    <span className="inline-flex h-14 w-[168px] items-center justify-center rounded-lg border border-white/10 bg-white p-2.5 shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)] transition duration-300 group-hover:border-[color:var(--accent)]/35">
+                      <object
+                        data={item.logoSrc}
+                        aria-label={item.logoAlt}
+                        className="h-full max-h-9 w-full object-contain"
+                      >
+                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-50 font-mono text-[10px] font-bold text-slate-700">
+                          {item.fallback}
+                        </span>
+                      </object>
+                    </span>
+                  ) : (
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] font-mono text-[11px] font-bold text-white/70">
+                      {item.fallback}
+                    </span>
+                  )}
+                </div>
+                <div className="mt-8">
+                  <h3 className="text-xl font-semibold text-white">{item.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/50">{item.description}</p>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
     </ArtifactFrame>
   );
 }
@@ -1140,6 +1226,15 @@ export function UtilityPageView({ page }: { page: UtilityPageSpec }) {
                 description={secondarySurface.description}
                 links={secondarySurface.links}
                 note={secondarySurface.footer}
+                statusLabel={secondarySurface.statusLabel}
+                statusTone={secondarySurface.statusTone}
+              />
+            ) : secondarySurface?.kind === "compliance" && secondarySurface.complianceItems ? (
+              <ComplianceMappingSurface
+                eyebrow={secondarySurface.eyebrow}
+                title={secondarySurface.title}
+                description={secondarySurface.description}
+                items={secondarySurface.complianceItems}
                 statusLabel={secondarySurface.statusLabel}
                 statusTone={secondarySurface.statusTone}
               />
