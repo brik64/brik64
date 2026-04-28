@@ -34,7 +34,7 @@ const regulatedIndustries: IndustryCard[] = [
     shortLabel: "HEALTH",
     panelLabel: "Clinical Review",
     tint: "from-[#111824] to-[#1b2435]",
-    markSrc: "/industry-marks/healthcare-hipaa.svg",
+    markSrc: "/compliance-logos/hipaa-logo.png",
   },
   {
     id: "AUT-03",

@@ -78,7 +78,7 @@ export type ComplianceFrameworkSpec = {
   logoAlt: string;
   fallback: string;
   logoTone?: "brand" | "light";
-  logoSize?: "wide" | "mark";
+  logoSize?: "wide" | "mark" | "badge";
   sourceUrl: string;
 };
 export type RiskTrack = {
@@ -676,16 +676,20 @@ export function ComplianceMappingSurface({
               aria-label={`${item.name} reference source`}
             >
               <div className="flex h-full flex-col">
-                <div className="flex h-16 items-center">
+                <div className="flex h-24 items-center">
                   {item.logoSrc ? (
                     <Image
                       src={item.logoSrc}
                       alt={item.logoAlt}
-                      width={168}
-                      height={56}
+                      width={180}
+                      height={180}
                       className={cx(
                         "w-auto object-contain opacity-90 transition duration-300 group-hover:opacity-100",
-                        item.logoSize === "mark" ? "h-16 max-w-[92px]" : "h-14 max-w-[168px]",
+                        item.logoSize === "mark"
+                          ? "h-16 max-w-[92px]"
+                          : item.logoSize === "badge"
+                            ? "h-24 max-w-[132px]"
+                            : "h-14 max-w-[168px]",
                         item.logoTone === "light" && "brightness-0 invert"
                       )}
                       unoptimized
