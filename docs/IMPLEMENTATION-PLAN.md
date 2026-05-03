@@ -85,6 +85,12 @@ brik64web/public/brands/*.svg → brik64web-v5/public/brands/
 - Publishing workflow
 - Badge embed guide
 
+Semantic rule for copy and IA:
+- `/pcd` explains individual circuit blueprints.
+- `/polymers` explains reusable compositions of multiple PCDs.
+- `/registry` publishes and discovers PCDs, polymers, hashes and evidence.
+- Do not use PCD and polymer as synonyms.
+
 ### 2.4 `/lifter` — Lifter Page
 **Fuente:** src/pages/LifterPage.tsx + LifterSection
 **Contenido:**
@@ -358,3 +364,6 @@ Formato: MDX files en `src/content/blog/` con frontmatter.
 | SVG assets | 55 | 55 |
 | Routes | 30 | 30+ |
 | Industries | 0 (nuevo) | 8 |
+# Circuit Topology Public Messaging
+
+- Public copy guide: `docs/CIRCUIT_TOPOLOGY_PUBLIC_MESSAGING.md`
