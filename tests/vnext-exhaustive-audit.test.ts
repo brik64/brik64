@@ -5,8 +5,7 @@ import {
   productMigratedPages, 
   utilityWrapperPages, 
   riskWrapperPages,
-  editorialPages,
-  commerceDirectPages
+  editorialPages
 } from "./site-grammar";
 
 describe("VNext Exhaustive Integrity Audit", () => {
@@ -92,7 +91,7 @@ describe("VNext Exhaustive Integrity Audit", () => {
           if (content.includes("EditorialArticleHeroVNext")) {
             expect(content).toContain('from "@/lib/news-data"');
           }
-        } catch (e) {
+        } catch {
           // Dynamic routes handle
         }
       }

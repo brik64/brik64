@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-tooltip",
+  "title": "BRIK64 Tooltip",
+  "description": "BRIK64 tooltip primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/tooltip.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction TooltipProvider({ children }: { children: React.ReactNode }) {\n  return <>{children}</>;\n}\n\nfunction Tooltip({ children }: { children: React.ReactNode }) {\n  return <span className=\"group/tooltip relative inline-flex\">{children}</span>;\n}\n\nfunction TooltipTrigger({\n  children,\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span className={cn(\"inline-flex\", className)} {...props}>\n      {children}\n    </span>\n  );\n}\n\nfunction TooltipContent({\n  children,\n  className,\n  side = \"top\",\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement> & { side?: \"top\" | \"right\" | \"bottom\" | \"left\" }) {\n  const sideClass = {\n    top: \"bottom-full left-1/2 mb-2 -translate-x-1/2\",\n    right: \"left-full top-1/2 ml-2 -translate-y-1/2\",\n    bottom: \"left-1/2 top-full mt-2 -translate-x-1/2\",\n    left: \"right-full top-1/2 mr-2 -translate-y-1/2\",\n  };\n\n  return (\n    <span\n      role=\"tooltip\"\n      className={cn(\n        \"pointer-events-none absolute z-50 hidden max-w-xs rounded-md border border-border bg-popover px-3 py-1.5 text-xs text-popover-foreground shadow-md group-hover/tooltip:block group-focus-within/tooltip:block\",\n        sideClass[side],\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  );\n}\n\nexport { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

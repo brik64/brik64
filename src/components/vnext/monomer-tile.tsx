@@ -12,6 +12,7 @@ interface MonomerTileProps {
 
 export function MonomerTile({ id, title, type, className, property, domain, description }: MonomerTileProps) {
   const isCore = type === "core";
+  const displayId = id.replace("_", "");
   
   return (
     <div 
@@ -40,7 +41,7 @@ export function MonomerTile({ id, title, type, className, property, domain, desc
               isCore ? "text-[#2BB6AC]" : "text-[#FF8A22]"
             )}
           >
-            {id}
+            {displayId}
           </span>
           <span className="mt-2 font-mono text-xs text-white/40 uppercase tracking-widest">
             {isCore ? "Bounded Logic" : "Open Contract"}

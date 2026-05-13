@@ -1,11 +1,10 @@
 "use client";
 
-import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock3, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { renderBrandText, ChipVNext, ButtonVNext } from "./primitives";
+import { renderBrandText, ChipVNext } from "./primitives";
 
 export interface EditorialItem {
   slug: string;
@@ -163,11 +162,9 @@ export function PostCardVNext({ item, hrefBase }: { item: EditorialItem; hrefBas
 export function ArchivePagination({
   page,
   totalPages,
-  onPageChange,
 }: {
   page: number;
   totalPages: number;
-  onPageChange?: (p: number) => void;
 }) {
   if (totalPages <= 1) return null;
 
@@ -208,7 +205,6 @@ export function ArchivePagination({
 
 export function EditorialArticleHeroVNext({
   href,
-  eyebrow,
   title,
   excerpt,
   date,

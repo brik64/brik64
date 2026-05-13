@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-select",
+  "title": "BRIK64 Select",
+  "description": "BRIK64 select primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/select.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Select = React.forwardRef<HTMLSelectElement, React.SelectHTMLAttributes<HTMLSelectElement>>(\n  ({ className, children, ...props }, ref) => (\n    <select\n      ref={ref}\n      className={cn(\n        \"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </select>\n  ),\n);\nSelect.displayName = \"Select\";\n\nconst SelectItem = ({ className, ...props }: React.OptionHTMLAttributes<HTMLOptionElement>) => (\n  <option className={className} {...props} />\n);\n\nexport { Select, SelectItem };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -4,12 +4,10 @@ import {
   SupportingSurface, 
   ButtonVNext, 
   PillarCard,
-  BrandWordmark,
   CanonicalPageLayout,
-  ProtagonistSurface,
   DigitalCircuitalityBackdrop,
 } from "@/components/PageArchetypes";
-import { Layers, Terminal, ShieldCheck, BookOpen, ExternalLink } from "lucide-react";
+import { Layers, Terminal, ShieldCheck, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About — BRIK64",

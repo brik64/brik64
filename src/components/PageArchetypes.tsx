@@ -23,7 +23,6 @@ import {
 } from "@/components/HomeProofArtifacts";
 import { PageSectionHeader } from "@/components/PageArtifacts";
 import {
-  renderBrandText,
   ButtonVNext,
   ProtagonistSurface,
   PageHeaderVNext,
@@ -495,7 +494,6 @@ export function ConstraintEnvelopeSurface({
         </div>
         {code && codeTitle ? (
           <CodeProofPanel
-            dark
             eyebrow={codeEyebrow ?? "Bounded example"}
             title={codeTitle}
             badge={<ProofBadge />}
@@ -546,7 +544,6 @@ export function ScenarioFlowSurface({
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {steps.map((step) => (
           <FlowNode
-            dark
             key={step.label}
             label={step.label}
             title={step.title}
@@ -971,7 +968,6 @@ export function LanguageExchangeSurface({
         </div>
         {code && codeTitle ? (
           <CodeProofPanel
-            dark
             eyebrow="Language example"
             title={codeTitle}
             badge={<StatusPill tone="success">bridge pattern</StatusPill>}

@@ -134,6 +134,27 @@ describe("Home polish audit — monomer section stays balanced", () => {
   });
 });
 
+describe("Monomer structure page — cube map stays claim-safe", () => {
+  it("adds a standalone route for the core-centered monomer structure", () => {
+    const page = read("src/app/monomer-structure/page.tsx");
+    const cubeMap = read("src/components/vnext/monomer-cube-map.tsx");
+
+    expect(page).toContain("<MonomerCubeMap />");
+    expect(cubeMap).toContain('const edges: Edge[] = ["top", "right", "bottom", "left"];');
+    expect(cubeMap).toContain("EXTENDED_MONOMERS.slice(index * 8, index * 8 + 8)");
+    expect(cubeMap).toContain("edgeIndex * 2");
+    expect(cubeMap).toContain("edgeIndex * 2 + 2");
+    expect(cubeMap).toContain("64 bounded core monomers remain centered.");
+    expect(cubeMap).toContain("64 contract-bounded extensions sit around the square");
+    expect(cubeMap).toContain("grid-cols-[auto_auto_auto]");
+    expect(cubeMap).toContain('groups.map((group) => group.label).join(" / ")');
+    expect(cubeMap).not.toContain("North face");
+    expect(cubeMap).not.toContain("West face");
+    expect(cubeMap).not.toContain("Core MC_00-63");
+    expect(cubeMap).not.toContain("8 families x 8 bounded monomers");
+  });
+});
+
 describe("Home polish audit — compiler loop stays legible", () => {
   it("keeps a central PCD node so the compiler feedback loop reads as a loop instead of four isolated cards", () => {
     const home = read("src/components/vnext/home.tsx");

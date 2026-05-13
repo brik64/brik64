@@ -7,7 +7,7 @@ import {
   PillarCard,
   DigitalCircuitalityBackdrop,
 } from "@/components/PageArchetypes";
-import { ShieldCheck, Key, GitBranch, ExternalLink } from "lucide-react";
+import { ShieldCheck, Key, GitBranch } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Enterprise — BRIK64",

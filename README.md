@@ -29,6 +29,7 @@ BRIK-64 is the first **Digital Circuitality** architecture: software that works 
 
 - **128 verified atomic operations** — 64 core monomers + 64 extended monomers, formally proven in Coq
 - **Programs as circuit blueprints (PCD)** — Printed Circuit Descriptions replace traditional source code with deterministic circuit schematics
+- **Polymers as reusable compositions** — A polymer is not a single PCD; it is a versioned composition of multiple PCD blueprints with dependency graph, hashes and evidence
 - **Mathematical certification** — The Thermodynamic Coherence Engine guarantees every program reaches closure: **Phi_c = 1**
 - **8 compilation targets** — JavaScript, Python, Rust, C, Go, COBOL, WASM, Native x86-64
 

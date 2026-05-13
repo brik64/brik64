@@ -5,8 +5,7 @@ import { Footer } from "@/components/Footer";
 import { 
   EditorialHeroVNext, 
   FeaturedPostCard, 
-  PostCardVNext, 
-  ArchivePagination 
+  PostCardVNext
 } from "@/components/vnext/editorial";
 import { SupportingSurface } from "@/components/vnext/primitives";
 import { newsArticles } from "@/lib/news-data";

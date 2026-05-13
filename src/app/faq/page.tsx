@@ -6,7 +6,6 @@ import {
   ButtonVNext,
   DigitalCircuitalityBackdrop,
 } from "@/components/PageArchetypes";
-import { Plus, Minus } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "FAQ — BRIK64",

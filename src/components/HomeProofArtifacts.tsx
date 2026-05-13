@@ -1,7 +1,7 @@
 "use client";
 
-import { ReactNode, useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ReactNode, useState } from "react";
+import Image from "next/image";
 import {
   ArrowUpDown,
   ArrowUpRight,
@@ -30,6 +30,8 @@ import {
   Workflow,
   Zap,
 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { PhiC } from "@/components/PhiC";
 import { BlueprintHubArtifact } from "@/components/HomeProofArtifacts.client";
 
@@ -52,12 +54,12 @@ export function StatusPill({
   };
 
   return (
-    <span className={cx(
-      "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] shadow-sm",
+    <Badge variant="outline" className={cx(
+      "gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] shadow-sm",
       tones[tone],
     )}>
       {children}
-    </span>
+    </Badge>
   );
 }
 
@@ -80,7 +82,7 @@ export function ArtifactFrame({
   dark?: boolean;
 }) {
   return (
-    <div
+    <Card
       className={cx(
         "overflow-hidden rounded-[2rem] border p-5 shadow-[0_24px_90px_rgba(0,0,0,0.12)] md:p-7",
         dark
@@ -90,7 +92,7 @@ export function ArtifactFrame({
       )}
     >
       {children}
-    </div>
+    </Card>
   );
 }
 
@@ -108,7 +110,7 @@ export function ArtifactHeader({
   dark?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-4 border-b border-current/10 pb-5 md:flex-row md:items-start md:justify-between">
+    <CardHeader className="flex flex-col gap-4 border-b border-current/10 p-0 pb-5 md:flex-row md:items-start md:justify-between">
       <div>
         <p className={cx(
           "text-[10px] font-semibold uppercase tracking-[0.22em]",
@@ -129,7 +131,7 @@ export function ArtifactHeader({
         ) : null}
       </div>
       {status ? <div className="shrink-0">{status}</div> : null}
-    </div>
+    </CardHeader>
   );
 }
 
@@ -147,7 +149,7 @@ export function MetricTile({
   className?: string;
 }) {
   return (
-    <div className={cx(
+    <Card className={cx(
       "rounded-2xl border p-4 shadow-sm",
       dark ? "border-white/12 bg-[#0f1a28]" : "border-border/80 bg-background/90",
       className,
@@ -166,7 +168,7 @@ export function MetricTile({
           {detail}
         </p>
       ) : null}
-    </div>
+    </Card>
   );
 }
 
@@ -176,14 +178,12 @@ export function FlowNode({
   body,
   icon,
   state = "idle",
-  dark = false,
 }: {
   label: string;
   title: string;
   body: string;
   icon: ReactNode;
   state?: "active" | "success" | "warning" | "idle";
-  dark?: boolean;
 }) {
   const stateClass = {
     idle: "border-border/80 bg-background/90",
@@ -193,7 +193,7 @@ export function FlowNode({
   };
 
   return (
-    <div className={cx("rounded-3xl border p-4 shadow-sm", stateClass[state])}>
+    <Card className={cx("rounded-3xl border p-4 shadow-sm", stateClass[state])}>
       <div className="flex items-center justify-between gap-3">
         <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
           {label}
@@ -202,7 +202,7 @@ export function FlowNode({
       </div>
       <p className="mt-4 text-sm font-semibold text-foreground">{title}</p>
       <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{body}</p>
-    </div>
+    </Card>
   );
 }
 
@@ -211,13 +211,11 @@ export function CodeProofPanel({
   title,
   badge,
   code,
-  dark = false,
 }: {
   eyebrow: string;
   title: string;
   badge?: ReactNode;
   code: string;
-  dark?: boolean;
 }) {
   return (
     <ArtifactFrame dark className="flex min-h-full flex-col p-0 md:p-0">
@@ -230,11 +228,11 @@ export function CodeProofPanel({
         </div>
         {badge}
       </div>
-      <div className="flex-1 bg-[#070b10] p-5">
+      <CardContent className="flex-1 bg-[#070b10] p-5">
         <pre className="overflow-x-auto whitespace-pre-wrap font-mono text-xs leading-relaxed text-slate-300">
           <code>{code}</code>
         </pre>
-      </div>
+      </CardContent>
     </ArtifactFrame>
   );
 }
@@ -538,7 +536,6 @@ export function ProblemFrameArtifact() {
 
 export function LanguageExchangeArtifact() {
   const [hoveredSource, setHoveredSource] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const sources = [
     { id: "javascript", name: "JavaScript" },
@@ -566,7 +563,7 @@ export function LanguageExchangeArtifact() {
     { id: "java", name: "Java" },
     { id: "swift", name: "Swift" },
     { id: "webassembly", name: "WASM" },
-    { id: "antigravity", name: "Native" },
+    { id: "x86", name: "x86" },
     { id: "codex", name: "BIR" },
   ];
 
@@ -579,52 +576,8 @@ export function LanguageExchangeArtifact() {
         status={<StatusPill tone="teal">10 &rarr; 1 &rarr; 14</StatusPill>}
       />
 
-      <div ref={containerRef} className="relative mt-8 grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] items-center gap-8 md:gap-4 lg:gap-12 min-h-[500px]">
+      <div className="relative mt-8 grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] items-center gap-8 md:gap-4 lg:gap-12 min-h-[500px]">
         
-        {/* Connection Layer (SVG Overlay) */}
-        <div className="absolute inset-0 pointer-events-none hidden md:block">
-          <svg className="h-full w-full overflow-visible">
-            <AnimatePresence>
-              {hoveredSource && (
-                <motion.g
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Lines from Source to Center */}
-                  {/* Since we are in a grid, we can estimate ports or use placeholders. 
-                      Simplest approach: lines from left-center to middle. */}
-                  <motion.path
-                    d="M 50 250 L 320 250"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="2"
-                    fill="none"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                  />
-                  
-
-                </motion.g>
-              )}
-            </AnimatePresence>
-            
-            <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#2BB6AC" stopOpacity="0" />
-                <stop offset="50%" stopColor="#2BB6AC" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#2BB6AC" stopOpacity="1" />
-              </linearGradient>
-              <linearGradient id="lineGradientReverse" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#2BB6AC" stopOpacity="1" />
-                <stop offset="50%" stopColor="#2BB6AC" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#2BB6AC" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
         {/* Sources Column (Left) */}
         <div className="flex flex-col items-center gap-4 z-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-2">Sources</p>
@@ -642,8 +595,14 @@ export function LanguageExchangeArtifact() {
                 )}
                 title={lang.name}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/brands/${lang.id}.svg`} alt={lang.name} className="h-7 w-7 md:h-8 md:w-8 object-contain" />
+                <Image
+                  src={`/brands/${lang.id}.svg`}
+                  alt={lang.name}
+                  width={32}
+                  height={32}
+                  className="h-7 w-7 object-contain md:h-8 md:w-8"
+                  unoptimized
+                />
               </div>
             ))}
           </div>
@@ -691,8 +650,14 @@ export function LanguageExchangeArtifact() {
                 style={{ transitionDelay: hoveredSource ? `${idx * 40}ms` : '0ms' }}
                 title={lang.name}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/brands/${lang.id}.svg`} alt={lang.name} className="h-5 w-5 object-contain" />
+                <Image
+                  src={`/brands/${lang.id}.svg`}
+                  alt={lang.name}
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 object-contain"
+                  unoptimized
+                />
               </div>
             ))}
           </div>
@@ -836,8 +801,14 @@ export function EditorControlArtifact() {
           {editors.map((editor) => (
             <div key={editor.name} className="rounded-3xl border border-border/80 bg-background/95 p-4 shadow-sm">
               <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={editor.logo} alt={editor.name} className="h-8 w-8 grayscale" />
+                <Image
+                  src={editor.logo}
+                  alt={editor.name}
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 grayscale"
+                  unoptimized
+                />
                 <div>
                   <p className="text-sm font-semibold text-foreground">{editor.name}</p>
                   <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">{editor.subtitle}</p>

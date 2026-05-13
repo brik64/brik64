@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
 
 const CONSENT_KEY = "brik64-cookie-consent";
@@ -9,14 +9,16 @@ const CONSENT_KEY = "brik64-cookie-consent";
 type ConsentChoice = "all" | "essential" | null;
 
 export function CookieBanner() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return !window.localStorage.getItem(CONSENT_KEY);
+  });
   const [showPrefs, setShowPrefs] = useState(false);
   const [analytics, setAnalytics] = useState(true);
   const [marketing, setMarketing] = useState(false);
-
-  useEffect(() => {
-    setVisible(!localStorage.getItem(CONSENT_KEY));
-  }, []);
 
   function accept(choice: ConsentChoice) {
     const consent = {

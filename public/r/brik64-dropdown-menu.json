@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-dropdown-menu",
+  "title": "BRIK64 Dropdown Menu",
+  "description": "BRIK64 dropdown menu primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/dropdown-menu.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction DropdownMenu({ children }: { children: React.ReactNode }) {\n  return <div className=\"relative inline-flex\">{children}</div>;\n}\n\nfunction DropdownMenuTrigger({ className, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {\n  return <button type=\"button\" className={cn(\"inline-flex\", className)} {...props} />;\n}\n\nfunction DropdownMenuContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"absolute right-0 top-full z-50 mt-2 min-w-44 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction DropdownMenuItem({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return <div className={cn(\"relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground\", className)} {...props} />;\n}\n\nexport { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

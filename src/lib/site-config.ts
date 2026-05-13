@@ -113,6 +113,18 @@ export const productDropdownItems = [
     icon: "file",
   },
   {
+    label: "MCP",
+    href: "/mcp",
+    description: "Agent endpoint, tool contract, and bounded operation surface.",
+    icon: "terminal",
+  },
+  {
+    label: "AI Agent Skills",
+    href: "/ai-agent-skills",
+    description: "PCD authoring, proof checks, logic extraction, and monomer tools for agents.",
+    icon: "cpu",
+  },
+  {
     label: "Developer Stack",
     href: "/sdks",
     description: "Registry, SDKs, Lifter, and Transpiler in one toolchain surface.",

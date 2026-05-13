@@ -1,8 +1,11 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
 
+import { Badge, badgeVariants } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export type ActionTone = "primary" | "secondary" | "ghost" | "link";
@@ -75,16 +78,34 @@ export function ButtonVNext({
   external?: boolean;
   className?: string;
 }) {
-  const shared =
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-md)] text-sm font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  const variants: Record<ActionTone, "default" | "outline" | "ghost" | "link"> = {
+    primary: "default",
+    secondary: "outline",
+    ghost: "ghost",
+    link: "link",
+  };
+  const sizes: Record<ActionTone, "default" | "lg"> = {
+    primary: "lg",
+    secondary: "lg",
+    ghost: "lg",
+    link: "default",
+  };
   const tones: Record<ActionTone, string> = {
     primary:
-      "bg-primary text-primary-foreground hover:bg-[color:var(--accent-hover)] h-11 px-5",
+      "bg-primary text-primary-foreground hover:bg-[color:var(--accent-hover)]",
     secondary:
-      "border border-border bg-card text-foreground hover:border-[color:var(--accent-soft)] hover:bg-secondary h-11 px-5",
+      "border-border bg-card text-foreground hover:border-[color:var(--accent-soft)] hover:bg-secondary",
     ghost:
-      "text-muted-foreground hover:bg-secondary hover:text-foreground h-11 px-4",
+      "text-muted-foreground hover:bg-secondary hover:text-foreground",
     link: "h-auto px-0 text-muted-foreground hover:text-foreground",
+  };
+  const linkBase =
+    "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:translate-y-px";
+  const linkSizes: Record<ActionTone, string> = {
+    primary: "h-9 px-3",
+    secondary: "h-9 px-3",
+    ghost: "h-9 px-3",
+    link: "h-auto px-0",
   };
   const content = (
     <>
@@ -95,14 +116,24 @@ export function ButtonVNext({
 
   if (!href) {
     return (
-      <button
+      <Button
         type="button"
-        className={cn(shared, tones[tone], className)}
+        variant={variants[tone]}
+        size={sizes[tone]}
+        className={cn("gap-2", tones[tone], className)}
       >
         {content}
-      </button>
+      </Button>
     );
   }
+
+  const linkClassName = cn(
+    linkBase,
+    linkSizes[tone],
+    "gap-2",
+    tones[tone],
+    className,
+  );
 
   if (external) {
     return (
@@ -110,7 +141,7 @@ export function ButtonVNext({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(shared, tones[tone], className)}
+        className={linkClassName}
       >
         {content}
       </a>
@@ -118,7 +149,7 @@ export function ButtonVNext({
   }
 
   return (
-    <Link href={href} className={cn(shared, tones[tone], className)}>
+    <Link href={href} className={linkClassName}>
       {content}
     </Link>
   );
@@ -140,15 +171,16 @@ export function ChipVNext({
   };
 
   return (
-    <span
+    <Badge
+      variant={variant === "accent" ? "accent" : "outline"}
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[14px] font-medium leading-none",
+        "gap-2 rounded-full px-3 py-1.5 text-[14px] font-medium leading-none",
         variants[variant],
         className,
       )}
     >
       {children}
-    </span>
+    </Badge>
   );
 }
 
@@ -159,17 +191,19 @@ export function AnnouncementPill({
   href?: string;
   children: ReactNode;
 }) {
-  const className =
-    "inline-flex items-center rounded-full border border-[color:var(--accent-soft)] bg-[#11161d] px-4 py-2 text-sm font-medium text-white/84 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] transition-colors hover:border-[color:var(--accent)] hover:bg-[#141b24]";
+  const className = cn(
+    badgeVariants({ variant: "outline" }),
+    "rounded-full border-[color:var(--accent-soft)] bg-[#11161d] px-4 py-2 text-sm font-medium text-white/84 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] transition-colors hover:border-[color:var(--accent)] hover:bg-[#141b24]",
+  );
   const content = <span>{children}</span>;
 
   if (!href) {
-    return <div className={className}>{content}</div>;
+    return <Badge variant="outline" className={className}>{content}</Badge>;
   }
 
   return (
-    <Link href={href} className={className}>
-      {content}
+    <Link href={href} className="inline-flex">
+      <Badge variant="outline" className={className}>{content}</Badge>
     </Link>
   );
 }
@@ -190,14 +224,14 @@ export function SurfaceCard({
   className?: string;
 }) {
   return (
-    <div
+    <Card
       className={cn(
         "rounded-[var(--radius-lg)] border border-border bg-card/95 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur-sm",
         className,
       )}
     >
       {children}
-    </div>
+    </Card>
   );
 }
 
@@ -226,14 +260,14 @@ export function ProductFrame({
   className?: string;
 }) {
   return (
-    <div
+    <Card
       className={cn(
         "overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_40px_120px_rgba(0,0,0,0.45)]",
         className,
       )}
     >
       {children}
-    </div>
+    </Card>
   );
 }
 
@@ -288,7 +322,7 @@ export function ToolRail({
     { id: "c", name: "C" },
   ];
 
-  const carouselItems = [...logos, ...logos, ...logos, ...logos];
+  const carouselItems = [...logos, ...logos];
 
   return (
     <div className="relative z-10 border-t border-white/8 bg-[#070b11]/92 overflow-hidden py-8">
@@ -298,27 +332,24 @@ export function ToolRail({
         </p>
         
         <div className="relative flex flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <motion.div 
-            className="flex items-center gap-12 whitespace-nowrap"
-            animate={{ x: [0, -1056] }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 25, 
-              ease: "linear" 
-            }}
-          >
+          <div className="tool-rail-track flex w-max items-center gap-12 whitespace-nowrap">
             {carouselItems.map((logo, i) => (
-              <div key={i} className="flex items-center transition-transform hover:scale-110 shrink-0">
-                <img 
+              <div
+                key={`${logo.id}-${i}`}
+                className="flex h-12 w-12 shrink-0 items-center justify-center transition-transform duration-300 hover:scale-95"
+              >
+                <Image
                   src={`/brands/${logo.id}.${logo.ext ?? "svg"}`} 
                   alt={logo.name} 
+                  width={40}
+                  height={40}
                   className="h-10 w-10 object-contain"
-                  loading="eager"
-                  decoding="async"
+                  priority={i < logos.length}
+                  unoptimized
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
@@ -474,24 +505,28 @@ export function PillarCard({
   actionLabel?: string;
 }) {
   const content = (
-    <div className="flex flex-col h-full">
+    <Card className="flex h-full flex-col rounded-[32px] border-white/5 bg-[#05080c]/60 p-0 shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:border-[color:var(--accent-soft)]/40 group-hover:bg-[#071019] group-hover:shadow-[0_24px_80px_rgba(0,0,0,0.3)]">
+      <CardHeader className="p-8 pb-0">
       <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--accent-soft)]/20 text-[color:var(--accent)] border border-[color:var(--accent-soft)]/30 group-hover:scale-110 group-hover:bg-[color:var(--accent-soft)] transition-all duration-300">
         {icon}
       </div>
       <h3 className="text-xl font-medium tracking-tight text-white mb-3">{renderBrandText(title)}</h3>
-      <p className="text-[15px] leading-relaxed text-white/50 mb-8 flex-grow">{description}</p>
+      </CardHeader>
+      <CardContent className="flex flex-1 flex-col px-8 pb-8 pt-0">
+      <p className="mb-8 flex-grow text-[15px] leading-relaxed text-white/50">{description}</p>
       
       {actionLabel && (
-        <div className="mt-auto pt-6">
+        <CardFooter className="mt-auto p-0 pt-6">
           <ButtonVNext tone="primary" className="w-full text-xs font-bold uppercase tracking-widest pointer-events-none">
             {actionLabel}
           </ButtonVNext>
-        </div>
+        </CardFooter>
       )}
-    </div>
+      </CardContent>
+    </Card>
   );
 
-  const className = "group block h-full rounded-[32px] border border-white/5 bg-[#05080c]/60 p-8 transition-all duration-300 hover:border-[color:var(--accent-soft)]/40 hover:bg-[#071019] hover:shadow-[0_24px_80px_rgba(0,0,0,0.3)] shadow-[0_12px_40px_rgba(0,0,0,0.12)]";
+  const className = "group block h-full";
 
   if (href) {
     return (

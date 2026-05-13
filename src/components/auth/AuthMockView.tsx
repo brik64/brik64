@@ -1,7 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Eye, LockKeyhole } from "lucide-react";
@@ -9,19 +8,6 @@ import { BookOpen, Eye, LockKeyhole } from "lucide-react";
 import { GitHubMark } from "@/components/vnext/primitives";
 
 type AuthMode = "login" | "signup";
-
-const BRIK64_USE_CASES = [
-  "Model bounded software as explicit blueprints before moving work into platform execution.",
-  "Route CLI and CI flows through a shared structure for repeatable checks and visible handoff.",
-  "Keep reusable components aligned with registry-native packaging instead of one-off project code.",
-  "Prepare generated or agent-authored code for external review before credentials and execution are connected.",
-  "Use PCD language boundaries to keep system intent explicit across implementation and review.",
-  "Move engineering teams from informal code paths toward traceable, reusable software units.",
-  "Separate public access from execution authority until the platform has verified identity and session state.",
-  "Give regulated software teams a clearer path from design structure to repeatable release checks.",
-  "Keep platform workflows close to the evidence trail instead of relying on hidden process memory.",
-  "Connect documentation, CLI work, and platform surfaces around the same bounded-system vocabulary.",
-];
 
 function GoogleMark() {
   return (
@@ -96,19 +82,14 @@ function Field({
 }
 
 function DigitalCircuitalityPanel({ mode }: { mode: AuthMode }) {
-  const [activeUseCase, setActiveUseCase] = useState(0);
   const wallpaper =
     mode === "signup"
       ? "/generated/auth-signup-wallpaper.png"
       : "/generated/auth-login-wallpaper.png";
-
-  useEffect(() => {
-    const rotation = window.setInterval(() => {
-      setActiveUseCase((current) => (current + 1) % BRIK64_USE_CASES.length);
-    }, 10800);
-
-    return () => window.clearInterval(rotation);
-  }, []);
+  const headline =
+    mode === "signup"
+      ? "Map your first bounded system before the platform connects execution."
+      : "Return to the workspace where access, registry state, and verification stay explicit.";
 
   return (
     <section className="relative hidden h-dvh min-h-[720px] overflow-hidden border-l border-white/10 bg-[#09111a] lg:block">
@@ -132,47 +113,12 @@ function DigitalCircuitalityPanel({ mode }: { mode: AuthMode }) {
         </Link>
       </div>
       <div className="relative flex h-full items-center px-14 xl:px-20">
-        <div className="max-w-[600px]">
-          <p className="text-[11px] font-black uppercase tracking-[0.32em] text-[color:var(--accent)]">
-            BRIK64 Platform
-          </p>
-          <h2 className="mt-5 text-4xl font-semibold leading-[1.06] text-white xl:text-5xl">
-            Access the workspace for bounded software systems.
+        <div className="max-w-[690px]">
+          <h2 className="text-4xl font-semibold leading-[1.06] text-white xl:text-5xl">
+            {headline}
           </h2>
-          <div className="mt-6 flex min-h-[88px] justify-center overflow-hidden">
-            <p
-              key={activeUseCase}
-              className="auth-use-case-slide max-w-[38ch] text-center text-base leading-7 text-white/62 xl:text-lg"
-            >
-              {BRIK64_USE_CASES[activeUseCase]}
-            </p>
-          </div>
         </div>
       </div>
-      <style jsx>{`
-        @keyframes authUseCaseSlide {
-          0%,
-          92.59% {
-            opacity: 1;
-            transform: translateX(0);
-          }
-
-          100% {
-            opacity: 0;
-            transform: translateX(-64px);
-          }
-        }
-
-        .auth-use-case-slide {
-          animation: authUseCaseSlide 10.8s linear both;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .auth-use-case-slide {
-            animation: none;
-          }
-        }
-      `}</style>
     </section>
   );
 }

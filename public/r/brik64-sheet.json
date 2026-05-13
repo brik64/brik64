@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-sheet",
+  "title": "BRIK64 Sheet",
+  "description": "BRIK64 sheet primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "content": "export {\n  Dialog as Sheet,\n  DialogContent as SheetContent,\n  DialogDescription as SheetDescription,\n  DialogFooter as SheetFooter,\n  DialogHeader as SheetHeader,\n  DialogTitle as SheetTitle,\n  DialogTrigger as SheetTrigger,\n} from \"./dialog\";\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

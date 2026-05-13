@@ -2,6 +2,7 @@ import { ArrowUpRight, Check, AlertCircle, Info, ChevronRight } from "lucide-rea
 import { PhiC } from "@/components/PhiC";
 import { PixelPerfectShowcase } from "@/components/PixelPerfectShowcase";
 import { HomeProofArtifactsShowcase } from "@/components/HomeProofArtifacts";
+import { BrikProofBadge } from "@/components/BrikProofBadge";
 import { PageArtifactsShowcase } from "@/components/PageArtifacts";
 import { HomePrimaryButton, HomeSecondaryButton } from "@/components/ui/pixel-perfect/home-buttons";
 
@@ -183,6 +184,11 @@ export function DesignKitSection() {
               <span className="h-1.5 w-1.5 rounded-full bg-teal" />
               Active
             </span>
+            <BrikProofBadge artifactType="PCD" status="VALID" visibility="PUBLIC" size="sm" href="/proofs/brik_proof_public_pcd_valid_01" />
+            <BrikProofBadge artifactType="APP" status="VALID" visibility="PRIVATE" size="sm" />
+            <BrikProofBadge artifactType="POLYMER" status="SUPERSEDED" visibility="PUBLIC" size="sm" />
+            <BrikProofBadge artifactType="SYSTEM" status="REVOKED" visibility="PRIVATE" size="sm" />
+            <BrikProofBadge artifactType="PROOF" status="UNVERIFIABLE" visibility="PUBLIC" size="sm" />
           </div>
         </div>
 

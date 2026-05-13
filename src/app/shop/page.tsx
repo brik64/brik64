@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   SupportingSurface,
   ProductFrame,
@@ -72,11 +73,13 @@ export default async function ShopPage() {
                       className="group flex flex-col overflow-hidden rounded-[24px] border border-white/8 bg-[#070b11] p-5 transition-colors hover:border-[color:var(--accent)]/28"
                     >
                       <ProductFrame className="aspect-square flex items-center justify-center p-8 transition-transform duration-700 group-hover:scale-[1.02] overflow-hidden rounded-[18px] border border-black/8 bg-white">
-                        <img
+                        <Image
                           src={product.imageUrl}
                           alt={product.name}
+                          width={640}
+                          height={640}
                           className="h-full w-full object-contain mix-blend-multiply"
-                          loading="lazy"
+                          unoptimized
                         />
                       </ProductFrame>
                       

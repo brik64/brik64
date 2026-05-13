@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowLeftRight } from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const inputs = [

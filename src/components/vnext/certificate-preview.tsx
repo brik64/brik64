@@ -1,6 +1,26 @@
 import { cn } from "@/lib/utils";
+import { BrikCertificationBadge } from "@/components/brik";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
-const certJSON = `{
+const coreCertJSON = `{
+  "program": "brik64-core/payment_fee",
+  "pcd": "calculate_fee.core.pcd",
+  "pcd_hash": "sha256:0f41c8e2b971a8e6...",
+  "certificate_hash": "sha256:43c0e8a6bf1a6e9c...",
+  "certification": {
+    "tier": "CORE",
+    "phi_c": 1.0,
+    "monomers": ["MC00", "MC04", "MC08", "MC16"],
+    "requirements": ["BOUNDED_I64", "NO_CONTRACT_IO"],
+    "closure": "PASS"
+  },
+  "outputs": {
+    "rust": { "hash": "sha256:7c9e...", "status": "PASS" },
+    "typescript": { "hash": "sha256:1a2b...", "status": "PASS" }
+  }
+}`;
+
+const contractCertJSON = `{
   "program": "brik64-core/payment",
   "hash": "sha256:8b1a9953c4611296a827abf8c47...",
   "certification": {
@@ -24,24 +44,32 @@ const certJSON = `{
   }
 }`;
 
-export function CertificatePreview({ className }: { className?: string }) {
+export function CertificatePreview({ className, mode = "core" }: { className?: string; mode?: "core" | "contract" }) {
+  const isCore = mode === "core";
+  const certJSON = isCore ? coreCertJSON : contractCertJSON;
+
   return (
-    <div className={cn("overflow-hidden rounded-[20px] border border-white/10 bg-[#0A0D12] shadow-xl", className)}>
-      <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.02] px-4 py-3">
-        <div className="flex items-center gap-2">
+    <Card className={cn("overflow-hidden rounded-[20px] border-white/10 bg-[#0A0D12] p-0 shadow-xl", className)}>
+      <CardHeader className="flex-row items-center justify-between gap-4 border-b border-white/10 bg-white/[0.02] px-4 py-3">
+        <div className="flex min-w-0 items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
           <span className="text-[11px] font-mono tracking-widest text-white/50 uppercase">brikc-cert-bundle.json</span>
         </div>
-        <div className="flex h-5 items-center rounded bg-[#4ade80]/10 px-2 text-[10px] font-bold tracking-widest text-[#4ade80] uppercase">
-          Verified
+        <div className="flex shrink-0 items-center gap-1.5">
+          <BrikCertificationBadge
+            status={isCore ? "CORE_CERTIFIED" : "CONTRACT_CERTIFIED"}
+            certificateHash="cert:43c0e8a6"
+            visibility={isCore ? "PUBLIC" : "PRIVATE"}
+            className="w-44"
+          />
         </div>
-      </div>
-      <div className="p-4 sm:p-6 overflow-x-auto text-sm">
+      </CardHeader>
+      <CardContent className="overflow-x-auto p-4 text-sm sm:p-6">
         <pre className="font-mono leading-relaxed text-white/70">
           <code dangerouslySetInnerHTML={{ __html: syntaxHighlight(certJSON) }} />
         </pre>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
 

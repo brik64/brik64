@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -83,10 +84,13 @@ export default async function ShopProductPage({ params }: ShopProductPageProps) 
           <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)]">
             <div className="space-y-4">
               <div className="overflow-hidden rounded-[28px] border border-black/8 bg-white">
-                <img
+                <Image
                   src={gallery[0]}
                   alt={product.name}
+                  width={960}
+                  height={960}
                   className="aspect-square h-auto w-full object-cover"
+                  unoptimized
                 />
               </div>
 
@@ -96,11 +100,13 @@ export default async function ShopProductPage({ params }: ShopProductPageProps) 
                     key={`${imageUrl}-${index}`}
                     className="min-w-[220px] overflow-hidden rounded-[18px] border border-black/8 bg-white sm:min-w-[240px]"
                   >
-                    <img
+                    <Image
                       src={imageUrl}
                       alt={`${product.name} view ${index + 1}`}
+                      width={480}
+                      height={480}
                       className="aspect-square h-auto w-full object-cover"
-                      loading="lazy"
+                      unoptimized
                     />
                   </div>
                 ))}
@@ -112,11 +118,13 @@ export default async function ShopProductPage({ params }: ShopProductPageProps) 
                     key={`mosaic-${imageUrl}-${index}`}
                     className="overflow-hidden rounded-[18px] border border-black/8 bg-white"
                   >
-                    <img
+                    <Image
                       src={imageUrl}
                       alt={`${product.name} mockup ${index + 1}`}
+                      width={480}
+                      height={480}
                       className="aspect-square h-auto w-full object-cover"
-                      loading="lazy"
+                      unoptimized
                     />
                   </div>
                 ))}

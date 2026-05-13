@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -29,10 +30,13 @@ export function ImageHover({ images, className }: ImageHoverProps) {
           transition={{ type: "tween", duration: 0.25, ease: "easeOut" }}
           onMouseEnter={() => setActive(i)}
         >
-          <img
+          <Image
             src={img.src}
             alt={img.alt}
+            width={360}
+            height={300}
             className="h-full w-full object-cover"
+            unoptimized
           />
         </motion.div>
       ))}

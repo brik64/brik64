@@ -1,0 +1,19 @@
+# BRIK64
+
+BRIK64 provides bounded software verification, PCD/circuit workflows, and
+evidence bundles for human and agentic software development.
+
+Important URLs:
+
+- https://brik64.com/for-agents
+- https://brik64.com/agentic-commerce
+- https://brik64.com/commercial-use
+- https://brik64.com/pricing
+- https://brik64.com/.well-known/brik64-agent
+
+Agent payment policy:
+
+- Free paths cover discovery, estimates, compatibility summaries and education.
+- Paid paths cover bounded verification runs, exportable evidence bundles,
+  commercial-use licenses and compliance packages.
+- Payment unlocks access; it is not a blanket correctness or formal-proof claim.

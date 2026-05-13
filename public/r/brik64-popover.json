@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-popover",
+  "title": "BRIK64 Popover",
+  "description": "BRIK64 popover primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/popover.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Popover({ children }: { children: React.ReactNode }) {\n  return <div className=\"relative inline-flex\">{children}</div>;\n}\n\nfunction PopoverTrigger({ className, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {\n  return <button type=\"button\" className={cn(\"inline-flex\", className)} {...props} />;\n}\n\nfunction PopoverContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"absolute left-0 top-full z-50 mt-2 min-w-56 rounded-md border border-border bg-popover p-4 text-popover-foreground shadow-md\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Popover, PopoverContent, PopoverTrigger };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

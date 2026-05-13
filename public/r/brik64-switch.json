@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-switch",
+  "title": "BRIK64 Switch",
+  "description": "BRIK64 switch primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/switch.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype SwitchProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, \"onChange\"> & {\n  checked?: boolean;\n  defaultChecked?: boolean;\n  onCheckedChange?: (checked: boolean) => void;\n};\n\nconst Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(\n  ({ className, checked, defaultChecked = false, onCheckedChange, onClick, disabled, ...props }, ref) => {\n    const [internalChecked, setInternalChecked] = React.useState(defaultChecked);\n    const isChecked = checked ?? internalChecked;\n\n    return (\n      <button\n        ref={ref}\n        type=\"button\"\n        role=\"switch\"\n        aria-checked={isChecked}\n        data-state={isChecked ? \"checked\" : \"unchecked\"}\n        disabled={disabled}\n        className={cn(\n          \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border border-transparent bg-input shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary\",\n          className,\n        )}\n        onClick={(event) => {\n          const nextChecked = !isChecked;\n          if (checked === undefined) {\n            setInternalChecked(nextChecked);\n          }\n          onCheckedChange?.(nextChecked);\n          onClick?.(event);\n        }}\n        {...props}\n      >\n        <span\n          data-state={isChecked ? \"checked\" : \"unchecked\"}\n          className=\"pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0\"\n        />\n      </button>\n    );\n  },\n);\nSwitch.displayName = \"Switch\";\n\nexport { Switch };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

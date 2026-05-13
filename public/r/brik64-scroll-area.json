@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brik64-scroll-area",
+  "title": "BRIK64 Scroll Area",
+  "description": "BRIK64 scroll area primitive.",
+  "files": [
+    {
+      "path": "src/components/ui/scroll-area.tsx",
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst ScrollArea = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, children, ...props }, ref) => (\n  <div ref={ref} className={cn(\"relative overflow-hidden\", className)} {...props}>\n    <div className=\"h-full w-full overflow-auto custom-scrollbar\">{children}</div>\n  </div>\n));\nScrollArea.displayName = \"ScrollArea\";\n\nconst ScrollBar = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement> & { orientation?: \"vertical\" | \"horizontal\" }\n>(({ className, orientation = \"vertical\", ...props }, ref) => (\n  <div\n    ref={ref}\n    aria-hidden=\"true\"\n    className={cn(\n      \"pointer-events-none absolute rounded-full bg-border/50\",\n      orientation === \"vertical\" ? \"right-1 top-1 h-[calc(100%-0.5rem)] w-1\" : \"bottom-1 left-1 h-1 w-[calc(100%-0.5rem)]\",\n      className,\n    )}\n    {...props}\n  />\n));\nScrollBar.displayName = \"ScrollBar\";\n\nexport { ScrollArea, ScrollBar };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

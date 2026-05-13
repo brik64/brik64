@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { FAMILIES, FAMILY_COLORS, type FamilyName } from "@/lib/monomer-data";
+import { FAMILY_COLORS } from "@/lib/monomer-data";
 
 interface MonomerCellProps {
   id: number;

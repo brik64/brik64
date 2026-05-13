@@ -74,11 +74,11 @@ export function Footer() {
               Follow <BrandWordmark>BRIK64</BrandWordmark>
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <SocialIconLink href={socialLinks.discord} label="Discord" icon={<DiscordMark className="h-5 w-5" />} compact />
-              <SocialIconLink href={socialLinks.githubOrg} label="GitHub" icon={<GitHubMark className="h-5 w-5" />} compact />
-              <SocialIconLink href={socialLinks.x} label="X.com" icon={<XMark />} compact />
-              <SocialIconLink href={socialLinks.linkedin} label="LinkedIn" icon={<LinkedInMark />} compact />
-              <SocialIconLink href={socialLinks.youtube} label="YouTube" icon={<YouTubeMark />} compact />
+              <SocialIconLink href={socialLinks.discord} label="Discord" icon={socialIconMap.Discord} compact />
+              <SocialIconLink href={socialLinks.githubOrg} label="GitHub" icon={socialIconMap.GitHub} compact />
+              <SocialIconLink href={socialLinks.x} label="X.com" icon={socialIconMap["X.com"]} compact />
+              <SocialIconLink href={socialLinks.linkedin} label="LinkedIn" icon={socialIconMap.LinkedIn} compact />
+              <SocialIconLink href={socialLinks.youtube} label="YouTube" icon={socialIconMap.YouTube} compact />
             </div>
           </div>
         </div>

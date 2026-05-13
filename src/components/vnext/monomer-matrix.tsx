@@ -25,7 +25,7 @@ export function MonomerMatrix({ hoveredId, onHover, coreAction, extendedAction }
       {/* Core Matrix 8x8 */}
       <div className="flex flex-col gap-3">
         <div className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#2BB6AC]/60">
-          Core MC_00-63
+          Core MC00-63
         </div>
         <div className="grid grid-cols-8 gap-1.5 p-4 rounded-3xl border border-white/5 bg-[#0a0d12]/40 shadow-inner backdrop-blur-sm">
           {CORE_MONOMERS.map((m) => {
@@ -58,7 +58,7 @@ export function MonomerMatrix({ hoveredId, onHover, coreAction, extendedAction }
       {/* Extended Matrix 8x8 */}
       <div className="flex flex-col gap-3">
         <div className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#FF8A22]/60">
-          Extended MX_64-127
+          Extended MX64-127
         </div>
         <div className="grid grid-cols-8 gap-1.5 p-4 rounded-3xl border border-white/5 bg-[#140d0a]/40 shadow-inner backdrop-blur-sm">
           {EXTENDED_MONOMERS.map((m) => {

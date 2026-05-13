@@ -104,6 +104,11 @@
   --accent-hover: #00ccee;
   --accent-soft: rgba(0, 229, 255, 0.14);
   --accent-rgb: 0, 229, 255;
+  --brik-core: 182 64% 44%;
+  --brik-extended: 28 100% 57%;
+  --brik-invalid: 350 100% 68%;
+  --brik-pending: 46 100% 58%;
+  --brik-stale: 41 100% 56%;
 }
 
 @layer base {
@@ -113,11 +118,13 @@
 
   html {
     @apply bg-background font-sans text-foreground;
+    overflow-x: hidden;
     scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
   }
 
   body {
     @apply min-h-screen bg-background text-foreground;
+    overflow-x: hidden;
     background-image:
       radial-gradient(circle at top, rgba(var(--accent-rgb), 0.08), transparent 28%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 22%);
@@ -351,6 +358,31 @@
       0 0,
       calc(var(--blueprint-grid-major) / -2) calc(var(--blueprint-grid-major) / -2),
       calc(var(--blueprint-grid-major) / -2) calc(var(--blueprint-grid-major) / -2);
+  }
+
+  @keyframes toolRailMarquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .tool-rail-track {
+    animation: toolRailMarquee 28s linear infinite;
+    will-change: transform;
+  }
+
+  .tool-rail-track:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tool-rail-track {
+      animation: none;
+    }
   }
 
   .backdrop-blur-ultra {

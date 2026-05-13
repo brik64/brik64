@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { Copy, Check, FileCode } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 const CODE_SAMPLES = {
   PCD: {
     lang: "pcd",
@@ -74,61 +79,73 @@ export function MultiLanguageCodeArtifact() {
   };
 
   return (
-    <div className="w-full flex flex-col rounded-[2rem] border border-white/10 bg-[#060a0f] overflow-hidden shadow-[0_32px_120px_rgba(0,0,0,0.6)] backdrop-blur-md">
-      {/* Tab Header - More Explicit */}
-      <div className={`flex items-end justify-between px-6 pt-4 border-b border-white/5 transition-colors duration-500 ${activeTab === 'PCD' ? 'bg-[#003845]/50' : 'bg-white/[0.02]'}`}>
-        <div className="flex gap-1">
+    <Tabs
+      value={activeTab}
+      onValueChange={(value) => setActiveTab(value as keyof typeof CODE_SAMPLES)}
+      className="w-full"
+    >
+      <Card className="flex w-full flex-col overflow-hidden rounded-[2rem] border border-white/20 bg-[#060a0f] p-0 shadow-[0_32px_120px_rgba(0,0,0,0.6),0_0_0_1px_rgba(0,229,255,0.12)] backdrop-blur-md">
+      <CardHeader className={`flex-row items-end justify-between border-b border-white/5 px-6 pt-4 pb-0 transition-colors duration-500 ${activeTab === 'PCD' ? 'bg-[#061d2b]/80' : 'bg-white/[0.02]'}`}>
+        <TabsList className="h-auto gap-1 rounded-none bg-transparent p-0">
           {(Object.keys(CODE_SAMPLES) as Array<keyof typeof CODE_SAMPLES>).map((tab) => (
-            <button
+            <TabsTrigger
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              value={tab}
               className={`px-4 py-2.5 text-[11px] font-bold uppercase tracking-widest transition-all rounded-t-xl relative -mb-px z-10 ${
                 activeTab === tab 
                   ? tab === 'PCD' 
-                    ? "bg-[#003845] text-white border-x border-t border-white/20" 
+                    ? "bg-[#061d2b] text-white border-x border-t border-white/20" 
                     : "bg-[#03060a] text-[color:var(--accent)] border-x border-t border-white/10"
                   : "text-white/30 hover:text-white/60 hover:bg-white/5"
               }`}
             >
               {tab}
-            </button>
+            </TabsTrigger>
           ))}
-        </div>
+        </TabsList>
         
-        <button 
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-sm"
           onClick={handleCopy}
-          className="mb-3 p-2 rounded-lg hover:bg-white/5 text-white/40 hover:text-white transition-colors"
+          aria-label={`Copy ${activeTab} code to clipboard`}
+          className="mb-3 rounded-lg text-white/40 hover:bg-white/5 hover:text-white"
           title="Copy to clipboard"
         >
           {copied ? <Check className="h-4 w-4 text-[color:var(--accent)]" /> : <Copy className="h-4 w-4" />}
-        </button>
-      </div>
+        </Button>
+      </CardHeader>
 
-      {/* Code Area - Interactive Backdrop */}
-      <div className={`relative p-6 h-[420px] overflow-auto custom-scrollbar transition-all duration-500 ${
+      {(Object.keys(CODE_SAMPLES) as Array<keyof typeof CODE_SAMPLES>).map((tab) => (
+        <TabsContent key={tab} value={tab} className="m-0">
+      <CardContent className={`relative h-[420px] p-6 transition-all duration-500 ${
         activeTab === "PCD" 
-          ? "bg-[#003845] blueprint-grid" 
+          ? "bg-[#03111a] blueprint-grid [--blueprint-grid-cross:rgba(233,251,255,0.035)] [--blueprint-grid-major-line:rgba(227,249,255,0.026)] [--blueprint-grid-minor-line:rgba(211,244,255,0.014)]" 
           : "bg-[#03060a]"
       }`}>
         {/* Architectural Glow for Blueprint */}
         {activeTab === "PCD" && (
-          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.025] to-transparent pointer-events-none" />
         )}
 
-        <div className="relative flex items-center gap-3 mb-6">
+        <div className="relative mb-6 flex items-center gap-3">
           <FileCode className={`h-4 w-4 transition-colors ${activeTab === 'PCD' ? 'text-white/40' : 'text-white/20'}`} />
           <span className={`text-[10px] font-mono uppercase tracking-[0.2em] transition-colors ${activeTab === 'PCD' ? 'text-white/60' : 'text-white/30'}`}>
             {CODE_SAMPLES[activeTab].title}
           </span>
         </div>
         
-        <pre className={`relative font-mono text-sm leading-relaxed transition-colors duration-500 ${activeTab === 'PCD' ? 'text-white' : 'text-white/80'}`}>
-          <code dangerouslySetInnerHTML={{ __html: highlightCode(CODE_SAMPLES[activeTab].code, CODE_SAMPLES[activeTab].lang, activeTab === 'PCD') }} />
-        </pre>
-      </div>
+        <ScrollArea className="relative h-[340px]">
+          <pre className={`font-mono text-sm leading-relaxed transition-colors duration-500 ${activeTab === 'PCD' ? 'text-white' : 'text-white/80'}`}>
+            <code dangerouslySetInnerHTML={{ __html: highlightCode(CODE_SAMPLES[activeTab].code, CODE_SAMPLES[activeTab].lang, activeTab === 'PCD') }} />
+          </pre>
+        </ScrollArea>
+      </CardContent>
+        </TabsContent>
+      ))}
 
-      {/* Footer / Status */}
-      <div className={`px-6 py-4 border-t border-white/5 flex items-center justify-between transition-colors duration-500 ${activeTab === 'PCD' ? 'bg-[#003845]/80' : 'bg-white/[0.01]'}`}>
+      <CardFooter className={`flex items-center justify-between border-t border-white/5 px-6 py-4 transition-colors duration-500 ${activeTab === 'PCD' ? 'bg-[#03111a]/95' : 'bg-white/[0.01]'}`}>
         <div className="flex gap-6">
           <div className="flex flex-col">
             <span className={`text-[9px] uppercase tracking-wider ${activeTab === 'PCD' ? 'text-white/40' : 'text-white/30'}`}>Complexity</span>
@@ -142,8 +159,9 @@ export function MultiLanguageCodeArtifact() {
         <div className={`text-[10px] uppercase tracking-[0.25em] font-bold italic transition-colors ${activeTab === 'PCD' ? 'text-white/40' : 'text-white/20'}`}>
           Mathematically Strict
         </div>
-      </div>
-    </div>
+      </CardFooter>
+      </Card>
+    </Tabs>
   );
 }
 

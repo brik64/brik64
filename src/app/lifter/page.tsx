@@ -3,35 +3,22 @@
 import { useState } from "react";
 import { 
   ArrowRight, 
-  Terminal, 
   FileCode, 
   Shield, 
   Search, 
   Layers, 
-  CheckCircle,
-  Cpu,
-  Zap,
-  BookOpen
+  CheckCircle
 } from "lucide-react";
 import Image from "next/image";
 import { 
   CanonicalPageLayout, 
   CanonicalPageHero,
   CanonicalSection,
-  ArchetypeSectionHeader,
-  ActionAnchor,
-  cx
+  ActionAnchor
 } from "@/components/PageArchetypes";
 import { EvidenceSurface } from "@/components/PageArtifacts";
-import { PhiC } from "@/components/PhiC";
 import { MonomerFamilyBoard } from "@/components/MonomerArtifacts";
 import { ArtifactFrame, ArtifactHeader, StatusPill } from "@/components/HomeProofArtifacts";
-import dynamic from "next/dynamic";
-
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
 
 const sourceLanguages = [
   { name: "JavaScript", ext: ".js", logo: "/brands/javascript.svg", status: "Stable" },

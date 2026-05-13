@@ -2,7 +2,7 @@
 
 import { TextReveal } from "@/components/ui/pixel-perfect/text-reveal";
 import { Crosshair } from "@/components/ui/pixel-perfect/crosshair";
-import { FAMILIES, FAMILY_COLORS, type FamilyName } from "@/lib/monomer-data";
+import { FAMILY_COLORS } from "@/lib/monomer-data";
 
 interface GraphNode {
   id: string;

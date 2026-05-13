@@ -2,42 +2,20 @@
 
 import { useState } from "react";
 import { 
-  ArrowRight, 
-  Terminal, 
-  BookOpen,
-  Shuffle,
   Activity,
-  Zap,
   Layers
 } from "lucide-react";
 import { 
   CanonicalPageLayout, 
   CanonicalPageHero,
   CanonicalSection,
-  ArchetypeSectionHeader,
-  ActionAnchor,
-  cx
+  ActionAnchor
 } from "@/components/PageArchetypes";
 import { ArtifactFrame, ArtifactHeader, StatusPill } from "@/components/HomeProofArtifacts";
 import { EvidenceSurface } from "@/components/PageArtifacts";
-import { PhiC } from "@/components/PhiC";
-import dynamic from "next/dynamic";
-
-const HeroWireframe = dynamic(
-  () => import("@/components/HeroWireframe").then((m) => m.HeroWireframe),
-  { ssr: false }
-);
 
 const inputLangs = ["JavaScript", "TypeScript", "Python", "Rust", "C", "C++", "Go", "COBOL", "PHP", "Java"];
 const outputLangs = ["Rust", "JavaScript", "TypeScript", "Python", "C", "C++", "Go", "COBOL", "PHP", "Java", "Swift", "WebAssembly", "BIR", "Native"];
-
-const pipelineSteps = [
-  { label: "SCAN", desc: "Find all source files in the input directory" },
-  { label: "LIFT", desc: "Convert each file to PCD blueprints" },
-  { label: "CHECK", desc: "Certify each PCD with the TCE (Φc verification)" },
-  { label: "BUILD", desc: "Generate target language code" },
-  { label: "REPORT", desc: "Print migration summary with certification stats" },
-];
 
 const comparison = [
   { feature: "Intermediate representation", llvm: "LLVM IR (low-level SSA)", brik: "PCD (semantic circuit description)" },
