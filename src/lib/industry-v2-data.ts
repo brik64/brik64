@@ -64,7 +64,7 @@ export const financeIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Institutional Settlement",
     subtitle: "Absolute Finality under Peak Volatility",
-    description: "BRIK-64 blinda los procesos de liquidación mediante determinismo criptográfico a nivel de instrucción, eliminando discrepancias en la reconciliación de activos. Externalizamos la lógica de cumplimiento en planos de control verificables que automatizan auditorías regulatorias en tiempo real sin interrumpir el flujo transaccional. Esto garantiza que cada entrada en el ledger sea matemáticamente coherente con las políticas institucionales antes de su ejecución definitiva en producción."
+    description: "BRIK-64 enforces settlement integrity through instruction-level cryptographic determinism, effectively eliminating reconciliation discrepancies. We externalize compliance logic into verifiable control planes that automate regulatory audits in real-time without interrupting transactional throughput. This ensures every ledger entry is mathematically proven against institutional policy constraints before final execution in production environments."
   },
   painPoints: [
     {
@@ -148,7 +148,7 @@ export const aerospaceIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Avionics Integrity",
     subtitle: "Deterministic Control for Critical Envelopes",
-    description: "Formalizamos las envolventes de control de vuelo y las transiciones de estado críticas mediante artefactos de software acotados y altamente inspeccionables. Los equipos de ingeniería pueden verificar matemáticamente los caminos de recuperación y asegurar la frontera del software frente a fallos imprevistos en misiones críticas. Proporcionamos una traza de evidencia auditable que simplifica los flujos de certificación y reduce la dependencia de documentación manual no verificada."
+    description: "We formalize flight control envelopes and critical state transitions into bounded, highly inspectable software artifacts. Engineering teams can mathematically verify recovery paths and secure the software boundary against unforeseen failures in mission-critical operations. We provide an immutable audit trail that streamlines certification workflows and drastically reduces reliance on unverified manual documentation."
   },
   painPoints: [
     {
@@ -232,7 +232,7 @@ export const aiIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Autonomous Governance",
     subtitle: "Externalizing the Guardrails of Agency",
-    description: "Establecemos perímetros de seguridad deterministas alrededor de los modelos de IA, filtrando acciones y código generado antes de que alcancen superficies operativas. Al externalizar la supervisión en circuitos de política verificables, mitigamos los riesgos de alucinaciones y ejecuciones no autorizadas en entornos de alta sensibilidad. El sistema devuelve diagnósticos precisos que permiten al bucle de reparación corregir el comportamiento del agente sin comprometer la integridad del sistema."
+    description: "We establish deterministic security perimeters around AI models, gating actions and generated code before they reach operational surfaces. By externalizing oversight into verifiable policy circuits, we mitigate the risks of hallucinations and unauthorized execution in high-sensitivity environments. The system returns precise diagnostics that allow the repair loop to correct agent behavior without compromising systemic integrity."
   },
   painPoints: [
     {
@@ -316,7 +316,7 @@ export const automotiveIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Safe Actuation",
     subtitle: "Verifiable Fallback for Autonomous Fleets",
-    description: "Garantizamos la integridad de los umbrales de actuación y los comportamientos de fallback mediante la formalización de suposiciones de sensores en artefactos verificables. BRIK-64 permite consolidar arquitecturas de software complejas bajo estándares de seguridad rigurosos, eliminando el indeterminismo en las decisiones de conducción. Los fabricantes obtienen una fuente de verdad auditable que facilita la transición hacia sistemas autónomos con garantías matemáticas de seguridad operativa."
+    description: "We guarantee the integrity of actuation thresholds and fallback behaviors by formalizing sensor assumptions into verifiable artifacts. BRIK-64 enables the consolidation of complex software architectures under rigorous safety standards, eliminating non-determinism in driving decisions. Manufacturers gain an auditable source of truth that facilitates the transition to autonomous systems with mathematical guarantees of operational safety."
   },
   painPoints: [
     {
@@ -400,7 +400,7 @@ export const engineeringIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Computational Integrity",
     subtitle: "Preserving the Lineage of Simulation",
-    description: "Preservamos la integridad de los cálculos industriales mediante la creación de expedientes computacionales que hacen explícitas las unidades, materiales y rangos de operación. Cada transformación de datos se vuelve reproducible y trazable, eliminando errores silenciosos que suelen propagarse en cadenas de herramientas fragmentadas. Proporcionamos una infraestructura de confianza donde las suposiciones técnicas permanecen visibles y vinculadas directamente al artefacto de software resultante."
+    description: "We preserve the integrity of industrial calculations by creating computational dossiers that make units, materials, and operating ranges explicit. Every data transformation becomes reproducible and traceable, eliminating silent errors that typically propagate across fragmented toolchains. We provide a trust infrastructure where technical assumptions remain visible and explicitly linked to the resulting software artifact."
   },
   painPoints: [
     {
@@ -484,7 +484,7 @@ export const governmentIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Policy Determinism",
     subtitle: "Auditable Eligibility at Scale",
-    description: "Digitalizamos la lógica de elegibilidad y los procesos administrativos mediante planos de control verificables que garantizan la transparencia absoluta ante organismos de supervisión. Eliminamos los cuellos de botella en las auditorías manuales al proporcionar una traza de decisión matemáticamente coherente con la legislación y las reglas vigentes. Esto fortalece la confianza ciudadana al asegurar que cada acción gubernamental sea auditable por diseño y resistente a manipulaciones externas."
+    description: "We digitize eligibility logic and administrative processes through verifiable control planes that guarantee absolute transparency for oversight bodies. We eliminate manual audit bottlenecks by providing a decision trail that is mathematically consistent with current legislation and rules. This strengthens public trust by ensuring every government action is auditable by design and resistant to external manipulation."
   },
   painPoints: [
     {
@@ -568,7 +568,7 @@ export const healthcareIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Clinical Safety",
     subtitle: "Bounded Dose Logic for Patient Care",
-    description: "Protegemos los flujos de trabajo clínicos y la lógica de dosificación mediante perímetros de seguridad que previenen violaciones de umbrales críticos en dispositivos médicos. Al formalizar los protocolos de escalado y las transiciones de estado, garantizamos que los fallos del sistema se gestionen de forma predecible y segura. Los evaluadores obtienen evidencia de ingeniería auditable que acelera el cumplimiento de normativas internacionales y mejora directamente la seguridad del paciente."
+    description: "We protect clinical workflows and dosing logic through security perimeters that prevent critical threshold violations in medical devices. By formalizing escalation protocols and state transitions, we ensure system failures are managed predictably and safely. Evaluators obtain auditable engineering evidence that accelerates international compliance and directly improves patient safety."
   },
   painPoints: [
     {
@@ -652,7 +652,7 @@ export const scienceIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Reproducible Research",
     subtitle: "Cryptographic Methods for Open Science",
-    description: "Aseguramos la reproducibilidad de los resultados científicos mediante la captura de la lógica de procesamiento y los parámetros de validación en blueprints deterministas. Facilitamos la colaboración internacional al proporcionar una infraestructura donde la procedencia de los datos y el rigor computacional están garantizados por diseño. Los investigadores pueden publicar trazas de computación verificables que eliminan la ambigüedad en los métodos y fortalecen la integridad del ecosistema científico."
+    description: "We ensure the reproducibility of scientific results by capturing processing logic and validation parameters in deterministic blueprints. We facilitate international collaboration by providing an infrastructure where data provenance and computational rigor are guaranteed by design. Researchers can publish verifiable computation traces that eliminate methodological ambiguity and strengthen the integrity of the scientific ecosystem."
   },
   painPoints: [
     {
