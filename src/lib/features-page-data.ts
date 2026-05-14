@@ -151,18 +151,18 @@ export type FeatureSectionBlueprint = {
 
 export const featureHero = {
   eyebrow: "Features",
-  title: "Software que funciona como",
+  title: "Software that works like",
   highlight: "hardware.",
   description:
-    "Software que funciona como hardware. Formalización del núcleo computacional mediante la transformación de lógica fuente en PCD revisable, cumplimiento de restricciones de dominio y emisión de objetivos certificados con una postura de prueba inmutable. BRIK-64 elimina la incertidumbre operativa estableciendo planos de control deterministas que garantizan la integridad sistémica desde la primera instrucción hasta la ejecución final.",
+    "Formalization of the computational core through the transformation of source logic into reviewable PCD, enforcement of domain constraints, and emission of certified targets with an immutable proof posture. BRIK-64 eliminates operational uncertainty by establishing deterministic control planes that guarantee systemic integrity from the first instruction to final execution.",
 } as const;
 
 export const featureOverview = {
   header: {
-    eyebrow: "Modelo Operativo",
-    title: "Del blueprint acotado al software certificado reutilizable",
+    eyebrow: "Operating Model",
+    title: "From bounded blueprint to reusable certified software",
     description:
-      "BRIK-64 establece un ciclo de vida de software soberano: desde la autoría o extracción hacia PCD, hasta la verificación de límites, la emisión multiobjetivo y la distribución de objetos de revisión certificados. Nuestro modelo sustituye la confianza ciega por una cadena de evidencia técnica inmutable que garantiza la integridad operativa en sistemas críticos de escala global.",
+      "BRIK-64 establishes a sovereign software lifecycle: from authorship or extraction into PCD, to boundary verification, multi-target emission, and the distribution of certified review objects. Our model replaces blind trust with an immutable chain of technical evidence that guarantees operational integrity in global-scale critical systems.",
   },
   comparison: {
     kind: "ComparisonSurface",
@@ -447,10 +447,10 @@ export const featureSectionBlueprints: Record<FeatureSectionId, FeatureSectionBl
 export const featureSections: FeatureSectionSpec[] = [
   {
     id: "compilation",
-    label: "[01] COMPILACIÓN",
-    title: "Emisión multiobjetivo desde un único blueprint acotado",
+    label: "[01] COMPILATION",
+    title: "Multi-target emission from a single bounded blueprint",
     lead:
-      "BRIK-64 estandariza la emisión multiobjetivo mediante una representación intermedia canónica que garantiza el determinismo absoluto del software. Nuestra cadena de compilación normaliza la lógica computacional en planos de control verificables, eliminando las discrepancias entre diferentes backends de ejecución. Esto permite desplegar un único blueprint validado en entornos heterogéneos, asegurando que el comportamiento binario sea consistente y matemáticamente reproducible en cada plataforma destino.",
+      "BRIK-64 standardizes multi-target emission through a canonical intermediate representation that ensures absolute software determinism. Our compilation chain normalizes computational logic into verifiable control planes, eliminating discrepancies between execution backends. This allows a single validated blueprint to be deployed across heterogeneous environments, ensuring that binary behavior is consistent and mathematically reproducible on every target platform.",
     workflowFocus:
       "Normalize a bounded PCD blueprint once, then emit it across supported targets through a single-pass compiler chain.",
     integrationPoint:
@@ -539,10 +539,10 @@ export const featureSections: FeatureSectionSpec[] = [
   },
   {
     id: "verification",
-    label: "[02] VERIFICACIÓN",
-    title: "Clausura y límites de verificación",
+    label: "[02] VERIFICATION",
+    title: "Closure and verification boundaries",
     lead:
-      "Implementamos un modelo de clausura formal que define con precisión los límites de seguridad y las fronteras de ejecución de cada componente. A través de hashes criptográficos y certificados de prueba inmutables, BRIK-64 valida las rutas de control antes de que el código llegue a producción. Este enfoque desplaza la detección de vulnerabilidades al tiempo de diseño, proporcionando una base de confianza determinista que sustituye la incertidumbre del muestreo estadístico tradicional.",
+      "We implement a formal closure model that precisely defines verification boundaries and execution perimeters for every component. Through cryptographic hashes and immutable proof certificates, BRIK-64 validates control paths before code reaches production. This approach shifts vulnerability detection to design time, providing a deterministic trust foundation that replaces the uncertainty of traditional statistical sampling.",
     workflowFocus:
       "Check bounded inputs, closed paths, and review metadata before the blueprint is emitted or trusted downstream.",
     integrationPoint:
@@ -602,10 +602,10 @@ export const featureSections: FeatureSectionSpec[] = [
   },
   {
     id: "domain-constraints",
-    label: "[03] RESTRICCIONES DE DOMINIO",
-    title: "Dominios acotados antes del runtime",
+    label: "[03] DOMAIN CONSTRAINTS",
+    title: "Bounded domains before runtime",
     lead:
-      "Establecemos límites numéricos y semánticos inmutables mediante la declaración explícita de dominios en el blueprint, blindando el núcleo lógico contra estados inválidos antes del runtime. El compilador de BRIK-64 propaga estas restricciones por todo el circuito computacional, rechazando cualquier instrucción que viole los parámetros físicos o de negocio predefinidos. Esta arquitectura de seguridad por diseño elimina las comprobaciones defensivas fragmentadas y garantiza la integridad sistémica de los datos directamente en el plano de control.",
+      "We establish immutable numeric and semantic limits by explicitly declaring domains in the blueprint, shielding the logical core from invalid states before runtime. The BRIK-64 compiler propagates these constraints throughout the computational circuit, rejecting any instruction that violates predefined physical or business parameters. This security-by-design architecture eliminates fragmented defensive checks and guarantees systemic data integrity directly at the control plane.",
     workflowFocus:
       "Declare numeric and semantic ranges in the blueprint, propagate them through the circuit, and reject invalid states before emission.",
     integrationPoint:
@@ -691,9 +691,9 @@ output net_per_part : Float64 =
   {
     id: "lifting",
     label: "[04] LIFTING",
-    title: "Extracción de lógica hacia blueprints revisables",
+    title: "Extraction of logic into reviewable blueprints",
     lead:
-      "El proceso de lifting extrae la lógica computacional de sistemas legados, transformándola en planos de control verificables sin alterar el comportamiento operativo original del sistema. Identificamos y aislamos los núcleos críticos de ejecución, marcando las dependencias externas para generar un blueprint de PCD que garantiza una transparencia total en la auditoría. Esta metodología facilita la modernización de infraestructuras complejas, proporcionando una base de evidencia técnica exacta y un camino seguro para la evolución del software soberano.",
+      "The lifting process extracts computational logic from legacy systems, transforming it into verifiable control planes without altering the original operational behavior. We identify and isolate critical execution cores, marking external dependencies to generate a PCD blueprint that ensures total audit transparency. This methodology facilitates the modernization of complex infrastructures, providing an exact technical evidence base and a safe path for sovereign software evolution.",
     workflowFocus:
       "Inspect source logic, isolate the computational core, emit a blueprint with contract annotations, and review what was preserved before modernization.",
     integrationPoint:
@@ -776,10 +776,10 @@ output net_per_part : Float64 =
   },
   {
     id: "transpilation",
-    label: "[05] TRANSPILACIÓN",
-    title: "Migración de blueprints entre objetivos",
+    label: "[05] TRANSPILATION",
+    title: "Migration of blueprints between targets",
     lead:
-      "Facilitamos la migración de sistemas críticos mediante una normalización que preserva la semántica operativa a través de múltiples lenguajes de programación. Al utilizar el blueprint como ancla de verdad, BRIK-64 asegura que la lógica de negocio se mantenga equivalente sin importar si el objetivo final es Rust, TypeScript o COBOL. Este flujo de trabajo minimiza el riesgo de regresión y permite a los equipos de ingeniería validar la integridad funcional en una única superficie de revisión unificada.",
+      "We facilitate the migration of critical systems through normalization that preserves operational semantics across multiple programming languages. By using the blueprint as a truth anchor, BRIK-64 ensures that business logic remains equivalent whether the final target is Rust, TypeScript, or COBOL. This workflow minimizes regression risk and allows engineering teams to validate functional integrity on a single unified review surface.",
     workflowFocus:
       "Lift or author the logic, normalize it once in PCD, emit target-specific code, and review preserved computation at the blueprint level.",
     integrationPoint:
@@ -850,10 +850,10 @@ output net_per_part : Float64 =
   },
   {
     id: "platform",
-    label: "[06] PLATAFORMA",
-    title: "Gestión centralizada de infraestructura de confianza",
+    label: "[06] PLATFORM",
+    title: "Centralized trust infrastructure management",
     lead:
-      "Nuestra plataforma centraliza el ciclo de vida de los Blueprints y Monomers, integrando el descubrimiento y la inspección de lógica verificada en el flujo de trabajo diario. El Registro de BRIK-64 vincula cada paquete a su estado de prueba formal, permitiendo una trazabilidad total desde la autoría hasta el despliegue en producción. Esto fomenta la reutilización de componentes seguros y garantiza que solo el software con una postura de prueba válida pueda ser integrado en sistemas críticos de escala empresarial.",
+      "Our platform centralizes the lifecycle of Blueprints and Monomers, integrating the discovery and inspection of verified logic into the daily engineering workflow. The BRIK-64 Registry links every package to its formal proof state, enabling total traceability from authorship to production deployment. This fosters the reuse of secure components and ensures that only software with a valid proof posture can be integrated into global-scale critical systems.",
     workflowFocus:
       "Publish reviewable circuits, discover reusable blueprints, and keep proof state visible as the workflow moves into registry and tooling.",
     integrationPoint:
@@ -943,9 +943,9 @@ output net_per_part : Float64 =
   {
     id: "ai-native",
     label: "[07] AI NATIVE",
-    title: "IA como productor acotado, no como fuente de verdad",
+    title: "AI as a bounded producer, not a truth source",
     lead:
-      "Integramos la inteligencia artificial como un productor acotado de lógica, envolviendo cada salida generada en un bucle de verificación externa que garantiza el cumplimiento de políticas. BRIK-64 trata el código de los agentes como blueprints candidatos, sometiéndolos a diagnósticos de compilación y restricciones de dominio antes de permitir su integración en el registro. Este enfoque elimina la confianza ciega en los modelos probabilísticos, estableciendo una capa de control determinista que asegura la integridad de cada componente sintético.",
+      "We integrate artificial intelligence as a bounded logic producer, wrapping every generated output in an external verification loop that ensures policy compliance. BRIK-64 treats agent code as candidate blueprints, subjecting them to compilation diagnostics and domain constraints before allowing registry integration. This approach eliminates blind trust in probabilistic models, establishing a deterministic control layer that secures every synthetic component.",
     workflowFocus:
       "Treat model output as a candidate blueprint, constrain it with policy and compiler checks, then use diagnostics to drive the next repair loop.",
     integrationPoint:
@@ -1007,9 +1007,9 @@ output net_per_part : Float64 =
   {
     id: "enterprise",
     label: "[08] ENTERPRISE",
-    title: "Integración de artefactos verificados en auditoría operativa",
+    title: "Integration of verified artifacts in operational audit",
     lead:
-      "Extendemos la infraestructura de confianza a la escala organizacional mediante la integración de identidades soberanas, trazabilidad de auditoría inmutable y puertas de enlace en CI. BRIK-64 rodea cada blueprint verificado con un plano de control empresarial que registra cada cambio, firma y despliegue, asegurando una cadena de custodia técnica inexpugnable. Nuestra arquitectura soporta flujos de cumplimiento rigurosos y despliegues en entornos críticos, proporcionando la postura de revisión necesaria para operaciones globales de alta seguridad.",
+      "We extend trust infrastructure to organizational scale through the integration of sovereign identities, immutable audit traceability, and CI gateways. BRIK-64 surrounds every verified blueprint with an enterprise control plane that records every change, signature, and deployment, ensuring an impregnable technical chain of custody. Our architecture supports rigorous compliance flows and deployments in critical environments, providing the necessary review posture for high-security global operations.",
     workflowFocus:
       "Surround the bounded blueprint with identity, audit, CI, deployment, and support workflows so teams can review how it moved and where it was checked.",
     integrationPoint:
@@ -1104,11 +1104,11 @@ export const featureCta: {
   description: string;
   actions: FeaturePageAction[];
 } = {
-  title: "Inicie localmente, escale hacia flujos de plataforma",
+  title: "Start locally, scale toward platform flows",
   description:
-    "Instale la CLI para comenzar con un flujo de trabajo local acotado y desplace sus blueprints hacia rutas de revisión centralizadas cuando la lógica esté lista para producción.",
+    "Install the CLI to begin with a bounded local workflow and shift your blueprints toward centralized review paths when the logic is production-ready.",
   actions: [
-    { label: "Instalar CLI", href: "/cli", tone: "primary" },
-    { label: "Explorar plataforma", href: "/platform", tone: "secondary" },
+    { label: "Install CLI", href: "/cli", tone: "primary" },
+    { label: "Explore Platform", href: "/platform", tone: "secondary" },
   ],
 };

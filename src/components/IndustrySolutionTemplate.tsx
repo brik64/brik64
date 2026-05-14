@@ -252,7 +252,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
           <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-8 lg:px-12">
             <div className="mb-20 text-center">
               <motion.div variants={itemVariants} className="flex justify-center">
-                <Badge variant="outline" className="border-white/10 text-white/40 mb-6 px-4 py-1 font-mono text-[9px] tracking-widest bg-white/[0.02] backdrop-blur-sm">
+                <Badge variant="outline" className="border-white/10 text-white/40 mb-6 px-4 py-1 font-mono text-[9px] tracking-widest bg-white/[0.06]">
                   Benchmark Data
                 </Badge>
               </motion.div>
@@ -310,7 +310,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
                     <p className="text-sm text-white/40 leading-relaxed mb-8">Pre-validated architectural patterns for global regulatory frameworks.</p>
                     <div className="flex flex-wrap gap-2 relative z-10">
                       {data.complianceContext.map((compliance, idx) => (
-                        <Badge key={idx} variant="outline" className="border-white/5 bg-white/5 text-white/60 py-2 px-4 hover:border-[color:var(--accent)]/40 hover:text-white hover:bg-[color:var(--accent)]/5 transition-all cursor-default text-[10px] tracking-wider backdrop-blur-md rounded-lg">
+                        <Badge key={idx} variant="outline" className="border-white/5 bg-white/10 text-white/60 py-2 px-4 hover:border-[color:var(--accent)]/40 hover:text-white hover:bg-[color:var(--accent)]/5 transition-all cursor-default text-[10px] tracking-wider rounded-lg">
                           {compliance}
                         </Badge>
                       ))}

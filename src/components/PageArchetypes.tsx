@@ -1046,7 +1046,7 @@ export function IndustryRealWorldBanner({
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,14,24,0.08)_0%,rgba(8,16,26,0.22)_46%,rgba(7,13,22,0.42)_100%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(67,173,240,0.16)_0%,rgba(14,30,48,0.1)_36%,rgba(7,13,22,0.24)_72%,rgba(6,11,18,0.44)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 z-10 p-4 md:p-8 lg:p-10">
-              <div className="max-w-4xl rounded-2xl border border-white/18 bg-[rgba(7,16,28,0.72)] p-4 backdrop-blur-sm md:p-6">
+              <div className="max-w-4xl rounded-2xl border border-white/18 bg-[rgba(7,16,28,0.88)] p-4 md:p-6">
                 <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[color:var(--accent)]">
                   {eyebrow}
                 </p>
