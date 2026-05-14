@@ -64,7 +64,7 @@ export const financeIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Institutional Settlement",
     subtitle: "Absolute Finality under Peak Volatility",
-    description: "Financial institutions can eliminate reconciliation lag by enforcing cryptographic determinism at the instruction level. BRIK-64 ensures that every ledger entry, payment authorization, and risk check is mathematically verifiable before execution, providing absolute settlement finality and preventing systemic liquidity lock-ups even during periods of peak market volatility."
+    description: "Financial infrastructure leads can eliminate reconciliation gaps by enforcing cryptographic determinism at the ledger level. BRIK-64 ensures that every payment authorization, risk check, and settlement instruction is mathematically verifiable before execution. This provides absolute settlement finality and prevents liquidity lock-ups during peak volatility while maintaining a continuous audit posture for regulators."
   },
   painPoints: [
     {
@@ -148,7 +148,7 @@ export const aerospaceIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Avionics Integrity",
     subtitle: "Deterministic Control for Critical Envelopes",
-    description: "Aerospace engineers can formally verify flight control envelopes and deterministic state transitions using BRIK-64's bounded control artifacts. By externalizing safety-critical logic from implementation branches, agencies can simplify complex certification workflows and ensure that fallback paths are mathematically guaranteed before test flights or mission-critical deployments."
+    description: "Avionics engineers can formally verify flight control envelopes and state transitions using bounded control artifacts. BRIK-64 externalizes safety-critical logic from implementation branches, allowing agencies to simplify complex certification workflows and ensure fallback paths are mathematically guaranteed. This methodology provides a reviewable evidence trail that secures the software boundary before deployment into mission-critical hardware."
   },
   painPoints: [
     {
@@ -232,7 +232,7 @@ export const aiIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Autonomous Governance",
     subtitle: "Externalizing the Guardrails of Agency",
-    description: "Organizations governing autonomous agents can replace probabilistic prompt-based filters with deterministic action gates. BRIK-64 allows platform teams to define allowed execution perimeters outside the model, ensuring that every generated action or code block is verified against firm policy boundaries before reaching production surfaces or side-effecting tools."
+    description: "Organizations governing autonomous agents can replace probabilistic prompt-based filters with deterministic action gates. BRIK-64 allows platform teams to define allowed execution perimeters outside the model, ensuring every generated action is verified against firm policy boundaries. This establishes a repairable review trail for operators and prevents agents from executing unauthorized or destructive actions in production environments."
   },
   painPoints: [
     {
@@ -316,7 +316,7 @@ export const automotiveIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Safe Actuation",
     subtitle: "Verifiable Fallback for Autonomous Fleets",
-    description: "Vehicle platform teams can maintain safety integrity across distributed architectures by encoding actuation thresholds as verifiable circuits. BRIK-64 ensures that safety-critical fallback logic and sensor assumptions remain explicit and consistent across firmware revisions, providing a revision-sensitive evidence trail that accelerates ISO 26262 compliance and fleet-wide safety reviews."
+    description: "Vehicle platform teams can maintain safety integrity across distributed architectures by encoding actuation thresholds as verifiable circuits. BRIK-64 ensures that safety-critical fallback logic and sensor assumptions remain explicit and consistent across firmware revisions. This provides a revision-sensitive evidence trail that accelerates ISO 26262 compliance and enables fleet-wide safety reviews without relying on opaque code diffs."
   },
   painPoints: [
     {
@@ -400,7 +400,7 @@ export const engineeringIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Computational Integrity",
     subtitle: "Preserving the Lineage of Simulation",
-    description: "Engineering software leads can preserve the lineage of complex simulations by capturing material assumptions and unit transforms as inspectable computational dossiers. BRIK-64 establishes a firm boundary for every transform, ensuring that critical engineering logic remains reproducible across the toolchain and providing a verifiable source of truth for high-stakes industrial calculations."
+    description: "Engineering software leads can preserve the lineage of complex simulations by capturing material assumptions and units as inspectable computational dossiers. BRIK-64 establishes a firm boundary for every transform, ensuring that critical engineering logic remains reproducible across the toolchain. This creates a verifiable source of truth for high-stakes industrial calculations and ensures that algorithm updates do not silently compromise calculation safety."
   },
   painPoints: [
     {
@@ -484,7 +484,7 @@ export const governmentIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Policy Determinism",
     subtitle: "Auditable Eligibility at Scale",
-    description: "Governmental institutions can encode complex policies and eligibility rules as deterministic infrastructure. By transforming case-processing logic into verifiable artifacts, agencies eliminate decision-making ambiguity, ensure automatic regulatory compliance, and enable total traceability for public audits. This drastically reduces manual review cycles, ensuring that every citizen receives a response based on explicit, mathematically provable rules, moving public trust from procedural hope to algorithmic certainty."
+    description: "Governmental institutions can encode complex policies and eligibility rules as deterministic infrastructure artifacts. By transforming case-processing logic into verifiable blueprints, agencies eliminate decision-making ambiguity and ensure automatic regulatory compliance for public audits. This reduces manual review cycles while ensuring every citizen receives a response based on explicit, mathematically provable rules that move public trust to algorithmic certainty."
   },
   painPoints: [
     {
@@ -568,7 +568,7 @@ export const healthcareIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Clinical Safety",
     subtitle: "Bounded Dose Logic for Patient Care",
-    description: "Healthcare providers and medical device teams can ensure clinical safety by bounding dose calculation logic and workflow transitions within explicit safety perimeters. BRIK-64 transforms clinical escalation paths into auditable engineering artifacts, preventing silent threshold violations and providing the formal evidence required for accelerated regulatory review and clinical safety audits."
+    description: "Healthcare providers and medical device teams can ensure clinical safety by bounding dose calculation logic and workflow transitions within explicit safety perimeters. BRIK-64 transforms clinical escalation paths into auditable engineering artifacts, preventing silent threshold violations during patient care. This provides the formal evidence required for accelerated regulatory review and ensures that dangerous fallback states route predictably to human intervention."
   },
   painPoints: [
     {
@@ -652,7 +652,7 @@ export const scienceIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Reproducible Research",
     subtitle: "Cryptographic Methods for Open Science",
-    description: "Research scientists can bolster computational integrity by publishing methods as inherently reproducible cryptographic blueprints. BRIK-64 preserves the link between raw data and algorithmic transforms, ensuring that calibration factors and measurement bounds remain visible to technical readers and providing a verifiable lineage that moves scientific research from shared trust to provable reproducibility."
+    description: "Research scientists can bolster computational integrity by publishing methods as inherently reproducible cryptographic blueprints. BRIK-64 preserves the link between raw data and algorithmic transforms, ensuring that calibration factors and measurement bounds remain visible to technical readers. This provides a verifiable lineage that moves scientific research from shared trust to provable reproducibility, allowing methods to be reused across different research environments."
   },
   painPoints: [
     {

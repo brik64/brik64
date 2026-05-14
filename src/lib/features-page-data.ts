@@ -154,7 +154,7 @@ export const featureHero = {
   title: "Software that works like",
   highlight: "hardware.",
   description:
-    "Author or lift code into PCD, check bounds, emit targets, and carry review evidence forward.",
+    "Formal verification for the computational core. Transform source logic into reviewable PCD, enforce bounded domain constraints, and emit certified targets with immutable proof posture.",
 } as const;
 
 export const featureOverview = {
@@ -448,18 +448,18 @@ export const featureSections: FeatureSectionSpec[] = [
   {
     id: "compilation",
     label: "[01] COMPILATION",
-    title: "One compiler chain from PCD to 10 targets",
+    title: "Multi-target emission from a single bounded blueprint",
     lead:
-      "The compilation story should explain how one bounded blueprint moves through parsing, normalization, and target emission without turning the page into a catalog of backends.",
+      "Establish a canonical intermediate representation for verified logic. Normalization stabilizes computation into a single reviewable form before emission to Rust, TypeScript, or legacy targets.",
     workflowFocus:
-      "Normalize a bounded PCD blueprint once, then emit it across supported targets through the same compiler chain.",
+      "Normalize a bounded PCD blueprint once, then emit it across supported targets through a single-pass compiler chain.",
     integrationPoint:
-      "CLI and direct PCD authoring enter here; platform and registry consume the emitted outputs and their review state.",
+      "PCD source or lifted logic enters here; the platform consumes emitted targets with attached verification hashes.",
     evidenceOutputs: [
-      "parser independence",
-      "canonical pipeline form",
-      "byte-identical self-hosting generations",
-      "target emission from one blueprint",
+      "Canonical normalization",
+      "By-design determinism",
+      "SHA-256 fixpoint consistency",
+      "Multi-target parity",
     ],
     claimBoundary:
       featureSectionBlueprints.compilation.claimBoundary,
@@ -470,43 +470,43 @@ export const featureSections: FeatureSectionSpec[] = [
       eyebrow: "Compiler Chain",
       title: "Normalize once, emit many times",
       description:
-        "The compiler story is strongest when it stays focused on normalization, target emission, and build-chain consistency instead of broad claims about uniqueness.",
+        "The Brik64 compiler chain replaces fragmented backend transformations with a single, inspectable normalization pipeline.",
       metrics: [
         {
-          label: "Entry format",
+          label: "Core model",
           value: "PCD",
           detail:
-            "The bounded blueprint is the single entry point into the compilation chain.",
+            "The Printed Circuit Description is the only entry point into the verified chain.",
         },
         {
           label: "Normalization",
-          value: "Canonical pipeline",
+          value: "Φ-form",
           detail:
-            "The compiler stabilizes computation into one intermediate form before target emission.",
+            "Computation is stabilized into a canonical intermediate representation before emission.",
         },
         {
-          label: "Emission set",
+          label: "Emission",
           value: "10 targets",
           detail:
-            "The normalized blueprint remains the anchor while backends emit the supported target outputs.",
+            "The same validated blueprint can be emitted to high-level and legacy target sets.",
         },
       ],
       rows: [
         {
           title: "Parser independence",
           body:
-            "The parser is documented as hand-built and dependency-light so the compiler chain stays inspectable from the first step.",
+            "A hand-built, dependency-light parser ensures the initial lift into PCD remains fully inspectable and deterministic.",
         },
         {
-          title: "Canonical pipeline form",
+          title: "Canonical normalization",
           body:
-            "Normalization makes the emitted targets downstream of one stable representation rather than a collection of bespoke transformations.",
+            "Moving computation into a single stable representation ensures that emitted targets are downstream of a verified model.",
           state: "accent",
         },
         {
-          title: "Self-hosting consistency",
+          title: "Build-chain fixpoint",
           body:
-            "The self-compilation fixpoint is used here as evidence that documented generations converge to the same build output.",
+            "Self-hosting consistency is used as evidence that the compiler generates byte-identical outputs across documented iterations.",
         },
       ],
     },
