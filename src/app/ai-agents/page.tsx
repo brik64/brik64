@@ -16,9 +16,9 @@ import { Navbar } from "@/components/Navbar";
 import { PhiC } from "@/components/PhiC";
 
 export const metadata = {
-  title: "Agentes IA — BRIK64",
+  title: "AI Agents — BRIK64",
   description:
-    "Guía de integración de agentes IA con matriz de configuración, circuitos de política, bucle de diagnóstico y fronteras explícitas de no-confianza por defecto.",
+    "AI Agent integration guide featuring configuration matrix, policy circuits, diagnostic loops, and explicit no-trust-by-default boundaries.",
 };
 
 const agents = [
@@ -57,27 +57,27 @@ const agents = [
 const workflowSteps = [
   {
     step: "01",
-    title: "Descubrir",
+    title: "Discover",
     description:
-      "Generar PCD candidato, lógica de política o salida de lifting acotada a partir de fuentes o prompts.",
+      "Generate candidate PCD, policy logic, or bounded lifting output from sources or prompts.",
   },
   {
     step: "02",
-    title: "Verificar",
+    title: "Check",
     description:
-      "Ejecutar circuitos de política y validación del compilador fuera del modelo antes de proceder con la rama.",
+      "Execute policy circuits and compiler validation outside the model before proceeding with the branch.",
   },
   {
     step: "03",
-    title: "Diagnosticar",
+    title: "Diagnose",
     description:
-      "Utilizar diagnósticos estructurados para reparar la rama en lugar de adivinar qué suposición falló.",
+      "Utilize structured diagnostics to repair the branch instead of guessing which assumption failed.",
   },
   {
     step: "04",
-    title: "Ejecutar / Publicar",
+    title: "Execute / Publish",
     description:
-      "Solo las ramas aceptadas avanzan hacia el CLI, la plataforma, el registro o el flujo empresarial.",
+      "Only accepted branches advance toward the CLI, platform, registry, or enterprise flow.",
   },
 ] as const;
 
@@ -85,53 +85,53 @@ const community = [
   {
     icon: MessageCircle,
     title: "Discord",
-    description: "Soporte para operadores, resolución de problemas y intercambio de circuitos.",
+    description: "Operator support, troubleshooting, and circuit exchange.",
     href: "https://discord.gg/brik64",
     external: true,
   },
   {
     icon: GitBranch,
     title: "GitHub",
-    description: "Código fuente, incidencias, skills y rutas de contribución.",
+    description: "Source code, issues, skills, and contribution paths.",
     href: "https://github.com/brik64",
     external: true,
   },
   {
     icon: BookOpen,
-    title: "Documentación",
-    description: "Material de referencia para CLI, PCD y flujos de verificación.",
+    title: "Documentation",
+    description: "Reference material for CLI, PCD, and verification flows.",
     href: "https://docs.brik64.dev",
     external: true,
   },
   {
     icon: Newspaper,
-    title: "Seguridad IA",
-    description: "Tesis sobre la integración de la verificación externa en el flujo de IA.",
+    title: "AI Safety",
+    description: "Theses on integrating external verification into the AI workflow.",
     href: "/use-cases/ai-safety",
     external: false,
   },
 ] as const;
 
 const referencePoints = [
-  "PCD — Printed Circuit Description, la capa de blueprint revisable.",
-  "Monómeros — operaciones acotadas compuestas en circuitos explícitos.",
-  "Álgebra EVA — reglas de composición secuencial, paralela y condicional.",
-  "Circuitos de política — puertas legibles por máquina externas a los pesos del modelo.",
-  "Diagnósticos estructurados — razones de rechazo explícitas para bucles de reparación.",
+  "PCD — Printed Circuit Description, the reviewable blueprint layer.",
+  "Monomers — bounded operations composed into explicit circuits.",
+  "EVA Algebra — sequential, parallel, and conditional composition rules.",
+  "Policy Circuits — machine-readable gates external to the model weights.",
+  "Structured Diagnostics — explicit rejection reasons for repair loops.",
 ] as const;
 
 const assessment = {
   value: [
-    "Tratar la salida del agente como lógica candidata, no como verdad final.",
-    "Mantener la verificación fuera del modelo para una ruta de aprobación inspeccionable.",
-    "Utilizar la misma ruta CLI-a-plataforma que el trabajo de autoría humana.",
-    "Llevar la política, los diagnósticos y el estado de publicación como metadatos del blueprint.",
+    "Treat agent output as candidate logic, not final truth.",
+    "Maintain verification outside the model for an inspectable approval path.",
+    "Utilize the same CLI-to-platform path as human authorship work.",
+    "Carry policy, diagnostics, and publishing state as blueprint metadata.",
   ],
   limitations: [
-    "Sin confianza por defecto: el modelo no es la fuente de la prueba.",
-    "La clausura total se aplica solo al circuito modelado y dominios declarados.",
-    "El runtime y la infraestructura permanecen fuera del objeto de prueba.",
-    "El hardware BPU sigue siendo trabajo de roadmap, no infraestructura actual.",
+    "No trust by default: the model is not the source of proof.",
+    "Full closure applies only to the modeled circuit and declared domains.",
+    "Runtime and infrastructure remain outside the proof object.",
+    "BPU hardware remains roadmap work, not current infrastructure.",
   ],
 } as const;
 
@@ -145,37 +145,37 @@ export default function AIAgentsPage() {
             <HeroWireframe />
             <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center lg:py-32">
               <span className="mb-4 inline-block rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-sm font-medium text-teal">
-                Agentes IA
+                AI Agents
               </span>
               <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                La IA puede producir lógica candidata.{" "}
-                <span className="text-teal">La capa formal decide qué se puede confiar.</span>
+                AI produces candidate logic.{" "}
+                <span className="text-teal">The formal layer decides what is trusted.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
-                BRIK-64 no le pide que confíe en el modelo. Otorga a la salida del agente un lenguaje formal, un blueprint canónico y un bucle de verificación externa antes de cualquier ejecución o publicación.
+                BRIK-64 doesn't ask you to trust the model. It gives agent output a formal language, a canonical blueprint, and an external verification loop before any execution or publication.
               </p>
               <div className="mt-10 grid gap-4 md:grid-cols-3">
                 <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Flujo</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Flow</p>
                   <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">
-                    descubrir → verificar → ejecutar
+                    discover → check → execute
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    La salida candidata se mueve a través de un bucle de operador visible antes de ser autorizada.
-                  </p>
-                </div>
-                <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Punto de control</p>
-                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">circuitos de política</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    La lógica de aprobación permanece legible por máquina y externa a los pesos del modelo.
+                    Candidate output moves through a visible operator loop before being authorized.
                   </p>
                 </div>
                 <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Frontera</p>
-                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">Sin confianza por defecto</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Checkpoint</p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">policy circuits</p>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    La verificación se mantiene externa al modelo y visible para el equipo de ingeniería.
+                    Approval logic remains machine-readable and external to the model weights.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-border/80 bg-background/85 p-5 shadow-sm">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Boundary</p>
+                  <p className="mt-3 text-2xl font-semibold tracking-tight text-foreground">No trust by default</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Verification is kept external to the model and visible to the engineering team.
                   </p>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function AIAgentsPage() {
           </section>
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
-            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Cómo funciona</h2>
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">How it works</h2>
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {workflowSteps.map((item) => (
                 <article key={item.step} className="border border-border bg-muted/10 p-6 text-center">
@@ -196,9 +196,9 @@ export default function AIAgentsPage() {
           </section>
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
-            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Matriz de configuración de agentes</h2>
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Agent Configuration Matrix</h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
-              Recupere la ruta real del operador: un comando, una forma de prompt, un blueprint explícito y un bucle de revisión.
+              Recover the real operator path: a command, a prompt shape, an explicit blueprint, and a review loop.
             </p>
             <div className="mx-auto mt-10 max-w-4xl space-y-4">
               {agents.map((agent) => (
@@ -209,14 +209,14 @@ export default function AIAgentsPage() {
                       <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{agent.company}</p>
                     </div>
                     <span className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-3 py-1 text-xs font-medium text-teal">
-                      <Workflow className="h-3.5 w-3.5" /> Verificación externa requerida
+                      <Workflow className="h-3.5 w-3.5" /> External verification required
                     </span>
                   </div>
                   <pre className="mt-4 overflow-x-auto rounded-md bg-[#0a0e14] px-4 py-3 text-xs text-gray-300">
                     <code>{agent.command}</code>
                   </pre>
                   <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                    Ejemplo de prompt: “{agent.prompt}”
+                    Example prompt: “{agent.prompt}”
                   </p>
                 </article>
               ))}
@@ -225,9 +225,9 @@ export default function AIAgentsPage() {
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
             <div className="mx-auto max-w-4xl rounded-3xl border border-teal/30 bg-teal/[0.04] p-6 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-widest text-teal">Referencia legible por máquina</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-teal">Machine-readable reference</p>
               <div className="mt-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Conceptos clave</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Key Concepts</h3>
                 <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
                   {referencePoints.map((item) => (
                     <li key={item}>• {item}</li>
@@ -235,30 +235,30 @@ export default function AIAgentsPage() {
                 </ul>
               </div>
               <div className="mt-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Ejemplo de sintaxis PCD</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">PCD Syntax Example</h3>
                 <div className="mt-2">
-                  <CopyableCode>{`circuit suma_de_dos(x: i64, y: i64) -> i64 {
-  resultado = ADD(x, y);
-  return resultado;
+                  <CopyableCode>{`circuit sum_of_two(x: i64, y: i64) -> i64 {
+  result = ADD(x, y);
+  return result;
 }
-// El estado de revisión se verifica externamente bajo dominios declarados`}</CopyableCode>
+// Review state is externally verified under declared domains`}</CopyableCode>
                 </div>
               </div>
               <div className="mt-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">Cómo extraer código (lifting)</h3>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">How to extract code (lifting)</h3>
                 <ol className="mt-2 list-inside list-decimal space-y-1.5 text-xs text-muted-foreground">
-                  <li>Instalar la skill relevante para el agente.</li>
-                  <li>Apuntar al agente hacia un archivo, directorio o repositorio.</li>
-                  <li>Generar blueprints candidatos acotados o lógica de política.</li>
-                  <li>Ejecutar verificaciones del compilador e inspeccionar diagnósticos.</li>
-                  <li>Publicar ramas aceptadas a través del CLI y el flujo de plataforma.</li>
+                  <li>Install the relevant agent skill.</li>
+                  <li>Point the agent to a file, directory, or repository.</li>
+                  <li>Generate bounded candidate blueprints or policy logic.</li>
+                  <li>Execute compiler checks and inspect diagnostics.</li>
+                  <li>Publish accepted branches through the CLI and platform flow.</li>
                 </ol>
               </div>
               <div className="mt-6 rounded-2xl border border-border/70 bg-background/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">Nota de frontera</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">Boundary Note</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  <PhiC /> = 1 y los estados de verificación relacionados se aplican al circuito modelado bajo dominios declarados.
-                  No hacen que el modelo subyacente, el runtime o la organización sean confiables por defecto.
+                  <PhiC /> = 1 and related verification states apply to the modeled circuit under declared domains.
+                  They do not make the underlying model, runtime, or organization trustworthy by default.
                 </p>
               </div>
             </div>
@@ -266,10 +266,10 @@ export default function AIAgentsPage() {
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
             <div className="mx-auto max-w-4xl rounded-3xl border border-teal/30 bg-teal/[0.04] p-6 shadow-sm">
-              <p className="text-xs font-bold uppercase tracking-widest text-teal">Resumen de evaluación de plataforma</p>
-              <h3 className="mt-2 text-lg font-bold text-foreground">Lo que esta página puede afirmar responsablemente</h3>
+              <p className="text-xs font-bold uppercase tracking-widest text-teal">Platform Assessment Summary</p>
+              <h3 className="mt-2 text-lg font-bold text-foreground">What this page can responsibly assert</h3>
               <div className="mt-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Propuestas de valor</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Value Propositions</h4>
                 <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
                   {assessment.value.map((item) => (
                     <li key={item}>• {item}</li>
@@ -277,7 +277,7 @@ export default function AIAgentsPage() {
                 </ul>
               </div>
               <div className="mt-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Limitaciones honestas</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">Honest Limitations</h4>
                 <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground">
                   {assessment.limitations.map((item) => (
                     <li key={item}>• {item}</li>
@@ -288,7 +288,7 @@ export default function AIAgentsPage() {
           </section>
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-16 md:px-12 lg:px-18">
-            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Comunidad y rutas de referencia</h2>
+            <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">Community and Reference Paths</h2>
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {community.map((item) => {
                 const body = (
@@ -324,23 +324,23 @@ export default function AIAgentsPage() {
 
           <section className="mx-auto max-w-7xl border-x border-t border-border px-6 py-20 text-center md:px-12 lg:px-18">
             <h2 className="mx-auto text-center text-2xl font-bold tracking-tight md:text-3xl">
-              Comience con el bucle del operador, no con el teatro del modelo.
+              Start with the operator loop, not the model theatre.
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Instale la CLI, inspeccione el flujo de seguridad de IA o abra la documentación que define la frontera de integración actual.
+              Install the CLI, inspect the AI safety flow, or open the documentation defining the current integration boundary.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/use-cases/ai-safety"
                 className="inline-flex items-center gap-2 rounded-md bg-teal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-teal-hover"
               >
-                Revisar flujo de seguridad IA
+                Review AI Safety Flow
               </Link>
               <Link
                 href="/cli"
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
-                Instalar CLI <ArrowRight className="h-3.5 w-3.5" />
+                Install CLI <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <a
                 href="https://docs.brik64.dev"
@@ -348,7 +348,7 @@ export default function AIAgentsPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
-                Abrir docs <Shield className="h-3.5 w-3.5" />
+                Open docs <Shield className="h-3.5 w-3.5" />
               </a>
             </div>
           </section>

@@ -52,7 +52,7 @@ function CompilationTargetRail() {
   return (
     <div className="mt-8 rounded-[18px] border border-white/8 bg-[#0f1a28] p-4">
       <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/42">
-        Explicit target set
+        DETERMINISTIC EMISSION TARGETS
       </p>
       <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
         {compilationTargets.map((target) => (
@@ -171,11 +171,11 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
         {section.id === "compilation" ? <CompilationTargetRail /> : null}
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start">
-          <SectionRail title="Engineering Narrative">
+          <SectionRail title="SYSTEMIC INTEGRITY FRAMEWORK">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
-                  Workflow focus
+                  OPERATIONAL VECTOR
                 </p>
                 <p className="text-sm leading-relaxed text-white/50">
                   {section.workflowFocus}
@@ -183,7 +183,7 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
               </div>
               <div className="space-y-1.5">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
-                  Integration point
+                  SYSTEMIC ENTRY POINT
                 </p>
                 <p className="text-sm leading-relaxed text-white/50">
                   {section.integrationPoint}
@@ -191,7 +191,7 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
               </div>
               <div className="space-y-1.5">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
-                  Technical buyer
+                  VERIFICATION AUTHORITY
                 </p>
                 <p className="text-sm leading-relaxed text-white/50">
                   {blueprint.buyer}
@@ -199,7 +199,7 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
               </div>
               <div className="space-y-1.5">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#2BB6AC]">
-                  Evidence outputs
+                  IMMUTABLE ARTIFACTS
                 </p>
                 <p className="text-sm leading-relaxed text-white/50">
                   {section.evidenceOutputs.join(" · ")}
@@ -214,7 +214,7 @@ function FeatureSectionBlock({ section }: { section: FeatureSectionSpec }) {
             
             <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
               <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">
-                Claim boundary
+                FORMAL GUARANTEE BOUNDARY
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/50">
                 {section.claimBoundary}
