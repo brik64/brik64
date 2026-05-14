@@ -96,7 +96,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
             >
               {data.painPoints.map((pain, idx) => (
                 <motion.div key={idx} variants={itemVariants}>
-                  <Card className="group h-full border-white/10 bg-white/[0.02] text-white transition-all duration-500 hover:border-red-500/40 hover:bg-white/[0.04] shadow-2xl backdrop-blur-xl rounded-2xl">
+                  <Card className="group h-full border-white/10 bg-white/[0.04] text-white transition-all duration-500 hover:border-red-500/40 hover:bg-white/[0.06] shadow-2xl rounded-2xl">
                     <CardHeader>
                       <CardTitle className="text-xl text-red-400 flex items-center gap-3">
                         <div className="p-2 rounded-lg bg-red-500/10 group-hover:bg-red-500/20 transition-colors">
@@ -146,7 +146,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
                 </div>
                 
                 {/* Narrative content overlay on the right - wider horizontal span, justified text */}
-                <div className="relative z-20 ml-auto w-full lg:w-[60%] p-8 md:p-12 lg:p-20 flex flex-col justify-center bg-black/5 lg:bg-transparent">
+                <div className="relative z-20 ml-auto w-full lg:w-[70%] p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-black/10 lg:bg-transparent">
                   <Badge className="mb-6 w-fit bg-[color:var(--accent)] text-black font-bold tracking-wider px-4 py-1">
                     {data.caseStudy?.title || "Industry Insight"}
                   </Badge>
@@ -154,7 +154,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
                     {data.caseStudy?.subtitle}
                   </h3>
                   <div className="space-y-6">
-                    <p className="text-base md:text-lg text-white/90 font-medium leading-relaxed max-w-2xl drop-shadow-sm text-justify">
+                    <p className="text-sm md:text-base text-white/85 font-medium leading-relaxed max-w-3xl drop-shadow-sm text-justify">
                       {data.caseStudy?.description}
                     </p>
                   </div>
@@ -197,7 +197,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
                 <motion.div 
                   key={idx} 
                   variants={itemVariants}
-                  className="group relative flex flex-col md:flex-row gap-6 md:gap-16 rounded-[2rem] border border-white/10 bg-white/[0.02] p-10 shadow-2xl hover:border-[color:var(--accent)]/30 hover:bg-white/[0.03] transition-all duration-700 backdrop-blur-xl overflow-hidden"
+                  className="group relative flex flex-col md:flex-row gap-6 md:gap-16 rounded-[2rem] border border-white/10 bg-white/[0.04] p-10 shadow-2xl hover:border-[color:var(--accent)]/30 hover:bg-white/[0.06] transition-all duration-700 overflow-hidden"
                 >
                   {/* Decorative corner glow */}
                   <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[color:var(--accent)]/5 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -274,7 +274,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
               >
                 {data.keyBenefits.map((benefit, idx) => (
                   <motion.div key={idx} variants={itemVariants}>
-                    <Card className="group relative h-full overflow-hidden border-white/10 bg-white/[0.01] p-8 transition-all duration-700 hover:bg-white/[0.04] hover:border-[color:var(--accent)]/30 backdrop-blur-xl rounded-2xl flex flex-col justify-between">
+                    <Card className="group relative h-full overflow-hidden border-white/10 bg-white/[0.03] p-8 transition-all duration-700 hover:bg-white/[0.06] hover:border-[color:var(--accent)]/30 rounded-2xl flex flex-col justify-between">
                       <div className="relative z-10">
                         <div className="text-2xl font-bold text-white tracking-tight sm:text-3xl group-hover:text-[color:var(--accent)] transition-colors duration-700 font-variant-numeric:tabular-nums leading-none">
                           {benefit.value}
@@ -292,7 +292,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
               </motion.div>
 
               <motion.div variants={itemVariants} className="h-full">
-                <Card className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-10 backdrop-blur-2xl shadow-2xl relative overflow-hidden group hover:border-[color:var(--accent)]/20 transition-all duration-700 flex flex-col">
+                <Card className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-10 shadow-2xl relative overflow-hidden group hover:border-[color:var(--accent)]/20 transition-all duration-700 flex flex-col">
                   {/* Decorative technical elements */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[color:var(--accent)]/20 to-transparent" />
                   <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[color:var(--accent)]/5 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -360,7 +360,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="mx-auto mb-10 inline-flex items-center justify-center rounded-xl bg-white/5 p-3.5 text-[color:var(--accent)] border border-white/10 backdrop-blur-2xl"
+              className="mx-auto mb-10 inline-flex items-center justify-center rounded-xl bg-white/10 p-3.5 text-[color:var(--accent)] border border-white/10"
             >
               <Building2 className="h-6 w-6" aria-hidden="true" />
             </motion.div>
@@ -395,7 +395,7 @@ export function IndustrySolutionTemplate({ data }: { data: IndustrySolutionData 
                 Contact Enterprise Sales
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </ButtonVNext>
-              <ButtonVNext href="/platform" tone="secondary" className="h-14 px-10 text-base border-white/10 backdrop-blur-md rounded-xl font-semibold hover:bg-white/10 transition-all">
+              <ButtonVNext href="/platform" tone="secondary" className="h-14 px-10 text-base border-white/10 rounded-xl font-semibold hover:bg-white/10 transition-all">
                 Explore Platform
               </ButtonVNext>
             </motion.div>
