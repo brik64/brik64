@@ -1,12 +1,12 @@
-import { RiskPageView } from "@/components/PageArchetypes";
-import { industryPages } from "@/lib/risk-page-data";
+import { Metadata } from "next";
+import { IndustrySolutionTemplate } from "@/components/IndustrySolutionTemplate";
+import { engineeringIndustryData } from "@/lib/industry-v2-data";
 
-export const metadata = {
-  title: "Engineering — BRIK64 Industries",
-  description:
-    "How BRIK-64 helps engineering software teams preserve assumptions, bounded transforms, and reusable computational dossiers.",
+export const metadata: Metadata = {
+  title: "Critical Engineering | BRIK-64",
+  description: "Secure operational technology and SCADA environment validation.",
 };
 
 export default function EngineeringIndustryPage() {
-  return <RiskPageView page={industryPages.engineering} />;
+  return <IndustrySolutionTemplate data={engineeringIndustryData} />;
 }

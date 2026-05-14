@@ -1,12 +1,12 @@
-import { RiskPageView } from "@/components/PageArchetypes";
-import { industryPages } from "@/lib/risk-page-data";
+import { Metadata } from "next";
+import { IndustrySolutionTemplate } from "@/components/IndustrySolutionTemplate";
+import { healthcareIndustryData } from "@/lib/industry-v2-data";
 
-export const metadata = {
-  title: "Healthcare — BRIK64 Industries",
-  description:
-    "How BRIK-64 helps clinical and device-workflow teams review dose logic, escalation paths, and emitted engineering evidence.",
+export const metadata: Metadata = {
+  title: "Healthcare & Medical | BRIK-64",
+  description: "Regulatory compliance and software validation for medical devices.",
 };
 
 export default function HealthcareIndustryPage() {
-  return <RiskPageView page={industryPages.healthcare} />;
+  return <IndustrySolutionTemplate data={healthcareIndustryData} />;
 }

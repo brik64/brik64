@@ -1,12 +1,12 @@
-import { RiskPageView } from "@/components/PageArchetypes";
-import { industryPages } from "@/lib/risk-page-data";
+import { Metadata } from "next";
+import { IndustrySolutionTemplate } from "@/components/IndustrySolutionTemplate";
+import { governmentIndustryData } from "@/lib/industry-v2-data";
 
-export const metadata = {
-  title: "Government — BRIK64 Industries",
-  description:
-    "How BRIK-64 helps public-sector teams turn eligibility and routing rules into auditable software artifacts and bounded processing paths.",
+export const metadata: Metadata = {
+  title: "Government & Defense | BRIK-64",
+  description: "Zero-trust architecture and cryptographic assurance for public sector.",
 };
 
 export default function GovernmentIndustryPage() {
-  return <RiskPageView page={industryPages.government} />;
+  return <IndustrySolutionTemplate data={governmentIndustryData} />;
 }

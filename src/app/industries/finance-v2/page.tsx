@@ -7,6 +7,6 @@ export const metadata: Metadata = {
   description: "Secure, verifiable, high-speed financial infrastructure with cryptographic determinism.",
 };
 
-export default function FinanceIndustryPage() {
+export default function FinanceIndustryPageV2() {
   return <IndustrySolutionTemplate data={financeIndustryData} />;
 }

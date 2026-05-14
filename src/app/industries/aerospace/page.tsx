@@ -1,12 +1,12 @@
-import { RiskPageView } from "@/components/PageArchetypes";
-import { industryPages } from "@/lib/risk-page-data";
+import { Metadata } from "next";
+import { IndustrySolutionTemplate } from "@/components/IndustrySolutionTemplate";
+import { aerospaceIndustryData } from "@/lib/industry-v2-data";
 
-export const metadata = {
-  title: "Aerospace — BRIK64 Industries",
-  description:
-    "How BRIK-64 helps avionics and control teams review envelope logic, degraded modes, and certification-support artifacts before the wider process absorbs the software.",
+export const metadata: Metadata = {
+  title: "Aerospace & Defense | BRIK-64",
+  description: "Certifiable and deterministic infrastructure for flight systems.",
 };
 
 export default function AerospaceIndustryPage() {
-  return <RiskPageView page={industryPages.aerospace} />;
+  return <IndustrySolutionTemplate data={aerospaceIndustryData} />;
 }

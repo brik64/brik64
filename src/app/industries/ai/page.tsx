@@ -1,12 +1,12 @@
-import { RiskPageView } from "@/components/PageArchetypes";
-import { industryPages } from "@/lib/risk-page-data";
+import { Metadata } from "next";
+import { IndustrySolutionTemplate } from "@/components/IndustrySolutionTemplate";
+import { aiIndustryData } from "@/lib/industry-v2-data";
 
-export const metadata = {
-  title: "AI Industry — BRIK64",
-  description:
-    "How BRIK-64 inserts policy circuits, generated-code review, and operator diagnostics between AI output and execution.",
+export const metadata: Metadata = {
+  title: "AI Systems Infrastructure | BRIK-64",
+  description: "Secure boundaries and deterministic operation for AI and autonomous systems.",
 };
 
-export default function AIIndustryPage() {
-  return <RiskPageView page={industryPages.ai} />;
+export default function AiIndustryPage() {
+  return <IndustrySolutionTemplate data={aiIndustryData} />;
 }

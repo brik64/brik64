@@ -1,12 +1,12 @@
-import { RiskPageView } from "@/components/PageArchetypes";
-import { industryPages } from "@/lib/risk-page-data";
+import { Metadata } from "next";
+import { IndustrySolutionTemplate } from "@/components/IndustrySolutionTemplate";
+import { automotiveIndustryData } from "@/lib/industry-v2-data";
 
-export const metadata = {
-  title: "Automotive — BRIK64 Industries",
-  description:
-    "How BRIK-64 helps vehicle platform teams review actuation thresholds, sensor assumptions, and fallback logic before wider safety workflows.",
+export const metadata: Metadata = {
+  title: "Automotive & Mobility | BRIK-64",
+  description: "Deterministic runtime validation for connected and autonomous vehicles.",
 };
 
 export default function AutomotiveIndustryPage() {
-  return <RiskPageView page={industryPages.automotive} />;
+  return <IndustrySolutionTemplate data={automotiveIndustryData} />;
 }
