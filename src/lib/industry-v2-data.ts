@@ -64,7 +64,7 @@ export const financeIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Institutional Settlement",
     subtitle: "Absolute Finality under Peak Volatility",
-    description: "Las instituciones financieras pueden blindar sus procesos de liquidación y gestión de activos mediante la aplicación de determinismo criptográfico a nivel de instrucción. BRIK-64 permite externalizar la lógica de cumplimiento y las reglas de negocio en planos de control verificables, eliminando las discrepancias en la reconciliación y automatizando las auditorías en tiempo real. Esto reduce el riesgo operacional y garantiza que cada transacción cumpla con los marcos regulatorios vigentes antes de su ejecución definitiva."
+    description: "BRIK-64 blinda los procesos de liquidación mediante determinismo criptográfico a nivel de instrucción, eliminando discrepancias en la reconciliación de activos. Externalizamos la lógica de cumplimiento en planos de control verificables que automatizan auditorías regulatorias en tiempo real sin interrumpir el flujo transaccional. Esto garantiza que cada entrada en el ledger sea matemáticamente coherente con las políticas institucionales antes de su ejecución definitiva en producción."
   },
   painPoints: [
     {
@@ -148,7 +148,7 @@ export const aerospaceIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Avionics Integrity",
     subtitle: "Deterministic Control for Critical Envelopes",
-    description: "En el sector aeroespacial, BRIK-64 facilita la verificación formal de envolventes de control de vuelo y transiciones de estado críticas en sistemas de aviónica. Al definir los límites de seguridad y los modos de operación como artefactos de control acotados, los equipos de ingeniería pueden simplificar los flujos de certificación y garantizar matemáticamente los caminos de recuperación. Esto proporciona una trazabilidad de evidencia auditable que asegura la frontera del software frente a fallos imprevistos en entornos de misión crítica."
+    description: "Formalizamos las envolventes de control de vuelo y las transiciones de estado críticas mediante artefactos de software acotados y altamente inspeccionables. Los equipos de ingeniería pueden verificar matemáticamente los caminos de recuperación y asegurar la frontera del software frente a fallos imprevistos en misiones críticas. Proporcionamos una traza de evidencia auditable que simplifica los flujos de certificación y reduce la dependencia de documentación manual no verificada."
   },
   painPoints: [
     {
@@ -232,7 +232,7 @@ export const aiIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Autonomous Governance",
     subtitle: "Externalizing the Guardrails of Agency",
-    description: "Para los sistemas de inteligencia artificial, BRIK-64 establece límites operativos claros y loops de verificación que garantizan un comportamiento alineado con las especificaciones de seguridad. Al externalizar la supervisión de los modelos y las decisiones críticas en artefactos verificables, se mitigan los riesgos de alucinaciones o acciones no deseadas en entornos de producción. Esto permite desplegar agentes de IA en tareas críticas con la certeza de que su operación está acotada por reglas deterministas y auditables."
+    description: "Establecemos perímetros de seguridad deterministas alrededor de los modelos de IA, filtrando acciones y código generado antes de que alcancen superficies operativas. Al externalizar la supervisión en circuitos de política verificables, mitigamos los riesgos de alucinaciones y ejecuciones no autorizadas en entornos de alta sensibilidad. El sistema devuelve diagnósticos precisos que permiten al bucle de reparación corregir el comportamiento del agente sin comprometer la integridad del sistema."
   },
   painPoints: [
     {
@@ -316,7 +316,7 @@ export const automotiveIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Safe Actuation",
     subtitle: "Verifiable Fallback for Autonomous Fleets",
-    description: "Para la industria automotriz, BRIK-64 ofrece una infraestructura de confianza para el despliegue de sistemas de conducción autónoma y control vehicular avanzado. Al verificar formalmente las transiciones entre modos de conducción y asegurar la integridad de la comunicación entre sensores y actuadores, se mitigan los riesgos de comportamientos indeterministas. Esto permite a los fabricantes consolidar arquitecturas de software complejas bajo estándares de seguridad rigurosos, garantizando la fiabilidad operativa."
+    description: "Garantizamos la integridad de los umbrales de actuación y los comportamientos de fallback mediante la formalización de suposiciones de sensores en artefactos verificables. BRIK-64 permite consolidar arquitecturas de software complejas bajo estándares de seguridad rigurosos, eliminando el indeterminismo en las decisiones de conducción. Los fabricantes obtienen una fuente de verdad auditable que facilita la transición hacia sistemas autónomos con garantías matemáticas de seguridad operativa."
   },
   painPoints: [
     {
@@ -400,7 +400,7 @@ export const engineeringIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Computational Integrity",
     subtitle: "Preserving the Lineage of Simulation",
-    description: "En ingeniería, BRIK-64 garantiza la integridad de simulaciones complejas mediante la creación de expedientes computacionales verificables. Al formalizar las suposiciones sobre materiales, unidades y rangos, aseguramos que cada transformación de datos sea reproducible y trazable. Esto elimina el riesgo de errores silenciosos en los cálculos críticos y ofrece una fuente de verdad auditable que resiste la fragmentación a lo largo de cualquier cadena de herramientas industriales."
+    description: "Preservamos la integridad de los cálculos industriales mediante la creación de expedientes computacionales que hacen explícitas las unidades, materiales y rangos de operación. Cada transformación de datos se vuelve reproducible y trazable, eliminando errores silenciosos que suelen propagarse en cadenas de herramientas fragmentadas. Proporcionamos una infraestructura de confianza donde las suposiciones técnicas permanecen visibles y vinculadas directamente al artefacto de software resultante."
   },
   painPoints: [
     {
@@ -484,7 +484,7 @@ export const governmentIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Policy Determinism",
     subtitle: "Auditable Eligibility at Scale",
-    description: "BRIK-64 proporciona a las administraciones públicas las herramientas necesarias para digitalizar servicios ciudadanos con una transparencia y auditabilidad sin precedentes. Al implementar reglas de elegibilidad y procesos de supervisión mediante planos de control verificables, se asegura el cumplimiento estricto de la normativa y se eliminan los cuellos de botella en las auditorías manuales. Esto fortalece la confianza institucional al garantizar que cada acción administrativa sea matemáticamente coherente con la legislación vigente."
+    description: "Digitalizamos la lógica de elegibilidad y los procesos administrativos mediante planos de control verificables que garantizan la transparencia absoluta ante organismos de supervisión. Eliminamos los cuellos de botella en las auditorías manuales al proporcionar una traza de decisión matemáticamente coherente con la legislación y las reglas vigentes. Esto fortalece la confianza ciudadana al asegurar que cada acción gubernamental sea auditable por diseño y resistente a manipulaciones externas."
   },
   painPoints: [
     {
@@ -568,7 +568,7 @@ export const healthcareIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Clinical Safety",
     subtitle: "Bounded Dose Logic for Patient Care",
-    description: "Las organizaciones de salud pueden asegurar la integridad de los flujos de trabajo clínicos y la lógica de dosificación mediante perímetros de seguridad explícitos. Al transformar los protocolos de escalado médico en artefactos de ingeniería auditables, se previenen violaciones de umbrales críticos y se garantiza que los estados de fallo se gestionen de forma predecible. Esto acelera los procesos de revisión regulatoria y asegura que cada decisión automatizada esté respaldada por una lógica formal verificable y transparente."
+    description: "Protegemos los flujos de trabajo clínicos y la lógica de dosificación mediante perímetros de seguridad que previenen violaciones de umbrales críticos en dispositivos médicos. Al formalizar los protocolos de escalado y las transiciones de estado, garantizamos que los fallos del sistema se gestionen de forma predecible y segura. Los evaluadores obtienen evidencia de ingeniería auditable que acelera el cumplimiento de normativas internacionales y mejora directamente la seguridad del paciente."
   },
   painPoints: [
     {
@@ -652,7 +652,7 @@ export const scienceIndustryData: IndustrySolutionData = {
   caseStudy: {
     title: "Reproducible Research",
     subtitle: "Cryptographic Methods for Open Science",
-    description: "En el ámbito de la investigación científica, BRIK-64 asegura la reproducibilidad y la integridad de los procesos de computación intensiva y gestión de datos experimentales. Al capturar la lógica de procesamiento y los parámetros de validación en planos de control deterministas, se garantiza que los resultados obtenidos sean consistentes y verificables por terceros. Esto facilita la colaboración internacional al proporcionar una infraestructura donde la procedencia de los datos y el rigor computacional están garantizados por diseño."
+    description: "Aseguramos la reproducibilidad de los resultados científicos mediante la captura de la lógica de procesamiento y los parámetros de validación en blueprints deterministas. Facilitamos la colaboración internacional al proporcionar una infraestructura donde la procedencia de los datos y el rigor computacional están garantizados por diseño. Los investigadores pueden publicar trazas de computación verificables que eliminan la ambigüedad en los métodos y fortalecen la integridad del ecosistema científico."
   },
   painPoints: [
     {
